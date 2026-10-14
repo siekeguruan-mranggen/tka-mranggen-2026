@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
@@ -56,7 +56,7 @@
         <div class="flex items-center gap-2 mb-1">
           <span class="text-xs font-extrabold text-teal-700 uppercase tracking-wider">Dashboard Resmi Sie Keguruan Mranggen</span>
           <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black bg-emerald-100 text-emerald-800">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Multi-Mapel Ready
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Cloud Real-Time
           </span>
         </div>
         <h2 class="text-2xl font-black text-slate-900">Manajemen Ujian & Token (Matematika & B. Indonesia)</h2>
@@ -69,6 +69,13 @@
         </button>
         <button onclick="exportToCSV()" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm transition flex items-center gap-1.5">
           📊 Export CSV
+        </button>
+        <button onclick="downloadBackupJSON()" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition flex items-center gap-1.5">
+          💾 Backup JSON
+        </button>
+        <!-- TOMBOL HAPUS DATA TESTING -->
+        <button onclick="promptSafeClearData()" class="px-3.5 py-2 bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs rounded-xl border border-rose-200 transition flex items-center gap-1.5">
+          🗑️ Bersihkan Data Testing
         </button>
         <button onclick="logoutAdmin()" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs rounded-xl transition">
           Keluar
@@ -312,6 +319,8 @@
           if (dataObj) {
             const dataArray = Object.keys(dataObj).map(key => dataObj[key]);
             localStorage.setItem('tka_submissions_multi', JSON.stringify(dataArray));
+          } else {
+            localStorage.setItem('tka_submissions_multi', JSON.stringify([]));
           }
         } catch (e) {
           console.warn("Offline:", e);
@@ -370,6 +379,43 @@
         `;
         tbody.appendChild(tr);
       });
+    }
+
+    // FUNGSI PEMBERSIHAN DATA TESTING SECARA AMAN (CLOUD & LOCAL)
+    async function promptSafeClearData() {
+      const code = prompt("⚠️ PERINGATAN PEMBERSIHAN DATA:\nKetik 'HAPUS' (huruf besar) untuk menghapus seluruh data uji coba di Firebase Cloud dan memulihkan database menjadi bersih:");
+      
+      if (code === "HAPUS") {
+        try {
+          // 1. Bersihkan seluruh rekaman di Firebase Cloud Database (DELETE request)
+          if (typeof FIREBASE_DB_URL !== 'undefined' && FIREBASE_DB_URL) {
+            await fetch(FIREBASE_DB_URL, {
+              method: 'DELETE'
+            });
+          }
+
+          // 2. Bersihkan penyimpanan lokal browser
+          localStorage.removeItem('tka_submissions_multi');
+          
+          // 3. Render ulang tampilan tabel agar langsung kosong
+          renderAdminDashboard();
+          alert("✅ Berhasil! Seluruh data testing di Firebase Cloud dan memori lokal telah dibersihkan total. Sistem siap untuk uji coba peserta asli.");
+        } catch (err) {
+          alert("Gagal menghapus data di cloud: " + err.message);
+        }
+      } else if (code !== null) {
+        alert("Konfirmasi dibatalkan. Kata sandi konfirmasi salah.");
+      }
+    }
+
+    function downloadBackupJSON() {
+      const data = getStoredSubmissions();
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `BACKUP_TKA_MRANGGEN_${Date.now()}.json`;
+      link.click();
     }
 
     function exportToCSV() {
