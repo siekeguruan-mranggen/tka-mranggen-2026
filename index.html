@@ -13,7 +13,6 @@
     .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #5eead4; border-radius: 4px; }
     
-    /* Proteksi Anti-Contek & Blokir Drag/Copy ke Gemini Sidepanel */
     .no-select {
       -webkit-user-select: none;
       -moz-user-select: none;
@@ -881,6 +880,16 @@
     let currentQuestionIdx = 0, userAnswers = {}, raguStatus = {}, examTimerInterval = null, timeRemaining = 75 * 60;
     let latestExamScore = 0, latestSubmissionData = null;
 
+    // Fungsi Fisher-Yates Shuffle untuk mengacak urutan soal
+    function shuffleArray(array) {
+      const arr = [...array];
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
     function populateSchoolDropdown() {
       const regSelect = document.getElementById('regSchool');
       LIST_SEKOLAH_MRANGGEN.forEach(sch => {
@@ -948,7 +957,6 @@
       if (!statusMap[pkg]) { alert("Paket ini masih dikunci pengawas!"); return; }
 
       currentPackageKey = pkg;
-      currentQuestions = DATABASE_SOAL[selectedSubject][pkg].questions;
       timeRemaining = 75 * 60;
 
       const subName = selectedSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia';
@@ -980,8 +988,13 @@
       document.getElementById('examStudentName').innerText = currentUser.name;
       document.getElementById('examStudentSchool').innerText = `${currentUser.school} • Kelas ${currentUser.className}`;
 
-      userAnswers = {}; raguStatus = {}; currentQuestionIdx = 0;
+      userAnswers = {}; 
+      raguStatus = {}; 
+      currentQuestionIdx = 0;
       timeRemaining = 75 * 60;
+
+      // Mengacak urutan 30 butir soal secara acak untuk setiap siswa
+      currentQuestions = shuffleArray(DATABASE_SOAL[selectedSubject][currentPackageKey].questions);
 
       showScreen('viewExam');
       renderPalette();
@@ -1134,13 +1147,11 @@
     }
 
     async function saveSubmission(sub) {
-      // 1. Cadangan di HP/Laptop siswa (offline backup)
       const local = localStorage.getItem('tka_submissions_multi');
       const list = local ? JSON.parse(local) : [];
       list.push(sub);
       localStorage.setItem('tka_submissions_multi', JSON.stringify(list));
 
-      // 2. Kirim ke Firebase Cloud
       try {
         await fetch(FIREBASE_DB_URL, {
           method: 'POST',
@@ -1155,7 +1166,6 @@
         console.warn("Gagal kirim Firebase:", err);
       }
 
-      // 3. Cadangan ke Google Spreadsheet
       setTimeout(() => {
         try {
           fetch(GOOGLE_SCRIPT_URL, {
