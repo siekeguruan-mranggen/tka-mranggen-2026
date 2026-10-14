@@ -61,7 +61,7 @@
         Fokuskan belajarmu pada mata pelajaran yang ingin kamu kerjakan hari ini.
       </p>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto mb-8">
         <!-- KARTU MATEMATIKA -->
         <div class="bg-white rounded-3xl shadow-xl shadow-slate-200/60 overflow-hidden border border-slate-100 hover:-translate-y-1.5 transition-all duration-200 flex flex-col">
           <div class="bg-[#e53e3e] py-14 flex items-center justify-center shadow-inner">
@@ -88,6 +88,10 @@
           </div>
         </div>
       </div>
+
+      <div class="pt-4 text-xs font-bold text-slate-500 text-center no-print">
+        Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
+      </div>
     </div>
 
     <!-- SCREEN 1: PILIH PAKET TRYOUT -->
@@ -107,6 +111,10 @@
         </p>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8" id="packagesGrid"></div>
+
+        <div class="pt-6 border-t border-teal-100 text-xs font-bold text-slate-500 text-center no-print">
+          Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
+        </div>
       </div>
     </div>
 
@@ -167,6 +175,10 @@
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </button>
       </form>
+
+      <div class="pt-6 mt-6 border-t border-teal-100 text-xs font-bold text-slate-500 text-center no-print">
+        Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
+      </div>
     </div>
 
     <!-- SCREEN 3: CBT ENGINE -->
@@ -239,6 +251,10 @@
           </div>
         </div>
       </div>
+
+      <div class="pt-4 text-xs font-bold text-slate-500 text-center no-print">
+        Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
+      </div>
     </div>
 
     <!-- SCREEN 4: HASIL NILAI SISWA -->
@@ -293,6 +309,10 @@
               Kembali ke Menu Utama
             </button>
           </div>
+        </div>
+
+        <div class="pt-6 mt-6 border-t border-teal-100 text-xs font-bold text-slate-500 text-center no-print">
+          Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
         </div>
       </div>
 
@@ -401,6 +421,10 @@
               <p class="font-bold text-slate-800 text-[11px] sm:text-xs">NIP 19721112 199803 1 011</p>
             </div>
           </div>
+        </div>
+
+        <div class="mt-8 pt-3 border-t border-amber-200/60 text-[10px] font-semibold text-slate-400 text-center">
+          Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
         </div>
       </div>
     </div>
@@ -970,13 +994,13 @@
     }
 
     async function saveSubmission(sub) {
-      // 1. Cadangan di HP/Laptop siswa
+      // 1. Cadangan di HP/Laptop siswa (aman jika offline)
       const local = localStorage.getItem('tka_submissions_multi');
       const list = local ? JSON.parse(local) : [];
       list.push(sub);
       localStorage.setItem('tka_submissions_multi', JSON.stringify(list));
 
-      // 2. Kirim ke Firebase Cloud
+      // 2. Kirim ke Firebase Cloud (Sanggup 2.500 siswa serentak tanpa antre)
       try {
         await fetch(FIREBASE_DB_URL, {
           method: 'POST',
@@ -991,7 +1015,7 @@
         console.warn("Gagal kirim Firebase:", err);
       }
 
-      // 3. Cadangan ke Google Sheet
+      // 3. Cadangan ke Google Sheet (jeda acak 0-5 detik)
       setTimeout(() => {
         try {
           fetch(GOOGLE_SCRIPT_URL, {
