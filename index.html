@@ -32,7 +32,7 @@
 </head>
 <body class="bg-gradient-to-br from-teal-50 via-emerald-50 to-cyan-50 text-slate-800 antialiased min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white no-select" oncontextmenu="return false;">
 
-  <!-- HEADER -->
+  <!-- BILAH ATAS (HEADER) -->
   <header class="bg-white/90 backdrop-blur-md border-b border-teal-100 sticky top-0 z-40 shadow-sm no-print">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <div class="flex items-center space-x-3 cursor-pointer" onclick="showScreen('viewSubjects')">
@@ -440,6 +440,7 @@
 
   <script>
     const FIREBASE_DB_URL = "https://tka-mranggen-2026-default-rtdb.firebaseio.com/nilai_tryout.json";
+    const FIREBASE_SETTINGS_URL = "https://tka-mranggen-2026-default-rtdb.firebaseio.com/pengaturan_ujian.json";
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx0aHffP-wqb_ElNVQtrHJltD2YOMVXzBqdbHqtUzcQzwU59g05agv-pDALvwIbAHFgoA/exec";
 
     const LIST_SEKOLAH_MRANGGEN = [
@@ -479,7 +480,19 @@
       return stored ? JSON.parse(stored) : DEFAULT_PACKAGE_TOKENS;
     }
 
-    // 30 Butir Soal Asli TKA Matematika Paket Drilling 1
+    async function syncExamSettings() {
+      try {
+        const res = await fetch(FIREBASE_SETTINGS_URL);
+        const data = await res.json();
+        if (data) {
+          if (data.status) localStorage.setItem('tka_pkg_status_multi', JSON.stringify(data.status));
+          if (data.tokens) localStorage.setItem('tka_pkg_tokens_multi', JSON.stringify(data.tokens));
+        }
+      } catch (e) {
+        console.warn("Gagal sinkron token cloud:", e);
+      }
+    }
+
     const SOAL_30_MATEMATIKA = [
       {
         id: 1, type: "PG",
@@ -880,7 +893,6 @@
     let currentQuestionIdx = 0, userAnswers = {}, raguStatus = {}, examTimerInterval = null, timeRemaining = 75 * 60;
     let latestExamScore = 0, latestSubmissionData = null;
 
-    // Fungsi Fisher-Yates Shuffle untuk mengacak urutan soal
     function shuffleArray(array) {
       const arr = [...array];
       for (let i = arr.length - 1; i > 0; i--) {
@@ -905,8 +917,9 @@
       document.getElementById(screenId).classList.remove('hidden');
     }
 
-    function selectSubject(sub) {
+    async function selectSubject(sub) {
       selectedSubject = sub;
+      await syncExamSettings();
       const subName = sub === 'matematika' ? 'Matematika' : 'Bahasa Indonesia';
       document.getElementById('badgeSubjectName').innerText = `Mata Pelajaran: ${subName}`;
       document.getElementById('packageSectionTitle').innerText = `Pilihan Paket - ${subName}`;
@@ -952,7 +965,8 @@
       });
     }
 
-    function selectPackage(pkg) {
+    async function selectPackage(pkg) {
+      await syncExamSettings();
       const statusMap = getPackageStatus()[selectedSubject] || {};
       if (!statusMap[pkg]) { alert("Paket ini masih dikunci pengawas!"); return; }
 
@@ -966,8 +980,9 @@
       showScreen('viewRegistration');
     }
 
-    function startExam(e) {
+    async function startExam(e) {
       e.preventDefault();
+      await syncExamSettings();
       const inputToken = document.getElementById('regToken').value.trim().toUpperCase();
       const validTokens = getPackageTokens()[selectedSubject] || {};
       const targetToken = (validTokens[currentPackageKey] || "MRANGGEN").toUpperCase();
@@ -993,7 +1008,7 @@
       currentQuestionIdx = 0;
       timeRemaining = 75 * 60;
 
-      // Mengacak urutan 30 butir soal secara acak untuk setiap siswa
+      // MENGACAK URUTAN 30 SOAL SECARA OTOMATIS KHUSUS PESERTA INI
       currentQuestions = shuffleArray(DATABASE_SOAL[selectedSubject][currentPackageKey].questions);
 
       showScreen('viewExam');
@@ -1330,6 +1345,7 @@
     }
 
     window.addEventListener('DOMContentLoaded', () => {
+      syncExamSettings();
       populateSchoolDropdown();
     });
   </script>
