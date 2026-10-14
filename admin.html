@@ -65,7 +65,7 @@
           </span>
         </div>
         <h2 class="text-2xl font-black text-slate-900">Manajemen Ujian & Rekapitulasi TKA</h2>
-        <p class="text-xs text-slate-500 mt-0.5">Kontrol token pengerjaan, buka/kunci paket, dan cetak laporan hasil tryout.</p>
+        <p class="text-xs text-slate-500 mt-0.5">Kontrol token pengerjaan, buka/kunci paket online, dan cetak laporan resmi.</p>
       </div>
       
       <div class="flex flex-wrap items-center gap-2">
@@ -103,8 +103,11 @@
       <div class="flex items-center justify-between mb-4">
         <div>
           <h3 class="text-sm sm:text-base font-extrabold text-slate-900" id="lockSectionTitle">Kontrol Token: Matematika</h3>
-          <p class="text-xs text-slate-500">Kunci/Buka paket dan atur token yang berlaku untuk siswa.</p>
+          <p class="text-xs text-slate-500">Ketik token baru pada kotak lalu tekan Enter/klik di luar untuk menyimpan ke cloud secara instan.</p>
         </div>
+        <span id="cloudStatusBadge" class="px-3 py-1 bg-emerald-50 text-emerald-800 font-black text-xs rounded-xl border border-emerald-200">
+          ● Cloud Terhubung
+        </span>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3" id="adminLockControls"></div>
     </div>
@@ -112,7 +115,7 @@
     <!-- TABEL HASIL NILAI & AREA CETAK -->
     <div id="mainPrintCard" class="bg-white rounded-3xl border border-teal-200/80 shadow-md p-6 space-y-4">
       
-      <!-- KOP RESMI KHUSUS PRINT -->
+      <!-- KOP RESMI CETAK PRINT -->
       <div class="hidden print:block border-b-2 border-slate-900 pb-3 mb-4 text-center">
         <h2 class="text-base font-black uppercase tracking-wider text-slate-900">KORWIL BIDDIKBUD KECAMATAN MRANGGEN</h2>
         <h3 class="text-sm font-black uppercase text-slate-800" id="printReportTitle">REKAPITULASI HASIL TRYOUT TKA KELAS 6 SD</h3>
@@ -127,7 +130,6 @@
             <div class="flex flex-wrap gap-1.5" id="packageFilterTabs"></div>
           </div>
 
-          <!-- 3 PILIHAN CETAK REKAPITULASI -->
           <div class="flex flex-wrap items-center gap-2 pt-2 lg:pt-0">
             <button onclick="triggerPrintMode('RANKING')" class="px-3.5 py-2 rounded-xl text-xs font-black bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm flex items-center gap-1.5 transition">
               🖨️ Cetak Sesuai Peringkat
@@ -175,24 +177,18 @@
         </table>
       </div>
 
-      <!-- PENGESAHAN TANDA TANGAN ADMIN (OTOMATIS MUNCUL SAAT CETAK / PRINT) -->
+      <!-- PENGESAHAN TANDA TANGAN ADMIN -->
       <div class="hidden print:block pt-8 mt-6">
         <div class="w-72 ml-auto text-left text-slate-900 pr-4">
           <p class="text-xs font-medium" id="printDatePlace">Mranggen, 15 Oktober 2026</p>
           <p class="text-xs font-bold mt-0.5">Admin,</p>
           
-          <!-- Vektor Tanda Tangan Asli Muhammad Imam Suwiji -->
           <div class="h-24 flex items-center py-1 my-1">
             <svg viewBox="0 0 280 100" class="h-full w-auto select-none pointer-events-none">
-              <!-- Garis busur lengkung kiri utama -->
               <path d="M 60,30 C 40,30 20,40 18,52 C 16,68 45,95 85,110 C 130,125 155,100 170,72 C 180,55 190,40 195,15" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-              <!-- Garis horizontal atas ke kanan -->
               <path d="M 18,52 C 50,48 120,46 195,38" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round"/>
-              <!-- Guratan tengah / inisial 's' -->
               <path d="M 152,50 C 148,54 149,60 154,62 C 158,63 158,68 152,70" fill="none" stroke="#0f172a" stroke-width="2.4" stroke-linecap="round"/>
-              <!-- Lekukan vertikal runcing 'h' & 'y' di sisi kanan -->
               <path d="M 195,20 L 196,80 M 196,48 C 205,38 215,48 216,62 M 216,48 C 226,38 238,50 236,75 L 210,122" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-              <!-- Garis horizontal bawah penutup -->
               <path d="M 135,88 L 245,74" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round"/>
             </svg>
           </div>
@@ -213,6 +209,7 @@
 
   <script>
     const FIREBASE_DB_URL = "https://tka-mranggen-2026-default-rtdb.firebaseio.com/nilai_tryout.json";
+    const FIREBASE_SETTINGS_URL = "https://tka-mranggen-2026-default-rtdb.firebaseio.com/pengaturan_ujian.json";
     const ADMIN_AUTH = { username: "siekeguruan", password: "#Robocop86" };
 
     const LIST_SEKOLAH_MRANGGEN = [
@@ -259,18 +256,57 @@
       const stored = localStorage.getItem('tka_pkg_tokens_multi');
       return stored ? JSON.parse(stored) : DEFAULT_PACKAGE_TOKENS;
     }
-    function setPackageToken(pkg, val) {
+
+    // SIMPAN TOKEN BARU KE CLOUD FIREBASE
+    async function setPackageToken(pkg, val) {
       const tokens = getPackageTokens();
       if (!tokens[currentAdminSubject]) tokens[currentAdminSubject] = {};
       tokens[currentAdminSubject][pkg] = (val || "").trim().toUpperCase();
       localStorage.setItem('tka_pkg_tokens_multi', JSON.stringify(tokens));
+
+      try {
+        await fetch(FIREBASE_SETTINGS_URL, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ tokens: tokens })
+        });
+      } catch (err) {
+        console.warn("Gagal simpan token ke cloud:", err);
+      }
       renderAdminLockControls();
     }
-    function togglePackageLock(pkg) {
+
+    // SIMPAN BUKA / KUNCI PAKET KE CLOUD FIREBASE
+    async function togglePackageLock(pkg) {
       const s = getPackageStatus();
       if (!s[currentAdminSubject]) s[currentAdminSubject] = {};
       s[currentAdminSubject][pkg] = !s[currentAdminSubject][pkg];
       savePackageStatus(s);
+
+      try {
+        await fetch(FIREBASE_SETTINGS_URL, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status: s })
+        });
+      } catch (err) {
+        console.warn("Gagal simpan status paket ke cloud:", err);
+      }
+    }
+
+    // TARIK PENGATURAN DARI CLOUD SAAT BUKA HALAMAN
+    async function fetchCloudSettings() {
+      try {
+        const res = await fetch(FIREBASE_SETTINGS_URL);
+        const data = await res.json();
+        if (data) {
+          if (data.status) localStorage.setItem('tka_pkg_status_multi', JSON.stringify(data.status));
+          if (data.tokens) localStorage.setItem('tka_pkg_tokens_multi', JSON.stringify(data.tokens));
+        }
+      } catch (e) {
+        console.warn("Offline pengaturan cloud:", e);
+      }
+      renderAdminLockControls();
     }
 
     function switchAdminSubject(sub) {
@@ -331,8 +367,8 @@
             <span class="text-[9px] font-black uppercase px-1.5 py-0.5 rounded ${isOpen ? 'bg-blue-200 text-blue-950' : 'bg-amber-200 text-amber-950'}">${isOpen ? 'Buka' : 'Kunci'}</span>
           </div>
           <div class="mb-2 text-left">
-            <label class="block text-[9px] font-extrabold uppercase text-slate-500 mb-0.5">Token Akses:</label>
-            <input type="text" value="${tokenVal}" class="w-full px-2 py-1 text-xs font-mono font-black uppercase rounded-lg border border-slate-300 outline-none text-center bg-white" onchange="setPackageToken('${pkg}', this.value)">
+            <label class="block text-[9px] font-extrabold uppercase text-slate-500 mb-0.5">Token Akses (Ketik Langsung):</label>
+            <input type="text" value="${tokenVal}" class="w-full px-2 py-1 text-xs font-mono font-black uppercase rounded-lg border border-slate-300 outline-none text-center bg-white focus:ring-2 focus:ring-teal-500" onchange="setPackageToken('${pkg}', this.value)">
           </div>
           <button onclick="togglePackageLock('${pkg}')" class="w-full py-1.5 px-2 rounded-xl text-xs font-black transition shadow-sm ${isOpen ? 'bg-amber-500 hover:bg-amber-600 text-amber-950' : 'bg-blue-600 hover:bg-blue-700 text-white'}">${isOpen ? 'Kunci' : 'Buka'}</button>
         `;
@@ -356,6 +392,7 @@
         document.getElementById('adminPortal').classList.remove('hidden');
         renderFilterTabs();
         renderAdminDashboard();
+        fetchCloudSettings();
         syncOnlineData();
       } else {
         document.getElementById('loginErrorMsg').classList.remove('hidden');
@@ -410,7 +447,6 @@
       if (schoolFilter) submissions = submissions.filter(s => s.school === schoolFilter);
       if (searchName) submissions = submissions.filter(s => s.name.toLowerCase().includes(searchName));
 
-      // Pengurutan tabel sesuai mode cetak/tampil
       if (currentPrintSortMode === 'SCHOOL_ORDER') {
         submissions.sort((a, b) => a.school.localeCompare(b.school) || (Number(b.finalScore) || 0) - (Number(a.finalScore) || 0));
       } else {
@@ -454,13 +490,11 @@
       });
     }
 
-    // 3 LOGIKA MODE CETAK REKAPITULASI DENGAN PENGESAHAN LENGKAP
     function triggerPrintMode(mode) {
       const targetSubName = currentAdminSubject === 'matematika' ? 'MATEMATIKA' : 'BAHASA INDONESIA';
       const pkgText = selectedPackageFilter === 'ALL' ? 'SEMUA PAKET' : selectedPackageFilter.toUpperCase();
       const schoolVal = document.getElementById('adminFilterSchool').value;
 
-      // Update Tanggal Pengesahan Cetak Otomatis
       const options = { day: 'numeric', month: 'long', year: 'numeric' };
       const todayFormatted = new Date().toLocaleDateString('id-ID', options);
       document.getElementById('printDatePlace').innerText = `Mranggen, ${todayFormatted}`;
@@ -471,7 +505,7 @@
         document.getElementById('printReportSubtitle').innerText = `Diurutkan Berdasarkan Nilai Tertinggi ke Terendah • Korwil Biddikbud Kec. Mranggen`;
       } else if (mode === 'SCHOOL_ORDER') {
         currentPrintSortMode = 'SCHOOL_ORDER';
-        document.getElementById('adminFilterSchool').value = ""; // Tampilkan semua SD
+        document.getElementById('adminFilterSchool').value = "";
         document.getElementById('printReportTitle').innerText = `REKAPITULASI HASIL TRYOUT TKA ${targetSubName} SESUAI URUTAN SEKOLAH (${pkgText})`;
         document.getElementById('printReportSubtitle').innerText = `Dikelompokkan & Diurutkan Berdasarkan Nama SD • Korwil Biddikbud Kec. Mranggen`;
       } else if (mode === 'SELECTED_SCHOOL') {
@@ -490,23 +524,21 @@
     }
 
     async function promptSafeClearData() {
-      const code = prompt("⚠️ PERINGATAN PEMBERSIHAN DATA:\nKetik 'HAPUS' (huruf besar) untuk menghapus seluruh data uji coba di Firebase Cloud dan memulihkan database menjadi bersih:");
+      const code = prompt("⚠️ PERINGATAN PEMBERSIHAN DATA:\nKetik 'HAPUS' (huruf besar) untuk membersihkan database testing:");
       
       if (code === "HAPUS") {
         try {
           if (typeof FIREBASE_DB_URL !== 'undefined' && FIREBASE_DB_URL) {
-            await fetch(FIREBASE_DB_URL, {
-              method: 'DELETE'
-            });
+            await fetch(FIREBASE_DB_URL, { method: 'DELETE' });
           }
           localStorage.removeItem('tka_submissions_multi');
           renderAdminDashboard();
-          alert("✅ Berhasil! Seluruh data testing di Firebase Cloud dan memori lokal telah dibersihkan total. Sistem siap untuk uji coba peserta asli.");
+          alert("✅ Berhasil! Database di cloud dan memori lokal telah bersih.");
         } catch (err) {
           alert("Gagal menghapus data di cloud: " + err.message);
         }
       } else if (code !== null) {
-        alert("Konfirmasi dibatalkan. Kata sandi konfirmasi salah.");
+        alert("Konfirmasi dibatalkan.");
       }
     }
 
@@ -549,6 +581,7 @@
         document.getElementById('adminPortal').classList.remove('hidden');
         renderFilterTabs();
         renderAdminDashboard();
+        fetchCloudSettings();
         syncOnlineData();
       }
     });
