@@ -9,20 +9,23 @@
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; }
     .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
-    .custom-scrollbar::-webkit-scrollbar-thumb { background: #5eead4; border-radius: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #14b8a6; border-radius: 4px; }
+    
     @media print {
-      body { background: white !important; }
+      body { background: white !important; padding: 0 !important; color: black !important; }
       .no-print { display: none !important; }
-      @page { size: landscape; margin: 10mm; }
+      #adminPortal { display: block !important; margin: 0 !important; width: 100% !important; max-width: 100% !important; }
+      #mainPrintCard { border: none !important; box-shadow: none !important; padding: 0 !important; }
+      @page { size: landscape; margin: 12mm 10mm 12mm 10mm; }
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen p-4 sm:p-6 lg:p-8">
+<body class="bg-gradient-to-br from-teal-100/70 via-sky-100/60 to-emerald-100/70 text-slate-800 min-h-screen p-3 sm:p-6 lg:p-8">
 
   <!-- MODAL LOGIN ADMIN -->
   <div id="adminLoginModal" class="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-sm w-full shadow-2xl border border-white">
-      <div class="w-12 h-12 rounded-2xl bg-teal-50 text-teal-700 flex items-center justify-center mx-auto mb-4">
+    <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-sm w-full shadow-2xl border border-teal-100">
+      <div class="w-12 h-12 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center mx-auto mb-4 shadow-sm">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
       </div>
       <h3 class="text-center font-black text-slate-900 text-lg">Login Administrator</h3>
@@ -31,11 +34,11 @@
       <form onsubmit="handleAdminLogin(event)" class="space-y-3.5">
         <div>
           <label class="block text-[11px] font-bold text-slate-600 uppercase mb-1">Username</label>
-          <input type="text" id="adminUser" required placeholder="Masukkan username..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-teal-500 outline-none">
+          <input type="text" id="adminUser" required placeholder="Masukkan username..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-teal-500 outline-none">
         </div>
         <div>
           <label class="block text-[11px] font-bold text-slate-600 uppercase mb-1">Password</label>
-          <input type="password" id="adminPass" required placeholder="Masukkan password..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-teal-500 outline-none">
+          <input type="password" id="adminPass" required placeholder="Masukkan password..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-teal-500 outline-none">
         </div>
         <div id="loginErrorMsg" class="hidden text-rose-600 text-xs font-bold text-center">
           Username atau password salah!
@@ -51,7 +54,9 @@
 
   <!-- KONTEN DASHBOARD ADMIN -->
   <div id="adminPortal" class="hidden max-w-7xl mx-auto space-y-6">
-    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-teal-100 shadow-sm no-print">
+    
+    <!-- HEADER DASHBOARD ADMIN -->
+    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-white/95 backdrop-blur-md p-6 rounded-3xl border border-teal-200/80 shadow-md no-print">
       <div>
         <div class="flex items-center gap-2 mb-1">
           <span class="text-xs font-extrabold text-teal-700 uppercase tracking-wider">Dashboard Resmi Sie Keguruan Mranggen</span>
@@ -59,8 +64,8 @@
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Cloud Real-Time
           </span>
         </div>
-        <h2 class="text-2xl font-black text-slate-900">Manajemen Ujian & Token (Matematika & B. Indonesia)</h2>
-        <p class="text-xs text-slate-500 mt-0.5">Kontrol token pengerjaan, buka/kunci paket, dan ekspor hasil tryout.</p>
+        <h2 class="text-2xl font-black text-slate-900">Manajemen Ujian & Rekapitulasi TKA</h2>
+        <p class="text-xs text-slate-500 mt-0.5">Kontrol token pengerjaan, buka/kunci paket, dan cetak laporan hasil tryout.</p>
       </div>
       
       <div class="flex flex-wrap items-center gap-2">
@@ -73,7 +78,6 @@
         <button onclick="downloadBackupJSON()" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition flex items-center gap-1.5">
           💾 Backup JSON
         </button>
-        <!-- TOMBOL HAPUS DATA TESTING -->
         <button onclick="promptSafeClearData()" class="px-3.5 py-2 bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs rounded-xl border border-rose-200 transition flex items-center gap-1.5">
           🗑️ Bersihkan Data Testing
         </button>
@@ -84,7 +88,7 @@
     </div>
 
     <!-- TAB PILIH MAPEL ADMIN -->
-    <div class="flex items-center gap-3 bg-white p-3 rounded-2xl border border-teal-100 no-print">
+    <div class="flex items-center gap-3 bg-white/95 p-3 rounded-2xl border border-teal-200/80 shadow-sm no-print">
       <span class="text-xs font-black text-slate-700 ml-2">PILIH MAPEL:</span>
       <button onclick="switchAdminSubject('matematika')" id="btnSubMat" class="px-4 py-2 rounded-xl text-xs font-black bg-teal-600 text-white shadow-sm transition">
         Matematika (Ujicoba + Paket 1-5)
@@ -95,7 +99,7 @@
     </div>
 
     <!-- KONTROL KUNCI & TOKEN -->
-    <div class="bg-white p-6 rounded-3xl border border-teal-100 shadow-sm no-print">
+    <div class="bg-white/95 p-6 rounded-3xl border border-teal-200/80 shadow-sm no-print">
       <div class="flex items-center justify-between mb-4">
         <div>
           <h3 class="text-sm sm:text-base font-extrabold text-slate-900" id="lockSectionTitle">Kontrol Token: Matematika</h3>
@@ -105,40 +109,61 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3" id="adminLockControls"></div>
     </div>
 
-    <!-- TABEL HASIL NILAI -->
-    <div class="bg-white rounded-3xl border border-teal-100 shadow-sm p-6 space-y-4">
+    <!-- TABEL HASIL NILAI & AREA CETAK -->
+    <div id="mainPrintCard" class="bg-white rounded-3xl border border-teal-200/80 shadow-md p-6 space-y-4">
+      
+      <!-- KOP RESMI KHUSUS PRINT -->
+      <div class="hidden print:block border-b-2 border-slate-900 pb-3 mb-4 text-center">
+        <h2 class="text-base font-black uppercase tracking-wider text-slate-900">KORWIL BIDDIKBUD KECAMATAN MRANGGEN</h2>
+        <h3 class="text-sm font-black uppercase text-slate-800" id="printReportTitle">REKAPITULASI HASIL TRYOUT TKA KELAS 6 SD</h3>
+        <p class="text-xs text-slate-600 mt-0.5" id="printReportSubtitle">Kecamatan Mranggen • Tahun Pelajaran 2026</p>
+      </div>
+
+      <!-- FILTER & TOMBOL PRINT -->
       <div class="no-print space-y-4 border-b border-slate-100 pb-4">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
           <div>
             <span class="block text-xs font-black text-slate-700 uppercase tracking-wider mb-1.5">Pilih Rekap Paket:</span>
             <div class="flex flex-wrap gap-1.5" id="packageFilterTabs"></div>
           </div>
-          <button onclick="window.print()" class="px-3.5 py-2 rounded-xl text-xs font-black bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm flex items-center gap-1.5">
-            🖨️ Cetak Rekapitulasi
-          </button>
+
+          <!-- 3 PILIHAN CETAK REKAPITULASI -->
+          <div class="flex flex-wrap items-center gap-2 pt-2 lg:pt-0">
+            <button onclick="triggerPrintMode('RANKING')" class="px-3.5 py-2 rounded-xl text-xs font-black bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm flex items-center gap-1.5 transition">
+              🖨️ Cetak Sesuai Peringkat
+            </button>
+            <button onclick="triggerPrintMode('SCHOOL_ORDER')" class="px-3.5 py-2 rounded-xl text-xs font-black bg-teal-600 hover:bg-teal-700 text-white shadow-sm flex items-center gap-1.5 transition">
+              🖨️ Cetak Keseluruhan SD Secara Urut
+            </button>
+            <button onclick="triggerPrintMode('SELECTED_SCHOOL')" class="px-3.5 py-2 rounded-xl text-xs font-black bg-cyan-600 hover:bg-cyan-700 text-white shadow-sm flex items-center gap-1.5 transition">
+              🖨️ Cetak Sesuai SD
+            </button>
+          </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
           <div>
-            <label class="block text-[11px] font-bold text-slate-500 uppercase mb-1">Filter Sekolah:</label>
-            <select id="adminFilterSchool" onchange="renderAdminTable()" class="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-teal-500 font-semibold cursor-pointer">
+            <label class="block text-[11px] font-bold text-slate-500 uppercase mb-1">Filter Khusus Nama SD:</label>
+            <select id="adminFilterSchool" onchange="renderAdminTable()" class="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 outline-none focus:ring-2 focus:ring-teal-500 font-semibold cursor-pointer bg-white">
               <option value="">-- Semua Sekolah (53 SD Se-Kecamatan Mranggen) --</option>
             </select>
           </div>
           <div>
             <label class="block text-[11px] font-bold text-slate-500 uppercase mb-1">Cari Nama Siswa:</label>
-            <input type="text" id="adminSearchInput" onkeyup="renderAdminTable()" placeholder="Ketik nama siswa..." class="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-teal-500">
+            <input type="text" id="adminSearchInput" onkeyup="renderAdminTable()" placeholder="Ketik nama siswa..." class="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 outline-none focus:ring-2 focus:ring-teal-500 bg-white">
           </div>
         </div>
       </div>
 
+      <!-- TABEL DATA NILAI -->
       <div class="overflow-x-auto">
         <table class="w-full text-left border-collapse" id="mainResultsTable">
           <thead>
-            <tr class="bg-teal-50/70 text-[11px] font-black text-teal-950 uppercase tracking-wider border-b border-teal-100">
-              <th class="py-3 px-3 text-center w-14">Rank</th>
+            <tr class="bg-teal-100/80 text-[11px] font-black text-teal-950 uppercase tracking-wider border-b border-teal-200">
+              <th class="py-3 px-3 text-center w-14">No / Rank</th>
               <th class="py-3 px-4">Nama Siswa</th>
               <th class="py-3 px-4">Asal Sekolah</th>
+              <th class="py-3 px-3 text-center">Kelas</th>
               <th class="py-3 px-3 text-center">Mapel</th>
               <th class="py-3 px-3 text-center">Paket</th>
               <th class="py-3 px-3 text-center">Skor</th>
@@ -148,6 +173,40 @@
           </thead>
           <tbody id="adminTableBody" class="text-xs divide-y divide-slate-100 text-slate-700"></tbody>
         </table>
+      </div>
+
+      <!-- PENGESAHAN TANDA TANGAN ADMIN (OTOMATIS MUNCUL SAAT CETAK / PRINT) -->
+      <div class="hidden print:block pt-8 mt-6">
+        <div class="w-72 ml-auto text-left text-slate-900 pr-4">
+          <p class="text-xs font-medium" id="printDatePlace">Mranggen, 15 Oktober 2026</p>
+          <p class="text-xs font-bold mt-0.5">Admin,</p>
+          
+          <!-- Vektor Tanda Tangan Asli Muhammad Imam Suwiji -->
+          <div class="h-24 flex items-center py-1 my-1">
+            <svg viewBox="0 0 280 100" class="h-full w-auto select-none pointer-events-none">
+              <!-- Garis busur lengkung kiri utama -->
+              <path d="M 60,30 C 40,30 20,40 18,52 C 16,68 45,95 85,110 C 130,125 155,100 170,72 C 180,55 190,40 195,15" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Garis horizontal atas ke kanan -->
+              <path d="M 18,52 C 50,48 120,46 195,38" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round"/>
+              <!-- Guratan tengah / inisial 's' -->
+              <path d="M 152,50 C 148,54 149,60 154,62 C 158,63 158,68 152,70" fill="none" stroke="#0f172a" stroke-width="2.4" stroke-linecap="round"/>
+              <!-- Lekukan vertikal runcing 'h' & 'y' di sisi kanan -->
+              <path d="M 195,20 L 196,80 M 196,48 C 205,38 215,48 216,62 M 216,48 C 226,38 238,50 236,75 L 210,122" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Garis horizontal bawah penutup -->
+              <path d="M 135,88 L 245,74" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <div>
+            <p class="font-black text-xs text-slate-900 underline decoration-slate-900 underline-offset-2">Muhammad Imam Suwiji, S.Pd.SD., M.Pd.</p>
+            <p class="font-bold text-slate-800 text-[11px] mt-0.5">NIP. 198605112009031003</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- KREDIT FOOTER -->
+      <div class="pt-6 border-t border-teal-100 text-xs font-bold text-slate-500 text-center no-print">
+        Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
       </div>
     </div>
   </div>
@@ -175,6 +234,7 @@
 
     let currentAdminSubject = 'matematika';
     let selectedPackageFilter = 'ALL';
+    let currentPrintSortMode = 'RANKING';
     let isAdminLoggedIn = sessionStorage.getItem('tka_admin_auth') === 'true';
 
     const DEFAULT_PACKAGE_STATUS = {
@@ -350,23 +410,36 @@
       if (schoolFilter) submissions = submissions.filter(s => s.school === schoolFilter);
       if (searchName) submissions = submissions.filter(s => s.name.toLowerCase().includes(searchName));
 
-      submissions.sort((a, b) => (Number(b.finalScore) || 0) - (Number(a.finalScore) || 0));
+      // Pengurutan tabel sesuai mode cetak/tampil
+      if (currentPrintSortMode === 'SCHOOL_ORDER') {
+        submissions.sort((a, b) => a.school.localeCompare(b.school) || (Number(b.finalScore) || 0) - (Number(a.finalScore) || 0));
+      } else {
+        submissions.sort((a, b) => (Number(b.finalScore) || 0) - (Number(a.finalScore) || 0) || (Number(b.rawScore) || 0) - (Number(a.rawScore) || 0));
+      }
 
       const tbody = document.getElementById('adminTableBody');
       tbody.innerHTML = '';
 
       if (submissions.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="8" class="py-8 text-center text-slate-400 font-medium">Belum ada data nilai untuk ${targetSubName} pada paket ini.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="9" class="py-8 text-center text-slate-400 font-medium">Belum ada data nilai untuk ${targetSubName} pada filter ini.</td></tr>`;
         return;
       }
 
       submissions.forEach((s, idx) => {
         const tr = document.createElement('tr');
-        tr.className = "hover:bg-teal-50/40 transition";
+        tr.className = "hover:bg-teal-50/50 transition";
+        let rankBadge = `<span class="font-bold text-slate-600">${idx + 1}</span>`;
+        if (currentPrintSortMode === 'RANKING' && !schoolFilter && !searchName) {
+          if (idx === 0) rankBadge = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-400 text-amber-950 font-black text-xs shadow-sm">🥇 1</span>`;
+          else if (idx === 1) rankBadge = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-slate-300 text-slate-900 font-black text-xs shadow-sm">🥈 2</span>`;
+          else if (idx === 2) rankBadge = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-600 text-white font-black text-xs shadow-sm">🥉 3</span>`;
+        }
+
         tr.innerHTML = `
-          <td class="py-3 px-3 text-center font-bold">${idx + 1}</td>
+          <td class="py-3 px-3 text-center">${rankBadge}</td>
           <td class="py-3 px-4 font-black text-slate-900">${s.name} <span class="text-slate-400 font-normal text-[10px]">(${s.absen})</span></td>
           <td class="py-3 px-4 font-semibold text-slate-700">${s.school}</td>
+          <td class="py-3 px-3 text-center font-medium">${s.className || 'VI'}</td>
           <td class="py-3 px-3 text-center font-bold text-teal-800">${s.subject}</td>
           <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-md font-bold text-[10px] bg-teal-50 text-teal-800 border border-teal-200">${s.package}</span></td>
           <td class="py-3 px-3 text-center font-bold">${s.rawScore}/${s.maxRawScore || 49}</td>
@@ -381,23 +454,52 @@
       });
     }
 
-    // FUNGSI PEMBERSIHAN DATA TESTING SECARA AMAN (CLOUD & LOCAL)
+    // 3 LOGIKA MODE CETAK REKAPITULASI DENGAN PENGESAHAN LENGKAP
+    function triggerPrintMode(mode) {
+      const targetSubName = currentAdminSubject === 'matematika' ? 'MATEMATIKA' : 'BAHASA INDONESIA';
+      const pkgText = selectedPackageFilter === 'ALL' ? 'SEMUA PAKET' : selectedPackageFilter.toUpperCase();
+      const schoolVal = document.getElementById('adminFilterSchool').value;
+
+      // Update Tanggal Pengesahan Cetak Otomatis
+      const options = { day: 'numeric', month: 'long', year: 'numeric' };
+      const todayFormatted = new Date().toLocaleDateString('id-ID', options);
+      document.getElementById('printDatePlace').innerText = `Mranggen, ${todayFormatted}`;
+
+      if (mode === 'RANKING') {
+        currentPrintSortMode = 'RANKING';
+        document.getElementById('printReportTitle').innerText = `REKAPITULASI PERINGKAT HASIL TRYOUT TKA ${targetSubName} (${pkgText})`;
+        document.getElementById('printReportSubtitle').innerText = `Diurutkan Berdasarkan Nilai Tertinggi ke Terendah • Korwil Biddikbud Kec. Mranggen`;
+      } else if (mode === 'SCHOOL_ORDER') {
+        currentPrintSortMode = 'SCHOOL_ORDER';
+        document.getElementById('adminFilterSchool').value = ""; // Tampilkan semua SD
+        document.getElementById('printReportTitle').innerText = `REKAPITULASI HASIL TRYOUT TKA ${targetSubName} SESUAI URUTAN SEKOLAH (${pkgText})`;
+        document.getElementById('printReportSubtitle').innerText = `Dikelompokkan & Diurutkan Berdasarkan Nama SD • Korwil Biddikbud Kec. Mranggen`;
+      } else if (mode === 'SELECTED_SCHOOL') {
+        if (!schoolVal) {
+          alert("Silakan pilih salah satu Nama SD pada dropdown filter terlebih dahulu!");
+          document.getElementById('adminFilterSchool').focus();
+          return;
+        }
+        currentPrintSortMode = 'RANKING';
+        document.getElementById('printReportTitle').innerText = `REKAPITULASI HASIL TRYOUT TKA ${targetSubName} - ${schoolVal}`;
+        document.getElementById('printReportSubtitle').innerText = `Paket: ${pkgText} • Tahun Pelajaran 2026`;
+      }
+
+      renderAdminTable();
+      setTimeout(() => window.print(), 250);
+    }
+
     async function promptSafeClearData() {
       const code = prompt("⚠️ PERINGATAN PEMBERSIHAN DATA:\nKetik 'HAPUS' (huruf besar) untuk menghapus seluruh data uji coba di Firebase Cloud dan memulihkan database menjadi bersih:");
       
       if (code === "HAPUS") {
         try {
-          // 1. Bersihkan seluruh rekaman di Firebase Cloud Database (DELETE request)
           if (typeof FIREBASE_DB_URL !== 'undefined' && FIREBASE_DB_URL) {
             await fetch(FIREBASE_DB_URL, {
               method: 'DELETE'
             });
           }
-
-          // 2. Bersihkan penyimpanan lokal browser
           localStorage.removeItem('tka_submissions_multi');
-          
-          // 3. Render ulang tampilan tabel agar langsung kosong
           renderAdminDashboard();
           alert("✅ Berhasil! Seluruh data testing di Firebase Cloud dan memori lokal telah dibersihkan total. Sistem siap untuk uji coba peserta asli.");
         } catch (err) {
@@ -424,9 +526,9 @@
       submissions = submissions.filter(s => s.subject === targetSubName);
 
       if (submissions.length === 0) { alert('Belum ada data!'); return; }
-      let csv = 'Peringkat,Waktu,Mapel,Paket,Nama Siswa,No Absen,Asal Sekolah,Skor Mentah,Nilai Akhir,Status\n';
+      let csv = 'Peringkat,Waktu,Mapel,Paket,Nama Siswa,No Absen,Asal Sekolah,Kelas,Skor Mentah,Nilai Akhir,Status\n';
       submissions.forEach((s, idx) => {
-        csv += `${idx + 1},"${s.date}","${s.subject}","${s.package}","${s.name}","${s.absen}","${s.school}",${s.rawScore},${s.finalScore},"${s.status}"\n`;
+        csv += `${idx + 1},"${s.date}","${s.subject}","${s.package}","${s.name}","${s.absen}","${s.school}","${s.className || 'VI'}",${s.rawScore},${s.finalScore},"${s.status}"\n`;
       });
       const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
