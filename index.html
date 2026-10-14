@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" translate="no">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
   <title>TRYOUT TKA KELAS 6 SD KECAMATAN MRANGGEN</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Cinzel:wght@600;700;800;900&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -12,6 +13,14 @@
     .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #5eead4; border-radius: 4px; }
     
+    /* Proteksi Anti-Contek & Blokir Drag/Copy ke Gemini Sidepanel */
+    .no-select {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
     @media print {
       body { background: white !important; }
       body * { visibility: hidden; }
@@ -22,7 +31,7 @@
     }
   </style>
 </head>
-<body class="bg-gradient-to-br from-teal-50 via-emerald-50 to-cyan-50 text-slate-800 antialiased min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
+<body class="bg-gradient-to-br from-teal-50 via-emerald-50 to-cyan-50 text-slate-800 antialiased min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white no-select" oncontextmenu="return false;">
 
   <!-- HEADER -->
   <header class="bg-white/90 backdrop-blur-md border-b border-teal-100 sticky top-0 z-40 shadow-sm no-print">
@@ -471,15 +480,19 @@
       return stored ? JSON.parse(stored) : DEFAULT_PACKAGE_TOKENS;
     }
 
+    // 30 Butir Soal Asli TKA Matematika Paket Drilling 1
     const SOAL_30_MATEMATIKA = [
       {
-        id: 1, type: "PG", text: "Hasil dari 12.304 - 286 + 4.786 adalah ....",
-        options: ["16.804", "12.018", "6.946", "5.072"], correct: 0,
-        topic: "Operasi Hitung Bilangan Cacah", explanation: "12.304 - 286 = 12.018 + 4.786 = 16.804. Jawaban: A."
+        id: 1, type: "PG",
+        text: "Hasil dari 12.304 - 286 + 4.786 adalah ....",
+        options: ["16.804", "12.018", "6.946", "5.072"],
+        correct: 0,
+        topic: "Operasi Hitung Bilangan Cacah",
+        explanation: "12.304 - 286 = 12.018 + 4.786 = 16.804. Jawaban: A."
       },
       {
         id: 2, type: "Kategori",
-        text: "Keluarga Ahmad memerlukan air minum kemasan botol sebanyak 18 botol untuk 3 hari. Harga 1 botol air minum tersebut Rp1.400,00.<br><br>Tentukan <b>Benar</b> atau <b>Salah</b>!",
+        text: "Keluarga Ahmad memerlukan air minum kemasan botol sebanyak 18 botol untuk 3 hari. Harga 1 botol air minum tersebut Rp1.400,00.<br><br>Tentukan <b>Benar</b> atau <b>Salah</b> setiap pernyataan berikut berdasarkan informasi tersebut!",
         statements: [
           "Banyaknya air minum botol yang diperlukan Keluarga Ahmad selama 30 hari adalah 180 botol.",
           "Biaya yang harus dikeluarkan Keluarga Ahmad untuk membeli air minum setiap 3 harinya adalah Rp25.200,00.",
@@ -487,232 +500,359 @@
         ],
         correct: ["Benar", "Benar", "Salah"],
         topic: "Aritmatika Sosial Satuan",
-        explanation: "1 hari = 6 botol. (1) 30 hari = 180 botol (Benar). (2) 18 × Rp1.400 = Rp25.200 (Benar). (3) Total = Rp252.000 (Salah)."
+        explanation: "1 hari = 18 : 3 = 6 botol. (1) 30 hari = 30 × 6 = 180 botol (Benar). (2) Biaya 3 hari = 18 × Rp1.400 = Rp25.200 (Benar). (3) Total 30 hari = 180 × Rp1.400 = Rp252.000, bukan Rp756.000 (Salah). Kunci: Benar, Benar, Salah."
       },
       {
         id: 3, type: "PG",
-        text: "Penduduk di desa Suka Makmur berjumlah 80 KK. 20% guru, 30% pedagang, dan 50% petani. Rasio jumlah guru dan petani adalah ....",
-        options: ["16 : 36", "16 : 40", "24 : 40", "2 : 5"], correct: 1,
-        topic: "Rasio Penduduk", explanation: "Guru = 16 KK. Petani = 40 KK. Rasio = 16 : 40. Jawaban: B."
+        text: "Penduduk di desa Suka Makmur berjumlah 80 kepala keluarga. 20% penduduknya bermata pencaharian sebagai guru, 30% sebagai pedagang, dan 50% sisanya sebagai petani. Rasio jumlah penduduk yang bekerja sebagai guru dan petani adalah ....",
+        options: ["16 : 36", "16 : 40", "24 : 40", "3 : 5"],
+        correct: 1,
+        topic: "Rasio Penduduk",
+        explanation: "Guru = 20% × 80 = 16 KK. Petani = 50% × 80 = 40 KK. Rasio = 16 : 40. Jawaban: B."
       },
       {
         id: 4, type: "MCMA",
-        text: "Perhatikan bilangan: 24, 54, dan 64. Pilihlah semua pernyataan yang benar terkait faktorisasi prima dan KPK-nya!",
+        text: "Perhatikan bilangan berikut.<br><div class='my-2 p-2.5 bg-slate-100 rounded-xl font-bold text-center text-slate-800'>24, 54, dan 64</div>Pilihlah semua pernyataan yang benar terkait faktorisasi prima dan Kelipatan Persekutuan Terkecil (KPK) dari ketiga bilangan tersebut! Pernyataan benar lebih dari satu.",
         options: [
           "Faktorisasi prima dari bilangan 54 adalah 2 × 3².",
           "Kelipatan Persekutuan Terkecil (KPK) dari ketiga bilangan tersebut dalam bentuk faktorisasi prima adalah 2⁶ × 3³.",
           "Nilai akhir dari KPK bilangan 24, 54, dan 64 jika dihitung adalah 1.728."
         ],
-        correct: [1, 2], topic: "Faktorisasi Prima & KPK",
-        explanation: "54 = 2 × 3³ (opsi 1 salah). KPK = 2⁶ × 3³ = 1.728. Opsi 2 dan 3 Benar."
+        correct: [1, 2],
+        topic: "Faktorisasi Prima & KPK",
+        explanation: "54 = 2 × 3³ (opsi 1 salah karena tertulis 2 × 3²). KPK = 2⁶ × 3³ = 64 × 27 = 1.728. Opsi 2 dan 3 Benar."
       },
       {
         id: 5, type: "Kategori",
-        text: "Fatimah les setiap 6 hari sekali, Dani 4 hari sekali, Anggi 8 hari sekali. Pada 1 Mei 2026 mereka les bersama pertama kali. Tentukan Benar/Salah!",
+        text: "Fatimah les matematika setiap 6 hari sekali, Dani les matematika setiap 4 hari sekali, sedangkan Anggi les matematika setiap 8 hari sekali. Pada 1 Mei 2026, mereka les matematika bersama-sama untuk pertama kalinya.<br><br>Tentukan <b>Benar</b> atau <b>Salah</b> setiap pernyataan berikut berdasarkan informasi tersebut!",
         statements: [
-          "Kelipatan Persekutuan Terkecil (KPK) jadwal les mereka adalah 24 hari.",
-          "Fatimah dan Dani akan les matematika bersama-sama setiap 14 hari sekali.",
-          "Mereka bertiga les bersama kedua kalinya pada 25 Mei 2026."
+          "Kelipatan Persekutuan Terkecil (KPK) dari jadwal les Fatimah, Dani, dan Anggi adalah 24 hari.",
+          "Fatimah dan Dani akan les matematika bersama-sama (tanpa Anggi) setiap 14 hari sekali.",
+          "Mereka bertiga akan les matematika bersama-sama untuk kedua kalinya pada tanggal 25 Mei 2026."
         ],
-        correct: ["Benar", "Salah", "Benar"], topic: "KPK Jadwal Bersama",
-        explanation: "(1) KPK(6,4,8)=24 (Benar). (2) KPK(6,4)=12 bukan 14 (Salah). (3) 1 Mei + 24 hari = 25 Mei (Benar)."
+        correct: ["Benar", "Salah", "Benar"],
+        topic: "KPK Jadwal Bersama",
+        explanation: "(1) KPK(6, 4, 8) = 24 hari (Benar). (2) KPK(6, 4) = 12 hari, bukan 14 hari (Salah). (3) 1 Mei + 24 hari = 25 Mei 2026 (Benar). Kunci: Benar, Salah, Benar."
       },
       {
         id: 6, type: "PG",
-        text: "Denah kolam panjang 5 cm dan lebar 3 cm dengan skala 1 : 2000. Luas kolam lele sebenarnya adalah ... m².",
-        options: ["300", "6.000", "18.000", "30.000"], correct: 1,
-        topic: "Skala & Luas Sebenarnya", explanation: "P = 100 m, L = 60 m. Luas = 100 × 60 = 6.000 m². Jawaban: B."
+        text: "Denah kolam lele milik Pak Ridwan berukuran panjang 5 cm dan lebar 3 cm. Jika skala denah tersebut 1 : 2000 maka luas kolam lele Pak Ridwan sebenarnya adalah ... m².",
+        options: ["300", "6.000", "18.000", "30.000"],
+        correct: 1,
+        topic: "Skala & Luas Sebenarnya",
+        explanation: "Panjang = 5 × 2.000 cm = 100 m. Lebar = 3 × 2.000 cm = 60 m. Luas = 100 m × 60 m = 6.000 m². Jawaban: B."
       },
       {
         id: 7, type: "Kategori",
-        text: "Tanaman Denada tinggi 14 dm, dipotong 24 cm, bertambah 20 mm. Tentukan Benar/Salah!",
+        text: "Denada memiliki tanaman hias setinggi 14 dm. Pada saat merapikan tanaman tersebut, Denada memotong bagian atas tanaman tersebut sehingga tingginya berkurang 24 cm. Setelah beberapa hari tanaman tersebut tingginya bertambah 20 mm.<br><br>Tentukan <b>Benar</b> atau <b>Salah</b> setiap pernyataan berikut!",
         statements: [
-          "Tinggi awal tanaman hias Denada adalah 140 cm.",
-          "Pertambahan tinggi tanaman setara dengan 2 cm.",
-          "Tinggi akhir tanaman Denada sekarang adalah 128 cm."
+          "Tinggi awal tanaman hias Denada jika dinyatakan dalam satuan sentimeter adalah 140 cm.",
+          "Pertambahan tinggi tanaman setelah beberapa hari setara dengan 2 cm.",
+          "Tinggi akhir tanaman hias Denada sekarang adalah 128 cm."
         ],
-        correct: ["Benar", "Benar", "Salah"], topic: "Konversi Satuan Panjang",
-        explanation: "140 cm - 24 cm + 2 cm = 118 cm (bukan 128 cm). Kunci: Benar, Benar, Salah."
+        correct: ["Benar", "Benar", "Salah"],
+        topic: "Konversi Satuan Panjang",
+        explanation: "(1) 14 dm = 140 cm (Benar). (2) 20 mm = 2 cm (Benar). (3) Tinggi akhir = 140 - 24 + 2 = 118 cm, bukan 128 cm (Salah). Kunci: Benar, Benar, Salah."
       },
       {
         id: 8, type: "MCMA",
-        text: "Budi melempar dadu. Sisi depan menunjukkan angka 6, kanan 4, atas 5. Pilihlah semua pernyataan yang benar!",
+        text: `Budi melempar sebuah dadu bersisi enam. Hasil pelemparan ditunjukkan oleh gambar berikut.<br>
+        <div class='my-3 flex justify-center'>
+          <svg width="110" height="110" viewBox="0 0 120 120" class="drop-shadow">
+            <polygon points="60,10 105,32 60,54 15,32" fill="#f8fafc" stroke="#334155" stroke-width="2.5" stroke-linejoin="round"/>
+            <circle cx="60" cy="32" r="3" fill="#0f172a"/><circle cx="38" cy="22" r="3" fill="#0f172a"/><circle cx="82" cy="22" r="3" fill="#0f172a"/><circle cx="38" cy="42" r="3" fill="#0f172a"/><circle cx="82" cy="42" r="3" fill="#0f172a"/>
+            <polygon points="15,32 60,54 60,108 15,86" fill="#e2e8f0" stroke="#334155" stroke-width="2.5" stroke-linejoin="round"/>
+            <circle cx="30" cy="48" r="3" fill="#0f172a"/><circle cx="45" cy="55" r="3" fill="#0f172a"/><circle cx="30" cy="67" r="3" fill="#0f172a"/><circle cx="45" cy="74" r="3" fill="#0f172a"/><circle cx="30" cy="86" r="3" fill="#0f172a"/><circle cx="45" cy="93" r="3" fill="#0f172a"/>
+            <polygon points="60,54 105,32 105,86 60,108" fill="#cbd5e1" stroke="#334155" stroke-width="2.5" stroke-linejoin="round"/>
+            <circle cx="75" cy="55" r="3" fill="#0f172a"/><circle cx="90" cy="48" r="3" fill="#0f172a"/><circle cx="75" cy="93" r="3" fill="#0f172a"/><circle cx="90" cy="86" r="3" fill="#0f172a"/>
+          </svg>
+        </div>
+        Diketahui bahwa sisi depan menunjukkan angka 6. Pilihlah semua pernyataan yang benar terkait angka-angka yang tampak pada dadu tersebut! Pernyataan benar lebih dari satu.`,
         options: [
-          "Urutan angka sisi depan, kanan, dan atas berturut-turut adalah 6, 4, dan 5.",
-          "Angka pada sisi bagian kanan dadu merupakan bilangan ganjil.",
-          "Jika angka pada sisi atas dan sisi kanan dikalikan hasilnya 20."
+          "Urutan angka dari sisi depan, kanan, dan atas berturut-turut menunjukkan angka 6, 4, dan 5.",
+          "Angka yang ditunjukkan oleh sisi bagian kanan dadu merupakan bilangan ganjil.",
+          "Jika angka pada sisi atas dan sisi kanan dikalikan maka hasilnya adalah 20."
         ],
-        correct: [0, 2], topic: "Analisis Spasial Dadu",
-        explanation: "Sisi kanan = 4 (genap, opsi 2 salah). 5 × 4 = 20. Opsi 1 dan 3 Benar."
+        correct: [0, 2],
+        topic: "Analisis Spasial Dadu",
+        explanation: "Sisi depan = 6, sisi kanan = 4 (genap, opsi 2 salah), sisi atas = 5. Atas × Kanan = 5 × 4 = 20. Opsi 1 dan 3 Benar."
       },
       {
         id: 9, type: "PG",
-        text: "Persediaan buku 20 gros, dibeli 12 lusin. Banyaknya buku yang masih tersedia adalah ....",
-        options: ["96 buah", "936 buah", "2.736 buah", "2.868 buah"], correct: 2,
-        topic: "Satuan Gros & Lusin", explanation: "20 gros = 2.880. 12 lusin = 144. Sisa = 2.736 buah. Jawaban: C."
+        text: "Toko Wijaya adalah agen penjualan buku tulis. Saat ini toko tersebut mempunyai persediaan buku sebanyak 20 gros. Seorang pengecer membeli buku sebanyak 12 lusin. Banyaknya buku yang masih tersedia di Toko Wijaya adalah ....",
+        options: ["96 buah", "936 buah", "2.736 buah", "2.868 buah"],
+        correct: 2,
+        topic: "Satuan Gros & Lusin",
+        explanation: "20 gros = 20 × 144 = 2.880 buah. 12 lusin = 12 × 12 = 144 buah. Sisa = 2.880 - 144 = 2.736 buah. Jawaban: C."
       },
       {
         id: 10, type: "MCMA",
-        text: "Pak Faisal punya tanah: rumah 750 m², kolam 12 are, kebun 0,75 ha. Pilihlah pernyataan yang benar!",
+        text: "Pak Faisal memiliki sebidang tanah. Tanah tersebut digunakan untuk membuat rumah seluas 750 m², kolam ikan 12 are, dan kebun 0,75 ha.<br><br>Pilihlah semua pernyataan yang benar terkait luas masing-masing bagian tanah Pak Faisal jika dinyatakan dalam satuan meter persegi (m²)! Pernyataan benar lebih dari satu.",
         options: [
-          "Luas kolam ikan milik Pak Faisal adalah 1.200 m².",
-          "Lahan kebun memiliki luas paling besar yaitu 7.500 m².",
-          "Total seluruh luas lahan Pak Faisal adalah 945 m²."
+          "Luas kolam ikan milik Pak Faisal jika diubah ke satuan meter persegi adalah 1.200 m².",
+          "Lahan yang digunakan untuk kebun memiliki luas paling besar, yaitu senilai 7.500 m².",
+          "Total seluruh luas lahan yang dimiliki oleh Pak Faisal adalah 945 m²."
         ],
-        correct: [0, 1], topic: "Konversi Luas",
-        explanation: "Kolam = 1.200 m², Kebun = 7.500 m², Total = 9.450 m². Opsi 1 dan 2 Benar."
+        correct: [0, 1],
+        topic: "Konversi Satuan Luas",
+        explanation: "Kolam = 12 × 100 = 1.200 m². Kebun = 0,75 × 10.000 = 7.500 m². Rumah = 750 m². Total = 9.450 m² (bukan 945 m²). Opsi 1 dan 2 Benar."
       },
       {
         id: 11, type: "PG",
-        text: "Multivitamin 0,8 dm³. Adik minum 3 kali sehari @15 ml selama 10 hari. Multivitamin tersisa ... ml.",
-        options: ["250", "350", "3.500", "35.000"], correct: 1,
-        topic: "Volume", explanation: "800 ml - 450 ml = 350 ml. Jawaban: B."
+        text: "Sebotol larutan multivitamin volumenya 0,8 dm³. Adik meminum multivitamin tersebut tiga kali sehari secara teratur. Setiap kali minum, adik minum sebanyak 15 ml. Jika adik sudah minum selama 10 hari, multivitamin yang tersisa dalam botol adalah ... ml.",
+        options: ["250", "350", "3.500", "35.000"],
+        correct: 1,
+        topic: "Konversi Satuan Volume",
+        explanation: "0,8 dm³ = 800 ml. Diminum per hari = 3 × 15 = 45 ml. 10 hari = 450 ml. Sisa = 800 - 450 = 350 ml. Jawaban: B."
       },
       {
         id: 12, type: "PG",
-        text: "Jarak 380 km ditempuh kecepatan 80 km/jam, tiba pukul 11.30. Bus berangkat pukul ....",
-        options: ["07.45", "07.15", "06.45", "06.15"], correct: 2,
-        topic: "Waktu Tempuh", explanation: "Waktu = 4 jam 45 menit. Berangkat = 11.30 - 04.45 = 06.45. Jawaban: C."
+        text: "Jarak Kota Kediri dan Madiun adalah 380 km. Sebuah bus berjalan dari Kota Kediri ke kota Madiun dengan kecepatan 80 km/jam. Jika bus tiba di Kota Madiun pada pukul 11.30, bus berangkat pada pukul ....",
+        options: ["07.45", "07.15", "06.45", "06.15"],
+        correct: 2,
+        topic: "Kecepatan, Jarak & Waktu",
+        explanation: "Waktu = 380 : 80 = 4,75 jam = 4 jam 45 menit. Berangkat = 11.30 - 04.45 = 06.45. Jawaban: C."
       },
       {
         id: 13, type: "PG",
-        text: "Mengisi kolam butuh 8 jam dengan debit 1.200 liter/menit. Volume kolam adalah ... dm³.",
-        options: ["960", "9.600", "57.600", "576.000"], correct: 3,
-        topic: "Debit", explanation: "480 menit × 1.200 = 576.000 liter = 576.000 dm³. Jawaban: D."
+        text: "Untuk mengisi sebuah kolam renang diperlukan waktu 8 jam. Jika debit air yang dialirkan adalah 1200 liter/menit, volume kolam renang adalah ... dm³.",
+        options: ["960", "9.600", "57.600", "576.000"],
+        correct: 3,
+        topic: "Debit & Volume",
+        explanation: "8 jam = 480 menit. Volume = 1.200 liter/menit × 480 menit = 576.000 liter = 576.000 dm³. Jawaban: D."
       },
       {
         id: 14, type: "MCMA",
-        text: "Bangun datar dengan sifat: 4 simetri lipat, 4 sisi sama panjang, diagonal berpotongan tegak lurus. Pilihlah jawaban benar!",
+        text: "Sebuah bangun mempunyai sifat-sifat sebagai berikut.<br>1) Mempunyai empat simetri lipat<br>2) Keempat sisinya sama panjang<br>3) Kedua diagonalnya berpotongan tegak lurus<br><br>Pilihlah semua pernyataan yang benar terkait karakteristik atau identitas bangun datar di atas! Pernyataan benar lebih dari satu.",
         options: [
-          "Bangun datar tersebut adalah persegi.",
-          "Belah ketupat memiliki jumlah simetri lipat yang sama dengan persegi.",
-          "Besar keempat sudut pada bangun datar tersebut masing-masing 90°."
+          "Bangun datar yang memiliki ketiga sifat di atas adalah persegi.",
+          "Jika bangun datar tersebut adalah belah ketupat maka bangun datar memiliki jumlah simetri lipat yang sama banyak dengan persegi.",
+          "Besar keempat sudut pada bangun datar yang dimaksud di atas masing-masing adalah 90° sudut siku-siku."
         ],
-        correct: [0, 2], topic: "Sifat Bangun Datar", explanation: "Persegi punya 4 simetri lipat dan sudut 90°. Opsi 1 dan 3 Benar."
+        correct: [0, 2],
+        topic: "Sifat Bangun Datar",
+        explanation: "Bangun datar adalah persegi (memiliki 4 simetri lipat dan sudut siku-siku 90°). Belah ketupat hanya 2 simetri lipat. Opsi 1 dan 3 Benar."
       },
       {
         id: 15, type: "PG",
-        text: "Jari-jari lingkaran 20 cm. Keliling lingkaran tersebut adalah ... cm.",
-        options: ["1.256", "125,6", "628", "62,8"], correct: 1,
-        topic: "Keliling Lingkaran", explanation: "K = 2 × 3,14 × 20 = 125,6 cm. Jawaban: B."
+        text: "Diketahui jari-jari sebuah lingkaran 20 cm. Keliling lingkaran tersebut adalah ... cm.",
+        options: ["1.256", "125,6", "628", "62,8"],
+        correct: 1,
+        topic: "Keliling Lingkaran",
+        explanation: "Diameter = 40 cm. Keliling = 3,14 × 40 = 125,6 cm. Jawaban: B."
       },
       {
         id: 16, type: "MCMA",
-        text: "Segitiga beralas 16 dm dan tinggi 15 dm. Pilihlah pernyataan yang benar!",
+        text: "Sebuah segitiga memiliki alas 16 dm dan tinggi 15 dm. Berdasarkan informasi tersebut, pilihlah semua pernyataan yang benar! Pernyataan benar lebih dari satu.",
         options: [
           "Luas segitiga tersebut adalah 120 dm².",
           "Luas segitiga tersebut sama dengan 1,2 m².",
           "Luas segitiga tersebut sama dengan 1.200 cm²."
         ],
-        correct: [0, 1], topic: "Luas Segitiga", explanation: "Luas = 120 dm² = 1,2 m² = 12.000 cm². Opsi 1 dan 2 Benar."
+        correct: [0, 1],
+        topic: "Luas Segitiga",
+        explanation: "Luas = 1/2 × 16 × 15 = 120 dm². 120 dm² = 1,2 m² = 12.000 cm² (opsi 3 salah karena 1.200 cm²). Opsi 1 dan 2 Benar."
       },
       {
         id: 17, type: "PG",
-        text: "Rasio laki-laki dan perempuan 3 : 5. Jika total siswa 40 anak, jumlah siswa laki-laki adalah ... siswa.",
-        options: ["20", "25", "18", "15"], correct: 3,
-        topic: "Perbandingan", explanation: "3/8 × 40 = 15 siswa. Jawaban: D."
+        text: "Rasio jumlah siswa laki-laki dengan siswa perempuan di suatu kelas adalah 3 : 5. Apabila jumlah seluruh siswa di kelas tersebut adalah berjumlah 40 anak, banyak siswa laki-laki di kelas tersebut berjumlah ... siswa.",
+        options: ["20", "25", "18", "15"],
+        correct: 3,
+        topic: "Rasio Perbandingan",
+        explanation: "Total rasio = 3 + 5 = 8. Laki-laki = 3/8 × 40 = 15 siswa. Jawaban: D."
       },
       {
         id: 18, type: "PG",
-        text: "Ruangan 4 m × 6 m dipasang keramik 20 cm × 20 cm. 1 dus = 10 buah keramik seharga Rp15.000. Biaya ubin adalah ....",
-        options: ["Rp9.600,00", "Rp60.000,00", "Rp240.000,00", "Rp900.000,00"], correct: 3,
-        topic: "Luas & Biaya", explanation: "Kebutuhan = 60 dus × Rp15.000 = Rp900.000,00. Jawaban: D."
+        text: "Sebuah ruang yang berukuran 4 m × 6 m akan dipasang ubin keramik dengan ukuran 20 cm × 20 cm. Satu dus berisi 10 buah keramik. Jika harga 1 dus keramik Rp15.000,00, biaya yang dikeluarkan adalah ....",
+        options: ["Rp9.600,00", "Rp60.000,00", "Rp240.000,00", "Rp900.000,00"],
+        correct: 3,
+        topic: "Luas Ruang & Biaya Keramik",
+        explanation: "Luas ruangan = 24 m² = 240.000 cm². Luas ubin = 400 cm². Kebutuhan ubin = 600 buah = 60 dus. Biaya = 60 × Rp15.000 = Rp900.000,00. Jawaban: D."
       },
       {
         id: 19, type: "MCMA",
-        text: "Bagian yang diarsir adalah 1/8 bagian. Pecahan yang senilai adalah ....",
-        options: ["2/16 dan 3/24", "2/16 dan 4/24", "3/24 dan 4/32"],
-        correct: [0, 2], topic: "Pecahan Senilai", explanation: "1/8 = 2/16 = 3/24 = 4/32. Opsi 1 dan 3 Benar."
+        text: `Perhatikan gambar di bawah ini!<br>
+        <div class='my-3 flex justify-center'>
+          <svg width="130" height="130" viewBox="0 0 100 100" class="drop-shadow">
+            <circle cx="50" cy="50" r="46" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+            <path d="M50,50 L50,4 A46,46 0 0,1 82.5,17.5 Z" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+            <line x1="50" y1="4" x2="50" y2="96" stroke="#1e293b" stroke-width="1.5"/>
+            <line x1="4" y1="50" x2="96" y2="50" stroke="#1e293b" stroke-width="1.5"/>
+            <line x1="17.5" y1="17.5" x2="82.5" y2="82.5" stroke="#1e293b" stroke-width="1.5"/>
+            <line x1="17.5" y1="82.5" x2="82.5" y2="17.5" stroke="#1e293b" stroke-width="1.5"/>
+          </svg>
+        </div>
+        Manakah pecahan di bawah ini yang senilai dengan bagian yang diarsir pada gambar tersebut?<br>Pilihlah jawaban yang benar! Jawaban benar lebih dari satu.`,
+        options: [
+          "2/16 dan 3/24",
+          "2/16 dan 4/24",
+          "3/24 dan 4/32"
+        ],
+        correct: [0, 2],
+        topic: "Pecahan Senilai",
+        explanation: "Bagian yang diarsir menunjukkan 1/8. Pecahan senilai dengan 1/8 adalah 2/16, 3/24, dan 4/32. Opsi 1 dan 3 Benar."
       },
       {
         id: 20, type: "Kategori",
-        text: "Bak truk 15 dm × 12 dm × 5 dm diisi pasir penuh. Tentukan Benar/Salah!",
+        text: "Sebuah bak mobil berukuran panjang 15 dm, lebar 12 dm, dan tinggi 5 dm. Bak mobil tersebut akan diisi pasir hingga penuh.<br><br>Berdasarkan situasi di atas, tentukan apakah pernyataan berikut <b>Benar</b> atau <b>Salah</b>!",
         statements: [
-          "Volume pasir maksimal adalah 900 dm³.",
-          "Jika pasir diisi setengah tinggi maka volumenya 450 liter.",
-          "Luas alas bak mobil adalah 1800 dm²."
+          "Volume pasir maksimal yang dapat ditampung oleh bak mobil tersebut adalah 900 dm³.",
+          "Jika pasir hanya diisi setengah dari tinggi bak maka volume pasir di dalam bak adalah 450 liter.",
+          "Luas alas bak mobil yang menyentuh pasir adalah 1800 dm²."
         ],
-        correct: ["Benar", "Benar", "Salah"], topic: "Balok", explanation: "Luas alas = 15 × 12 = 180 dm² (Salah)."
+        correct: ["Benar", "Benar", "Salah"],
+        topic: "Volume & Luas Alas Balok",
+        explanation: "(1) Volume = 15 × 12 × 5 = 900 dm³ (Benar). (2) Setengah bak = 450 dm³ = 450 liter (Benar). (3) Luas alas = 15 × 12 = 180 dm², bukan 1.800 dm² (Salah). Kunci: Benar, Benar, Salah."
       },
       {
         id: 21, type: "PG",
-        text: "Data: 25, 26, 22, 24, 23, 21, 22, 21, 23, 25, 23, 24, 27, 21. Median adalah ....",
-        options: ["21", "22", "23", "24"], correct: 2,
-        topic: "Median", explanation: "Median data genap ke-7 & 8 = 23. Jawaban: C."
+        text: "Diketahui data sebagai berikut.<br><div class='my-2 p-2 bg-slate-100 rounded-xl font-bold text-center text-slate-800'>25, 26, 22, 24, 23, 21, 22, 21, 23, 25, 23, 24, 27, 21</div>Median data di atas adalah ....",
+        options: ["21", "22", "23", "24"],
+        correct: 2,
+        topic: "Median Data Tunggal",
+        explanation: "Data terurut (14 data): 21, 21, 21, 22, 22, 23, 23, 23, 24, 24, 25, 25, 26, 27. Median = (23 + 23)/2 = 23. Jawaban: C."
       },
       {
         id: 22, type: "PG",
-        text: "Buku: Cerita 55, Pelajaran 69, Pengetahuan 30, Majalah 75. Modusnya adalah ....",
-        options: ["Buku cerita", "Buku pelajaran", "Buku pengetahuan", "Majalah"], correct: 3,
-        topic: "Modus", explanation: "Modus = Majalah (75). Jawaban: D."
+        text: "Data banyak buku di sebuah perpustakaan sebagai berikut.<br>1) Buku cerita ada 55 eksemplar<br>2) Buku pelajaran ada 69 eksemplar<br>3) Buku pengetahuan ada 30 eksemplar<br>4) Majalah ada 75 eksemplar<br><br>Modus dari buku di perpustakaan adalah ....",
+        options: ["Buku cerita", "Buku pelajaran", "Buku pengetahuan", "Majalah"],
+        correct: 3,
+        topic: "Modus Frekuensi Buku",
+        explanation: "Majalah memiliki jumlah terbanyak yaitu 75 eksemplar. Modus = Majalah. Jawaban: D."
       },
       {
         id: 23, type: "PG",
-        text: "Total 40 satwa: Gajah 9, Harimau 7, Orangutan 8, Elang 5, sisanya komodo. Satwa terbanyak adalah ....",
-        options: ["Gajah", "Harimau", "Komodo", "Elang jawa"], correct: 2,
-        topic: "Data", explanation: "Komodo = 40 - 29 = 11 ekor. Jawaban: C."
+        text: "Kebun Binatang Surabaya merupakan tempat wisata kebanggaan warga Surabaya. Kebun binatang ini mengoleksi beberapa satwa langka antara lain gajah 9 ekor, harimau 7 ekor, orang utan 8 ekor, 5 ekor elang jawa, dan beberapa ekor komodo. Jumlah kelima jenis satwa langka tersebut 40 ekor. Satwa yang paling banyak dikoleksi Kebun Binatang Surabaya adalah ....",
+        options: ["Gajah", "Harimau", "Komodo", "Elang jawa"],
+        correct: 2,
+        topic: "Analisis Data Satwa",
+        explanation: "Komodo = 40 - (9 + 7 + 8 + 5) = 40 - 29 = 11 ekor. Jumlah satwa terbanyak adalah komodo (11 ekor). Jawaban: C."
       },
       {
         id: 24, type: "Kategori",
-        text: "Laki-laki (20 anak) memindahkan bata 3/5 kg, perempuan (15 anak) 2/5 kg. Tentukan Benar/Salah!",
+        text: "Dalam kegiatan kerja bakti di sekolah, siswa laki-laki mendapat tugas untuk memindahkan batu bata seberat 3/5 kg. Siswa perempuan mendapat tugas untuk memindahkan batu bata seberat 2/5 kg. Jumlah siswa laki-laki dan perempuan yang mengikuti kerja bakti masing-masing berjumlah 20 siswa dan 15 siswa.<br><br>Berdasarkan informasi tersebut, tentukan apakah setiap pernyataan berikut <b>Benar</b> atau <b>Salah</b>!",
         statements: [
-          "Total beban seluruh siswa laki-laki adalah 15 kg.",
-          "Total beban seluruh siswa perempuan adalah 6 kg.",
-          "Kelompok perempuan memindahkan lebih berat dari laki-laki."
+          "Total berat batu bata yang dipindahkan oleh seluruh siswa laki-laki adalah 15 kg.",
+          "Total berat batu bata yang dipindahkan oleh seluruh siswa perempuan adalah 6 kg.",
+          "Kelompok siswa perempuan memindahkan batu bata lebih banyak/berat daripada kelompok laki-laki."
         ],
-        correct: ["Salah", "Benar", "Salah"], topic: "Pecahan", explanation: "Laki-laki = 12 kg (bukan 15 kg)."
+        correct: ["Salah", "Benar", "Salah"],
+        topic: "Perkalian Pecahan",
+        explanation: "(1) Total laki-laki = 20 × 3/5 = 12 kg (Salah). (2) Total perempuan = 15 × 2/5 = 6 kg (Benar). (3) Laki-laki memindahkan 12 kg > 6 kg (Salah). Kunci: Salah, Benar, Salah."
       },
       {
         id: 25, type: "PG",
-        text: "Secangkir es teh butuh 2,5 sdm gula. Ahmad membuat 6 gelas es teh, banyak gula yang dibutuhkan adalah ... sdm.",
-        options: ["12", "15", "18", "8,5"], correct: 1,
-        topic: "Desimal", explanation: "6 × 2,5 = 15 sdm. Jawaban: B."
+        text: "Untuk membuat secangkir es teh manis dibutuhkan gula pasir sebanyak 2,5 sendok makan. Apabila Ahmad ingin membuat 6 gelas es tes manis untuk dirinya dan teman-temannya, banyak gula pasir yang dibutuhkan sebanyak ... sendok makan.",
+        options: ["12", "15", "18", "8,5"],
+        correct: 1,
+        topic: "Perkalian Desimal",
+        explanation: "Banyak gula = 6 × 2,5 = 15 sendok makan. Jawaban: B."
       },
       {
         id: 26, type: "Kategori",
-        text: "Riko membeli 4 buku gambar @Rp12.600. Ditaksir 4 × Rp12.000 = Rp48.000. Tentukan Benar/Salah!",
+        text: "Riko ingin membeli 4 buah buku gambar untuk tugas sekolah. Harga satu buku gambar adalah Rp12.600. Riko memperkirakan total uang yang harus dibayar dengan menghitung 4 × Rp12.000 = Rp48.000. Riko membawa uang pas sebesar Rp48.000 di dompetnya.<br><br>Berdasarkan informasi tersebut, tentukan <b>Benar</b> atau <b>Salah</b> pernyataan berikut!",
         statements: [
-          "Riko menaksir harga dengan membulatkan ke bawah.",
-          "Hasil perkiraan Riko lebih besar dari harga asli.",
-          "Uang pas Rp48.000 yang dibawa Riko tidak cukup."
+          "Riko memperkirakan harga buku dengan cara membulatkan harganya ke bawah.",
+          "Hasil perkiraan Riko akan lebih besar daripada harga asli yang harus dibayar di kasir.",
+          "Uang yang dibawa Riko tidak cukup untuk membeli 4 buku gambar tersebut."
         ],
-        correct: ["Benar", "Salah", "Benar"], topic: "Penaksiran", explanation: "Total asli Rp50.400 > perkiraan Rp48.000."
+        correct: ["Benar", "Salah", "Benar"],
+        topic: "Penaksiran Harga",
+        explanation: "(1) Rp12.600 dibulatkan ke Rp12.000 adalah pembulatan ke bawah (Benar). (2) Harga asli = 4 × Rp12.600 = Rp50.400 > perkiraan Rp48.000 (Salah). (3) Uang Rp48.000 kurang Rp2.400 (Benar). Kunci: Benar, Salah, Benar."
       },
       {
         id: 27, type: "PG",
-        text: "Tabungan: Jan 50rb, Peb 60rb, Mar 80rb, Apr 35rb, Mei 65rb. Rata-rata tabungan per bulan adalah ....",
-        options: ["Rp58.000,00", "Rp60.000,00", "Rp72.500,00", "Rp80.000,00"], correct: 0,
-        topic: "Rata-rata", explanation: "290.000 / 5 = Rp58.000,00. Jawaban: A."
+        text: `Diagram di bawah ini menunjukkan tabungan Winston!<br>
+        <div class='my-3 flex justify-center'>
+          <svg width="280" height="150" viewBox="0 0 280 150" class="bg-amber-50/50 p-2 rounded-xl border border-amber-200">
+            <line x1="45" y1="10" x2="45" y2="120" stroke="#475569" stroke-width="1.5"/>
+            <line x1="45" y1="120" x2="260" y2="120" stroke="#475569" stroke-width="1.5"/>
+            <text x="40" y="15" text-anchor="end" font-size="9" fill="#64748b">80000</text>
+            <text x="40" y="42" text-anchor="end" font-size="9" fill="#64748b">60000</text>
+            <text x="40" y="70" text-anchor="end" font-size="9" fill="#64748b">40000</text>
+            <text x="40" y="97" text-anchor="end" font-size="9" fill="#64748b">20000</text>
+            <text x="40" y="123" text-anchor="end" font-size="9" fill="#64748b">0</text>
+            <rect x="60" y="55" width="22" height="65" fill="#f97316" stroke="#c2410c" stroke-width="1"/>
+            <rect x="100" y="42" width="22" height="78" fill="#f97316" stroke="#c2410c" stroke-width="1"/>
+            <rect x="140" y="15" width="22" height="105" fill="#f97316" stroke="#c2410c" stroke-width="1"/>
+            <rect x="180" y="76" width="22" height="44" fill="#f97316" stroke="#c2410c" stroke-width="1"/>
+            <rect x="220" y="35" width="22" height="85" fill="#f97316" stroke="#c2410c" stroke-width="1"/>
+            <text x="71" y="134" text-anchor="middle" font-size="10" font-weight="bold" fill="#334155">Jan</text>
+            <text x="111" y="134" text-anchor="middle" font-size="10" font-weight="bold" fill="#334155">Peb</text>
+            <text x="151" y="134" text-anchor="middle" font-size="10" font-weight="bold" fill="#334155">Mar</text>
+            <text x="191" y="134" text-anchor="middle" font-size="10" font-weight="bold" fill="#334155">Apr</text>
+            <text x="231" y="134" text-anchor="middle" font-size="10" font-weight="bold" fill="#334155">Mei</text>
+          </svg>
+        </div>
+        Rata-rata tabungan Winston selama 5 bulan adalah ....`,
+        options: ["Rp58.000,00", "Rp60.000,00", "Rp72.500,00", "Rp80.000,00"],
+        correct: 0,
+        topic: "Rata-rata Diagram Batang",
+        explanation: "Jan (50.000) + Peb (60.000) + Mar (80.000) + Apr (35.000) + Mei (65.000) = 290.000. Rata-rata = 290.000 : 5 = Rp58.000,00. Jawaban: A."
       },
       {
         id: 28, type: "MCMA",
-        text: "Sudut P = 57° dan sudut Q = 33°. Pilihlah pernyataan yang benar!",
+        text: "Diketahui besar sudut P = 57° dan besar sudut Q = 33°. Pilihlah jawaban yang benar! Jawaban benar lebih dari satu.",
         options: [
-          "Kedua sudut jika dijumlahkan membentuk sudut tumpul.",
+          "Kedua sudut tersebut jika dijumlahkan akan membentuk sudut tumpul.",
           "Sudut P dan sudut Q saling berpenyiku.",
-          "Selisih sudut P dan sudut Q merupakan sudut lancip."
+          "Selisih antara besar sudut P dan sudut Q merupakan sudut lancip."
         ],
-        correct: [1, 2], topic: "Sudut", explanation: "P + Q = 90° (berpenyiku), P - Q = 24° (lancip). Opsi 2 dan 3 Benar."
+        correct: [1, 2],
+        topic: "Hubungan Antar Sudut",
+        explanation: "P + Q = 57° + 33° = 90° (saling berpenyiku / siku-siku). P - Q = 57° - 33° = 24° (sudut lancip). Opsi 2 dan 3 Benar."
       },
       {
         id: 29, type: "MCMA",
-        text: "Ayam dan bebek 7 : 5. Pakan ayam 105 kg. Pilihlah pernyataan yang benar!",
+        text: "Pak Fauzan beternak ayam dan bebek dengan perbandingan 7 : 5. Diketahui bahwa kebutuhan pakan untuk setiap ekor ayam dan bebek adalah sama. Jika dalam satu bulan ayam Pak Fauzan membutuhkan pakan 105 kg, tentukan kebenaran dari pernyataan-pernyataan berikut! Pernyataan benar lebih dari satu.",
         options: [
-          "Pakan bebek sebulan adalah 75 kg.",
-          "Selisih pakan ayam dan bebek adalah 30 kg.",
-          "Total pakan seluruh ternak adalah 210 kg."
+          "Kebutuhan pakan untuk bebek Pak Fauzan dalam satu bulan adalah 75 kg.",
+          "Selisih kebutuhan pakan antara ayam dan bebek Pak Fauzan dalam satu bulan adalah 30 kg.",
+          "Total kebutuhan pakan untuk seluruh ternak Pak Fauzan dalam satu bulan adalah 210 kg."
         ],
-        correct: [0, 1], topic: "Perbandingan", explanation: "Bebek = 75 kg, Selisih = 30 kg, Total = 180 kg. Opsi 1 dan 2 Benar."
+        correct: [0, 1],
+        topic: "Perbandingan Nilai Pakan",
+        explanation: "1 bagian pakan = 105 : 7 = 15 kg. Pakan bebek = 5 × 15 = 75 kg (Benar). Selisih = 2 × 15 = 30 kg (Benar). Total = 12 × 15 = 180 kg, bukan 210 kg (Salah). Opsi 1 dan 2 Benar."
       },
       {
         id: 30, type: "Kategori",
-        text: "Nilai 5 (4 anak), 6 (8 anak), 7 (12 anak), 8 (10 anak), 9 (6 anak). KKM 7. Tentukan Benar/Salah!",
+        text: `Perhatikan diagram batang hasil ujian Matematika siswa kelas VI SD Jaya berikut!<br>
+        <div class='my-3 flex justify-center'>
+          <svg width="260" height="150" viewBox="0 0 260 150" class="bg-amber-50/50 p-2 rounded-xl border border-amber-200">
+            <line x1="35" y1="10" x2="35" y2="120" stroke="#475569" stroke-width="1.5"/>
+            <line x1="35" y1="120" x2="240" y2="120" stroke="#475569" stroke-width="1.5"/>
+            <text x="30" y="15" text-anchor="end" font-size="9" fill="#64748b">12</text>
+            <text x="30" y="35" text-anchor="end" font-size="9" fill="#64748b">10</text>
+            <text x="30" y="55" text-anchor="end" font-size="9" fill="#64748b">8</text>
+            <text x="30" y="75" text-anchor="end" font-size="9" fill="#64748b">6</text>
+            <text x="30" y="95" text-anchor="end" font-size="9" fill="#64748b">4</text>
+            <text x="30" y="115" text-anchor="end" font-size="9" fill="#64748b">2</text>
+            <line x1="35" y1="12" x2="230" y2="12" stroke="#94a3b8" stroke-dasharray="3,3" stroke-width="1"/>
+            <line x1="35" y1="32" x2="230" y2="32" stroke="#94a3b8" stroke-dasharray="3,3" stroke-width="1"/>
+            <line x1="35" y1="52" x2="230" y2="52" stroke="#94a3b8" stroke-dasharray="3,3" stroke-width="1"/>
+            <line x1="35" y1="72" x2="230" y2="72" stroke="#94a3b8" stroke-dasharray="3,3" stroke-width="1"/>
+            <line x1="35" y1="92" x2="230" y2="92" stroke="#94a3b8" stroke-dasharray="3,3" stroke-width="1"/>
+            <rect x="50" y="92" width="22" height="28" fill="#f97316" stroke="#ea580c"/>
+            <rect x="90" y="52" width="22" height="68" fill="#f97316" stroke="#ea580c"/>
+            <rect x="130" y="12" width="22" height="108" fill="#f97316" stroke="#ea580c"/>
+            <rect x="170" y="32" width="22" height="88" fill="#f97316" stroke="#ea580c"/>
+            <rect x="210" y="72" width="22" height="48" fill="#f97316" stroke="#ea580c"/>
+            <text x="61" y="134" text-anchor="middle" font-size="10" font-weight="bold" fill="#334155">5</text>
+            <text x="101" y="134" text-anchor="middle" font-size="10" font-weight="bold" fill="#334155">6</text>
+            <text x="141" y="134" text-anchor="middle" font-size="10" font-weight="bold" fill="#334155">7</text>
+            <text x="181" y="134" text-anchor="middle" font-size="10" font-weight="bold" fill="#334155">8</text>
+            <text x="221" y="134" text-anchor="middle" font-size="10" font-weight="bold" fill="#334155">9</text>
+          </svg>
+        </div>
+        Batas nilai lulus untuk ujian Matematika ini adalah 7. Siswa yang nilainya kurang dari 7 dinyatakan belum lulus dan harus mengulang ujian.<br><br>Berdasarkan data pada diagram tersebut, tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!`,
         statements: [
-          "Jumlah seluruh siswa adalah 40 siswa.",
-          "Banyak siswa yang belum lulus adalah 12 siswa.",
-          "Nilai yang paling banyak diperoleh siswa adalah nilai 8."
+          "Jumlah seluruh siswa kelas VI yang mengikuti ujian Matematika adalah 40 siswa.",
+          "Banyaknya siswa yang belum lulus dan harus mengulang ujian adalah 12 siswa.",
+          "Nilai yang paling banyak diperoleh oleh siswa kelas VI adalah nilai 8."
         ],
-        correct: ["Benar", "Benar", "Salah"], topic: "Diagram", explanation: "Nilai terbanyak adalah nilai 7 (12 siswa)."
+        correct: ["Benar", "Benar", "Salah"],
+        topic: "Interpretasi Diagram Kelulusan",
+        explanation: "(1) Total siswa = 4 + 8 + 12 + 10 + 6 = 40 siswa (Benar). (2) Nilai < 7 (nilai 5 dan 6) = 4 + 8 = 12 siswa (Benar). (3) Nilai paling banyak diperoleh adalah nilai 7 (12 siswa), bukan nilai 8 (Salah). Kunci: Benar, Benar, Salah."
       }
     ];
 
@@ -994,13 +1134,13 @@
     }
 
     async function saveSubmission(sub) {
-      // 1. Cadangan di HP/Laptop siswa (aman jika offline)
+      // 1. Cadangan di HP/Laptop siswa (offline backup)
       const local = localStorage.getItem('tka_submissions_multi');
       const list = local ? JSON.parse(local) : [];
       list.push(sub);
       localStorage.setItem('tka_submissions_multi', JSON.stringify(list));
 
-      // 2. Kirim ke Firebase Cloud (Sanggup 2.500 siswa serentak tanpa antre)
+      // 2. Kirim ke Firebase Cloud
       try {
         await fetch(FIREBASE_DB_URL, {
           method: 'POST',
@@ -1015,7 +1155,7 @@
         console.warn("Gagal kirim Firebase:", err);
       }
 
-      // 3. Cadangan ke Google Sheet (jeda acak 0-5 detik)
+      // 3. Cadangan ke Google Spreadsheet
       setTimeout(() => {
         try {
           fetch(GOOGLE_SCRIPT_URL, {
