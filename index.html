@@ -8,10 +8,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Cinzel:wght@600;700;800;900&family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; padding: 0; background-color: #f0fdfa; color: #1e293b; }
     .font-cinzel { font-family: 'Cinzel', serif; }
     .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
-    .custom-scrollbar::-webkit-scrollbar-thumb { background: #5eead4; border-radius: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #14b8a6; border-radius: 4px; }
     
     .no-select {
       -webkit-user-select: none;
@@ -19,6 +19,14 @@
       -ms-user-select: none;
       user-select: none;
     }
+
+    /* PURE CSS FALLBACK AGAR TAMPILAN HP TETAP BERWARNA & RAPI WALAUPUN CDN TAILWIND GAGAL */
+    .hidden { display: none !important; }
+    .bg-math { background-color: #e53e3e !important; color: #ffffff !important; }
+    .bg-indo { background-color: #3182ce !important; color: #ffffff !important; }
+    .card-subject { border-radius: 1.5rem; overflow: hidden; background: #ffffff; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); border: 1px solid #e2e8f0; }
+    .btn-subject { background-color: #e0e7ff; color: #3730a3; padding: 0.75rem; border-radius: 1rem; font-weight: 900; width: 100%; border: none; cursor: pointer; }
+    .btn-subject:hover { background-color: #c7d2fe; }
 
     @media print {
       body { background: white !important; }
@@ -32,7 +40,7 @@
 </head>
 <body class="bg-gradient-to-br from-teal-50 via-emerald-50 to-cyan-50 text-slate-800 antialiased min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white no-select" oncontextmenu="return false;">
 
-  <!-- BILAH ATAS (HEADER) -->
+  <!-- HEADER -->
   <header class="bg-white/90 backdrop-blur-md border-b border-teal-100 sticky top-0 z-40 shadow-sm no-print">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <div class="flex items-center space-x-3 cursor-pointer" onclick="showScreen('viewSubjects')">
@@ -71,26 +79,26 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto mb-8">
         <!-- KARTU MATEMATIKA -->
-        <div class="bg-white rounded-3xl shadow-xl shadow-slate-200/60 overflow-hidden border border-slate-100 hover:-translate-y-1.5 transition-all duration-200 flex flex-col">
-          <div class="bg-[#e53e3e] py-14 flex items-center justify-center shadow-inner">
+        <div class="card-subject hover:-translate-y-1.5 transition-all duration-200 flex flex-col">
+          <div class="bg-math py-14 flex items-center justify-center shadow-inner">
             <h3 class="text-white text-3xl font-black tracking-wide">Matematika</h3>
           </div>
           <div class="p-5 bg-white flex-1 flex flex-col justify-between">
             <p class="text-xs text-slate-500 font-semibold mb-4">6 Paket: Ujicoba + Paket 1 s.d. 5</p>
-            <button onclick="selectSubject('matematika')" class="w-full py-3 rounded-2xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-black text-xs uppercase tracking-wider transition">
+            <button onclick="selectSubject('matematika')" class="btn-subject text-xs uppercase tracking-wider transition">
               Mulai Belajar
             </button>
           </div>
         </div>
 
         <!-- KARTU BAHASA INDONESIA -->
-        <div class="bg-white rounded-3xl shadow-xl shadow-slate-200/60 overflow-hidden border border-slate-100 hover:-translate-y-1.5 transition-all duration-200 flex flex-col">
-          <div class="bg-[#3182ce] py-14 flex items-center justify-center shadow-inner">
+        <div class="card-subject hover:-translate-y-1.5 transition-all duration-200 flex flex-col">
+          <div class="bg-indo py-14 flex items-center justify-center shadow-inner">
             <h3 class="text-white text-3xl font-black tracking-wide">Bahasa Indonesia</h3>
           </div>
           <div class="p-5 bg-white flex-1 flex flex-col justify-between">
             <p class="text-xs text-slate-500 font-semibold mb-4">5 Paket: Paket 1 s.d. 5</p>
-            <button onclick="selectSubject('indonesia')" class="w-full py-3 rounded-2xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-black text-xs uppercase tracking-wider transition">
+            <button onclick="selectSubject('indonesia')" class="btn-subject text-xs uppercase tracking-wider transition">
               Mulai Belajar
             </button>
           </div>
@@ -174,7 +182,7 @@
         <div class="p-4 bg-teal-50 rounded-2xl border border-teal-100 text-xs text-teal-950 leading-relaxed font-medium">
           <span class="font-extrabold text-teal-900 block mb-1">⏱️ Petunjuk Penskoran:</span>
           - Durasi Ujian: <b>75 Menit</b> hitung mundur.<br>
-          - Nilai Akhir otomatis dikonversi ke skala interval <b>0 – 100</b>.<br>
+          - Skor Maksimal: <b>52 Poin</b> (Otomatis skala 0 - 100).<br>
           - <b class="text-emerald-700">Siswa lulus (KKM 70) mendapatkan Piagam Penghargaan Digital otomatis!</b>
         </div>
 
@@ -278,7 +286,7 @@
           <div class="p-4 rounded-2xl bg-teal-50 border border-teal-100">
             <span class="block text-[11px] font-bold text-teal-600 uppercase">Skor Mentah</span>
             <span class="text-2xl font-black text-teal-800" id="resTotalScore">0</span>
-            <span class="text-[10px] text-slate-400 block" id="resMaxScoreLabel">dari maks 49</span>
+            <span class="text-[10px] text-slate-400 block" id="resMaxScoreLabel">dari maks 52</span>
           </div>
           <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-100">
             <span class="block text-[11px] font-bold text-emerald-600 uppercase">Nilai Akhir (100)</span>
@@ -351,7 +359,7 @@
         <div class="text-center space-y-1 mb-4">
           <p class="text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-teal-800">KORWIL BIDDIKBUD KECAMATAN MRANGGEN • SEKSI KEGURUAN</p>
           <h2 class="font-cinzel text-2xl sm:text-4xl font-extrabold text-amber-700 tracking-wider">PIAGAM PENGHARGAAN</h2>
-          <p class="text-[11px] font-mono text-slate-500" id="certNumber">No: 421.2/TKA-MRG/2026/001</p>
+          <p class="text-[11px] font-mono text-slate-500" id="certNumber">No: 400.3.11.1/TKA-MRG/2026/001</p>
         </div>
 
         <p class="text-xs sm:text-sm text-slate-600 mb-2 font-medium">Diberikan dengan penuh apresiasi kepada:</p>
@@ -532,7 +540,7 @@
         ],
         correct: [1, 2],
         topic: "Faktorisasi Prima & KPK",
-        explanation: "54 = 2 × 3³ (opsi 1 salah karena tertulis 2 × 3²). KPK = 2⁶ × 3³ = 64 × 27 = 1.728. Opsi 2 dan 3 Benar."
+        explanation: "54 = 2 × 3³ (opsi 1 salah karena 2 × 3²). KPK = 2⁶ × 3³ = 64 × 27 = 1.728. Opsi 2 dan 3 Benar."
       },
       {
         id: 5, type: "Kategori",
@@ -607,7 +615,7 @@
         ],
         correct: [0, 1],
         topic: "Konversi Satuan Luas",
-        explanation: "Kolam = 12 × 100 = 1.200 m². Kebun = 0,75 × 10.000 = 7.500 m². Rumah = 750 m². Total = 9.450 m² (bukan 945 m²). Opsi 1 dan 2 Benar."
+        explanation: "Kolam = 12 × 100 = 1.200 m². Kebun = 0,75 × 10.000 = 7.500 m². Rumah = 750 m². Total = 9.450 m². Opsi 1 dan 2 Benar."
       },
       {
         id: 11, type: "PG",
@@ -615,7 +623,7 @@
         options: ["250", "350", "3.500", "35.000"],
         correct: 1,
         topic: "Konversi Satuan Volume",
-        explanation: "0,8 dm³ = 800 ml. Diminum per hari = 3 × 15 = 45 ml. 10 hari = 450 ml. Sisa = 800 - 450 = 350 ml. Jawaban: B."
+        explanation: "0,8 dm³ = 800 ml. Diminum = 3 × 15 × 10 = 450 ml. Sisa = 800 - 450 = 350 ml. Jawaban: B."
       },
       {
         id: 12, type: "PG",
@@ -663,7 +671,7 @@
         ],
         correct: [0, 1],
         topic: "Luas Segitiga",
-        explanation: "Luas = 1/2 × 16 × 15 = 120 dm². 120 dm² = 1,2 m² = 12.000 cm² (opsi 3 salah karena 1.200 cm²). Opsi 1 dan 2 Benar."
+        explanation: "Luas = 1/2 × 16 × 15 = 120 dm² = 1,2 m² = 12.000 cm². Opsi 1 dan 2 Benar."
       },
       {
         id: 17, type: "PG",
@@ -679,7 +687,7 @@
         options: ["Rp9.600,00", "Rp60.000,00", "Rp240.000,00", "Rp900.000,00"],
         correct: 3,
         topic: "Luas Ruang & Biaya Keramik",
-        explanation: "Luas ruangan = 24 m² = 240.000 cm². Luas ubin = 400 cm². Kebutuhan ubin = 600 buah = 60 dus. Biaya = 60 × Rp15.000 = Rp900.000,00. Jawaban: D."
+        explanation: "Luas ruangan = 24 m² = 240.000 cm². Luas ubin = 400 cm². Kebutuhan = 600 buah = 60 dus. Biaya = 60 × Rp15.000 = Rp900.000,00. Jawaban: D."
       },
       {
         id: 19, type: "MCMA",
@@ -702,7 +710,7 @@
         ],
         correct: [0, 2],
         topic: "Pecahan Senilai",
-        explanation: "Bagian yang diarsir menunjukkan 1/8. Pecahan senilai dengan 1/8 adalah 2/16, 3/24, dan 4/32. Opsi 1 dan 3 Benar."
+        explanation: "Bagian yang diarsir adalah 1/8. Pecahan senilai: 1/8 = 2/16 = 3/24 = 4/32. Opsi 1 dan 3 Benar."
       },
       {
         id: 20, type: "Kategori",
@@ -902,6 +910,59 @@
       return arr;
     }
 
+    // MENYIMPAN SESI UJIAN AKTIF SETIAP SISWA MEMILIH JAWABAN (AUTOSAVE)
+    function persistCurrentExamState() {
+      const state = {
+        selectedSubject,
+        currentPackageKey,
+        currentUser,
+        currentQuestions,
+        currentQuestionIdx,
+        userAnswers,
+        raguStatus,
+        timeRemaining,
+        isActive: true
+      };
+      localStorage.setItem('tka_active_exam_session', JSON.stringify(state));
+    }
+
+    // MEMULIHKAN JAWABAN DAN WAKTU SISWA JIKA TERLANJUR KELUAR ATAU BROWSER TERKILLED
+    function checkActiveExamSession() {
+      const saved = localStorage.getItem('tka_active_exam_session');
+      if (saved) {
+        try {
+          const state = JSON.parse(saved);
+          if (state && state.isActive && state.timeRemaining > 10) {
+            if (confirm(`Hai ${state.currentUser.name}, sistem mendeteksi Anda sebelumnya keluar saat ujian sedang berjalan.\n\nKlik OK untuk melanjutkan dan memulihkan seluruh jawaban yang sudah dikerjakan!`)) {
+              selectedSubject = state.selectedSubject;
+              currentPackageKey = state.currentPackageKey;
+              currentUser = state.currentUser;
+              currentQuestions = state.currentQuestions;
+              currentQuestionIdx = state.currentQuestionIdx || 0;
+              userAnswers = state.userAnswers || {};
+              raguStatus = state.raguStatus || {};
+              timeRemaining = state.timeRemaining;
+
+              document.getElementById('userInitial').innerText = currentUser.name.charAt(0).toUpperCase();
+              document.getElementById('examStudentName').innerText = currentUser.name;
+              document.getElementById('examStudentSchool').innerText = `${currentUser.school} • Kelas ${currentUser.className}`;
+
+              showScreen('viewExam');
+              renderPalette();
+              loadQuestion(currentQuestionIdx);
+              startCountdownTimer();
+              return true;
+            } else {
+              localStorage.removeItem('tka_active_exam_session');
+            }
+          }
+        } catch (e) {
+          localStorage.removeItem('tka_active_exam_session');
+        }
+      }
+      return false;
+    }
+
     function populateSchoolDropdown() {
       const regSelect = document.getElementById('regSchool');
       LIST_SEKOLAH_MRANGGEN.forEach(sch => {
@@ -1008,8 +1069,8 @@
       currentQuestionIdx = 0;
       timeRemaining = 75 * 60;
 
-      // MENGACAK URUTAN 30 SOAL SECARA OTOMATIS KHUSUS PESERTA INI
       currentQuestions = shuffleArray(DATABASE_SOAL[selectedSubject][currentPackageKey].questions);
+      persistCurrentExamState();
 
       showScreen('viewExam');
       renderPalette();
@@ -1027,11 +1088,12 @@
         if (timeRemaining <= 300) display.parentElement.classList.add('animate-pulse');
         if (timeRemaining <= 0) {
           clearInterval(examTimerInterval);
-          alert("Waktu habis! Jawaban dikumpulkan.");
+          alert("Waktu habis! Jawaban dikumpulkan otomatis.");
           submitExam();
           return;
         }
         timeRemaining--;
+        if (timeRemaining % 5 === 0) persistCurrentExamState();
       }
       updateClock();
       examTimerInterval = setInterval(updateClock, 1000);
@@ -1128,24 +1190,28 @@
       document.getElementById('btnPrev').disabled = idx === 0;
       document.getElementById('btnNext').innerText = idx === currentQuestions.length - 1 ? 'Selesai' : 'Selanjutnya';
       renderPalette();
+      persistCurrentExamState();
     }
 
-    function saveAnswerPG(qId, val) { userAnswers[qId] = val; renderPalette(); }
+    function saveAnswerPG(qId, val) { userAnswers[qId] = val; renderPalette(); persistCurrentExamState(); }
     function saveAnswerMCMA(qId, optIdx) {
       if (!userAnswers[qId]) userAnswers[qId] = [];
       const i = userAnswers[qId].indexOf(optIdx);
       if (i > -1) userAnswers[qId].splice(i, 1); else userAnswers[qId].push(optIdx);
       renderPalette();
+      persistCurrentExamState();
     }
     function saveAnswerKategori(qId, stmtIdx, val) {
       if (!userAnswers[qId]) userAnswers[qId] = {};
       userAnswers[qId][stmtIdx] = val;
       renderPalette();
+      persistCurrentExamState();
     }
     function toggleRaguCurrent() {
       const q = currentQuestions[currentQuestionIdx];
       raguStatus[q.id] = document.getElementById('checkRagu').checked;
       renderPalette();
+      persistCurrentExamState();
     }
     function nextQuestion() {
       if (currentQuestionIdx < currentQuestions.length - 1) loadQuestion(currentQuestionIdx + 1);
@@ -1166,6 +1232,7 @@
       const list = local ? JSON.parse(local) : [];
       list.push(sub);
       localStorage.setItem('tka_submissions_multi', JSON.stringify(list));
+      localStorage.removeItem('tka_active_exam_session'); // Hapus sesi jika berhasil diselesaikan
 
       try {
         await fetch(FIREBASE_DB_URL, {
@@ -1195,9 +1262,11 @@
       }, Math.floor(Math.random() * 5000));
     }
 
+    // PERBAIKAN RUMUS SKORING DINAMIS (MAKSIMAL 52 POIN, SKALA TEPAT 100)
     function submitExam() {
       clearInterval(examTimerInterval);
       let totalRawScore = 0;
+      let calculatedMaxScore = 0;
       let detailAnswersRecord = {};
 
       currentQuestions.forEach((q) => {
@@ -1205,10 +1274,12 @@
         let isFullyCorrect = false;
 
         if (q.type === 'PG') {
+          calculatedMaxScore += 1;
           if (userAnswers[q.id] === q.correct) {
             earned = 1; isFullyCorrect = true;
           }
         } else if (q.type === 'MCMA') {
+          calculatedMaxScore += 2;
           const userArr = userAnswers[q.id] || [];
           const correctHits = userArr.filter(x => q.correct.includes(x)).length;
           const wrongHits = userArr.filter(x => !q.correct.includes(x)).length;
@@ -1218,6 +1289,7 @@
             earned = 1;
           }
         } else if (q.type === 'Kategori') {
+          calculatedMaxScore += q.statements.length;
           const userMap = userAnswers[q.id] || {};
           let matchCount = 0;
           q.statements.forEach((_, sIdx) => { 
@@ -1231,7 +1303,8 @@
         detailAnswersRecord[q.id] = { earned: earned, isCorrect: isFullyCorrect };
       });
 
-      const final100 = Math.round((totalRawScore / 49) * 100);
+      const maxScoreActual = calculatedMaxScore || 52;
+      const final100 = Math.min(100, Math.round((totalRawScore / maxScoreActual) * 100));
       latestExamScore = final100;
       const isPass = final100 >= 70;
       const durationSeconds = Math.max(0, (75 * 60) - timeRemaining);
@@ -1247,7 +1320,7 @@
         className: currentUser.className,
         absen: currentUser.absen,
         rawScore: totalRawScore,
-        maxRawScore: 49,
+        maxRawScore: maxScoreActual,
         finalScore: final100,
         status: isPass ? 'Lulus' : 'Remedial',
         durationMinutes: durMin,
@@ -1258,6 +1331,7 @@
       saveSubmission(record);
 
       document.getElementById('resTotalScore').innerText = `${totalRawScore}`;
+      document.getElementById('resMaxScoreLabel').innerText = `dari maks ${maxScoreActual}`;
       document.getElementById('resScale100').innerText = `${final100}`;
       document.getElementById('resStatus').innerText = isPass ? 'Lulus' : 'Remedial';
       document.getElementById('resStatus').className = `text-base font-black mt-1 block ${isPass ? 'text-emerald-600' : 'text-rose-600'}`;
@@ -1301,7 +1375,7 @@
       else if (sub.finalScore >= 70) predikat = "BAIK / LULUS";
 
       document.getElementById('certPredicate').innerText = predikat;
-      document.getElementById('certNumber').innerText = `No: 421.2/TKA-MRG/2026/${Math.floor(1000 + Math.random() * 9000)}`;
+      document.getElementById('certNumber').innerText = `No: 400.3.11.1/TKA-MRG/2026/${Math.floor(1000 + Math.random() * 9000)}`;
       document.getElementById('certificateModal').classList.remove('hidden');
     }
 
@@ -1345,8 +1419,8 @@
     }
 
     window.addEventListener('DOMContentLoaded', () => {
-      syncExamSettings();
       populateSchoolDropdown();
+      checkActiveExamSession();
     });
   </script>
 </body>
