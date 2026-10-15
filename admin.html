@@ -15,10 +15,33 @@
     @media print {
       body { background: white !important; padding: 0 !important; color: black !important; }
       .no-print { display: none !important; }
-      #adminPortal { display: block !important; margin: 0 !important; width: 100% !important; max-width: 100% !important; }
-      #mainPrintCard { border: none !important; box-shadow: none !important; padding: 0 !important; }
-      #adminCertificateModal { display: block !important; position: absolute; left: 0; top: 0; width: 100%; border: none !important; box-shadow: none !important; padding: 0 !important; }
-      @page { size: landscape; margin: 10mm; }
+
+      /* Mode Cetak Piagam (Hanya Piagam yang Dicetak, 1 Halaman Penuh Landscape) */
+      body.print-cert #adminPortal { display: none !important; }
+      body.print-cert #adminCertificateModal { 
+        display: block !important; 
+        position: static !important;
+        width: 100% !important; 
+        margin: 0 !important; 
+        padding: 0 !important; 
+        border: none !important; 
+        box-shadow: none !important; 
+        background: transparent !important;
+      }
+      body.print-cert #adminCertificateModal > div {
+        max-width: 100% !important;
+        width: 100% !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+      }
+      body.print-cert @page { size: landscape; margin: 8mm; }
+
+      /* Mode Cetak Tabel Rekapitulasi Nilai */
+      body.print-table #adminCertificateModal { display: none !important; }
+      body.print-table #adminPortal { display: block !important; width: 100% !important; max-width: 100% !important; }
+      body.print-table #mainPrintCard { border: none !important; box-shadow: none !important; padding: 0 !important; }
+      body.print-table @page { size: landscape; margin: 10mm; }
     }
   </style>
 </head>
@@ -114,7 +137,7 @@
     <!-- TABEL HASIL NILAI & AREA CETAK -->
     <div id="mainPrintCard" class="bg-white rounded-3xl border border-teal-200/80 shadow-md p-6 space-y-4">
       
-      <!-- KOP RESMI CETAK PRINT -->
+      <!-- KOP RESMI CETAK PRINT REKAPITULASI -->
       <div class="hidden print:block border-b-2 border-slate-900 pb-3 mb-4 text-center">
         <h2 class="text-base font-black uppercase tracking-wider text-slate-900">KORWIL BIDDIKBUD KECAMATAN MRANGGEN</h2>
         <h3 class="text-sm font-black uppercase text-slate-800" id="printReportTitle">REKAPITULASI HASIL TRYOUT TKA KELAS 6 SD</h3>
@@ -212,7 +235,7 @@
       <div class="flex items-center justify-between mb-3 no-print">
         <span class="text-xs font-bold text-amber-800">Cetak Piagam Penghargaan Peserta</span>
         <div class="flex items-center gap-2">
-          <button onclick="window.print()" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-lg transition">
+          <button onclick="printSingleCertificate()" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-lg transition">
             🖨️ Cetak PDF
           </button>
           <button onclick="closeAdminCertificateModal()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-lg transition">
@@ -598,29 +621,47 @@
       });
     }
 
-    // FUNGSI ADMIN: CETAK PIAGAM ATAS NAMA PESERTA TERPILIH (NOMOR 400.3.11.1)
+    // FUNGSI ISI DATA PIAGAM DARI ADMIN KE ELEMEN MODAL
     function printStudentCertFromAdmin(sub) {
-      document.getElementById('adminCertStudentName').innerText = sub.name.toUpperCase();
-      document.getElementById('adminCertStudentSchool').innerText = sub.school.toUpperCase();
-      document.getElementById('adminCertSubjectName').innerText = sub.subject;
-      document.getElementById('adminCertPackageName').innerText = sub.package;
-      document.getElementById('adminCertScore').innerText = sub.finalScore;
+      if (typeof sub === 'string') {
+        try { sub = JSON.parse(sub); } catch(e){}
+      }
+
+      document.getElementById('adminCertStudentName').innerText = (sub.name || '').toUpperCase();
+      document.getElementById('adminCertStudentSchool').innerText = (sub.school || '').toUpperCase();
+      document.getElementById('adminCertSubjectName').innerText = sub.subject || 'Matematika';
+      document.getElementById('adminCertPackageName').innerText = sub.package || 'UJICOBA';
+      document.getElementById('adminCertScore').innerText = sub.finalScore || '0';
 
       let predikat = "LULUS / MEMENUHI KKM";
-      if (sub.finalScore >= 95) predikat = "ISTIMEWA / DENGAN PUJIAN";
-      else if (sub.finalScore >= 85) predikat = "SANGAT BAIK / MEMUASKAN";
-      else if (sub.finalScore >= 70) predikat = "BAIK / LULUS";
+      const numScore = Number(sub.finalScore) || 0;
+      if (numScore >= 95) predikat = "ISTIMEWA / DENGAN PUJIAN";
+      else if (numScore >= 85) predikat = "SANGAT BAIK / MEMUASKAN";
+      else if (numScore >= 70) predikat = "BAIK / LULUS";
 
       document.getElementById('adminCertPredicate').innerText = predikat;
       document.getElementById('adminCertNumber').innerText = `No: 400.3.11.1/TKA-MRG/2026/${Math.floor(1000 + Math.random() * 9000)}`;
+      
       document.getElementById('adminCertificateModal').classList.remove('hidden');
     }
 
+    // FUNGSI KHUSUS CETAK PIAGAM DARI MODAL ADMIN
+    function printSingleCertificate() {
+      document.body.classList.remove('print-table');
+      document.body.classList.add('print-cert');
+      window.print();
+    }
+
     function closeAdminCertificateModal() {
+      document.body.classList.remove('print-cert');
       document.getElementById('adminCertificateModal').classList.add('hidden');
     }
 
+    // FUNGSI CETAK TABEL REKAPITULASI DENGAN TANDA TANGAN PENGESAHAN
     function triggerPrintMode(mode) {
+      document.body.classList.remove('print-cert');
+      document.body.classList.add('print-table');
+
       const targetSubName = currentAdminSubject === 'matematika' ? 'MATEMATIKA' : 'BAHASA INDONESIA';
       const pkgText = selectedPackageFilter === 'ALL' ? 'SEMUA PAKET' : selectedPackageFilter.toUpperCase();
       const schoolVal = document.getElementById('adminFilterSchool').value;
