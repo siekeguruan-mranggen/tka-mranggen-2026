@@ -16,7 +16,7 @@
       body { background: white !important; padding: 0 !important; color: black !important; }
       .no-print { display: none !important; }
 
-      /* Mode Cetak Piagam (1 Lembar Landscape Utuh) */
+      /* Mode Cetak Piagam (1 Lembar Landscape Bersih) */
       body.mode-cert #adminPortal { display: none !important; }
       body.mode-cert #adminCertificateModal { 
         display: block !important; 
@@ -40,7 +40,7 @@
       }
       body.mode-cert @page { size: landscape; margin: 8mm; }
 
-      /* Mode Cetak Tabel / Rekap */
+      /* Mode Cetak Tabel / Rekapitulasi */
       body.mode-table #adminCertificateModal { display: none !important; }
       body.mode-table #adminPortal { display: block !important; width: 100% !important; max-width: 100% !important; }
       body.mode-table #mainPrintCard { border: none !important; box-shadow: none !important; padding: 0 !important; }
@@ -137,7 +137,7 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3" id="adminLockControls"></div>
     </div>
 
-    <!-- TAB MENU NAVIGASI: REKAP SISWA VS PERINGKAT SD VS ANALISIS SOAL -->
+    <!-- TAB MENU NAVIGASI -->
     <div class="flex flex-wrap items-center gap-2 border-b border-teal-200 pb-2 no-print">
       <button onclick="switchViewMode('students')" id="tabBtnStudents" class="px-4 py-2 font-black text-xs rounded-xl bg-teal-600 text-white shadow-sm transition">
         📋 Rekap Nilai Siswa
@@ -216,34 +216,19 @@
         </table>
       </div>
 
-      <!-- PENGESAHAN 3 TANDA TANGAN (CETAK TABEL SISWA) -->
+      <!-- PENGESAHAN 2 TANDA TANGAN (KIRI: KARYONO, KANAN: IMAM SUWIJI) -->
       <div class="hidden print:block pt-8 mt-6">
-        <div class="text-right pr-6 mb-4">
-          <p class="text-xs font-medium" id="printDatePlace">Mranggen, 17 Oktober 2026</p>
-        </div>
-        <div class="grid grid-cols-3 gap-6 text-center text-slate-900">
-          <div class="flex flex-col items-center justify-between">
-            <div>
-              <p class="text-xs font-normal">Mengetahui,</p>
-              <p class="text-xs font-bold leading-tight">Korwil Biddikbud Kec. Mranggen</p>
-            </div>
-            <div class="h-24 flex items-center justify-center py-1 my-1">
-              <svg viewBox="0 0 280 120" class="h-full w-auto select-none pointer-events-none">
-                <path d="M 20,80 C 10,75 5,60 12,45 C 22,25 60,35 90,55 C 115,70 140,85 160,95 M 105,75 C 110,65 118,50 125,40 C 130,55 125,75 118,90 M 112,65 C 130,60 170,55 260,50 L 270,55" fill="none" stroke="#163172" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <p class="font-black text-xs text-slate-900 underline decoration-slate-900 underline-offset-2">Sunarto, S.Pd., M.Pd.</p>
-              <p class="font-bold text-slate-800 text-[11px] mt-0.5">NIP. 19670915 199103 1 010</p>
-            </div>
-          </div>
-
+        <div class="grid grid-cols-2 gap-12 text-center text-slate-900 px-8">
+          
+          <!-- KIRI: Ketua Sie Keguruan (Karyono, S.Pd., M.Pd.) + Stempel Ungu -->
           <div class="flex flex-col items-center justify-between relative">
             <div>
               <p class="text-xs font-normal">Mengetahui,</p>
               <p class="text-xs font-bold leading-tight">Ketua Sie Keguruan</p>
             </div>
+
             <div class="h-24 relative flex items-center justify-center py-1 my-1 w-full">
+              <!-- Stempel Ungu -->
               <div class="absolute -top-3 w-44 h-28 pointer-events-none opacity-85 select-none z-10" style="transform: rotate(-6deg);">
                 <svg viewBox="0 0 240 140" class="w-full h-full">
                   <ellipse cx="120" cy="70" rx="112" ry="62" fill="none" stroke="#4f46e5" stroke-width="3.5" style="stroke-opacity: 0.88;"/>
@@ -265,33 +250,42 @@
                   </text>
                 </svg>
               </div>
+
+              <!-- Vektor Tanda Tangan Asli Karyono -->
               <div class="relative z-20 h-full w-full flex items-center justify-center">
-                <svg viewBox="0 0 280 100" class="h-full w-auto select-none pointer-events-none">
-                  <path d="M 20,70 C 40,55 70,50 90,60 C 110,70 120,80 140,65 C 160,50 190,55 210,75 M 35,58 C 70,45 150,40 230,42 M 70,72 C 100,50 135,45 160,50 C 180,55 185,75 165,85 C 145,95 110,85 130,60 C 145,45 175,60 190,75 M 120,95 L 140,50 M 20,85 L 265,85" fill="none" stroke="#0f172a" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+                <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
+                  <path d="M 35,46 C 45,28 60,18 75,18 C 88,18 95,28 92,44 C 88,60 74,72 58,72 C 45,72 40,62 48,50 C 60,34 92,26 128,26 C 170,26 215,30 260,34 M 82,32 C 95,40 108,55 118,65 M 78,56 C 98,52 145,46 195,48 M 80,68 C 110,64 160,58 210,60" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
             </div>
+
             <div>
               <p class="font-black text-xs text-slate-900 underline decoration-slate-900 underline-offset-2">Karyono, S.Pd., M.Pd.</p>
               <p class="font-bold text-slate-800 text-[11px] mt-0.5">NIP. 19721112 199803 1 011</p>
             </div>
           </div>
 
+          <!-- KANAN: Tanggal & Admin Sistem TKA (Muhammad Imam Suwiji) -->
           <div class="flex flex-col items-center justify-between">
             <div>
-              <p class="text-xs font-normal">&nbsp;</p>
-              <p class="text-xs font-bold leading-tight">Admin Sistem TKA</p>
+              <p class="text-xs font-medium" id="printDatePlace">Mranggen, 17 Oktober 2026</p>
+              <p class="text-xs font-bold leading-tight mt-0.5">Admin Sistem TKA,</p>
             </div>
+
+            <!-- Vektor Tanda Tangan Asli Muhammad Imam Suwiji -->
             <div class="h-24 flex items-center justify-center py-1 my-1">
               <svg viewBox="0 0 280 140" class="h-full w-auto select-none pointer-events-none">
-                <path d="M 35,52 C 90,50 170,45 200,42 M 35,52 C 25,60 40,85 70,110 C 105,135 150,140 180,105 C 190,90 200,65 202,32 L 202,110 M 150,70 C 145,78 152,86 160,82 C 168,78 160,95 150,92 M 198,82 C 210,65 220,75 224,95 C 228,75 238,62 250,90 L 220,138 M 130,95 L 255,84" fill="none" stroke="#0f172a" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M 35,52 C 90,50 170,45 200,42 M 35,52 C 25,60 40,85 70,110 C 105,135 150,140 180,105 C 190,90 200,65 202,32 L 202,110 M 150,70 C 145,78 152,86 160,82 C 168,78 160,95 150,92 M 198,82 C 210,65 220,75 224,95 C 228,75 238,62 250,90 L 220,138 M 130,95 L 255,84" 
+                      fill="none" stroke="#0f172a" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
+
             <div>
               <p class="font-black text-xs text-slate-900 underline decoration-slate-900 underline-offset-2">Muhammad Imam Suwiji, S.Pd.SD., M.Pd.</p>
               <p class="font-bold text-slate-800 text-[11px] mt-0.5">NIP. 198605112009031003</p>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -324,28 +318,10 @@
         </table>
       </div>
 
-      <!-- PENGESAHAN CETAK PERINGKAT SEKOLAH -->
+      <!-- PENGESAHAN CETAK PERINGKAT SEKOLAH (2 KOLOM: KARYONO & IMAM) -->
       <div class="hidden print:block pt-8 mt-6">
-        <div class="text-right pr-6 mb-4">
-          <p class="text-xs font-medium" id="printSchoolDatePlace">Mranggen, 17 Oktober 2026</p>
-        </div>
-        <div class="grid grid-cols-3 gap-6 text-center text-slate-900">
-          <div class="flex flex-col items-center justify-between">
-            <div>
-              <p class="text-xs font-normal">Mengetahui,</p>
-              <p class="text-xs font-bold leading-tight">Korwil Biddikbud Kec. Mranggen</p>
-            </div>
-            <div class="h-24 flex items-center justify-center py-1 my-1">
-              <svg viewBox="0 0 280 120" class="h-full w-auto select-none pointer-events-none">
-                <path d="M 20,80 C 10,75 5,60 12,45 C 22,25 60,35 90,55 C 115,70 140,85 160,95 M 105,75 C 110,65 118,50 125,40 C 130,55 125,75 118,90 M 112,65 C 130,60 170,55 260,50 L 270,55" fill="none" stroke="#163172" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <p class="font-black text-xs text-slate-900 underline decoration-slate-900 underline-offset-2">Sunarto, S.Pd., M.Pd.</p>
-              <p class="font-bold text-slate-800 text-[11px] mt-0.5">NIP. 19670915 199103 1 010</p>
-            </div>
-          </div>
-
+        <div class="grid grid-cols-2 gap-12 text-center text-slate-900 px-8">
+          
           <div class="flex flex-col items-center justify-between relative">
             <div>
               <p class="text-xs font-normal">Mengetahui,</p>
@@ -353,8 +329,8 @@
             </div>
             <div class="h-24 relative flex items-center justify-center py-1 my-1 w-full">
               <div class="relative z-20 h-full w-full flex items-center justify-center">
-                <svg viewBox="0 0 280 100" class="h-full w-auto select-none pointer-events-none">
-                  <path d="M 20,70 C 40,55 70,50 90,60 C 110,70 120,80 140,65 C 160,50 190,55 210,75 M 35,58 C 70,45 150,40 230,42 M 70,72 C 100,50 135,45 160,50 C 180,55 185,75 165,85 C 145,95 110,85 130,60 C 145,45 175,60 190,75 M 120,95 L 140,50 M 20,85 L 265,85" fill="none" stroke="#0f172a" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+                <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
+                  <path d="M 35,46 C 45,28 60,18 75,18 C 88,18 95,28 92,44 C 88,60 74,72 58,72 C 45,72 40,62 48,50 C 60,34 92,26 128,26 C 170,26 215,30 260,34 M 82,32 C 95,40 108,55 118,65 M 78,56 C 98,52 145,46 195,48 M 80,68 C 110,64 160,58 210,60" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
             </div>
@@ -366,8 +342,8 @@
 
           <div class="flex flex-col items-center justify-between">
             <div>
-              <p class="text-xs font-normal">&nbsp;</p>
-              <p class="text-xs font-bold leading-tight">Admin Sistem TKA</p>
+              <p class="text-xs font-medium" id="printSchoolDatePlace">Mranggen, 17 Oktober 2026</p>
+              <p class="text-xs font-bold leading-tight mt-0.5">Admin Sistem TKA,</p>
             </div>
             <div class="h-24 flex items-center justify-center py-1 my-1">
               <svg viewBox="0 0 280 140" class="h-full w-auto select-none pointer-events-none">
@@ -379,6 +355,7 @@
               <p class="font-bold text-slate-800 text-[11px] mt-0.5">NIP. 198605112009031003</p>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -397,7 +374,7 @@
           <thead>
             <tr class="bg-teal-100/80 text-[11px] font-black text-teal-950 uppercase tracking-wider border-b border-teal-200">
               <th class="py-3 px-3 text-center w-16">No Soal</th>
-              <th class="py-3 px-4">Indikator Materi / Soal</th>
+              <th class="py-3 px-4">Indikator Materi / Tipe Soal</th>
               <th class="py-3 px-3 text-center">Jumlah Siswa Benar</th>
               <th class="py-3 px-3 text-center">Daya Serap (%)</th>
               <th class="py-3 px-4 text-center">Tingkat Kesulitan</th>
@@ -415,7 +392,7 @@
 
   </div>
 
-  <!-- MODAL CETAK PIAGAM RESMI DARI ADMIN -->
+  <!-- MODAL CETAK PIAGAM RESMI DARI ADMIN (PENANDATANGAN: SUNARTO & KARYONO) -->
   <div id="adminCertificateModal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
     <div class="bg-white max-w-4xl w-full rounded-2xl shadow-2xl relative p-3 sm:p-6 text-center border-4 border-amber-300">
       <div class="flex items-center justify-between mb-3 no-print">
@@ -461,13 +438,16 @@
           </div>
         </div>
 
+        <!-- 2 PENANDATANGAN RESMI PIAGAM: PAK SUNARTO & PAK KARYONO -->
         <div class="grid grid-cols-2 gap-4 sm:gap-12 px-4 sm:px-12 text-left text-slate-900 pt-3">
           <div class="space-y-0.5">
             <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Mengetahui</p>
             <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Korwil Biddikbud Kec. Mranggen</p>
+            <!-- Vektor Tanda Tangan Asli Sunarto (Biru Tua) -->
             <div class="h-20 sm:h-24 flex items-center py-1">
-              <svg viewBox="0 0 280 120" class="h-full w-auto select-none pointer-events-none">
-                <path d="M 20,80 C 10,75 5,60 12,45 C 22,25 60,35 90,55 C 115,70 140,85 160,95 M 105,75 C 110,65 118,50 125,40 C 130,55 125,75 118,90 M 112,65 C 130,60 170,55 260,50 L 270,55" fill="none" stroke="#163172" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
+                <path d="M 18,52 C 32,48 48,32 56,26 C 64,20 70,18 68,28 C 64,46 52,62 36,68 C 22,73 18,68 26,62 C 36,55 56,40 80,34 C 78,44 74,56 70,62 C 66,68 60,64 72,56 C 90,45 104,42 118,44 C 112,48 106,55 102,60 C 98,64 103,62 110,56 C 120,48 134,44 148,45 L 245,47" 
+                      fill="none" stroke="#1d4ed8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
             <div>
@@ -501,9 +481,10 @@
                   </text>
                 </svg>
               </div>
+              <!-- Vektor Tanda Tangan Asli Karyono di Piagam -->
               <div class="relative z-20 w-full h-full flex items-center">
-                <svg viewBox="0 0 280 100" class="h-full w-auto select-none pointer-events-none">
-                  <path d="M 20,70 C 40,55 70,50 90,60 C 110,70 120,80 140,65 C 160,50 190,55 210,75 M 35,58 C 70,45 150,40 230,42 M 70,72 C 100,50 135,45 160,50 C 180,55 185,75 165,85 C 145,95 110,85 130,60 C 145,45 175,60 190,75 M 120,95 L 140,50 M 20,85 L 265,85" fill="none" stroke="#0f172a" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+                <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
+                  <path d="M 35,46 C 45,28 60,18 75,18 C 88,18 95,28 92,44 C 88,60 74,72 58,72 C 45,72 40,62 48,50 C 60,34 92,26 128,26 C 170,26 215,30 260,34 M 82,32 C 95,40 108,55 118,65 M 78,56 C 98,52 145,46 195,48 M 80,68 C 110,64 160,58 210,60" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
             </div>
@@ -739,7 +720,6 @@
       renderAdminDashboard();
     }
 
-    // GANTI TAMPILAN ANTARA TABEL SISWA, PERINGKAT SEKOLAH, & ANALISIS BUTIR SOAL
     function switchViewMode(mode) {
       currentViewMode = mode;
       const secStudents = document.getElementById('viewStudentsSection');
@@ -858,7 +838,6 @@
         submissions = submissions.filter(s => s.package === selectedPackageFilter);
       }
 
-      // Kelompokkan nilai per sekolah
       const schoolStats = {};
       submissions.forEach(s => {
         const sch = s.school || 'Tanpa Nama SD';
@@ -881,7 +860,6 @@
         return { school: sch, count, avg: Number(avg), max, min };
       });
 
-      // Urutkan dari rata-rata sekolah tertinggi ke terendah
       schoolArray.sort((a, b) => b.avg - a.avg || b.count - a.count);
 
       const tbody = document.getElementById('schoolRankTableBody');
@@ -912,7 +890,7 @@
       });
     }
 
-    // 3. RENDER TABEL ANALISIS BUTIR SOAL (TINGKAT KESULITAN)
+    // 3. RENDER TABEL ANALISIS BUTIR SOAL
     function renderItemAnalysisTable() {
       let submissions = getStoredSubmissions();
       const targetSubName = currentAdminSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia';
@@ -926,7 +904,6 @@
       const tbody = document.getElementById('analysisTableBody');
       tbody.innerHTML = '';
 
-      // 30 Soal Indikator Dasar
       const defaultTopics = [
         "Operasi Hitung Bilangan Cacah", "Aritmatika Sosial Satuan", "Rasio Penduduk", "Faktorisasi Prima & KPK", "KPK Jadwal Bersama",
         "Skala & Luas Sebenarnya", "Konversi Satuan Panjang", "Analisis Spasial Dadu", "Satuan Gros & Lusin", "Konversi Satuan Luas",
@@ -980,7 +957,7 @@
       }
     }
 
-    // FUNGSI ISI DATA PIAGAM DARI ADMIN
+    // FUNGSI BUKA MODAL PIAGAM DARI ADMIN
     function openAdminCertModal(encodedData) {
       const sub = JSON.parse(decodeURIComponent(encodedData));
       
@@ -1006,7 +983,7 @@
       document.getElementById('adminCertificateModal').classList.remove('hidden');
     }
 
-    // FUNGSI KHUSUS CETAK PIAGAM DARI MODAL ADMIN
+    // FUNGSI CETAK PIAGAM RESMI (LANDSCAPE 1 LEMBAR PENUH)
     function printSingleCertificate() {
       document.body.classList.remove('mode-table');
       document.body.classList.add('mode-cert');
@@ -1018,7 +995,7 @@
       document.getElementById('adminCertificateModal').classList.add('hidden');
     }
 
-    // CETAK REKAPITULASI TABEL NILAI SISWA
+    // FUNGSI CETAK TABEL REKAPITULASI NILAI SISWA
     function triggerPrintMode(mode) {
       document.body.classList.remove('mode-cert');
       document.body.classList.add('mode-table');
@@ -1055,7 +1032,7 @@
       setTimeout(() => window.print(), 250);
     }
 
-    // CETAK PERINGKAT SEKOLAH
+    // FUNGSI CETAK PERINGKAT SEKOLAH
     function triggerPrintSchools() {
       document.body.classList.remove('mode-cert');
       document.body.classList.add('mode-table');
