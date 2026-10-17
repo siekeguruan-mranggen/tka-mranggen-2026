@@ -16,7 +16,7 @@
       body { background: white !important; padding: 0 !important; color: black !important; }
       .no-print { display: none !important; }
 
-      /* CETAK PIAGAM RESMI: HANYA PIAGAM YANG DICETAK (1 LEMBAR LANDSCAPE UTUH) */
+      /* Mode Cetak Piagam (1 Lembar Landscape Utuh) */
       body.mode-cert #adminPortal { display: none !important; }
       body.mode-cert #adminCertificateModal { 
         display: block !important; 
@@ -38,9 +38,9 @@
         box-shadow: none !important;
         padding: 0 !important;
       }
-      body.mode-cert @page { size: landscape; margin: 6mm; }
+      body.mode-cert @page { size: landscape; margin: 8mm; }
 
-      /* CETAK REKAPITULASI TABEL NILAI */
+      /* Mode Cetak Tabel / Rekap */
       body.mode-table #adminCertificateModal { display: none !important; }
       body.mode-table #adminPortal { display: block !important; width: 100% !important; max-width: 100% !important; }
       body.mode-table #mainPrintCard { border: none !important; box-shadow: none !important; padding: 0 !important; }
@@ -92,8 +92,8 @@
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Cloud Real-Time
           </span>
         </div>
-        <h2 class="text-2xl font-black text-slate-900">Manajemen Ujian & Rekapitulasi TKA</h2>
-        <p class="text-xs text-slate-500 mt-0.5">Kontrol token pengerjaan, buka/kunci paket online, dan cetak piagam penghargaan siswa.</p>
+        <h2 class="text-2xl font-black text-slate-900">Manajemen Ujian, Peringkat SD & Evaluasi TKA</h2>
+        <p class="text-xs text-slate-500 mt-0.5">Kontrol token pengerjaan, buka/kunci paket online, rekapitulasi nilai, dan analisis butir soal.</p>
       </div>
       
       <div class="flex flex-wrap items-center gap-2">
@@ -137,17 +137,30 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3" id="adminLockControls"></div>
     </div>
 
-    <!-- TABEL HASIL NILAI & AREA CETAK -->
-    <div id="mainPrintCard" class="bg-white rounded-3xl border border-teal-200/80 shadow-md p-6 space-y-4">
+    <!-- TAB MENU NAVIGASI: REKAP SISWA VS PERINGKAT SD VS ANALISIS SOAL -->
+    <div class="flex flex-wrap items-center gap-2 border-b border-teal-200 pb-2 no-print">
+      <button onclick="switchViewMode('students')" id="tabBtnStudents" class="px-4 py-2 font-black text-xs rounded-xl bg-teal-600 text-white shadow-sm transition">
+        📋 Rekap Nilai Siswa
+      </button>
+      <button onclick="switchViewMode('schools')" id="tabBtnSchools" class="px-4 py-2 font-bold text-xs rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition">
+        🏫 Rekap Peringkat SD (Rata-rata)
+      </button>
+      <button onclick="switchViewMode('analysis')" id="tabBtnAnalysis" class="px-4 py-2 font-bold text-xs rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition">
+        📊 Analisis Butir Soal (Daya Serap)
+      </button>
+    </div>
+
+    <!-- ================= VIEW 1: TABEL REKAP NILAI SISWA ================= -->
+    <div id="viewStudentsSection" class="bg-white rounded-3xl border border-teal-200/80 shadow-md p-6 space-y-4">
       
-      <!-- KOP RESMI CETAK PRINT REKAPITULASI -->
+      <!-- KOP PRINT REKAPITULASI -->
       <div class="hidden print:block border-b-2 border-slate-900 pb-3 mb-4 text-center">
         <h2 class="text-base font-black uppercase tracking-wider text-slate-900">KORWIL BIDDIKBUD KECAMATAN MRANGGEN</h2>
         <h3 class="text-sm font-black uppercase text-slate-800" id="printReportTitle">REKAPITULASI HASIL TRYOUT TKA KELAS 6 SD</h3>
         <p class="text-xs text-slate-600 mt-0.5" id="printReportSubtitle">Kecamatan Mranggen • Tahun Pelajaran 2026</p>
       </div>
 
-      <!-- FILTER & TOMBOL PRINT -->
+      <!-- FILTER & TOMBOL PRINT REKAP SISWA -->
       <div class="no-print space-y-4 border-b border-slate-100 pb-4">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
           <div>
@@ -157,13 +170,13 @@
 
           <div class="flex flex-wrap items-center gap-2 pt-2 lg:pt-0">
             <button onclick="triggerPrintMode('RANKING')" class="px-3.5 py-2 rounded-xl text-xs font-black bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm flex items-center gap-1.5 transition">
-              🖨️ Cetak Sesuai Peringkat
+              🖨️ Cetak Peringkat Nilai
             </button>
             <button onclick="triggerPrintMode('SCHOOL_ORDER')" class="px-3.5 py-2 rounded-xl text-xs font-black bg-teal-600 hover:bg-teal-700 text-white shadow-sm flex items-center gap-1.5 transition">
-              🖨️ Cetak Keseluruhan SD Secara Urut
+              🖨️ Cetak Urutan SD
             </button>
             <button onclick="triggerPrintMode('SELECTED_SCHOOL')" class="px-3.5 py-2 rounded-xl text-xs font-black bg-cyan-600 hover:bg-cyan-700 text-white shadow-sm flex items-center gap-1.5 transition">
-              🖨️ Cetak Sesuai SD
+              🖨️ Cetak SD Terpilih
             </button>
           </div>
         </div>
@@ -182,7 +195,7 @@
         </div>
       </div>
 
-      <!-- TABEL DATA NILAI DENGAN TOMBOL CETAK PIAGAM -->
+      <!-- TABEL REKAP NILAI SISWA -->
       <div class="overflow-x-auto">
         <table class="w-full text-left border-collapse" id="mainResultsTable">
           <thead>
@@ -203,44 +216,34 @@
         </table>
       </div>
 
-      <!-- PENGESAHAN 3 TANDA TANGAN ASLI PADA CETAK REKAPITULASI TABEL -->
+      <!-- PENGESAHAN 3 TANDA TANGAN (CETAK TABEL SISWA) -->
       <div class="hidden print:block pt-8 mt-6">
         <div class="text-right pr-6 mb-4">
-          <p class="text-xs font-medium" id="printDatePlace">Mranggen, 15 Oktober 2026</p>
+          <p class="text-xs font-medium" id="printDatePlace">Mranggen, 17 Oktober 2026</p>
         </div>
-
         <div class="grid grid-cols-3 gap-6 text-center text-slate-900">
-          
-          <!-- 1. KIRI: Korwil Biddikbud Kec. Mranggen -->
           <div class="flex flex-col items-center justify-between">
             <div>
               <p class="text-xs font-normal">Mengetahui,</p>
               <p class="text-xs font-bold leading-tight">Korwil Biddikbud Kec. Mranggen</p>
             </div>
-
-            <!-- Vektor Asli Pak Sunarto (Biru Tua) -->
             <div class="h-24 flex items-center justify-center py-1 my-1">
               <svg viewBox="0 0 280 120" class="h-full w-auto select-none pointer-events-none">
-                <path d="M 20,80 C 10,75 5,60 12,45 C 22,25 60,35 90,55 C 115,70 140,85 160,95 M 105,75 C 110,65 118,50 125,40 C 130,55 125,75 118,90 M 112,65 C 130,60 170,55 260,50 L 270,55" 
-                      fill="none" stroke="#163172" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M 20,80 C 10,75 5,60 12,45 C 22,25 60,35 90,55 C 115,70 140,85 160,95 M 105,75 C 110,65 118,50 125,40 C 130,55 125,75 118,90 M 112,65 C 130,60 170,55 260,50 L 270,55" fill="none" stroke="#163172" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
-
             <div>
               <p class="font-black text-xs text-slate-900 underline decoration-slate-900 underline-offset-2">Sunarto, S.Pd., M.Pd.</p>
               <p class="font-bold text-slate-800 text-[11px] mt-0.5">NIP. 19670915 199103 1 010</p>
             </div>
           </div>
 
-          <!-- 2. TENGAH: Ketua Sie Keguruan + Stempel Ungu -->
           <div class="flex flex-col items-center justify-between relative">
             <div>
               <p class="text-xs font-normal">Mengetahui,</p>
               <p class="text-xs font-bold leading-tight">Ketua Sie Keguruan</p>
             </div>
-
             <div class="h-24 relative flex items-center justify-center py-1 my-1 w-full">
-              <!-- Stempel Ungu -->
               <div class="absolute -top-3 w-44 h-28 pointer-events-none opacity-85 select-none z-10" style="transform: rotate(-6deg);">
                 <svg viewBox="0 0 240 140" class="w-full h-full">
                   <ellipse cx="120" cy="70" rx="112" ry="62" fill="none" stroke="#4f46e5" stroke-width="3.5" style="stroke-opacity: 0.88;"/>
@@ -262,50 +265,154 @@
                   </text>
                 </svg>
               </div>
-
-              <!-- Vektor Asli Pak Karyono -->
               <div class="relative z-20 h-full w-full flex items-center justify-center">
                 <svg viewBox="0 0 280 100" class="h-full w-auto select-none pointer-events-none">
-                  <path d="M 20,70 C 40,55 70,50 90,60 C 110,70 120,80 140,65 C 160,50 190,55 210,75 M 35,58 C 70,45 150,40 230,42 M 70,72 C 100,50 135,45 160,50 C 180,55 185,75 165,85 C 145,95 110,85 130,60 C 145,45 175,60 190,75 M 120,95 L 140,50 M 20,85 L 265,85" 
-                        fill="none" stroke="#0f172a" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M 20,70 C 40,55 70,50 90,60 C 110,70 120,80 140,65 C 160,50 190,55 210,75 M 35,58 C 70,45 150,40 230,42 M 70,72 C 100,50 135,45 160,50 C 180,55 185,75 165,85 C 145,95 110,85 130,60 C 145,45 175,60 190,75 M 120,95 L 140,50 M 20,85 L 265,85" fill="none" stroke="#0f172a" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
             </div>
-
             <div>
               <p class="font-black text-xs text-slate-900 underline decoration-slate-900 underline-offset-2">Karyono, S.Pd., M.Pd.</p>
               <p class="font-bold text-slate-800 text-[11px] mt-0.5">NIP. 19721112 199803 1 011</p>
             </div>
           </div>
 
-          <!-- 3. KANAN: Admin Sistem TKA (Muhammad Imam Suwiji) -->
           <div class="flex flex-col items-center justify-between">
             <div>
               <p class="text-xs font-normal">&nbsp;</p>
               <p class="text-xs font-bold leading-tight">Admin Sistem TKA</p>
             </div>
-
-            <!-- Vektor Asli Muhammad Imam Suwiji -->
             <div class="h-24 flex items-center justify-center py-1 my-1">
               <svg viewBox="0 0 280 140" class="h-full w-auto select-none pointer-events-none">
-                <path d="M 35,52 C 90,50 170,45 200,42 M 35,52 C 25,60 40,85 70,110 C 105,135 150,140 180,105 C 190,90 200,65 202,32 L 202,110 M 150,70 C 145,78 152,86 160,82 C 168,78 160,95 150,92 M 198,82 C 210,65 220,75 224,95 C 228,75 238,62 250,90 L 220,138 M 130,95 L 255,84" 
-                      fill="none" stroke="#0f172a" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M 35,52 C 90,50 170,45 200,42 M 35,52 C 25,60 40,85 70,110 C 105,135 150,140 180,105 C 190,90 200,65 202,32 L 202,110 M 150,70 C 145,78 152,86 160,82 C 168,78 160,95 150,92 M 198,82 C 210,65 220,75 224,95 C 228,75 238,62 250,90 L 220,138 M 130,95 L 255,84" fill="none" stroke="#0f172a" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
-
             <div>
               <p class="font-black text-xs text-slate-900 underline decoration-slate-900 underline-offset-2">Muhammad Imam Suwiji, S.Pd.SD., M.Pd.</p>
               <p class="font-bold text-slate-800 text-[11px] mt-0.5">NIP. 198605112009031003</p>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- ================= VIEW 2: REKAP PERINGKAT SEKOLAH (RATA-RATA) ================= -->
+    <div id="viewSchoolsSection" class="hidden bg-white rounded-3xl border border-teal-200/80 shadow-md p-6 space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 no-print">
+        <div>
+          <h3 class="text-base font-black text-slate-900">Rekapitulasi Peringkat SD Berdasarkan Nilai Rata-rata</h3>
+          <p class="text-xs text-slate-500">Peringkat sekolah dihitung otomatis dari akumulasi rata-rata nilai siswa yang mengikuti ujian.</p>
+        </div>
+        <button onclick="triggerPrintSchools()" class="px-3.5 py-2 rounded-xl text-xs font-black bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm flex items-center gap-1.5 transition">
+          🖨️ Cetak Peringkat SD
+        </button>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse" id="schoolRankTable">
+          <thead>
+            <tr class="bg-teal-100/80 text-[11px] font-black text-teal-950 uppercase tracking-wider border-b border-teal-200">
+              <th class="py-3 px-3 text-center w-16">Peringkat</th>
+              <th class="py-3 px-4">Nama Sekolah (SD/MI)</th>
+              <th class="py-3 px-3 text-center">Jumlah Peserta</th>
+              <th class="py-3 px-3 text-center bg-teal-200/60 text-teal-950">Rata-rata Sekolah</th>
+              <th class="py-3 px-3 text-center">Nilai Tertinggi</th>
+              <th class="py-3 px-3 text-center">Nilai Terendah</th>
+            </tr>
+          </thead>
+          <tbody id="schoolRankTableBody" class="text-xs divide-y divide-slate-100 text-slate-700"></tbody>
+        </table>
+      </div>
+
+      <!-- PENGESAHAN CETAK PERINGKAT SEKOLAH -->
+      <div class="hidden print:block pt-8 mt-6">
+        <div class="text-right pr-6 mb-4">
+          <p class="text-xs font-medium" id="printSchoolDatePlace">Mranggen, 17 Oktober 2026</p>
+        </div>
+        <div class="grid grid-cols-3 gap-6 text-center text-slate-900">
+          <div class="flex flex-col items-center justify-between">
+            <div>
+              <p class="text-xs font-normal">Mengetahui,</p>
+              <p class="text-xs font-bold leading-tight">Korwil Biddikbud Kec. Mranggen</p>
+            </div>
+            <div class="h-24 flex items-center justify-center py-1 my-1">
+              <svg viewBox="0 0 280 120" class="h-full w-auto select-none pointer-events-none">
+                <path d="M 20,80 C 10,75 5,60 12,45 C 22,25 60,35 90,55 C 115,70 140,85 160,95 M 105,75 C 110,65 118,50 125,40 C 130,55 125,75 118,90 M 112,65 C 130,60 170,55 260,50 L 270,55" fill="none" stroke="#163172" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <p class="font-black text-xs text-slate-900 underline decoration-slate-900 underline-offset-2">Sunarto, S.Pd., M.Pd.</p>
+              <p class="font-bold text-slate-800 text-[11px] mt-0.5">NIP. 19670915 199103 1 010</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col items-center justify-between relative">
+            <div>
+              <p class="text-xs font-normal">Mengetahui,</p>
+              <p class="text-xs font-bold leading-tight">Ketua Sie Keguruan</p>
+            </div>
+            <div class="h-24 relative flex items-center justify-center py-1 my-1 w-full">
+              <div class="relative z-20 h-full w-full flex items-center justify-center">
+                <svg viewBox="0 0 280 100" class="h-full w-auto select-none pointer-events-none">
+                  <path d="M 20,70 C 40,55 70,50 90,60 C 110,70 120,80 140,65 C 160,50 190,55 210,75 M 35,58 C 70,45 150,40 230,42 M 70,72 C 100,50 135,45 160,50 C 180,55 185,75 165,85 C 145,95 110,85 130,60 C 145,45 175,60 190,75 M 120,95 L 140,50 M 20,85 L 265,85" fill="none" stroke="#0f172a" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <p class="font-black text-xs text-slate-900 underline decoration-slate-900 underline-offset-2">Karyono, S.Pd., M.Pd.</p>
+              <p class="font-bold text-slate-800 text-[11px] mt-0.5">NIP. 19721112 199803 1 011</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col items-center justify-between">
+            <div>
+              <p class="text-xs font-normal">&nbsp;</p>
+              <p class="text-xs font-bold leading-tight">Admin Sistem TKA</p>
+            </div>
+            <div class="h-24 flex items-center justify-center py-1 my-1">
+              <svg viewBox="0 0 280 140" class="h-full w-auto select-none pointer-events-none">
+                <path d="M 35,52 C 90,50 170,45 200,42 M 35,52 C 25,60 40,85 70,110 C 105,135 150,140 180,105 C 190,90 200,65 202,32 L 202,110 M 150,70 C 145,78 152,86 160,82 C 168,78 160,95 150,92 M 198,82 C 210,65 220,75 224,95 C 228,75 238,62 250,90 L 220,138 M 130,95 L 255,84" fill="none" stroke="#0f172a" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <p class="font-black text-xs text-slate-900 underline decoration-slate-900 underline-offset-2">Muhammad Imam Suwiji, S.Pd.SD., M.Pd.</p>
+              <p class="font-bold text-slate-800 text-[11px] mt-0.5">NIP. 198605112009031003</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= VIEW 3: ANALISIS BUTIR SOAL ================= -->
+    <div id="viewAnalysisSection" class="hidden bg-white rounded-3xl border border-teal-200/80 shadow-md p-6 space-y-4">
+      <div class="flex items-center justify-between no-print">
+        <div>
+          <h3 class="text-base font-black text-slate-900">Analisis Butir Soal Berdasarkan Tingkat Kesulitan</h3>
+          <p class="text-xs text-slate-500">Kategori: Mudah (≥75% benar), Sedang (40% - 74% benar), Sulit (&lt;40% benar - perlu evaluasi materi pembelajaran).</p>
         </div>
       </div>
 
-      <div class="pt-6 border-t border-teal-100 text-xs font-bold text-slate-500 text-center no-print">
-        Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-teal-100/80 text-[11px] font-black text-teal-950 uppercase tracking-wider border-b border-teal-200">
+              <th class="py-3 px-3 text-center w-16">No Soal</th>
+              <th class="py-3 px-4">Indikator Materi / Soal</th>
+              <th class="py-3 px-3 text-center">Jumlah Siswa Benar</th>
+              <th class="py-3 px-3 text-center">Daya Serap (%)</th>
+              <th class="py-3 px-4 text-center">Tingkat Kesulitan</th>
+            </tr>
+          </thead>
+          <tbody id="analysisTableBody" class="text-xs divide-y divide-slate-100 text-slate-700"></tbody>
+        </table>
       </div>
     </div>
+
+    <!-- KREDIT FOOTER -->
+    <div class="pt-6 border-t border-teal-100 text-xs font-bold text-slate-500 text-center no-print">
+      Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
+    </div>
+
   </div>
 
   <!-- MODAL CETAK PIAGAM RESMI DARI ADMIN -->
@@ -358,11 +465,9 @@
           <div class="space-y-0.5">
             <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Mengetahui</p>
             <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Korwil Biddikbud Kec. Mranggen</p>
-            <!-- Vektor Asli Pak Sunarto di Piagam -->
             <div class="h-20 sm:h-24 flex items-center py-1">
               <svg viewBox="0 0 280 120" class="h-full w-auto select-none pointer-events-none">
-                <path d="M 20,80 C 10,75 5,60 12,45 C 22,25 60,35 90,55 C 115,70 140,85 160,95 M 105,75 C 110,65 118,50 125,40 C 130,55 125,75 118,90 M 112,65 C 130,60 170,55 260,50 L 270,55" 
-                      fill="none" stroke="#163172" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M 20,80 C 10,75 5,60 12,45 C 22,25 60,35 90,55 C 115,70 140,85 160,95 M 105,75 C 110,65 118,50 125,40 C 130,55 125,75 118,90 M 112,65 C 130,60 170,55 260,50 L 270,55" fill="none" stroke="#163172" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
             <div>
@@ -396,11 +501,9 @@
                   </text>
                 </svg>
               </div>
-              <!-- Vektor Asli Pak Karyono di Piagam -->
               <div class="relative z-20 w-full h-full flex items-center">
                 <svg viewBox="0 0 280 100" class="h-full w-auto select-none pointer-events-none">
-                  <path d="M 20,70 C 40,55 70,50 90,60 C 110,70 120,80 140,65 C 160,50 190,55 210,75 M 35,58 C 70,45 150,40 230,42 M 70,72 C 100,50 135,45 160,50 C 180,55 185,75 165,85 C 145,95 110,85 130,60 C 145,45 175,60 190,75 M 120,95 L 140,50 M 20,85 L 265,85" 
-                        fill="none" stroke="#0f172a" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M 20,70 C 40,55 70,50 90,60 C 110,70 120,80 140,65 C 160,50 190,55 210,75 M 35,58 C 70,45 150,40 230,42 M 70,72 C 100,50 135,45 160,50 C 180,55 185,75 165,85 C 145,95 110,85 130,60 C 145,45 175,60 190,75 M 120,95 L 140,50 M 20,85 L 265,85" fill="none" stroke="#0f172a" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
             </div>
@@ -443,6 +546,7 @@
     let currentAdminSubject = 'matematika';
     let selectedPackageFilter = 'ALL';
     let currentPrintSortMode = 'RANKING';
+    let currentViewMode = 'students';
     let isAdminLoggedIn = sessionStorage.getItem('tka_admin_auth') === 'true';
 
     const DEFAULT_PACKAGE_STATUS = {
@@ -635,11 +739,45 @@
       renderAdminDashboard();
     }
 
-    function renderAdminDashboard() {
-      renderAdminLockControls();
-      renderAdminTable();
+    // GANTI TAMPILAN ANTARA TABEL SISWA, PERINGKAT SEKOLAH, & ANALISIS BUTIR SOAL
+    function switchViewMode(mode) {
+      currentViewMode = mode;
+      const secStudents = document.getElementById('viewStudentsSection');
+      const secSchools = document.getElementById('viewSchoolsSection');
+      const secAnalysis = document.getElementById('viewAnalysisSection');
+
+      const btnStudents = document.getElementById('tabBtnStudents');
+      const btnSchools = document.getElementById('tabBtnSchools');
+      const btnAnalysis = document.getElementById('tabBtnAnalysis');
+
+      [secStudents, secSchools, secAnalysis].forEach(el => el.classList.add('hidden'));
+      [btnStudents, btnSchools, btnAnalysis].forEach(btn => {
+        btn.className = "px-4 py-2 font-bold text-xs rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition";
+      });
+
+      if (mode === 'students') {
+        secStudents.classList.remove('hidden');
+        btnStudents.className = "px-4 py-2 font-black text-xs rounded-xl bg-teal-600 text-white shadow-sm transition";
+        renderAdminTable();
+      } else if (mode === 'schools') {
+        secSchools.classList.remove('hidden');
+        btnSchools.className = "px-4 py-2 font-black text-xs rounded-xl bg-teal-600 text-white shadow-sm transition";
+        renderSchoolRankingTable();
+      } else if (mode === 'analysis') {
+        secAnalysis.classList.remove('hidden');
+        btnAnalysis.className = "px-4 py-2 font-black text-xs rounded-xl bg-teal-600 text-white shadow-sm transition";
+        renderItemAnalysisTable();
+      }
     }
 
+    function renderAdminDashboard() {
+      renderAdminLockControls();
+      if (currentViewMode === 'students') renderAdminTable();
+      else if (currentViewMode === 'schools') renderSchoolRankingTable();
+      else if (currentViewMode === 'analysis') renderItemAnalysisTable();
+    }
+
+    // 1. RENDER TABEL NILAI SISWA
     function renderAdminTable() {
       let submissions = getStoredSubmissions();
       const targetSubName = currentAdminSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia';
@@ -655,7 +793,6 @@
       if (schoolFilter) submissions = submissions.filter(s => s.school === schoolFilter);
       if (searchName) submissions = submissions.filter(s => s.name.toLowerCase().includes(searchName));
 
-      // Pengurutan
       if (currentPrintSortMode === 'SCHOOL_ORDER') {
         submissions.sort((a, b) => a.school.localeCompare(b.school) || (Number(b.finalScore) || 0) - (Number(a.finalScore) || 0));
       } else {
@@ -680,7 +817,6 @@
           else if (idx === 2) rankBadge = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-600 text-white font-black text-xs shadow-sm">🥉 3</span>`;
         }
 
-        // Koreksi nilai sisa testing lama agar tidak melebihi 100
         let displayScore = Number(s.finalScore) || 0;
         if (displayScore > 100) {
           displayScore = Math.min(100, Math.round((Number(s.rawScore || 0) / 52) * 100));
@@ -710,6 +846,138 @@
         `;
         tbody.appendChild(tr);
       });
+    }
+
+    // 2. RENDER TABEL PERINGKAT SD BERDASARKAN RATA-RATA SEKOLAH
+    function renderSchoolRankingTable() {
+      let submissions = getStoredSubmissions();
+      const targetSubName = currentAdminSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia';
+      submissions = submissions.filter(s => s.subject === targetSubName);
+
+      if (selectedPackageFilter !== 'ALL') {
+        submissions = submissions.filter(s => s.package === selectedPackageFilter);
+      }
+
+      // Kelompokkan nilai per sekolah
+      const schoolStats = {};
+      submissions.forEach(s => {
+        const sch = s.school || 'Tanpa Nama SD';
+        let score = Number(s.finalScore) || 0;
+        if (score > 100) score = Math.min(100, Math.round((Number(s.rawScore || 0) / 52) * 100));
+
+        if (!schoolStats[sch]) {
+          schoolStats[sch] = { count: 0, totalScore: 0, scores: [] };
+        }
+        schoolStats[sch].count++;
+        schoolStats[sch].totalScore += score;
+        schoolStats[sch].scores.push(score);
+      });
+
+      const schoolArray = Object.keys(schoolStats).map(sch => {
+        const count = schoolStats[sch].count;
+        const avg = count > 0 ? (schoolStats[sch].totalScore / count).toFixed(1) : 0;
+        const max = Math.max(...schoolStats[sch].scores);
+        const min = Math.min(...schoolStats[sch].scores);
+        return { school: sch, count, avg: Number(avg), max, min };
+      });
+
+      // Urutkan dari rata-rata sekolah tertinggi ke terendah
+      schoolArray.sort((a, b) => b.avg - a.avg || b.count - a.count);
+
+      const tbody = document.getElementById('schoolRankTableBody');
+      tbody.innerHTML = '';
+
+      if (schoolArray.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-slate-400 font-medium">Belum ada data nilai sekolah untuk mapel ini.</td></tr>`;
+        return;
+      }
+
+      schoolArray.forEach((sc, idx) => {
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-teal-50/50 transition";
+        let rankBadge = `<span class="font-bold text-slate-600">${idx + 1}</span>`;
+        if (idx === 0) rankBadge = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-400 text-amber-950 font-black text-xs shadow-sm">🥇 1</span>`;
+        else if (idx === 1) rankBadge = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-slate-300 text-slate-900 font-black text-xs shadow-sm">🥈 2</span>`;
+        else if (idx === 2) rankBadge = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-600 text-white font-black text-xs shadow-sm">🥉 3</span>`;
+
+        tr.innerHTML = `
+          <td class="py-3 px-3 text-center">${rankBadge}</td>
+          <td class="py-3 px-4 font-black text-slate-900">${sc.school}</td>
+          <td class="py-3 px-3 text-center font-bold text-slate-700">${sc.count} Siswa</td>
+          <td class="py-3 px-3 text-center font-black text-teal-700 text-sm bg-teal-50/70">${sc.avg}</td>
+          <td class="py-3 px-3 text-center font-bold text-emerald-600">${sc.max}</td>
+          <td class="py-3 px-3 text-center font-bold text-rose-600">${sc.min}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // 3. RENDER TABEL ANALISIS BUTIR SOAL (TINGKAT KESULITAN)
+    function renderItemAnalysisTable() {
+      let submissions = getStoredSubmissions();
+      const targetSubName = currentAdminSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia';
+      submissions = submissions.filter(s => s.subject === targetSubName);
+
+      if (selectedPackageFilter !== 'ALL') {
+        submissions = submissions.filter(s => s.package === selectedPackageFilter);
+      }
+
+      const totalParticipants = submissions.length;
+      const tbody = document.getElementById('analysisTableBody');
+      tbody.innerHTML = '';
+
+      // 30 Soal Indikator Dasar
+      const defaultTopics = [
+        "Operasi Hitung Bilangan Cacah", "Aritmatika Sosial Satuan", "Rasio Penduduk", "Faktorisasi Prima & KPK", "KPK Jadwal Bersama",
+        "Skala & Luas Sebenarnya", "Konversi Satuan Panjang", "Analisis Spasial Dadu", "Satuan Gros & Lusin", "Konversi Satuan Luas",
+        "Konversi Satuan Volume", "Kecepatan, Jarak & Waktu", "Debit & Volume", "Sifat Bangun Datar", "Keliling Lingkaran",
+        "Luas Segitiga", "Rasio Perbandingan", "Luas Ruang & Biaya Keramik", "Pecahan Senilai", "Volume & Luas Alas Balok",
+        "Median Data Tunggal", "Modus Frekuensi Buku", "Analisis Data Satwa", "Perkalian Pecahan", "Perkalian Desimal",
+        "Penaksiran Harga", "Rata-rata Diagram Batang", "Hubungan Antar Sudut", "Perbandingan Nilai Pakan", "Interpretasi Diagram Kelulusan"
+      ];
+
+      for (let i = 1; i <= 30; i++) {
+        let correctCount = 0;
+        if (totalParticipants > 0) {
+          submissions.forEach(s => {
+            if (s.detailAnswers && s.detailAnswers[i] && s.detailAnswers[i].isCorrect) {
+              correctCount++;
+            }
+          });
+        }
+
+        const percentage = totalParticipants > 0 ? Math.round((correctCount / totalParticipants) * 100) : 0;
+        let difficulty = "Sedang";
+        let diffBadge = "bg-amber-100 text-amber-800 border-amber-200";
+
+        if (totalParticipants > 0) {
+          if (percentage >= 75) {
+            difficulty = "Mudah";
+            diffBadge = "bg-emerald-100 text-emerald-800 border-emerald-200";
+          } else if (percentage < 40) {
+            difficulty = "Sulit / Perlu Evaluasi";
+            diffBadge = "bg-rose-100 text-rose-800 border-rose-200";
+          }
+        } else {
+          difficulty = "Menunggu Data";
+          diffBadge = "bg-slate-100 text-slate-500 border-slate-200";
+        }
+
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-slate-50";
+        tr.innerHTML = `
+          <td class="py-3 px-3 text-center font-bold text-slate-800">${i}</td>
+          <td class="py-3 px-4 font-semibold text-slate-800">${defaultTopics[i - 1] || 'Materi TKA'}</td>
+          <td class="py-3 px-3 text-center font-bold text-slate-700">${correctCount} dari ${totalParticipants} siswa</td>
+          <td class="py-3 px-3 text-center font-black text-teal-700 text-sm">${percentage}%</td>
+          <td class="py-3 px-4 text-center">
+            <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-black border ${diffBadge}">
+              ${difficulty}
+            </span>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      }
     }
 
     // FUNGSI ISI DATA PIAGAM DARI ADMIN
@@ -750,7 +1018,7 @@
       document.getElementById('adminCertificateModal').classList.add('hidden');
     }
 
-    // FUNGSI CETAK TABEL REKAPITULASI DENGAN 3 TANDA TANGAN PENGESAHAN
+    // CETAK REKAPITULASI TABEL NILAI SISWA
     function triggerPrintMode(mode) {
       document.body.classList.remove('mode-cert');
       document.body.classList.add('mode-table');
@@ -784,6 +1052,16 @@
       }
 
       renderAdminTable();
+      setTimeout(() => window.print(), 250);
+    }
+
+    // CETAK PERINGKAT SEKOLAH
+    function triggerPrintSchools() {
+      document.body.classList.remove('mode-cert');
+      document.body.classList.add('mode-table');
+      const options = { day: 'numeric', month: 'long', year: 'numeric' };
+      const todayFormatted = new Date().toLocaleDateString('id-ID', options);
+      document.getElementById('printSchoolDatePlace').innerText = `Mranggen, ${todayFormatted}`;
       setTimeout(() => window.print(), 250);
     }
 
