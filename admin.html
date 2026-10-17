@@ -16,14 +16,14 @@
       body { background: white !important; padding: 0 !important; color: black !important; }
       .no-print { display: none !important; }
 
-      /* JIKA MODE CETAK PIAGAM */
+      /* CETAK PIAGAM RESMI: HANYA PIAGAM YANG DICETAK (1 LEMBAR LANDSCAPE UTUH) */
       body.mode-cert #adminPortal { display: none !important; }
       body.mode-cert #adminCertificateModal { 
         display: block !important; 
         position: fixed !important;
         inset: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
+        width: 100vw !important;
+        height: 100vh !important;
         margin: 0 !important; 
         padding: 0 !important; 
         border: none !important; 
@@ -38,9 +38,9 @@
         box-shadow: none !important;
         padding: 0 !important;
       }
-      body.mode-cert @page { size: landscape; margin: 8mm; }
+      body.mode-cert @page { size: landscape; margin: 6mm; }
 
-      /* JIKA MODE CETAK REKAPITULASI TABEL */
+      /* CETAK REKAPITULASI TABEL NILAI */
       body.mode-table #adminCertificateModal { display: none !important; }
       body.mode-table #adminPortal { display: block !important; width: 100% !important; max-width: 100% !important; }
       body.mode-table #mainPrintCard { border: none !important; box-shadow: none !important; padding: 0 !important; }
@@ -203,7 +203,7 @@
         </table>
       </div>
 
-      <!-- PENGESAHAN 3 TANDA TANGAN SAAT CETAK REKAPITULASI TABEL -->
+      <!-- PENGESAHAN 3 TANDA TANGAN ASLI PADA CETAK REKAPITULASI TABEL -->
       <div class="hidden print:block pt-8 mt-6">
         <div class="text-right pr-6 mb-4">
           <p class="text-xs font-medium" id="printDatePlace">Mranggen, 15 Oktober 2026</p>
@@ -218,10 +218,11 @@
               <p class="text-xs font-bold leading-tight">Korwil Biddikbud Kec. Mranggen</p>
             </div>
 
+            <!-- Vektor Asli Pak Sunarto (Biru Tua) -->
             <div class="h-24 flex items-center justify-center py-1 my-1">
-              <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
-                <path d="M 18,52 C 32,48 48,32 56,26 C 64,20 70,18 68,28 C 64,46 52,62 36,68 C 22,73 18,68 26,62 C 36,55 56,40 80,34 C 78,44 74,56 70,62 C 66,68 60,64 72,56 C 90,45 104,42 118,44 C 112,48 106,55 102,60 C 98,64 103,62 110,56 C 120,48 134,44 148,45 L 245,47" 
-                      fill="none" stroke="#1d4ed8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg viewBox="0 0 280 120" class="h-full w-auto select-none pointer-events-none">
+                <path d="M 20,80 C 10,75 5,60 12,45 C 22,25 60,35 90,55 C 115,70 140,85 160,95 M 105,75 C 110,65 118,50 125,40 C 130,55 125,75 118,90 M 112,65 C 130,60 170,55 260,50 L 270,55" 
+                      fill="none" stroke="#163172" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
 
@@ -239,6 +240,7 @@
             </div>
 
             <div class="h-24 relative flex items-center justify-center py-1 my-1 w-full">
+              <!-- Stempel Ungu -->
               <div class="absolute -top-3 w-44 h-28 pointer-events-none opacity-85 select-none z-10" style="transform: rotate(-6deg);">
                 <svg viewBox="0 0 240 140" class="w-full h-full">
                   <ellipse cx="120" cy="70" rx="112" ry="62" fill="none" stroke="#4f46e5" stroke-width="3.5" style="stroke-opacity: 0.88;"/>
@@ -261,10 +263,11 @@
                 </svg>
               </div>
 
+              <!-- Vektor Asli Pak Karyono -->
               <div class="relative z-20 h-full w-full flex items-center justify-center">
-                <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
-                  <path d="M 35,46 C 45,28 60,18 75,18 C 88,18 95,28 92,44 C 88,60 74,72 58,72 C 45,72 40,62 48,50 C 60,34 92,26 128,26 C 170,26 215,30 260,34 M 82,32 C 95,40 108,55 118,65 M 78,56 C 98,52 145,46 195,48 M 80,68 C 110,64 160,58 210,60" 
-                        fill="none" stroke="#0f172a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                <svg viewBox="0 0 280 100" class="h-full w-auto select-none pointer-events-none">
+                  <path d="M 20,70 C 40,55 70,50 90,60 C 110,70 120,80 140,65 C 160,50 190,55 210,75 M 35,58 C 70,45 150,40 230,42 M 70,72 C 100,50 135,45 160,50 C 180,55 185,75 165,85 C 145,95 110,85 130,60 C 145,45 175,60 190,75 M 120,95 L 140,50 M 20,85 L 265,85" 
+                        fill="none" stroke="#0f172a" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
             </div>
@@ -275,21 +278,18 @@
             </div>
           </div>
 
-          <!-- 3. KANAN: Admin Sistem TKA -->
+          <!-- 3. KANAN: Admin Sistem TKA (Muhammad Imam Suwiji) -->
           <div class="flex flex-col items-center justify-between">
             <div>
               <p class="text-xs font-normal">&nbsp;</p>
               <p class="text-xs font-bold leading-tight">Admin Sistem TKA</p>
             </div>
 
+            <!-- Vektor Asli Muhammad Imam Suwiji -->
             <div class="h-24 flex items-center justify-center py-1 my-1">
-              <!-- Vektor Tanda Tangan Asli Muhammad Imam Suwiji -->
-              <svg viewBox="0 0 280 100" class="h-full w-auto select-none pointer-events-none">
-                <path d="M 60,30 C 40,30 20,40 18,52 C 16,68 45,95 85,110 C 130,125 155,100 170,72 C 180,55 190,40 195,15" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M 18,52 C 50,48 120,46 195,38" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round"/>
-                <path d="M 152,50 C 148,54 149,60 154,62 C 158,63 158,68 152,70" fill="none" stroke="#0f172a" stroke-width="2.4" stroke-linecap="round"/>
-                <path d="M 195,20 L 196,80 M 196,48 C 205,38 215,48 216,62 M 216,48 C 226,38 238,50 236,75 L 210,122" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M 135,88 L 245,74" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round"/>
+              <svg viewBox="0 0 280 140" class="h-full w-auto select-none pointer-events-none">
+                <path d="M 35,52 C 90,50 170,45 200,42 M 35,52 C 25,60 40,85 70,110 C 105,135 150,140 180,105 C 190,90 200,65 202,32 L 202,110 M 150,70 C 145,78 152,86 160,82 C 168,78 160,95 150,92 M 198,82 C 210,65 220,75 224,95 C 228,75 238,62 250,90 L 220,138 M 130,95 L 255,84" 
+                      fill="none" stroke="#0f172a" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
 
@@ -358,10 +358,11 @@
           <div class="space-y-0.5">
             <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Mengetahui</p>
             <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Korwil Biddikbud Kec. Mranggen</p>
+            <!-- Vektor Asli Pak Sunarto di Piagam -->
             <div class="h-20 sm:h-24 flex items-center py-1">
-              <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
-                <path d="M 18,52 C 32,48 48,32 56,26 C 64,20 70,18 68,28 C 64,46 52,62 36,68 C 22,73 18,68 26,62 C 36,55 56,40 80,34 C 78,44 74,56 70,62 C 66,68 60,64 72,56 C 90,45 104,42 118,44 C 112,48 106,55 102,60 C 98,64 103,62 110,56 C 120,48 134,44 148,45 L 245,47" 
-                      fill="none" stroke="#1d4ed8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg viewBox="0 0 280 120" class="h-full w-auto select-none pointer-events-none">
+                <path d="M 20,80 C 10,75 5,60 12,45 C 22,25 60,35 90,55 C 115,70 140,85 160,95 M 105,75 C 110,65 118,50 125,40 C 130,55 125,75 118,90 M 112,65 C 130,60 170,55 260,50 L 270,55" 
+                      fill="none" stroke="#163172" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
             <div>
@@ -395,10 +396,11 @@
                   </text>
                 </svg>
               </div>
+              <!-- Vektor Asli Pak Karyono di Piagam -->
               <div class="relative z-20 w-full h-full flex items-center">
-                <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
-                  <path d="M 35,46 C 45,28 60,18 75,18 C 88,18 95,28 92,44 C 88,60 74,72 58,72 C 45,72 40,62 48,50 C 60,34 92,26 128,26 C 170,26 215,30 260,34 M 82,32 C 95,40 108,55 118,65 M 78,56 C 98,52 145,46 195,48 M 80,68 C 110,64 160,58 210,60" 
-                        fill="none" stroke="#0f172a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                <svg viewBox="0 0 280 100" class="h-full w-auto select-none pointer-events-none">
+                  <path d="M 20,70 C 40,55 70,50 90,60 C 110,70 120,80 140,65 C 160,50 190,55 210,75 M 35,58 C 70,45 150,40 230,42 M 70,72 C 100,50 135,45 160,50 C 180,55 185,75 165,85 C 145,95 110,85 130,60 C 145,45 175,60 190,75 M 120,95 L 140,50 M 20,85 L 265,85" 
+                        fill="none" stroke="#0f172a" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
             </div>
@@ -678,7 +680,7 @@
           else if (idx === 2) rankBadge = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-600 text-white font-black text-xs shadow-sm">🥉 3</span>`;
         }
 
-        // Koreksi nilai tampil agar tidak melebihi 100
+        // Koreksi nilai sisa testing lama agar tidak melebihi 100
         let displayScore = Number(s.finalScore) || 0;
         if (displayScore > 100) {
           displayScore = Math.min(100, Math.round((Number(s.rawScore || 0) / 52) * 100));
