@@ -131,7 +131,7 @@
       <div class="flex items-center justify-between mb-4">
         <div>
           <h3 class="text-sm sm:text-base font-extrabold text-slate-900" id="lockSectionTitle">Kontrol Token: Matematika</h3>
-          <p class="text-xs text-slate-500">Ketik token baru pada kotak lalu tekan Enter/klik di luar untuk menyimpan ke cloud secara instan.</p>
+          <p class="text-xs text-slate-500">Ketik token baru pada kotak lalu tekan Enter/klik di luar untuk menyimpan ke cloud secara instan[cite: 22].</p>
         </div>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3" id="adminLockControls"></div>
@@ -216,21 +216,21 @@
         </table>
       </div>
 
-      <!-- PENGESAHAN 2 TANDA TANGAN (KIRI: KARYONO + STEMPEL, KANAN: IMAM SUWIJI) -->
-      <div class="hidden print:block pt-8 mt-6">
-        <div class="grid grid-cols-2 gap-12 text-center text-slate-900 px-8">
+      <!-- PENGESAHAN 2 TANDA TANGAN (RAPAT, TRANSPARAN & BEBAS KOTAK) -->
+      <div class="hidden print:block pt-3 mt-2" style="page-break-inside: avoid; break-inside: avoid;">
+        <div class="grid grid-cols-2 gap-8 text-center text-slate-900 px-6">
           
           <!-- KIRI: Ketua Sie Keguruan (Karyono, S.Pd., M.Pd.) + STEMPEL OVAL UNGU -->
-          <div class="flex flex-col items-center justify-between relative">
+          <div class="flex flex-col items-center justify-end" style="page-break-inside: avoid;">
             <div>
               <p class="text-xs font-normal">Mengetahui,</p>
               <p class="text-xs font-bold leading-tight">Ketua Sie Keguruan</p>
             </div>
 
-            <div class="h-24 relative flex items-center justify-center py-1 my-1 w-full">
-              <!-- Stempel Oval Ungu Sie Keguruan -->
-              <div class="absolute -top-3 w-44 h-28 pointer-events-none opacity-85 select-none z-10" style="transform: rotate(-6deg);">
-                <svg viewBox="0 0 240 140" class="w-full h-full">
+            <div class="relative flex items-center justify-center my-1" style="height: 75px; width: 220px; background: transparent;">
+              <!-- Stempel Ungu -->
+              <div class="absolute pointer-events-none opacity-80 select-none z-10" style="width: 145px; height: 90px; top: -8px; transform: rotate(-5deg); background: transparent;">
+                <svg viewBox="0 0 240 140" class="w-full h-full" style="background: transparent;">
                   <ellipse cx="120" cy="70" rx="112" ry="62" fill="none" stroke="#4f46e5" stroke-width="3.5" style="stroke-opacity: 0.88;"/>
                   <ellipse cx="120" cy="70" rx="103" ry="53" fill="none" stroke="#4f46e5" stroke-width="1.8" style="stroke-opacity: 0.85;"/>
                   <line x1="22" y1="52" x2="218" y2="52" stroke="#4f46e5" stroke-width="2" style="stroke-opacity: 0.85;"/>
@@ -251,9 +251,9 @@
                 </svg>
               </div>
 
-              <!-- Vektor Tanda Tangan Asli Karyono -->
-              <div class="relative z-20 h-full w-full flex items-center justify-center">
-                <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
+              <!-- Vektor Tanda Tangan Karyono -->
+              <div class="relative z-20 w-full h-full flex items-center justify-center" style="background: transparent;">
+                <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none" style="background: transparent;">
                   <path d="M 35,46 C 45,28 60,18 75,18 C 88,18 95,28 92,44 C 88,60 74,72 58,72 C 45,72 40,62 48,50 C 60,34 92,26 128,26 C 170,26 215,30 260,34 M 82,32 C 95,40 108,55 118,65 M 78,56 C 98,52 145,46 195,48 M 80,68 C 110,64 160,58 210,60" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
@@ -266,15 +266,15 @@
           </div>
 
           <!-- KANAN: Tanggal & Admin Sistem TKA (Muhammad Imam Suwiji) -->
-          <div class="flex flex-col items-center justify-between">
+          <div class="flex flex-col items-center justify-end" style="page-break-inside: avoid;">
             <div>
               <p class="text-xs font-medium" id="printDatePlace">Mranggen, 17 Oktober 2026</p>
               <p class="text-xs font-bold leading-tight mt-0.5">Admin Sistem TKA,</p>
             </div>
 
-            <!-- Vektor Tanda Tangan Asli Muhammad Imam Suwiji -->
-            <div class="h-24 flex items-center justify-center py-1 my-1">
-              <svg viewBox="0 0 280 140" class="h-full w-auto select-none pointer-events-none">
+            <!-- Vektor Tanda Tangan Muhammad Imam Suwiji -->
+            <div class="relative flex items-center justify-center my-1" style="height: 75px; width: 220px; background: transparent;">
+              <svg viewBox="0 0 280 140" class="h-full w-auto select-none pointer-events-none" style="background: transparent;">
                 <path d="M 35,52 C 90,50 170,45 200,42 M 35,52 C 25,60 40,85 70,110 C 105,135 150,140 180,105 C 190,90 200,65 202,32 L 202,110 M 150,70 C 145,78 152,86 160,82 C 168,78 160,95 150,92 M 198,82 C 210,65 220,75 224,95 C 228,75 238,62 250,90 L 220,138 M 130,95 L 255,84" 
                       fill="none" stroke="#0f172a" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -319,18 +319,19 @@
       </div>
 
       <!-- PENGESAHAN CETAK PERINGKAT SEKOLAH (KARYONO + STEMPEL & IMAM) -->
-      <div class="hidden print:block pt-8 mt-6">
-        <div class="grid grid-cols-2 gap-12 text-center text-slate-900 px-8">
+      <div class="hidden print:block pt-3 mt-2" style="page-break-inside: avoid; break-inside: avoid;">
+        <div class="grid grid-cols-2 gap-8 text-center text-slate-900 px-6">
           
-          <div class="flex flex-col items-center justify-between relative">
+          <div class="flex flex-col items-center justify-end" style="page-break-inside: avoid;">
             <div>
               <p class="text-xs font-normal">Mengetahui,</p>
               <p class="text-xs font-bold leading-tight">Ketua Sie Keguruan</p>
             </div>
-            <div class="h-24 relative flex items-center justify-center py-1 my-1 w-full">
+
+            <div class="relative flex items-center justify-center my-1" style="height: 75px; width: 220px; background: transparent;">
               <!-- Stempel Ungu -->
-              <div class="absolute -top-3 w-44 h-28 pointer-events-none opacity-85 select-none z-10" style="transform: rotate(-6deg);">
-                <svg viewBox="0 0 240 140" class="w-full h-full">
+              <div class="absolute pointer-events-none opacity-80 select-none z-10" style="width: 145px; height: 90px; top: -8px; transform: rotate(-5deg); background: transparent;">
+                <svg viewBox="0 0 240 140" class="w-full h-full" style="background: transparent;">
                   <ellipse cx="120" cy="70" rx="112" ry="62" fill="none" stroke="#4f46e5" stroke-width="3.5" style="stroke-opacity: 0.88;"/>
                   <ellipse cx="120" cy="70" rx="103" ry="53" fill="none" stroke="#4f46e5" stroke-width="1.8" style="stroke-opacity: 0.85;"/>
                   <line x1="22" y1="52" x2="218" y2="52" stroke="#4f46e5" stroke-width="2" style="stroke-opacity: 0.85;"/>
@@ -352,28 +353,32 @@
               </div>
 
               <!-- Tanda Tangan Karyono -->
-              <div class="relative z-20 h-full w-full flex items-center justify-center">
-                <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
+              <div class="relative z-20 w-full h-full flex items-center justify-center" style="background: transparent;">
+                <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none" style="background: transparent;">
                   <path d="M 35,46 C 45,28 60,18 75,18 C 88,18 95,28 92,44 C 88,60 74,72 58,72 C 45,72 40,62 48,50 C 60,34 92,26 128,26 C 170,26 215,30 260,34 M 82,32 C 95,40 108,55 118,65 M 78,56 C 98,52 145,46 195,48 M 80,68 C 110,64 160,58 210,60" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
             </div>
+
             <div>
               <p class="font-black text-xs text-slate-900 underline decoration-slate-900 underline-offset-2">Karyono, S.Pd., M.Pd.</p>
               <p class="font-bold text-slate-800 text-[11px] mt-0.5">NIP. 19721112 199803 1 011</p>
             </div>
           </div>
 
-          <div class="flex flex-col items-center justify-between">
+          <div class="flex flex-col items-center justify-end" style="page-break-inside: avoid;">
             <div>
               <p class="text-xs font-medium" id="printSchoolDatePlace">Mranggen, 17 Oktober 2026</p>
               <p class="text-xs font-bold leading-tight mt-0.5">Admin Sistem TKA,</p>
             </div>
-            <div class="h-24 flex items-center justify-center py-1 my-1">
-              <svg viewBox="0 0 280 140" class="h-full w-auto select-none pointer-events-none">
-                <path d="M 35,52 C 90,50 170,45 200,42 M 35,52 C 25,60 40,85 70,110 C 105,135 150,140 180,105 C 190,90 200,65 202,32 L 202,110 M 150,70 C 145,78 152,86 160,82 C 168,78 160,95 150,92 M 198,82 C 210,65 220,75 224,95 C 228,75 238,62 250,90 L 220,138 M 130,95 L 255,84" fill="none" stroke="#0f172a" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <div class="relative flex items-center justify-center my-1" style="height: 75px; width: 220px; background: transparent;">
+              <svg viewBox="0 0 280 140" class="h-full w-auto select-none pointer-events-none" style="background: transparent;">
+                <path d="M 35,52 C 90,50 170,45 200,42 M 35,52 C 25,60 40,85 70,110 C 105,135 150,140 180,105 C 190,90 200,65 202,32 L 202,110 M 150,70 C 145,78 152,86 160,82 C 168,78 160,95 150,92 M 198,82 C 210,65 220,75 224,95 C 228,75 238,62 250,90 L 220,138 M 130,95 L 255,84" 
+                      fill="none" stroke="#0f172a" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
+
             <div>
               <p class="font-black text-xs text-slate-900 underline decoration-slate-900 underline-offset-2">Muhammad Imam Suwiji, S.Pd.SD., M.Pd.</p>
               <p class="font-bold text-slate-800 text-[11px] mt-0.5">NIP. 198605112009031003</p>
@@ -467,7 +472,6 @@
           <div class="space-y-0.5">
             <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Mengetahui</p>
             <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Korwil Biddikbud Kec. Mranggen</p>
-            <!-- Vektor Tanda Tangan Asli Sunarto (Biru Tua) -->
             <div class="h-20 sm:h-24 flex items-center py-1">
               <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
                 <path d="M 18,52 C 32,48 48,32 56,26 C 64,20 70,18 68,28 C 64,46 52,62 36,68 C 22,73 18,68 26,62 C 36,55 56,40 80,34 C 78,44 74,56 70,62 C 66,68 60,64 72,56 C 90,45 104,42 118,44 C 112,48 106,55 102,60 C 98,64 103,62 110,56 C 120,48 134,44 148,45 L 245,47" 
@@ -505,7 +509,6 @@
                   </text>
                 </svg>
               </div>
-              <!-- Vektor Tanda Tangan Asli Karyono di Piagam -->
               <div class="relative z-20 w-full h-full flex items-center">
                 <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
                   <path d="M 35,46 C 45,28 60,18 75,18 C 88,18 95,28 92,44 C 88,60 74,72 58,72 C 45,72 40,62 48,50 C 60,34 92,26 128,26 C 170,26 215,30 260,34 M 82,32 C 95,40 108,55 118,65 M 78,56 C 98,52 145,46 195,48 M 80,68 C 110,64 160,58 210,60" 
