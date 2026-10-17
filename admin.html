@@ -16,7 +16,7 @@
       body { background: white !important; padding: 0 !important; color: black !important; }
       .no-print { display: none !important; }
 
-      /* Mode Cetak Piagam (Hanya Piagam yang Dicetak, 1 Halaman Penuh Landscape) */
+      /* Mode Cetak Piagam Tunggal (Landscape 1 Halaman Bersih) */
       body.print-cert #adminPortal { display: none !important; }
       body.print-cert #adminCertificateModal { 
         display: block !important; 
@@ -128,7 +128,7 @@
       <div class="flex items-center justify-between mb-4">
         <div>
           <h3 class="text-sm sm:text-base font-extrabold text-slate-900" id="lockSectionTitle">Kontrol Token: Matematika</h3>
-          <p class="text-xs text-slate-500">Ketik token baru pada kotak lalu tekan Enter/klik di luar untuk menyimpan ke cloud secara instan.</p>
+          <p class="text-xs text-slate-500">Ketik token baru pada kotak lalu tekan Enter/klik di luar untuk menyimpan ke cloud secara instan[cite: 22].</p>
         </div>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3" id="adminLockControls"></div>
@@ -200,26 +200,90 @@
         </table>
       </div>
 
-      <!-- PENGESAHAN TANDA TANGAN ADMIN SAAT PRINT REKAP -->
+      <!-- PENGESAHAN 3 TANDA TANGAN ASLI PNG SAAT CETAK REKAPITULASI -->
       <div class="hidden print:block pt-8 mt-6">
-        <div class="w-72 ml-auto text-left text-slate-900 pr-4">
+        <div class="text-right pr-6 mb-4">
           <p class="text-xs font-medium" id="printDatePlace">Mranggen, 15 Oktober 2026</p>
-          <p class="text-xs font-bold mt-0.5">Admin,</p>
+        </div>
+
+        <div class="grid grid-cols-3 gap-6 text-center text-slate-900">
           
-          <div class="h-24 flex items-center py-1 my-1">
-            <svg viewBox="0 0 280 100" class="h-full w-auto select-none pointer-events-none">
-              <path d="M 60,30 C 40,30 20,40 18,52 C 16,68 45,95 85,110 C 130,125 155,100 170,72 C 180,55 190,40 195,15" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M 18,52 C 50,48 120,46 195,38" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round"/>
-              <path d="M 152,50 C 148,54 149,60 154,62 C 158,63 158,68 152,70" fill="none" stroke="#0f172a" stroke-width="2.4" stroke-linecap="round"/>
-              <path d="M 195,20 L 196,80 M 196,48 C 205,38 215,48 216,62 M 216,48 C 226,38 238,50 236,75 L 210,122" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M 135,88 L 245,74" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round"/>
-            </svg>
+          <!-- 1. KIRI: Korwil Biddikbud Kec. Mranggen -->
+          <div class="flex flex-col items-center justify-between">
+            <div>
+              <p class="text-xs font-normal">Mengetahui,</p>
+              <p class="text-xs font-bold leading-tight">Korwil Biddikbud Kec. Mranggen</p>
+            </div>
+
+            <div class="h-24 flex items-center justify-center py-1 my-1">
+              <img src="ttd-sunarto.png" alt="Tanda Tangan Sunarto" class="h-full w-auto object-contain select-none">
+            </div>
+
+            <div>
+              <p class="font-black text-xs text-slate-900 underline decoration-slate-900 underline-offset-2">Sunarto, S.Pd., M.Pd.</p>
+              <p class="font-bold text-slate-800 text-[11px] mt-0.5">NIP. 19670915 199103 1 010</p>
+            </div>
           </div>
 
-          <div>
-            <p class="font-black text-xs text-slate-900 underline decoration-slate-900 underline-offset-2">Muhammad Imam Suwiji, S.Pd.SD., M.Pd.</p>
-            <p class="font-bold text-slate-800 text-[11px] mt-0.5">NIP. 198605112009031003</p>
+          <!-- 2. TENGAH: Ketua Sie Keguruan + Stempel Ungu -->
+          <div class="flex flex-col items-center justify-between relative">
+            <div>
+              <p class="text-xs font-normal">Mengetahui,</p>
+              <p class="text-xs font-bold leading-tight">Ketua Sie Keguruan</p>
+            </div>
+
+            <div class="h-24 relative flex items-center justify-center py-1 my-1 w-full">
+              <!-- Stempel Ungu Menimpa Posisi Tanda Tangan -->
+              <div class="absolute -top-3 w-44 h-28 pointer-events-none opacity-85 select-none z-10" style="transform: rotate(-6deg);">
+                <svg viewBox="0 0 240 140" class="w-full h-full">
+                  <ellipse cx="120" cy="70" rx="112" ry="62" fill="none" stroke="#4f46e5" stroke-width="3.5" style="stroke-opacity: 0.88;"/>
+                  <ellipse cx="120" cy="70" rx="103" ry="53" fill="none" stroke="#4f46e5" stroke-width="1.8" style="stroke-opacity: 0.85;"/>
+                  <line x1="22" y1="52" x2="218" y2="52" stroke="#4f46e5" stroke-width="2" style="stroke-opacity: 0.85;"/>
+                  <line x1="22" y1="88" x2="218" y2="88" stroke="#4f46e5" stroke-width="2" style="stroke-opacity: 0.85;"/>
+                  <defs>
+                    <path id="stampP1" d="M 32,70 A 88,44 0 0,1 208,70" fill="none"/>
+                    <path id="stampP2" d="M 28,70 A 92,48 0 0,0 212,70" fill="none"/>
+                  </defs>
+                  <text fill="#4338ca" font-size="11" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" letter-spacing="3.5">
+                    <textPath href="#stampP1" startOffset="50%" text-anchor="middle">KORWIL BIDDIKBUD</textPath>
+                  </text>
+                  <text fill="#4338ca" font-size="10.5" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" letter-spacing="2.2">
+                    <textPath href="#stampP2" startOffset="50%" text-anchor="middle">★ KECAMATAN MRANGGEN ★</textPath>
+                  </text>
+                  <text x="120" y="74" text-anchor="middle" fill="#4338ca" font-size="17" font-weight="900" font-family="'Cinzel', serif" letter-spacing="2">
+                    SIE KEGURUAN
+                  </text>
+                </svg>
+              </div>
+
+              <div class="relative z-20 h-full w-full flex items-center justify-center">
+                <img src="ttd-karyono.png" alt="Tanda Tangan Karyono" class="h-full w-auto object-contain select-none">
+              </div>
+            </div>
+
+            <div>
+              <p class="font-black text-xs text-slate-900 underline decoration-slate-900 underline-offset-2">Karyono, S.Pd., M.Pd.</p>
+              <p class="font-bold text-slate-800 text-[11px] mt-0.5">NIP. 19721112 199803 1 011</p>
+            </div>
           </div>
+
+          <!-- 3. KANAN: Admin Sistem TKA -->
+          <div class="flex flex-col items-center justify-between">
+            <div>
+              <p class="text-xs font-normal">&nbsp;</p>
+              <p class="text-xs font-bold leading-tight">Admin Sistem TKA</p>
+            </div>
+
+            <div class="h-24 flex items-center justify-center py-1 my-1">
+              <img src="ttd-imam.png" alt="Tanda Tangan Muhammad Imam Suwiji" class="h-full w-auto object-contain select-none">
+            </div>
+
+            <div>
+              <p class="font-black text-xs text-slate-900 underline decoration-slate-900 underline-offset-2">Muhammad Imam Suwiji, S.Pd.SD., M.Pd.</p>
+              <p class="font-bold text-slate-800 text-[11px] mt-0.5">NIP. 198605112009031003</p>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -229,7 +293,7 @@
     </div>
   </div>
 
-  <!-- MODAL CETAK PIAGAM DARI ADMIN -->
+  <!-- MODAL CETAK PIAGAM RESMI DARI ADMIN -->
   <div id="adminCertificateModal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
     <div class="bg-white max-w-4xl w-full rounded-2xl shadow-2xl relative p-3 sm:p-6 text-center border-4 border-amber-300">
       <div class="flex items-center justify-between mb-3 no-print">
@@ -248,6 +312,7 @@
         <div class="text-center space-y-1 mb-4">
           <p class="text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-teal-800">KORWIL BIDDIKBUD KECAMATAN MRANGGEN • SEKSI KEGURUAN</p>
           <h2 class="font-cinzel text-2xl sm:text-4xl font-extrabold text-amber-700 tracking-wider">PIAGAM PENGHARGAAN</h2>
+          <!-- NOMOR SERTIFIKAT DISESUAIKAN: 400.3.11.1 -->
           <p class="text-[11px] font-mono text-slate-500" id="adminCertNumber">No: 400.3.11.1/TKA-MRG/2026/001</p>
         </div>
 
@@ -280,9 +345,7 @@
             <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Mengetahui</p>
             <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Korwil Biddikbud Kec. Mranggen</p>
             <div class="h-20 sm:h-24 flex items-center py-1">
-              <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
-                <path d="M 18,52 C 32,48 48,32 56,26 C 64,20 70,18 68,28 C 64,46 52,62 36,68 C 22,73 18,68 26,62 C 36,55 56,40 80,34 C 78,44 74,56 70,62 C 66,68 60,64 72,56 C 90,45 104,42 118,44 C 112,48 106,55 102,60 C 98,64 103,62 110,56 C 120,48 134,44 148,45 L 245,47" fill="none" stroke="#1d4ed8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              <img src="ttd-sunarto.png" alt="Tanda Tangan Sunarto" class="h-full w-auto object-contain select-none">
             </div>
             <div>
               <p class="font-black text-xs sm:text-sm text-slate-900 leading-tight">Sunarto, S.Pd., M.Pd.</p>
@@ -301,14 +364,14 @@
                   <line x1="22" y1="52" x2="218" y2="52" stroke="#4f46e5" stroke-width="2" style="stroke-opacity: 0.85;"/>
                   <line x1="22" y1="88" x2="218" y2="88" stroke="#4f46e5" stroke-width="2" style="stroke-opacity: 0.85;"/>
                   <defs>
-                    <path id="stampPathTop" d="M 32,70 A 88,44 0 0,1 208,70" fill="none"/>
-                    <path id="stampPathBottom" d="M 28,70 A 92,48 0 0,0 212,70" fill="none"/>
+                    <path id="stampP1Modal" d="M 32,70 A 88,44 0 0,1 208,70" fill="none"/>
+                    <path id="stampP2Modal" d="M 28,70 A 92,48 0 0,0 212,70" fill="none"/>
                   </defs>
                   <text fill="#4338ca" font-size="11" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" letter-spacing="3.5">
-                    <textPath href="#stampPathTop" startOffset="50%" text-anchor="middle">KORWIL BIDDIKBUD</textPath>
+                    <textPath href="#stampP1Modal" startOffset="50%" text-anchor="middle">KORWIL BIDDIKBUD</textPath>
                   </text>
                   <text fill="#4338ca" font-size="10.5" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" letter-spacing="2.2">
-                    <textPath href="#stampPathBottom" startOffset="50%" text-anchor="middle">★ KECAMATAN MRANGGEN ★</textPath>
+                    <textPath href="#stampP2Modal" startOffset="50%" text-anchor="middle">★ KECAMATAN MRANGGEN ★</textPath>
                   </text>
                   <text x="120" y="74" text-anchor="middle" fill="#4338ca" font-size="17" font-weight="900" font-family="'Cinzel', serif" letter-spacing="2">
                     SIE KEGURUAN
@@ -316,9 +379,7 @@
                 </svg>
               </div>
               <div class="relative z-20 w-full h-full flex items-center">
-                <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
-                  <path d="M 35,46 C 45,28 60,18 75,18 C 88,18 95,28 92,44 C 88,60 74,72 58,72 C 45,72 40,62 48,50 C 60,34 92,26 128,26 C 170,26 215,30 260,34 M 82,32 C 95,40 108,55 118,65 M 78,56 C 98,52 145,46 195,48 M 80,68 C 110,64 160,58 210,60" fill="none" stroke="#0f172a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <img src="ttd-karyono.png" alt="Tanda Tangan Karyono" class="h-full w-auto object-contain select-none">
               </div>
             </div>
             <div>
@@ -645,7 +706,7 @@
       document.getElementById('adminCertificateModal').classList.remove('hidden');
     }
 
-    // FUNGSI KHUSUS CETAK PIAGAM DARI MODAL ADMIN
+    // FUNGSI KHUSUS CETAK PIAGAM DARI MODAL ADMIN (PAS 1 HALAMAN LANDSCAPE)
     function printSingleCertificate() {
       document.body.classList.remove('print-table');
       document.body.classList.add('print-cert');
@@ -657,7 +718,7 @@
       document.getElementById('adminCertificateModal').classList.add('hidden');
     }
 
-    // FUNGSI CETAK TABEL REKAPITULASI DENGAN TANDA TANGAN PENGESAHAN
+    // FUNGSI CETAK TABEL REKAPITULASI DENGAN 3 TANDA TANGAN PENGESAHAN
     function triggerPrintMode(mode) {
       document.body.classList.remove('print-cert');
       document.body.classList.add('print-table');
