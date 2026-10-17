@@ -131,7 +131,7 @@
       <div class="flex items-center justify-between mb-4">
         <div>
           <h3 class="text-sm sm:text-base font-extrabold text-slate-900" id="lockSectionTitle">Kontrol Token: Matematika</h3>
-          <p class="text-xs text-slate-500">Ketik token baru pada kotak lalu tekan Enter/klik di luar untuk menyimpan ke cloud secara instan[cite: 22].</p>
+          <p class="text-xs text-slate-500">Ketik token baru pada kotak lalu tekan Enter/klik di luar untuk menyimpan ke cloud secara instan.</p>
         </div>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3" id="adminLockControls"></div>
@@ -216,11 +216,11 @@
         </table>
       </div>
 
-      <!-- PENGESAHAN 2 TANDA TANGAN (KIRI: KARYONO, KANAN: IMAM SUWIJI) -->
+      <!-- PENGESAHAN 2 TANDA TANGAN (KIRI: KARYONO + STEMPEL, KANAN: IMAM SUWIJI) -->
       <div class="hidden print:block pt-8 mt-6">
         <div class="grid grid-cols-2 gap-12 text-center text-slate-900 px-8">
           
-          <!-- KIRI: Ketua Sie Keguruan (Karyono, S.Pd., M.Pd.) + Stempel Ungu -->
+          <!-- KIRI: Ketua Sie Keguruan (Karyono, S.Pd., M.Pd.) + STEMPEL OVAL UNGU -->
           <div class="flex flex-col items-center justify-between relative">
             <div>
               <p class="text-xs font-normal">Mengetahui,</p>
@@ -228,7 +228,7 @@
             </div>
 
             <div class="h-24 relative flex items-center justify-center py-1 my-1 w-full">
-              <!-- Stempel Ungu -->
+              <!-- Stempel Oval Ungu Sie Keguruan -->
               <div class="absolute -top-3 w-44 h-28 pointer-events-none opacity-85 select-none z-10" style="transform: rotate(-6deg);">
                 <svg viewBox="0 0 240 140" class="w-full h-full">
                   <ellipse cx="120" cy="70" rx="112" ry="62" fill="none" stroke="#4f46e5" stroke-width="3.5" style="stroke-opacity: 0.88;"/>
@@ -318,7 +318,7 @@
         </table>
       </div>
 
-      <!-- PENGESAHAN CETAK PERINGKAT SEKOLAH (2 KOLOM: KARYONO & IMAM) -->
+      <!-- PENGESAHAN CETAK PERINGKAT SEKOLAH (KARYONO + STEMPEL & IMAM) -->
       <div class="hidden print:block pt-8 mt-6">
         <div class="grid grid-cols-2 gap-12 text-center text-slate-900 px-8">
           
@@ -328,6 +328,30 @@
               <p class="text-xs font-bold leading-tight">Ketua Sie Keguruan</p>
             </div>
             <div class="h-24 relative flex items-center justify-center py-1 my-1 w-full">
+              <!-- Stempel Ungu -->
+              <div class="absolute -top-3 w-44 h-28 pointer-events-none opacity-85 select-none z-10" style="transform: rotate(-6deg);">
+                <svg viewBox="0 0 240 140" class="w-full h-full">
+                  <ellipse cx="120" cy="70" rx="112" ry="62" fill="none" stroke="#4f46e5" stroke-width="3.5" style="stroke-opacity: 0.88;"/>
+                  <ellipse cx="120" cy="70" rx="103" ry="53" fill="none" stroke="#4f46e5" stroke-width="1.8" style="stroke-opacity: 0.85;"/>
+                  <line x1="22" y1="52" x2="218" y2="52" stroke="#4f46e5" stroke-width="2" style="stroke-opacity: 0.85;"/>
+                  <line x1="22" y1="88" x2="218" y2="88" stroke="#4f46e5" stroke-width="2" style="stroke-opacity: 0.85;"/>
+                  <defs>
+                    <path id="stampP3" d="M 32,70 A 88,44 0 0,1 208,70" fill="none"/>
+                    <path id="stampP4" d="M 28,70 A 92,48 0 0,0 212,70" fill="none"/>
+                  </defs>
+                  <text fill="#4338ca" font-size="11" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" letter-spacing="3.5">
+                    <textPath href="#stampP3" startOffset="50%" text-anchor="middle">KORWIL BIDDIKBUD</textPath>
+                  </text>
+                  <text fill="#4338ca" font-size="10.5" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" letter-spacing="2.2">
+                    <textPath href="#stampP4" startOffset="50%" text-anchor="middle">★ KECAMATAN MRANGGEN ★</textPath>
+                  </text>
+                  <text x="120" y="74" text-anchor="middle" fill="#4338ca" font-size="17" font-weight="900" font-family="'Cinzel', serif" letter-spacing="2">
+                    SIE KEGURUAN
+                  </text>
+                </svg>
+              </div>
+
+              <!-- Tanda Tangan Karyono -->
               <div class="relative z-20 h-full w-full flex items-center justify-center">
                 <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
                   <path d="M 35,46 C 45,28 60,18 75,18 C 88,18 95,28 92,44 C 88,60 74,72 58,72 C 45,72 40,62 48,50 C 60,34 92,26 128,26 C 170,26 215,30 260,34 M 82,32 C 95,40 108,55 118,65 M 78,56 C 98,52 145,46 195,48 M 80,68 C 110,64 160,58 210,60" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -392,7 +416,7 @@
 
   </div>
 
-  <!-- MODAL CETAK PIAGAM RESMI DARI ADMIN (PENANDATANGAN: SUNARTO & KARYONO) -->
+  <!-- MODAL CETAK PIAGAM RESMI DARI ADMIN (SUNARTO & KARYONO) -->
   <div id="adminCertificateModal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
     <div class="bg-white max-w-4xl w-full rounded-2xl shadow-2xl relative p-3 sm:p-6 text-center border-4 border-amber-300">
       <div class="flex items-center justify-between mb-3 no-print">
@@ -484,7 +508,8 @@
               <!-- Vektor Tanda Tangan Asli Karyono di Piagam -->
               <div class="relative z-20 w-full h-full flex items-center">
                 <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
-                  <path d="M 35,46 C 45,28 60,18 75,18 C 88,18 95,28 92,44 C 88,60 74,72 58,72 C 45,72 40,62 48,50 C 60,34 92,26 128,26 C 170,26 215,30 260,34 M 82,32 C 95,40 108,55 118,65 M 78,56 C 98,52 145,46 195,48 M 80,68 C 110,64 160,58 210,60" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M 35,46 C 45,28 60,18 75,18 C 88,18 95,28 92,44 C 88,60 74,72 58,72 C 45,72 40,62 48,50 C 60,34 92,26 128,26 C 170,26 215,30 260,34 M 82,32 C 95,40 108,55 118,65 M 78,56 C 98,52 145,46 195,48 M 80,68 C 110,64 160,58 210,60" 
+                        fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
             </div>
