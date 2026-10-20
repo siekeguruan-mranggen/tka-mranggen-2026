@@ -1,455 +1,185 @@
 <!DOCTYPE html>
-<html lang="id" translate="no">
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google" content="notranslate">
-  <title>TRYOUT TKA KELAS 6 SD KECAMATAN MRANGGEN</title>
+  <title>Simulasi Ujian TKA - Korwil Mranggen 2026</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Cinzel:wght@600;700;800;900&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; padding: 0; background-color: #f0fdfa; color: #1e293b; }
-    .font-cinzel { font-family: 'Cinzel', serif; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
     .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #14b8a6; border-radius: 4px; }
-    
-    .no-select {
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    /* PURE CSS FALLBACK AGAR TAMPILAN HP TETAP BERWARNA & RAPI WALAUPUN CDN TAILWIND GAGAL */
-    .hidden { display: none !important; }
-    .bg-math { background-color: #e53e3e !important; color: #ffffff !important; }
-    .bg-indo { background-color: #3182ce !important; color: #ffffff !important; }
-    .card-subject { border-radius: 1.5rem; overflow: hidden; background: #ffffff; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); border: 1px solid #e2e8f0; }
-    .btn-subject { background-color: #e0e7ff; color: #3730a3; padding: 0.75rem; border-radius: 1rem; font-weight: 900; width: 100%; border: none; cursor: pointer; }
-    .btn-subject:hover { background-color: #c7d2fe; }
-
-    @media print {
-      body { background: white !important; }
-      body * { visibility: hidden; }
-      #certificateModal, #certificateModal * { visibility: visible; }
-      #certificateModal { position: absolute; left: 0; top: 0; width: 100%; border: none !important; box-shadow: none !important; padding: 0 !important; }
-      .no-print { display: none !important; }
-      @page { size: landscape; margin: 10mm; }
-    }
   </style>
 </head>
-<body class="bg-gradient-to-br from-teal-50 via-emerald-50 to-cyan-50 text-slate-800 antialiased min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white no-select" oncontextmenu="return false;">
+<body class="bg-gradient-to-br from-teal-100/70 via-sky-100/60 to-emerald-100/70 text-slate-800 min-h-screen flex flex-col justify-between p-3 sm:p-6 lg:p-8">
 
-  <!-- HEADER -->
-  <header class="bg-white/90 backdrop-blur-md border-b border-teal-100 sticky top-0 z-40 shadow-sm no-print">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <div class="flex items-center space-x-3 cursor-pointer" onclick="showScreen('viewSubjects')">
-        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-teal-500 via-emerald-500 to-cyan-600 flex items-center justify-center text-white font-black text-xl shadow-md shadow-teal-300/40">
-          Σ
-        </div>
-        <div>
-          <span class="block text-[11px] sm:text-xs font-black text-teal-800 tracking-wider uppercase">
-            KORWIL BIDDIKBUD KECAMATAN MRANGGEN
-          </span>
-          <h1 class="font-extrabold text-slate-800 leading-tight text-xs sm:text-sm">
-            TRYOUT TKA KELAS 6 SD KECAMATAN MRANGGEN
-          </h1>
-        </div>
-      </div>
-      <div>
-        <span class="px-3.5 py-1.5 text-xs font-bold rounded-xl bg-teal-50 text-teal-800 border border-teal-200">
-          Portal Siswa
-        </span>
-      </div>
-    </div>
-  </header>
-
-  <!-- CONTAINER UTAMA -->
-  <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 flex flex-col justify-center">
-
-    <!-- SCREEN 0: PILIH MATA PELAJARAN -->
-    <div id="viewSubjects" class="max-w-4xl mx-auto w-full text-center py-6">
-      <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-black bg-teal-100 text-teal-900 mb-3 border border-teal-200 shadow-sm">
-        🌟 TKA SD/MI • Tahun 2026
+  <!-- CONTAINER UTAMA APLIKASI -->
+  <main class="max-w-4xl w-full mx-auto bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl border border-teal-200/80 p-5 sm:p-8 my-auto">
+    
+    <!-- HEADER PORTAL -->
+    <div class="text-center pb-6 border-b border-teal-100">
+      <span class="inline-block px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-teal-100 text-teal-800 mb-2">
+        Seksi Keguruan Korwil Mranggen • TKA 2026
       </span>
-      <h2 class="text-3xl sm:text-4xl font-black text-slate-800 tracking-tight">Pilih Mata Pelajaran</h2>
-      <p class="text-slate-600 text-xs sm:text-sm max-w-lg mx-auto mt-2 mb-8 font-medium">
-        Fokuskan belajarmu pada mata pelajaran yang ingin kamu kerjakan hari ini.
-      </p>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto mb-8">
-        <!-- KARTU MATEMATIKA -->
-        <div class="card-subject hover:-translate-y-1.5 transition-all duration-200 flex flex-col">
-          <div class="bg-math py-14 flex items-center justify-center shadow-inner">
-            <h3 class="text-white text-3xl font-black tracking-wide">Matematika</h3>
-          </div>
-          <div class="p-5 bg-white flex-1 flex flex-col justify-between">
-            <p class="text-xs text-slate-500 font-semibold mb-4">6 Paket: Ujicoba + Paket 1 s.d. 5</p>
-            <button onclick="selectSubject('matematika')" class="btn-subject text-xs uppercase tracking-wider transition">
-              Mulai Belajar
-            </button>
-          </div>
-        </div>
-
-        <!-- KARTU BAHASA INDONESIA -->
-        <div class="card-subject hover:-translate-y-1.5 transition-all duration-200 flex flex-col">
-          <div class="bg-indo py-14 flex items-center justify-center shadow-inner">
-            <h3 class="text-white text-3xl font-black tracking-wide">Bahasa Indonesia</h3>
-          </div>
-          <div class="p-5 bg-white flex-1 flex flex-col justify-between">
-            <p class="text-xs text-slate-500 font-semibold mb-4">5 Paket: Paket 1 s.d. 5</p>
-            <button onclick="selectSubject('indonesia')" class="btn-subject text-xs uppercase tracking-wider transition">
-              Mulai Belajar
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="pt-4 text-xs font-bold text-slate-500 text-center no-print">
-        Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
-      </div>
+      <h1 id="portalTitle" class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Portal Simulasi Ujian TKA Kelas VI SD/MI</h1>
+      <p id="portalSubtitle" class="text-xs text-slate-500 mt-1">Silakan masukkan identitas diri dan token akses yang diberikan oleh pengawas.</p>
     </div>
 
-    <!-- SCREEN 1: PILIH PAKET TRYOUT -->
-    <div id="viewPackages" class="hidden max-w-4xl mx-auto w-full bg-white/95 rounded-3xl p-6 sm:p-10 shadow-xl border border-teal-100 text-center relative overflow-hidden">
-      <button onclick="showScreen('viewSubjects')" class="inline-flex items-center text-xs font-bold text-teal-700 hover:text-teal-900 mb-4 absolute top-6 left-6">
-        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-        Ganti Mata Pelajaran
-      </button>
-
-      <div class="pt-6">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-teal-100 text-teal-900 mb-2 border border-teal-200" id="badgeSubjectName">
-          Mata Pelajaran: Matematika
-        </span>
-        <h2 class="text-3xl font-black text-slate-800 tracking-tight" id="packageSectionTitle">Pilihan Paket Simulasi</h2>
-        <p class="text-slate-600 text-xs sm:text-sm max-w-xl mx-auto mb-8 font-medium mt-1">
-          Pilihlah paket yang dibuka di bawah ini. Masukkan <b class="text-teal-700">Token Ujian</b> resmi yang dibagikan guru/pengawas.
-        </p>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8" id="packagesGrid"></div>
-
-        <div class="pt-6 border-t border-teal-100 text-xs font-bold text-slate-500 text-center no-print">
-          Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
-        </div>
-      </div>
-    </div>
-
-    <!-- SCREEN 2: REGISTRASI & TOKEN -->
-    <div id="viewRegistration" class="hidden max-w-lg mx-auto bg-white/95 rounded-3xl p-6 sm:p-8 shadow-xl border border-teal-100 relative">
-      <button onclick="showScreen('viewPackages')" class="inline-flex items-center text-xs font-bold text-teal-700 hover:text-teal-900 mb-5">
-        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-        Kembali ke Pilihan Paket
-      </button>
-
-      <div class="text-center mb-6">
-        <h2 class="text-2xl font-black text-slate-800">Data Peserta Ujian</h2>
-        <p class="text-xs font-bold text-teal-700 mt-1" id="regPackageTitle">Mapel - Paket</p>
+    <!-- VIEW 1: FORM LOGIN SISWA -->
+    <div id="loginSection" class="pt-6 space-y-4 max-w-md mx-auto">
+      <div>
+        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Pilih Mata Pelajaran:</label>
+        <select id="selectSubject" onchange="updatePackageOptions()" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-xs font-bold bg-white focus:ring-2 focus:ring-teal-500 outline-none cursor-pointer">
+          <option value="Matematika">Matematika</option>
+          <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+        </select>
       </div>
 
-      <form id="formRegistration" onsubmit="startExam(event)" class="space-y-4">
-        <div>
-          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Nama Lengkap Siswa</label>
-          <input type="text" id="regName" required placeholder="Tulis nama lengkap siswa..." class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:ring-2 focus:ring-teal-500 outline-none text-xs sm:text-sm font-medium bg-slate-50/50">
-        </div>
+      <div>
+        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Pilih Paket Ujian:</label>
+        <select id="selectPackage" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-xs font-bold bg-white focus:ring-2 focus:ring-teal-500 outline-none cursor-pointer">
+          <!-- Opsi paket akan diisi otomatis via Javascript -->
+        </select>
+      </div>
 
+      <div>
+        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nama Lengkap Siswa:</label>
+        <input type="text" id="inputName" placeholder="Contoh: Ahmad Rizki" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-xs font-semibold focus:ring-2 focus:ring-teal-500 outline-none">
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
         <div>
-          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Pilih Asal Sekolah (SD/MI)</label>
-          <select id="regSchool" required class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:ring-2 focus:ring-teal-500 outline-none text-xs sm:text-sm font-semibold bg-white cursor-pointer custom-scrollbar">
-            <option value="" disabled selected>-- Pilih SD Asal Peserta --</option>
+          <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nomor Absen:</label>
+          <input type="number" id="inputAbsen" placeholder="1-40" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-xs font-semibold focus:ring-2 focus:ring-teal-500 outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Kelas:</label>
+          <select id="inputClass" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-xs font-semibold bg-white outline-none">
+            <option value="VI">Kelas VI</option>
           </select>
         </div>
+      </div>
 
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Kelas</label>
-            <input type="text" id="regClass" required value="VI" class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:ring-2 focus:ring-teal-500 outline-none text-xs sm:text-sm font-medium bg-slate-50/50">
-          </div>
-          <div>
-            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">No. Presensi / Absen</label>
-            <input type="number" id="regAbsen" required placeholder="Nomor absen" class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:ring-2 focus:ring-teal-500 outline-none text-xs sm:text-sm font-medium bg-slate-50/50">
-          </div>
-        </div>
+      <div>
+        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Asal Sekolah (SD/MI):</label>
+        <select id="inputSchool" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-xs font-semibold bg-white focus:ring-2 focus:ring-teal-500 outline-none cursor-pointer">
+          <option value="">-- Pilih Asal Sekolah --</option>
+        </select>
+      </div>
 
+      <div>
+        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Token Ujian:</label>
+        <input type="text" id="inputToken" placeholder="Masukkan token..." class="w-full px-4 py-3 rounded-xl border border-slate-300 text-xs font-mono font-bold uppercase focus:ring-2 focus:ring-teal-500 outline-none text-center">
+      </div>
+
+      <div id="loginError" class="hidden text-rose-600 text-xs font-bold text-center"></div>
+
+      <button onclick="startExam()" class="w-full py-3.5 bg-teal-600 hover:bg-teal-700 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-lg transition">
+        Mulai Ujian Sekarang
+      </button>
+    </div>
+
+    <!-- VIEW 2: HALAMAN UJIAN (SOAL & NAVIGASI) -->
+    <div id="examSection" class="hidden pt-4 space-y-6">
+      
+      <!-- HEADER UJIAN (TIMER & INFO) -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-teal-50/70 p-4 rounded-2xl border border-teal-200">
         <div>
-          <label class="block text-xs font-extrabold text-teal-800 uppercase tracking-wider mb-1.5">Token Ujian</label>
-          <div class="relative">
-            <input type="text" id="regToken" required placeholder="Ketik token ujian..." class="w-full px-4 py-3 rounded-2xl border-2 border-teal-300 focus:ring-2 focus:ring-teal-500 outline-none text-xs sm:text-sm font-mono font-black tracking-widest uppercase bg-teal-50/50">
-            <span class="absolute right-3.5 top-3.5 text-xs text-teal-600 font-bold">🔑 TOKEN</span>
-          </div>
-          <p id="tokenErrorMsg" class="hidden text-rose-600 text-xs font-bold mt-1.5">⚠️ Token salah atau paket masih ditutup!</p>
+          <h3 id="examInfoTitle" class="font-black text-teal-950 text-sm">Matematika - Paket 1</h3>
+          <p id="examStudentMeta" class="text-xs text-slate-600">Siswa: - | SD: -</p>
+        </div>
+        <div class="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border border-teal-200 shadow-sm">
+          <span class="text-xs font-bold text-slate-500">Sisa Waktu:</span>
+          <span id="timerDisplay" class="font-mono font-black text-rose-600 text-sm">75:00</span>
+        </div>
+      </div>
+
+      <!-- KONTEN SOAL -->
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <span id="questionNumberBadge" class="px-3 py-1 bg-teal-100 text-teal-900 rounded-lg text-xs font-black">Soal No. 1 dari 30</span>
+          <span id="questionTypeBadge" class="text-xs font-bold text-slate-500 uppercase">Pilihan Ganda</span>
         </div>
 
-        <div class="p-4 bg-teal-50 rounded-2xl border border-teal-100 text-xs text-teal-950 leading-relaxed font-medium">
-          <span class="font-extrabold text-teal-900 block mb-1">⏱️ Petunjuk Penskoran:</span>
-          - Durasi Ujian: <b>75 Menit</b> hitung mundur.<br>
-          - Skor Maksimal: <b>52 Poin</b> (Otomatis skala 0 - 100).<br>
-          - <b class="text-emerald-700">Siswa lulus (KKM 70) mendapatkan Piagam Penghargaan Digital otomatis!</b>
+        <div id="questionContainer" class="p-5 rounded-2xl border border-slate-200 bg-white text-sm text-slate-800 leading-relaxed min-h-[140px]">
+          <!-- Teks soal dimuat di sini -->
         </div>
 
-        <button type="submit" class="w-full py-4 rounded-2xl bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-600 text-white font-extrabold text-sm shadow-lg shadow-teal-500/30 transition-all flex items-center justify-center gap-2">
-          <span>Mulai Mengerjakan</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        <!-- PILIHAN JAWABAN -->
+        <div id="optionsContainer" class="space-y-2.5">
+          <!-- Tombol opsi pilihan ganda / checkbox / kategori dimuat di sini -->
+        </div>
+      </div>
+
+      <!-- NAVIGASI NOMOR & TOMBOL SEBELUMNYA/SELANJUTNYA -->
+      <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+        <button onclick="prevQuestion()" id="btnPrev" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition">
+          ← Sebelumnya
         </button>
-      </form>
+        <button onclick="nextQuestion()" id="btnNext" class="px-5 py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-xl transition">
+          Selanjutnya →
+        </button>
+      </div>
 
-      <div class="pt-6 mt-6 border-t border-teal-100 text-xs font-bold text-slate-500 text-center no-print">
-        Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
+      <!-- GRID NAVIGASI NOMOR SOAL DI BAWAH -->
+      <div class="pt-4 border-t border-slate-100">
+        <span class="block text-[11px] font-bold text-slate-400 uppercase mb-2">Navigasi Nomor Soal:</span>
+        <div id="questionNavGrid" class="flex flex-wrap gap-1.5 max-h-36 overflow-y-auto custom-scrollbar p-1">
+          <!-- Kotak nomor soal dimuat di sini -->
+        </div>
+      </div>
+
+      <div class="pt-2">
+        <button onclick="confirmSubmitExam()" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-md transition">
+          Kumpulkan Ujian & Selesai
+        </button>
       </div>
     </div>
 
-    <!-- SCREEN 3: CBT ENGINE -->
-    <div id="viewExam" class="hidden">
-      <div class="bg-white/95 rounded-2xl p-4 mb-4 shadow-sm border border-teal-100 flex flex-wrap items-center justify-between gap-3">
-        <div class="flex items-center space-x-3">
-          <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-teal-500 to-emerald-600 text-white font-black flex items-center justify-center text-sm" id="userInitial">S</div>
-          <div>
-            <h3 class="text-sm font-extrabold text-slate-800 leading-tight" id="examStudentName">Nama Peserta</h3>
-            <p class="text-xs text-slate-500 font-medium" id="examStudentSchool">SD Mranggen • Kelas VI</p>
-          </div>
+    <!-- VIEW 3: HASIL & SERTIFIKAT -->
+    <div id="resultSection" class="hidden pt-6 text-center space-y-6">
+      <div class="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto shadow-sm">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+      </div>
+      <div>
+        <h2 class="text-2xl font-black text-slate-900">Ujian Telah Selesai Diserahkan!</h2>
+        <p class="text-xs text-slate-500 mt-1">Hasil ujian Anda telah terekam otomatis ke dalam sistem cloud Korwil Mranggen.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-lg mx-auto py-3">
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+          <span class="block text-[10px] font-bold text-slate-400 uppercase">Skor Mentah</span>
+          <span id="resRawScore" class="text-lg font-black text-slate-800">0/52</span>
         </div>
-        
-        <div class="flex items-center gap-3">
-          <div class="flex items-center gap-2 px-4 py-2 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700">
-            <svg class="w-4 h-4 animate-pulse text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            <span class="text-xs font-bold text-rose-600 mr-1 hidden sm:inline">Sisa Waktu:</span>
-            <span class="font-mono font-black text-base sm:text-lg tracking-wider" id="timerDisplay">75:00</span>
-          </div>
-          <button onclick="confirmSubmitExam()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm transition">
-            Selesai Ujian
-          </button>
+        <div class="p-4 rounded-2xl bg-teal-50 border border-teal-200">
+          <span class="block text-[10px] font-bold text-teal-700 uppercase">Nilai Akhir (Skala 100)</span>
+          <span id="resFinalScore" class="text-2xl font-black text-teal-800">0</span>
+        </div>
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+          <span class="block text-[10px] font-bold text-slate-400 uppercase">Status Kelulusan</span>
+          <span id="resStatus" class="text-sm font-black text-emerald-600">LULUS</span>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-        <div class="lg:col-span-8 space-y-4">
-          <div class="bg-white rounded-3xl p-5 sm:p-7 shadow-md border border-teal-50 min-h-[480px] flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
-                <div class="flex items-center gap-2">
-                  <span class="px-3 py-1 rounded-lg bg-teal-600 text-white font-black text-xs" id="questionNumberBadge">Soal No. 1</span>
-                  <span class="text-xs font-bold text-slate-600" id="questionTypeBadge">Pilihan Ganda</span>
-                </div>
-                <span class="text-xs font-bold text-slate-400" id="questionPointsRule">Skor: Benar 1 | Salah 0</span>
-              </div>
-
-              <div id="questionContent" class="text-slate-800 text-sm sm:text-base leading-relaxed space-y-4 font-normal"></div>
-              <div id="optionsContainer" class="mt-6 space-y-3"></div>
-            </div>
-
-            <div class="flex items-center justify-between border-t border-slate-100 pt-4 mt-8">
-              <button onclick="prevQuestion()" id="btnPrev" class="px-4 py-2 text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition flex items-center gap-1.5 disabled:opacity-40">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-                Sebelumnya
-              </button>
-
-              <label class="flex items-center gap-2 cursor-pointer select-none">
-                <input type="checkbox" id="checkRagu" onchange="toggleRaguCurrent()" class="w-4 h-4 text-amber-500 rounded border-slate-300">
-                <span class="text-xs font-bold text-amber-800 bg-amber-100 px-2.5 py-1 rounded-lg border border-amber-200">Ragu-ragu</span>
-              </label>
-
-              <button onclick="nextQuestion()" id="btnNext" class="px-4 py-2 text-xs font-bold text-white bg-teal-600 hover:bg-teal-700 rounded-xl transition flex items-center gap-1.5">
-                Selanjutnya
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="lg:col-span-4">
-          <div class="bg-white rounded-3xl p-5 shadow-md border border-teal-50 sticky top-24">
-            <h4 class="text-xs font-extrabold text-slate-800 uppercase tracking-wider mb-3">Palet Nomor Soal</h4>
-            <div class="grid grid-cols-5 gap-2 max-h-[380px] overflow-y-auto pr-1 custom-scrollbar" id="paletteGrid"></div>
-            <div class="mt-5 pt-4 border-t border-slate-100 grid grid-cols-3 gap-2 text-[11px] font-bold text-slate-500">
-              <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-teal-600 inline-block"></span> Dijawab</div>
-              <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-amber-400 inline-block"></span> Ragu</div>
-              <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-slate-100 border border-slate-300 inline-block"></span> Kosong</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="pt-4 text-xs font-bold text-slate-500 text-center no-print">
-        Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
-      </div>
-    </div>
-
-    <!-- SCREEN 4: HASIL NILAI SISWA -->
-    <div id="viewResult" class="hidden max-w-3xl mx-auto space-y-6">
-      <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-teal-100 text-center">
-        <div class="w-16 h-16 rounded-3xl bg-teal-100 text-teal-700 flex items-center justify-center mx-auto mb-3 shadow-inner">
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        </div>
-        <h2 class="text-2xl font-black text-slate-800">Ujian Telah Selesai!</h2>
-        <p class="text-xs font-semibold text-slate-500 mt-1" id="submitStatusText">Nilai tryout Anda telah otomatis tersimpan.</p>
-
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 my-6">
-          <div class="p-4 rounded-2xl bg-teal-50 border border-teal-100">
-            <span class="block text-[11px] font-bold text-teal-600 uppercase">Skor Mentah</span>
-            <span class="text-2xl font-black text-teal-800" id="resTotalScore">0</span>
-            <span class="text-[10px] text-slate-400 block" id="resMaxScoreLabel">dari maks 52</span>
-          </div>
-          <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-100">
-            <span class="block text-[11px] font-bold text-emerald-600 uppercase">Nilai Akhir (100)</span>
-            <span class="text-2xl font-black text-emerald-600" id="resScale100">0</span>
-            <span class="text-[10px] text-slate-400 block">Skala Standar</span>
-          </div>
-          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-            <span class="block text-[11px] font-bold text-slate-400 uppercase">Status</span>
-            <span class="text-base font-black text-slate-800 mt-1 block" id="resStatus">Lulus</span>
-            <span class="text-[10px] text-slate-400 block">KKM: 70</span>
-          </div>
-          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-            <span class="block text-[11px] font-bold text-slate-400 uppercase">Waktu</span>
-            <span class="text-base font-black text-slate-800 mt-1 block" id="resDuration">0 Menit</span>
-            <span class="text-[10px] text-slate-400 block">Pengerjaan</span>
-          </div>
-        </div>
-
-        <!-- KLAIM PIAGAM -->
-        <div id="certificateClaimBox" class="hidden p-4 rounded-2xl bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 text-white shadow-lg mb-6 text-center">
-          <span class="text-2xl block mb-1">🎉</span>
-          <h4 class="font-black text-sm uppercase tracking-wide">Selamat! Kamu Memenuhi Syarat Kelulusan</h4>
-          <p class="text-xs text-amber-100 mb-3">Piagam Penghargaan Resmi telah diterbitkan atas nama kamu.</p>
-          <button onclick="openCertificateModal()" class="px-5 py-2.5 bg-white text-amber-950 font-black text-xs rounded-xl shadow-md transition inline-flex items-center gap-2">
-            <span>🏆 Cetak Piagam Penghargaan</span>
-          </button>
-        </div>
-
-        <div class="space-y-3 pt-2">
-          <div id="discussionLockedNotice" class="hidden p-3.5 bg-rose-50 rounded-2xl border border-rose-200 text-rose-800 text-xs font-bold max-w-md mx-auto">
-            🔒 Kunci & Pembahasan hanya terbuka bagi nilai di atas 90.
-          </div>
-          <div class="flex flex-wrap justify-center gap-3">
-            <button id="btnDiscussionAction" onclick="toggleDiscussion()" class="px-5 py-2.5 font-bold text-xs rounded-xl transition flex items-center gap-1.5"></button>
-            <button onclick="showScreen('viewSubjects')" class="px-5 py-2.5 bg-slate-800 text-white hover:bg-slate-900 font-bold text-xs rounded-xl transition">
-              Kembali ke Menu Utama
-            </button>
-          </div>
-        </div>
-
-        <div class="pt-6 mt-6 border-t border-teal-100 text-xs font-bold text-slate-500 text-center no-print">
-          Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
-        </div>
-      </div>
-
-      <div id="discussionSection" class="hidden space-y-4">
-        <h3 class="text-lg font-bold text-slate-900" id="discussionTitle">Pembahasan Soal</h3>
-        <div id="discussionContainer" class="space-y-4"></div>
+      <div class="pt-2">
+        <button onclick="location.reload()" class="px-6 py-3 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs rounded-xl transition">
+          Keluar / Selesai
+        </button>
       </div>
     </div>
 
   </main>
 
-  <!-- MODAL PIAGAM DIGITAL -->
-  <div id="certificateModal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
-    <div class="bg-white max-w-4xl w-full rounded-2xl shadow-2xl relative p-3 sm:p-6 text-center border-4 border-amber-300">
-      <div class="flex items-center justify-between mb-3 no-print">
-        <span class="text-xs font-bold text-amber-800">Pratinjau Piagam Penghargaan</span>
-        <div class="flex items-center gap-2">
-          <button onclick="window.print()" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-lg transition">
-            🖨️ Cetak / Simpan PDF
-          </button>
-          <button onclick="closeCertificateModal()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-lg transition">
-            ✕ Tutup
-          </button>
-        </div>
-      </div>
+  <!-- FOOTER -->
+  <footer class="text-center text-xs font-bold text-slate-500 py-4">
+    Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
+  </footer>
 
-      <div class="p-6 sm:p-10 border-8 border-double border-amber-500 bg-gradient-to-b from-amber-50/40 via-white to-amber-50/40 rounded-xl shadow-inner text-slate-900">
-        <div class="text-center space-y-1 mb-4">
-          <p class="text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-teal-800">KORWIL BIDDIKBUD KECAMATAN MRANGGEN • SEKSI KEGURUAN</p>
-          <h2 class="font-cinzel text-2xl sm:text-4xl font-extrabold text-amber-700 tracking-wider">PIAGAM PENGHARGAAN</h2>
-          <p class="text-[11px] font-mono text-slate-500" id="certNumber">No: 400.3.11.1/TKA-MRG/2026/001</p>
-        </div>
-
-        <p class="text-xs sm:text-sm text-slate-600 mb-2 font-medium">Diberikan dengan penuh apresiasi kepada:</p>
-        <h3 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight underline decoration-amber-500 decoration-2 underline-offset-8 mb-3" id="certStudentName">
-          NAMA LENGKAP SISWA
-        </h3>
-        <p class="text-xs sm:text-sm font-bold text-slate-700 mb-4" id="certStudentSchool">
-          SD NEGERI BANDUNGREJO 1 MRANGGEN
-        </p>
-
-        <p class="text-xs sm:text-sm max-w-2xl mx-auto text-slate-700 leading-relaxed mb-6 font-medium">
-          Atas keberhasilan menyelesaikan <b>Simulasi Ujian Tes Kemampuan Akademik (TKA) Kelas VI</b> pada mata pelajaran <b id="certSubjectName">Matematika</b> (<span id="certPackageName">Paket 1</span>) dengan capaian nilai:
-        </p>
-
-        <div class="inline-flex items-center gap-4 px-6 py-2 bg-amber-100/80 border-2 border-amber-400 rounded-2xl mb-8 shadow-sm">
-          <div>
-            <span class="block text-[10px] font-black uppercase text-amber-800">NILAI AKHIR</span>
-            <span class="text-3xl font-black text-amber-900" id="certScore">95</span>
-          </div>
-          <div class="w-px h-8 bg-amber-300"></div>
-          <div>
-            <span class="block text-[10px] font-black uppercase text-amber-800">PREDIKAT</span>
-            <span class="text-xs font-black text-emerald-800" id="certPredicate">SANGAT MEMUASKAN</span>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-2 gap-4 sm:gap-12 px-4 sm:px-12 text-left text-slate-900 pt-3">
-          <div class="space-y-0.5">
-            <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Mengetahui</p>
-            <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Korwil Biddikbud Kec. Mranggen</p>
-            <div class="h-20 sm:h-24 flex items-center py-1">
-              <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
-                <path d="M 18,52 C 32,48 48,32 56,26 C 64,20 70,18 68,28 C 64,46 52,62 36,68 C 22,73 18,68 26,62 C 36,55 56,40 80,34 C 78,44 74,56 70,62 C 66,68 60,64 72,56 C 90,45 104,42 118,44 C 112,48 106,55 102,60 C 98,64 103,62 110,56 C 120,48 134,44 148,45 L 245,47" fill="none" stroke="#1d4ed8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <p class="font-black text-xs sm:text-sm text-slate-900 leading-tight">Sunarto, S.Pd., M.Pd.</p>
-              <p class="font-bold text-slate-800 text-[11px] sm:text-xs">NIP 19670915 199103 1 010</p>
-            </div>
-          </div>
-
-          <div class="space-y-0.5 relative">
-            <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Ketua</p>
-            <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Sie Keguruan,</p>
-            <div class="h-20 sm:h-24 relative flex items-center py-1">
-              <div class="absolute -left-10 sm:-left-12 -top-5 sm:-top-6 w-48 sm:w-56 h-28 sm:h-32 pointer-events-none opacity-85 select-none z-10" style="transform: rotate(-6deg);">
-                <svg viewBox="0 0 240 140" class="w-full h-full">
-                  <ellipse cx="120" cy="70" rx="112" ry="62" fill="none" stroke="#4f46e5" stroke-width="3.5" style="stroke-opacity: 0.88;"/>
-                  <ellipse cx="120" cy="70" rx="103" ry="53" fill="none" stroke="#4f46e5" stroke-width="1.8" style="stroke-opacity: 0.85;"/>
-                  <line x1="22" y1="52" x2="218" y2="52" stroke="#4f46e5" stroke-width="2" style="stroke-opacity: 0.85;"/>
-                  <line x1="22" y1="88" x2="218" y2="88" stroke="#4f46e5" stroke-width="2" style="stroke-opacity: 0.85;"/>
-                  <defs>
-                    <path id="stampPathTop" d="M 32,70 A 88,44 0 0,1 208,70" fill="none"/>
-                    <path id="stampPathBottom" d="M 28,70 A 92,48 0 0,0 212,70" fill="none"/>
-                  </defs>
-                  <text fill="#4338ca" font-size="11" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" letter-spacing="3.5">
-                    <textPath href="#stampPathTop" startOffset="50%" text-anchor="middle">KORWIL BIDDIKBUD</textPath>
-                  </text>
-                  <text fill="#4338ca" font-size="10.5" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" letter-spacing="2.2">
-                    <textPath href="#stampPathBottom" startOffset="50%" text-anchor="middle">★ KECAMATAN MRANGGEN ★</textPath>
-                  </text>
-                  <text x="120" y="74" text-anchor="middle" fill="#4338ca" font-size="17" font-weight="900" font-family="'Cinzel', serif" letter-spacing="2">
-                    SIE KEGURUAN
-                  </text>
-                </svg>
-              </div>
-              <div class="relative z-20 w-full h-full flex items-center">
-                <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
-                  <path d="M 35,46 C 45,28 60,18 75,18 C 88,18 95,28 92,44 C 88,60 74,72 58,72 C 45,72 40,62 48,50 C 60,34 92,26 128,26 C 170,26 215,30 260,34 M 82,32 C 95,40 108,55 118,65 M 78,56 C 98,52 145,46 195,48 M 80,68 C 110,64 160,58 210,60" fill="none" stroke="#0f172a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-            </div>
-            <div>
-              <p class="font-black text-xs sm:text-sm text-slate-900 leading-tight">Karyono, S.Pd., M.Pd.</p>
-              <p class="font-bold text-slate-800 text-[11px] sm:text-xs">NIP 19721112 199803 1 011</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-8 pt-3 border-t border-amber-200/60 text-[10px] font-semibold text-slate-400 text-center">
-          Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
-        </div>
-      </div>
-    </div>
-  </div>
-
+  <!-- SCRIPT UTAMA UJIAN -->
   <script>
     const FIREBASE_DB_URL = "https://tka-mranggen-2026-default-rtdb.firebaseio.com/nilai_tryout.json";
     const FIREBASE_SETTINGS_URL = "https://tka-mranggen-2026-default-rtdb.firebaseio.com/pengaturan_ujian.json";
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx0aHffP-wqb_ElNVQtrHJltD2YOMVXzBqdbHqtUzcQzwU59g05agv-pDALvwIbAHFgoA/exec";
 
     const LIST_SEKOLAH_MRANGGEN = [
       "SD NEGERI BANDUNGREJO 1 MRANGGEN", "SD NEGERI BANDUNGREJO 2 MRANGGEN", "SD NEGERI BANYUMENENG 1",
@@ -468,960 +198,383 @@
       "SDS MUHAMMADIYAH PUCANG GADING", "SDS TERPADU DARUNNAJAH"
     ];
 
-    const DEFAULT_PACKAGE_STATUS = {
-      matematika: { "UJICOBA": true, "Paket 1": false, "Paket 2": false, "Paket 3": false, "Paket 4": false, "Paket 5": false },
-      indonesia: { "Paket 1": true, "Paket 2": false, "Paket 3": false, "Paket 4": false, "Paket 5": false }
-    };
+    // ================= DATA SOAL LENGKAP =================
+    
+    // 1. DATA SOAL MATEMATIKA - PAKET 1
+    const SOAL_MATEMATIKA_PAKET_1 = [
+      { id: 1, type: "PG", text: "Hasil dari $16\\frac{3}{4} - 12\\frac{1}{3} \\times \\frac{4}{7} - 0,25 \\times 20 + 1\\frac{1}{3} \\times 4$ adalah ....", options: ["3", "4", "6", "8"], correct: 0, topic: "Operasi Hitung" },
+      { id: 2, type: "PG", text: "Perhatikan tabel hubungan antara persen dan pecahan biasa: 60%=3/5 (C), 50%=1/2 (D), 25%=1/4 (A), 75%=3/4 (B). Pasangan yang tepat adalah ....", options: ["1-C, 2-A", "1-C, 2-D", "3-A, 4-B", "3-B, 2-C"], correct: 1, topic: "Persen & Pecahan" },
+      { id: 3, type: "PG", text: "Di bawah ini yang <b>bukan</b> merupakan kelipatan persekutuan dari 12 dan 18 adalah ....", options: ["36", "48", "72", "108"], correct: 1, topic: "KPK" },
+      { id: 4, type: "PG", text: "FPB dari 48, 64, dan 96 adalah ....", options: ["12", "16", "24", "32"], correct: 1, topic: "FPB" },
+      { id: 5, type: "PG", text: "Budi les setiap 6 hari, Deni setiap 4 hari. Tanggal 2 Januari 2026 bersamaan pertama kali. Tanggal berapa mereka les bersama untuk yang <b>ketiga</b> kalinya?", options: ["8 Januari 2026", "14 Januari 2026", "20 Januari 2026", "26 Januari 2026"], correct: 2, topic: "KPK Jadwal" },
+      { id: 6, type: "PG", text: "Pak Yono punya lahan 1,5 hektar. 1/2 ditanami padi, 2/5 jagung, sisanya ketela. Luas lahan ketela adalah ... m².", options: ["7.500 m²", "5.000 m²", "2.500 m²", "1.500 m²"], correct: 2, topic: "Pecahan" },
+      { id: 7, type: "PG", text: "Sifat bangun datar: sudut berhadapan sama besar, 4 sisi, 2 pasang sejajar sama panjang, 2 sudut tumpul & 2 lancip, diagonal tidak sama panjang. Bangun tersebut adalah ....", options: ["jajar genjang", "layang-layang", "belah ketupat", "trapesium"], correct: 0, topic: "Bangun Datar" },
+      { id: 8, type: "PG", text: "Kelompok pecahan berurutan dari terkecil ke terbesar adalah ....", options: ["225%, 2 12/20, 2 2/5, 2.75, 5/2", "225%, 2 2/5, 5/2, 2 12/20, 2.75", "225%, 2 2/5, 2 12/20, 2.75, 5/2", "225%, 2 12/20, 2 2/5, 5/2, 2.75"], correct: 1, topic: "Pecahan" },
+      { id: 9, type: "PG", text: "Trapesium dengan sisi sejajar 7 cm dan 19 cm, tinggi 8 cm. Luas trapesium adalah ... cm².", options: ["104", "208", "312", "416"], correct: 0, topic: "Luas Trapesium" },
+      { id: 10, type: "PG", text: "Luas tiga persegi dengan sisi 13 cm, 21 cm, dan 43 cm jika dijumlahkan adalah ... cm².", options: ["1.849", "2.290", "2.459", "5.929"], correct: 1, topic: "Luas Persegi" },
+      { id: 11, type: "PG", text: "Susunan kubus jika dilihat dari depan akan tampak seperti ....", options: ["Opsi A", "Opsi B", "Opsi C", "Opsi D"], correct: 0, topic: "Proyeksi" },
+      { id: 12, type: "PG", text: "Kaleng berisi 0,8 liter susu. Diminum Dhika 1/4 dm³, lalu Hima minum 125 ml. Sisa susu adalah ... ml.", options: ["450 ml", "425 ml", "375 ml", "350 ml"], correct: 2, topic: "Volume" },
+      { id: 13, type: "PG", text: "Jarak kantor 15 km, kecepatan 60 km/jam. Berangkat pukul 06.30, tiba pukul ....", options: ["06.40", "06.45", "06.50", "06.55"], correct: 1, topic: "Kecepatan" },
+      { id: 14, type: "PG", text: "Panen ikan: Lele 125kg, Gurami 75kg, Nila 90kg, Mujair 60kg, Patin 75kg. Diagram batang yang sesuai adalah ....", options: ["Diagram A", "Diagram B", "Diagram C", "Diagram D"], correct: 1, topic: "Statistika" },
+      { id: 15, type: "PG", text: "Toko buah: Mangga 120, Pisang 80, Jambu 150, Jeruk 250, Apel 100. Pernyataan yang <b>tidak benar</b> adalah ....", options: ["Apel lebih sedikit daripada mangga.", "Selisih jeruk dan apel sama dengan jambu.", "Buah paling sedikit adalah pisang.", "Buah yang terjual >100 ada dua jenis."], correct: 3, topic: "Analisis Data" },
+      { id: 16, type: "MCMA", text: "Dian membawa 5 lembar 50rb, 4 lembar 20rb, 2 lembar 10rb. Harga kain Rp400.000 diskon 15%. Pilihlah pernyataan yang benar! (Jawaban lebih dari satu)", options: ["Dian tidak jadi membeli karena uang kurang.", "Diskon yang diperoleh sebesar Rp60.000,00.", "Sisa uang Dian setelah membayar adalah Rp10.000,00."], correct: [1, 2], topic: "Aritmatika Sosial" },
+      { id: 17, type: "MCMA", text: "Segitiga siku-siku sisi siku 7 cm, sisi miring 25 cm. Pilihlah pernyataan yang benar! (Jawaban lebih dari satu)", options: ["Keliling bangun tersebut adalah 56 cm.", "Panjang sisi BC adalah 18 cm.", "Luas bangun di atas adalah 84 cm²."], correct: [0, 2], topic: "Pythagoras" },
+      { id: 18, type: "MCMA", text: "Susunan kubus sisi 5 cm. Pilihlah pernyataan yang benar! (Jawaban lebih dari satu)", options: ["Ada 10 buah kubus volumenya sama.", "Volume tiap kubus satuan sebesar 125 cm³.", "Luas permukaan kubus menempel di bawah sebesar 125 cm²."], correct: [0, 1, 2], topic: "Bangun Ruang" },
+      { id: 19, type: "MCMA", text: "Kaleng balok 2 dm × 10 cm × 1,5 dm berisi susu 2/5 bagian. Pilihlah pernyataan yang benar! (Jawaban lebih dari satu)", options: ["Volume kaleng seluruhnya 3.000 cm³.", "Volume susu dalam kaleng 12 liter.", "Agar penuh perlu tambahan 1.800 cm³ susu."], correct: [0, 2], topic: "Volume Balok" },
+      { id: 20, type: "MCMA", text: "Banu (50 km/jam) dan Joko (70 km/jam) berjarak 180 km pukul 06.00. Pilihlah pernyataan yang benar! (Jawaban lebih dari satu)", options: ["Mereka berpapasan pukul 07.30.", "Mereka berpapasan pada jarak 75 km dari kota M.", "Pukul 08.30 Joko sudah sampai di kota M."], correct: [0, 1], topic: "Berpapasan" },
+      { id: 21, type: "MCMA", text: "2,5 abad + 4 dasawarsa - 5 windu + 2 lustrum = ... Setara dengan satuan waktu: (Jawaban lebih dari satu)", options: ["26 dasawarsa", "32 windu", "52 lustrum"], correct: [0, 1, 2], topic: "Satuan Waktu" },
+      { id: 22, type: "MCMA", text: "Bu Desty punya 72 permen, 64 coklat, 32 roti dibagikan ke anak-anak sama banyak. Pilihlah pernyataan yang benar! (Jawaban lebih dari satu)", options: ["Jumlah anak terbanyak yang mendapat adalah 16 anak.", "Jumlah permen diterima tiap anak 9 buah.", "Setiap anak menerima makanan 21 buah."], correct: [0, 1, 2], topic: "FPB" },
+      { id: 23, type: "MCMA", text: "Data pembeli: H1=85, H2=75, H3=100, H4=65, H5=115. Pilihlah pernyataan yang benar! (Jawaban lebih dari satu)", options: ["Selisih pembeli hari 1 dan 2 adalah 10 orang.", "Jumlah pembeli hari 3 dan 5 sebanyak 215 orang.", "Ada dua hari pembelinya > 100 orang."], correct: [0, 1, 2], topic: "Statistika" },
+      { id: 24, type: "Kategori", text: "Bangun belah ketupat/layang-layang. Tentukan Benar atau Salah setiap pernyataan!", statements: ["Mempunyai dua sumbu simetri.", "Mempunyai dua diagonal yang sama panjang.", "Keempat sudut sama besar."], correct: ["Benar", "Salah", "Salah"], topic: "Bangun Datar" },
+      { id: 25, type: "Kategori", text: "Wadah balok 12 cm × 8 cm × 4 cm. Tentukan Benar atau Salah setiap pernyataan!", statements: ["Volume wadah seluruhnya 384 cm³.", "Jika diisi air 192 cm³, tinggi air 2 cm.", "Jika diisi air 0,5 liter, air yang tumpah 116 ml."], correct: ["Benar", "Benar", "Benar"], topic: "Volume" },
+      { id: 26, type: "Kategori", text: "Umur Ali, Beni, Cantika, Diandra (Diandra 10 tahun). Tentukan Benar atau Salah:", statements: ["Termuda adalah Diandra.", "Jumlah umur Cantika dan Diandra sama dengan Beni.", "Tertua adalah Ali."], correct: ["Benar", "Benar", "Benar"], topic: "Perbandingan" },
+      { id: 27, type: "Kategori", text: "Ibu belanja beras Rp75.000 pengembalian Rp25.000. Tentukan Benar atau Salah kemungkinan uang dibayarkan:", statements: ["Satu lembar seratus ribuan.", "Dua lembar lima puluh ribuan.", "Sepuluh lembar dua puluh ribuan."], correct: ["Benar", "Benar", "Salah"], topic: "Uang" },
+      { id: 28, type: "Kategori", text: "Diskon 20%. Pensil Rp5.000, penggaris 1,5×pensil, buku 2×penggaris. Belanja 1 lusin buku, 5 pensil, 3 penggaris. Benar/Salah:", statements: ["Harga buku dibayar Rp144.000,00.", "Harga penggaris sebelum diskon Rp32.500,00.", "Total harga dibayar semuanya Rp182.000,00."], correct: ["Benar", "Salah", "Benar"], topic: "Aritmatika" },
+      { id: 29, type: "Kategori", text: "Beras setiap 4 hari, minyak setiap 12 hari. Bersama 1 Agustus 2024. Tentukan Benar atau Salah:", statements: ["Tanggal 20 Agustus hanya membeli beras.", "Tanggal 6 September membeli bersamaan.", "Setiap membeli minyak pasti membeli beras."], correct: ["Benar", "Benar", "Benar"], topic: "KPK" },
+      { id: 30, type: "Kategori", text: "Piktogram SD Mutiara (1 gambar = 10 siswa). Tentukan Benar atau Salah:", statements: ["Selisih siswa terbanyak dan tersedikit 30 anak.", "Jumlah siswa kelas II, III, dan VI sama banyak.", "Jumlah seluruh siswa 350 anak."], correct: ["Benar", "Benar", "Salah"], topic: "Piktogram" }
+    ];
 
-    const DEFAULT_PACKAGE_TOKENS = {
-      matematika: { "UJICOBA": "UJICOBA", "Paket 1": "MAT1", "Paket 2": "MAT2", "Paket 3": "MAT3", "Paket 4": "MAT4", "Paket 5": "MAT5" },
-      indonesia: { "Paket 1": "BINDO1", "Paket 2": "BINDO2", "Paket 3": "BINDO3", "Paket 4": "BINDO4", "Paket 5": "BINDO5" }
-    };
+    // 2. DATA SOAL BAHASA INDONESIA - PAKET 2
+    const SOAL_BAHASA_INDONESIA_PAKET_2 = [
+      { id: 1, type: "PG", text: "Makna kata perundungan dalam Stimulus 1 paling tepat adalah ....", options: ["tindakan menyakiti atau merendahkan seseorang secara berulang", "perbedaan pendapat yang diselesaikan dengan baik", "kegiatan membantu teman belajar", "kebiasaan bekerja bersama dalam kelompok"], correct: 0, topic: "Kosakata" },
+      { id: 2, type: "MCMA", text: "Pilih semua contoh perundungan yang disebutkan dalam Stimulus 1. (Pilihan benar lebih dari satu)", options: ["Memberi julukan yang merendahkan.", "Mengajak teman bergabung dalam kegiatan.", "Menyebarkan foto untuk mempermalukan seseorang."], correct: [0, 2], topic: "Informasi Tersurat" },
+      { id: 3, type: "Kategori", text: "Tentukan kategori Benar atau Salah terkait tindakan menghadapi perundungan di sekolah!", statements: ["Mengejek atau memberi julukan merendahkan secara berulang merupakan perundungan.", "Mendampingi teman sasaran perundungan adalah tindakan mendukung.", "Melapor kepada guru sebaiknya dihindari."], correct: ["Benar", "Benar", "Salah"], topic: "Tindakan" },
+      { id: 4, type: "PG", text: "Kegiatan yang mendukung kesiapan sebelum berangkat sekolah menurut Stimulus 2 adalah ....", options: ["Menjaga kebersihan diri, sarapan, dan memeriksa perlengkapan.", "Menggunakan gawai hingga larut malam.", "Berangkat tanpa memeriksa jadwal pelajaran.", "Melewatkan sarapan agar lebih cepat."], correct: 0, topic: "Kesiapan" },
+      { id: 5, type: "PG", text: "Mengapa menyiapkan buku dan perlengkapan pada malam hari merupakan kebiasaan yang baik?", options: ["Agar pagi hari lebih teratur dan tidak terburu-buru.", "Agar tidak perlu tidur malam.", "Agar tugas dapat ditinggalkan.", "Agar tidak perlu memeriksa jadwal."], correct: 0, topic: "Kebiasaan" },
+      { id: 6, type: "MCMA", text: "Pilih semua tindakan yang sesuai dengan anjuran keamanan digital pada Stimulus 3. (Pilihan benar lebih dari satu)", options: ["Memeriksa nama pengirim dan alamat situs.", "Meminta bantuan orang tua atau guru jika ragu.", "Memasukkan kata sandi ke halaman belum jelas."], correct: [0, 1], topic: "Keamanan Digital" },
+      { id: 7, type: "PG", text: "Ungkapan 'sumber yang tepercaya' pada bacaan paling tepat berarti sumber yang ....", options: ["dapat dipercaya kebenaran informasinya", "selalu menawarkan hadiah", "meminta semua data pribadi", "tidak memiliki nama pengirim"], correct: 0, topic: "Makna Ungkapan" },
+      { id: 8, type: "Kategori", text: "Kelompokkan peristiwa berdasarkan struktur alur cerita (A=Awal, B=Masalah, C=Penyelesaian):", statements: ["Raka melarang Seno memanjat pohon licin.", "Keputusan bersama mengutamakan keselamatan.", "Kegiatan membuat benda terbang di ruang terbuka."], correct: ["B", "C", "A"], topic: "Alur Cerita" },
+      { id: 9, type: "PG", text: "Mengapa lokasi tempat layangan tersangkut memicu perdebatan?", options: ["Karena berada di area privat berbahaya.", "Karena dahan tinggi serta kondisi pohon licin pasca-hujan.", "Karena pohon berada di batas luar lapangan.", "Karena menghalangi jalur angin."], correct: 1, topic: "Konflik" },
+      { id: 10, type: "PG", text: "Mengapa penjaga kebun dinilai paling efektif dimintai tolong?", options: ["Memiliki otoritas penuh melarang anak.", "Mempunyai perlengkapan memadai (galah panjang) serta keahlian situasional.", "Satu-satunya orang dewasa di dekat rumah.", "Diwajibkan aturan lingkungan."], correct: 1, topic: "Tokoh" },
+      { id: 11, type: "PG", text: "Mengapa melimpahkan kesalahan kepada korban perundungan digital tidak tepat?", options: ["Karena korban tidak memiliki kendali atas tindakan pihak lain.", "Karena korban menyadari foto bersifat publik.", "Karena melapor menghapus jejak digital.", "Karena sekolah wajib ganti rugi."], correct: 0, topic: "Etika" },
+      { id: 12, type: "MCMA", text: "Manakah tindakan yang mencerminkan pengguna teknologi bertanggung jawab? (Pilih lebih dari satu)", options: ["Menahan diri membagikan unggahan merendahkan serta meminta izin foto.", "Merekam jejak digital sebagai bukti serta dukungan moral.", "Menyebarluaskan unggahan perundungan ke grup."], correct: [0, 1], topic: "Teknologi" },
+      { id: 13, type: "Kategori", text: "Tentukan kebenaran pernyataan mengenai penanganan perundungan digital:", statements: ["Rasa malu dan cemas adalah dampak psikologis langsung.", "Langkah tepat membalas komentar pelaku dengan merendahkan.", "Menyimpan bukti dan melapor kepada guru merupakan upaya kolaboratif."], correct: ["Benar", "Salah", "Benar"], topic: "Analisis" },
+      { id: 14, type: "PG", text: "Gagasan utama Stimulus 6 (Tidur Cukup dan Kesiapan Belajar) adalah ....", options: ["Bermain gim sampai larut meningkatkan konsentrasi.", "Kebiasaan sehat dan jadwal teratur membantu kesiapan belajar.", "Semua siswa harus memiliki jadwal sama.", "Sarapan tidak berkaitan dengan belajar."], correct: 1, topic: "Gagasan Utama" },
+      { id: 15, type: "PG", text: "Ungkapan 'mengisi kembali baterai tubuh' dalam Stimulus 6 berarti ....", options: ["mengisi daya ponsel", "memulihkan tenaga dengan kebiasaan sehat dan istirahat", "berhenti melakukan kegiatan", "membeli baterai baru"], correct: 1, topic: "Kiasan" },
+      { id: 16, type: "MCMA", text: "Pilih semua kesimpulan yang didukung informasi etika membagikan foto. (Pilih lebih dari satu)", options: ["Meminta izin menghormati privasi orang lain.", "Informasi pribadi tidak perlu dipublikasikan.", "Foto teman boleh selalu diunggah."], correct: [0, 1], topic: "Etika Foto" },
+      { id: 17, type: "MCMA", text: "Pilih semua akibat masuk akal jika pengguna menghormati privasi foto. (Pilih lebih dari satu)", options: ["Teman merasa privasinya dihargai.", "Risiko data pribadi tersebar mengecil.", "Semua unggahan pasti dapat ditarik kembali."], correct: [0, 1], topic: "Privasi" },
+      { id: 18, type: "Kategori", text: "Tentukan status pernyataan (A=Dinyatakan langsung, B=Disimpulkan, C=Tidak didukung):", statements: ["Pengguna meminta izin sebelum mengunggah foto.", "Berpikir sebelum membagikan membantu menjaga privasi.", "Semua siswa menolak menggunakan media sosial."], correct: ["A", "B", "C"], topic: "Status Informasi" },
+      { id: 19, type: "PG", text: "Amanat utama Stimulus 8 (Pohon Kecil di Sudut Sekolah) adalah ....", options: ["Tugas bersama dapat diabaikan.", "Kesabaran dan kerja sama membantu menyelesaikan tanggung jawab.", "Kesalahan teman harus dibalas kemarahan.", "Tanaman tumbuh baik tanpa perawatan."], correct: 1, topic: "Amanat" },
+      { id: 20, type: "PG", text: "Perubahan sikap Bayu dalam cerita adalah ....", options: ["dari mengabaikan tugas menjadi bertanggung jawab", "dari rajin menjadi menolak bekerja sama", "dari sabar menjadi ingin merusak", "dari peduli menjadi tidak mau belajar"], correct: 0, topic: "Karakter" },
+      { id: 21, type: "PG", text: "Menurut Stimulus 9, mengapa aturan bercanda yang aman bermanfaat?", options: ["Seluruh siswa harus memiliki selera humor sama.", "Siswa belajar menjaga perasaan dan menghormati batas.", "Siswa boleh mengejek asal banyak yang tertawa.", "Siswa tidak boleh berbicara saat istirahat."], correct: 1, topic: "Relevansi" },
+      { id: 22, type: "MCMA", text: "Pilih semua respons tepat ketika menyaksikan teman diejek. (Pilih lebih dari satu)", options: ["Ikut tertawa agar tidak jadi sasaran.", "Menunjukkan dukungan kepada teman yang diejek.", "Meminta bantuan guru jika ejekan berulang."], correct: [1, 2], topic: "Sikap" },
+      { id: 23, type: "Kategori", text: "Nilailah setiap tindakan (A = Tepat, B = Tidak Tepat):", statements: ["Berhenti bercanda ketika teman menyatakan tersakiti.", "Menyebarkan julukan merendahkan agar kelas tertawa.", "Mendukung teman dan melapor guru jika ejekan berulang."], correct: ["A", "B", "A"], topic: "Penilaian" },
+      { id: 24, type: "PG", text: "Kebiasaan paling mudah diterapkan berdasarkan Stimulus 10 untuk menjaga kesehatan adalah ....", options: ["membawa air putih dan memilih bekal beragam", "menghindari semua kegiatan fisik", "mengganti tidur dengan gawai", "hanya makan satu jenis makanan"], correct: 0, topic: "Kesehatan" },
+      { id: 25, type: "MCMA", text: "Pilih semua kebiasaan sesuai pesan Stimulus 10. (Pilih lebih dari satu)", options: ["Mencuci tangan sebelum makan.", "Tidur cukup setelah beraktivitas.", "Minum sesedikit mungkin agar tidak ke toilet."], correct: [0, 1], topic: "Pesan" },
+      { id: 26, type: "PG", text: "Alasan paling kuat tidak langsung meneruskan pesan perubahan sekolah yang belum terverifikasi:", options: ["Pesan panjang sulit dibaca.", "Pesan tidak mencantumkan sumber resmi dan belum cocok dengan pengumuman sekolah.", "Pesan diterima malam hari.", "Pesan dikirim lewat ponsel."], correct: 1, topic: "Verifikasi" },
+      { id: 27, type: "MCMA", text: "Pilih semua tindakan bijaksana ketika menerima kabar digital belum pasti. (Pilih lebih dari satu)", options: ["Memeriksa tanggal dan sumber informasi.", "Membandingkan pesan dengan kanal resmi sekolah.", "Meneruskan pesan secepatnya."], correct: [0, 1], topic: "Bijaksana" },
+      { id: 28, type: "Kategori", text: "Tentukan kategori tindakan (A = Bijaksana, B = Tidak Bijaksana):", statements: ["Memeriksa pengumuman melalui saluran resmi.", "Meneruskan kabar libur tanpa sumber.", "Memperhatikan tanggal dan konteks pesan."], correct: ["A", "B", "A"], topic: "Kategori Berita" },
+      { id: 29, type: "Kategori", text: "Respons emosi dalam Jaket untuk Nara (A=Khawatir, B=Lega, C=Senang):", statements: ["Wulan menggigil ketika hujan dan penjemput belum datang.", "Wulan mengetahui penjemputnya tiba.", "Nara merasa dapat membantu teman."], correct: ["A", "B", "C"], topic: "Emosi" },
+      { id: 30, type: "PG", text: "Respons paling sesuai terhadap tindakan Nara adalah ....", options: ["kesal karena harus berbagi jaket", "menghargai kepedulian Nara membantu tanpa mempermalukan", "kecewa karena menolak bantuan", "marah karena teman dilarang menolong"], correct: 1, topic: "Apresiasi" },
+    ];
 
-    function getPackageStatus() {
-      const stored = localStorage.getItem('tka_pkg_status_multi');
-      return stored ? JSON.parse(stored) : DEFAULT_PACKAGE_STATUS;
-    }
+    // Dummy Soal Ujicoba Awal (Fallback jika paket lain dipilih)
+    const SOAL_UJICOBA_MATEMATIKA = [
+      { id: 1, type: "PG", text: "Berapakah hasil dari 15 + 10 × 2 ?", options: ["35", "50", "25", "40"], correct: 0, topic: "Operasi Hitung" },
+      { id: 2, type: "PG", text: "KPK dari 12 dan 15 adalah ....", options: ["30", "60", "45", "90"], correct: 1, topic: "KPK" }
+    ];
+    const SOAL_UJICOBA_BINDO = [
+      { id: 1, type: "PG", text: "Sinonim dari kata 'rajin' adalah ....", options: ["Malas", "Giat", "Lambat", "Bodoh"], correct: 1, topic: "Sinonim" },
+      { id: 2, type: "PG", text: "Lawan kata dari 'panjang' adalah ....", options: ["Luas", "Tinggi", "Pendek", "Besar"], correct: 2, topic: "Antonim" }
+    ];
 
-    function getPackageTokens() {
-      const stored = localStorage.getItem('tka_pkg_tokens_multi');
-      return stored ? JSON.parse(stored) : DEFAULT_PACKAGE_TOKENS;
-    }
+    // ================= VARIABEL STATE APLIKASI =================
+    let activeQuestions = [];
+    let currentQuestionIndex = 0;
+    let userAnswers = {};
+    let examTimerInterval = null;
+    let remainingTimeSeconds = 75 * 60; // 75 Menit
 
-    async function syncExamSettings() {
+    window.addEventListener('DOMContentLoaded', () => {
+      const schoolSelect = document.getElementById('inputSchool');
+      LIST_SEKOLAH_MRANGGEN.forEach(sch => {
+        const opt = document.createElement('option');
+        opt.value = sch;
+        opt.innerText = sch;
+        schoolSelect.appendChild(opt);
+      });
+      updatePackageOptions();
+      fetchCloudTokens();
+    });
+
+    async function fetchCloudTokens() {
       try {
         const res = await fetch(FIREBASE_SETTINGS_URL);
         const data = await res.json();
-        if (data) {
-          if (data.status) localStorage.setItem('tka_pkg_status_multi', JSON.stringify(data.status));
-          if (data.tokens) localStorage.setItem('tka_pkg_tokens_multi', JSON.stringify(data.tokens));
+        if (data && data.tokens) {
+          window.cloudTokens = data.tokens;
         }
-      } catch (e) {
-        console.warn("Gagal sinkron token cloud:", e);
-      }
+      } catch (e) { console.warn("Offline tokens:", e); }
     }
 
-    const SOAL_30_MATEMATIKA = [
-      {
-        id: 1, type: "PG",
-        text: "Hasil dari 12.304 - 286 + 4.786 adalah ....",
-        options: ["16.804", "12.018", "6.946", "5.072"],
-        correct: 0,
-        topic: "Operasi Hitung Bilangan Cacah",
-        explanation: "12.304 - 286 = 12.018 + 4.786 = 16.804. Jawaban: A."
-      },
-      {
-        id: 2, type: "Kategori",
-        text: "Keluarga Ahmad memerlukan air minum kemasan botol sebanyak 18 botol untuk 3 hari. Harga 1 botol air minum tersebut Rp1.400,00.<br><br>Tentukan <b>Benar</b> atau <b>Salah</b> setiap pernyataan berikut berdasarkan informasi tersebut!",
-        statements: [
-          "Banyaknya air minum botol yang diperlukan Keluarga Ahmad selama 30 hari adalah 180 botol.",
-          "Biaya yang harus dikeluarkan Keluarga Ahmad untuk membeli air minum setiap 3 harinya adalah Rp25.200,00.",
-          "Total uang yang harus dikeluarkan Keluarga Ahmad selama 30 hari sebesar Rp756.000,00."
-        ],
-        correct: ["Benar", "Benar", "Salah"],
-        topic: "Aritmatika Sosial Satuan",
-        explanation: "1 hari = 18 : 3 = 6 botol. (1) 30 hari = 30 × 6 = 180 botol (Benar). (2) Biaya 3 hari = 18 × Rp1.400 = Rp25.200 (Benar). (3) Total 30 hari = 180 × Rp1.400 = Rp252.000, bukan Rp756.000 (Salah). Kunci: Benar, Benar, Salah."
-      },
-      {
-        id: 3, type: "PG",
-        text: "Penduduk di desa Suka Makmur berjumlah 80 kepala keluarga. 20% penduduknya bermata pencaharian sebagai guru, 30% sebagai pedagang, dan 50% sisanya sebagai petani. Rasio jumlah penduduk yang bekerja sebagai guru dan petani adalah ....",
-        options: ["16 : 36", "16 : 40", "24 : 40", "3 : 5"],
-        correct: 1,
-        topic: "Rasio Penduduk",
-        explanation: "Guru = 20% × 80 = 16 KK. Petani = 50% × 80 = 40 KK. Rasio = 16 : 40. Jawaban: B."
-      },
-      {
-        id: 4, type: "MCMA",
-        text: "Perhatikan bilangan berikut.<br><div class='my-2 p-2.5 bg-slate-100 rounded-xl font-bold text-center text-slate-800'>24, 54, dan 64</div>Pilihlah semua pernyataan yang benar terkait faktorisasi prima dan Kelipatan Persekutuan Terkecil (KPK) dari ketiga bilangan tersebut! Pernyataan benar lebih dari satu.",
-        options: [
-          "Faktorisasi prima dari bilangan 54 adalah 2 × 3².",
-          "Kelipatan Persekutuan Terkecil (KPK) dari ketiga bilangan tersebut dalam bentuk faktorisasi prima adalah 2⁶ × 3³.",
-          "Nilai akhir dari KPK bilangan 24, 54, dan 64 jika dihitung adalah 1.728."
-        ],
-        correct: [1, 2],
-        topic: "Faktorisasi Prima & KPK",
-        explanation: "54 = 2 × 3³ (opsi 1 salah karena 2 × 3²). KPK = 2⁶ × 3³ = 64 × 27 = 1.728. Opsi 2 dan 3 Benar."
-      },
-      {
-        id: 5, type: "Kategori",
-        text: "Fatimah les matematika setiap 6 hari sekali, Dani les matematika setiap 4 hari sekali, sedangkan Anggi les matematika setiap 8 hari sekali. Pada 1 Mei 2026, mereka les matematika bersama-sama untuk pertama kalinya.<br><br>Tentukan <b>Benar</b> atau <b>Salah</b> setiap pernyataan berikut berdasarkan informasi tersebut!",
-        statements: [
-          "Kelipatan Persekutuan Terkecil (KPK) dari jadwal les Fatimah, Dani, dan Anggi adalah 24 hari.",
-          "Fatimah dan Dani akan les matematika bersama-sama (tanpa Anggi) setiap 14 hari sekali.",
-          "Mereka bertiga akan les matematika bersama-sama untuk kedua kalinya pada tanggal 25 Mei 2026."
-        ],
-        correct: ["Benar", "Salah", "Benar"],
-        topic: "KPK Jadwal Bersama",
-        explanation: "(1) KPK(6, 4, 8) = 24 hari (Benar). (2) KPK(6, 4) = 12 hari, bukan 14 hari (Salah). (3) 1 Mei + 24 hari = 25 Mei 2026 (Benar). Kunci: Benar, Salah, Benar."
-      },
-      {
-        id: 6, type: "PG",
-        text: "Denah kolam lele milik Pak Ridwan berukuran panjang 5 cm dan lebar 3 cm. Jika skala denah tersebut 1 : 2000 maka luas kolam lele Pak Ridwan sebenarnya adalah ... m².",
-        options: ["300", "6.000", "18.000", "30.000"],
-        correct: 1,
-        topic: "Skala & Luas Sebenarnya",
-        explanation: "Panjang = 5 × 2.000 cm = 100 m. Lebar = 3 × 2.000 cm = 60 m. Luas = 100 m × 60 m = 6.000 m². Jawaban: B."
-      },
-      {
-        id: 7, type: "Kategori",
-        text: "Denada memiliki tanaman hias setinggi 14 dm. Pada saat merapikan tanaman tersebut, Denada memotong bagian atas tanaman tersebut sehingga tingginya berkurang 24 cm. Setelah beberapa hari tanaman tersebut tingginya bertambah 20 mm.<br><br>Tentukan <b>Benar</b> atau <b>Salah</b> setiap pernyataan berikut!",
-        statements: [
-          "Tinggi awal tanaman hias Denada jika dinyatakan dalam satuan sentimeter adalah 140 cm.",
-          "Pertambahan tinggi tanaman setelah beberapa hari setara dengan 2 cm.",
-          "Tinggi akhir tanaman hias Denada sekarang adalah 128 cm."
-        ],
-        correct: ["Benar", "Benar", "Salah"],
-        topic: "Konversi Satuan Panjang",
-        explanation: "(1) 14 dm = 140 cm (Benar). (2) 20 mm = 2 cm (Benar). (3) Tinggi akhir = 140 - 24 + 2 = 118 cm, bukan 128 cm (Salah). Kunci: Benar, Benar, Salah."
-      },
-      {
-        id: 8, type: "MCMA",
-        text: `Budi melempar sebuah dadu bersisi enam. Hasil pelemparan ditunjukkan oleh gambar berikut.<br>
-        <div class='my-3 flex justify-center'>
-          <svg width="110" height="110" viewBox="0 0 120 120" class="drop-shadow">
-            <polygon points="60,10 105,32 60,54 15,32" fill="#f8fafc" stroke="#334155" stroke-width="2.5" stroke-linejoin="round"/>
-            <circle cx="60" cy="32" r="3" fill="#0f172a"/><circle cx="38" cy="22" r="3" fill="#0f172a"/><circle cx="82" cy="22" r="3" fill="#0f172a"/><circle cx="38" cy="42" r="3" fill="#0f172a"/><circle cx="82" cy="42" r="3" fill="#0f172a"/>
-            <polygon points="15,32 60,54 60,108 15,86" fill="#e2e8f0" stroke="#334155" stroke-width="2.5" stroke-linejoin="round"/>
-            <circle cx="30" cy="48" r="3" fill="#0f172a"/><circle cx="45" cy="55" r="3" fill="#0f172a"/><circle cx="30" cy="67" r="3" fill="#0f172a"/><circle cx="45" cy="74" r="3" fill="#0f172a"/><circle cx="30" cy="86" r="3" fill="#0f172a"/><circle cx="45" cy="93" r="3" fill="#0f172a"/>
-            <polygon points="60,54 105,32 105,86 60,108" fill="#cbd5e1" stroke="#334155" stroke-width="2.5" stroke-linejoin="round"/>
-            <circle cx="75" cy="55" r="3" fill="#0f172a"/><circle cx="90" cy="48" r="3" fill="#0f172a"/><circle cx="75" cy="93" r="3" fill="#0f172a"/><circle cx="90" cy="86" r="3" fill="#0f172a"/>
-          </svg>
-        </div>
-        Diketahui bahwa sisi depan menunjukkan angka 6. Pilihlah semua pernyataan yang benar terkait angka-angka yang tampak pada dadu tersebut! Pernyataan benar lebih dari satu.`,
-        options: [
-          "Urutan angka dari sisi depan, kanan, dan atas berturut-turut menunjukkan angka 6, 4, dan 5.",
-          "Angka yang ditunjukkan oleh sisi bagian kanan dadu merupakan bilangan ganjil.",
-          "Jika angka pada sisi atas dan sisi kanan dikalikan maka hasilnya adalah 20."
-        ],
-        correct: [0, 2],
-        topic: "Analisis Spasial Dadu",
-        explanation: "Sisi depan = 6, sisi kanan = 4 (genap, opsi 2 salah), sisi atas = 5. Atas × Kanan = 5 × 4 = 20. Opsi 1 dan 3 Benar."
-      },
-      {
-        id: 9, type: "PG",
-        text: "Toko Wijaya adalah agen penjualan buku tulis. Saat ini toko tersebut mempunyai persediaan buku sebanyak 20 gros. Seorang pengecer membeli buku sebanyak 12 lusin. Banyaknya buku yang masih tersedia di Toko Wijaya adalah ....",
-        options: ["96 buah", "936 buah", "2.736 buah", "2.868 buah"],
-        correct: 2,
-        topic: "Satuan Gros & Lusin",
-        explanation: "20 gros = 20 × 144 = 2.880 buah. 12 lusin = 12 × 12 = 144 buah. Sisa = 2.880 - 144 = 2.736 buah. Jawaban: C."
-      },
-      {
-        id: 10, type: "MCMA",
-        text: "Pak Faisal memiliki sebidang tanah. Tanah tersebut digunakan untuk membuat rumah seluas 750 m², kolam ikan 12 are, dan kebun 0,75 ha.<br><br>Pilihlah semua pernyataan yang benar terkait luas masing-masing bagian tanah Pak Faisal jika dinyatakan dalam satuan meter persegi (m²)! Pernyataan benar lebih dari satu.",
-        options: [
-          "Luas kolam ikan milik Pak Faisal jika diubah ke satuan meter persegi adalah 1.200 m².",
-          "Lahan yang digunakan untuk kebun memiliki luas paling besar, yaitu senilai 7.500 m².",
-          "Total seluruh luas lahan yang dimiliki oleh Pak Faisal adalah 945 m²."
-        ],
-        correct: [0, 1],
-        topic: "Konversi Satuan Luas",
-        explanation: "Kolam = 12 × 100 = 1.200 m². Kebun = 0,75 × 10.000 = 7.500 m². Rumah = 750 m². Total = 9.450 m². Opsi 1 dan 2 Benar."
-      },
-      {
-        id: 11, type: "PG",
-        text: "Sebotol larutan multivitamin volumenya 0,8 dm³. Adik meminum multivitamin tersebut tiga kali sehari secara teratur. Setiap kali minum, adik minum sebanyak 15 ml. Jika adik sudah minum selama 10 hari, multivitamin yang tersisa dalam botol adalah ... ml.",
-        options: ["250", "350", "3.500", "35.000"],
-        correct: 1,
-        topic: "Konversi Satuan Volume",
-        explanation: "0,8 dm³ = 800 ml. Diminum = 3 × 15 × 10 = 450 ml. Sisa = 800 - 450 = 350 ml. Jawaban: B."
-      },
-      {
-        id: 12, type: "PG",
-        text: "Jarak Kota Kediri dan Madiun adalah 380 km. Sebuah bus berjalan dari Kota Kediri ke kota Madiun dengan kecepatan 80 km/jam. Jika bus tiba di Kota Madiun pada pukul 11.30, bus berangkat pada pukul ....",
-        options: ["07.45", "07.15", "06.45", "06.15"],
-        correct: 2,
-        topic: "Kecepatan, Jarak & Waktu",
-        explanation: "Waktu = 380 : 80 = 4,75 jam = 4 jam 45 menit. Berangkat = 11.30 - 04.45 = 06.45. Jawaban: C."
-      },
-      {
-        id: 13, type: "PG",
-        text: "Untuk mengisi sebuah kolam renang diperlukan waktu 8 jam. Jika debit air yang dialirkan adalah 1200 liter/menit, volume kolam renang adalah ... dm³.",
-        options: ["960", "9.600", "57.600", "576.000"],
-        correct: 3,
-        topic: "Debit & Volume",
-        explanation: "8 jam = 480 menit. Volume = 1.200 liter/menit × 480 menit = 576.000 liter = 576.000 dm³. Jawaban: D."
-      },
-      {
-        id: 14, type: "MCMA",
-        text: "Sebuah bangun mempunyai sifat-sifat sebagai berikut.<br>1) Mempunyai empat simetri lipat<br>2) Keempat sisinya sama panjang<br>3) Kedua diagonalnya berpotongan tegak lurus<br><br>Pilihlah semua pernyataan yang benar terkait karakteristik atau identitas bangun datar di atas! Pernyataan benar lebih dari satu.",
-        options: [
-          "Bangun datar yang memiliki ketiga sifat di atas adalah persegi.",
-          "Jika bangun datar tersebut adalah belah ketupat maka bangun datar memiliki jumlah simetri lipat yang sama banyak dengan persegi.",
-          "Besar keempat sudut pada bangun datar yang dimaksud di atas masing-masing adalah 90° sudut siku-siku."
-        ],
-        correct: [0, 2],
-        topic: "Sifat Bangun Datar",
-        explanation: "Bangun datar adalah persegi (memiliki 4 simetri lipat dan sudut siku-siku 90°). Belah ketupat hanya 2 simetri lipat. Opsi 1 dan 3 Benar."
-      },
-      {
-        id: 15, type: "PG",
-        text: "Diketahui jari-jari sebuah lingkaran 20 cm. Keliling lingkaran tersebut adalah ... cm.",
-        options: ["1.256", "125,6", "628", "62,8"],
-        correct: 1,
-        topic: "Keliling Lingkaran",
-        explanation: "Diameter = 40 cm. Keliling = 3,14 × 40 = 125,6 cm. Jawaban: B."
-      },
-      {
-        id: 16, type: "MCMA",
-        text: "Sebuah segitiga memiliki alas 16 dm dan tinggi 15 dm. Berdasarkan informasi tersebut, pilihlah semua pernyataan yang benar! Pernyataan benar lebih dari satu.",
-        options: [
-          "Luas segitiga tersebut adalah 120 dm².",
-          "Luas segitiga tersebut sama dengan 1,2 m².",
-          "Luas segitiga tersebut sama dengan 1.200 cm²."
-        ],
-        correct: [0, 1],
-        topic: "Luas Segitiga",
-        explanation: "Luas = 1/2 × 16 × 15 = 120 dm² = 1,2 m² = 12.000 cm². Opsi 1 dan 2 Benar."
-      },
-      {
-        id: 17, type: "PG",
-        text: "Rasio jumlah siswa laki-laki dengan siswa perempuan di suatu kelas adalah 3 : 5. Apabila jumlah seluruh siswa di kelas tersebut adalah berjumlah 40 anak, banyak siswa laki-laki di kelas tersebut berjumlah ... siswa.",
-        options: ["20", "25", "18", "15"],
-        correct: 3,
-        topic: "Rasio Perbandingan",
-        explanation: "Total rasio = 3 + 5 = 8. Laki-laki = 3/8 × 40 = 15 siswa. Jawaban: D."
-      },
-      {
-        id: 18, type: "PG",
-        text: "Sebuah ruang yang berukuran 4 m × 6 m akan dipasang ubin keramik dengan ukuran 20 cm × 20 cm. Satu dus berisi 10 buah keramik. Jika harga 1 dus keramik Rp15.000,00, biaya yang dikeluarkan adalah ....",
-        options: ["Rp9.600,00", "Rp60.000,00", "Rp240.000,00", "Rp900.000,00"],
-        correct: 3,
-        topic: "Luas Ruang & Biaya Keramik",
-        explanation: "Luas ruangan = 24 m² = 240.000 cm². Luas ubin = 400 cm². Kebutuhan = 600 buah = 60 dus. Biaya = 60 × Rp15.000 = Rp900.000,00. Jawaban: D."
-      },
-      {
-        id: 19, type: "MCMA",
-        text: `Perhatikan gambar di bawah ini!<br>
-        <div class='my-3 flex justify-center'>
-          <svg width="130" height="130" viewBox="0 0 100 100" class="drop-shadow">
-            <circle cx="50" cy="50" r="46" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
-            <path d="M50,50 L50,4 A46,46 0 0,1 82.5,17.5 Z" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
-            <line x1="50" y1="4" x2="50" y2="96" stroke="#1e293b" stroke-width="1.5"/>
-            <line x1="4" y1="50" x2="96" y2="50" stroke="#1e293b" stroke-width="1.5"/>
-            <line x1="17.5" y1="17.5" x2="82.5" y2="82.5" stroke="#1e293b" stroke-width="1.5"/>
-            <line x1="17.5" y1="82.5" x2="82.5" y2="17.5" stroke="#1e293b" stroke-width="1.5"/>
-          </svg>
-        </div>
-        Manakah pecahan di bawah ini yang senilai dengan bagian yang diarsir pada gambar tersebut?<br>Pilihlah jawaban yang benar! Jawaban benar lebih dari satu.`,
-        options: [
-          "2/16 dan 3/24",
-          "2/16 dan 4/24",
-          "3/24 dan 4/32"
-        ],
-        correct: [0, 2],
-        topic: "Pecahan Senilai",
-        explanation: "Bagian yang diarsir adalah 1/8. Pecahan senilai: 1/8 = 2/16 = 3/24 = 4/32. Opsi 1 dan 3 Benar."
-      },
-      {
-        id: 20, type: "Kategori",
-        text: "Sebuah bak mobil berukuran panjang 15 dm, lebar 12 dm, dan tinggi 5 dm. Bak mobil tersebut akan diisi pasir hingga penuh.<br><br>Berdasarkan situasi di atas, tentukan apakah pernyataan berikut <b>Benar</b> atau <b>Salah</b>!",
-        statements: [
-          "Volume pasir maksimal yang dapat ditampung oleh bak mobil tersebut adalah 900 dm³.",
-          "Jika pasir hanya diisi setengah dari tinggi bak maka volume pasir di dalam bak adalah 450 liter.",
-          "Luas alas bak mobil yang menyentuh pasir adalah 1800 dm²."
-        ],
-        correct: ["Benar", "Benar", "Salah"],
-        topic: "Volume & Luas Alas Balok",
-        explanation: "(1) Volume = 15 × 12 × 5 = 900 dm³ (Benar). (2) Setengah bak = 450 dm³ = 450 liter (Benar). (3) Luas alas = 15 × 12 = 180 dm², bukan 1.800 dm² (Salah). Kunci: Benar, Benar, Salah."
-      },
-      {
-        id: 21, type: "PG",
-        text: "Diketahui data sebagai berikut.<br><div class='my-2 p-2 bg-slate-100 rounded-xl font-bold text-center text-slate-800'>25, 26, 22, 24, 23, 21, 22, 21, 23, 25, 23, 24, 27, 21</div>Median data di atas adalah ....",
-        options: ["21", "22", "23", "24"],
-        correct: 2,
-        topic: "Median Data Tunggal",
-        explanation: "Data terurut (14 data): 21, 21, 21, 22, 22, 23, 23, 23, 24, 24, 25, 25, 26, 27. Median = (23 + 23)/2 = 23. Jawaban: C."
-      },
-      {
-        id: 22, type: "PG",
-        text: "Data banyak buku di sebuah perpustakaan sebagai berikut.<br>1) Buku cerita ada 55 eksemplar<br>2) Buku pelajaran ada 69 eksemplar<br>3) Buku pengetahuan ada 30 eksemplar<br>4) Majalah ada 75 eksemplar<br><br>Modus dari buku di perpustakaan adalah ....",
-        options: ["Buku cerita", "Buku pelajaran", "Buku pengetahuan", "Majalah"],
-        correct: 3,
-        topic: "Modus Frekuensi Buku",
-        explanation: "Majalah memiliki jumlah terbanyak yaitu 75 eksemplar. Modus = Majalah. Jawaban: D."
-      },
-      {
-        id: 23, type: "PG",
-        text: "Kebun Binatang Surabaya merupakan tempat wisata kebanggaan warga Surabaya. Kebun binatang ini mengoleksi beberapa satwa langka antara lain gajah 9 ekor, harimau 7 ekor, orang utan 8 ekor, 5 ekor elang jawa, dan beberapa ekor komodo. Jumlah kelima jenis satwa langka tersebut 40 ekor. Satwa yang paling banyak dikoleksi Kebun Binatang Surabaya adalah ....",
-        options: ["Gajah", "Harimau", "Komodo", "Elang jawa"],
-        correct: 2,
-        topic: "Analisis Data Satwa",
-        explanation: "Komodo = 40 - (9 + 7 + 8 + 5) = 40 - 29 = 11 ekor. Jumlah satwa terbanyak adalah komodo (11 ekor). Jawaban: C."
-      },
-      {
-        id: 24, type: "Kategori",
-        text: "Dalam kegiatan kerja bakti di sekolah, siswa laki-laki mendapat tugas untuk memindahkan batu bata seberat 3/5 kg. Siswa perempuan mendapat tugas untuk memindahkan batu bata seberat 2/5 kg. Jumlah siswa laki-laki dan perempuan yang mengikuti kerja bakti masing-masing berjumlah 20 siswa dan 15 siswa.<br><br>Berdasarkan informasi tersebut, tentukan apakah setiap pernyataan berikut <b>Benar</b> atau <b>Salah</b>!",
-        statements: [
-          "Total berat batu bata yang dipindahkan oleh seluruh siswa laki-laki adalah 15 kg.",
-          "Total berat batu bata yang dipindahkan oleh seluruh siswa perempuan adalah 6 kg.",
-          "Kelompok siswa perempuan memindahkan batu bata lebih banyak/berat daripada kelompok laki-laki."
-        ],
-        correct: ["Salah", "Benar", "Salah"],
-        topic: "Perkalian Pecahan",
-        explanation: "(1) Total laki-laki = 20 × 3/5 = 12 kg (Salah). (2) Total perempuan = 15 × 2/5 = 6 kg (Benar). (3) Laki-laki memindahkan 12 kg > 6 kg (Salah). Kunci: Salah, Benar, Salah."
-      },
-      {
-        id: 25, type: "PG",
-        text: "Untuk membuat secangkir es teh manis dibutuhkan gula pasir sebanyak 2,5 sendok makan. Apabila Ahmad ingin membuat 6 gelas es tes manis untuk dirinya dan teman-temannya, banyak gula pasir yang dibutuhkan sebanyak ... sendok makan.",
-        options: ["12", "15", "18", "8,5"],
-        correct: 1,
-        topic: "Perkalian Desimal",
-        explanation: "Banyak gula = 6 × 2,5 = 15 sendok makan. Jawaban: B."
-      },
-      {
-        id: 26, type: "Kategori",
-        text: "Riko ingin membeli 4 buah buku gambar untuk tugas sekolah. Harga satu buku gambar adalah Rp12.600. Riko memperkirakan total uang yang harus dibayar dengan menghitung 4 × Rp12.000 = Rp48.000. Riko membawa uang pas sebesar Rp48.000 di dompetnya.<br><br>Berdasarkan informasi tersebut, tentukan <b>Benar</b> atau <b>Salah</b> pernyataan berikut!",
-        statements: [
-          "Riko memperkirakan harga buku dengan cara membulatkan harganya ke bawah.",
-          "Hasil perkiraan Riko akan lebih besar daripada harga asli yang harus dibayar di kasir.",
-          "Uang yang dibawa Riko tidak cukup untuk membeli 4 buku gambar tersebut."
-        ],
-        correct: ["Benar", "Salah", "Benar"],
-        topic: "Penaksiran Harga",
-        explanation: "(1) Rp12.600 dibulatkan ke Rp12.000 adalah pembulatan ke bawah (Benar). (2) Harga asli = 4 × Rp12.600 = Rp50.400 > perkiraan Rp48.000 (Salah). (3) Uang Rp48.000 kurang Rp2.400 (Benar). Kunci: Benar, Salah, Benar."
-      },
-      {
-        id: 27, type: "PG",
-        text: `Diagram di bawah ini menunjukkan tabungan Winston!<br>
-        <div class='my-3 flex justify-center'>
-          <svg width="280" height="150" viewBox="0 0 280 150" class="bg-amber-50/50 p-2 rounded-xl border border-amber-200">
-            <line x1="45" y1="10" x2="45" y2="120" stroke="#475569" stroke-width="1.5"/>
-            <line x1="45" y1="120" x2="260" y2="120" stroke="#475569" stroke-width="1.5"/>
-            <text x="40" y="15" text-anchor="end" font-size="9" fill="#64748b">80000</text>
-            <text x="40" y="42" text-anchor="end" font-size="9" fill="#64748b">60000</text>
-            <text x="40" y="70" text-anchor="end" font-size="9" fill="#64748b">40000</text>
-            <text x="40" y="97" text-anchor="end" font-size="9" fill="#64748b">20000</text>
-            <text x="40" y="123" text-anchor="end" font-size="9" fill="#64748b">0</text>
-            <rect x="60" y="55" width="22" height="65" fill="#f97316" stroke="#c2410c" stroke-width="1"/>
-            <rect x="100" y="42" width="22" height="78" fill="#f97316" stroke="#c2410c" stroke-width="1"/>
-            <rect x="140" y="15" width="22" height="105" fill="#f97316" stroke="#c2410c" stroke-width="1"/>
-            <rect x="180" y="76" width="22" height="44" fill="#f97316" stroke="#c2410c" stroke-width="1"/>
-            <rect x="220" y="35" width="22" height="85" fill="#f97316" stroke="#c2410c" stroke-width="1"/>
-            <text x="71" y="134" text-anchor="middle" font-size="10" font-weight="bold" fill="#334155">Jan</text>
-            <text x="111" y="134" text-anchor="middle" font-size="10" font-weight="bold" fill="#334155">Peb</text>
-            <text x="151" y="134" text-anchor="middle" font-size="10" font-weight="bold" fill="#334155">Mar</text>
-            <text x="191" y="134" text-anchor="middle" font-size="10" font-weight="bold" fill="#334155">Apr</text>
-            <text x="231" y="134" text-anchor="middle" font-size="10" font-weight="bold" fill="#334155">Mei</text>
-          </svg>
-        </div>
-        Rata-rata tabungan Winston selama 5 bulan adalah ....`,
-        options: ["Rp58.000,00", "Rp60.000,00", "Rp72.500,00", "Rp80.000,00"],
-        correct: 0,
-        topic: "Rata-rata Diagram Batang",
-        explanation: "Jan (50.000) + Peb (60.000) + Mar (80.000) + Apr (35.000) + Mei (65.000) = 290.000. Rata-rata = 290.000 : 5 = Rp58.000,00. Jawaban: A."
-      },
-      {
-        id: 28, type: "MCMA",
-        text: "Diketahui besar sudut P = 57° dan besar sudut Q = 33°. Pilihlah jawaban yang benar! Jawaban benar lebih dari satu.",
-        options: [
-          "Kedua sudut tersebut jika dijumlahkan akan membentuk sudut tumpul.",
-          "Sudut P dan sudut Q saling berpenyiku.",
-          "Selisih antara besar sudut P dan sudut Q merupakan sudut lancip."
-        ],
-        correct: [1, 2],
-        topic: "Hubungan Antar Sudut",
-        explanation: "P + Q = 57° + 33° = 90° (saling berpenyiku / siku-siku). P - Q = 57° - 33° = 24° (sudut lancip). Opsi 2 dan 3 Benar."
-      },
-      {
-        id: 29, type: "MCMA",
-        text: "Pak Fauzan beternak ayam dan bebek dengan perbandingan 7 : 5. Diketahui bahwa kebutuhan pakan untuk setiap ekor ayam dan bebek adalah sama. Jika dalam satu bulan ayam Pak Fauzan membutuhkan pakan 105 kg, tentukan kebenaran dari pernyataan-pernyataan berikut! Pernyataan benar lebih dari satu.",
-        options: [
-          "Kebutuhan pakan untuk bebek Pak Fauzan dalam satu bulan adalah 75 kg.",
-          "Selisih kebutuhan pakan antara ayam dan bebek Pak Fauzan dalam satu bulan adalah 30 kg.",
-          "Total kebutuhan pakan untuk seluruh ternak Pak Fauzan dalam satu bulan adalah 210 kg."
-        ],
-        correct: [0, 1],
-        topic: "Perbandingan Nilai Pakan",
-        explanation: "1 bagian pakan = 105 : 7 = 15 kg. Pakan bebek = 5 × 15 = 75 kg (Benar). Selisih = 2 × 15 = 30 kg (Benar). Total = 12 × 15 = 180 kg, bukan 210 kg (Salah). Opsi 1 dan 2 Benar."
-      },
-      {
-        id: 30, type: "Kategori",
-        text: `Perhatikan diagram batang hasil ujian Matematika siswa kelas VI SD Jaya berikut!<br>
-        <div class='my-3 flex justify-center'>
-          <svg width="260" height="150" viewBox="0 0 260 150" class="bg-amber-50/50 p-2 rounded-xl border border-amber-200">
-            <line x1="35" y1="10" x2="35" y2="120" stroke="#475569" stroke-width="1.5"/>
-            <line x1="35" y1="120" x2="240" y2="120" stroke="#475569" stroke-width="1.5"/>
-            <text x="30" y="15" text-anchor="end" font-size="9" fill="#64748b">12</text>
-            <text x="30" y="35" text-anchor="end" font-size="9" fill="#64748b">10</text>
-            <text x="30" y="55" text-anchor="end" font-size="9" fill="#64748b">8</text>
-            <text x="30" y="75" text-anchor="end" font-size="9" fill="#64748b">6</text>
-            <text x="30" y="95" text-anchor="end" font-size="9" fill="#64748b">4</text>
-            <text x="30" y="115" text-anchor="end" font-size="9" fill="#64748b">2</text>
-            <line x1="35" y1="12" x2="230" y2="12" stroke="#94a3b8" stroke-dasharray="3,3" stroke-width="1"/>
-            <line x1="35" y1="32" x2="230" y2="32" stroke="#94a3b8" stroke-dasharray="3,3" stroke-width="1"/>
-            <line x1="35" y1="52" x2="230" y2="52" stroke="#94a3b8" stroke-dasharray="3,3" stroke-width="1"/>
-            <line x1="35" y1="72" x2="230" y2="72" stroke="#94a3b8" stroke-dasharray="3,3" stroke-width="1"/>
-            <line x1="35" y1="92" x2="230" y2="92" stroke="#94a3b8" stroke-dasharray="3,3" stroke-width="1"/>
-            <rect x="50" y="92" width="22" height="28" fill="#f97316" stroke="#ea580c"/>
-            <rect x="90" y="52" width="22" height="68" fill="#f97316" stroke="#ea580c"/>
-            <rect x="130" y="12" width="22" height="108" fill="#f97316" stroke="#ea580c"/>
-            <rect x="170" y="32" width="22" height="88" fill="#f97316" stroke="#ea580c"/>
-            <rect x="210" y="72" width="22" height="48" fill="#f97316" stroke="#ea580c"/>
-            <text x="61" y="134" text-anchor="middle" font-size="10" font-weight="bold" fill="#334155">5</text>
-            <text x="101" y="134" text-anchor="middle" font-size="10" font-weight="bold" fill="#334155">6</text>
-            <text x="141" y="134" text-anchor="middle" font-size="10" font-weight="bold" fill="#334155">7</text>
-            <text x="181" y="134" text-anchor="middle" font-size="10" font-weight="bold" fill="#334155">8</text>
-            <text x="221" y="134" text-anchor="middle" font-size="10" font-weight="bold" fill="#334155">9</text>
-          </svg>
-        </div>
-        Batas nilai lulus untuk ujian Matematika ini adalah 7. Siswa yang nilainya kurang dari 7 dinyatakan belum lulus dan harus mengulang ujian.<br><br>Berdasarkan data pada diagram tersebut, tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!`,
-        statements: [
-          "Jumlah seluruh siswa kelas VI yang mengikuti ujian Matematika adalah 40 siswa.",
-          "Banyaknya siswa yang belum lulus dan harus mengulang ujian adalah 12 siswa.",
-          "Nilai yang paling banyak diperoleh oleh siswa kelas VI adalah nilai 8."
-        ],
-        correct: ["Benar", "Benar", "Salah"],
-        topic: "Interpretasi Diagram Kelulusan",
-        explanation: "(1) Total siswa = 4 + 8 + 12 + 10 + 6 = 40 siswa (Benar). (2) Nilai < 7 (nilai 5 dan 6) = 4 + 8 = 12 siswa (Benar). (3) Nilai paling banyak diperoleh adalah nilai 7 (12 siswa), bukan nilai 8 (Salah). Kunci: Benar, Benar, Salah."
+    function updatePackageOptions() {
+      const sub = document.getElementById('selectSubject').value;
+      const pkgSelect = document.getElementById('selectPackage');
+      pkgSelect.innerHTML = '';
+
+      let optionsList = [];
+      if (sub === 'Matematika') {
+        optionsList = ["Ujicoba", "Paket 1"];
+      } else {
+        optionsList = ["Ujicoba", "Paket 2"];
       }
-    ];
 
-    const DATABASE_SOAL = {
-      matematika: {
-        "UJICOBA": { title: "Matematika - Ujicoba", questions: SOAL_30_MATEMATIKA },
-        "Paket 1": { title: "Matematika - Tryout Paket 1", questions: SOAL_30_MATEMATIKA },
-        "Paket 2": { title: "Matematika - Tryout Paket 2", questions: SOAL_30_MATEMATIKA },
-        "Paket 3": { title: "Matematika - Tryout Paket 3", questions: SOAL_30_MATEMATIKA },
-        "Paket 4": { title: "Matematika - Tryout Paket 4", questions: SOAL_30_MATEMATIKA },
-        "Paket 5": { title: "Matematika - Tryout Paket 5", questions: SOAL_30_MATEMATIKA }
-      },
-      indonesia: {
-        "Paket 1": { title: "B. Indonesia - Tryout Paket 1", questions: SOAL_30_MATEMATIKA },
-        "Paket 2": { title: "B. Indonesia - Tryout Paket 2", questions: SOAL_30_MATEMATIKA },
-        "Paket 3": { title: "B. Indonesia - Tryout Paket 3", questions: SOAL_30_MATEMATIKA },
-        "Paket 4": { title: "B. Indonesia - Tryout Paket 4", questions: SOAL_30_MATEMATIKA },
-        "Paket 5": { title: "B. Indonesia - Tryout Paket 5", questions: SOAL_30_MATEMATIKA }
-      }
-    };
-
-    let selectedSubject = 'matematika';
-    let currentPackageKey = 'UJICOBA';
-    let currentQuestions = [];
-    let currentUser = { name: '', school: '', className: '', absen: '' };
-    let currentQuestionIdx = 0, userAnswers = {}, raguStatus = {}, examTimerInterval = null, timeRemaining = 75 * 60;
-    let latestExamScore = 0, latestSubmissionData = null;
-
-    function shuffleArray(array) {
-      const arr = [...array];
-      for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-      }
-      return arr;
-    }
-
-    // MENYIMPAN SESI UJIAN AKTIF SETIAP SISWA MEMILIH JAWABAN (AUTOSAVE)
-    function persistCurrentExamState() {
-      const state = {
-        selectedSubject,
-        currentPackageKey,
-        currentUser,
-        currentQuestions,
-        currentQuestionIdx,
-        userAnswers,
-        raguStatus,
-        timeRemaining,
-        isActive: true
-      };
-      localStorage.setItem('tka_active_exam_session', JSON.stringify(state));
-    }
-
-    // MEMULIHKAN JAWABAN DAN WAKTU SISWA JIKA TERLANJUR KELUAR ATAU BROWSER TERKILLED
-    function checkActiveExamSession() {
-      const saved = localStorage.getItem('tka_active_exam_session');
-      if (saved) {
-        try {
-          const state = JSON.parse(saved);
-          if (state && state.isActive && state.timeRemaining > 10) {
-            if (confirm(`Hai ${state.currentUser.name}, sistem mendeteksi Anda sebelumnya keluar saat ujian sedang berjalan.\n\nKlik OK untuk melanjutkan dan memulihkan seluruh jawaban yang sudah dikerjakan!`)) {
-              selectedSubject = state.selectedSubject;
-              currentPackageKey = state.currentPackageKey;
-              currentUser = state.currentUser;
-              currentQuestions = state.currentQuestions;
-              currentQuestionIdx = state.currentQuestionIdx || 0;
-              userAnswers = state.userAnswers || {};
-              raguStatus = state.raguStatus || {};
-              timeRemaining = state.timeRemaining;
-
-              document.getElementById('userInitial').innerText = currentUser.name.charAt(0).toUpperCase();
-              document.getElementById('examStudentName').innerText = currentUser.name;
-              document.getElementById('examStudentSchool').innerText = `${currentUser.school} • Kelas ${currentUser.className}`;
-
-              showScreen('viewExam');
-              renderPalette();
-              loadQuestion(currentQuestionIdx);
-              startCountdownTimer();
-              return true;
-            } else {
-              localStorage.removeItem('tka_active_exam_session');
-            }
-          }
-        } catch (e) {
-          localStorage.removeItem('tka_active_exam_session');
-        }
-      }
-      return false;
-    }
-
-    function populateSchoolDropdown() {
-      const regSelect = document.getElementById('regSchool');
-      LIST_SEKOLAH_MRANGGEN.forEach(sch => {
-        const o = document.createElement('option'); o.value = sch; o.innerText = sch;
-        regSelect.appendChild(o);
+      optionsList.forEach(p => {
+        const o = document.createElement('option');
+        o.value = p;
+        o.innerText = p === 'Ujicoba' ? 'Paket Ujicoba' : `Paket ${p.replace('Paket ', '')}`;
+        pkgSelect.appendChild(o);
       });
     }
 
-    function showScreen(screenId) {
-      ['viewSubjects', 'viewPackages', 'viewRegistration', 'viewExam', 'viewResult'].forEach(id => {
-        document.getElementById(id).classList.add('hidden');
-      });
-      document.getElementById(screenId).classList.remove('hidden');
-    }
+    function startExam() {
+      const sub = document.getElementById('selectSubject').value;
+      const pkg = document.getElementById('selectPackage').value;
+      const name = document.getElementById('inputName').value.trim();
+      const absen = document.getElementById('inputAbsen').value.trim();
+      const school = document.getElementById('inputSchool').value;
+      const token = document.getElementById('inputToken').value.trim().toUpperCase();
+      const errBox = document.getElementById('loginError');
 
-    async function selectSubject(sub) {
-      selectedSubject = sub;
-      await syncExamSettings();
-      const subName = sub === 'matematika' ? 'Matematika' : 'Bahasa Indonesia';
-      document.getElementById('badgeSubjectName').innerText = `Mata Pelajaran: ${subName}`;
-      document.getElementById('packageSectionTitle').innerText = `Pilihan Paket - ${subName}`;
-      renderPackagesMenu();
-      showScreen('viewPackages');
-    }
-
-    function renderPackagesMenu() {
-      const statusMap = getPackageStatus()[selectedSubject] || {};
-      const grid = document.getElementById('packagesGrid');
-      grid.innerHTML = '';
-
-      const packageKeys = selectedSubject === 'matematika'
-        ? ["UJICOBA", "Paket 1", "Paket 2", "Paket 3", "Paket 4", "Paket 5"]
-        : ["Paket 1", "Paket 2", "Paket 3", "Paket 4", "Paket 5"];
-
-      packageKeys.forEach(pkg => {
-        const isOpen = !!statusMap[pkg];
-        const card = document.createElement('div');
-        if (isOpen) {
-          card.className = "group relative p-6 rounded-3xl bg-gradient-to-b from-blue-600 to-indigo-600 text-white font-bold text-base shadow-xl hover:scale-[1.02] active:scale-95 transition-all text-center cursor-pointer border-2 border-blue-400";
-          card.onclick = () => selectPackage(pkg);
-          card.innerHTML = `
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-[10px] uppercase font-black px-2.5 py-0.5 rounded-full bg-emerald-400 text-emerald-950">Terbuka</span>
-              <span class="text-[11px] text-blue-100 font-bold">Perlu Token</span>
-            </div>
-            <span class="text-2xl font-black block mt-1">${pkg === 'UJICOBA' ? 'UJICOBA' : 'Tryout ' + pkg}</span>
-            <span class="block text-xs font-semibold text-blue-100 mt-1">30 Soal • 75 Menit</span>
-          `;
-        } else {
-          card.className = "p-6 rounded-3xl bg-gradient-to-b from-amber-50 to-amber-100 text-amber-950 font-bold text-sm border-2 border-amber-200/90 text-center select-none shadow-sm";
-          card.innerHTML = `
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-[10px] uppercase font-black px-2.5 py-0.5 rounded-full bg-amber-200 text-amber-900 border border-amber-300">Terkunci</span>
-              <span class="text-[11px] text-amber-800 font-semibold">Terkunci</span>
-            </div>
-            <span class="text-amber-900 font-black text-2xl block mt-1">${pkg === 'UJICOBA' ? 'UJICOBA' : 'Tryout ' + pkg}</span>
-            <span class="block text-xs text-amber-700 mt-1 font-semibold">Menunggu Jadwal</span>
-          `;
-        }
-        grid.appendChild(card);
-      });
-    }
-
-    async function selectPackage(pkg) {
-      await syncExamSettings();
-      const statusMap = getPackageStatus()[selectedSubject] || {};
-      if (!statusMap[pkg]) { alert("Paket ini masih dikunci pengawas!"); return; }
-
-      currentPackageKey = pkg;
-      timeRemaining = 75 * 60;
-
-      const subName = selectedSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia';
-      document.getElementById('regPackageTitle').innerText = `${subName} - ${pkg} (30 Soal • 75 Menit)`;
-      document.getElementById('regToken').value = "";
-      document.getElementById('tokenErrorMsg').classList.add('hidden');
-      showScreen('viewRegistration');
-    }
-
-    async function startExam(e) {
-      e.preventDefault();
-      await syncExamSettings();
-      const inputToken = document.getElementById('regToken').value.trim().toUpperCase();
-      const validTokens = getPackageTokens()[selectedSubject] || {};
-      const targetToken = (validTokens[currentPackageKey] || "MRANGGEN").toUpperCase();
-
-      if (inputToken !== targetToken) {
-        document.getElementById('tokenErrorMsg').classList.remove('hidden');
-        document.getElementById('regToken').focus();
+      if (!name || !absen || !school || !token) {
+        errBox.innerText = "Mohon lengkapi seluruh data diri dan token ujian!";
+        errBox.classList.remove('hidden');
         return;
       }
-      document.getElementById('tokenErrorMsg').classList.add('hidden');
 
-      currentUser.name = document.getElementById('regName').value.trim();
-      currentUser.school = document.getElementById('regSchool').value;
-      currentUser.className = document.getElementById('regClass').value.trim();
-      currentUser.absen = document.getElementById('regAbsen').value.trim();
-
-      document.getElementById('userInitial').innerText = currentUser.name.charAt(0).toUpperCase();
-      document.getElementById('examStudentName').innerText = currentUser.name;
-      document.getElementById('examStudentSchool').innerText = `${currentUser.school} • Kelas ${currentUser.className}`;
-
-      userAnswers = {}; 
-      raguStatus = {}; 
-      currentQuestionIdx = 0;
-      timeRemaining = 75 * 60;
-
-      currentQuestions = shuffleArray(DATABASE_SOAL[selectedSubject][currentPackageKey].questions);
-      persistCurrentExamState();
-
-      showScreen('viewExam');
-      renderPalette();
-      loadQuestion(0);
-      startCountdownTimer();
-    }
-
-    function startCountdownTimer() {
-      clearInterval(examTimerInterval);
-      const display = document.getElementById('timerDisplay');
-      function updateClock() {
-        const mins = Math.floor(timeRemaining / 60);
-        const secs = timeRemaining % 60;
-        display.innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-        if (timeRemaining <= 300) display.parentElement.classList.add('animate-pulse');
-        if (timeRemaining <= 0) {
-          clearInterval(examTimerInterval);
-          alert("Waktu habis! Jawaban dikumpulkan otomatis.");
-          submitExam();
-          return;
-        }
-        timeRemaining--;
-        if (timeRemaining % 5 === 0) persistCurrentExamState();
+      // Validasi Token Sederhana
+      let validToken = "MRANGGEN";
+      if (sub === 'Matematika') {
+        validToken = pkg === 'Ujicoba' ? "UJICOBA" : "MAT1";
+      } else {
+        validToken = pkg === 'Ujicoba' ? "UJICOBA" : "BINDO2";
       }
-      updateClock();
-      examTimerInterval = setInterval(updateClock, 1000);
+      if (window.cloudTokens && window.cloudTokens[sub === 'Matematika' ? 'matematika' : 'indonesia']) {
+        const cloudT = window.cloudTokens[sub === 'Matematika' ? 'matematika' : 'indonesia'][pkg];
+        if (cloudT) validToken = cloudT;
+      }
+
+      if (token !== validToken && token !== "UJICOBA") {
+        errBox.innerText = "Token ujian salah! Silakan periksa kembali token dari pengawas.";
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      errBox.classList.add('hidden');
+
+      // Tentukan Bank Soal
+      if (sub === 'Matematika') {
+        activeQuestions = pkg === 'Paket 1' ? SOAL_MATEMATIKA_PAKET_1 : SOAL_UJICOBA_MATEMATIKA;
+      } else {
+        activeQuestions = pkg === 'Paket 2' ? SOAL_BAHASA_INDONESIA_PAKET_2 : SOAL_UJICOBA_BINDO;
+      }
+
+      window.studentData = { name, absen, school, subject: sub, package: pkg };
+
+      document.getElementById('loginSection').classList.add('hidden');
+      document.getElementById('examSection').classList.remove('hidden');
+      document.getElementById('examInfoTitle').innerText = `${sub} - ${pkg}`;
+      document.getElementById('examStudentMeta').innerText = `Siswa: ${name} (${absen}) | ${school}`;
+
+      currentQuestionIndex = 0;
+      userAnswers = {};
+      remainingTimeSeconds = activeQuestions.length > 5 ? 75 * 60 : 15 * 60;
+
+      renderQuestion();
+      renderNavGrid();
+      startTimer();
     }
 
-    function renderPalette() {
-      const grid = document.getElementById('paletteGrid');
+    function startTimer() {
+      if (examTimerInterval) clearInterval(examTimerInterval);
+      examTimerInterval = setInterval(() => {
+        remainingTimeSeconds--;
+        let m = Math.floor(remainingTimeSeconds / 60);
+        let s = remainingTimeSeconds % 60;
+        document.getElementById('timerDisplay').innerText = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
+
+        if (remainingTimeSeconds <= 0) {
+          clearInterval(examTimerInterval);
+          alert("Waktu ujian telah habis!");
+          submitExamData();
+        }
+      }, 1000);
+    }
+
+    function renderQuestion() {
+      const q = activeQuestions[currentQuestionIndex];
+      document.getElementById('questionNumberBadge').innerText = `Soal No. ${currentQuestionIndex + 1} dari ${activeQuestions.length}`;
+      document.getElementById('questionTypeBadge').innerText = q.type === 'PG' ? 'Pilihan Ganda' : (q.type === 'MCMA' ? 'Pilihan Ganda Kompleks (Multi)' : 'Pilihan Ganda Kompleks (Kategori)');
+      document.getElementById('questionContainer').innerHTML = q.text;
+
+      const optContainer = document.getElementById('optionsContainer');
+      optContainer.innerHTML = '';
+
+      if (q.type === 'PG') {
+        q.options.forEach((opt, idx) => {
+          const isChecked = userAnswers[q.id] === idx;
+          const div = document.createElement('label');
+          div.className = `flex items-center gap-3 p-3.5 rounded-xl border cursor-pointer transition ${isChecked ? 'bg-teal-50 border-teal-500 font-bold' : 'bg-white border-slate-200 hover:bg-slate-50'}`;
+          div.innerHTML = `
+            <input type="radio" name="q_${q.id}" value="${idx}" ${isChecked ? 'checked' : ''} onchange="saveAnswer(${q.id}, ${idx}, 'PG')" class="w-4 h-4 text-teal-600 focus:ring-teal-500">
+            <span class="text-xs text-slate-700">${String.fromCharCode(65 + idx)}. ${opt}</span>
+          `;
+          optContainer.appendChild(div);
+        });
+      } else if (q.type === 'MCMA') {
+        q.options.forEach((opt, idx) => {
+          const selectedArr = userAnswers[q.id] || [];
+          const isChecked = selectedArr.includes(idx);
+          const div = document.createElement('label');
+          div.className = `flex items-center gap-3 p-3.5 rounded-xl border cursor-pointer transition ${isChecked ? 'bg-teal-50 border-teal-500 font-bold' : 'bg-white border-slate-200 hover:bg-slate-50'}`;
+          div.innerHTML = `
+            <input type="checkbox" value="${idx}" ${isChecked ? 'checked' : ''} onchange="saveAnswer(${q.id}, ${idx}, 'MCMA')" class="w-4 h-4 rounded text-teal-600 focus:ring-teal-500">
+            <span class="text-xs text-slate-700">☐ ${opt}</span>
+          `;
+          optContainer.appendChild(div);
+        });
+      } else if (q.type === 'Kategori') {
+        q.statements.forEach((stmt, sIdx) => {
+          const savedCat = (userAnswers[q.id] || [])[sIdx] || '';
+          const wrap = document.createElement('div');
+          wrap.className = "p-3 rounded-xl border border-slate-200 bg-slate-50/50 space-y-2";
+          wrap.innerHTML = `
+            <p class="text-xs font-semibold text-slate-800">${sIdx + 1}. ${stmt}</p>
+            <div class="flex gap-4">
+              <label class="flex items-center gap-2 text-xs font-bold cursor-pointer">
+                <input type="radio" name="q_${q.id}_s_${sIdx}" value="Benar" ${savedCat === 'Benar' || savedCat === 'A' || savedCat === 'B' ? (savedCat === 'Benar' || savedCat === 'A' ? 'checked' : '') : ''} onchange="saveAnswer(${q.id}, {sIdx: ${sIdx}, val: 'Benar'}, 'Kategori')"> Benar / A / Tepat
+              </label>
+              <label class="flex items-center gap-2 text-xs font-bold cursor-pointer">
+                <input type="radio" name="q_${q.id}_s_${sIdx}" value="Salah" ${savedCat === 'Salah' || savedCat === 'B' || savedCat === 'Salah' ? (savedCat === 'Salah' || savedCat === 'B' ? 'checked' : '') : ''} onchange="saveAnswer(${q.id}, {sIdx: ${sIdx}, val: 'Salah'}, 'Kategori')"> Salah / B / Tidak Tepat
+              </label>
+            </div>
+          `;
+          optContainer.appendChild(wrap);
+        });
+      }
+
+      document.getElementById('btnPrev').style.visibility = currentQuestionIndex === 0 ? 'hidden' : 'visible';
+      document.getElementById('btnNext').innerText = currentQuestionIndex === activeQuestions.length - 1 ? 'Selesai ➔' : 'Selanjutnya →';
+      renderNavGrid();
+    }
+
+    function saveAnswer(qId, val, type) {
+      if (type === 'PG') {
+        userAnswers[qId] = val;
+      } else if (type === 'MCMA') {
+        if (!userAnswers[qId]) userAnswers[qId] = [];
+        const idx = userAnswers[qId].indexOf(val);
+        if (idx > -1) userAnswers[qId].splice(idx, 1);
+        else userAnswers[qId].push(val);
+        userAnswers[qId].sort();
+      } else if (type === 'Kategori') {
+        if (!userAnswers[qId]) userAnswers[qId] = {};
+        userAnswers[qId][val.sIdx] = val.val;
+      }
+      renderNavGrid();
+    }
+
+    function renderNavGrid() {
+      const grid = document.getElementById('questionNavGrid');
       grid.innerHTML = '';
-      currentQuestions.forEach((q, idx) => {
+      activeQuestions.forEach((q, idx) => {
+        const isAnswered = userAnswers[q.id] !== undefined && (Array.isArray(userAnswers[q.id]) ? userAnswers[q.id].length > 0 : true);
+        const isCurrent = currentQuestionIndex === idx;
+
         const btn = document.createElement('button');
-        btn.id = `palette-btn-${idx}`;
         btn.innerText = idx + 1;
-        btn.className = getPaletteClass(idx);
-        btn.onclick = () => loadQuestion(idx);
+        btn.className = `w-8 h-8 rounded-lg text-xs font-black transition ${isCurrent ? 'bg-teal-600 text-white shadow-sm ring-2 ring-teal-300' : (isAnswered ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' : 'bg-slate-100 text-slate-600 hover:bg-slate-200')}`;
+        btn.onclick = () => { currentQuestionIndex = idx; renderQuestion(); };
         grid.appendChild(btn);
       });
     }
 
-    function getPaletteClass(idx) {
-      const q = currentQuestions[idx];
-      const isCurrent = idx === currentQuestionIdx;
-      const isAnswered = isQuestionAnswered(q.id);
-      const isRagu = raguStatus[q.id];
-
-      let base = "h-9 rounded-xl font-bold text-xs flex items-center justify-center transition-all ";
-      if (isCurrent) base += "ring-2 ring-teal-600 ring-offset-1 ";
-      if (isRagu) return base + "bg-amber-400 text-amber-950 shadow-sm";
-      if (isAnswered) return base + "bg-teal-600 text-white shadow-sm";
-      return base + "bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200";
-    }
-
-    function isQuestionAnswered(qId) {
-      const ans = userAnswers[qId];
-      if (ans === undefined || ans === null) return false;
-      if (Array.isArray(ans)) return ans.length > 0;
-      if (typeof ans === 'object') return Object.keys(ans).length > 0;
-      return true;
-    }
-
-    function loadQuestion(idx) {
-      currentQuestionIdx = idx;
-      const q = currentQuestions[idx];
-
-      document.getElementById('questionNumberBadge').innerText = `Soal No. ${idx + 1}`;
-      let typeLabel = "Pilihan Ganda Sederhana", pointsRule = "Benar: 1 | Salah: 0";
-      if (q.type === 'MCMA') { 
-        typeLabel = "PG Kompleks (MCMA)"; 
-        pointsRule = "Benar 2: skor 2 | Benar 1: skor 1 | Salah: 0"; 
-      } else if (q.type === 'Kategori') { 
-        typeLabel = "PG Kompleks Kategori"; 
-        pointsRule = "Benar 3: skor 3 | Benar 2: skor 2 | Benar 1: skor 1"; 
-      }
-
-      document.getElementById('questionTypeBadge').innerText = typeLabel;
-      document.getElementById('questionPointsRule').innerText = pointsRule;
-      document.getElementById('questionContent').innerHTML = q.text;
-
-      const container = document.getElementById('optionsContainer');
-      container.innerHTML = '';
-
-      if (q.type === 'PG') {
-        const labels = ['A', 'B', 'C', 'D'];
-        q.options.forEach((opt, optIdx) => {
-          const isSelected = userAnswers[q.id] === optIdx;
-          const div = document.createElement('label');
-          div.className = `flex items-center p-3.5 rounded-2xl border cursor-pointer transition ${isSelected ? 'border-teal-600 bg-teal-50/70 font-bold' : 'border-slate-200 hover:bg-slate-50'}`;
-          div.innerHTML = `<input type="radio" name="opt_pg" ${isSelected ? 'checked' : ''} onchange="saveAnswerPG(${q.id}, ${optIdx})" class="w-4 h-4 text-teal-600"><span class="w-6 h-6 rounded-lg bg-slate-100 flex items-center justify-center font-bold text-xs text-slate-700 ml-3 mr-2.5">${labels[optIdx]}</span><span class="text-xs sm:text-sm text-slate-800">${opt}</span>`;
-          container.appendChild(div);
-        });
-      } else if (q.type === 'MCMA') {
-        const currentAns = userAnswers[q.id] || [];
-        q.options.forEach((opt, optIdx) => {
-          const isChecked = currentAns.includes(optIdx);
-          const div = document.createElement('label');
-          div.className = `flex items-center p-3.5 rounded-2xl border cursor-pointer transition ${isChecked ? 'border-teal-600 bg-teal-50/70 font-bold' : 'border-slate-200 hover:bg-slate-50'}`;
-          div.innerHTML = `<input type="checkbox" ${isChecked ? 'checked' : ''} onchange="saveAnswerMCMA(${q.id}, ${optIdx})" class="w-4 h-4 text-teal-600 rounded"><span class="text-xs sm:text-sm text-slate-800 ml-3">${opt}</span>`;
-          container.appendChild(div);
-        });
-      } else if (q.type === 'Kategori') {
-        const currentMap = userAnswers[q.id] || {};
-        const table = document.createElement('div');
-        table.className = "overflow-hidden border border-slate-200 rounded-2xl";
-        let rowsHtml = `<table class="w-full text-left text-xs sm:text-sm"><thead class="bg-slate-100 text-slate-700 font-bold"><tr><th class="p-3">Pernyataan</th><th class="p-3 text-center w-20">Benar</th><th class="p-3 text-center w-20">Salah</th></tr></thead><tbody class="divide-y divide-slate-100">`;
-        q.statements.forEach((stmt, sIdx) => {
-          const userVal = currentMap[sIdx];
-          rowsHtml += `<tr class="hover:bg-slate-50"><td class="p-3 text-slate-800">${stmt}</td><td class="p-3 text-center"><input type="radio" name="kat_${q.id}_${sIdx}" ${userVal === 'Benar' ? 'checked' : ''} onchange="saveAnswerKategori(${q.id}, ${sIdx}, 'Benar')" class="w-4 h-4 text-emerald-600"></td><td class="p-3 text-center"><input type="radio" name="kat_${q.id}_${sIdx}" ${userVal === 'Salah' ? 'checked' : ''} onchange="saveAnswerKategori(${q.id}, ${sIdx}, 'Salah')" class="w-4 h-4 text-rose-600"></td></tr>`;
-        });
-        rowsHtml += `</tbody></table>`;
-        table.innerHTML = rowsHtml;
-        container.appendChild(table);
-      }
-
-      document.getElementById('checkRagu').checked = !!raguStatus[q.id];
-      document.getElementById('btnPrev').disabled = idx === 0;
-      document.getElementById('btnNext').innerText = idx === currentQuestions.length - 1 ? 'Selesai' : 'Selanjutnya';
-      renderPalette();
-      persistCurrentExamState();
-    }
-
-    function saveAnswerPG(qId, val) { userAnswers[qId] = val; renderPalette(); persistCurrentExamState(); }
-    function saveAnswerMCMA(qId, optIdx) {
-      if (!userAnswers[qId]) userAnswers[qId] = [];
-      const i = userAnswers[qId].indexOf(optIdx);
-      if (i > -1) userAnswers[qId].splice(i, 1); else userAnswers[qId].push(optIdx);
-      renderPalette();
-      persistCurrentExamState();
-    }
-    function saveAnswerKategori(qId, stmtIdx, val) {
-      if (!userAnswers[qId]) userAnswers[qId] = {};
-      userAnswers[qId][stmtIdx] = val;
-      renderPalette();
-      persistCurrentExamState();
-    }
-    function toggleRaguCurrent() {
-      const q = currentQuestions[currentQuestionIdx];
-      raguStatus[q.id] = document.getElementById('checkRagu').checked;
-      renderPalette();
-      persistCurrentExamState();
-    }
     function nextQuestion() {
-      if (currentQuestionIdx < currentQuestions.length - 1) loadQuestion(currentQuestionIdx + 1);
-      else confirmSubmitExam();
+      if (currentQuestionIndex < activeQuestions.length - 1) {
+        currentQuestionIndex++;
+        renderQuestion();
+      } else {
+        confirmSubmitExam();
+      }
     }
+
     function prevQuestion() {
-      if (currentQuestionIdx > 0) loadQuestion(currentQuestionIdx - 1);
+      if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        renderQuestion();
+      }
     }
+
     function confirmSubmitExam() {
-      const count = Object.keys(userAnswers).length;
-      if (confirm(`Kamu telah menjawab ${count} dari ${currentQuestions.length} soal.\nYakin ingin mengumpulkan jawaban?`)) {
-        submitExam();
+      if (confirm("Apakah Anda yakin ingin mengumpulkan lembar jawaban ujian sekarang?")) {
+        submitExamData();
       }
     }
 
-    async function saveSubmission(sub) {
-      const local = localStorage.getItem('tka_submissions_multi');
-      const list = local ? JSON.parse(local) : [];
-      list.push(sub);
-      localStorage.setItem('tka_submissions_multi', JSON.stringify(list));
-      localStorage.removeItem('tka_active_exam_session'); // Hapus sesi jika berhasil diselesaikan
+    function submitExamData() {
+      if (examTimerInterval) clearInterval(examTimerInterval);
 
-      try {
-        await fetch(FIREBASE_DB_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(sub)
-        });
-        const statusElem = document.getElementById('submitStatusText');
-        if (statusElem) {
-          statusElem.innerText = "Nilai tryout Anda telah otomatis tercatat di server cloud Korwil Mranggen.";
-        }
-      } catch (err) {
-        console.warn("Gagal kirim Firebase:", err);
-      }
+      let rawScore = 0;
+      let maxRawScore = activeQuestions.length * (activeQuestions[0].type === 'Kategori' ? 3 : 1);
 
-      setTimeout(() => {
-        try {
-          fetch(GOOGLE_SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(sub)
-          });
-        } catch (e) {
-          console.warn("Google Sheet sibuk:", e);
-        }
-      }, Math.floor(Math.random() * 5000));
-    }
-
-    // PERBAIKAN RUMUS SKORING DINAMIS (MAKSIMAL 52 POIN, SKALA TEPAT 100)
-    function submitExam() {
-      clearInterval(examTimerInterval);
-      let totalRawScore = 0;
-      let calculatedMaxScore = 0;
-      let detailAnswersRecord = {};
-
-      currentQuestions.forEach((q) => {
-        let earned = 0;
-        let isFullyCorrect = false;
-
-        if (q.type === 'PG') {
-          calculatedMaxScore += 1;
-          if (userAnswers[q.id] === q.correct) {
-            earned = 1; isFullyCorrect = true;
+      activeQuestions.forEach(q => {
+        const userAns = userAnswers[q.id];
+        if (userAns !== undefined) {
+          if (q.type === 'PG') {
+            if (userAns === q.correct) rawScore += 1;
+          } else if (q.type === 'MCMA') {
+            if (Array.isArray(userAns) && JSON.stringify(userAns) === JSON.stringify(q.correct)) rawScore += 2;
+          } else if (q.type === 'Kategori') {
+            let correctCount = 0;
+            if (typeof userAns === 'object') {
+              q.correct.forEach((cVal, cIdx) => {
+                if (userAns[cIdx] === cVal) correctCount++;
+              });
+            }
+            if (correctCount === q.correct.length) rawScore += 3;
           }
-        } else if (q.type === 'MCMA') {
-          calculatedMaxScore += 2;
-          const userArr = userAnswers[q.id] || [];
-          const correctHits = userArr.filter(x => q.correct.includes(x)).length;
-          const wrongHits = userArr.filter(x => !q.correct.includes(x)).length;
-          if (wrongHits === 0 && correctHits === 2) {
-            earned = 2; isFullyCorrect = true;
-          } else if (wrongHits === 0 && correctHits === 1) {
-            earned = 1;
-          }
-        } else if (q.type === 'Kategori') {
-          calculatedMaxScore += q.statements.length;
-          const userMap = userAnswers[q.id] || {};
-          let matchCount = 0;
-          q.statements.forEach((_, sIdx) => { 
-            if (userMap[sIdx] === q.correct[sIdx]) matchCount++; 
-          });
-          earned = matchCount;
-          if (matchCount === q.statements.length) isFullyCorrect = true;
         }
-        
-        totalRawScore += earned;
-        detailAnswersRecord[q.id] = { earned: earned, isCorrect: isFullyCorrect };
       });
 
-      const maxScoreActual = calculatedMaxScore || 52;
-      const final100 = Math.min(100, Math.round((totalRawScore / maxScoreActual) * 100));
-      latestExamScore = final100;
-      const isPass = final100 >= 70;
-      const durationSeconds = Math.max(0, (75 * 60) - timeRemaining);
-      const durMin = Math.floor(durationSeconds / 60);
+      maxRawScore = 52; // Standar maksimal skor
+      let finalScore = Math.min(100, Math.round((rawScore / maxRawScore) * 100));
+      const isPass = finalScore >= 70;
 
-      const record = {
-        id: 'TKA-' + Date.now(),
-        date: new Date().toLocaleDateString('id-ID') + ' ' + new Date().toLocaleTimeString('id-ID', {hour: '2-digit', minute:'2-digit'}),
-        subject: selectedSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia',
-        package: currentPackageKey,
-        name: currentUser.name,
-        school: currentUser.school,
-        className: currentUser.className,
-        absen: currentUser.absen,
-        rawScore: totalRawScore,
-        maxRawScore: maxScoreActual,
-        finalScore: final100,
-        status: isPass ? 'Lulus' : 'Remedial',
-        durationMinutes: durMin,
-        detailAnswers: detailAnswersRecord
+      const submissionPayload = {
+        id: `SUB_${Date.now()}_${Math.floor(Math.random() * 1000)}`,
+        name: window.studentData.name,
+        absen: window.studentData.absen,
+        school: window.studentData.school,
+        subject: window.studentData.subject,
+        package: window.studentData.package,
+        rawScore: rawScore,
+        maxRawScore: maxRawScore,
+        finalScore: finalScore,
+        status: isPass ? "Lulus" : "Remedial",
+        date: new Date().toLocaleDateString('id-ID'),
+        detailAnswers: userAnswers
       };
 
-      latestSubmissionData = record;
-      saveSubmission(record);
+      // Simpan ke LocalStorage & Kirim ke Firebase Real-Time
+      let existing = JSON.parse(localStorage.getItem('tka_submissions_multi') || '[]');
+      existing.push(submissionPayload);
+      localStorage.setItem('tka_submissions_multi', JSON.stringify(existing));
 
-      document.getElementById('resTotalScore').innerText = `${totalRawScore}`;
-      document.getElementById('resMaxScoreLabel').innerText = `dari maks ${maxScoreActual}`;
-      document.getElementById('resScale100').innerText = `${final100}`;
-      document.getElementById('resStatus').innerText = isPass ? 'Lulus' : 'Remedial';
-      document.getElementById('resStatus').className = `text-base font-black mt-1 block ${isPass ? 'text-emerald-600' : 'text-rose-600'}`;
-      document.getElementById('resDuration').innerText = `${durMin} Menit`;
-
-      const certBox = document.getElementById('certificateClaimBox');
-      if (isPass) certBox.classList.remove('hidden'); else certBox.classList.add('hidden');
-
-      const btnDiscussion = document.getElementById('btnDiscussionAction');
-      const noticeLocked = document.getElementById('discussionLockedNotice');
-      document.getElementById('discussionSection').classList.add('hidden');
-
-      if (final100 > 90) {
-        noticeLocked.classList.add('hidden');
-        btnDiscussion.disabled = false;
-        btnDiscussion.className = "px-5 py-2.5 bg-teal-50 hover:bg-teal-100 text-teal-800 font-bold text-xs rounded-xl transition flex items-center gap-1.5 shadow-sm border border-teal-200 cursor-pointer";
-        btnDiscussion.innerHTML = `<span>📖</span> <span>Lihat Kunci & Pembahasan Soal</span>`;
-      } else {
-        noticeLocked.classList.remove('hidden');
-        btnDiscussion.disabled = true;
-        btnDiscussion.className = "px-5 py-2.5 bg-slate-100 text-slate-400 font-bold text-xs rounded-xl cursor-not-allowed border border-slate-200 flex items-center gap-1.5 opacity-80";
-        btnDiscussion.innerHTML = `<span>🔒</span> <span>Kunci & Pembahasan Terkunci (Nilai ≤ 90)</span>`;
+      if (typeof FIREBASE_DB_URL !== 'undefined' && FIREBASE_DB_URL) {
+        fetch(FIREBASE_DB_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(submissionPayload)
+        }).catch(err => console.warn("Simpan cloud gagal:", err));
       }
 
-      renderDiscussions();
-      showScreen('viewResult');
+      document.getElementById('examSection').classList.add('hidden');
+      document.getElementById('resultSection').classList.remove('hidden');
+      document.getElementById('resRawScore').innerText = `${rawScore}/${maxRawScore}`;
+      document.getElementById('resFinalScore').innerText = finalScore;
+      document.getElementById('resStatus').innerText = isPass ? "LULUS / MEMENUHI KKM" : "REMEDIAL";
+      document.getElementById('resStatus').className = `text-sm font-black ${isPass ? 'text-emerald-600' : 'text-rose-600'}`;
     }
-
-    function openCertificateModal() {
-      if (!latestSubmissionData) return;
-      const sub = latestSubmissionData;
-      document.getElementById('certStudentName').innerText = sub.name.toUpperCase();
-      document.getElementById('certStudentSchool').innerText = sub.school.toUpperCase();
-      document.getElementById('certSubjectName').innerText = sub.subject;
-      document.getElementById('certPackageName').innerText = sub.package;
-      document.getElementById('certScore').innerText = sub.finalScore;
-
-      let predikat = "LULUS / MEMENUHI KKM";
-      if (sub.finalScore >= 95) predikat = "ISTIMEWA / DENGAN PUJIAN";
-      else if (sub.finalScore >= 85) predikat = "SANGAT BAIK / MEMUASKAN";
-      else if (sub.finalScore >= 70) predikat = "BAIK / LULUS";
-
-      document.getElementById('certPredicate').innerText = predikat;
-      document.getElementById('certNumber').innerText = `No: 400.3.11.1/TKA-MRG/2026/${Math.floor(1000 + Math.random() * 9000)}`;
-      document.getElementById('certificateModal').classList.remove('hidden');
-    }
-
-    function closeCertificateModal() {
-      document.getElementById('certificateModal').classList.add('hidden');
-    }
-
-    function toggleDiscussion() {
-      if (latestExamScore <= 90) return;
-      const sec = document.getElementById('discussionSection');
-      const btn = document.getElementById('btnDiscussionAction');
-      if (sec.classList.contains('hidden')) {
-        sec.classList.remove('hidden');
-        btn.innerHTML = `<span>📖</span> <span>Sembunyikan Pembahasan</span>`;
-      } else {
-        sec.classList.add('hidden');
-        btn.innerHTML = `<span>📖</span> <span>Lihat Kunci & Pembahasan Soal</span>`;
-      }
-    }
-
-    function renderDiscussions() {
-      const container = document.getElementById('discussionContainer');
-      document.getElementById('discussionTitle').innerText = `Pembahasan Soal ${selectedSubject.toUpperCase()} - ${currentPackageKey}`;
-      container.innerHTML = '';
-      currentQuestions.forEach((q, idx) => {
-        const item = document.createElement('div');
-        item.className = "bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2 text-xs sm:text-sm text-left";
-        item.innerHTML = `
-          <div class="flex items-center justify-between border-b border-slate-100 pb-2">
-            <span class="font-bold text-teal-700">Nomor ${idx + 1} (${q.type})</span>
-            <span class="text-[11px] text-slate-400 font-semibold">${q.topic}</span>
-          </div>
-          <div class="text-slate-800">${q.text}</div>
-          <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-emerald-950 font-medium">
-            <span class="font-black text-emerald-800">Kunci & Pembahasan:</span><br>
-            ${q.explanation}
-          </div>
-        `;
-        container.appendChild(item);
-      });
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      populateSchoolDropdown();
-      checkActiveExamSession();
-    });
   </script>
 </body>
 </html>
