@@ -135,8 +135,6 @@
         <h2 class="text-2xl font-black text-slate-800">Data Peserta Ujian</h2>
         <p class="text-xs font-bold text-teal-700 mt-1" id="regPackageTitle">Mapel - Paket</p>
       </div>
-      
-      <!-- Form Registrasi menggunakan onclick pada tombol agar tidak terhalang validasi native form HTML jika ada kendala focus -->
       <div class="space-y-4">
         <div>
           <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Nama Lengkap Siswa</label>
@@ -321,25 +319,6 @@
       </div>
     </div>
   </main>
-
-  <!-- MODAL PERINGATAN ANTI-CURANG -->
-  <div id="antiCheatModal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-sm w-full shadow-2xl border border-rose-100 text-center space-y-4">
-      <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-700 flex items-center justify-center mx-auto text-xl">
-        🚨
-      </div>
-      <h3 class="font-black text-slate-900 text-lg">Peringatan Anti-Curang</h3>
-      <div id="antiCheatMsg" class="p-3 bg-rose-50 border border-rose-200 rounded-2xl font-black text-rose-700 text-xs">
-        ⚠️ PERINGATAN KECURANGAN (1/3)[cite: 15]🚨
-      </div>
-      <p class="text-xs text-slate-600 leading-relaxed">
-        Sistem mendeteksi Anda berpindah tab atau meninggalkan halaman ujian. Jika mencapai batas 3 kali, ujian Anda akan dihentikan otomatis![cite: 15]
-      </p>
-      <button onclick="closeAntiCheatModal()" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow-md transition cursor-pointer">
-        Tutup
-      </button>
-    </div>
-  </div>
 
   <!-- MODAL PIAGAM DIGITAL -->
   <div id="certificateModal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
@@ -593,7 +572,6 @@
     let currentUser = { name: '', school: '', className: '', absen: '' };
     let currentQuestionIdx = 0, userAnswers = {}, raguStatus = {}, examTimerInterval = null, timeRemaining = 75 * 60;
     let latestExamScore = 0, latestSubmissionData = null;
-    let antiCheatCount = 0;
 
     function shuffleArray(array) {
       const arr = [...array];
@@ -614,7 +592,6 @@
         userAnswers,
         raguStatus,
         timeRemaining,
-        antiCheatCount,
         isActive: true
       };
       localStorage.setItem('tka_active_exam_session', JSON.stringify(state));
@@ -635,7 +612,6 @@
               userAnswers = state.userAnswers || {};
               raguStatus = state.raguStatus || {};
               timeRemaining = state.timeRemaining;
-              antiCheatCount = state.antiCheatCount || 0;
               document.getElementById('userInitial').innerText = currentUser.name.charAt(0).toUpperCase();
               document.getElementById('examStudentName').innerText = currentUser.name;
               document.getElementById('examStudentSchool').innerText = `${currentUser.school} • Kelas ${currentUser.className}`;
@@ -643,7 +619,6 @@
               renderPalette();
               loadQuestion(currentQuestionIdx);
               startCountdownTimer();
-              initAntiCheat();
               return true;
             } else {
               localStorage.removeItem('tka_active_exam_session');
@@ -767,7 +742,6 @@
       raguStatus = {}; 
       currentQuestionIdx = 0;
       timeRemaining = 75 * 60;
-      antiCheatCount = 0;
       
       currentQuestions = shuffleArray(DATABASE_SOAL[selectedSubject][currentPackageKey].questions);
       persistCurrentExamState();
@@ -775,63 +749,6 @@
       renderPalette();
       loadQuestion(0);
       startCountdownTimer();
-      initAntiCheat();
-    }
-
-    // FITUR ANTI-CURANG
-    function initAntiCheat() {
-      document.addEventListener("visibilitychange", handleVisibilityChange);
-      window.addEventListener("blur", handleWindowBlur);
-    }
-
-    function removeAntiCheat() {
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-      window.removeEventListener("blur", handleWindowBlur);
-    }
-
-    function handleVisibilityChange() {
-      if (document.hidden && !document.getElementById('viewExam').classList.contains('hidden')) {
-        triggerAntiCheatViolation();
-      }
-    }
-
-    function handleWindowBlur() {
-      if (!document.getElementById('viewExam').classList.contains('hidden')) {
-        triggerAntiCheatViolation();
-      }
-    }
-
-    function triggerAntiCheatViolation() {
-      antiCheatCount++;
-      const modal = document.getElementById('antiCheatModal');
-      const msgBox = document.getElementById('antiCheatMsg');
-      msgBox.innerText = `⚠️ PERINGATAN KECURANGAN (${antiCheatCount}/3)[cite: 15]🚨`;
-      modal.classList.remove('hidden');
-
-      recordCheatLog(antiCheatCount);
-      persistCurrentExamState();
-
-      if (antiCheatCount >= 3) {
-        alert("Anda telah melanggar batas maksimal meninggalkan halaman ujian sebanyak 3 kali. Ujian dihentikan otomatis!");
-        removeAntiCheat();
-        submitExam(true);
-      }
-    }
-
-    function closeAntiCheatModal() {
-      document.getElementById('antiCheatModal').classList.add('hidden');
-    }
-
-    function recordCheatLog(count) {
-      let logs = JSON.parse(localStorage.getItem('tka_cheat_logs') || '[]');
-      logs.push({
-        name: currentUser.name,
-        school: currentUser.school,
-        subject: selectedSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia',
-        violationCount: count,
-        time: new Date().toLocaleTimeString()
-      });
-      localStorage.setItem('tka_cheat_logs', JSON.stringify(logs));
     }
 
     function startCountdownTimer() {
@@ -845,8 +762,7 @@
         if (timeRemaining <= 0) {
           clearInterval(examTimerInterval);
           alert("Waktu habis! Jawaban dikumpulkan otomatis.");
-          removeAntiCheat();
-          submitExam(false);
+          submitExam();
           return;
         }
         timeRemaining--;
@@ -981,8 +897,7 @@
     function confirmSubmitExam() {
       const count = Object.keys(userAnswers).length;
       if (confirm(`Kamu telah menjawab ${count} dari ${currentQuestions.length} soal.\nYakin ingin mengumpulkan jawaban?`)) {
-        removeAntiCheat();
-        submitExam(false);
+        submitExam();
       }
     }
 
@@ -1019,9 +934,8 @@
       }, Math.floor(Math.random() * 5000));
     }
 
-    function submitExam(isForced) {
+    function submitExam() {
       clearInterval(examTimerInterval);
-      removeAntiCheat();
       
       let totalRawScore = 0;
       let calculatedMaxScore = 0;
@@ -1061,9 +975,9 @@
       });
       
       const maxScoreActual = calculatedMaxScore || 52;
-      const final100 = isForced ? 0 : Math.min(100, Math.round((totalRawScore / maxScoreActual) * 100));
+      const final100 = Math.min(100, Math.round((totalRawScore / maxScoreActual) * 100));
       latestExamScore = final100;
-      const isPass = !isForced && (final100 >= 70);
+      const isPass = final100 >= 70;
       const durationSeconds = Math.max(0, (75 * 60) - timeRemaining);
       const durMin = Math.floor(durationSeconds / 60);
       
@@ -1079,7 +993,7 @@
         rawScore: totalRawScore,
         maxRawScore: maxScoreActual,
         finalScore: final100,
-        status: isForced ? 'Diskualifikasi (Kecurangan)' : (isPass ? 'Lulus' : 'Remedial'),
+        status: isPass ? 'Lulus' : 'Remedial',
         durationMinutes: durMin,
         detailAnswers: detailAnswersRecord
       };
@@ -1087,12 +1001,11 @@
       latestSubmissionData = record;
       saveSubmission(record);
       
-      document.getElementById('antiCheatModal').classList.add('hidden');
       document.getElementById('resTotalScore').innerText = `${totalRawScore}`;
       document.getElementById('resMaxScoreLabel').innerText = `dari maks ${maxScoreActual}`;
       document.getElementById('resScale100').innerText = `${final100}`;
-      document.getElementById('resStatus').innerText = isForced ? 'Diskualifikasi (3x)' : (isPass ? 'Lulus' : 'Remedial');
-      document.getElementById('resStatus').className = `text-base font-black mt-1 block ${isForced ? 'text-rose-600' : (isPass ? 'text-emerald-600' : 'text-rose-600')}`;
+      document.getElementById('resStatus').innerText = isPass ? 'Lulus' : 'Remedial';
+      document.getElementById('resStatus').className = `text-base font-black mt-1 block ${isPass ? 'text-emerald-600' : 'text-rose-600'}`;
       document.getElementById('resDuration').innerText = `${durMin} Menit`;
       
       const certBox = document.getElementById('certificateClaimBox');
@@ -1102,7 +1015,7 @@
       const noticeLocked = document.getElementById('discussionLockedNotice');
       document.getElementById('discussionSection').classList.add('hidden');
       
-      if (!isForced && final100 > 90) {
+      if (final100 > 90) {
         noticeLocked.classList.add('hidden');
         btnDiscussion.disabled = false;
         btnDiscussion.className = "px-5 py-2.5 bg-teal-50 hover:bg-teal-100 text-teal-800 font-bold text-xs rounded-xl transition flex items-center gap-1.5 shadow-sm border border-teal-200 cursor-pointer";
