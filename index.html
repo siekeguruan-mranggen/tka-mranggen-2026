@@ -167,7 +167,7 @@
         <div class="p-4 bg-teal-50 rounded-2xl border border-teal-100 text-xs text-teal-950 leading-relaxed font-medium">
           <span class="font-extrabold text-teal-900 block mb-1">⏱️ Petunjuk Penskoran:</span>
           - Durasi Ujian: <b>75 Menit</b> hitung mundur.<br>
-          - Skor Maksimal: <b>52 Poin</b> (Otomatis skala 0 - 100)[cite: 56].<br>
+          - Skor Maksimal: <b>52 Poin</b> (Otomatis skala 0 - 100).<br>
           - <b class="text-emerald-700">Siswa lulus (KKM 70) mendapatkan Piagam Penghargaan Digital otomatis!</b>
         </div>
         <button type="button" onclick="startExam(event)" class="w-full py-4 rounded-2xl bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-600 text-white font-extrabold text-sm shadow-lg shadow-teal-500/30 transition-all flex items-center justify-center gap-2 cursor-pointer">
@@ -275,12 +275,12 @@
             <span class="text-[10px] text-slate-400 block">Skala Standar</span>
           </div>
           <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-            <span class="block text-[11px] font-bold text-slate-400 uppercase">Status</span>
+            <span class="block text-[11px] font-bold text-slate-600 uppercase">Status</span>
             <span class="text-base font-black text-slate-800 mt-1 block" id="resStatus">Lulus</span>
             <span class="text-[10px] text-slate-400 block">KKM: 70</span>
           </div>
           <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-            <span class="block text-[11px] font-bold text-slate-400 uppercase">Waktu</span>
+            <span class="block text-[11px] font-bold text-slate-600 uppercase">Waktu</span>
             <span class="text-base font-black text-slate-800 mt-1 block" id="resDuration">0 Menit</span>
             <span class="text-[10px] text-slate-400 block">Pengerjaan</span>
           </div>
@@ -514,14 +514,13 @@
       { id: 30, type: "Kategori", text: "Diagram nilai Matematika: nilai 5 (4 siswa), 6 (8 siswa), 7 (12 siswa), 8 (10 siswa), 9 (6 siswa). Batas lulus 7.<br><br>Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!", statements: ["Jumlah seluruh siswa yang mengikuti ujian adalah 40 siswa.", "Banyaknya siswa yang belum lulus dan harus mengulang adalah 12 siswa.", "Nilai yang paling banyak diperoleh siswa adalah nilai 8."], correct: ["Benar", "Benar", "Salah"], topic: "Interpretasi Diagram Kelulusan", explanation: "(1) Total siswa = 40 (Benar). (2) Belum lulus nilai < 7 = 4 + 8 = 12 siswa (Benar). (3) Nilai terbanyak adalah nilai 7 (Salah). Kunci: Benar, Benar, Salah." }
     ];
 
-    // 2. DATA SOAL BAHASA INDONESIA - PAKET 2 (30 BUTIR LENGKAP SESUAI DOKUMEN ASLI)
+    // 2. DATA SOAL BAHASA INDONESIA - PAKET 2 (30 BUTIR LENGKAP UTUH SESUAI FILE SUTRISNO)
     const SOAL_30_BAHASA_INDONESIA_PAKET_2 = [
       {
         id: 1, type: "PG",
         text: `<b>Stimulus 1. Mengenali Perundungan di Sekolah (Teks Informasi)</b><br>
         Perundungan adalah tindakan menyakiti, mengejek, mengancam, atau mengucilkan seseorang secara berulang. Perundungan berbeda dari perselisihan biasa karena tindakan itu berulang dan dapat membuat seseorang merasa takut atau tidak aman. Di sekolah, tindakan tersebut dapat berupa julukan yang merendahkan, merusak barang, menghalangi teman bergabung, atau menyebarkan foto untuk mempermalukan.<br>
-        Perundungan tidak boleh dianggap wajar hanya karena disebut candaan. Korban berhak merasa aman dan mendapat bantuan. Siswa yang menyaksikan perundungan dapat mendampingi teman, tidak ikut tertawa, dan melapor kepada guru atau orang dewasa. Melapor berarti meminta bantuan agar situasi kembali aman. Jika aman, saksi juga dapat mengingatkan pelaku dengan kata-kata yang sopan.<br>
-        Guru perlu menindaklanjuti laporan, menjaga keselamatan siswa, dan membantu semua pihak memahami dampak perilaku tersebut. Perundungan dapat terjadi secara langsung maupun melalui media digital. Karena itu, setiap warga sekolah perlu menjaga ucapan, menghormati perbedaan, serta mencari bantuan ketika ejekan berulang. Sekolah yang aman terbentuk jika semua orang ikut mencegah tindakan yang menyakiti.<br><br>
+        Perundungan tidak boleh dianggap wajar hanya karena disebut candaan. Korban berhak merasa aman dan mendapat bantuan. Siswa yang menyaksikan perundungan dapat mendampingi teman, tidak ikut tertawa, dan melapor kepada guru atau orang dewasa. Melapor berarti meminta bantuan agar situasi kembali aman. Jika aman, saksi juga dapat mengingatkan pelaku dengan kata-kata yang sopan. Guru perlu menindaklanjuti laporan, menjaga keselamatan siswa, dan membantu semua pihak memahami dampak perilaku tersebut. Perundungan dapat terjadi secara langsung maupun melalui media digital. Karena itu, setiap warga sekolah perlu menjaga ucapan, menghormati perbedaan, serta mencari bantuan ketika ejekan berulang. Sekolah yang aman terbentuk jika semua orang ikut mencegah tindakan yang menyakiti.<br><br>
         <b>Soal 1.</b> Makna kata perundungan dalam Stimulus 1 paling tepat adalah ....`,
         options: [
           "tindakan menyakiti atau merendahkan seseorang secara berulang",
@@ -537,7 +536,7 @@
         id: 2, type: "MCMA",
         text: `<b>Stimulus 1. Mengenali Perundungan di Sekolah (Teks Informasi)</b><br>
         Perundungan adalah tindakan menyakiti, mengejek, mengancam, atau mengucilkan seseorang secara berulang. Perundungan berbeda dari perselisihan biasa karena tindakan itu berulang dan dapat membuat seseorang merasa takut atau tidak aman. Di sekolah, tindakan tersebut dapat berupa julukan yang merendahkan, merusak barang, menghalangi teman bergabung, atau menyebarkan foto untuk mempermalukan.<br><br>
-        <b>Soal 2.</b> Pilih semua contoh perundungan yang disebutkan dalam Stimulus 1. (Jawaban benar lebih dari satu)[cite: 56]`,
+        <b>Soal 2.</b> Pilih semua contoh perundungan yang disebutkan dalam Stimulus 1. (Terdapat tiga pernyataan; Jawaban benar lebih dari satu)[cite: 56]`,
         options: [
           "Memberi julukan yang merendahkan.",
           "Mengajak teman bergabung dalam kegiatan.",
@@ -545,13 +544,13 @@
         ],
         correct: [0, 2],
         topic: "Pemahaman Tekstual - Informasi Tersurat",
-        explanation: "Julukan merendahkan dan penyebaran foto mempermalukan adalah contoh perundungan dalam teks[cite: 56]. Opsi A dan C Benar."
+        explanation: "Julukan merendahkan dan penyebaran foto mempermalukan adalah contoh perundungan[cite: 56]. Opsi A dan C Benar."
       },
       {
         id: 3, type: "Kategori",
         text: `<b>Stimulus 1. Mengenali Perundungan di Sekolah (Teks Informasi)</b><br>
-        Perundungan adalah tindakan menyakiti, mengejek, mengancam, atau mengucilkan seseorang secara berulang.<br><br>
-        <b>Soal 3.</b> Tentukan kategori <b>Benar</b> atau <b>Salah</b> terkait tindakan menghadapi perundungan di lingkungan sekolah!`,
+        Perundungan adalah tindakan menyakiti, mengejek, mengancam, atau mengucilkan seseorang secara berulang. Korban berhak merasa aman dan mendapat bantuan. Siswa yang menyaksikan perundungan dapat mendampingi teman, tidak ikut tertawa, dan melapor kepada guru.<br><br>
+        <b>Soal 3.</b> Petunjuk: Pilihlah 2 (dua) pernyataan yang Benar dan 1 (satu) pernyataan yang Salah terkait tindakan menghadapi perundungan (bullying) di lingkungan sekolah!`,
         statements: [
           "Mengejek atau memberi julukan merendahkan secara berulang kepada teman merupakan bentuk perundungan (verbal).",
           "Mendampingi teman yang menjadi sasaran perundungan dan mengajaknya menjauh dari situasi tersebut merupakan contoh tindakan mendukung teman.",
@@ -559,12 +558,12 @@
         ],
         correct: ["Benar", "Benar", "Salah"],
         topic: "Pemahaman Tekstual - Kategori Informasi",
-        explanation: "Pernyataan 1 dan 2 Benar, pernyataan 3 Salah karena melapor adalah tindakan yang dianjurkan[cite: 56]. Kunci: Benar, Benar, Salah."
+        explanation: "Pernyataan 1 dan 2 Benar, pernyataan 3 Salah karena melapor adalah tindakan tepat[cite: 56]. Kunci: Benar, Benar, Salah."
       },
       {
         id: 4, type: "PG",
         text: `<b>Stimulus 2. Pagi yang Teratur (Teks Informasi)</b><br>
-        Awal hari yang teratur membantu anak menyiapkan tubuh dan pikiran sebelum belajar. Anak dapat memulainya dengan bangun tepat waktu, merapikan tempat tidur, mandi, dan mengenakan pakaian bersih. Sarapan bergizi juga penting karena tubuh memerlukan energi untuk beraktivitas. Pilihan makanan dapat beragam, misalnya nasi atau sumber karbohidrat lain, lauk berprotein, sayuran, serta buah. Sebelum berangkat, anak sebaiknya memeriksa jadwal pelajaran, menyiapkan buku, dan mengisi botol minum.<br><br>
+        Awal hari yang teratur membantu anak menyiapkan tubuh dan pikiran sebelum belajar. Anak dapat memulainya dengan bangun tepat waktu, merapikan tempat tidur, mandi, dan mengenakan pakaian bersih. Sarapan bergizi juga penting karena tubuh memerlukan energi untuk beraktivitas. Pilihan makanan dapat beragam, misalnya nasi atau sumber karbohidrat lain, lauk berprotein, sayuran, serta buah. Sebelum berangkat, anak sebaiknya memeriksa jadwal pelajaran, menyiapkan buku, dan mengisi botol minum. Persiapan ini membuat kegiatan pagi lebih tenang sehingga anak tidak terburu-buru mencari perlengkapan.<br><br>
         <b>Soal 4.</b> Kegiatan yang mendukung kesiapan sebelum berangkat sekolah menurut Stimulus 2 adalah ....`,
         options: [
           "Menjaga kebersihan diri, sarapan, dan memeriksa perlengkapan.",
@@ -574,7 +573,7 @@
         ],
         correct: 0,
         topic: "Pemahaman Tekstual - Informasi Tersurat",
-        explanation: "Teks menyarankan menjaga kebersihan diri, sarapan, dan memeriksa perlengkapan sebelum berangkat[cite: 56]. Jawaban: A."
+        explanation: "Teks menyarankan menjaga kebersihan diri, sarapan, dan memeriksa perlengkapan[cite: 56]. Jawaban: A."
       },
       {
         id: 5, type: "PG",
@@ -589,13 +588,13 @@
         ],
         correct: 0,
         topic: "Pemahaman Tekstual - Informasi Tersurat",
-        explanation: "Persiapan lebih awal membuat pagi hari lebih tenang dan tidak terburu-buru[cite: 56]. Jawaban: A."
+        explanation: "Persiapan membuat kegiatan pagi lebih tenang sehingga tidak terburu-buru[cite: 56]. Jawaban: A."
       },
       {
         id: 6, type: "MCMA",
         text: `<b>Stimulus 3. Tautan Hadiah di Ponsel (Teks Informasi)</b><br>
         Pesan digital yang menawarkan hadiah besar perlu diperiksa sebelum dipercaya. Pesan mencurigakan sering meminta penerima membuka tautan, mengisi alamat rumah, memasukkan kata sandi, atau memberikan kode rahasia. Sebelum mengeklik tautan, periksa nama pengirim dan alamat situs. Jangan memasukkan kata sandi atau informasi pribadi pada halaman yang belum jelas. Jika ragu, tutup pesan dan mintalah bantuan orang tua atau guru.<br><br>
-        <b>Soal 6.</b> Pilih semua tindakan yang sesuai dengan anjuran keamanan digital pada Stimulus 3. (Jawaban benar lebih dari satu)[cite: 56]`,
+        <b>Soal 6.</b> Pilih semua tindakan yang sesuai dengan anjuran keamanan digital pada Stimulus 3. (Terdapat tiga pernyataan; jawaban benar dapat lebih dari satu)[cite: 56]`,
         options: [
           "Memeriksa nama pengirim dan alamat situs.",
           "Meminta bantuan orang tua atau guru jika ragu.",
@@ -603,7 +602,7 @@
         ],
         correct: [0, 1],
         topic: "Pemahaman Tekstual - Keamanan Digital",
-        explanation: "Memeriksa pengirim dan meminta bantuan orang dewasa adalah anjuran yang tepat[cite: 56]. Opsi A dan B Benar."
+        explanation: "Memeriksa pengirim dan meminta bantuan orang tua/guru adalah anjuran yang tepat[cite: 56]. Opsi A dan B Benar."
       },
       {
         id: 7, type: "PG",
@@ -618,13 +617,13 @@
         ],
         correct: 0,
         topic: "Pemahaman Tekstual - Makna Ungkapan",
-        explanation: "Sumber tepercaya berarti sumber yang dapat dipercaya kebenarannya[cite: 56]. Jawaban: A."
+        explanation: "Sumber tepercaya adalah sumber yang informasinya dapat dipercaya[cite: 56]. Jawaban: A."
       },
       {
         id: 8, type: "Kategori",
         text: `<b>Stimulus 4. Layangan di Pohon Jambu (Teks Fiksi)</b><br>
-        Pada hari Minggu, Raka dan Seno membuat layangan dari kertas bekas dan bilah bambu tipis... Benang layangan tersangkut di dahan pohon jambu... Penjaga kebun mengambil galah panjang dan melepaskan benang dengan hati-hati.<br><br>
-        <b>Soal 8.</b> Kelompokkan peristiwa berikut berdasarkan struktur alur cerita yang tepat (A = Awal cerita, B = Masalah, C = Penyelesaian)!`,
+        Pada hari Minggu, Raka dan Seno membuat layangan... Tiba-tiba, benang layangan tersangkut di dahan pohon jambu... Penjaga kebun mengambil galah panjang dan melepaskan benang dengan hati-hati.<br><br>
+        <b>Soal 8.</b> Kelompokkan peristiwa berikut berdasarkan struktur alur cerita yang tepat (A = Awal cerita, B = Masalah, C = Penyelesaian):`,
         statements: [
           "Raka melarang Seno memanjat pohon yang licin dan mengusulkan mencari bantuan orang lain demi keselamatan.",
           "Keputusan bersama untuk mengutamakan keselamatan dan menghargai proses kerja sama menghasilkan solusi yang aman tanpa ada yang terluka.",
@@ -638,7 +637,7 @@
         id: 9, type: "PG",
         text: `<b>Stimulus 4. Layangan di Pohon Jambu (Teks Fiksi)</b><br>
         Tiba-tiba, benang layangan tersangkut di dahan pohon jambu dekat lapangan. Seno ingin memanjat pohon untuk mengambilnya. Raka melarangnya karena dahan itu tinggi dan licin setelah hujan malam sebelumnya.<br><br>
-        <b>Soal 9.</b> Mengapa lokasi tempat layangan Raka dan Seno tersangkut menjadi faktor krusial yang memicu perdebatan antar-tokoh?`,
+        <b>Soal 9.</b> Berdasarkan deskripsi cerita, mengapa lokasi tempat layangan Raka dan Seno tersangkut menjadi faktor krusial yang memicu perdebatan antar-tokoh?`,
         options: [
           "Karena posisinya berada di area privat yang dikhususkan dan berbahaya bagi anak-anak.",
           "Karena keberadaan dahan yang tinggi serta kondisi fisik pohon yang licin pasca-hujan menciptakan potensi risiko kecelakaan jika dipaksakan diambil sendiri.",
@@ -647,13 +646,13 @@
         ],
         correct: 1,
         topic: "Pemahaman Tekstual - Konflik Cerita",
-        explanation: "Dahan yang tinggi serta kondisi fisik pohon yang licin pasca-hujan memicu perdebatan karena risiko kecelakaan[cite: 56]. Jawaban: B."
+        explanation: "Dahan tinggi dan licin pasca-hujan menciptakan risiko kecelakaan jika dipaksakan diambil sendiri[cite: 56]. Jawaban: B."
       },
       {
         id: 10, type: "PG",
         text: `<b>Stimulus 4. Layangan di Pohon Jambu (Teks Fiksi)</b><br>
         Raka mengusulkan agar mereka meminta bantuan penjaga kebun. Penjaga kebun mengambil galah panjang dan melepaskan benang dengan hati-hati.<br><br>
-        <b>Soal 10.</b> Mengapa pemilihan tokoh tersebut sebagai pihak yang dimintai tolong dinilai paling efektif dalam penyelesaian cerita?`,
+        <b>Soal 10.</b> Perhatikan tindakan yang dilakukan oleh tokoh penolong. Mengapa pemilihan tokoh tersebut sebagai pihak yang dimintai tolong dinilai paling efektif?`,
         options: [
           "Karena ia memiliki otoritas penuh untuk melarang anak-anak bermain layangan di sekitar lapangan.",
           "Karena ia mempunyai perlengkapan penunjang yang memadai (galah panjang) serta keahlian situasional untuk menanganinya dengan aman tanpa merusak pohon maupun melukai anak-anak.",
@@ -662,13 +661,13 @@
         ],
         correct: 1,
         topic: "Pemahaman Tekstual - Tokoh Penolong",
-        explanation: "Penjaga kebun memiliki perlengkapan memadai (galah panjang) dan keahlian untuk menanganinya dengan aman[cite: 56]. Jawaban: B."
+        explanation: "Penjaga kebun mempunyai perlengkapan memadai (galah panjang) serta keahlian situasional untuk menanganinya dengan aman[cite: 56]. Jawaban: B."
       },
       {
         id: 11, type: "PG",
         text: `<b>Stimulus 5. Perundungan di Ruang Digital (Teks Informasi)</b><br>
         Perundungan di ruang digital terjadi ketika teknologi digunakan untuk mengejek, mengancam, mempermalukan, atau mengucilkan orang lain... Korban tidak seharusnya disalahkan atas tindakan orang yang menyebarkan konten.<br><br>
-        <b>Soal 11.</b> Mengapa melimpahkan kesalahan kepada korban perundungan digital (victim blaming) merupakan tindakan yang tidak masuk akal secara logis dan etis?`,
+        <b>Soal 11.</b> Berdasarkan bacaan di atas, mengapa melimpahkan kesalahan kepada korban perundungan digital (victim blaming) merupakan tindakan yang tidak masuk akal secara logis dan etis?`,
         options: [
           "Karena korban tidak memiliki kendali atas tindakan pihak lain yang secara sepihak melanggar privasi dan menyebarkan konten tanpa izin.",
           "Karena korban memang seharusnya menyadari bahwa semua foto yang berada di internet bersifat milik umum.",
@@ -677,21 +676,21 @@
         ],
         correct: 0,
         topic: "Pemahaman Inferensial - Etika & Logika",
-        explanation: "Korban tidak memiliki kendali atas pelanggaran privasi pihak lain yang menyebarkan konten tanpa izin[cite: 56]. Jawaban: A."
+        explanation: "Korban tidak memiliki kendali atas tindakan pihak lain yang melanggar privasi dan menyebarkan konten tanpa izin[cite: 56]. Jawaban: A."
       },
       {
         id: 12, type: "MCMA",
         text: `<b>Stimulus 5. Perundungan di Ruang Digital (Teks Informasi)</b><br>
         Jika menemukan perundungan digital, siswa dapat mendukung orang yang menjadi sasaran, menyimpan informasi yang diperlukan sebagai bukti, lalu melapor kepada guru.<br><br>
-        <b>Soal 12.</b> Manakah dari tindakan-tindakan berikut yang secara efektif mencerminkan peran siswa sebagai pengguna teknologi yang bertanggung jawab dalam memutus rantai perundungan digital? (Jawaban benar lebih dari satu)[cite: 56]`,
+        <b>Soal 12.</b> Manakah dari tindakan-tindakan berikut yang secara efektif mencerminkan peran siswa sebagai pengguna teknologi yang bertanggung jawab dalam memutus rantai perundungan digital? (Pilih semua jawaban yang benar)[cite: 56]`,
         options: [
-          "Menahan diri dari membagikan atau mengomentari unggahan yang merendahkan, serta menghormati hak privasi orang lain dengan selalu meminta persetujuan sebelum mengunggah foto.",
+          "Menahan diri dari membagikan atau mengomentari unggahan yang merendahkan, serta menghormati hak privasi orang lain dengan selalu meminta persetujuan sebelum mengunggah foto mereka.",
           "Merekam jejak digital perundungan sebagai bukti obyektif, sekaligus memberikan dukungan moral kepada sasaran agar mereka tidak merasa terisolasi.",
           "Menyebarluaskan kembali unggahan perundungan ke grup sekolah dengan tujuan agar pelaku merasa jera dan dipermalukan di depan umum."
         ],
         correct: [0, 1],
         topic: "Pemahaman Inferensial - Tindakan Bijak",
-        explanation: "Menjaga privasi dan memberi dukungan adalah tindakan bijak. Menyebarluaskan kembali justru memperparah[cite: 56]. Opsi A dan B Benar."
+        explanation: "Menahan diri dari menyebarkan hal merendahkan dan merekam bukti objektif adalah tindakan bertanggung jawab[cite: 56]. Opsi A dan B Benar."
       },
       {
         id: 13, type: "Kategori",
@@ -720,7 +719,7 @@
         ],
         correct: 1,
         topic: "Pemahaman Inferensial - Gagasan Utama",
-        explanation: "Teks membahas kebiasaan sehat dan jadwal teratur untuk kesiapan belajar[cite: 56]. Jawaban: B."
+        explanation: "Teks membahas kebiasaan sehat dan jadwal teratur untuk membantu kesiapan belajar[cite: 56]. Jawaban: B."
       },
       {
         id: 15, type: "PG",
@@ -735,13 +734,13 @@
         ],
         correct: 1,
         topic: "Pemahaman Inferensial - Makna Kiasan",
-        explanation: "Artinya memulihkan tenaga melalui kebiasaan sehat dan istirahat cukup[cite: 56]. Jawaban: B."
+        explanation: "Artinya memulihkan tenaga dengan kebiasaan sehat dan istirahat cukup[cite: 56]. Jawaban: B."
       },
       {
         id: 16, type: "MCMA",
         text: `<b>Stimulus 7. Foto Sebelum Diunggah (Teks Informasi)</b><br>
-        Sebelum mengunggah foto yang menampilkan orang lain, mintalah izin kepada orang yang bersangkutan... Teknologi yang bijaksana bukan hanya tentang memilih aplikasi, tetapi juga tentang menghormati privasi, menjaga data, dan bertanggung jawab.<br><br>
-        <b>Soal 16.</b> Pilih semua kesimpulan yang didukung oleh informasi tentang etika membagikan foto. (Jawaban benar lebih dari satu)[cite: 56]`,
+        Sebelum mengunggah foto yang menampilkan orang lain, mintalah izin kepada orang yang bersangkutan... Teknologi yang bijaksana bukan hanya tentang memilih aplikasi, tetapi juga tentang menghormati privasi.<br><br>
+        <b>Soal 16.</b> Pilih semua kesimpulan yang didukung oleh informasi tentang etika membagikan foto. (Terdapat tiga pernyataan; jawaban benar lebih dari satu)[cite: 56]`,
         options: [
           "Meminta izin merupakan cara menghormati privasi orang lain.",
           "Informasi pribadi yang tidak diperlukan sebaiknya tidak dipublikasikan.",
@@ -749,13 +748,13 @@
         ],
         correct: [0, 1],
         topic: "Pemahaman Inferensial - Kesimpulan Etika",
-        explanation: "Meminta izin dan menjaga data pribadi adalah pesan utama teks[cite: 56]. Opsi A dan B Benar."
+        explanation: "Meminta izin dan tidak mempublikasikan informasi pribadi yang tidak perlu adalah kesimpulan yang didukung[cite: 56]. Opsi A dan B Benar."
       },
       {
         id: 17, type: "MCMA",
         text: `<b>Stimulus 7. Foto Sebelum Diunggah (Teks Informasi)</b><br>
         Jika teman meminta fotonya tidak dipublikasikan, hormati permintaan tersebut. Sikap ini membantu menciptakan ruang digital yang aman dan nyaman bagi semua orang.<br><br>
-        <b>Soal 17.</b> Pilih semua akibat yang masuk akal jika pengguna menghormati privasi sebelum mengunggah foto. (Jawaban benar lebih dari satu)[cite: 56]`,
+        <b>Soal 17.</b> Pilih semua akibat yang masuk akal jika pengguna menghormati privasi sebelum mengunggah foto. (Terdapat tiga pernyataan; jawaban benar lebih dari satu)[cite: 56]`,
         options: [
           "Teman-teman merasa pendapat dan privasinya dihargai.",
           "Risiko membagikan data pribadi yang tidak perlu menjadi lebih kecil.",
@@ -763,13 +762,13 @@
         ],
         correct: [0, 1],
         topic: "Pemahaman Inferensial - Akibat Tindakan",
-        explanation: "Privasi dihargai dan risiko data tersebar mengecil[cite: 56]. Opsi A dan B Benar."
+        explanation: "Privasi dihargai dan risiko data pribadi tersebar menjadi lebih kecil[cite: 56]. Opsi A dan B Benar."
       },
       {
         id: 18, type: "Kategori",
         text: `<b>Stimulus 7. Foto Sebelum Diunggah (Teks Informasi)</b><br>
         Sebelum mengunggah foto yang menampilkan orang lain, mintalah izin... Berpikir sebelum membagikan sesuatu merupakan kebiasaan penting.<br><br>
-        <b>Soal 18.</b> Tentukan status setiap pernyataan berikut (A = Dinyatakan langsung; B = Dapat disimpulkan; C = Tidak didukung teks):`,
+        <b>Soal 18.</b> Tentukan status setiap pernyataan berikut (Kategori: A = dinyatakan langsung; B = dapat disimpulkan; C = tidak didukung teks):`,
         statements: [
           "Pengguna meminta izin sebelum mengunggah foto teman.",
           "Berpikir sebelum membagikan sesuatu membantu menjaga privasi.",
@@ -792,7 +791,7 @@
         ],
         correct: 1,
         topic: "Pemahaman Inferensial - Amanat Fiksi",
-        explanation: "Cerita menekankan bahwa kesabaran dan kerja sama membantu menyelesaikan tanggung jawab[cite: 56]. Jawaban: B."
+        explanation: "Kesabaran dan kerja sama membantu menyelesaikan tanggung jawab dengan baik[cite: 56]. Jawaban: B."
       },
       {
         id: 20, type: "PG",
@@ -807,12 +806,12 @@
         ],
         correct: 0,
         topic: "Pemahaman Inferensial - Perubahan Karakter",
-        explanation: "Bayu awalnya mengabaikan tugas lalu berubah menjadi ikut bertanggung jawab[cite: 56]. Jawaban: A."
+        explanation: "Bayu berubah dari yang awalnya mengabaikan tugas menjadi ikut bertanggung jawab[cite: 56]. Jawaban: A."
       },
       {
         id: 21, type: "PG",
         text: `<b>Stimulus 9. Candaan yang Aman di Sekolah (Teks Informasi)</b><br>
-        Candaan dapat membuat suasana akrab jika semua orang merasa nyaman. Namun, candaan yang merendahkan... Aturan bercanda yang aman membantu siswa memahami batas yang perlu dihormati.<br><br>
+        Candaan dapat membuat suasana akrab jika semua orang merasa nyaman. Namun, candaan yang merendahkan penampilan... Aturan bercanda yang aman membantu siswa memahami batas yang perlu dihormati.<br><br>
         <b>Soal 21.</b> Menurut Stimulus 9, mengapa aturan bercanda yang aman bermanfaat di sekolah?`,
         options: [
           "semua siswa harus memiliki selera humor yang sama",
@@ -822,13 +821,13 @@
         ],
         correct: 1,
         topic: "Evaluasi dan Apresiasi - Relevansi",
-        explanation: "Aturan canda aman mengajarkan siswa menjaga perasaan dan menghormati batas teman[cite: 56]. Jawaban: B."
+        explanation: "Aturan canda aman bermanfaat agar siswa belajar menjaga perasaan dan menghormati batas teman[cite: 56]. Jawaban: B."
       },
       {
         id: 22, type: "MCMA",
         text: `<b>Stimulus 9. Candaan yang Aman di Sekolah (Teks Informasi)</b><br>
         Siswa yang menyaksikan ejekan sebaiknya tidak ikut tertawa atau menyebarkannya. Mereka dapat mendukung teman yang menjadi sasaran dan melapor kepada guru jika ejekan terus terjadi.<br><br>
-        <b>Soal 22.</b> Pilih semua respons yang tepat ketika menyaksikan teman terus diejek. (Jawaban benar lebih dari satu)[cite: 56]`,
+        <b>Soal 22.</b> Pilih semua respons yang tepat ketika menyaksikan teman terus diejek. (Terdapat tiga pernyataan; jawaban benar lebih dari satu)[cite: 56]`,
         options: [
           "Ikut tertawa agar tidak menjadi sasaran.",
           "Menunjukkan dukungan kepada teman yang diejek.",
@@ -836,7 +835,7 @@
         ],
         correct: [1, 2],
         topic: "Evaluasi dan Apresiasi - Sikap Saksi",
-        explanation: "Mendukung korban dan melapor ke guru adalah respons yang tepat[cite: 56]. Opsi B dan C Benar."
+        explanation: "Menunjukkan dukungan kepada korban dan meminta bantuan guru adalah respons yang tepat[cite: 56]. Opsi B dan C Benar."
       },
       {
         id: 23, type: "Kategori",
@@ -865,13 +864,13 @@
         ],
         correct: 0,
         topic: "Evaluasi dan Apresiasi - Kebiasaan Sehat",
-        explanation: "Membawa air putih dan bekal beragam adalah kebiasaan sehat yang mudah diterapkan[cite: 56]. Jawaban: A."
+        explanation: "Membawa air putih dan memilih bekal beragam adalah kebiasaan yang mudah diterapkan[cite: 56]. Jawaban: A."
       },
       {
         id: 25, type: "MCMA",
         text: `<b>Stimulus 10. Bekal dan Waktu Istirahat (Teks Informasi)</b><br>
         Saat istirahat sekolah, anak dapat bermain aktif dengan tetap memperhatikan keselamatan... Setelah bermain, cuci tangan sebelum makan. Pada malam hari, tidur cukup membantu tubuh pulih.<br><br>
-        <b>Soal 25.</b> Pilih semua kebiasaan yang sesuai dengan pesan Stimulus 10. (Jawaban benar lebih dari satu)[cite: 56]`,
+        <b>Soal 25.</b> Pilih semua kebiasaan yang sesuai dengan pesan Stimulus 10. (Terdapat tiga pernyataan; jawaban benar lebih dari satu)[cite: 56]`,
         options: [
           "Mencuci tangan sebelum makan.",
           "Tidur cukup setelah beraktivitas.",
@@ -879,7 +878,7 @@
         ],
         correct: [0, 1],
         topic: "Evaluasi dan Apresiasi - Pesan Kesehatan",
-        explanation: "Mencuci tangan sebelum makan dan tidur cukup adalah pesan teks[cite: 56]. Opsi A dan B Benar."
+        explanation: "Mencuci tangan sebelum makan dan tidur cukup sesuai dengan pesan teks[cite: 56]. Opsi A dan B Benar."
       },
       {
         id: 26, type: "PG",
@@ -894,13 +893,13 @@
         ],
         correct: 1,
         topic: "Evaluasi dan Apresiasi - Kredibilitas Informasi",
-        explanation: "Pesan tanpa sumber resmi dan belum terverifikasi tidak boleh langsung dipercaya[cite: 56]. Jawaban: B."
+        explanation: "Pesan tidak mencantumkan sumber resmi dan belum cocok dengan pengumuman sekolah[cite: 56]. Jawaban: B."
       },
       {
         id: 27, type: "MCMA",
         text: `<b>Stimulus 11. Kabar Libur yang Belum Pasti (Teks Informasi)</b><br>
         Untuk memeriksa kabar sekolah, bukalah saluran informasi resmi yang biasa digunakan sekolah. Perhatikan tanggal pengumuman dan pastikan isi pesan sesuai dengan konteks saat ini.<br><br>
-        <b>Soal 27.</b> Pilih semua tindakan yang bijaksana ketika menerima kabar digital yang belum pasti. (Jawaban benar lebih dari satu)[cite: 56]`,
+        <b>Soal 27.</b> Pilih semua tindakan yang bijaksana ketika menerima kabar digital yang belum pasti. (Terdapat tiga pernyataan; jawaban benar lebih dari satu)[cite: 56]`,
         options: [
           "Memeriksa tanggal dan sumber informasi.",
           "Membandingkan pesan dengan kanal resmi sekolah.",
@@ -908,7 +907,7 @@
         ],
         correct: [0, 1],
         topic: "Evaluasi dan Apresiasi - Verifikasi Berita",
-        explanation: "Memeriksa tanggal, sumber, dan membandingkan dengan kanal resmi adalah tindakan bijaksana[cite: 56]. Opsi A dan B Benar."
+        explanation: "Memeriksa tanggal/sumber dan membandingkan dengan kanal resmi adalah tindakan bijaksana[cite: 56]. Opsi A dan B Benar."
       },
       {
         id: 28, type: "Kategori",
@@ -951,7 +950,7 @@
         ],
         correct: 1,
         topic: "Evaluasi dan Apresiasi - Penilaian Tokoh",
-        explanation: "Menghargai kepedulian Nara yang membantu tanpa membuat malu Wulan adalah respons yang paling tepat[cite: 56]. Jawaban: B."
+        explanation: "Menghargai kepedulian Nara yang membantu tanpa mempermalukan Wulan[cite: 56]. Jawaban: B."
       }
     ];
 
