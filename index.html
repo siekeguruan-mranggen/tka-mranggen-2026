@@ -22,7 +22,7 @@
     .hidden { display: none !important; }
     .bg-math { background-color: #e53e3e !important; color: #ffffff !important; }
     .bg-indo { background-color: #3182ce !important; color: #ffffff !important; }
-    .card-subject { border-radius: 1.5rem; overflow: hidden; background: #ffffff; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); border: 1px solid #e2e8f0; }
+    .card-subject { border-radius: 1.5rem; overflow: hidden; background: #ffffff; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); border: 1px solid #e2e8f0; cursor: pointer; }
     .btn-subject { background-color: #e0e7ff; color: #3730a3; padding: 0.75rem; border-radius: 1rem; font-weight: 900; width: 100%; border: none; cursor: pointer; }
     .btn-subject:hover { background-color: #c7d2fe; }
     @media print {
@@ -75,25 +75,25 @@
       </p>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto mb-8">
         <!-- KARTU MATEMATIKA -->
-        <div class="card-subject hover:-translate-y-1.5 transition-all duration-200 flex flex-col">
+        <div onclick="selectSubject('matematika')" class="card-subject hover:-translate-y-1.5 transition-all duration-200 flex flex-col">
           <div class="bg-math py-14 flex items-center justify-center shadow-inner">
             <h3 class="text-white text-3xl font-black tracking-wide">Matematika</h3>
           </div>
           <div class="p-5 bg-white flex-1 flex flex-col justify-between">
             <p class="text-xs text-slate-500 font-semibold mb-4">6 Paket: Ujicoba + Paket 1 s.d. 5</p>
-            <button onclick="selectSubject('matematika')" class="btn-subject text-xs uppercase tracking-wider transition">
+            <button class="btn-subject text-xs uppercase tracking-wider transition pointer-events-none">
               Mulai Belajar
             </button>
           </div>
         </div>
         <!-- KARTU BAHASA INDONESIA -->
-        <div class="card-subject hover:-translate-y-1.5 transition-all duration-200 flex flex-col">
+        <div onclick="selectSubject('indonesia')" class="card-subject hover:-translate-y-1.5 transition-all duration-200 flex flex-col">
           <div class="bg-indo py-14 flex items-center justify-center shadow-inner">
             <h3 class="text-white text-3xl font-black tracking-wide">Bahasa Indonesia</h3>
           </div>
           <div class="p-5 bg-white flex-1 flex flex-col justify-between">
             <p class="text-xs text-slate-500 font-semibold mb-4">5 Paket: Paket 1 s.d. 5</p>
-            <button onclick="selectSubject('indonesia')" class="btn-subject text-xs uppercase tracking-wider transition">
+            <button class="btn-subject text-xs uppercase tracking-wider transition pointer-events-none">
               Mulai Belajar
             </button>
           </div>
@@ -106,7 +106,7 @@
 
     <!-- SCREEN 1: PILIH PAKET TRYOUT -->
     <div id="viewPackages" class="hidden max-w-4xl mx-auto w-full bg-white/95 rounded-3xl p-6 sm:p-10 shadow-xl border border-teal-100 text-center relative overflow-hidden">
-      <button onclick="showScreen('viewSubjects')" class="inline-flex items-center text-xs font-bold text-teal-700 hover:text-teal-900 mb-4 absolute top-6 left-6">
+      <button onclick="showScreen('viewSubjects')" class="inline-flex items-center text-xs font-bold text-teal-700 hover:text-teal-900 mb-4 absolute top-6 left-6 cursor-pointer">
         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
         Ganti Mata Pelajaran
       </button>
@@ -127,7 +127,7 @@
 
     <!-- SCREEN 2: REGISTRASI & TOKEN -->
     <div id="viewRegistration" class="hidden max-w-lg mx-auto bg-white/95 rounded-3xl p-6 sm:p-8 shadow-xl border border-teal-100 relative">
-      <button onclick="showScreen('viewPackages')" class="inline-flex items-center text-xs font-bold text-teal-700 hover:text-teal-900 mb-5">
+      <button onclick="showScreen('viewPackages')" class="inline-flex items-center text-xs font-bold text-teal-700 hover:text-teal-900 mb-5 cursor-pointer">
         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
         Kembali ke Pilihan Paket
       </button>
@@ -170,7 +170,7 @@
           - Skor Maksimal: <b>52 Poin</b> (Otomatis skala 0 - 100).<br>
           - <b class="text-emerald-700">Siswa lulus (KKM 70) mendapatkan Piagam Penghargaan Digital otomatis!</b>
         </div>
-        <button type="submit" class="w-full py-4 rounded-2xl bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-600 text-white font-extrabold text-sm shadow-lg shadow-teal-500/30 transition-all flex items-center justify-center gap-2">
+        <button type="submit" class="w-full py-4 rounded-2xl bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-600 text-white font-extrabold text-sm shadow-lg shadow-teal-500/30 transition-all flex items-center justify-center gap-2 cursor-pointer">
           <span>Mulai Mengerjakan</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </button>
@@ -197,7 +197,7 @@
             <span class="text-xs font-bold text-rose-600 mr-1 hidden sm:inline">Sisa Waktu:</span>
             <span class="font-mono font-black text-base sm:text-lg tracking-wider" id="timerDisplay">75:00</span>
           </div>
-          <button onclick="confirmSubmitExam()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm transition">
+          <button onclick="confirmSubmitExam()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm transition cursor-pointer">
             Selesai Ujian
           </button>
         </div>
@@ -219,7 +219,7 @@
             </div>
             
             <div class="flex items-center justify-between border-t border-slate-100 pt-4 mt-8">
-              <button onclick="prevQuestion()" id="btnPrev" class="px-4 py-2 text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition flex items-center gap-1.5 disabled:opacity-40">
+              <button onclick="prevQuestion()" id="btnPrev" class="px-4 py-2 text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition flex items-center gap-1.5 disabled:opacity-40 cursor-pointer">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
                 Sebelumnya
               </button>
@@ -227,7 +227,7 @@
                 <input type="checkbox" id="checkRagu" onchange="toggleRaguCurrent()" class="w-4 h-4 text-amber-500 rounded border-slate-300">
                 <span class="text-xs font-bold text-amber-800 bg-amber-100 px-2.5 py-1 rounded-lg border border-amber-200">Ragu-ragu</span>
               </label>
-              <button onclick="nextQuestion()" id="btnNext" class="px-4 py-2 text-xs font-bold text-white bg-teal-600 hover:bg-teal-700 rounded-xl transition flex items-center gap-1.5">
+              <button onclick="nextQuestion()" id="btnNext" class="px-4 py-2 text-xs font-bold text-white bg-teal-600 hover:bg-teal-700 rounded-xl transition flex items-center gap-1.5 cursor-pointer">
                 Selanjutnya
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
               </button>
@@ -291,7 +291,7 @@
           <span class="text-2xl block mb-1">🎉</span>
           <h4 class="font-black text-sm uppercase tracking-wide">Selamat! Kamu Memenuhi Syarat Kelulusan</h4>
           <p class="text-xs text-amber-100 mb-3">Piagam Penghargaan Resmi telah diterbitkan atas nama kamu.</p>
-          <button onclick="openCertificateModal()" class="px-5 py-2.5 bg-white text-amber-950 font-black text-xs rounded-xl shadow-md transition inline-flex items-center gap-2">
+          <button onclick="openCertificateModal()" class="px-5 py-2.5 bg-white text-amber-950 font-black text-xs rounded-xl shadow-md transition inline-flex items-center gap-2 cursor-pointer">
             <span>🏆 Cetak Piagam Penghargaan</span>
           </button>
         </div>
@@ -302,7 +302,7 @@
           </div>
           <div class="flex flex-wrap justify-center gap-3">
             <button id="btnDiscussionAction" onclick="toggleDiscussion()" class="px-5 py-2.5 font-bold text-xs rounded-xl transition flex items-center gap-1.5"></button>
-            <button onclick="showScreen('viewSubjects')" class="px-5 py-2.5 bg-slate-800 text-white hover:bg-slate-900 font-bold text-xs rounded-xl transition">
+            <button onclick="showScreen('viewSubjects')" class="px-5 py-2.5 bg-slate-800 text-white hover:bg-slate-900 font-bold text-xs rounded-xl transition cursor-pointer">
               Kembali ke Menu Utama
             </button>
           </div>
@@ -333,7 +333,7 @@
       <p class="text-xs text-slate-600 leading-relaxed">
         Sistem mendeteksi Anda berpindah tab atau meninggalkan halaman ujian. Jika mencapai batas 3 kali, ujian Anda akan dihentikan otomatis!
       </p>
-      <button onclick="closeAntiCheatModal()" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow-md transition">
+      <button onclick="closeAntiCheatModal()" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow-md transition cursor-pointer">
         Tutup
       </button>
     </div>
@@ -345,10 +345,10 @@
       <div class="flex items-center justify-between mb-3 no-print">
         <span class="text-xs font-bold text-amber-800">Pratinjau Piagam Penghargaan</span>
         <div class="flex items-center gap-2">
-          <button onclick="window.print()" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-lg transition">
+          <button onclick="window.print()" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-lg transition cursor-pointer">
             🖨️ Cetak / Simpan PDF
           </button>
-          <button onclick="closeCertificateModal()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-lg transition">
+          <button onclick="closeCertificateModal()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-lg transition cursor-pointer">
             ✕ Tutup
           </button>
         </div>
@@ -494,7 +494,7 @@
           if (data.status) localStorage.setItem('tka_pkg_status_multi', JSON.stringify(data.status));
           if (data.tokens) localStorage.setItem('tka_pkg_tokens_multi', JSON.stringify(data.tokens));
         }
-      } else {
+      } catch (e) {
         console.warn("Gagal sinkron token cloud");
       }
     }
@@ -861,7 +861,7 @@
       const isCurrent = idx === currentQuestionIdx;
       const isAnswered = isQuestionAnswered(q.id);
       const isRagu = raguStatus[q.id];
-      let base = "h-9 rounded-xl font-bold text-xs flex items-center justify-center transition-all ";
+      let base = "h-9 rounded-xl font-bold text-xs flex items-center justify-center transition-all cursor-pointer ";
       if (isCurrent) base += "ring-2 ring-teal-600 ring-offset-1 ";
       if (isRagu) return base + "bg-amber-400 text-amber-950 shadow-sm";
       if (isAnswered) return base + "bg-teal-600 text-white shadow-sm";
@@ -901,7 +901,7 @@
           const isSelected = userAnswers[q.id] === optIdx;
           const div = document.createElement('label');
           div.className = `flex items-center p-3.5 rounded-2xl border cursor-pointer transition ${isSelected ? 'border-teal-600 bg-teal-50/70 font-bold' : 'border-slate-200 hover:bg-slate-50'}`;
-          div.innerHTML = `<input type="radio" name="opt_pg" ${isSelected ? 'checked' : ''} onchange="saveAnswerPG(${q.id}, ${optIdx})" class="w-4 h-4 text-teal-600"><span class="w-6 h-6 rounded-lg bg-slate-100 flex items-center justify-center font-bold text-xs text-slate-700 ml-3 mr-2.5">${labels[optIdx]}</span><span class="text-xs sm:text-sm text-slate-800">${opt}</span>`;
+          div.innerHTML = `<input type="radio" name="opt_pg" ${isSelected ? 'checked' : ''} onchange="saveAnswerPG(${q.id}, ${optIdx})" class="w-4 h-4 text-teal-600 cursor-pointer"><span class="w-6 h-6 rounded-lg bg-slate-100 flex items-center justify-center font-bold text-xs text-slate-700 ml-3 mr-2.5">${labels[optIdx]}</span><span class="text-xs sm:text-sm text-slate-800">${opt}</span>`;
           container.appendChild(div);
         });
       } else if (q.type === 'MCMA') {
@@ -910,7 +910,7 @@
           const isChecked = currentAns.includes(optIdx);
           const div = document.createElement('label');
           div.className = `flex items-center p-3.5 rounded-2xl border cursor-pointer transition ${isChecked ? 'border-teal-600 bg-teal-50/70 font-bold' : 'border-slate-200 hover:bg-slate-50'}`;
-          div.innerHTML = `<input type="checkbox" ${isChecked ? 'checked' : ''} onchange="saveAnswerMCMA(${q.id}, ${optIdx})" class="w-4 h-4 text-teal-600 rounded"><span class="text-xs sm:text-sm text-slate-800 ml-3">${opt}</span>`;
+          div.innerHTML = `<input type="checkbox" ${isChecked ? 'checked' : ''} onchange="saveAnswerMCMA(${q.id}, ${optIdx})" class="w-4 h-4 text-teal-600 rounded cursor-pointer"><span class="text-xs sm:text-sm text-slate-800 ml-3">${opt}</span>`;
           container.appendChild(div);
         });
       } else if (q.type === 'Kategori') {
@@ -920,7 +920,7 @@
         let rowsHtml = `<table class="w-full text-left text-xs sm:text-sm"><thead class="bg-slate-100 text-slate-700 font-bold"><tr><th class="p-3">Pernyataan</th><th class="p-3 text-center w-20">Benar</th><th class="p-3 text-center w-20">Salah</th></tr></thead><tbody class="divide-y divide-slate-100">`;
         q.statements.forEach((stmt, sIdx) => {
           const userVal = currentMap[sIdx];
-          rowsHtml += `<tr class="hover:bg-slate-50"><td class="p-3 text-slate-800">${stmt}</td><td class="p-3 text-center"><input type="radio" name="kat_${q.id}_${sIdx}" ${userVal === 'Benar' ? 'checked' : ''} onchange="saveAnswerKategori(${q.id}, ${sIdx}, 'Benar')" class="w-4 h-4 text-emerald-600"></td><td class="p-3 text-center"><input type="radio" name="kat_${q.id}_${sIdx}" ${userVal === 'Salah' ? 'checked' : ''} onchange="saveAnswerKategori(${q.id}, ${sIdx}, 'Salah')" class="w-4 h-4 text-rose-600"></td></tr>`;
+          rowsHtml += `<tr class="hover:bg-slate-50"><td class="p-3 text-slate-800">${stmt}</td><td class="p-3 text-center"><input type="radio" name="kat_${q.id}_${sIdx}" ${userVal === 'Benar' ? 'checked' : ''} onchange="saveAnswerKategori(${q.id}, ${sIdx}, 'Benar')" class="w-4 h-4 text-emerald-600 cursor-pointer"></td><td class="p-3 text-center"><input type="radio" name="kat_${q.id}_${sIdx}" ${userVal === 'Salah' ? 'checked' : ''} onchange="saveAnswerKategori(${q.id}, ${sIdx}, 'Salah')" class="w-4 h-4 text-rose-600 cursor-pointer"></td></tr>`;
         });
         rowsHtml += `</tbody></table>`;
         table.innerHTML = rowsHtml;
