@@ -14,32 +14,65 @@
 </head>
 <body class="bg-gradient-to-br from-teal-100/70 via-sky-100/60 to-emerald-100/70 text-slate-800 min-h-screen flex flex-col justify-between p-3 sm:p-6 lg:p-8">
 
-  <!-- CONTAINER UTAMA APLIKASI -->
-  <main class="max-w-4xl w-full mx-auto bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl border border-teal-200/80 p-5 sm:p-8 my-auto">
+  <!-- CONTAINER UTAMA -->
+  <main class="max-w-5xl w-full mx-auto bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl border border-teal-200/80 p-5 sm:p-8 my-auto">
     
     <!-- HEADER PORTAL -->
-    <div class="text-center pb-6 border-b border-teal-100">
+    <div id="mainHeader" class="text-center pb-6 border-b border-teal-100">
       <span class="inline-block px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-teal-100 text-teal-800 mb-2">
-        Seksi Keguruan Korwil Mranggen • TKA 2026
+        KORWIL BIDDIKBUD KECAMATAN MRANGGEN
       </span>
-      <h1 id="portalTitle" class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Portal Simulasi Ujian TKA Kelas VI SD/MI</h1>
-      <p id="portalSubtitle" class="text-xs text-slate-500 mt-1">Silakan masukkan identitas diri dan token akses yang diberikan oleh pengawas.</p>
+      <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">TRYOUT TKA KELAS 6 SD KECAMATAN MRANGGEN</h1>
+      <p class="text-xs text-slate-500 mt-1">Fokuskan belajarmu pada mata pelajaran yang ingin kamu kerjakan hari ini.</p>
     </div>
 
-    <!-- VIEW 1: FORM LOGIN SISWA -->
-    <div id="loginSection" class="pt-6 space-y-4 max-w-md mx-auto">
-      <div>
-        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Pilih Mata Pelajaran:</label>
-        <select id="selectSubject" onchange="updatePackageOptions()" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-xs font-bold bg-white focus:ring-2 focus:ring-teal-500 outline-none cursor-pointer">
-          <option value="Matematika">Matematika</option>
-          <option value="Bahasa Indonesia">Bahasa Indonesia</option>
-        </select>
+    <!-- VIEW 0: PILIH KARTU MAPEL (MERAH & BIRU) -->
+    <div id="subjectCardSection" class="pt-8 space-y-6">
+      <div class="text-center">
+        <h2 class="text-2xl font-black text-slate-900">Pilih Mata Pelajaran</h2>
+        <p class="text-xs text-slate-500 mt-1">Fokuskan belajarmu pada mata pelajaran yang ingin kamu kerjakan hari ini.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto pt-2">
+        <!-- Kartu Matematika (Merah) -->
+        <div onclick="selectSubjectCard('Matematika')" class="bg-white rounded-3xl p-6 border-2 border-rose-100 shadow-xl hover:shadow-2xl transition cursor-pointer flex flex-col justify-between group">
+          <div class="w-full h-36 bg-gradient-to-br from-rose-600 to-rose-700 rounded-2xl flex items-center justify-center text-white font-black text-3xl shadow-md group-hover:scale-[1.02] transition">
+            Matematika
+          </div>
+          <div class="text-center pt-4">
+            <p class="text-xs font-bold text-slate-500">6 Paket: Ujicoba + Paket 1 s.d. 5</p>
+            <div class="mt-4 w-full py-2.5 bg-slate-100 group-hover:bg-rose-600 group-hover:text-white text-slate-700 font-black text-xs rounded-xl transition">
+              MULAI BELAJAR
+            </div>
+          </div>
+        </div>
+
+        <!-- Kartu Bahasa Indonesia (Biru) -->
+        <div onclick="selectSubjectCard('Bahasa Indonesia')" class="bg-white rounded-3xl p-6 border-2 border-sky-100 shadow-xl hover:shadow-2xl transition cursor-pointer flex flex-col justify-between group">
+          <div class="w-full h-36 bg-gradient-to-br from-sky-600 to-blue-700 rounded-2xl flex items-center justify-center text-white font-black text-3xl shadow-md group-hover:scale-[1.02] transition">
+            Bahasa Indonesia
+          </div>
+          <div class="text-center pt-4">
+            <p class="text-xs font-bold text-slate-500">5 Paket: Paket 1 s.d. 5</p>
+            <div class="mt-4 w-full py-2.5 bg-slate-100 group-hover:bg-sky-600 group-hover:text-white text-slate-700 font-black text-xs rounded-xl transition">
+              MULAI BELAJAR
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 1: PILIH PAKET & LOGIN SISWA -->
+    <div id="loginSection" class="hidden pt-6 space-y-4 max-w-md mx-auto">
+      <div class="flex items-center justify-between mb-2">
+        <button onclick="backToSubjectCards()" class="text-xs font-bold text-teal-700 hover:underline">← Kembali Pilih Mapel</button>
+        <span id="selectedMapelBadge" class="px-3 py-1 bg-teal-100 text-teal-900 rounded-full text-xs font-black">Matematika</span>
       </div>
 
       <div>
         <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Pilih Paket Ujian:</label>
         <select id="selectPackage" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-xs font-bold bg-white focus:ring-2 focus:ring-teal-500 outline-none cursor-pointer">
-          <!-- Opsi paket akan diisi otomatis via Javascript -->
+          <!-- Diisi otomatis -->
         </select>
       </div>
 
@@ -80,8 +113,8 @@
       </button>
     </div>
 
-    <!-- VIEW 2: HALAMAN UJIAN (SOAL & NAVIGASI) -->
-    <div id="examSection" class="hidden pt-4 space-y-6">
+    <!-- VIEW 2: HALAMAN UJIAN (SOAL DI KIRI, NAVIGASI DI KANAN) -->
+    <div id="examSection" class="hidden pt-4 space-y-4">
       
       <!-- HEADER UJIAN (TIMER & INFO) -->
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-teal-50/70 p-4 rounded-2xl border border-teal-200">
@@ -95,49 +128,59 @@
         </div>
       </div>
 
-      <!-- KONTEN SOAL -->
-      <div class="space-y-4">
-        <div class="flex items-center justify-between">
-          <span id="questionNumberBadge" class="px-3 py-1 bg-teal-100 text-teal-900 rounded-lg text-xs font-black">Soal No. 1 dari 30</span>
-          <span id="questionTypeBadge" class="text-xs font-bold text-slate-500 uppercase">Pilihan Ganda</span>
+      <!-- GRID UTAMA: SOAL DI KIRI (COL-SPAN-8), NAVIGASI DI KANAN (COL-SPAN-4) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        <!-- KOLOM KIRI: SOAL & PILIHAN -->
+        <div class="lg:col-span-8 space-y-4">
+          <div class="flex items-center justify-between">
+            <span id="questionNumberBadge" class="px-3 py-1 bg-teal-100 text-teal-900 rounded-lg text-xs font-black">Soal No. 1 dari 30</span>
+            <span id="questionTypeBadge" class="text-xs font-bold text-slate-500 uppercase">Pilihan Ganda</span>
+          </div>
+
+          <div id="questionContainer" class="p-5 rounded-2xl border border-slate-200 bg-white text-sm text-slate-800 leading-relaxed min-h-[160px]">
+            <!-- Soal dimuat di sini -->
+          </div>
+
+          <div id="optionsContainer" class="space-y-2.5">
+            <!-- Opsi jawaban dimuat di sini -->
+          </div>
+
+          <!-- TOMBOL NAVIGASI SEBELUMNYA/SELANJUTNYA -->
+          <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+            <button onclick="prevQuestion()" id="btnPrev" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition">
+              ← Sebelumnya
+            </button>
+            <button onclick="nextQuestion()" id="btnNext" class="px-5 py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-xl transition">
+              Selanjutnya →
+            </button>
+          </div>
         </div>
 
-        <div id="questionContainer" class="p-5 rounded-2xl border border-slate-200 bg-white text-sm text-slate-800 leading-relaxed min-h-[140px]">
-          <!-- Teks soal dimuat di sini -->
+        <!-- KOLOM KANAN: NAVIGASI NOMOR SOAL & KUMPULKAN -->
+        <div class="lg:col-span-4 bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-4">
+          <div>
+            <span class="block text-xs font-black text-slate-700 uppercase tracking-wider mb-2">Navigasi Nomor Soal</span>
+            <div id="questionNavGrid" class="grid grid-cols-5 gap-2 max-h-72 overflow-y-auto custom-scrollbar p-1">
+              <!-- Kotak nomor soal di kanan -->
+            </div>
+          </div>
+
+          <div class="pt-2 border-t border-slate-200">
+            <div class="flex items-center gap-2 mb-3 text-[11px] font-bold text-slate-600">
+              <span class="w-3 h-3 rounded bg-emerald-200 inline-block border border-emerald-400"></span> Terjawab
+              <span class="w-3 h-3 rounded bg-slate-200 inline-block border border-slate-300 ml-2"></span> Belum
+            </div>
+            <button onclick="confirmSubmitExam()" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-md transition">
+              Kumpulkan Ujian
+            </button>
+          </div>
         </div>
 
-        <!-- PILIHAN JAWABAN -->
-        <div id="optionsContainer" class="space-y-2.5">
-          <!-- Tombol opsi pilihan ganda / checkbox / kategori dimuat di sini -->
-        </div>
-      </div>
-
-      <!-- NAVIGASI NOMOR & TOMBOL SEBELUMNYA/SELANJUTNYA -->
-      <div class="flex items-center justify-between pt-4 border-t border-slate-100">
-        <button onclick="prevQuestion()" id="btnPrev" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition">
-          ← Sebelumnya
-        </button>
-        <button onclick="nextQuestion()" id="btnNext" class="px-5 py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-xl transition">
-          Selanjutnya →
-        </button>
-      </div>
-
-      <!-- GRID NAVIGASI NOMOR SOAL DI BAWAH -->
-      <div class="pt-4 border-t border-slate-100">
-        <span class="block text-[11px] font-bold text-slate-400 uppercase mb-2">Navigasi Nomor Soal:</span>
-        <div id="questionNavGrid" class="flex flex-wrap gap-1.5 max-h-36 overflow-y-auto custom-scrollbar p-1">
-          <!-- Kotak nomor soal dimuat di sini -->
-        </div>
-      </div>
-
-      <div class="pt-2">
-        <button onclick="confirmSubmitExam()" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-md transition">
-          Kumpulkan Ujian & Selesai
-        </button>
       </div>
     </div>
 
-    <!-- VIEW 3: HASIL & SERTIFIKAT -->
+    <!-- VIEW 3: HASIL UJIAN -->
     <div id="resultSection" class="hidden pt-6 text-center space-y-6">
       <div class="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto shadow-sm">
         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
@@ -171,12 +214,31 @@
 
   </main>
 
+  <!-- MODAL PERINGATAN ANTI-CURANG -->
+  <div id="antiCheatModal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-sm w-full shadow-2xl border border-rose-100 text-center space-y-4">
+      <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-700 flex items-center justify-center mx-auto">
+        🚨
+      </div>
+      <h3 class="font-black text-slate-900 text-lg">Peringatan Anti-Curang</h3>
+      <div id="antiCheatMsg" class="p-3 bg-rose-50 border border-rose-200 rounded-2xl font-black text-rose-700 text-xs">
+        ⚠️ PERINGATAN KECURANGAN (1/3) 🚨
+      </div>
+      <p class="text-xs text-slate-600 leading-relaxed">
+        Sistem mendeteksi Anda berpindah tab atau meninggalkan halaman ujian. Jika mencapai batas 3 kali, ujian Anda akan dihentikan otomatis!
+      </p>
+      <button onclick="closeAntiCheatModal()" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow-md transition">
+        Tutup
+      </button>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer class="text-center text-xs font-bold text-slate-500 py-4">
     Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
   </footer>
 
-  <!-- SCRIPT UTAMA UJIAN -->
+  <!-- SCRIPT UTAMA -->
   <script>
     const FIREBASE_DB_URL = "https://tka-mranggen-2026-default-rtdb.firebaseio.com/nilai_tryout.json";
     const FIREBASE_SETTINGS_URL = "https://tka-mranggen-2026-default-rtdb.firebaseio.com/pengaturan_ujian.json";
@@ -198,11 +260,9 @@
       "SDS MUHAMMADIYAH PUCANG GADING", "SDS TERPADU DARUNNAJAH"
     ];
 
-    // ================= DATA SOAL LENGKAP =================
-    
-    // 1. DATA SOAL MATEMATIKA - PAKET 1
+    // ================= SOAL LENGKAP =================
     const SOAL_MATEMATIKA_PAKET_1 = [
-      { id: 1, type: "PG", text: "Hasil dari $16\\frac{3}{4} - 12\\frac{1}{3} \\times \\frac{4}{7} - 0,25 \\times 20 + 1\\frac{1}{3} \\times 4$ adalah ....", options: ["3", "4", "6", "8"], correct: 0, topic: "Operasi Hitung" },
+      { id: 1, type: "PG", text: "Hasil dari 16¾ - 12⅓ × 4/7 - 0,25 × 20 + 1⅓ × 4 adalah ....", options: ["3", "4", "6", "8"], correct: 0, topic: "Operasi Hitung" },
       { id: 2, type: "PG", text: "Perhatikan tabel hubungan antara persen dan pecahan biasa: 60%=3/5 (C), 50%=1/2 (D), 25%=1/4 (A), 75%=3/4 (B). Pasangan yang tepat adalah ....", options: ["1-C, 2-A", "1-C, 2-D", "3-A, 4-B", "3-B, 2-C"], correct: 1, topic: "Persen & Pecahan" },
       { id: 3, type: "PG", text: "Di bawah ini yang <b>bukan</b> merupakan kelipatan persekutuan dari 12 dan 18 adalah ....", options: ["36", "48", "72", "108"], correct: 1, topic: "KPK" },
       { id: 4, type: "PG", text: "FPB dari 48, 64, dan 96 adalah ....", options: ["12", "16", "24", "32"], correct: 1, topic: "FPB" },
@@ -217,7 +277,7 @@
       { id: 13, type: "PG", text: "Jarak kantor 15 km, kecepatan 60 km/jam. Berangkat pukul 06.30, tiba pukul ....", options: ["06.40", "06.45", "06.50", "06.55"], correct: 1, topic: "Kecepatan" },
       { id: 14, type: "PG", text: "Panen ikan: Lele 125kg, Gurami 75kg, Nila 90kg, Mujair 60kg, Patin 75kg. Diagram batang yang sesuai adalah ....", options: ["Diagram A", "Diagram B", "Diagram C", "Diagram D"], correct: 1, topic: "Statistika" },
       { id: 15, type: "PG", text: "Toko buah: Mangga 120, Pisang 80, Jambu 150, Jeruk 250, Apel 100. Pernyataan yang <b>tidak benar</b> adalah ....", options: ["Apel lebih sedikit daripada mangga.", "Selisih jeruk dan apel sama dengan jambu.", "Buah paling sedikit adalah pisang.", "Buah yang terjual >100 ada dua jenis."], correct: 3, topic: "Analisis Data" },
-      { id: 16, type: "MCMA", text: "Dian membawa 5 lembar 50rb, 4 lembar 20rb, 2 lembar 10rb. Harga kain Rp400.000 diskon 15%. Pilihlah pernyataan yang benar! (Jawaban lebih dari satu)", options: ["Dian tidak jadi membeli karena uang kurang.", "Diskon yang diperoleh sebesar Rp60.000,00.", "Sisa uang Dian setelah membayar adalah Rp10.000,00."], correct: [1, 2], topic: "Aritmatika Sosial" },
+      { id: 16, type: "MCMA", text: "Dian membawa 5 lembar 50rb, 4 lembar 20rb, 2 lembar 10rb. Harga kain Rp400.000 diskon 15%. Pilihlah pernyataan yang benar! (Jawaban lebih dari satu)", options: ["Dian tidak jadi membeli karena uang kurang.", "Diskon yang diperoleh sebesar Rp60.000,00.", "Sisa uang Dian setelah membayar adalah Rp10.000,00."], correct: [1, 2], topic: "Aritmatika" },
       { id: 17, type: "MCMA", text: "Segitiga siku-siku sisi siku 7 cm, sisi miring 25 cm. Pilihlah pernyataan yang benar! (Jawaban lebih dari satu)", options: ["Keliling bangun tersebut adalah 56 cm.", "Panjang sisi BC adalah 18 cm.", "Luas bangun di atas adalah 84 cm²."], correct: [0, 2], topic: "Pythagoras" },
       { id: 18, type: "MCMA", text: "Susunan kubus sisi 5 cm. Pilihlah pernyataan yang benar! (Jawaban lebih dari satu)", options: ["Ada 10 buah kubus volumenya sama.", "Volume tiap kubus satuan sebesar 125 cm³.", "Luas permukaan kubus menempel di bawah sebesar 125 cm²."], correct: [0, 1, 2], topic: "Bangun Ruang" },
       { id: 19, type: "MCMA", text: "Kaleng balok 2 dm × 10 cm × 1,5 dm berisi susu 2/5 bagian. Pilihlah pernyataan yang benar! (Jawaban lebih dari satu)", options: ["Volume kaleng seluruhnya 3.000 cm³.", "Volume susu dalam kaleng 12 liter.", "Agar penuh perlu tambahan 1.800 cm³ susu."], correct: [0, 2], topic: "Volume Balok" },
@@ -234,7 +294,6 @@
       { id: 30, type: "Kategori", text: "Piktogram SD Mutiara (1 gambar = 10 siswa). Tentukan Benar atau Salah:", statements: ["Selisih siswa terbanyak dan tersedikit 30 anak.", "Jumlah siswa kelas II, III, dan VI sama banyak.", "Jumlah seluruh siswa 350 anak."], correct: ["Benar", "Benar", "Salah"], topic: "Piktogram" }
     ];
 
-    // 2. DATA SOAL BAHASA INDONESIA - PAKET 2
     const SOAL_BAHASA_INDONESIA_PAKET_2 = [
       { id: 1, type: "PG", text: "Makna kata perundungan dalam Stimulus 1 paling tepat adalah ....", options: ["tindakan menyakiti atau merendahkan seseorang secara berulang", "perbedaan pendapat yang diselesaikan dengan baik", "kegiatan membantu teman belajar", "kebiasaan bekerja bersama dalam kelompok"], correct: 0, topic: "Kosakata" },
       { id: 2, type: "MCMA", text: "Pilih semua contoh perundungan yang disebutkan dalam Stimulus 1. (Pilihan benar lebih dari satu)", options: ["Memberi julukan yang merendahkan.", "Mengajak teman bergabung dalam kegiatan.", "Menyebarkan foto untuk mempermalukan seseorang."], correct: [0, 2], topic: "Informasi Tersurat" },
@@ -268,7 +327,6 @@
       { id: 30, type: "PG", text: "Respons paling sesuai terhadap tindakan Nara adalah ....", options: ["kesal karena harus berbagi jaket", "menghargai kepedulian Nara membantu tanpa mempermalukan", "kecewa karena menolak bantuan", "marah karena teman dilarang menolong"], correct: 1, topic: "Apresiasi" },
     ];
 
-    // Dummy Soal Ujicoba Awal (Fallback jika paket lain dipilih)
     const SOAL_UJICOBA_MATEMATIKA = [
       { id: 1, type: "PG", text: "Berapakah hasil dari 15 + 10 × 2 ?", options: ["35", "50", "25", "40"], correct: 0, topic: "Operasi Hitung" },
       { id: 2, type: "PG", text: "KPK dari 12 dan 15 adalah ....", options: ["30", "60", "45", "90"], correct: 1, topic: "KPK" }
@@ -278,12 +336,13 @@
       { id: 2, type: "PG", text: "Lawan kata dari 'panjang' adalah ....", options: ["Luas", "Tinggi", "Pendek", "Besar"], correct: 2, topic: "Antonim" }
     ];
 
-    // ================= VARIABEL STATE APLIKASI =================
     let activeQuestions = [];
     let currentQuestionIndex = 0;
     let userAnswers = {};
     let examTimerInterval = null;
-    let remainingTimeSeconds = 75 * 60; // 75 Menit
+    let remainingTimeSeconds = 75 * 60;
+    let antiCheatCount = 0;
+    let currentSubjectName = '';
 
     window.addEventListener('DOMContentLoaded', () => {
       const schoolSelect = document.getElementById('inputSchool');
@@ -293,42 +352,32 @@
         opt.innerText = sch;
         schoolSelect.appendChild(opt);
       });
-      updatePackageOptions();
-      fetchCloudTokens();
     });
 
-    async function fetchCloudTokens() {
-      try {
-        const res = await fetch(FIREBASE_SETTINGS_URL);
-        const data = await res.json();
-        if (data && data.tokens) {
-          window.cloudTokens = data.tokens;
-        }
-      } catch (e) { console.warn("Offline tokens:", e); }
-    }
+    function selectSubjectCard(sub) {
+      currentSubjectName = sub;
+      document.getElementById('subjectCardSection').classList.add('hidden');
+      document.getElementById('loginSection').classList.remove('hidden');
+      document.getElementById('selectedMapelBadge').innerText = sub;
 
-    function updatePackageOptions() {
-      const sub = document.getElementById('selectSubject').value;
       const pkgSelect = document.getElementById('selectPackage');
       pkgSelect.innerHTML = '';
 
-      let optionsList = [];
-      if (sub === 'Matematika') {
-        optionsList = ["Ujicoba", "Paket 1"];
-      } else {
-        optionsList = ["Ujicoba", "Paket 2"];
-      }
-
+      let optionsList = sub === 'Matematika' ? ["Ujicoba", "Paket 1"] : ["Ujicoba", "Paket 2"];
       optionsList.forEach(p => {
         const o = document.createElement('option');
         o.value = p;
-        o.innerText = p === 'Ujicoba' ? 'Paket Ujicoba' : `Paket ${p.replace('Paket ', '')}`;
+        o.innerText = p === 'Ujicoba' ? 'Paket Ujicoba' : `Paket ${p.replace(/[^0-9]/g, '')}`;
         pkgSelect.appendChild(o);
       });
     }
 
+    function backToSubjectCards() {
+      document.getElementById('loginSection').classList.add('hidden');
+      document.getElementById('subjectCardSection').classList.remove('hidden');
+    }
+
     function startExam() {
-      const sub = document.getElementById('selectSubject').value;
       const pkg = document.getElementById('selectPackage').value;
       const name = document.getElementById('inputName').value.trim();
       const absen = document.getElementById('inputAbsen').value.trim();
@@ -342,47 +391,77 @@
         return;
       }
 
-      // Validasi Token Sederhana
-      let validToken = "MRANGGEN";
-      if (sub === 'Matematika') {
-        validToken = pkg === 'Ujicoba' ? "UJICOBA" : "MAT1";
-      } else {
-        validToken = pkg === 'Ujicoba' ? "UJICOBA" : "BINDO2";
-      }
-      if (window.cloudTokens && window.cloudTokens[sub === 'Matematika' ? 'matematika' : 'indonesia']) {
-        const cloudT = window.cloudTokens[sub === 'Matematika' ? 'matematika' : 'indonesia'][pkg];
-        if (cloudT) validToken = cloudT;
-      }
-
-      if (token !== validToken && token !== "UJICOBA") {
-        errBox.innerText = "Token ujian salah! Silakan periksa kembali token dari pengawas.";
-        errBox.classList.remove('hidden');
-        return;
-      }
-
       errBox.classList.add('hidden');
 
-      // Tentukan Bank Soal
-      if (sub === 'Matematika') {
+      if (currentSubjectName === 'Matematika') {
         activeQuestions = pkg === 'Paket 1' ? SOAL_MATEMATIKA_PAKET_1 : SOAL_UJICOBA_MATEMATIKA;
       } else {
         activeQuestions = pkg === 'Paket 2' ? SOAL_BAHASA_INDONESIA_PAKET_2 : SOAL_UJICOBA_BINDO;
       }
 
-      window.studentData = { name, absen, school, subject: sub, package: pkg };
+      window.studentData = { name, absen, school, subject: currentSubjectName, package: pkg };
 
       document.getElementById('loginSection').classList.add('hidden');
+      document.getElementById('mainHeader').classList.add('hidden');
       document.getElementById('examSection').classList.remove('hidden');
-      document.getElementById('examInfoTitle').innerText = `${sub} - ${pkg}`;
+      document.getElementById('examInfoTitle').innerText = `${currentSubjectName} - ${pkg}`;
       document.getElementById('examStudentMeta').innerText = `Siswa: ${name} (${absen}) | ${school}`;
 
       currentQuestionIndex = 0;
       userAnswers = {};
+      antiCheatCount = 0;
       remainingTimeSeconds = activeQuestions.length > 5 ? 75 * 60 : 15 * 60;
 
       renderQuestion();
       renderNavGrid();
       startTimer();
+      initAntiCheat();
+    }
+
+    // SISTEM KEAMANAN ANTI-CURANG
+    function initAntiCheat() {
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden && !document.getElementById('examSection').classList.contains('hidden')) {
+          triggerAntiCheatViolation();
+        }
+      });
+      window.addEventListener("blur", () => {
+        if (!document.getElementById('examSection').classList.contains('hidden')) {
+          triggerAntiCheatViolation();
+        }
+      });
+    }
+
+    function triggerAntiCheatViolation() {
+      antiCheatCount++;
+      const modal = document.getElementById('antiCheatModal');
+      const msgBox = document.getElementById('antiCheatMsg');
+      msgBox.innerText = `⚠️ PERINGATAN KECURANGAN (${antiCheatCount}/3) 🚨`;
+      modal.classList.remove('hidden');
+
+      // Rekam pelanggaran ke Admin / localStorage
+      recordCheatLog(antiCheatCount);
+
+      if (antiCheatCount >= 3) {
+        alert("Anda telah melanggar batas maksimal meninggalkan halaman ujian sebanyak 3 kali. Ujian dihentikan otomatis!");
+        submitExamData(true);
+      }
+    }
+
+    function closeAntiCheatModal() {
+      document.getElementById('antiCheatModal').classList.add('hidden');
+    }
+
+    function recordCheatLog(count) {
+      let logs = JSON.parse(localStorage.getItem('tka_cheat_logs') || '[]');
+      logs.push({
+        name: window.studentData.name,
+        school: window.studentData.school,
+        subject: window.studentData.subject,
+        violationCount: count,
+        time: new Date().toLocaleTimeString()
+      });
+      localStorage.setItem('tka_cheat_logs', JSON.stringify(logs));
     }
 
     function startTimer() {
@@ -396,7 +475,7 @@
         if (remainingTimeSeconds <= 0) {
           clearInterval(examTimerInterval);
           alert("Waktu ujian telah habis!");
-          submitExamData();
+          submitExamData(false);
         }
       }, 1000);
     }
@@ -442,10 +521,10 @@
             <p class="text-xs font-semibold text-slate-800">${sIdx + 1}. ${stmt}</p>
             <div class="flex gap-4">
               <label class="flex items-center gap-2 text-xs font-bold cursor-pointer">
-                <input type="radio" name="q_${q.id}_s_${sIdx}" value="Benar" ${savedCat === 'Benar' || savedCat === 'A' || savedCat === 'B' ? (savedCat === 'Benar' || savedCat === 'A' ? 'checked' : '') : ''} onchange="saveAnswer(${q.id}, {sIdx: ${sIdx}, val: 'Benar'}, 'Kategori')"> Benar / A / Tepat
+                <input type="radio" name="q_${q.id}_s_${sIdx}" value="Benar" ${savedCat === 'Benar' || savedCat === 'A' ? 'checked' : ''} onchange="saveAnswer(${q.id}, {sIdx: ${sIdx}, val: 'Benar'}, 'Kategori')"> Benar / A
               </label>
               <label class="flex items-center gap-2 text-xs font-bold cursor-pointer">
-                <input type="radio" name="q_${q.id}_s_${sIdx}" value="Salah" ${savedCat === 'Salah' || savedCat === 'B' || savedCat === 'Salah' ? (savedCat === 'Salah' || savedCat === 'B' ? 'checked' : '') : ''} onchange="saveAnswer(${q.id}, {sIdx: ${sIdx}, val: 'Salah'}, 'Kategori')"> Salah / B / Tidak Tepat
+                <input type="radio" name="q_${q.id}_s_${sIdx}" value="Salah" ${savedCat === 'Salah' || savedCat === 'B' ? 'checked' : ''} onchange="saveAnswer(${q.id}, {sIdx: ${sIdx}, val: 'Salah'}, 'Kategori')"> Salah / B
               </label>
             </div>
           `;
@@ -483,7 +562,7 @@
 
         const btn = document.createElement('button');
         btn.innerText = idx + 1;
-        btn.className = `w-8 h-8 rounded-lg text-xs font-black transition ${isCurrent ? 'bg-teal-600 text-white shadow-sm ring-2 ring-teal-300' : (isAnswered ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' : 'bg-slate-100 text-slate-600 hover:bg-slate-200')}`;
+        btn.className = `w-10 h-10 rounded-xl text-xs font-black transition ${isCurrent ? 'bg-teal-600 text-white shadow-md ring-2 ring-teal-300' : (isAnswered ? 'bg-emerald-200 text-emerald-900 border border-emerald-400' : 'bg-slate-200 text-slate-700 hover:bg-slate-300')}`;
         btn.onclick = () => { currentQuestionIndex = idx; renderQuestion(); };
         grid.appendChild(btn);
       });
@@ -507,16 +586,14 @@
 
     function confirmSubmitExam() {
       if (confirm("Apakah Anda yakin ingin mengumpulkan lembar jawaban ujian sekarang?")) {
-        submitExamData();
+        submitExamData(false);
       }
     }
 
-    function submitExamData() {
+    function submitExamData(isForced) {
       if (examTimerInterval) clearInterval(examTimerInterval);
 
       let rawScore = 0;
-      let maxRawScore = activeQuestions.length * (activeQuestions[0].type === 'Kategori' ? 3 : 1);
-
       activeQuestions.forEach(q => {
         const userAns = userAnswers[q.id];
         if (userAns !== undefined) {
@@ -536,8 +613,8 @@
         }
       });
 
-      maxRawScore = 52; // Standar maksimal skor
-      let finalScore = Math.min(100, Math.round((rawScore / maxRawScore) * 100));
+      let maxRawScore = 52;
+      let finalScore = isForced ? 0 : Math.min(100, Math.round((rawScore / maxRawScore) * 100));
       const isPass = finalScore >= 70;
 
       const submissionPayload = {
@@ -550,12 +627,11 @@
         rawScore: rawScore,
         maxRawScore: maxRawScore,
         finalScore: finalScore,
-        status: isPass ? "Lulus" : "Remedial",
+        status: isForced ? "Diskualifikasi (Kecurangan)" : (isPass ? "Lulus" : "Remedial"),
         date: new Date().toLocaleDateString('id-ID'),
         detailAnswers: userAnswers
       };
 
-      // Simpan ke LocalStorage & Kirim ke Firebase Real-Time
       let existing = JSON.parse(localStorage.getItem('tka_submissions_multi') || '[]');
       existing.push(submissionPayload);
       localStorage.setItem('tka_submissions_multi', JSON.stringify(existing));
@@ -569,11 +645,12 @@
       }
 
       document.getElementById('examSection').classList.add('hidden');
+      document.getElementById('antiCheatModal').classList.add('hidden');
       document.getElementById('resultSection').classList.remove('hidden');
       document.getElementById('resRawScore').innerText = `${rawScore}/${maxRawScore}`;
       document.getElementById('resFinalScore').innerText = finalScore;
-      document.getElementById('resStatus').innerText = isPass ? "LULUS / MEMENUHI KKM" : "REMEDIAL";
-      document.getElementById('resStatus').className = `text-sm font-black ${isPass ? 'text-emerald-600' : 'text-rose-600'}`;
+      document.getElementById('resStatus').innerText = isForced ? "DISKUALIFIKASI (3x KECURANGAN)" : (isPass ? "LULUS / MEMENUHI KKM" : "REMEDIAL");
+      document.getElementById('resStatus').className = `text-sm font-black ${isForced ? 'text-rose-600' : (isPass ? 'text-emerald-600' : 'text-rose-600')}`;
     }
   </script>
 </body>
