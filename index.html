@@ -425,10 +425,10 @@
       "SDS MUHAMMADIYAH PUCANG GADING", "SDS TERPADU DARUNNAJAH"
     ];
 
-    // 1. DATA SOAL MATEMATIKA - PAKET 1 (30 BUTIR UTUH)
+    // 1. DATA SOAL MATEMATIKA - PAKET 1 (30 BUTIR UTUH DENGAN GAMBAR NO 2, 15, DAN 23)
     const SOAL_30_MATEMATIKA = [
       { id: 1, type: "PG", text: "1. Hasil dari 16⅔% × 24 - 0,25 × 20 + 1¾ × 4 adalah ....", options: ["3", "4", "6", "8"], correct: 2, topic: "Operasi Hitung Pecahan", explanation: "16⅔% = 1/6; (1/6 × 24) = 4; (0,25 × 20) = 5; (1¾ × 4) = 7. Hasil = 4 - 5 + 7 = 6. (Kunci: C)" },
-      { id: 2, type: "PG", text: "2. Perhatikan kolom sebelah kiri dan kanan berikut ini!<br><div class='my-2 p-3 bg-slate-50 border rounded-2xl text-center font-bold'>Angka 1 (60% = 3/5 [C]) | Angka 2 (50% = 1/2 [D]) | Angka 3 (25% = 1/4 [A]) | Angka 4 (75% = 3/4 [B])</div>Pasangan yang tepat yang menunjukkan hubungan antara persen dan pecahan biasa adalah ....", options: ["1 - C, 2 - A", "1 - C, 2 - D", "3 - A, 4 - B", "3 - B, 2 - C"], correct: 1, topic: "Persen & Pecahan", explanation: "60% = 3/5 (C) dan 50% = 1/2 (D). (Kunci: B)" },
+      { id: 2, type: "PG", text: "2. Perhatikan tabel berikut!<br><img src='soal2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pasangan yang tepat yang menunjukkan hubungan antara persen dan pecahan biasa adalah ....", options: ["1 - C, 2 - A", "1 - C, 2 - D", "3 - A, 4 - B", "3 - B, 2 - C"], correct: 1, topic: "Persen & Pecahan", explanation: "60% = 3/5 (C) dan 50% = 1/2 (D). (Kunci: B)" },
       { id: 3, type: "PG", text: "3. Di bawah ini yang bukan merupakan kelipatan persekutuan dari 12 dan 18 adalah ....", options: ["36", "48", "72", "108"], correct: 1, topic: "Kelipatan Persekutuan", explanation: "KPK dari 12 dan 18 adalah 36. Kelipatan persekutuannya adalah 36, 72, 108, dst. Angka 48 bukan kelipatan persekutuan. (Kunci: B)" },
       { id: 4, type: "PG", text: "4. FPB dari 48, 64, dan 96 adalah ....", options: ["12", "16", "24", "32"], correct: 1, topic: "FPB", explanation: "Faktorisasi prima 48 = 2⁴×3, 64 = 2⁶, 96 = 2⁵×3. FPB = 2⁴ = 16. (Kunci: B)" },
       { id: 5, type: "PG", text: "5. Budi les renang setiap 6 hari sekali. Deni les renang di tempat yang sama setiap 4 hari sekali. Jika tanggal 2 Januari 2026, mereka berdua les renang bersama untuk yang pertama kali. Tanggal berapa lagi mereka akan belajar berenang untuk yang ketiga kalinya?", options: ["8 Januari 2026", "14 Januari 2026", "20 Januari 2026", "26 Januari 2026"], correct: 3, topic: "KPK Jadwal", explanation: "KPK(6,4) = 12 hari. Pertemuan ke-2 = 2 Jan + 12 = 14 Jan. Pertemuan ke-3 = 14 Jan + 12 = 26 Januari 2026. (Kunci: D)" },
@@ -441,7 +441,7 @@
       { id: 12, type: "PG", text: "12. Sebuah kaleng susu berisi 0,8 liter susu. Susu itu diminum Dhika sebanyak ¼ dm³. Lima belas menit kemudian Hima datang dan minum susu tersebut sebanyak 125 ml. Sisa susu dalam kaleng tersebut adalah ....", options: ["450 ml", "425 ml", "375 ml", "350 ml"], correct: 1, topic: "Volume & Konversi", explanation: "0,8 liter = 800 ml. ¼ dm³ = 250 ml. Minum Hima = 125 ml. Sisa = 800 - 250 - 125 = 425 ml. (Kunci: B)" },
       { id: 13, type: "PG", text: "13. Ibu naik sepeda motor dari rumah ke kantor yang berjarak 15 km dengan kecepatan rata-rata 60 km/jam. Jika ibu berangkat pukul 06.30, maka sampai di kantor pukul ....", options: ["06.40", "06.45", "06.50", "06.55"], correct: 1, topic: "Waktu Tempuh", explanation: "Waktu = 15 / 60 jam = 1/4 jam = 15 menit. Tiba pukul 06.30 + 15 menit = 06.45. (Kunci: B)" },
       { id: 14, type: "PG", text: "14. Perhatikan tabel berikut:<br><img src='soal14.jpg' class='my-2 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Diagram batang yang sesuai dengan tabel di atas adalah ....<br><div class='grid grid-cols-2 gap-2 my-2'><img src='soal14A.jpg' class='border rounded'><img src='soal14B.jpg' class='border rounded'><img src='soal14C.jpg' class='border rounded'><img src='soal14D.jpg' class='border rounded'></div>", options: ["Diagram A", "Diagram B", "Diagram C", "Diagram D"], correct: 1, topic: "Diagram Batang", explanation: "Diagram batang yang mewakili data secara tepat adalah Diagram B. (Kunci: B)" },
-      { id: 15, type: "PG", text: "15. Perhatikan tabel banyaknya buah yang terjual: Mangga 120, Pisang 80, Jambu 150, Jeruk 250, Apel 100.<br>Berdasarkan tabel di atas, pernyataan di bawah ini yang tidak benar adalah ...", options: ["Apel yang terjual lebih sedikit daripada mangga.", "Selisih jeruk dan apel sama dengan jambu.", "Buah yang terjual paling sedikit adalah pisang.", "Buah yang terjual lebih dari 100 biji ada dua jenis."], correct: 3, topic: "Analisis Data", explanation: "Buah > 100 biji ada Mangga (120), Jambu (150), dan Jeruk (250), total ada 3 jenis. Pernyataan D salah. (Kunci: D)" },
+      { id: 15, type: "PG", text: "15. Perhatikan tabel berikut!<br><img src='soal15.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berdasarkan tabel di atas, pernyataan di bawah ini yang tidak benar adalah ...", options: ["Apel yang terjual lebih sedikit daripada mangga.", "Selisih jeruk dan apel sama dengan jambu.", "Buah yang terjual paling sedikit adalah pisang.", "Buah yang terjual lebih dari 100 biji ada dua jenis."], correct: 3, topic: "Analisis Data", explanation: "Buah > 100 biji ada Mangga (120), Jambu (150), dan Jeruk (250), total ada 3 jenis. Pernyataan D salah. (Kunci: D)" },
       { id: 16, type: "MCMA", text: "16. Minggu kemarin Dian membawa 5 lembar uang 50rb, 4 lembar 20rb, 2 lembar 10rb. Harga kain Rp400.000, diskon 15%. Pilihlah pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Dian tidak jadi membeli kain karena uangnya kurang.", "Diskon yang diperoleh Dian sebesar Rp60.000,00.", "Sisa uang Dian setelah membayar kain adalah Rp10.000,00."], correct: [1, 2], topic: "Aritmatika Sosial", explanation: "Total uang = Rp350.000. Diskon = 15% × 400.000 = Rp60.000. Bayar = Rp340.000. Sisa = Rp10.000. Opsi 2 dan 3 Benar." },
       { id: 17, type: "MCMA", text: "17. Perhatikan gambar segitiga siku-siku berikut!<br><img src='soal17.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pilihlah pernyataan-pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Keliling bangun tersebut adalah 56 cm.", "Panjang sisi BC adalah 18 cm.", "Luas bangun di atas adalah 84 cm²."], correct: [0, 2], topic: "Pythagoras & Luas", explanation: "BC = 24 cm. Keliling = 7+24+25 = 56 cm. Luas = 1/2 × 7 × 24 = 84 cm². Opsi 1 dan 3 Benar." },
       { id: 18, type: "MCMA", text: "18. Perhatikan susunan kubus berikut ini!<br><img src='soal18.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Jika panjang sisi kubus sebesar 5 cm, manakah pernyataan-pernyataan di bawah ini yang benar? (Jawaban benar bisa lebih dari satu)", options: ["Ada 10 buah kubus yang volumenya sama.", "Volume tiap kubus satuan sebesar 125 cm³.", "Luas permukaan kubus yang menempel di bawah sebesar 125 cm²."], correct: [0, 1], topic: "Volume Kubus", explanation: "Kubus berjumlah 10 buah identik, volume kubus 5³ = 125 cm³. Opsi 1 dan 2 Benar." },
@@ -449,7 +449,7 @@
       { id: 20, type: "MCMA", text: "20. Jarak M-N 180 km. Banu (50 km/jam) dan Joko (70 km/jam) berangkat pukul 06.00. Pilihlah pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Mereka akan berpapasan pada pukul 07.30.", "Mereka berpapasan pada jarak 75 km dari kota M.", "Pukul 08.30 Joko sudah sampai di kota M."], correct: [0, 1], topic: "Kecepatan Berpapasan", explanation: "Waktu papasan = 1,5 jam (pukul 07.30). Jarak dari M = 50 × 1,5 = 75 km. Opsi 1 dan 2 Benar." },
       { id: 21, type: "MCMA", text: "21. 2,5 abad + 4 dasawarsa - 5 windu + 2 lustrum = ... Setara dengan: (Jawaban benar bisa lebih dari satu)", options: ["26 dasawarsa", "32 windu", "52 lustrum"], correct: [0, 1, 2], topic: "Satuan Waktu", explanation: "Total 260 tahun = 26 dasawarsa = 32,5 windu = 52 lustrum. Opsi 1, 2, dan 3 Benar." },
       { id: 22, type: "MCMA", text: "22. Bu Desty mempunyai 72 permen, 64 coklat, dan 32 roti dibagikan ke anak-anak sama banyak. Pilihlah pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Jumlah anak terbanyak yang mendapat makanan adalah 16 anak.", "Jumlah permen yang diterima tiap anak sebanyak 9 buah.", "Setiap anak menerima makanan sebanyak 21 buah."], correct: [0], topic: "FPB", explanation: "FPB = 16 anak. Permen per anak = 72/16 = 4,5 buah. Opsi 1 Benar." },
-      { id: 23, type: "MCMA", text: "23. Perhatikan data pembeli baju dalam 5 hari: H1=85, H2=75, H3=100, H4=65, H5=115. Pilihlah pernyataan berikut yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Selisih pembeli pada hari pertama dan kedua adalah 10 orang.", "Jumlah pembeli pada hari ketiga dan kelima sebanyak 215 orang.", "Ada dua hari yang jumlah pembelinya lebih dari 100 orang."], correct: [0, 1], topic: "Analisis Data", explanation: "Selisih H1-H2 = 10, H3+H5 = 215. Hari > 100 hanya ada 1 hari (H5). Opsi 1 dan 2 Benar." },
+      { id: 23, type: "MCMA", text: "23. Perhatikan tabel berikut!<br><img src='soal23.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pilihlah pernyataan berikut yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Selisih pembeli pada hari pertama dan kedua adalah 10 orang.", "Jumlah pembeli pada hari ketiga dan kelima sebanyak 215 orang.", "Ada dua hari yang jumlah pembelinya lebih dari 100 orang."], correct: [0, 1], topic: "Analisis Data", explanation: "Selisih H1-H2 = 10, H3+H5 = 215. Hari > 100 hanya ada 1 hari (H5). Opsi 1 dan 2 Benar." },
       { id: 24, type: "Kategori", text: "24. Perhatikan gambar bangun datar berikut!<br><img src='soal24.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!", statements: ["Bangun datar tersebut mempunyai dua sumbu simetri.", "Bangun datar tersebut mempunyai dua diagonal yang sama panjang.", "Keempat sudut bangun datar tersebut sama besar."], correct: ["Benar", "Salah", "Salah"], topic: "Bangun Datar", explanation: "Kunci: Benar, Salah, Salah." },
       { id: 25, type: "Kategori", text: "25. Perhatikan gambar wadah berbentuk balok berikut!<br><img src='soal25.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!", statements: ["Volume wadah seluruhnya adalah 384 cm³.", "Jika diisi air 192 cm³, maka tinggi air dalam wadah 2 cm.", "Jika diisi air 0,5 liter, maka air yang tumpah 116 ml."], correct: ["Benar", "Benar", "Benar"], topic: "Volume Balok", explanation: "Kunci: Benar, Benar, Benar." },
       { id: 26, type: "Kategori", text: "26. Umur Ali, Beni, Cantika, Diandra (Diandra = 10 tahun). Tentukan <b>Benar</b> atau <b>Salah</b> pada setiap pernyataan berikut!", statements: ["Dari keempat anak, yang paling muda adalah Diandra.", "Jumlah umur Cantika dan Diandra sama dengan umur Beni.", "Dari anak-anak tersebut, yang paling tua umurnya adalah Ali."], correct: ["Benar", "Benar", "Benar"], topic: "Perbandingan Umur", explanation: "Kunci: Benar, Benar, Benar." },
@@ -911,11 +911,11 @@
         timeRemaining,
         isActive: true
       };
-      localStorage.setItem('tka_active_exam_session_v9', JSON.stringify(state));
+      localStorage.setItem('tka_active_exam_session_v10', JSON.stringify(state));
     }
 
     function checkActiveExamSession() {
-      const saved = localStorage.getItem('tka_active_exam_session_v9');
+      const saved = localStorage.getItem('tka_active_exam_session_v10');
       if (saved) {
         try {
           const state = JSON.parse(saved);
@@ -938,11 +938,11 @@
               startCountdownTimer();
               return true;
             } else {
-              localStorage.removeItem('tka_active_exam_session_v9');
+              localStorage.removeItem('tka_active_exam_session_v10');
             }
           }
         } catch (e) {
-          localStorage.removeItem('tka_active_exam_session_v9');
+          localStorage.removeItem('tka_active_exam_session_v10');
         }
       }
       return false;
@@ -1170,7 +1170,7 @@
       const list = local ? JSON.parse(local) : [];
       list.push(sub);
       localStorage.setItem('tka_submissions_multi', JSON.stringify(list));
-      localStorage.removeItem('tka_active_exam_session_v9');
+      localStorage.removeItem('tka_active_exam_session_v10');
       try {
         await fetch(FIREBASE_DB_URL, {
           method: 'POST',
