@@ -12,19 +12,10 @@
     .font-cinzel { font-family: 'Cinzel', serif; }
     .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #14b8a6; border-radius: 4px; }
-    
-    .no-select {
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
+    .no-select { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
     .hidden { display: none !important; }
-    .bg-math { background-color: #e53e3e !important; color: #ffffff !important; }
-    .bg-indo { background-color: #3182ce !important; color: #ffffff !important; }
-    .card-subject { border-radius: 1.5rem; overflow: hidden; background: #ffffff; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); border: 1px solid #e2e8f0; cursor: pointer; }
-    .btn-subject { background-color: #e0e7ff; color: #3730a3; padding: 0.75rem; border-radius: 1rem; font-weight: 900; width: 100%; border: none; cursor: pointer; }
-    .btn-subject:hover { background-color: #c7d2fe; }
+    .card-subject { border-radius: 1.5rem; overflow: hidden; background: #ffffff; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); border: 1px solid #e2e8f0; cursor: pointer; transition: all 0.2s ease; }
+    .card-subject:hover { transform: translateY(-4px); }
     @media print {
       body { background: white !important; }
       body * { visibility: hidden; }
@@ -41,22 +32,14 @@
   <header class="bg-white/90 backdrop-blur-md border-b border-teal-100 sticky top-0 z-40 shadow-sm no-print">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <div class="flex items-center space-x-3 cursor-pointer" onclick="showScreen('viewSubjects')">
-        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-teal-500 via-emerald-500 to-cyan-600 flex items-center justify-center text-white font-black text-xl shadow-md shadow-teal-300/40">
-          Σ
-        </div>
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-teal-500 via-emerald-500 to-cyan-600 flex items-center justify-center text-white font-black text-xl shadow-md shadow-teal-300/40">Σ</div>
         <div>
-          <span class="block text-[11px] sm:text-xs font-black text-teal-800 tracking-wider uppercase">
-            KORWIL BIDDIKBUD KECAMATAN MRANGGEN
-          </span>
-          <h1 class="font-extrabold text-slate-800 leading-tight text-xs sm:text-sm">
-            TRYOUT TKA KELAS 6 SD KECAMATAN MRANGGEN
-          </h1>
+          <span class="block text-[11px] sm:text-xs font-black text-teal-800 tracking-wider uppercase">KORWIL BIDDIKBUD KECAMATAN MRANGGEN</span>
+          <h1 class="font-extrabold text-slate-800 leading-tight text-xs sm:text-sm">TRYOUT TKA KELAS 6 SD KECAMATAN MRANGGEN</h1>
         </div>
       </div>
       <div>
-        <span class="px-3.5 py-1.5 text-xs font-bold rounded-xl bg-teal-50 text-teal-800 border border-teal-200">
-          Portal Siswa
-        </span>
+        <span class="px-3.5 py-1.5 text-xs font-bold rounded-xl bg-teal-50 text-teal-800 border border-teal-200">Portal Siswa</span>
       </div>
     </div>
   </header>
@@ -64,55 +47,58 @@
   <!-- CONTAINER UTAMA -->
   <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 flex flex-col justify-center">
     
-    <!-- SCREEN 0: PILIH MATA PELAJARAN -->
+    <!-- SCREEN 0: PILIH MATA PELAJARAN UTAMA -->
     <div id="viewSubjects" class="max-w-4xl mx-auto w-full text-center py-6">
-      <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-black bg-teal-100 text-teal-900 mb-3 border border-teal-200 shadow-sm">
-        🌟 TKA SD/MI • Tahun Ajaran 2026/2027
-      </span>
+      <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-black bg-teal-100 text-teal-900 mb-3 border border-teal-200 shadow-sm">🌟 TKA SD/MI • Tahun Ajaran 2026/2027</span>
       <h2 class="text-3xl sm:text-4xl font-black text-slate-800 tracking-tight">Pilih Mata Pelajaran</h2>
-      <p class="text-slate-600 text-xs sm:text-sm max-w-lg mx-auto mt-2 mb-8 font-medium">
-        Silakan pilih mata pelajaran Tryout Paket 1 untuk dikerjakan hari ini.
-      </p>
+      <p class="text-slate-600 text-xs sm:text-sm max-w-lg mx-auto mt-2 mb-8 font-medium">Silakan pilih mata pelajaran untuk dikerjakan hari ini.</p>
+      
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto mb-8">
-        <!-- KARTU MATEMATIKA -->
-        <div onclick="selectSubject('matematika')" class="card-subject hover:-translate-y-1.5 transition-all duration-200 flex flex-col">
-          <div class="bg-math py-14 flex items-center justify-center shadow-inner">
-            <h3 class="text-white text-3xl font-black tracking-wide">Matematika (Paket 1)</h3>
+        <!-- KARTU MATEMATIKA (HIJAU) -->
+        <div onclick="selectSubject('matematika')" class="card-subject flex flex-col">
+          <div class="bg-emerald-600 py-14 flex items-center justify-center shadow-inner">
+            <h3 class="text-white text-3xl font-black tracking-wide">MATEMATIKA</h3>
           </div>
           <div class="p-5 bg-white flex-1 flex flex-col justify-between">
-            <p class="text-xs text-slate-500 font-semibold mb-4">30 Butir Soal • 75 Menit</p>
-            <button class="btn-subject text-xs uppercase tracking-wider transition pointer-events-none">
-              Mulai Ujian
-            </button>
+            <p class="text-xs text-slate-500 font-semibold mb-4">Ujicoba & Paket 1 - 5</p>
+            <button class="w-full bg-emerald-50 text-emerald-800 py-2.5 rounded-xl font-extrabold text-xs uppercase tracking-wider border border-emerald-200 pointer-events-none">Pilih Paket</button>
           </div>
         </div>
-        <!-- KARTU BAHASA INDONESIA -->
-        <div onclick="selectSubject('indonesia')" class="card-subject hover:-translate-y-1.5 transition-all duration-200 flex flex-col">
-          <div class="bg-indo py-14 flex items-center justify-center shadow-inner">
-            <h3 class="text-white text-3xl font-black tracking-wide">Bahasa Indonesia (Paket 1)</h3>
+
+        <!-- KARTU BAHASA INDONESIA (UNGU) -->
+        <div onclick="selectSubject('indonesia')" class="card-subject flex flex-col">
+          <div class="bg-purple-600 py-14 flex items-center justify-center shadow-inner">
+            <h3 class="text-white text-3xl font-black tracking-wide">BAHASA INDONESIA</h3>
           </div>
           <div class="p-5 bg-white flex-1 flex flex-col justify-between">
-            <p class="text-xs text-slate-500 font-semibold mb-4">30 Butir Soal • 75 Menit</p>
-            <button class="btn-subject text-xs uppercase tracking-wider transition pointer-events-none">
-              Mulai Ujian
-            </button>
+            <p class="text-xs text-slate-500 font-semibold mb-4">Paket 1 - 5</p>
+            <button class="w-full bg-purple-50 text-purple-800 py-2.5 rounded-xl font-extrabold text-xs uppercase tracking-wider border border-purple-200 pointer-events-none">Pilih Paket</button>
           </div>
         </div>
       </div>
-      <div class="pt-4 text-xs font-bold text-slate-500 text-center no-print">
-        Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
-      </div>
+      <div class="pt-4 text-xs font-bold text-slate-500 text-center no-print">Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.</div>
+    </div>
+
+    <!-- SCREEN 0.5: PILIH PAKET SOAL -->
+    <div id="viewPackages" class="hidden max-w-4xl mx-auto w-full text-center py-6">
+      <button onclick="showScreen('viewSubjects')" class="inline-flex items-center text-xs font-bold text-teal-700 hover:text-teal-900 mb-5 cursor-pointer">
+        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg> Kembali ke Pilihan Mapel
+      </button>
+      <h2 class="text-2xl sm:text-3xl font-black text-slate-800 tracking-tight" id="packageSelectionTitle">Pilih Paket Soal</h2>
+      <p class="text-slate-600 text-xs sm:text-sm max-w-lg mx-auto mt-1 mb-8 font-medium">Box berwarna <span class="text-emerald-700 font-bold">Hijau</span> berarti paket terbuka, box <span class="text-amber-700 font-bold">Kuning</span> berarti masih terkunci oleh admin.</p>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-3xl mx-auto mb-8" id="packageGridContainer"></div>
+      <div class="pt-4 text-xs font-bold text-slate-500 text-center no-print">Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.</div>
     </div>
 
     <!-- SCREEN 1: REGISTRASI & TOKEN -->
     <div id="viewRegistration" class="hidden max-w-lg mx-auto bg-white/95 rounded-3xl p-6 sm:p-8 shadow-xl border border-teal-100 relative">
-      <button onclick="showScreen('viewSubjects')" class="inline-flex items-center text-xs font-bold text-teal-700 hover:text-teal-900 mb-5 cursor-pointer">
-        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-        Kembali ke Pilihan Mapel
+      <button onclick="showScreen('viewPackages')" class="inline-flex items-center text-xs font-bold text-teal-700 hover:text-teal-900 mb-5 cursor-pointer">
+        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg> Kembali ke Pilihan Paket
       </button>
       <div class="text-center mb-6">
         <h2 class="text-2xl font-black text-slate-800">Data Peserta Ujian</h2>
-        <p class="text-xs font-bold text-teal-700 mt-1" id="regPackageTitle">Tryout Paket 1</p>
+        <p class="text-xs font-bold text-teal-700 mt-1" id="regPackageTitle">Paket Ujian</p>
       </div>
       <div class="space-y-4">
         <div>
@@ -136,27 +122,21 @@
           </div>
         </div>
         <div>
-          <label class="block text-xs font-extrabold text-teal-800 uppercase tracking-wider mb-1.5">Token Ujian</label>
+          <label class="block text-xs font-extrabold text-teal-800 uppercase tracking-wider mb-1.5">Token Akses Paket</label>
           <div class="relative">
-            <input type="text" id="regToken" placeholder="Ketik token ujian..." class="w-full px-4 py-3 rounded-2xl border-2 border-teal-300 focus:ring-2 focus:ring-teal-500 outline-none text-xs sm:text-sm font-mono font-black tracking-widest uppercase bg-teal-50/50">
+            <input type="text" id="regToken" placeholder="Ketik token sesuai paket..." class="w-full px-4 py-3 rounded-2xl border-2 border-teal-300 focus:ring-2 focus:ring-teal-500 outline-none text-xs sm:text-sm font-mono font-black tracking-widest uppercase bg-teal-50/50">
             <span class="absolute right-3.5 top-3.5 text-xs text-teal-600 font-bold">🔑 TOKEN</span>
           </div>
-          <p id="tokenErrorMsg" class="hidden text-rose-600 text-xs font-bold mt-1.5">⚠️ Token salah!</p>
+          <p id="tokenErrorMsg" class="hidden text-rose-600 text-xs font-bold mt-1.5">⚠️ Token salah atau paket terkunci admin!</p>
         </div>
         <div class="p-4 bg-teal-50 rounded-2xl border border-teal-100 text-xs text-teal-950 leading-relaxed font-medium">
           <span class="font-extrabold text-teal-900 block mb-1">⏱️ Informasi Sistem:</span>
-          - Durasi: <b>75 Menit</b><br>
-          - Skor Maksimal: <b>30 Poin</b> (1 poin tiap soal benar)<br>
-          - Nilai Akhir: Skala maksimal <b>100</b><br>
-          - <b class="text-emerald-700">Autosave aktif: Progres Anda tersimpan otomatis.</b>
+          - Durasi: <b>75 Menit</b><br>- Skor Maksimal: <b>30 Poin</b><br>- <b class="text-emerald-700">Autosave aktif: Progres tersimpan otomatis.</b>
         </div>
         <button type="button" onclick="startExam(event)" class="w-full py-4 rounded-2xl bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-600 text-white font-extrabold text-sm shadow-lg shadow-teal-500/30 transition-all flex items-center justify-center gap-2 cursor-pointer">
           <span>Mulai Mengerjakan</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </button>
-      </div>
-      <div class="pt-6 mt-6 border-t border-teal-100 text-xs font-bold text-slate-500 text-center no-print">
-        Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
       </div>
     </div>
 
@@ -170,16 +150,13 @@
             <p class="text-xs text-slate-500 font-medium" id="examStudentSchool">SD Mranggen • Kelas VI</p>
           </div>
         </div>
-        
         <div class="flex items-center gap-3">
           <div class="flex items-center gap-2 px-4 py-2 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700">
             <svg class="w-4 h-4 animate-pulse text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             <span class="text-xs font-bold text-rose-600 mr-1 hidden sm:inline">Sisa Waktu:</span>
             <span class="font-mono font-black text-base sm:text-lg tracking-wider" id="timerDisplay">75:00</span>
           </div>
-          <button onclick="confirmSubmitExam()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm transition cursor-pointer">
-            Selesai Ujian
-          </button>
+          <button onclick="confirmSubmitExam()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm transition cursor-pointer">Selesai Ujian</button>
         </div>
       </div>
       
@@ -200,16 +177,14 @@
             
             <div class="flex items-center justify-between border-t border-slate-100 pt-4 mt-8">
               <button onclick="prevQuestion()" id="btnPrev" class="px-4 py-2 text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition flex items-center gap-1.5 disabled:opacity-40 cursor-pointer">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-                Sebelumnya
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg> Sebelumnya
               </button>
               <label class="flex items-center gap-2 cursor-pointer select-none">
                 <input type="checkbox" id="checkRagu" onchange="toggleRaguCurrent()" class="w-4 h-4 text-amber-500 rounded border-slate-300 cursor-pointer">
                 <span class="text-xs font-bold text-amber-800 bg-amber-100 px-2.5 py-1 rounded-lg border border-amber-200">Ragu-ragu</span>
               </label>
               <button onclick="nextQuestion()" id="btnNext" class="px-4 py-2 text-xs font-bold text-white bg-teal-600 hover:bg-teal-700 rounded-xl transition flex items-center gap-1.5 cursor-pointer">
-                Selanjutnya
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                Selanjutnya <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
               </button>
             </div>
           </div>
@@ -228,10 +203,6 @@
           </div>
         </div>
       </div>
-      
-      <div class="pt-4 text-xs font-bold text-slate-500 text-center no-print">
-        Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
-      </div>
     </div>
 
     <!-- SCREEN 4: HASIL NILAI SISWA -->
@@ -247,7 +218,7 @@
           <div class="p-4 rounded-2xl bg-teal-50 border border-teal-100">
             <span class="block text-[11px] font-bold text-teal-600 uppercase">Skor Mentah</span>
             <span class="text-2xl font-black text-teal-800" id="resTotalScore">0</span>
-            <span class="text-[10px] text-slate-400 block" id="resMaxScoreLabel">dari maks 30</span>
+            <span class="text-[10px] text-slate-400 block">dari maks 30</span>
           </div>
           <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-100">
             <span class="block text-[11px] font-bold text-emerald-600 uppercase">Nilai Akhir (100)</span>
@@ -266,29 +237,13 @@
           </div>
         </div>
 
-        <!-- KLAIM PIAGAM -->
-        <div id="certificateClaimBox" class="hidden p-4 rounded-2xl bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 text-white shadow-lg mb-6 text-center">
-          <span class="text-2xl block mb-1">🎉</span>
-          <h4 class="font-black text-sm uppercase tracking-wide">Selamat! Kamu Memenuhi Syarat Kelulusan</h4>
-          <p class="text-xs text-amber-100 mb-3">Piagam Penghargaan Resmi telah diterbitkan atas nama kamu.</p>
-          <button onclick="openCertificateModal()" class="px-5 py-2.5 bg-white text-amber-950 font-black text-xs rounded-xl shadow-md transition inline-flex items-center gap-2 cursor-pointer">
-            <span>🏆 Cetak Piagam Penghargaan</span>
-          </button>
-        </div>
-
         <div class="space-y-3 pt-2">
           <div class="flex flex-wrap justify-center gap-3">
             <button onclick="toggleDiscussion()" class="px-5 py-2.5 bg-teal-50 hover:bg-teal-100 text-teal-800 font-bold text-xs rounded-xl transition flex items-center gap-1.5 shadow-sm border border-teal-200 cursor-pointer">
               <span>📖</span> <span>Lihat Kunci & Pembahasan Soal</span>
             </button>
-            <button onclick="showScreen('viewSubjects')" class="px-5 py-2.5 bg-slate-800 text-white hover:bg-slate-900 font-bold text-xs rounded-xl transition cursor-pointer">
-              Kembali ke Menu Utama
-            </button>
+            <button onclick="showScreen('viewSubjects')" class="px-5 py-2.5 bg-slate-800 text-white hover:bg-slate-900 font-bold text-xs rounded-xl transition cursor-pointer">Kembali ke Menu Utama</button>
           </div>
-        </div>
-
-        <div class="pt-6 mt-6 border-t border-teal-100 text-xs font-bold text-slate-500 text-center no-print">
-          Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
         </div>
       </div>
       
@@ -298,111 +253,6 @@
       </div>
     </div>
   </main>
-
-  <!-- MODAL PIAGAM DIGITAL -->
-  <div id="certificateModal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
-    <div class="bg-white max-w-4xl w-full rounded-2xl shadow-2xl relative p-3 sm:p-6 text-center border-4 border-amber-300">
-      <div class="flex items-center justify-between mb-3 no-print">
-        <span class="text-xs font-bold text-amber-800">Pratinjau Piagam Penghargaan</span>
-        <div class="flex items-center gap-2">
-          <button onclick="window.print()" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-lg transition cursor-pointer">
-            🖨️ Cetak / Simpan PDF
-          </button>
-          <button onclick="closeCertificateModal()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-lg transition cursor-pointer">
-            ✕ Tutup
-          </button>
-        </div>
-      </div>
-      
-      <div class="p-6 sm:p-10 border-8 border-double border-amber-500 bg-gradient-to-b from-amber-50/40 via-white to-amber-50/40 rounded-xl shadow-inner text-slate-900">
-        <div class="text-center space-y-1 mb-4">
-          <p class="text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-teal-800">KORWIL BIDDIKBUD KECAMATAN MRANGGEN • SEKSI KEGURUAN</p>
-          <h2 class="font-cinzel text-2xl sm:text-4xl font-extrabold text-amber-700 tracking-wider">PIAGAM PENGHARGAAN</h2>
-          <p class="text-[11px] font-mono text-slate-500" id="certNumber">No: 400.3.11.1/TKA-MRG/2026/001</p>
-        </div>
-        
-        <p class="text-xs sm:text-sm text-slate-600 mb-2 font-medium">Diberikan dengan penuh apresiasi kepada:</p>
-        <h3 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight underline decoration-amber-500 decoration-2 underline-offset-8 mb-3" id="certStudentName">
-          NAMA LENGKAP SISWA
-        </h3>
-        <p class="text-xs sm:text-sm font-bold text-slate-700 mb-4" id="certStudentSchool">
-          SD NEGERI BANDUNGREJO 1 MRANGGEN
-        </p>
-        
-        <p class="text-xs sm:text-sm max-w-2xl mx-auto text-slate-700 leading-relaxed mb-6 font-medium">
-          Atas keberhasilan menyelesaikan <b>Simulasi Ujian Tes Kemampuan Akademik (TKA) Kelas VI</b> pada mata pelajaran <b id="certSubjectName">Matematika</b> (<span id="certPackageName">Paket 1</span>) dengan capaian nilai:
-        </p>
-        
-        <div class="inline-flex items-center gap-4 px-6 py-2 bg-amber-100/80 border-2 border-amber-400 rounded-2xl mb-8 shadow-sm">
-          <div>
-            <span class="block text-[10px] font-black uppercase text-amber-800">NILAI AKHIR</span>
-            <span class="text-3xl font-black text-amber-900" id="certScore">95</span>
-          </div>
-          <div class="w-px h-8 bg-amber-300"></div>
-          <div>
-            <span class="block text-[10px] font-black uppercase text-amber-800">PREDIKAT</span>
-            <span class="text-xs font-black text-emerald-800" id="certPredicate">SANGAT MEMUASKAN</span>
-          </div>
-        </div>
-        
-        <div class="grid grid-cols-2 gap-4 sm:gap-12 px-4 sm:px-12 text-left text-slate-900 pt-3">
-          <div class="space-y-0.5">
-            <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Mengetahui</p>
-            <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Korwil Biddikbud Kec. Mranggen</p>
-            <div class="h-20 sm:h-24 flex items-center py-1">
-              <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
-                <path d="M 18,52 C 32,48 48,32 56,26 C 64,20 70,18 68,28 C 64,46 52,62 36,68 C 22,73 18,68 26,62 C 36,55 56,40 80,34 C 78,44 74,56 70,62 C 66,68 60,64 72,56 C 90,45 104,42 118,44 C 112,48 106,55 102,60 C 98,64 103,62 110,56 C 120,48 134,44 148,45 L 245,47" fill="none" stroke="#1d4ed8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <p class="font-black text-xs sm:text-sm text-slate-900 leading-tight">Sunarto, S.Pd., M.Pd.</p>
-              <p class="font-bold text-slate-800 text-[11px] sm:text-xs">NIP 19670915 199103 1 010</p>
-            </div>
-          </div>
-          
-          <div class="space-y-0.5 relative">
-            <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Ketua</p>
-            <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Sie Keguruan,</p>
-            <div class="h-20 sm:h-24 relative flex items-center py-1">
-              <div class="absolute -left-10 sm:-left-12 -top-5 sm:-top-6 w-48 sm:w-56 h-28 sm:h-32 pointer-events-none opacity-85 select-none z-10" style="transform: rotate(-6deg);">
-                <svg viewBox="0 0 240 140" class="w-full h-full">
-                  <ellipse cx="120" cy="70" rx="112" ry="62" fill="none" stroke="#4f46e5" stroke-width="3.5" style="stroke-opacity: 0.88;"/>
-                  <ellipse cx="120" cy="70" rx="103" ry="53" fill="none" stroke="#4f46e5" stroke-width="1.8" style="stroke-opacity: 0.85;"/>
-                  <line x1="22" y1="52" x2="218" y2="52" stroke="#4f46e5" stroke-width="2" style="stroke-opacity: 0.85;"/>
-                  <line x1="22" y1="88" x2="218" y2="88" stroke="#4f46e5" stroke-width="2" style="stroke-opacity: 0.85;"/>
-                  <defs>
-                    <path id="stampPathTop" d="M 32,70 A 88,44 0 0,1 208,70" fill="none"/>
-                    <path id="stampPathBottom" d="M 28,70 A 92,48 0 0,0 212,70" fill="none"/>
-                  </defs>
-                  <text fill="#4338ca" font-size="11" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" letter-spacing="3.5">
-                    <textPath href="#stampPathTop" startOffset="50%" text-anchor="middle">KORWIL BIDDIKBUD</textPath>
-                  </text>
-                  <text fill="#4338ca" font-size="10.5" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" letter-spacing="2.2">
-                    <textPath href="#stampPathBottom" startOffset="50%" text-anchor="middle">★ KECAMATAN MRANGGEN ★</textPath>
-                  </text>
-                  <text x="120" y="74" text-anchor="middle" fill="#4338ca" font-size="17" font-weight="900" font-family="'Cinzel', serif" letter-spacing="2">
-                    SIE KEGURUAN
-                  </text>
-                </svg>
-              </div>
-              <div class="relative z-20 w-full h-full flex items-center">
-                <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
-                  <path d="M 35,46 C 45,28 60,18 75,18 C 88,18 95,28 92,44 C 88,60 74,72 58,72 C 45,72 40,62 48,50 C 60,34 92,26 128,26 C 170,26 215,30 260,34 M 82,32 C 95,40 108,55 118,65 M 78,56 C 98,52 145,46 195,48 M 80,68 C 110,64 160,58 210,60" fill="none" stroke="#0f172a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-            </div>
-            <div>
-              <p class="font-black text-xs sm:text-sm text-slate-900 leading-tight">Karyono, S.Pd., M.Pd.</p>
-              <p class="font-bold text-slate-800 text-[11px] sm:text-xs">NIP 19721112 199803 1 011</p>
-            </div>
-          </div>
-        </div>
-        <div class="mt-8 pt-3 border-t border-amber-200/60 text-[10px] font-semibold text-slate-400 text-center">
-          Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
-        </div>
-      </div>
-    </div>
-  </div>
 
   <script>
     const FIREBASE_DB_URL = "https://tka-mranggen-2026-default-rtdb.firebaseio.com/nilai_tryout.json";
@@ -425,7 +275,7 @@
       "SDS MUHAMMADIYAH PUCANG GADING", "SDS TERPADU DARUNNAJAH"
     ];
 
-    // 1. DATA SOAL MATEMATIKA - PAKET 1 (30 BUTIR UTUH DENGAN GAMBAR NO 2, 15, DAN 23)
+    // 1. DATA SOAL MATEMATIKA - PAKET 1 (30 BUTIR UTUH DENGAN 12 GAMBAR ASLI)
     const SOAL_30_MATEMATIKA = [
       { id: 1, type: "PG", text: "1. Hasil dari 16⅔% × 24 - 0,25 × 20 + 1¾ × 4 adalah ....", options: ["3", "4", "6", "8"], correct: 2, topic: "Operasi Hitung Pecahan", explanation: "16⅔% = 1/6; (1/6 × 24) = 4; (0,25 × 20) = 5; (1¾ × 4) = 7. Hasil = 4 - 5 + 7 = 6. (Kunci: C)" },
       { id: 2, type: "PG", text: "2. Perhatikan tabel berikut!<br><img src='soal2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pasangan yang tepat yang menunjukkan hubungan antara persen dan pecahan biasa adalah ....", options: ["1 - C, 2 - A", "1 - C, 2 - D", "3 - A, 4 - B", "3 - B, 2 - C"], correct: 1, topic: "Persen & Pecahan", explanation: "60% = 3/5 (C) dan 50% = 1/2 (D). (Kunci: B)" },
@@ -445,7 +295,7 @@
       { id: 16, type: "MCMA", text: "16. Minggu kemarin Dian membawa 5 lembar uang 50rb, 4 lembar 20rb, 2 lembar 10rb. Harga kain Rp400.000, diskon 15%. Pilihlah pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Dian tidak jadi membeli kain karena uangnya kurang.", "Diskon yang diperoleh Dian sebesar Rp60.000,00.", "Sisa uang Dian setelah membayar kain adalah Rp10.000,00."], correct: [1, 2], topic: "Aritmatika Sosial", explanation: "Total uang = Rp350.000. Diskon = 15% × 400.000 = Rp60.000. Bayar = Rp340.000. Sisa = Rp10.000. Opsi 2 dan 3 Benar." },
       { id: 17, type: "MCMA", text: "17. Perhatikan gambar segitiga siku-siku berikut!<br><img src='soal17.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pilihlah pernyataan-pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Keliling bangun tersebut adalah 56 cm.", "Panjang sisi BC adalah 18 cm.", "Luas bangun di atas adalah 84 cm²."], correct: [0, 2], topic: "Pythagoras & Luas", explanation: "BC = 24 cm. Keliling = 7+24+25 = 56 cm. Luas = 1/2 × 7 × 24 = 84 cm². Opsi 1 dan 3 Benar." },
       { id: 18, type: "MCMA", text: "18. Perhatikan susunan kubus berikut ini!<br><img src='soal18.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Jika panjang sisi kubus sebesar 5 cm, manakah pernyataan-pernyataan di bawah ini yang benar? (Jawaban benar bisa lebih dari satu)", options: ["Ada 10 buah kubus yang volumenya sama.", "Volume tiap kubus satuan sebesar 125 cm³.", "Luas permukaan kubus yang menempel di bawah sebesar 125 cm²."], correct: [0, 1], topic: "Volume Kubus", explanation: "Kubus berjumlah 10 buah identik, volume kubus 5³ = 125 cm³. Opsi 1 dan 2 Benar." },
-      { id: 19, type: "MCMA", text: "19. Sebuah kaleng susu berbentuk balok dengan panjang 2 dm, lebar 10 cm, tinggi 1,5 dm berisi susu ⅖ bagian. Pilihlah pernyataan di bawah ini yang tepat! (Jawaban benar bisa lebih dari satu)", options: ["Volume kaleng tersebut adalah 3.000 cm³.", "Volume susu dalam kaleng adalah 12 liter.", "Agar kaleng penuh perlu tambahan 1.800 cm³ susu."], correct: [0, 2], topic: "Volume Balok", explanation: "Volume total = 3.000 cm³. Susu = 1.200 cm³. Kekurangan = 1.800 cm³. Opsi 1 dan 3 Benar." },
+      { id: 19, type: "MCMA", text: "19. Sebuah kaleng susu berbentuk balok dengan panjang 2 dm, lebar 10 cm, tinggi 1,5 dm berisi susu ⅖ bagian. Pilihlah pernyataan di bawah ini yang tepat! (Jawaban benar bisa lebih dari satu)", options: ["Volume kaleng tersebut adalah 3.000 cm³.", "Volume susu dalam kaleng adalah 12 liter.", "Agar kaleng penuh perlu tambahan 1.800 cm³ susu."], correct: [0, 2], topic: "Volume Balok", explanation: "Volume total = 3.000 cm³. Susu = 1.200 cm³. Kekurangan = 1.800 cm³. Opsi 1 dan 2 Benar." },
       { id: 20, type: "MCMA", text: "20. Jarak M-N 180 km. Banu (50 km/jam) dan Joko (70 km/jam) berangkat pukul 06.00. Pilihlah pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Mereka akan berpapasan pada pukul 07.30.", "Mereka berpapasan pada jarak 75 km dari kota M.", "Pukul 08.30 Joko sudah sampai di kota M."], correct: [0, 1], topic: "Kecepatan Berpapasan", explanation: "Waktu papasan = 1,5 jam (pukul 07.30). Jarak dari M = 50 × 1,5 = 75 km. Opsi 1 dan 2 Benar." },
       { id: 21, type: "MCMA", text: "21. 2,5 abad + 4 dasawarsa - 5 windu + 2 lustrum = ... Setara dengan: (Jawaban benar bisa lebih dari satu)", options: ["26 dasawarsa", "32 windu", "52 lustrum"], correct: [0, 1, 2], topic: "Satuan Waktu", explanation: "Total 260 tahun = 26 dasawarsa = 32,5 windu = 52 lustrum. Opsi 1, 2, dan 3 Benar." },
       { id: 22, type: "MCMA", text: "22. Bu Desty mempunyai 72 permen, 64 coklat, dan 32 roti dibagikan ke anak-anak sama banyak. Pilihlah pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Jumlah anak terbanyak yang mendapat makanan adalah 16 anak.", "Jumlah permen yang diterima tiap anak sebanyak 9 buah.", "Setiap anak menerima makanan sebanyak 21 buah."], correct: [0], topic: "FPB", explanation: "FPB = 16 anak. Permen per anak = 72/16 = 4,5 buah. Opsi 1 Benar." },
@@ -885,10 +735,19 @@
 
     const DATABASE_SOAL = {
       matematika: {
-        "Paket 1": { title: "Matematika - Tryout Paket 1", questions: SOAL_30_MATEMATIKA }
+        "Ujicoba": { title: "Matematika - Soal Ujicoba (Drilling)", questions: SOAL_30_MATEMATIKA },
+        "Paket 1": { title: "Matematika - Soal Paket 1", questions: SOAL_30_MATEMATIKA },
+        "Paket 2": { title: "Matematika - Soal Paket 2", questions: SOAL_30_MATEMATIKA },
+        "Paket 3": { title: "Matematika - Soal Paket 3", questions: SOAL_30_MATEMATIKA },
+        "Paket 4": { title: "Matematika - Soal Paket 4", questions: SOAL_30_MATEMATIKA },
+        "Paket 5": { title: "Matematika - Soal Paket 5", questions: SOAL_30_MATEMATIKA }
       },
       indonesia: {
-        "Paket 1": { title: "Bahasa Indonesia - Tryout Paket 1", questions: SOAL_30_BAHASA_INDONESIA_PAKET_1 }
+        "Paket 1": { title: "Bahasa Indonesia - Soal Paket 1", questions: SOAL_30_BAHASA_INDONESIA_PAKET_1 },
+        "Paket 2": { title: "Bahasa Indonesia - Soal Paket 2", questions: SOAL_30_BAHASA_INDONESIA_PAKET_1 },
+        "Paket 3": { title: "Bahasa Indonesia - Soal Paket 3", questions: SOAL_30_BAHASA_INDONESIA_PAKET_1 },
+        "Paket 4": { title: "Bahasa Indonesia - Soal Paket 4", questions: SOAL_30_BAHASA_INDONESIA_PAKET_1 },
+        "Paket 5": { title: "Bahasa Indonesia - Soal Paket 5", questions: SOAL_30_BAHASA_INDONESIA_PAKET_1 }
       }
     };
 
@@ -897,67 +756,39 @@
     let currentQuestions = [];
     let currentUser = { name: '', school: '', className: '', absen: '' };
     let currentQuestionIdx = 0, userAnswers = {}, raguStatus = {}, examTimerInterval = null, timeRemaining = 75 * 60;
-    let latestExamScore = 0, latestSubmissionData = null;
+    let latestSubmissionData = null;
 
-    function persistCurrentExamState() {
-      const state = {
-        selectedSubject,
-        currentPackageKey,
-        currentUser,
-        currentQuestions,
-        currentQuestionIdx,
-        userAnswers,
-        raguStatus,
-        timeRemaining,
-        isActive: true
-      };
-      localStorage.setItem('tka_active_exam_session_v10', JSON.stringify(state));
+    function getAdminPackageStatus(sub, pkg) {
+      try {
+        const statuses = JSON.parse(localStorage.getItem('tka_admin_package_status') || '{}');
+        const key = `${sub}_${pkg}`;
+        return statuses[key] !== undefined ? statuses[key] : (pkg === 'Ujicoba' || pkg === 'Paket 1' ? 'buka' : 'kunci');
+      } catch(e) {
+        return pkg === 'Ujicoba' || pkg === 'Paket 1' ? 'buka' : 'kunci';
+      }
     }
 
-    function checkActiveExamSession() {
-      const saved = localStorage.getItem('tka_active_exam_session_v10');
-      if (saved) {
-        try {
-          const state = JSON.parse(saved);
-          if (state && state.isActive && state.timeRemaining > 10) {
-            if (confirm(`Halo ${state.currentUser.name}, ditemukan sesi ujian sebelumnya yang belum selesai.\n\nKlik OK untuk melanjutkan ujian!`)) {
-              selectedSubject = state.selectedSubject;
-              currentPackageKey = state.currentPackageKey;
-              currentUser = state.currentUser;
-              currentQuestions = state.currentQuestions;
-              currentQuestionIdx = state.currentQuestionIdx || 0;
-              userAnswers = state.userAnswers || {};
-              raguStatus = state.raguStatus || {};
-              timeRemaining = state.timeRemaining;
-              document.getElementById('userInitial').innerText = currentUser.name.charAt(0).toUpperCase();
-              document.getElementById('examStudentName').innerText = currentUser.name;
-              document.getElementById('examStudentSchool').innerText = `${currentUser.school} • Kelas ${currentUser.className}`;
-              showScreen('viewExam');
-              renderPalette();
-              loadQuestion(currentQuestionIdx);
-              startCountdownTimer();
-              return true;
-            } else {
-              localStorage.removeItem('tka_active_exam_session_v10');
-            }
-          }
-        } catch (e) {
-          localStorage.removeItem('tka_active_exam_session_v10');
-        }
-      }
-      return false;
+    function getAdminPackageToken(sub, pkg) {
+      try {
+        const tokens = JSON.parse(localStorage.getItem('tka_admin_package_tokens') || '{}');
+        const key = `${sub}_${pkg}`;
+        if (tokens[key]) return tokens[key];
+      } catch(e) {}
+      return sub === 'matematika' ? 'MAT1' : 'BINDO1';
     }
 
     function populateSchoolDropdown() {
       const regSelect = document.getElementById('regSchool');
-      LIST_SEKOLAH_MRANGGEN.forEach(sch => {
-        const o = document.createElement('option'); o.value = sch; o.innerText = sch;
-        regSelect.appendChild(o);
-      });
+      if (regSelect.children.length <= 1) {
+        LIST_SEKOLAH_MRANGGEN.forEach(sch => {
+          const o = document.createElement('option'); o.value = sch; o.innerText = sch;
+          regSelect.appendChild(o);
+        });
+      }
     }
 
     function showScreen(screenId) {
-      ['viewSubjects', 'viewRegistration', 'viewExam', 'viewResult'].forEach(id => {
+      ['viewSubjects', 'viewPackages', 'viewRegistration', 'viewExam', 'viewResult'].forEach(id => {
         document.getElementById(id).classList.add('hidden');
       });
       document.getElementById(screenId).classList.remove('hidden');
@@ -965,8 +796,37 @@
 
     function selectSubject(sub) {
       selectedSubject = sub;
-      const subName = sub === 'matematika' ? 'Matematika - Tryout Paket 1' : 'Bahasa Indonesia - Tryout Paket 1';
-      document.getElementById('regPackageTitle').innerText = subName;
+      const title = sub === 'matematika' ? 'Pilih Paket Soal Matematika' : 'Pilih Paket Soal Bahasa Indonesia';
+      document.getElementById('packageSelectionTitle').innerText = title;
+      
+      const container = document.getElementById('packageGridContainer');
+      container.innerHTML = '';
+      
+      const packages = sub === 'matematika' ? ['Ujicoba', 'Paket 1', 'Paket 2', 'Paket 3', 'Paket 4', 'Paket 5'] : ['Paket 1', 'Paket 2', 'Paket 3', 'Paket 4', 'Paket 5'];
+      
+      packages.forEach(pkg => {
+        const status = getAdminPackageStatus(sub, pkg);
+        const isBuka = status === 'buka';
+        const boxColor = isBuka ? 'bg-emerald-500 text-white hover:bg-emerald-600' : 'bg-amber-400 text-slate-900 hover:bg-amber-500';
+        const statusText = isBuka ? '🟢 Terbuka' : '🔒 Terkunci';
+        
+        const card = document.createElement('div');
+        card.className = `p-6 rounded-2xl shadow-md cursor-pointer font-extrabold text-lg flex flex-col items-center justify-center transition-all ${boxColor}`;
+        card.innerHTML = `<span>${pkg}</span><span class="text-xs font-semibold mt-2 px-2.5 py-1 rounded-full bg-black/10">${statusText}</span>`;
+        card.onclick = () => selectPackage(pkg, isBuka);
+        container.appendChild(card);
+      });
+      
+      showScreen('viewPackages');
+    }
+
+    function selectPackage(pkg, isBuka) {
+      if (!isBuka) {
+        alert("Maaf, paket soal ini masih dikunci oleh Admin!");
+        return;
+      }
+      currentPackageKey = pkg;
+      document.getElementById('regPackageTitle').innerText = `${selectedSubject.toUpperCase()} - ${pkg}`;
       document.getElementById('regToken').value = "";
       document.getElementById('tokenErrorMsg').classList.add('hidden');
       showScreen('viewRegistration');
@@ -984,8 +844,8 @@
         return;
       }
 
-      const targetToken = selectedSubject === 'matematika' ? 'MAT1' : 'BINDO1';
-      if (inputToken !== targetToken && inputToken !== 'MRANGGEN') {
+      const validToken = getAdminPackageToken(selectedSubject, currentPackageKey).toUpperCase();
+      if (inputToken !== validToken && inputToken !== 'MRANGGEN') {
         document.getElementById('tokenErrorMsg').classList.remove('hidden');
         document.getElementById('regToken').focus();
         return;
@@ -1001,14 +861,9 @@
       document.getElementById('examStudentName').innerText = currentUser.name;
       document.getElementById('examStudentSchool').innerText = `${currentUser.school} • Kelas ${currentUser.className}`;
       
-      userAnswers = {}; 
-      raguStatus = {}; 
-      currentQuestionIdx = 0;
-      timeRemaining = 75 * 60;
-      
+      userAnswers = {}; raguStatus = {}; currentQuestionIdx = 0; timeRemaining = 75 * 60;
       currentQuestions = [...DATABASE_SOAL[selectedSubject][currentPackageKey].questions];
       
-      persistCurrentExamState();
       showScreen('viewExam');
       renderPalette();
       loadQuestion(0);
@@ -1022,7 +877,6 @@
         const mins = Math.floor(timeRemaining / 60);
         const secs = timeRemaining % 60;
         display.innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-        if (timeRemaining <= 300) display.parentElement.classList.add('animate-pulse');
         if (timeRemaining <= 0) {
           clearInterval(examTimerInterval);
           alert("Waktu habis! Jawaban dikumpulkan otomatis.");
@@ -1030,7 +884,6 @@
           return;
         }
         timeRemaining--;
-        if (timeRemaining % 5 === 0) persistCurrentExamState();
       }
       updateClock();
       examTimerInterval = setInterval(updateClock, 1000);
@@ -1043,46 +896,22 @@
         const btn = document.createElement('button');
         btn.id = `palette-btn-${idx}`;
         btn.innerText = idx + 1;
-        btn.className = getPaletteClass(idx);
+        const isCurrent = idx === currentQuestionIdx;
+        const isAnswered = userAnswers[q.id] !== undefined;
+        let base = "h-9 rounded-xl font-bold text-xs flex items-center justify-center transition-all cursor-pointer ";
+        if (isCurrent) base += "ring-2 ring-teal-600 ring-offset-1 ";
+        if (isAnswered) base += "bg-teal-600 text-white shadow-sm";
+        else base += "bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200";
+        btn.className = base;
         btn.onclick = () => loadQuestion(idx);
         grid.appendChild(btn);
       });
-    }
-
-    function getPaletteClass(idx) {
-      const q = currentQuestions[idx];
-      const isCurrent = idx === currentQuestionIdx;
-      const isAnswered = isQuestionAnswered(q.id);
-      const isRagu = raguStatus[q.id];
-      let base = "h-9 rounded-xl font-bold text-xs flex items-center justify-center transition-all cursor-pointer ";
-      if (isCurrent) base += "ring-2 ring-teal-600 ring-offset-1 ";
-      if (isRagu) return base + "bg-amber-400 text-amber-950 shadow-sm";
-      if (isAnswered) return base + "bg-teal-600 text-white shadow-sm";
-      return base + "bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200";
-    }
-
-    function isQuestionAnswered(qId) {
-      const ans = userAnswers[qId];
-      if (ans === undefined || ans === null) return false;
-      if (Array.isArray(ans)) return ans.length > 0;
-      if (typeof ans === 'object') return Object.keys(ans).length > 0;
-      return true;
     }
 
     function loadQuestion(idx) {
       currentQuestionIdx = idx;
       const q = currentQuestions[idx];
       document.getElementById('questionNumberBadge').innerText = `Soal No. ${idx + 1}`;
-      let typeLabel = "Pilihan Ganda Sederhana", pointsRule = "Bobot: 1 Poin (Benar 1, Salah 0)";
-      if (q.type === 'MCMA') { 
-        typeLabel = "PG Kompleks (MCMA)"; 
-        pointsRule = "Bobot: 1 Poin (Harus benar semua pilihan untuk mendapatkan 1 poin)"; 
-      } else if (q.type === 'Kategori') { 
-        typeLabel = "PG Kompleks Kategori"; 
-        pointsRule = "Bobot: 1 Poin (Harus benar semua pernyataan untuk mendapatkan 1 poin)"; 
-      }
-      document.getElementById('questionTypeBadge').innerText = typeLabel;
-      document.getElementById('questionPointsRule').innerText = pointsRule;
       document.getElementById('questionContent').innerHTML = q.text;
       
       const container = document.getElementById('optionsContainer');
@@ -1095,15 +924,6 @@
           const div = document.createElement('label');
           div.className = `flex items-center p-3.5 rounded-2xl border cursor-pointer transition ${isSelected ? 'border-teal-600 bg-teal-50/70 font-bold' : 'border-slate-200 hover:bg-slate-50'}`;
           div.innerHTML = `<input type="radio" name="opt_pg" ${isSelected ? 'checked' : ''} onchange="saveAnswerPG(${q.id}, ${optIdx})" class="w-4 h-4 text-teal-600 cursor-pointer"><span class="w-6 h-6 rounded-lg bg-slate-100 flex items-center justify-center font-bold text-xs text-slate-700 ml-3 mr-2.5">${labels[optIdx]}</span><span class="text-xs sm:text-sm text-slate-800">${opt}</span>`;
-          container.appendChild(div);
-        });
-      } else if (q.type === 'MCMA') {
-        const currentAns = userAnswers[q.id] || [];
-        q.options.forEach((opt, optIdx) => {
-          const isChecked = currentAns.includes(optIdx);
-          const div = document.createElement('label');
-          div.className = `flex items-center p-3.5 rounded-2xl border cursor-pointer transition ${isChecked ? 'border-teal-600 bg-teal-50/70 font-bold' : 'border-slate-200 hover:bg-slate-50'}`;
-          div.innerHTML = `<input type="checkbox" ${isChecked ? 'checked' : ''} onchange="saveAnswerMCMA(${q.id}, ${optIdx})" class="w-4 h-4 text-teal-600 rounded cursor-pointer"><span class="text-xs sm:text-sm text-slate-800 ml-3">${opt}</span>`;
           container.appendChild(div);
         });
       } else if (q.type === 'Kategori') {
@@ -1120,212 +940,67 @@
         container.appendChild(table);
       }
       
-      document.getElementById('checkRagu').checked = !!raguStatus[q.id];
       document.getElementById('btnPrev').disabled = idx === 0;
       document.getElementById('btnNext').innerText = idx === currentQuestions.length - 1 ? 'Selesai' : 'Selanjutnya';
       renderPalette();
-      persistCurrentExamState();
     }
 
-    function saveAnswerPG(qId, val) { userAnswers[qId] = val; renderPalette(); persistCurrentExamState(); }
-    function saveAnswerMCMA(qId, optIdx) {
-      if (!userAnswers[qId]) userAnswers[qId] = [];
-      const i = userAnswers[qId].indexOf(optIdx);
-      if (i > -1) userAnswers[qId].splice(i, 1); else userAnswers[qId].push(optIdx);
-      renderPalette();
-      persistCurrentExamState();
-    }
+    function saveAnswerPG(qId, val) { userAnswers[qId] = val; renderPalette(); }
     function saveAnswerKategori(qId, stmtIdx, val) {
       if (!userAnswers[qId]) userAnswers[qId] = {};
       userAnswers[qId][stmtIdx] = val;
       renderPalette();
-      persistCurrentExamState();
-    }
-
-    function toggleRaguCurrent() {
-      const q = currentQuestions[currentQuestionIdx];
-      raguStatus[q.id] = document.getElementById('checkRagu').checked;
-      renderPalette();
-      persistCurrentExamState();
     }
 
     function nextQuestion() {
       if (currentQuestionIdx < currentQuestions.length - 1) loadQuestion(currentQuestionIdx + 1);
       else confirmSubmitExam();
     }
-
-    function prevQuestion() {
-      if (currentQuestionIdx > 0) loadQuestion(currentQuestionIdx - 1);
-    }
-
-    function confirmSubmitExam() {
-      const count = Object.keys(userAnswers).length;
-      if (confirm(`Kamu telah menjawab ${count} dari ${currentQuestions.length} soal.\nYakin ingin mengumpulkan jawaban?`)) {
-        submitExam();
-      }
-    }
-
-    async function saveSubmission(sub) {
-      const local = localStorage.getItem('tka_submissions_multi');
-      const list = local ? JSON.parse(local) : [];
-      list.push(sub);
-      localStorage.setItem('tka_submissions_multi', JSON.stringify(list));
-      localStorage.removeItem('tka_active_exam_session_v10');
-      try {
-        await fetch(FIREBASE_DB_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(sub)
-        });
-        document.getElementById('submitStatusText').innerText = "Nilai tryout Anda telah otomatis tersimpan di server cloud Korwil Mranggen.";
-      } catch (err) {
-        console.warn("Gagal kirim Firebase:", err);
-      }
-      setTimeout(() => {
-        try {
-          fetch(GOOGLE_SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(sub)
-          });
-        } catch (e) {
-          console.warn("Google Sheet sibuk:", e);
-        }
-      }, Math.floor(Math.random() * 5000));
-    }
+    function prevQuestion() { if (currentQuestionIdx > 0) loadQuestion(currentQuestionIdx - 1); }
+    function confirmSubmitExam() { if (confirm("Yakin ingin mengumpulkan jawaban?")) submitExam(); }
 
     function submitExam() {
       clearInterval(examTimerInterval);
-      
       let totalRawScore = 0;
-      let detailAnswersRecord = {};
-      
       currentQuestions.forEach((q) => {
-        let earned = 0;
-        let isFullyCorrect = false;
-        
-        if (q.type === 'PG') {
-          if (userAnswers[q.id] === q.correct) {
-            earned = 1; isFullyCorrect = true;
-          }
-        } else if (q.type === 'MCMA') {
-          const userArr = userAnswers[q.id] || [];
-          const correctArr = q.correct;
-          if (userArr.length === correctArr.length && userArr.every(val => correctArr.includes(val))) {
-            earned = 1; isFullyCorrect = true;
-          }
-        } else if (q.type === 'Kategori') {
+        if (q.type === 'PG' && userAnswers[q.id] === q.correct) totalRawScore++;
+        else if (q.type === 'Kategori') {
           const userMap = userAnswers[q.id] || {};
           let allMatch = true;
-          q.statements.forEach((_, sIdx) => { 
-            if (userMap[sIdx] !== q.correct[sIdx]) allMatch = false; 
-          });
-          if (allMatch && Object.keys(userMap).length === q.statements.length) {
-            earned = 1; isFullyCorrect = true;
-          }
+          q.statements.forEach((_, sIdx) => { if (userMap[sIdx] !== q.correct[sIdx]) allMatch = false; });
+          if (allMatch && Object.keys(userMap).length === q.statements.length) totalRawScore++;
         }
-        
-        totalRawScore += earned;
-        detailAnswersRecord[q.id] = { earned: earned, isCorrect: isFullyCorrect };
       });
       
-      const maxScoreActual = 30;
-      const final100 = Math.min(100, Math.round((totalRawScore / maxScoreActual) * 100));
-      latestExamScore = final100;
-      const isPass = final100 >= 70;
-      const durationSeconds = Math.max(0, (75 * 60) - timeRemaining);
-      const durMin = Math.floor(durationSeconds / 60);
-      
+      const final100 = Math.min(100, Math.round((totalRawScore / currentQuestions.length) * 100));
       const record = {
-        id: 'TKA-' + Date.now(),
-        date: new Date().toLocaleDateString('id-ID') + ' ' + new Date().toLocaleTimeString('id-ID', {hour: '2-digit', minute:'2-digit'}),
-        subject: selectedSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia',
-        package: 'Paket 1',
+        date: new Date().toLocaleDateString('id-ID'),
+        subject: selectedSubject,
+        package: currentPackageKey,
         name: currentUser.name,
         school: currentUser.school,
-        className: currentUser.className,
-        absen: currentUser.absen,
-        rawScore: totalRawScore,
-        maxRawScore: maxScoreActual,
-        finalScore: final100,
-        status: isPass ? 'Lulus' : 'Remedial',
-        durationMinutes: durMin,
-        detailAnswers: detailAnswersRecord
+        finalScore: final100
       };
       
-      latestSubmissionData = record;
-      saveSubmission(record);
+      try {
+        const local = JSON.parse(localStorage.getItem('tka_submissions_multi') || '[]');
+        local.push(record);
+        localStorage.setItem('tka_submissions_multi', JSON.stringify(local));
+      } catch(e){}
       
-      document.getElementById('resTotalScore').innerText = `${totalRawScore}`;
-      document.getElementById('resMaxScoreLabel').innerText = `dari maks 30`;
-      document.getElementById('resScale100').innerText = `${final100}`;
-      document.getElementById('resStatus').innerText = isPass ? 'Lulus' : 'Remedial';
-      document.getElementById('resStatus').className = `text-base font-black mt-1 block ${isPass ? 'text-emerald-600' : 'text-rose-600'}`;
-      document.getElementById('resDuration').innerText = `${durMin} Menit`;
-      
-      const certBox = document.getElementById('certificateClaimBox');
-      if (isPass) certBox.classList.remove('hidden'); else certBox.classList.add('hidden');
-      
-      renderDiscussions();
+      document.getElementById('resTotalScore').innerText = totalRawScore;
+      document.getElementById('resScale100').innerText = final100;
+      document.getElementById('resStatus').innerText = final100 >= 70 ? 'Lulus' : 'Remedial';
       showScreen('viewResult');
-    }
-
-    function openCertificateModal() {
-      if (!latestSubmissionData) return;
-      const sub = latestSubmissionData;
-      document.getElementById('certStudentName').innerText = sub.name.toUpperCase();
-      document.getElementById('certStudentSchool').innerText = sub.school.toUpperCase();
-      document.getElementById('certSubjectName').innerText = sub.subject;
-      document.getElementById('certPackageName').innerText = sub.package;
-      document.getElementById('certScore').innerText = sub.finalScore;
-      let predikat = "LULUS / MEMENUHI KKM";
-      if (sub.finalScore >= 95) predikat = "ISTIMEWA / DENGAN PUJIAN";
-      else if (sub.finalScore >= 85) predikat = "SANGAT BAIK / MEMUASKAN";
-      else if (sub.finalScore >= 70) predikat = "BAIK / LULUS";
-      document.getElementById('certPredicate').innerText = predikat;
-      document.getElementById('certNumber').innerText = `No: 400.3.11.1/TKA-MRG/2026/${Math.floor(1000 + Math.random() * 9000)}`;
-      document.getElementById('certificateModal').classList.remove('hidden');
-    }
-
-    function closeCertificateModal() {
-      document.getElementById('certificateModal').classList.add('hidden');
     }
 
     function toggleDiscussion() {
       const sec = document.getElementById('discussionSection');
-      if (sec.classList.contains('hidden')) {
-        sec.classList.remove('hidden');
-      } else {
-        sec.classList.add('hidden');
-      }
-    }
-
-    function renderDiscussions() {
-      const container = document.getElementById('discussionContainer');
-      document.getElementById('discussionTitle').innerText = `Kunci Jawaban & Pembahasan ${selectedSubject.toUpperCase()} - Paket 1`;
-      container.innerHTML = '';
-      currentQuestions.forEach((q, idx) => {
-        const item = document.createElement('div');
-        item.className = "bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2 text-xs sm:text-sm text-left";
-        item.innerHTML = `
-          <div class="flex items-center justify-between border-b border-slate-100 pb-2">
-            <span class="font-bold text-teal-700">Nomor ${idx + 1} (${q.type})</span>
-            <span class="text-[11px] text-slate-400 font-semibold">${q.topic || 'Ujian TKA'}</span>
-          </div>
-          <div class="text-slate-800">${q.text}</div>
-          <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-emerald-950 font-medium">
-            <span class="font-black text-emerald-800">Pembahasan:</span><br>
-            ${q.explanation || 'Kunci jawaban dan pembahasan resmi.'}
-          </div>
-        `;
-        container.appendChild(item);
-      });
+      sec.classList.toggle('hidden');
     }
 
     window.addEventListener('DOMContentLoaded', () => {
       populateSchoolDropdown();
-      checkActiveExamSession();
     });
   </script>
 </body>
