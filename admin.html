@@ -101,11 +101,35 @@
         <button onclick="downloadBackupJSON()" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition flex items-center gap-1.5">
           💾 Backup JSON
         </button>
-        <button onclick="promptSafeClearData()" class="px-3.5 py-2 bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs rounded-xl border border-rose-200 transition flex items-center gap-1.5">
-          🗑️ Bersihkan Data Testing
-        </button>
         <button onclick="logoutAdmin()" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs rounded-xl transition">
           Keluar
+        </button>
+      </div>
+    </div>
+
+    <!-- PANEL BERSIHKAN DATA SPESIFIK MAPEL & PAKET -->
+    <div class="bg-white/95 p-5 rounded-3xl border border-rose-200 shadow-sm no-print flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div>
+        <h4 class="text-xs font-black text-rose-900 uppercase tracking-wide">🗑️ Panel Pembersihan Data Testing (Sebelum Tryout)</h4>
+        <p class="text-[11px] text-slate-500">Pilih mapel dan paket spesifik untuk menghapus data latihan siswa, atau pilih "Semua" untuk membersihkan seluruh data.</p>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <select id="clearTargetSubject" class="px-3 py-2 text-xs rounded-xl border border-slate-300 font-bold bg-white text-slate-800 outline-none cursor-pointer">
+          <option value="ALL">Semua Mapel</option>
+          <option value="Matematika">Matematika</option>
+          <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+        </select>
+        <select id="clearTargetPackage" class="px-3 py-2 text-xs rounded-xl border border-slate-300 font-bold bg-white text-slate-800 outline-none cursor-pointer">
+          <option value="ALL">Semua Paket</option>
+          <option value="UJICOBA">UJICOBA</option>
+          <option value="Paket 1">Paket 1</option>
+          <option value="Paket 2">Paket 2</option>
+          <option value="Paket 3">Paket 3</option>
+          <option value="Paket 4">Paket 4</option>
+          <option value="Paket 5">Paket 5</option>
+        </select>
+        <button onclick="promptSafeClearData()" class="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white font-black text-xs rounded-xl shadow-sm transition">
+          Bersihkan Data
         </button>
       </div>
     </div>
@@ -205,18 +229,15 @@
           <tbody id="adminTableBody" class="text-xs divide-y divide-slate-100 text-slate-700"></tbody>
         </table>
       </div>
-      <!-- PENGESAHAN 2 TANDA TANGAN (RAPAT, TRANSPARAN & BEBAS KOTAK) -->
+      <!-- PENGESAHAN 2 TANDA TANGAN -->
       <div class="hidden print:block pt-3 mt-2" style="page-break-inside: avoid; break-inside: avoid;">
         <div class="grid grid-cols-2 gap-8 text-center text-slate-900 px-6">
-          
-          <!-- KIRI: Ketua Sie Keguruan (Karyono, S.Pd., M.Pd.) + STEMPEL OVAL UNGU -->
           <div class="flex flex-col items-center justify-end" style="page-break-inside: avoid;">
             <div>
               <p class="text-xs font-normal">Mengetahui,</p>
               <p class="text-xs font-bold leading-tight">Ketua Sie Keguruan</p>
             </div>
             <div class="relative flex items-center justify-center my-1" style="height: 75px; width: 220px; background: transparent;">
-              <!-- Stempel Ungu -->
               <div class="absolute pointer-events-none opacity-80 select-none z-10" style="width: 145px; height: 90px; top: -8px; transform: rotate(-5deg); background: transparent;">
                 <svg viewBox="0 0 240 140" class="w-full h-full" style="background: transparent;">
                   <ellipse cx="120" cy="70" rx="112" ry="62" fill="none" stroke="#4f46e5" stroke-width="3.5" style="stroke-opacity: 0.88;"/>
@@ -238,7 +259,6 @@
                   </text>
                 </svg>
               </div>
-              <!-- Vektor Tanda Tangan Karyono -->
               <div class="relative z-20 w-full h-full flex items-center justify-center" style="background: transparent;">
                 <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none" style="background: transparent;">
                   <path d="M 35,46 C 45,28 60,18 75,18 C 88,18 95,28 92,44 C 88,60 74,72 58,72 C 45,72 40,62 48,50 C 60,34 92,26 128,26 C 170,26 215,30 260,34 M 82,32 C 95,40 108,55 118,65 M 78,56 C 98,52 145,46 195,48 M 80,68 C 110,64 160,58 210,60" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -250,13 +270,11 @@
               <p class="font-bold text-slate-800 text-[11px] mt-0.5">NIP. 19721112 199803 1 011</p>
             </div>
           </div>
-          <!-- KANAN: Tanggal & Admin Sistem TKA (Muhammad Imam Suwiji) -->
           <div class="flex flex-col items-center justify-end" style="page-break-inside: avoid;">
             <div>
               <p class="text-xs font-medium" id="printDatePlace">Mranggen, 17 Oktober 2026</p>
               <p class="text-xs font-bold leading-tight mt-0.5">Admin Sistem TKA,</p>
             </div>
-            <!-- Vektor Tanda Tangan Muhammad Imam Suwiji -->
             <div class="relative flex items-center justify-center my-1" style="height: 75px; width: 220px; background: transparent;">
               <svg viewBox="0 0 280 140" class="h-full w-auto select-none pointer-events-none" style="background: transparent;">
                 <path d="M 35,52 C 90,50 170,45 200,42 M 35,52 C 25,60 40,85 70,110 C 105,135 150,140 180,105 C 190,90 200,65 202,32 L 202,110 M 150,70 C 145,78 152,86 160,82 C 168,78 160,95 150,92 M 198,82 C 210,65 220,75 224,95 C 228,75 238,62 250,90 L 220,138 M 130,95 L 255,84" 
@@ -271,7 +289,7 @@
         </div>
       </div>
     </div>
-    <!-- ================= VIEW 2: REKAP PERINGKAT SEKOLAH (RATA-RATA) ================= -->
+    <!-- ================= VIEW 2: REKAP PERINGKAT SEKOLAH ================= -->
     <div id="viewSchoolsSection" class="hidden bg-white rounded-3xl border border-teal-200/80 shadow-md p-6 space-y-4">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 no-print">
         <div>
@@ -373,7 +391,7 @@
         </div>
         <div class="flex items-center gap-2">
           <select id="analysisPackageFilter" onchange="renderItemAnalysisTable()" class="px-3 py-2 text-xs rounded-xl border border-teal-300 font-bold bg-teal-50 text-teal-900 outline-none cursor-pointer">
-            <option value="Ujicoba">Ujicoba</option>
+            <option value="UJICOBA">UJICOBA</option>
             <option value="Paket 1" selected>Paket 1</option>
             <option value="Paket 2">Paket 2</option>
             <option value="Paket 3">Paket 3</option>
@@ -879,7 +897,6 @@
         if (!schoolMap[sch]) {
           schoolMap[sch] = { studentScores: {}, allScores: [] };
         }
-        // Identifikasi unik siswa berdasarkan Nama + Asal Sekolah agar nilai Matematika & B.Indo bisa digabung rata-ratanya
         const studentKey = `${s.name}_${s.absen || 1}`;
         if (!schoolMap[sch].studentScores[studentKey]) {
           schoolMap[sch].studentScores[studentKey] = [];
@@ -893,7 +910,6 @@
         const studentKeys = Object.keys(studentObj);
         const count = studentKeys.length;
         
-        // Hitung rata-rata tiap siswa terlebih dahulu, lalu rata-ratakan sekolah
         let totalStudentAvg = 0;
         studentKeys.forEach(sk => {
           const arr = studentObj[sk];
@@ -1077,16 +1093,37 @@
       setTimeout(() => window.print(), 250);
     }
     async function promptSafeClearData() {
-      const code = prompt("⚠️ PERINGATAN PEMBERSIHAN DATA:\nKetik 'HAPUS' (huruf besar) untuk membersihkan database testing:");
+      const targetSub = document.getElementById('clearTargetSubject').value; // ALL, Matematika, Bahasa Indonesia
+      const targetPkg = document.getElementById('clearTargetPackage').value; // ALL, UJICOBA, Paket 1-5
+      
+      const confirmMsg = `⚠️ PERINGATAN PEMBERSIHAN DATA:\nAnda akan menghapus data ujian untuk:\n- Mapel: ${targetSub}\n- Paket: ${targetPkg}\n\nKetik 'HAPUS' (huruf besar) untuk mengonfirmasi:`;
+      const code = prompt(confirmMsg);
       
       if (code === "HAPUS") {
         try {
-          if (typeof FIREBASE_DB_URL !== 'undefined' && FIREBASE_DB_URL) {
-            await fetch(FIREBASE_DB_URL, { method: 'DELETE' });
+          let submissions = getStoredSubmissions();
+          if (targetSub === 'ALL' && targetPkg === 'ALL') {
+            submissions = [];
+            if (typeof FIREBASE_DB_URL !== 'undefined' && FIREBASE_DB_URL) {
+              await fetch(FIREBASE_DB_URL, { method: 'DELETE' });
+            }
+          } else {
+            submissions = submissions.filter(s => {
+              const matchSub = (targetSub === 'ALL' || s.subject === targetSub);
+              const matchPkg = (targetPkg === 'ALL' || s.package === targetPkg);
+              return !(matchSub && matchPkg); // Hapus yang sesuai target
+            });
+            if (typeof FIREBASE_DB_URL !== 'undefined' && FIREBASE_DB_URL) {
+              await fetch(FIREBASE_DB_URL, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(submissions)
+              });
+            }
           }
-          localStorage.removeItem('tka_submissions_multi');
+          localStorage.setItem('tka_submissions_multi', JSON.stringify(submissions));
           renderAdminDashboard();
-          alert("✅ Berhasil! Database di cloud dan memori lokal telah bersih.");
+          alert("✅ Berhasil! Data testing pada target tersebut telah dibersihkan.");
         } catch (err) {
           alert("Gagal menghapus data di cloud: " + err.message);
         }
