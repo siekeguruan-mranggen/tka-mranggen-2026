@@ -425,41 +425,41 @@
       "SDS MUHAMMADIYAH PUCANG GADING", "SDS TERPADU DARUNNAJAH"
     ];
 
-    // 1. DATA SOAL MATEMATIKA - PAKET 1 (30 BUTIR UTUH)
+    // 1. DATA SOAL MATEMATIKA - PAKET 1 (30 BUTIR UTUH BERDASARKAN DOKUMEN PDF ASLI)
     const SOAL_30_MATEMATIKA = [
-      { id: 1, type: "PG", text: "1. Hasil dari 16¾ × 24 - 0,25 × 20 + 1⅓ × 4 adalah ....", options: ["3", "4", "6", "8"], correct: 0, topic: "Operasi Hitung Campuran", explanation: "16¾ × 24 = 402; 0,25 × 20 = 5; 1⅓ × 4 = 16/3. Hasil akhir sesuai perhitungan adalah 3." },
-      { id: 2, type: "PG", text: "2. Perhatikan kolom sebelah kiri dan kanan berikut ini! (1) 60% = 3/5 (C), (2) 50% = 1/2 (D), (3) 25% = 1/4 (A), (4) 75% = 3/4 (B). Pasangan yang tepat yang menunjukkan hubungan antara persen dan pecahan biasa adalah ....", options: ["1-C, 2-A", "1-C, 2-D", "3-A, 4-B", "3-B, 2-C"], correct: 1, topic: "Persen & Pecahan", explanation: "60% setara dengan 3/5 (C) dan 50% setara dengan 1/2 (D)." },
-      { id: 3, type: "PG", text: "3. Di bawah ini yang bukan merupakan kelipatan persekutuan dari 12 dan 18 adalah ....", options: ["36", "48", "72", "108"], correct: 1, topic: "Kelipatan Persekutuan", explanation: "KPK dari 12 dan 18 adalah 36. Kelipatan persekutuannya adalah 36, 72, 108, dst. Angka 48 bukan kelipatan persekutuan." },
-      { id: 4, type: "PG", text: "4. FPB dari 48, 64, dan 96 adalah ....", options: ["12", "16", "24", "32"], correct: 1, topic: "FPB", explanation: "Faktorisasi prima 48 = 2⁴×3, 64 = 2⁶, 96 = 2⁵×3. FPB = 2⁴ = 16." },
-      { id: 5, type: "PG", text: "5. Budi les renang setiap 6 hari sekali. Deni setiap 4 hari sekali di tempat yang sama. Jika tanggal 2 Januari 2026 mereka les bersama untuk pertama kali, tanggal berapa lagi mereka akan belajar berenang untuk yang ketiga kalinya?", options: ["8 Januari 2026", "14 Januari 2026", "20 Januari 2026", "26 Januari 2026"], correct: 3, topic: "KPK Jadwal", explanation: "KPK(6,4) = 12 hari. Pertemuan ke-1 (2 Jan), ke-2 (14 Jan), ke-3 (26 Jan)." },
-      { id: 6, type: "PG", text: "6. Pak Yono mempunyai lahan seluas 1,5 hektar. Setengah bagian ditanami padi, 2/5 bagian ditanami jagung, dan sisanya ditanami ketela pohon. Luas lahan yang ditanami ketela pohon adalah ....", options: ["7.500 m²", "5.000 m²", "2.500 m²", "1.500 m²"], correct: 3, topic: "Pecahan Luas", explanation: "1,5 ha = 15.000 m². Sisa bagian = 1 - 1/2 - 2/5 = 1/10 bagian. 1/10 × 15.000 = 1.500 m²." },
-      { id: 7, type: "PG", text: "7. Perhatikan sifat-sifat bangun datar di bawah ini!<br>a. Sudut-sudut yang berhadapan sama besar.<br>b. Memiliki 4 sisi dan 4 titik sudut.<br>c. Memiliki 2 pasang sisi sejajar yang sama panjang.<br>d. Memiliki 2 sudut tumpul dan 2 sudut lancip.<br>e. Mempunyai dua diagonal yang tidak sama panjang.<br>Berdasarkan ciri-ciri di atas, bangun datar yang dimaksud adalah ...", options: ["jajar genjang", "layang-layang", "belah ketupat", "trapesium"], correct: 0, topic: "Sifat Bangun Datar", explanation: "Ciri-ciri di atas merujuk pada bangun jajar genjang." },
-      { id: 8, type: "PG", text: "8. Kelompok pecahan berikut yang berurutan dari terkecil ke terbesar adalah ....", options: ["225%; 2 12/20; 2 2/5; 2,75; 5/2", "225%; 2 12/20; 2 2/5; 5/2; 2,75", "225%; 2 2/5; 2 12/20; 2,75; 5/2", "225%; 2 2/5; 5/2; 2 12/20; 2,75"], correct: 3, topic: "Urutan Pecahan", explanation: "Nilai desimal berturut-turut: 2,25; 2,4; 2,5; 2,6; 2,75. Urutan benar: 225%, 2 2/5, 5/2, 2 12/20, 2,75." },
-      { id: 9, type: "PG", text: `9. Sebuah bangun berbentuk trapesium dengan sisi atas 7 cm, sisi bawah 19 cm, tinggi 8 cm, dan sisi miring 10 cm. Luas trapesium adalah ....`, options: ["104 cm²", "208 cm²", "312 cm²", "416 cm²"], correct: 0, topic: "Luas Trapesium", explanation: "Luas = 1/2 × (7 + 19) × 8 = 104 cm²." },
-      { id: 10, type: "PG", text: "10. Luas ketiga persegi dengan panjang sisi masing-masing 13 cm, 21 cm, dan 43 cm jika dijumlahkan adalah ....", options: ["1.849 cm²", "2.290 cm²", "2.459 cm²", "5.929 cm²"], correct: 2, topic: "Luas Persegi", explanation: "13² + 21² + 43² = 169 + 441 + 1.849 = 2.459 cm²." },
-      { id: 11, type: "PG", text: "11. Perhatikan gambar susunan kubus. Bila dilihat dari depan, susunan kubus tersebut akan tampak seperti ....", options: ["Opsi A", "Opsi B", "Opsi C", "Opsi D"], correct: 0, topic: "Proyeksi Bangun Ruang", explanation: "Tampak depan sesuai dengan proyeksi Opsi A." },
-      { id: 12, type: "PG", text: "12. Sebuah kaleng susu berisi 0,8 liter susu. Susu itu diminum Dhika sebanyak 1/4 dm³. Lima belas menit kemudian Hima datang dan minum susu tersebut sebanyak 125 ml. Sisa susu dalam kaleng adalah ....", options: ["450 ml", "425 ml", "375 ml", "350 ml"], correct: 1, topic: "Volume", explanation: "0,8 l = 800 ml. 1/4 dm³ = 250 ml. Hima = 125 ml. Sisa = 800 - 250 - 125 = 425 ml." },
-      { id: 13, type: "PG", text: "13. Ibu naik sepeda motor dari rumah ke kantor yang berjarak 15 km dengan kecepatan rata-rata 60 km/jam. Jika ibu berangkat pukul 06.30, maka sampai di kantor pukul ....", options: ["06.40", "06.45", "06.50", "06.55"], correct: 1, topic: "Kecepatan", explanation: "Waktu = 15/60 jam = 15 menit. Tiba pukul 06.45." },
-      { id: 14, type: "PG", text: "14. Data hasil panen ikan Pak Imam: Lele 125 kg, Gurami 75 kg, Nila 90 kg, Mujair 60 kg, Patin 75 kg. Diagram batang yang sesuai adalah ....", options: ["Diagram A", "Diagram B", "Diagram C", "Diagram D"], correct: 1, topic: "Diagram Batang", explanation: "Diagram batang yang mewakili data secara tepat adalah Diagram B." },
-      { id: 15, type: "PG", text: "15. Tabel buah terjual: Mangga 120, Pisang 80, Jambu 150, Jeruk 250, Apel 100. Pernyataan di bawah ini yang tidak benar adalah ...", options: ["Apel yang terjual lebih sedikit daripada mangga.", "Selisih jeruk dan apel sama dengan jambu.", "Buah yang terjual paling sedikit adalah pisang.", "Buah yang terjual lebih dari 100 biji ada dua jenis."], correct: 3, topic: "Analisis Data", explanation: "Buah > 100 biji ada Mangga (120), Jambu (150), dan Jeruk (250), total 3 jenis. Pernyataan D salah." },
-      { id: 16, type: "MCMA", text: "16. Minggu kemarin Dian membawa 5 lembar uang 50rb, 4 lembar 20rb, 2 lembar 10rb. Harga kain Rp400.000, diskon 15%. Pilihlah pernyataan yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Dian tidak jadi membeli kain karena uangnya kurang.", "Diskon yang diperoleh Dian sebesar Rp60.000,00.", "Sisa uang Dian setelah membayar kain adalah Rp10.000,00."], correct: [1, 2], topic: "Aritmatika Sosial", explanation: "Total uang = Rp350.000. Diskon = Rp60.000. Harga bayar = Rp340.000. Sisa = Rp10.000. Opsi 2 dan 3 Benar." },
-      { id: 17, type: "MCMA", text: "17. Perhatikan segitiga siku-siku dengan sisi tegak AB = 7 cm dan sisi miring AC = 25 cm. Pilihlah pernyataan yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Keliling bangun tersebut adalah 56 cm.", "Panjang sisi BC adalah 18 cm.", "Luas bangun di atas adalah 84 cm²."], correct: [0, 2], topic: "Pythagoras & Luas", explanation: "BC = 24 cm. Keliling = 7+24+25 = 56 cm. Luas = 1/2 × 7 × 24 = 84 cm². Opsi 1 dan 3 Benar." },
-      { id: 18, type: "MCMA", text: "18. Susunan kubus dengan panjang sisi 5 cm. Pilihlah pernyataan yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Ada 10 buah kubus yang volumenya sama.", "Volume tiap kubus satuan sebesar 125 cm³.", "Luas permukaan kubus yang menempel di bawah sebesar 125 cm²."], correct: [0, 1], topic: "Volume Kubus", explanation: "Kubus berjumlah 10 buah identik, volume kubus 5³ = 125 cm³. Opsi 1 dan 2 Benar." },
-      { id: 19, type: "MCMA", text: "19. Sebuah kaleng susu balok dengan panjang 2 dm, lebar 10 cm, tinggi 1,5 dm berisi susu 2/5 bagian. Pilihlah pernyataan yang tepat! (Jawaban benar bisa lebih dari satu)", options: ["Volume kaleng tersebut adalah 3.000 cm³.", "Volume susu dalam kaleng adalah 12 liter.", "Agar kaleng penuh perlu tambahan 1.800 cm³ susu."], correct: [0, 2], topic: "Volume Balok", explanation: "Volume total = 3.000 cm³. Susu = 1.200 cm³. Kekurangan = 1.800 cm³. Opsi 1 dan 3 Benar." },
-      { id: 20, type: "MCMA", text: "20. Jarak M-N 180 km. Banu (50 km/jam) dan Joko (70 km/jam) berangkat pukul 06.00. Pilihlah pernyataan yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Mereka akan berpapasan pada pukul 07.30.", "Mereka berpapasan pada jarak 75 km dari kota M.", "Pukul 08.30 Joko sudah sampai di kota M."], correct: [0, 1], topic: "Kecepatan Berpapasan", explanation: "Waktu papasan = 1,5 jam (pukul 07.30). Jarak dari M = 50 × 1,5 = 75 km. Opsi 1 dan 2 Benar." },
-      { id: 21, type: "MCMA", text: "21. 2,5 abad + 4 dasawarsa - 5 windu + 2 lustrum = ... Setara dengan: (Jawaban benar bisa lebih dari satu)", options: ["26 dasawarsa", "32 windu", "52 lustrum"], correct: [0, 1, 2], topic: "Satuan Waktu", explanation: "Total 260 tahun = 26 dasawarsa = 32,5 windu = 52 lustrum. Opsi 1, 2, dan 3 Benar." },
-      { id: 22, type: "MCMA", text: "22. Bu Desty mempunyai 72 permen, 64 coklat, dan 32 roti dibagikan ke anak-anak sama banyak. Pilihlah pernyataan yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Jumlah anak terbanyak yang mendapat makanan adalah 16 anak.", "Jumlah permen yang diterima tiap anak sebanyak 9 buah.", "Setiap anak menerima makanan sebanyak 21 buah."], correct: [0], topic: "FPB", explanation: "FPB(72, 64, 32) = 16 anak. Opsi 1 Benar." },
-      { id: 23, type: "MCMA", text: "23. Data pembeli baju: H1=85, H2=75, H3=100, H4=65, H5=115. Pilihlah pernyataan berikut yang benar! (Jawaban benar lebih dari satu)", options: ["Selisih pembeli pada hari pertama dan kedua adalah 10 orang.", "Jumlah pembeli pada hari ketiga dan kelima sebanyak 215 orang.", "Ada dua hari yang jumlah pembelinya lebih dari 100 orang."], correct: [0, 1], topic: "Analisis Data", explanation: "Selisih H1-H2 = 10, H3+H5 = 215. Hari > 100 hanya hari ke-5. Opsi 1 dan 2 Benar." },
-      { id: 24, type: "Kategori", text: "24. Perhatikan bangun datar belah ketupat/layang-layang!<br><br>Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!", statements: ["Bangun datar tersebut mempunyai dua sumbu simetri.", "Bangun datar tersebut mempunyai dua diagonal yang sama panjang.", "Keempat sudut bangun datar tersebut sama besar."], correct: ["Benar", "Salah", "Salah"], topic: "Bangun Datar", explanation: "Kunci: Benar, Salah, Salah." },
+      { id: 1, type: "PG", text: "1. Hasil dari 16⅔% × 24 - 0,25 × 20 + 1¾ × 4 adalah ....", options: ["3", "4", "6", "8"], correct: 2, topic: "Operasi Hitung Pecahan", explanation: "16⅔% = 1/6; (1/6 × 24) = 4; (0,25 × 20) = 5; (1¾ × 4) = 7. Hasil = 4 - 5 + 7 = 6. (Kunci: C)" },
+      { id: 2, type: "PG", text: "2. Perhatikan kolom sebelah kiri dan kanan berikut ini!<br>Angka 1: 60% — Bentuk Pecahan Biasa 3/5 (C)<br>Angka 2: 50% — Bentuk Pecahan Biasa 1/2 (D)<br>Angka 3: 25% — Bentuk Pecahan Biasa 1/4 (A)<br>Angka 4: 75% — Bentuk Pecahan Biasa 3/4 (B)<br>Pasangan yang tepat yang menunjukkan hubungan antara persen dan pecahan biasa adalah ....", options: ["1 - C, 2 - A", "1 - C, 2 - D", "3 - A, 4 - B", "3 - B, 2 - C"], correct: 1, topic: "Persen & Pecahan", explanation: "60% = 3/5 (C) dan 50% = 1/2 (D). (Kunci: B)" },
+      { id: 3, type: "PG", text: "3. Di bawah ini yang bukan merupakan kelipatan persekutuan dari 12 dan 18 adalah ....", options: ["36", "48", "72", "108"], correct: 1, topic: "Kelipatan Persekutuan", explanation: "KPK dari 12 dan 18 adalah 36. Kelipatan persekutuannya adalah 36, 72, 108, dst. Angka 48 bukan kelipatan persekutuan. (Kunci: B)" },
+      { id: 4, type: "PG", text: "4. FPB dari 48, 64, dan 96 adalah ....", options: ["12", "16", "24", "32"], correct: 1, topic: "FPB", explanation: "Faktorisasi prima 48 = 2⁴×3, 64 = 2⁶, 96 = 2⁵×3. FPB = 2⁴ = 16. (Kunci: B)" },
+      { id: 5, type: "PG", text: "5. Budi les renang setiap 6 hari sekali. Deni les renang di tempat yang sama setiap 4 hari sekali. Jika tanggal 2 Januari 2026, mereka berdua les renang bersama untuk yang pertama kali. Tanggal berapa lagi mereka akan belajar berenang untuk yang ketiga kalinya?", options: ["8 Januari 2026", "14 Januari 2026", "20 Januari 2026", "26 Januari 2026"], correct: 3, topic: "KPK Jadwal", explanation: "KPK(6,4) = 12 hari. Pertemuan ke-2 = 2 Jan + 12 = 14 Jan. Pertemuan ke-3 = 14 Jan + 12 = 26 Januari 2026. (Kunci: D)" },
+      { id: 6, type: "PG", text: "6. Pak Yono mempunyai lahan seluas 1,5 hektar. 1/2 dari lahan tersebut ditanami padi, 2/5 ditanami jagung, dan sisanya ditanami ketela pohon. Luas lahan yang ditanami ketela pohon adalah ....", options: ["7.500 m²", "5.000 m²", "2.500 m²", "1.500 m²"], correct: 3, topic: "Pecahan Luas", explanation: "1,5 ha = 15.000 m². Sisa bagian = 1 - 1/2 - 2/5 = 1/10 bagian. 1/10 × 15.000 = 1.500 m². (Kunci: D)" },
+      { id: 7, type: "PG", text: "7. Perhatikan sifat-sifat bangun datar di bawah ini!<br>a. Sudut-sudut yang berhadapan sama besar.<br>b. Memiliki 4 sisi dan 4 titik sudut.<br>c. Memiliki 2 pasang sisi sejajar yang sama panjang.<br>d. Memiliki 2 sudut tumpul dan 2 sudut lancip.<br>e. Mempunyai dua diagonal yang tidak sama panjang.<br>Berdasarkan ciri-ciri di atas, bangun datar yang dimaksud adalah ...", options: ["jajar genjang", "layang-layang", "belah ketupat", "trapesium"], correct: 0, topic: "Sifat Bangun Datar", explanation: "Ciri-ciri tersebut sesuai dengan bangun datar Jajar Genjang. (Kunci: A)" },
+      { id: 8, type: "PG", text: "8. Kelompok pecahan berikut yang berurutan dari terkecil ke terbesar adalah ....", options: ["225%; 2 12/20; 2 2/5; 2,75; 5/2", "225%; 2 12/20; 2 2/5; 5/2; 2,75", "225%; 2 2/5; 2 12/20; 2,75; 5/2", "225%; 2 12/20; 2 2/5; 2,75; 5/2"], correct: 2, topic: "Urutan Pecahan", explanation: "Nilai desimal: 2,25; 2,4; 2,6; 2,75; 2,5. Urutan terkecil ke terbesar yang benar adalah 225%; 2 2/5; 2 12/20; 2,75; 5/2. (Kunci: C)" },
+      { id: 9, type: "PG", text: "9. Sebuah bangun berbentuk trapesium dengan sisi atas 7 cm, sisi bawah 19 cm, tinggi 8 cm, dan sisi miring 10 cm. Luas trapesium adalah ....", options: ["104 cm²", "208 cm²", "312 cm²", "416 cm²"], correct: 0, topic: "Luas Trapesium", explanation: "Luas = 1/2 × (7 + 19) × 8 = 104 cm². (Kunci: A)" },
+      { id: 10, type: "PG", text: "10. Perhatikan gambar ketiga persegi dengan panjang sisi 13 cm, 21 cm, dan 43 cm. Luas ketiga persegi di atas jika dijumlahkan adalah ....", options: ["1.849 cm²", "2.290 cm²", "2.459 cm²", "5.929 cm²"], correct: 2, topic: "Luas Persegi", explanation: "13² + 21² + 43² = 169 + 441 + 1.849 = 2.459 cm². (Kunci: C)" },
+      { id: 11, type: "PG", text: "11. Perhatikan gambar susunan kubus. Bila dilihat dari depan, susunan kubus tersebut akan tampak seperti ....", options: ["Opsi A", "Opsi B", "Opsi C", "Opsi D"], correct: 0, topic: "Proyeksi Kubus", explanation: "Proyeksi tampak depan sesuai dengan pilihan A. (Kunci: A)" },
+      { id: 12, type: "PG", text: "12. Sebuah kaleng susu berisi 0,8 liter susu. Susu itu diminum Dhika sebanyak 1/4 dm³. Lima belas menit kemudian Hima datang dan minum susu tersebut sebanyak 125 ml. Sisa susu dalam kaleng tersebut adalah ....", options: ["450 ml", "425 ml", "375 ml", "350 ml"], correct: 1, topic: "Volume & Konversi", explanation: "0,8 liter = 800 ml. 1/4 dm³ = 250 ml. Minum Hima = 125 ml. Sisa = 800 - 250 - 125 = 425 ml. (Kunci: B)" },
+      { id: 13, type: "PG", text: "13. Ibu naik sepeda motor dari rumah ke kantor yang berjarak 15 km dengan kecepatan rata-rata 60 km/jam. Jika ibu berangkat pukul 06.30, maka sampai di kantor pukul ....", options: ["06.40", "06.45", "06.50", "06.55"], correct: 1, topic: "Waktu Tempuh", explanation: "Waktu = 15 / 60 jam = 1/4 jam = 15 menit. Tiba pukul 06.30 + 15 menit = 06.45. (Kunci: B)" },
+      { id: 14, type: "PG", text: "14. Data hasil panen ikan Pak Imam: Lele 125 kg, Gurami 75 kg, Nila 90 kg, Mujair 60 kg, Patin 75 kg. Diagram batang yang sesuai dengan tabel di atas adalah ....", options: ["Diagram A", "Diagram B", "Diagram C", "Diagram D"], correct: 1, topic: "Diagram Batang", explanation: "Diagram batang yang mewakili data secara tepat adalah Diagram B. (Kunci: B)" },
+      { id: 15, type: "PG", text: "15. Perhatikan tabel banyaknya buah yang terjual: Mangga 120, Pisang 80, Jambu 150, Jeruk 250, Apel 100. Pernyataan di bawah ini yang tidak benar adalah ...", options: ["Apel yang terjual lebih sedikit daripada mangga.", "Selisih jeruk dan apel sama dengan jambu.", "Buah yang terjual paling sedikit adalah pisang.", "Buah yang terjual lebih dari 100 biji ada dua jenis."], correct: 3, topic: "Analisis Data", explanation: "Buah > 100 biji ada Mangga (120), Jambu (150), dan Jeruk (250), total ada 3 jenis. Pernyataan D salah. (Kunci: D)" },
+      { id: 16, type: "MCMA", text: "16. Minggu kemarin Dian membawa 5 lembar uang 50rb, 4 lembar 20rb, 2 lembar 10rb. Harga kain Rp400.000, diskon 15%. Pilihlah pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Dian tidak jadi membeli kain karena uangnya kurang.", "Diskon yang diperoleh Dian sebesar Rp60.000,00.", "Sisa uang Dian setelah membayar kain adalah Rp10.000,00."], correct: [1, 2], topic: "Aritmatika Sosial", explanation: "Total uang = Rp350.000. Diskon = 15% × 400.000 = Rp60.000. Bayar = Rp340.000. Sisa = Rp10.000. Opsi 2 dan 3 Benar." },
+      { id: 17, type: "MCMA", text: "17. Perhatikan gambar segitiga siku-siku dengan sisi tegak 7 cm dan sisi miring 25 cm. Pilihlah pernyataan-pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Keliling bangun tersebut adalah 56 cm.", "Panjang sisi BC adalah 18 cm.", "Luas bangun di atas adalah 84 cm²."], correct: [0, 2], topic: "Pythagoras & Luas", explanation: "BC = 24 cm. Keliling = 7+24+25 = 56 cm. Luas = 1/2 × 7 × 24 = 84 cm². Opsi 1 dan 3 Benar." },
+      { id: 18, type: "MCMA", text: "18. Perhatikan susunan kubus dengan panjang sisi 5 cm. Pilihlah pernyataan-pernyataan di bawah ini yang benar! (Jawaban benar lebih dari satu)", options: ["Ada 10 buah kubus yang volumenya sama.", "Volume tiap kubus satuan sebesar 125 cm³.", "Luas permukaan kubus yang menempel di bawah sebesar 125 cm²."], correct: [0, 1], topic: "Volume Kubus", explanation: "Kubus berjumlah 10 buah identik, volume kubus 5³ = 125 cm³. Opsi 1 dan 2 Benar." },
+      { id: 19, type: "MCMA", text: "19. Sebuah kaleng susu balok (2 dm × 10 cm × 1,5 dm) berisi susu 2/5 bagian. Pilihlah pernyataan di bawah ini yang tepat! (Jawaban benar lebih dari satu)", options: ["Volume kaleng tersebut adalah 3.000 cm³.", "Volume susu dalam kaleng adalah 12 liter.", "Agar kaleng penuh perlu tambahan 1.800 cm³ susu."], correct: [0, 2], topic: "Volume Balok", explanation: "Volume total = 3.000 cm³. Susu = 1.200 cm³. Kekurangan = 1.800 cm³. Opsi 1 dan 3 Benar." },
+      { id: 20, type: "MCMA", text: "20. Jarak M-N 180 km. Banu (50 km/jam) dan Joko (70 km/jam) berangkat pukul 06.00. Pilihlah pernyataan di bawah ini yang benar! (Jawaban benar lebih dari satu)", options: ["Mereka akan berpapasan pada pukul 07.30.", "Mereka berpapasan pada jarak 75 km dari kota M.", "Pukul 08.30 Joko sudah sampai di kota M."], correct: [0, 1], topic: "Kecepatan Berpapasan", explanation: "Waktu papasan = 1,5 jam (pukul 07.30). Jarak dari M = 50 × 1,5 = 75 km. Opsi 1 dan 2 Benar." },
+      { id: 21, type: "MCMA", text: "21. 2,5 abad + 4 dasawarsa - 5 windu + 2 lustrum = ... Setara dengan: (Jawaban benar lebih dari satu)", options: ["26 dasawarsa", "32 windu", "52 lustrum"], correct: [0, 1, 2], topic: "Satuan Waktu", explanation: "Total 260 tahun = 26 dasawarsa = 32,5 windu = 52 lustrum. Opsi 1, 2, dan 3 Benar." },
+      { id: 22, type: "MCMA", text: "22. Bu Desty mempunyai 72 permen, 64 coklat, dan 32 roti dibagikan ke anak-anak sama banyak. Pilihlah pernyataan di bawah ini yang benar! (Jawaban benar lebih dari satu)", options: ["Jumlah anak terbanyak yang mendapat makanan adalah 16 anak.", "Jumlah permen yang diterima tiap anak sebanyak 9 buah.", "Setiap anak menerima makanan sebanyak 21 buah."], correct: [0], topic: "FPB", explanation: "FPB = 16 anak. Permen per anak = 72/16 = 4,5 buah. Opsi 1 Benar." },
+      { id: 23, type: "MCMA", text: "23. Perhatikan data pembeli baju dalam 5 hari: H1=85, H2=75, H3=100, H4=65, H5=115. Pilihlah pernyataan berikut yang benar! (Jawaban benar lebih dari satu)", options: ["Selisih pembeli pada hari pertama dan kedua adalah 10 orang.", "Jumlah pembeli pada hari ketiga dan kelima sebanyak 215 orang.", "Ada dua hari yang jumlah pembelinya lebih dari 100 orang."], correct: [0, 1], topic: "Analisis Data", explanation: "Selisih H1-H2 = 10, H3+H5 = 215. Hari > 100 hanya ada 1 hari (H5). Opsi 1 dan 2 Benar." },
+      { id: 24, type: "Kategori", text: "24. Perhatikan bangun datar belah ketupat/layang-layang! Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!", statements: ["Bangun datar tersebut mempunyai dua sumbu simetri.", "Bangun datar tersebut mempunyai dua diagonal yang sama panjang.", "Keempat sudut bangun datar tersebut sama besar."], correct: ["Benar", "Salah", "Salah"], topic: "Bangun Datar", explanation: "Kunci: Benar, Salah, Salah." },
       { id: 25, type: "Kategori", text: "25. Wadah balok (12 cm × 8 cm × 4 cm). Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!", statements: ["Volume wadah seluruhnya adalah 384 cm³.", "Jika diisi air 192 cm³, maka tinggi air dalam wadah 2 cm.", "Jika diisi air 0,5 liter, maka air yang tumpah 116 ml."], correct: ["Benar", "Benar", "Benar"], topic: "Volume Balok", explanation: "Kunci: Benar, Benar, Benar." },
       { id: 26, type: "Kategori", text: "26. Umur Ali, Beni, Cantika, Diandra (Diandra = 10 tahun). Tentukan <b>Benar</b> atau <b>Salah</b> pada setiap pernyataan berikut!", statements: ["Dari keempat anak, yang paling muda adalah Diandra.", "Jumlah umur Cantika dan Diandra sama dengan umur Beni.", "Dari anak-anak tersebut, yang paling tua umurnya adalah Ali."], correct: ["Benar", "Benar", "Benar"], topic: "Perbandingan Umur", explanation: "Kunci: Benar, Benar, Benar." },
-      { id: 27, type: "Kategori", text: "27. Ibu membeli beras harga Rp75.000, pengembalian Rp25.000. Tentukan <b>Benar</b> atau <b>Salah</b> kemungkinan pecahan uang yang dibayarkan ibu!", statements: ["Satu lembar uang seratus ribuan.", "Dua lembar uang lima puluh ribuan.", "Sepuluh lembar uang dua puluh ribuan."], correct: ["Benar", "Benar", "Salah"], topic: "Pecahan Uang", explanation: "Kunci: Benar, Benar, Salah." },
+      { id: 27, type: "Kategori", text: "27. Ibu membeli beras di warung harga Rp75.000, kembalian Rp25.000. Tentukan <b>Benar</b> atau <b>Salah</b> pecahan uang yang dibayarkan ibu!", statements: ["Satu lembar uang seratus ribuan.", "Dua lembar uang lima puluh ribuan.", "Sepuluh lembar uang dua puluh ribuan."], correct: ["Benar", "Benar", "Salah"], topic: "Pecahan Uang", explanation: "Kunci: Benar, Benar, Salah." },
       { id: 28, type: "Kategori", text: "28. Diskon 20%. Pensil Rp5.000, penggaris 1,5×pensil, buku 2×penggaris. Membeli 1 lusin buku, 5 pensil, 3 penggaris. Tentukan <b>Benar</b> atau <b>Salah</b>!", statements: ["Harga buku yang harus dibayar Bu Upik adalah Rp144.000,00.", "Harga penggaris sebelum didiskon sebesar Rp32.500,00.", "Harga yang harus dibayar Bu Upik semuanya adalah Rp182.000,00."], correct: ["Benar", "Salah", "Benar"], topic: "Aritmatika Sosial", explanation: "Kunci: Benar, Salah, Benar." },
       { id: 29, type: "Kategori", text: "29. Beras setiap 4 hari, minyak setiap 12 hari. Bersama pertama kali 1 Agustus 2024. Tentukan <b>Benar</b> atau <b>Salah</b>!", statements: ["Tanggal 20 Agustus 2024 Bu Candra hanya membeli beras saja.", "Tanggal 6 September 2024 Bu Candra membeli beras dan minyak goreng secara bersamaan.", "Setiap membeli minyak goreng, Bu Candra pasti membeli beras."], correct: ["Benar", "Benar", "Benar"], topic: "KPK & Kalender", explanation: "Kunci: Benar, Benar, Benar." },
-      { id: 30, type: "Kategori", text: "30. Diagram gambar siswa SD Mutiara (1 gambar = 10 siswa). Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!", statements: ["Selisih siswa paling banyak dengan paling sedikit adalah 30 anak.", "Jumlah siswa kelas II, III, dan VI sama banyak.", "Jumlah siswa seluruhnya sebanyak 350 anak."], correct: ["Benar", "Benar", "Salah"], topic: "Piktogram", explanation: "Kunci: Benar, Benar, Salah." }
+      { id: 30, type: "Kategori", text: "30. Diagram gambar siswa SD Mutiara (1 gambar = 10 siswa). Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!", statements: ["Selisih siswa paling banyak dengan paling sedikit adalah 30 anak.", "Jumlah siswa kelas II, III, dan VI sama banyak.", "Jumlah siswa seluruhnya sebanyak 350 anak."], correct: ["Benar", "Benar", "Salah"], topic: "Interpretasi Piktogram", explanation: "Kunci: Benar, Benar, Salah." }
     ];
 
-    // 2. DATA SOAL BAHASA INDONESIA - PAKET 1 (30 BUTIR UTUH FULL TANPA DIPADATKAN SESUAI DOKUMEN ASLI)
+    // 2. DATA SOAL BAHASA INDONESIA - PAKET 1 (30 BUTIR UTUH BERDASARKAN DOKUMEN ASLI)
     const SOAL_30_BAHASA_INDONESIA_PAKET_1 = [
       {
         id: 1, type: "PG",
@@ -476,7 +476,7 @@
         ],
         correct: 1,
         topic: "Makna Kiasan",
-        explanation: "Paru-paru dunia bermakna sumber utama penghasil oksigen bagi bumi[cite: 60]."
+        explanation: "Paru-paru dunia bermakna sumber utama penghasil oksigen bagi bumi. (Kunci: B)"
       },
       {
         id: 2, type: "PG",
@@ -491,7 +491,7 @@
         ],
         correct: 2,
         topic: "Arti Kosakata",
-        explanation: "Eksploitasi adalah pemanfaatan sumber daya alam untuk keuntungan pribadi secara berlebihan[cite: 60]."
+        explanation: "Eksploitasi adalah pemanfaatan sumber daya alam untuk keuntungan pribadi secara berlebihan. (Kunci: C)"
       },
       {
         id: 3, type: "PG",
@@ -506,7 +506,7 @@
         ],
         correct: 1,
         topic: "Sinonim",
-        explanation: "Anomali memiliki arti serupa dengan keanehan atau kelainan[cite: 60]."
+        explanation: "Anomali memiliki arti serupa dengan keanehan atau kelainan. (Kunci: B)"
       },
       {
         id: 4, type: "PG",
@@ -522,7 +522,7 @@
         ],
         correct: 2,
         topic: "Istilah",
-        explanation: "Reboisasi bermakna penanaman kembali hutan yang telah gundul atau rusak[cite: 60]."
+        explanation: "Reboisasi bermakna penanaman kembali hutan yang telah gundul atau rusak. (Kunci: C)"
       },
       {
         id: 5, type: "PG",
@@ -537,7 +537,7 @@
         ],
         correct: 2,
         topic: "Sinonim",
-        explanation: "Masif bersinonim dengan dalam skala besar dan utuh/menyeluruh[cite: 60]."
+        explanation: "Masif bersinonim dengan dalam skala besar dan utuh/menyeluruh. (Kunci: C)"
       },
       {
         id: 6, type: "PG",
@@ -552,7 +552,7 @@
         ],
         correct: 1,
         topic: "Antonim",
-        explanation: "Antonim dari menyusut adalah mengembang[cite: 60]."
+        explanation: "Antonim dari menyusut adalah mengembang. (Kunci: B)"
       },
       {
         id: 7, type: "PG",
@@ -565,7 +565,7 @@
         ],
         correct: 3,
         topic: "Objek Teks",
-        explanation: "Objek utama yang dideskripsikan adalah vas bunga[cite: 60]."
+        explanation: "Objek utama yang dideskripsikan adalah vas bunga. (Kunci: D)"
       },
       {
         id: 8, type: "PG",
@@ -578,7 +578,7 @@
         ],
         correct: 2,
         topic: "Informasi Penting",
-        explanation: "Informasi pentingnya adalah kantung semar menjebak serangga untuk mendapatkan nitrogen[cite: 60]."
+        explanation: "Informasi pentingnya adalah kantung semar menjebak serangga untuk mendapatkan nitrogen. (Kunci: C)"
       },
       {
         id: 9, type: "PG",
@@ -593,13 +593,13 @@
         ],
         correct: 0,
         topic: "Gagasan Utama",
-        explanation: "Inti sari cerita adalah akibat dari kesombongan Kelinci dan keberhasilan Kura-kura yang tekun[cite: 60]."
+        explanation: "Inti sari cerita adalah akibat dari kesombongan Kelinci dan keberhasilan Kura-kura yang tekun. (Kunci: A)"
       },
       {
         id: 10, type: "MCMA",
         text: `<b>Cermati Teks Bacaan untuk nomor 9-11</b><br><br>
         (Cerita Kelinci dan Kura-kura di atas)<br><br>
-        <b>10.</b> Berdasarkan tindakan Kelinci dan Kura-kura dalam cerita, nilai moral paling penting yang diajarkan adalah... (Pilih dua jawaban yang benar)[cite: 60]`,
+        <b>10.</b> Berdasarkan tindakan Kelinci dan Kura-kura dalam cerita, nilai moral paling penting yang diajarkan adalah... (Pilih dua jawaban yang benar)`,
         options: [
           "Kerendahan hati",
           "Disiplin",
@@ -608,7 +608,7 @@
         ],
         correct: [0, 2],
         topic: "Nilai Moral",
-        explanation: "Nilai moral utama yang diajarkan adalah kerendahan hati dan ketekunan. Opsi A dan C Benar[cite: 60]."
+        explanation: "Nilai moral utama yang diajarkan adalah kerendahan hati dan ketekunan. Opsi A dan C Benar."
       },
       {
         id: 11, type: "PG",
@@ -623,7 +623,7 @@
         ],
         correct: 1,
         topic: "Fungsi Kalimat",
-        explanation: "Fungsinya adalah menjelaskan alasan mengapa Kelinci memutuskan untuk beristirahat[cite: 60]."
+        explanation: "Fungsinya adalah menjelaskan alasan mengapa Kelinci memutuskan untuk beristirahat. (Kunci: B)"
       },
       {
         id: 12, type: "PG",
@@ -638,7 +638,7 @@
         ],
         correct: 1,
         topic: "Penalaran",
-        explanation: "Kejadian tersebut sangat umum dan sering terjadi di lingkungan masyarakat[cite: 60]."
+        explanation: "Kejadian tersebut sangat umum dan sering terjadi di lingkungan masyarakat. (Kunci: B)"
       },
       {
         id: 13, type: "Kategori",
@@ -653,11 +653,11 @@
         ],
         correct: ["Salah", "Salah", "Benar", "Benar"],
         topic: "Relevansi Ide",
-        explanation: "Pernyataan 1 & 2 Tidak Relevan (Salah), pernyataan 3 & 4 Relevan (Benar)[cite: 60]."
+        explanation: "Pernyataan 1 & 2 Tidak Relevan (Salah), pernyataan 3 & 4 Relevan (Benar)."
       },
       {
         id: 14, type: "MCMA",
-        text: `<b>14.</b> Kegiatan itu mendapat respons positif dari warga karena mereka mendapatkan banyak keuntungan. Berdasarkan kalimat tersebut di atas, apa sinonim dari kata yang dicetak miring (positif/keuntungan)? Pilih dua jawaban yang tepat![cite: 60]`,
+        text: `<b>14.</b> Kegiatan itu mendapat respons positif dari warga karena mereka mendapatkan banyak keuntungan. Berdasarkan kalimat tersebut di atas, apa sinonim dari kata yang dicetak miring (positif/keuntungan)? Pilih dua jawaban yang tepat!`,
         options: [
           "Kemudahan",
           "Manfaat",
@@ -666,7 +666,7 @@
         ],
         correct: [1, 2],
         topic: "Sinonim",
-        explanation: "Sinonim yang tepat adalah manfaat dan laba. Opsi B dan C Benar[cite: 60]."
+        explanation: "Sinonim yang tepat adalah manfaat dan laba. Opsi B dan C Benar."
       },
       {
         id: 15, type: "PG",
@@ -681,7 +681,7 @@
         ],
         correct: 2,
         topic: "Gagasan Pokok",
-        explanation: "Gagasan pokoknya adalah kegemaran Kakek Hariman menanam pohon di masa tua[cite: 60]."
+        explanation: "Gagasan pokoknya adalah kegemaran Kakek Hariman menanam pohon di masa tua. (Kunci: C)"
       },
       {
         id: 16, type: "PG",
@@ -696,7 +696,7 @@
         ],
         correct: 3,
         topic: "Karakter Tokoh",
-        explanation: "Kakek Hariman berwatak peduli pada masa depan dan murah hati[cite: 60]."
+        explanation: "Kakek Hariman berwatak peduli pada masa depan dan murah hati. (Kunci: D)"
       },
       {
         id: 17, type: "PG",
@@ -711,7 +711,7 @@
         ],
         correct: 0,
         topic: "Amanat",
-        explanation: "Amanatnya adalah lakukanlah kebaikan yang bermanfaat bagi orang lain di masa depan[cite: 60]."
+        explanation: "Amanatnya adalah lakukanlah kebaikan yang bermanfaat bagi orang lain di masa depan. (Kunci: A)"
       },
       {
         id: 18, type: "Kategori",
@@ -724,7 +724,7 @@
         ],
         correct: ["Benar", "Benar", "Benar", "Benar"],
         topic: "Pemahaman Bacaan",
-        explanation: "Semua pernyataan sesuai dengan isi teks bacaan Arinda[cite: 60]."
+        explanation: "Semua pernyataan sesuai dengan isi teks bacaan Arinda."
       },
       {
         id: 19, type: "PG",
@@ -737,7 +737,7 @@
         ],
         correct: 3,
         topic: "Simpulan Objek",
-        explanation: "Objek yang dideskripsikan adalah jam dinding[cite: 60]."
+        explanation: "Objek yang dideskripsikan adalah jam dinding. (Kunci: D)"
       },
       {
         id: 20, type: "PG",
@@ -750,24 +750,11 @@
         ],
         correct: 0,
         topic: "Karakter Tokoh",
-        explanation: "Karakter Adinda adalah rajin dan ikhlas[cite: 60]."
+        explanation: "Karakter Adinda adalah rajin dan ikhlas. (Kunci: A)"
       },
       {
         id: 21, type: "PG",
-        text: `<b>21.</b> Mentari mulai mengintip dari balik bukit, menyapa dedaunan yang masih basah oleh embun. Suara kicauan burung bersahut-sahutan, menambah kedamaian di desa Lereng Merapi.<br><br>Latar waktu pada kutipan teks tersebut adalah...`,
-        options: [
-          "Sore hari",
-          "Siang hari",
-          "Malam hari",
-          "Pagi hari"
-        ],
-        correct: 3,
-        topic: "Latar Waktu",
-        explanation: "Mentari mengintip dari balik bukit menunjukkan waktu pagi hari[cite: 60]."
-      },
-      {
-        id: 22, type: "PG",
-        text: `<b>22.</b> Gadis itu kini menjadi viral di manapun. Ia menjadi buah bibir bagi ibu-ibu yang sedang berkerumun.<br><br>Makna buah bibir adalah ....`,
+        text: `<b>21.</b> Gadis itu kini menjadi viral di manapun. Ia menjadi buah bibir bagi ibu-ibu yang sedang berkerumun.<br><br>Makna buah bibir adalah ....`,
         options: [
           "Terkenal di mana-mana",
           "Bahan pembicaraan",
@@ -776,11 +763,11 @@
         ],
         correct: 1,
         topic: "Ungkapan",
-        explanation: "Buah bibir bermakna bahan pembicaraan[cite: 60]."
+        explanation: "Buah bibir bermakna bahan pembicaraan. (Kunci: B)"
       },
       {
-        id: 23, type: "PG",
-        text: `<b>23.</b> Pena itu menari-nari di atas kertas untuk menuangkan ide sang penulis. Majas yang digunakan dalam kalimat di atas adalah...`,
+        id: 22, type: "PG",
+        text: `<b>22.</b> Pena itu menari-nari di atas kertas untuk menuangkan ide sang penulis. Majas yang digunakan dalam kalimat di atas adalah...`,
         options: [
           "Hiperbola",
           "Asosiasi",
@@ -789,11 +776,11 @@
         ],
         correct: 2,
         topic: "Majas",
-        explanation: "Majas personifikasi karena pena digambarkan dapat menari seperti manusia[cite: 60]."
+        explanation: "Majas personifikasi karena pena digambarkan dapat menari seperti manusia. (Kunci: C)"
       },
       {
-        id: 24, type: "PG",
-        text: `<b>24.</b> Kalimat berikut yang merupakan majas hiperbola adalah ....`,
+        id: 23, type: "PG",
+        text: `<b>23.</b> Kalimat berikut yang merupakan majas hiperbola adalah ....`,
         options: [
           "Si kutu buku itu selalu duduk di pojok perpustakaan",
           "Amukan jago merah melalap seluruh kampung di pinggiran kota Jakarta.",
@@ -802,11 +789,11 @@
         ],
         correct: 3,
         topic: "Majas",
-        explanation: "Majas hiperbola menggunakan pernyataan yang dilebih-lebihkan secara ekstrem[cite: 60]."
+        explanation: "Majas hiperbola menggunakan pernyataan yang dilebih-lebihkan secara ekstrem. (Kunci: D)"
       },
       {
-        id: 25, type: "PG",
-        text: `<b>25.</b> Pemuda itu kurang baik bila menjadi pemimpin, karena ia ibarat “Bagai air di daun talas”. Apa artinya peribahasa pada kalimat yang dicetak tebal tersebut?`,
+        id: 24, type: "PG",
+        text: `<b>24.</b> Pemuda itu kurang baik bila menjadi pemimpin, karena ia ibarat “Bagai air di daun talas”. Apa artinya peribahasa pada kalimat yang dicetak tebal tersebut?`,
         options: [
           "Orang yang sangat bersih hatinya.",
           "Seseorang yang sangat malas dan banyak bicara",
@@ -815,11 +802,11 @@
         ],
         correct: 2,
         topic: "Peribahasa",
-        explanation: "Bagai air di daun talas berarti orang yang tidak teguh pendiriannya[cite: 60]."
+        explanation: "Bagai air di daun talas berarti orang yang tidak teguh pendiriannya. (Kunci: C)"
       },
       {
-        id: 26, type: "PG",
-        text: `<b>26.</b> Sekarang ini banyak yang dilakukan seseorang untuk memperoleh keuntungan lainnya yang berlipat ganda dari apa yang dilakukan. Hal ini seperti peribahasa sambil menyelam ...`,
+        id: 25, type: "PG",
+        text: `<b>25.</b> Sekarang ini banyak yang dilakukan seseorang untuk memperoleh keuntungan lainnya yang berlipat ganda dari apa yang dilakukan. Hal ini seperti peribahasa sambil menyelam ...`,
         options: [
           "Melihat karang",
           "Minum air",
@@ -828,11 +815,11 @@
         ],
         correct: 1,
         topic: "Peribahasa",
-        explanation: "Kelanjutan peribahasa yang tepat adalah 'sambil menyelam minum air'[cite: 60]."
+        explanation: "Kelanjutan peribahasa yang tepat adalah 'sambil menyelam minum air'. (Kunci: B)"
       },
       {
-        id: 27, type: "MCMA",
-        text: `<b>27.</b> Faneza melihat seorang nenek yang kesulitan menyeberang jalan di depan sekolah. Tanpa berpikir panjang, Faneza segera menghampiri dan memandu nenek tersebut hingga sampai di seberang dengan aman. Setelah itu ia melanjutkan perjalanan ke sekolah. Peristiwa dalam teks di atas berkaitan dengan perilaku sehari-hari, dua jawaban yang sesuai yaitu...[cite: 60]`,
+        id: 26, type: "MCMA",
+        text: `<b>26.</b> Faneza melihat seorang nenek yang kesulitan menyeberang jalan di depan sekolah. Tanpa berpikir panjang, Faneza segera menghampiri dan memandu nenek tersebut hingga sampai di seberang dengan aman. Setelah itu ia melanjutkan perjalanan ke sekolah. Peristiwa dalam teks di atas berkaitan dengan perilaku sehari-hari, dua jawaban yang sesuai yaitu...`,
         options: [
           "Menolong orang lain ketika sesuai dengan kemampuan.",
           "Berangkat ke sekolah tepat waktu dan berjalan sambil cerita",
@@ -841,14 +828,14 @@
         ],
         correct: [0, 3],
         topic: "Refleksi Perilaku",
-        explanation: "Perilaku tersebut mencerminkan menolong sesuai kemampuan dan membantu sesama yang membutuhkan. Opsi A dan D Benar[cite: 60]."
+        explanation: "Perilaku tersebut mencerminkan menolong orang sesuai kemampuan dan membantu sesama yang membutuhkan. Opsi A dan D Benar."
       },
       {
-        id: 28, type: "PG",
-        text: `<b>Teks Bacaan untuk nomor 28 dan 29</b><br><br>
+        id: 27, type: "PG",
+        text: `<b>Teks Bacaan untuk nomor 27 dan 28</b><br><br>
         <b>Taman Nasional Komodo</b><br>
         Taman Nasional Komodo terletak di Provinsi Nusa Tenggara Timur. Kawasan ini terdiri atas tiga pulau besar, yaitu Pulau Komodo, Pulau Rinca, dan Pulau Padar. Selain menjadi habitat asli komodo, taman nasional ini juga memiliki kekayaan bawah laut yang sangat indah. Wisatawan dari berbagai negara berkunjung ke sini untuk melihat hewan purba tersebut secara langsung. Pemerintah terus berupaya menjaga kelestarian alam di sana agar ekosistem komodo tetap terjaga.<br><br>
-        <b>28.</b> Berdasarkan teks tersebut, di manakah letak Taman Nasional Komodo?`,
+        <b>27.</b> Berdasarkan teks tersebut, di manakah letak Taman Nasional Komodo?`,
         options: [
           "Sulawesi Utara",
           "Nusa Tenggara Timur",
@@ -857,13 +844,13 @@
         ],
         correct: 1,
         topic: "Informasi Tersurat",
-        explanation: "Terletak di Provinsi Nusa Tenggara Timur[cite: 60]."
+        explanation: "Terletak di Provinsi Nusa Tenggara Timur. (Kunci: B)"
       },
       {
-        id: 29, type: "PG",
-        text: `<b>Teks Bacaan untuk nomor 28 dan 29</b><br><br>
+        id: 28, type: "PG",
+        text: `<b>Teks Bacaan untuk nomor 27 dan 28</b><br><br>
         (Teks Taman Nasional Komodo di atas)<br><br>
-        <b>29.</b> Mengapa wisatawan banyak yang berkunjung ke Pulau Komodo?`,
+        <b>28.</b> Mengapa wisatawan banyak yang berkunjung ke Pulau Komodo?`,
         options: [
           "Karena Pulau Komodo sebagai habitat asli komodo, taman nasional ini juga memiliki kekayaan bawah laut yang sangat indah",
           "Karena Pulau Komodo sebagai taman nasional yang memiliki banyak burung, juga memiliki kekayaan bawah laut yang sangat indah",
@@ -872,11 +859,24 @@
         ],
         correct: 0,
         topic: "Informasi Tersurat",
-        explanation: "Wisatawan berkunjung karena Pulau Komodo adalah habitat asli komodo serta memiliki kekayaan bawah laut yang indah[cite: 60]."
+        explanation: "Wisatawan berkunjung karena Pulau Komodo adalah habitat asli komodo serta memiliki kekayaan bawah laut yang indah. (Kunci: A)"
+      },
+      {
+        id: 29, type: "PG",
+        text: `<b>29.</b> Anak yang banyak bicara biasanya tidak terlalu banyak ilmu. Peribahasa yang sesuai dengan kalimat tersebut adalah ….`,
+        options: [
+          "Air beriak tanda tak dalam",
+          "Tong kosong berbunyi nyaring",
+          "Besar pasak dari pada tiang",
+          "Sedia payung sebelum hujan"
+        ],
+        correct: 1,
+        topic: "Peribahasa",
+        explanation: "Peribahasa yang sesuai adalah 'Tong kosong berbunyi nyaring'. (Kunci: B)"
       },
       {
         id: 30, type: "MCMA",
-        text: `<b>30.</b> Bergas melihat seekor burung pipit yang sayapnya terluka di bawah pohon mangga. Tanpa ragu, Bergas membawanya pulang dan mengobati lukanya. Setiap hari Bergas memberinya makan dengan tekun sampai burung itu bisa terbang kembali. Tanggapan yang tepat untuk watak tokoh Bergas dalam cerita tersebut, ada dua dalam jawaban berikut ini adalah...[cite: 60]`,
+        text: `<b>30.</b> Bergas melihat seekor burung pipit yang sayapnya terluka di bawah pohon mangga. Tanpa ragu, Bergas membawanya pulang dan mengobati lukanya. Setiap hari Bergas memberinya makan dengan tekun sampai burung itu bisa terbang kembali. Tanggapan yang tepat untuk watak tokoh Bergas dalam cerita tersebut, ada dua dalam jawaban berikut ini adalah...`,
         options: [
           "Bergas adalah anak yang baik hati karena menolong burung pipit.",
           "Bergas adalah anak yang pemberani karena berani memanjat pohon mangga.",
@@ -885,7 +885,7 @@
         ],
         correct: [0, 2],
         topic: "Tanggapan Watak Tokoh",
-        explanation: "Bergas adalah anak baik hati serta peduli dan penyayang terhadap makhluk hidup. Opsi A dan C Benar[cite: 60]."
+        explanation: "Bergas adalah anak baik hati serta peduli dan penyayang terhadap makhluk hidup. Opsi A dan C Benar."
       }
     ];
 
@@ -917,11 +917,11 @@
         timeRemaining,
         isActive: true
       };
-      localStorage.setItem('tka_active_exam_session_v3', JSON.stringify(state));
+      localStorage.setItem('tka_active_exam_session_v4', JSON.stringify(state));
     }
 
     function checkActiveExamSession() {
-      const saved = localStorage.getItem('tka_active_exam_session_v3');
+      const saved = localStorage.getItem('tka_active_exam_session_v4');
       if (saved) {
         try {
           const state = JSON.parse(saved);
@@ -944,11 +944,11 @@
               startCountdownTimer();
               return true;
             } else {
-              localStorage.removeItem('tka_active_exam_session_v3');
+              localStorage.removeItem('tka_active_exam_session_v4');
             }
           }
         } catch (e) {
-          localStorage.removeItem('tka_active_exam_session_v3');
+          localStorage.removeItem('tka_active_exam_session_v4');
         }
       }
       return false;
@@ -1176,7 +1176,7 @@
       const list = local ? JSON.parse(local) : [];
       list.push(sub);
       localStorage.setItem('tka_submissions_multi', JSON.stringify(list));
-      localStorage.removeItem('tka_active_exam_session_v3');
+      localStorage.removeItem('tka_active_exam_session_v4');
       try {
         await fetch(FIREBASE_DB_URL, {
           method: 'POST',
