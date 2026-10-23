@@ -66,7 +66,7 @@
     <!-- SCREEN 0: PILIH MATA PELAJARAN UTAMA -->
     <div id="viewSubjects" class="max-w-4xl mx-auto w-full text-center py-6">
       <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-black bg-teal-100 text-teal-900 mb-3 border border-teal-200 shadow-sm">
-        🌟 TKA SD/MI • Tahun Ajaran 2026/2027
+        🎓 TKA SD/MI • Tahun Ajaran 2026/2027
       </span>
       <h2 class="text-3xl sm:text-4xl font-black text-slate-800 tracking-tight">Pilih Mata Pelajaran</h2>
       <p class="text-slate-600 text-xs sm:text-sm max-w-lg mx-auto mt-2 mb-8 font-medium">
@@ -292,7 +292,7 @@
 
         <div class="space-y-3 pt-2">
           <div class="flex flex-wrap justify-center gap-3">
-            <button onclick="toggleDiscussion()" class="px-5 py-2.5 bg-teal-50 hover:bg-teal-100 text-teal-800 font-bold text-xs rounded-xl transition flex items-center gap-1.5 shadow-sm border border-teal-200 cursor-pointer">
+            <button onclick="toggleDiscussion()" id="btnDiscussionToggle" class="px-5 py-2.5 bg-teal-50 hover:bg-teal-100 text-teal-800 font-bold text-xs rounded-xl transition items-center gap-1.5 shadow-sm border border-teal-200 cursor-pointer">
               <span>📖</span> <span>Lihat Kunci & Pembahasan Soal</span>
             </button>
             <button onclick="showScreen('viewSubjects')" class="px-5 py-2.5 bg-slate-800 text-white hover:bg-slate-900 font-bold text-xs rounded-xl transition cursor-pointer">
@@ -439,7 +439,7 @@
       "SDS MUHAMMADIYAH PUCANG GADING", "SDS TERPADU DARUNNAJAH"
     ];
 
-    // 1. DATA SOAL MATEMATIKA - PAKET 1 (30 BUTIR UTUH)
+    // 1. DATA SOAL MATEMATIKA - 30 BUTIR UTUH
     const SOAL_30_MATEMATIKA = [
       { id: 1, type: "PG", text: "1. Hasil dari 16⅔% × 24 - 0,25 × 20 + 1¾ × 4 adalah ....", options: ["3", "4", "6", "8"], correct: 2, topic: "Operasi Hitung Pecahan", explanation: "16⅔% = 1/6; (1/6 × 24) = 4; (0,25 × 20) = 5; (1¾ × 4) = 7. Hasil = 4 - 5 + 7 = 6. (Kunci: C)" },
       { id: 2, type: "PG", text: "2. Perhatikan tabel berikut!<br><img src='soal2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pasangan yang tepat yang menunjukkan hubungan antara persen dan pecahan biasa adalah ....", options: ["1 - C, 2 - A", "1 - C, 2 - D", "3 - A, 4 - B", "3 - B, 2 - C"], correct: 1, topic: "Persen & Pecahan", explanation: "60% = 3/5 (C) dan 50% = 1/2 (D). (Kunci: B)" },
@@ -953,11 +953,11 @@
         timeRemaining,
         isActive: true
       };
-      localStorage.setItem('tka_active_exam_session_v12', JSON.stringify(state));
+      localStorage.setItem('tka_active_exam_session_v13', JSON.stringify(state));
     }
 
     function checkActiveExamSession() {
-      const saved = localStorage.getItem('tka_active_exam_session_v12');
+      const saved = localStorage.getItem('tka_active_exam_session_v13');
       if (saved) {
         try {
           const state = JSON.parse(saved);
@@ -980,11 +980,11 @@
               startCountdownTimer();
               return true;
             } else {
-              localStorage.removeItem('tka_active_exam_session_v12');
+              localStorage.removeItem('tka_active_exam_session_v13');
             }
           }
         } catch (e) {
-          localStorage.removeItem('tka_active_exam_session_v12');
+          localStorage.removeItem('tka_active_exam_session_v13');
         }
       }
       return false;
@@ -1243,7 +1243,7 @@
       const list = local ? JSON.parse(local) : [];
       list.push(sub);
       localStorage.setItem('tka_submissions_multi', JSON.stringify(list));
-      localStorage.removeItem('tka_active_exam_session_v12');
+      localStorage.removeItem('tka_active_exam_session_v13');
       try {
         await fetch(FIREBASE_DB_URL, {
           method: 'POST',
@@ -1340,7 +1340,25 @@
       const certBox = document.getElementById('certificateClaimBox');
       if (isPass) certBox.classList.remove('hidden'); else certBox.classList.add('hidden');
       
-      renderDiscussions();
+      // PENGATURAN KUNCI & PEMBAHASAN HANYA MUNCUL JIKA NILAI >= 90
+      const btnDisc = document.getElementById('btnDiscussionToggle');
+      let lockedMsg = document.getElementById('lockedDiscussionMsg');
+      
+      if (final100 >= 90) {
+        renderDiscussions();
+        if (btnDisc) btnDisc.style.display = 'inline-flex';
+        if (lockedMsg) lockedMsg.remove();
+      } else {
+        if (btnDisc) btnDisc.style.display = 'none';
+        if (!lockedMsg) {
+          lockedMsg = document.createElement('div');
+          lockedMsg.id = 'lockedDiscussionMsg';
+          lockedMsg.className = 'p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 text-xs font-bold my-3';
+          btnDisc.parentNode.insertBefore(lockedMsg, btnDisc);
+        }
+        lockedMsg.innerHTML = `🔒 Kunci jawaban & pembahasan eksklusif hanya terbuka bagi peserta yang meraih nilai <b>minimal 90</b>.<br>Nilai kamu saat ini <b>${final100}</b>. Yuk coba kerjakan lagi dan raih nilai 90 ke atas! 💪`;
+      }
+      
       showScreen('viewResult');
     }
 
