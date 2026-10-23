@@ -257,6 +257,9 @@
         <h2 class="text-2xl font-black text-slate-800">Ujian Telah Selesai!</h2>
         <p class="text-xs font-semibold text-slate-500 mt-1" id="submitStatusText">Nilai tryout Anda telah otomatis tersimpan.</p>
         
+        <!-- KOTAK MOTIVASI DINAMIS BERDASARKAN NILAI -->
+        <div id="motivationBox" class="my-5 p-4 rounded-2xl border text-xs sm:text-sm font-bold shadow-sm"></div>
+
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 my-6">
           <div class="p-4 rounded-2xl bg-teal-50 border border-teal-100">
             <span class="block text-[11px] font-bold text-teal-600 uppercase">Skor Mentah</span>
@@ -459,7 +462,7 @@
       { id: 16, type: "MCMA", text: "16. Minggu kemarin Dian membawa 5 lembar uang 50rb, 4 lembar 20rb, 2 lembar 10rb. Harga kain Rp400.000, diskon 15%. Pilihlah pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Dian tidak jadi membeli kain karena uangnya kurang.", "Diskon yang diperoleh Dian sebesar Rp60.000,00.", "Sisa uang Dian setelah membayar kain adalah Rp10.000,00."], correct: [1, 2], topic: "Aritmatika Sosial", explanation: "Total uang = Rp350.000. Diskon = 15% × 400.000 = Rp60.000. Bayar = Rp340.000. Sisa = Rp10.000. Opsi 2 dan 3 Benar." },
       { id: 17, type: "MCMA", text: "17. Perhatikan gambar segitiga siku-siku berikut!<br><img src='soal17.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pilihlah pernyataan-pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Keliling bangun tersebut adalah 56 cm.", "Panjang sisi BC adalah 18 cm.", "Luas bangun di atas adalah 84 cm²."], correct: [0, 2], topic: "Pythagoras & Luas", explanation: "BC = 24 cm. Keliling = 7+24+25 = 56 cm. Luas = 1/2 × 7 × 24 = 84 cm². Opsi 1 dan 3 Benar." },
       { id: 18, type: "MCMA", text: "18. Perhatikan susunan kubus berikut ini!<br><img src='soal18.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Jika panjang sisi kubus sebesar 5 cm, manakah pernyataan-pernyataan di bawah ini yang benar? (Jawaban benar bisa lebih dari satu)", options: ["Ada 10 buah kubus yang volumenya sama.", "Volume tiap kubus satuan sebesar 125 cm³.", "Luas permukaan kubus yang menempel di bawah sebesar 125 cm²."], correct: [0, 1], topic: "Volume Kubus", explanation: "Kubus berjumlah 10 buah identik, volume kubus 5³ = 125 cm³. Opsi 1 dan 2 Benar." },
-      { id: 19, type: "MCMA", text: "19. Sebuah kaleng susu berbentuk balok dengan panjang 2 dm, lebar 10 cm, tinggi 1,5 dm berisi susu ⅖ bagian. Pilihlah pernyataan di bawah ini yang tepat! (Jawaban benar bisa lebih dari satu)", options: ["Volume kaleng tersebut adalah 3.000 cm³.", "Volume susu dalam kaleng adalah 12 liter.", "Agar kaleng penuh perlu tambahan 1.800 cm³ susu."], correct: [0, 2], topic: "Volume Balok", explanation: "Volume total = 3.000 cm³. Susu = 1.200 cm³. Kekurangan = 1.800 cm³. Opsi 1 dan 3 Benar." },
+      { id: 19, type: "MCMA", text: "19. Sebuah kaleng susu berbentuk balok dengan panjang 2 dm, lebar 10 cm, tinggi 1,5 dm berisi susu ⅖ bagian. Pilihlah pernyataan di bawah ini yang tepat! (Jawaban benar bisa lebih dari satu)", options: ["Volume kaleng tersebut adalah 3.000 cm³.", "Volume susu dalam kaleng adalah 12 liter.", "Agar kaleng penuh perlu tambahan 1.800 cm³ susu."], correct: [0, 2], topic: "Volume Balok", explanation: "Volume total = 3.000 cm³. Susu = 1.200 cm³. Kekurangan = 1.800 cm³. Opsi 1 dan 2 Benar." },
       { id: 20, type: "MCMA", text: "20. Jarak M-N 180 km. Banu (50 km/jam) dan Joko (70 km/jam) berangkat pukul 06.00. Pilihlah pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Mereka akan berpapasan pada pukul 07.30.", "Mereka berpapasan pada jarak 75 km dari kota M.", "Pukul 08.30 Joko sudah sampai di kota M."], correct: [0, 1], topic: "Kecepatan Berpapasan", explanation: "Waktu papasan = 1,5 jam (pukul 07.30). Jarak dari M = 50 × 1,5 = 75 km. Opsi 1 dan 2 Benar." },
       { id: 21, type: "MCMA", text: "21. 2,5 abad + 4 dasawarsa - 5 windu + 2 lustrum = ... Setara dengan: (Jawaban benar bisa lebih dari satu)", options: ["26 dasawarsa", "32 windu", "52 lustrum"], correct: [0, 1, 2], topic: "Satuan Waktu", explanation: "Total 260 tahun = 26 dasawarsa = 32,5 windu = 52 lustrum. Opsi 1, 2, dan 3 Benar." },
       { id: 22, type: "MCMA", text: "22. Bu Desty mempunyai 72 permen, 64 coklat, dan 32 roti dibagikan ke anak-anak sama banyak. Pilihlah pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Jumlah anak terbanyak yang mendapat makanan adalah 16 anak.", "Jumlah permen yang diterima tiap anak sebanyak 9 buah.", "Setiap anak menerima makanan sebanyak 21 buah."], correct: [0], topic: "FPB", explanation: "FPB = 16 anak. Permen per anak = 72/16 = 4,5 buah. Opsi 1 Benar." },
@@ -953,11 +956,11 @@
         timeRemaining,
         isActive: true
       };
-      localStorage.setItem('tka_active_exam_session_v13', JSON.stringify(state));
+      localStorage.setItem('tka_active_exam_session_v14', JSON.stringify(state));
     }
 
     function checkActiveExamSession() {
-      const saved = localStorage.getItem('tka_active_exam_session_v13');
+      const saved = localStorage.getItem('tka_active_exam_session_v14');
       if (saved) {
         try {
           const state = JSON.parse(saved);
@@ -980,11 +983,11 @@
               startCountdownTimer();
               return true;
             } else {
-              localStorage.removeItem('tka_active_exam_session_v13');
+              localStorage.removeItem('tka_active_exam_session_v14');
             }
           }
         } catch (e) {
-          localStorage.removeItem('tka_active_exam_session_v13');
+          localStorage.removeItem('tka_active_exam_session_v14');
         }
       }
       return false;
@@ -1243,7 +1246,7 @@
       const list = local ? JSON.parse(local) : [];
       list.push(sub);
       localStorage.setItem('tka_submissions_multi', JSON.stringify(list));
-      localStorage.removeItem('tka_active_exam_session_v13');
+      localStorage.removeItem('tka_active_exam_session_v14');
       try {
         await fetch(FIREBASE_DB_URL, {
           method: 'POST',
@@ -1340,6 +1343,25 @@
       const certBox = document.getElementById('certificateClaimBox');
       if (isPass) certBox.classList.remove('hidden'); else certBox.classList.add('hidden');
       
+      // KATA-KATA MOTIVASI DINAMIS BERDASARKAN PEROLEHAN NILAI
+      const motBox = document.getElementById('motivationBox');
+      let motText = "";
+      let motClass = "";
+      
+      if (final100 >= 90) {
+        motClass = "bg-emerald-50 border-emerald-300 text-emerald-950";
+        motText = "🌟 <b>Luar Biasa! Prestasi Gemilang!</b><br>Kamu memiliki pemahaman materi yang sangat matang. Pertahankan konsistensi belajarmu dan jadilah inspirasi bagi teman-temanmu!";
+      } else if (final100 >= 75) {
+        motClass = "bg-teal-50 border-teal-300 text-teal-950";
+        motText = "👏 <b>Hebat dan Membanggakan!</b><br>Kamu sudah melewati KKM dengan sangat baik. Sedikit latihan ketelitian lagi di soal-soal menantang, kamu pasti bisa meraih nilai sempurna 100!";
+      } else if (final100 >= 70) {
+        motClass = "👍 <b>Bagus, Kamu Lulus!</b><br>Usahamu membuahkan hasil dan memenuhi standar kelulusan. Jangan cepat puas, tingkatkan terus kemampuan belajarmu agar nilaimu semakin meningkat!";
+      } else {
+        motClass = "💪 <b>Jangan Menyerah, Ayo Coba Lagi!</b><br>Kegagalan hari ini adalah awal dari kesuksesan. Jadikan ini sebagai motivasi untuk belajar lebih giat, ulas kembali materinya, dan buktikan kamu bisa meraih nilai di atas 90 pada percobaan berikutnya!";
+      }
+      motBox.className = `my-5 p-4 rounded-2xl border text-xs sm:text-sm shadow-sm ${motClass}`;
+      motBox.innerHTML = motText;
+
       // PENGATURAN KUNCI & PEMBAHASAN HANYA MUNCUL JIKA NILAI >= 90
       const btnDisc = document.getElementById('btnDiscussionToggle');
       let lockedMsg = document.getElementById('lockedDiscussionMsg');
