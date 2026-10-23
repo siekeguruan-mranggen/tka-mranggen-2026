@@ -103,7 +103,7 @@
       </div>
     </div>
 
-    <!-- SCREEN 0.5: PILIH PAKET SOAL (DINAMIS 6 BOX MATEMATIKA / 5 BOX B. INDONESIA) -->
+    <!-- SCREEN 0.5: PILIH PAKET SOAL -->
     <div id="viewPackages" class="hidden max-w-4xl mx-auto w-full text-center py-6">
       <button onclick="showScreen('viewSubjects')" class="inline-flex items-center text-xs font-bold text-teal-700 hover:text-teal-900 mb-5 cursor-pointer">
         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
@@ -255,11 +255,12 @@
           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
         <h2 class="text-2xl font-black text-slate-800">Ujian Telah Selesai!</h2>
-        <p class="text-xs font-semibold text-slate-500 mt-1" id="submitStatusText">Nilai tryout Anda telah otomatis tersimpan.</p>
         
         <!-- KOTAK MOTIVASI DINAMIS BERDASARKAN NILAI -->
-        <div id="motivationBox" class="my-5 p-4 rounded-2xl border text-xs sm:text-sm font-bold shadow-sm"></div>
+        <div id="motivationBox" class="my-4 p-4 rounded-2xl border text-xs sm:text-sm font-bold shadow-sm"></div>
 
+        <p class="text-xs font-semibold text-slate-500 mt-1" id="submitStatusText">Nilai tryout Anda telah otomatis tersimpan di server cloud Korwil Mranggen.</p>
+        
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 my-6">
           <div class="p-4 rounded-2xl bg-teal-50 border border-teal-100">
             <span class="block text-[11px] font-bold text-teal-600 uppercase">Skor Mentah</span>
@@ -473,7 +474,7 @@
       { id: 27, type: "Kategori", text: "27. Ibu membeli beras di warung harga Rp75.000, kembalian Rp25.000. Tentukan <b>Benar</b> atau <b>Salah</b> pecahan uang yang dibayarkan ibu!", statements: ["Satu lembar uang seratus ribuan.", "Dua lembar uang lima puluh ribuan.", "Sepuluh lembar uang dua puluh ribuan."], correct: ["Benar", "Benar", "Salah"], topic: "Pecahan Uang", explanation: "Kunci: Benar, Benar, Salah." },
       { id: 28, type: "Kategori", text: "28. Diskon 20%. Pensil Rp5.000, penggaris 1,5×pensil, buku 2×penggaris. Membeli 1 lusin buku, 5 pensil, 3 penggaris. Tentukan <b>Benar</b> atau <b>Salah</b>!", statements: ["Harga buku yang harus dibayar Bu Upik adalah Rp144.000,00.", "Harga penggaris sebelum didiskon sebesar Rp32.500,00.", "Harga yang harus dibayar Bu Upik semuanya adalah Rp182.000,00."], correct: ["Benar", "Salah", "Benar"], topic: "Aritmatika Sosial", explanation: "Kunci: Benar, Salah, Benar." },
       { id: 29, type: "Kategori", text: "29. Beras setiap 4 hari, minyak setiap 12 hari. Bersama pertama kali 1 Agustus 2024. Tentukan <b>Benar</b> atau <b>Salah</b>!", statements: ["Tanggal 20 Agustus 2024 Bu Candra hanya membeli beras saja.", "Tanggal 6 September 2024 Bu Candra membeli beras dan minyak goreng secara bersamaan.", "Setiap membeli minyak goreng, Bu Candra pasti membeli beras."], correct: ["Benar", "Benar", "Benar"], topic: "KPK & Kalender", explanation: "Kunci: Benar, Benar, Benar." },
-      { id: 30, type: "Kategori", text: "30. Perhatikan diagram gambar siswa SD Mutiara berikut!<br><img src='soal30.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!", statements: ["Selisih siswa paling banyak dengan paling sedikit adalah 30 anak.", "Jumlah siswa kelas II, III, dan VI sama banyak.", "Jumlah siswa seluruhnya sebanyak 350 anak."], correct: ["Benar", "Benar", "Salah"], topic: "Interpretasi Piktogram", explanation: "Kunci: Benar, Salah, Salah." }
+      { id: 30, type: "Kategori", text: "30. Perhatikan diagram gambar siswa SD Mutiara berikut!<br><img src='soal30.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!", statements: ["Selisih siswa paling banyak dengan paling sedikit adalah 30 anak.", "Jumlah siswa kelas II, III, dan VI sama banyak.", "Jumlah siswa seluruhnya sebanyak 350 anak."], correct: ["Benar", "Salah", "Salah"], topic: "Interpretasi Piktogram", explanation: "Kunci: Benar, Salah, Salah." }
     ];
 
     // 2. DATA SOAL BAHASA INDONESIA - PAKET 1 (30 BUTIR UTUH)
@@ -956,11 +957,11 @@
         timeRemaining,
         isActive: true
       };
-      localStorage.setItem('tka_active_exam_session_v14', JSON.stringify(state));
+      localStorage.setItem('tka_active_exam_session_v15', JSON.stringify(state));
     }
 
     function checkActiveExamSession() {
-      const saved = localStorage.getItem('tka_active_exam_session_v14');
+      const saved = localStorage.getItem('tka_active_exam_session_v15');
       if (saved) {
         try {
           const state = JSON.parse(saved);
@@ -983,11 +984,11 @@
               startCountdownTimer();
               return true;
             } else {
-              localStorage.removeItem('tka_active_exam_session_v14');
+              localStorage.removeItem('tka_active_exam_session_v15');
             }
           }
         } catch (e) {
-          localStorage.removeItem('tka_active_exam_session_v14');
+          localStorage.removeItem('tka_active_exam_session_v15');
         }
       }
       return false;
@@ -1246,7 +1247,7 @@
       const list = local ? JSON.parse(local) : [];
       list.push(sub);
       localStorage.setItem('tka_submissions_multi', JSON.stringify(list));
-      localStorage.removeItem('tka_active_exam_session_v14');
+      localStorage.removeItem('tka_active_exam_session_v15');
       try {
         await fetch(FIREBASE_DB_URL, {
           method: 'POST',
@@ -1359,7 +1360,7 @@
       } else {
         motClass = "💪 <b>Jangan Menyerah, Ayo Coba Lagi!</b><br>Kegagalan hari ini adalah awal dari kesuksesan. Jadikan ini sebagai motivasi untuk belajar lebih giat, ulas kembali materinya, dan buktikan kamu bisa meraih nilai di atas 90 pada percobaan berikutnya!";
       }
-      motBox.className = `my-5 p-4 rounded-2xl border text-xs sm:text-sm shadow-sm ${motClass}`;
+      motBox.className = `my-4 p-4 rounded-2xl border text-xs sm:text-sm shadow-sm ${motClass}`;
       motBox.innerHTML = motText;
 
       // PENGATURAN KUNCI & PEMBAHASAN HANYA MUNCUL JIKA NILAI >= 90
