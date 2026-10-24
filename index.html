@@ -256,7 +256,7 @@
         </div>
         <h2 class="text-2xl font-black text-slate-800">Ujian Telah Selesai!</h2>
         
-        <!-- KOTAK MOTIVASI DINAMIS BERDASARKAN NILAI -->
+        <!-- KOTAK MOTIVASI DINAMIS -->
         <div id="motivationBox" class="my-4 p-4 rounded-2xl border text-xs sm:text-sm font-bold shadow-sm"></div>
 
         <p class="text-xs font-semibold text-slate-500 mt-1" id="submitStatusText">Nilai tryout Anda telah otomatis tersimpan di server cloud Korwil Mranggen.</p>
@@ -424,7 +424,7 @@
 
   <script>
     const FIREBASE_DB_URL = "https://tka-mranggen-2026-default-rtdb.firebaseio.com/nilai_tryout.json";
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx0aHffP-wqb_ElNVQtrHJltD2YOMVXzBqdbHqtUzcQzwU59g05agv-pDALvwIbAHFgoA/exec";
+    const FIREBASE_SETTINGS_URL = "https://tka-mranggen-2026-default-rtdb.firebaseio.com/pengaturan_ujian.json";
     
     const LIST_SEKOLAH_MRANGGEN = [
       "SD NEGERI BANDUNGREJO 1 MRANGGEN", "SD NEGERI BANDUNGREJO 2 MRANGGEN", "SD NEGERI BANYUMENENG 1",
@@ -463,7 +463,7 @@
       { id: 16, type: "MCMA", text: "16. Minggu kemarin Dian membawa 5 lembar uang 50rb, 4 lembar 20rb, 2 lembar 10rb. Harga kain Rp400.000, diskon 15%. Pilihlah pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Dian tidak jadi membeli kain karena uangnya kurang.", "Diskon yang diperoleh Dian sebesar Rp60.000,00.", "Sisa uang Dian setelah membayar kain adalah Rp10.000,00."], correct: [1, 2], topic: "Aritmatika Sosial", explanation: "Total uang = Rp350.000. Diskon = 15% × 400.000 = Rp60.000. Bayar = Rp340.000. Sisa = Rp10.000. Opsi 2 dan 3 Benar." },
       { id: 17, type: "MCMA", text: "17. Perhatikan gambar segitiga siku-siku berikut!<br><img src='soal17.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pilihlah pernyataan-pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Keliling bangun tersebut adalah 56 cm.", "Panjang sisi BC adalah 18 cm.", "Luas bangun di atas adalah 84 cm²."], correct: [0, 2], topic: "Pythagoras & Luas", explanation: "BC = 24 cm. Keliling = 7+24+25 = 56 cm. Luas = 1/2 × 7 × 24 = 84 cm². Opsi 1 dan 3 Benar." },
       { id: 18, type: "MCMA", text: "18. Perhatikan susunan kubus berikut ini!<br><img src='soal18.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Jika panjang sisi kubus sebesar 5 cm, manakah pernyataan-pernyataan di bawah ini yang benar? (Jawaban benar bisa lebih dari satu)", options: ["Ada 10 buah kubus yang volumenya sama.", "Volume tiap kubus satuan sebesar 125 cm³.", "Luas permukaan kubus yang menempel di bawah sebesar 125 cm²."], correct: [0, 1], topic: "Volume Kubus", explanation: "Kubus berjumlah 10 buah identik, volume kubus 5³ = 125 cm³. Opsi 1 dan 2 Benar." },
-      { id: 19, type: "MCMA", text: "19. Sebuah kaleng susu berbentuk balok dengan panjang 2 dm, lebar 10 cm, tinggi 1,5 dm berisi susu ⅖ bagian. Pilihlah pernyataan di bawah ini yang tepat! (Jawaban benar bisa lebih dari satu)", options: ["Volume kaleng tersebut adalah 3.000 cm³.", "Volume susu dalam kaleng adalah 12 liter.", "Agar kaleng penuh perlu tambahan 1.800 cm³ susu."], correct: [0, 2], topic: "Volume Balok", explanation: "Volume total = 3.000 cm³. Susu = 1.200 cm³. Kekurangan = 1.800 cm³. Opsi 1 dan 2 Benar." },
+      { id: 19, type: "MCMA", text: "19. Sebuah kaleng susu berbentuk balok dengan panjang 2 dm, lebar 10 cm, tinggi 1,5 dm berisi susu ⅖ bagian. Pilihlah pernyataan di bawah ini yang tepat! (Jawaban benar bisa lebih dari satu)", options: ["Volume kaleng tersebut adalah 3.000 cm³.", "Volume susu dalam kaleng adalah 12 liter.", "Agar kaleng penuh perlu tambahan 1.800 cm³ susu."], correct: [0, 2], topic: "Volume Balok", explanation: "Volume total = 3.000 cm³. Susu = 1.200 cm³. Kekurangan = 1.800 cm³. Opsi 1 dan 3 Benar." },
       { id: 20, type: "MCMA", text: "20. Jarak M-N 180 km. Banu (50 km/jam) dan Joko (70 km/jam) berangkat pukul 06.00. Pilihlah pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Mereka akan berpapasan pada pukul 07.30.", "Mereka berpapasan pada jarak 75 km dari kota M.", "Pukul 08.30 Joko sudah sampai di kota M."], correct: [0, 1], topic: "Kecepatan Berpapasan", explanation: "Waktu papasan = 1,5 jam (pukul 07.30). Jarak dari M = 50 × 1,5 = 75 km. Opsi 1 dan 2 Benar." },
       { id: 21, type: "MCMA", text: "21. 2,5 abad + 4 dasawarsa - 5 windu + 2 lustrum = ... Setara dengan: (Jawaban benar bisa lebih dari satu)", options: ["26 dasawarsa", "32 windu", "52 lustrum"], correct: [0, 1, 2], topic: "Satuan Waktu", explanation: "Total 260 tahun = 26 dasawarsa = 32,5 windu = 52 lustrum. Opsi 1, 2, dan 3 Benar." },
       { id: 22, type: "MCMA", text: "22. Bu Desty mempunyai 72 permen, 64 coklat, dan 32 roti dibagikan ke anak-anak sama banyak. Pilihlah pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Jumlah anak terbanyak yang mendapat makanan adalah 16 anak.", "Jumlah permen yang diterima tiap anak sebanyak 9 buah.", "Setiap anak menerima makanan sebanyak 21 buah."], correct: [0], topic: "FPB", explanation: "FPB = 16 anak. Permen per anak = 72/16 = 4,5 buah. Opsi 1 Benar." },
@@ -926,21 +926,42 @@
     let currentQuestionIdx = 0, userAnswers = {}, raguStatus = {}, examTimerInterval = null, timeRemaining = 75 * 60;
     let latestExamScore = 0, latestSubmissionData = null;
 
+    // FUNGSI SINKRONISASI BUKA/KUNCI DARI FIREBASE CLOUD
+    async function fetchCloudSettingsForStudent() {
+      try {
+        const res = await fetch(FIREBASE_SETTINGS_URL);
+        const data = await res.json();
+        if (data) {
+          if (data.status) localStorage.setItem('tka_pkg_status_multi', JSON.stringify(data.status));
+          if (data.tokens) localStorage.setItem('tka_pkg_tokens_multi', JSON.stringify(data.tokens));
+        }
+      } catch (e) {
+        console.warn("Menggunakan pengaturan offline/lokal:", e);
+      }
+    }
+
     function getAdminPackageStatus(sub, pkg) {
       try {
-        const statuses = JSON.parse(localStorage.getItem('tka_admin_package_status') || '{}');
-        const key = `${sub}_${pkg}`;
-        return statuses[key] !== undefined ? statuses[key] : (pkg === 'Ujicoba' || pkg === 'Paket 1' ? 'buka' : 'kunci');
-      } catch(e) {
-        return pkg === 'Ujicoba' || pkg === 'Paket 1' ? 'buka' : 'kunci';
-      }
+        const stored = localStorage.getItem('tka_pkg_status_multi');
+        if (stored) {
+          const statuses = JSON.parse(stored);
+          if (statuses[sub] && statuses[sub][pkg] !== undefined) {
+            return statuses[sub][pkg] ? 'buka' : 'kunci';
+          }
+        }
+      } catch(e) {}
+      return (pkg === 'Ujicoba' || pkg === 'Paket 1') ? 'buka' : 'kunci';
     }
 
     function getAdminPackageToken(sub, pkg) {
       try {
-        const tokens = JSON.parse(localStorage.getItem('tka_admin_package_tokens') || '{}');
-        const key = `${sub}_${pkg}`;
-        if (tokens[key]) return tokens[key];
+        const stored = localStorage.getItem('tka_pkg_tokens_multi');
+        if (stored) {
+          const tokens = JSON.parse(stored);
+          if (tokens[sub] && tokens[sub][pkg]) {
+            return tokens[sub][pkg];
+          }
+        }
       } catch(e) {}
       return sub === 'matematika' ? 'MAT1' : 'BINDO1';
     }
@@ -957,11 +978,11 @@
         timeRemaining,
         isActive: true
       };
-      localStorage.setItem('tka_active_exam_session_v15', JSON.stringify(state));
+      localStorage.setItem('tka_active_exam_session_v16', JSON.stringify(state));
     }
 
     function checkActiveExamSession() {
-      const saved = localStorage.getItem('tka_active_exam_session_v15');
+      const saved = localStorage.getItem('tka_active_exam_session_v16');
       if (saved) {
         try {
           const state = JSON.parse(saved);
@@ -984,11 +1005,11 @@
               startCountdownTimer();
               return true;
             } else {
-              localStorage.removeItem('tka_active_exam_session_v15');
+              localStorage.removeItem('tka_active_exam_session_v16');
             }
           }
         } catch (e) {
-          localStorage.removeItem('tka_active_exam_session_v15');
+          localStorage.removeItem('tka_active_exam_session_v16');
         }
       }
       return false;
@@ -1011,7 +1032,8 @@
       document.getElementById(screenId).classList.remove('hidden');
     }
 
-    function selectSubject(sub) {
+    async function selectSubject(sub) {
+      await fetchCloudSettingsForStudent(); // Ambil status buka/kunci terbaru dari Cloud
       selectedSubject = sub;
       const title = sub === 'matematika' ? 'Pilih Paket Soal Matematika' : 'Pilih Paket Soal Bahasa Indonesia';
       document.getElementById('packageSelectionTitle').innerText = title;
@@ -1049,8 +1071,10 @@
       showScreen('viewRegistration');
     }
 
-    function startExam(e) {
+    async function startExam(e) {
       e.preventDefault();
+      await fetchCloudSettingsForStudent();
+      
       const name = document.getElementById('regName').value.trim();
       const school = document.getElementById('regSchool').value;
       const absen = document.getElementById('regAbsen').value.trim();
@@ -1247,7 +1271,7 @@
       const list = local ? JSON.parse(local) : [];
       list.push(sub);
       localStorage.setItem('tka_submissions_multi', JSON.stringify(list));
-      localStorage.removeItem('tka_active_exam_session_v15');
+      localStorage.removeItem('tka_active_exam_session_v16');
       try {
         await fetch(FIREBASE_DB_URL, {
           method: 'POST',
@@ -1440,6 +1464,7 @@
     window.addEventListener('DOMContentLoaded', () => {
       populateSchoolDropdown();
       checkActiveExamSession();
+      fetchCloudSettingsForStudent();
     });
   </script>
 </body>
