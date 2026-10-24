@@ -15,33 +15,17 @@
     @media print {
       body { background: white !important; padding: 0 !important; color: black !important; }
       .no-print { display: none !important; }
-      /* Mode Cetak Piagam (1 Lembar Landscape Bersih) */
       body.mode-cert #adminPortal { display: none !important; }
       body.mode-cert #adminCertificateModal { 
-        display: block !important; 
-        position: fixed !important;
-        inset: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        margin: 0 !important; 
-        padding: 0 !important; 
-        border: none !important; 
-        box-shadow: none !important; 
-        background: white !important;
-        z-index: 99999 !important;
+        display: block !important; position: fixed !important; inset: 0 !important;
+        width: 100vw !important; height: 100vh !important; margin: 0 !important; 
+        padding: 0 !important; border: none !important; box-shadow: none !important; 
+        background: white !important; z-index: 99999 !important;
       }
-      body.mode-cert #adminCertificateModal > div {
-        max-width: 100% !important;
-        width: 100% !important;
-        border: none !important;
-        box-shadow: none !important;
-        padding: 0 !important;
-      }
+      body.mode-cert #adminCertificateModal > div { max-width: 100% !important; width: 100% !important; border: none !important; box-shadow: none !important; padding: 0 !important; }
       body.mode-cert @page { size: landscape; margin: 8mm; }
-      /* Mode Cetak Tabel / Rekapitulasi */
       body.mode-table #adminCertificateModal { display: none !important; }
       body.mode-table #adminPortal { display: block !important; width: 100% !important; max-width: 100% !important; }
-      body.mode-table #mainPrintCard { border: none !important; box-shadow: none !important; padding: 0 !important; }
       body.mode-table @page { size: landscape; margin: 10mm; }
     }
   </style>
@@ -75,6 +59,7 @@
       </form>
     </div>
   </div>
+
   <!-- KONTEN DASHBOARD ADMIN -->
   <div id="adminPortal" class="hidden max-w-7xl mx-auto space-y-6">
     
@@ -84,16 +69,16 @@
         <div class="flex items-center gap-2 mb-1">
           <span class="text-xs font-extrabold text-teal-700 uppercase tracking-wider">Dashboard Resmi Sie Keguruan Mranggen</span>
           <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black bg-emerald-100 text-emerald-800">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Cloud Real-Time
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Cloud Real-Time Active
           </span>
         </div>
         <h2 class="text-2xl font-black text-slate-900">Manajemen Ujian, Peringkat SD & Evaluasi TKA</h2>
-        <p class="text-xs text-slate-500 mt-0.5">Kontrol token pengerjaan, buka/kunci paket online, rekapitulasi nilai, dan analisis butir soal.</p>
+        <p class="text-xs text-slate-500 mt-0.5">Kontrol token pengerjaan, buka/kunci paket online cloud, rekapitulasi nilai, dan analisis butir soal.</p>
       </div>
       
       <div class="flex flex-wrap items-center gap-2">
         <button onclick="syncOnlineData()" id="btnSync" class="px-3.5 py-2 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-xl transition flex items-center gap-1.5 shadow-sm">
-          🔄 Ambil Data
+          🔄 Ambil Data Cloud
         </button>
         <button onclick="exportToCSV()" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm transition flex items-center gap-1.5">
           📊 Export CSV
@@ -111,7 +96,7 @@
     <div class="bg-white/95 p-5 rounded-3xl border border-rose-200 shadow-sm no-print flex flex-col sm:flex-row sm:items-center justify-between gap-4">
       <div>
         <h4 class="text-xs font-black text-rose-900 uppercase tracking-wide">🗑️ Panel Pembersihan Data Testing (Sebelum Tryout)</h4>
-        <p class="text-[11px] text-slate-500">Pilih mapel dan paket spesifik untuk menghapus data latihan siswa, atau pilih "Semua" untuk membersihkan seluruh data.</p>
+        <p class="text-[11px] text-slate-500">Pilih mapel dan paket spesifik untuk menghapus data latihan siswa dari Cloud secara instan.</p>
       </div>
       <div class="flex flex-wrap items-center gap-2">
         <select id="clearTargetSubject" class="px-3 py-2 text-xs rounded-xl border border-slate-300 font-bold bg-white text-slate-800 outline-none cursor-pointer">
@@ -129,10 +114,11 @@
           <option value="Paket 5">Paket 5</option>
         </select>
         <button onclick="promptSafeClearData()" class="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white font-black text-xs rounded-xl shadow-sm transition">
-          Bersihkan Data
+          Bersihkan Data Cloud
         </button>
       </div>
     </div>
+
     <!-- TAB PILIH MAPEL ADMIN -->
     <div class="flex items-center gap-3 bg-white/95 p-3 rounded-2xl border border-teal-200/80 shadow-sm no-print">
       <span class="text-xs font-black text-slate-700 ml-2">PILIH MAPEL:</span>
@@ -143,16 +129,18 @@
         Bahasa Indonesia (Paket 1-5)
       </button>
     </div>
-    <!-- KONTROL KUNCI & TOKEN -->
+
+    <!-- KONTROL KUNCI & TOKEN (CLOUD REALTIME) -->
     <div class="bg-white/95 p-6 rounded-3xl border border-teal-200/80 shadow-sm no-print">
       <div class="flex items-center justify-between mb-4">
         <div>
-          <h3 class="text-sm sm:text-base font-extrabold text-slate-900" id="lockSectionTitle">Kontrol Token: Matematika</h3>
-          <p class="text-xs text-slate-500">Ketik token baru pada kotak lalu tekan Enter/klik di luar untuk menyimpan ke cloud secara instan.</p>
+          <h3 class="text-sm sm:text-base font-extrabold text-slate-900" id="lockSectionTitle">Kontrol Token & Akses Paket: Matematika</h3>
+          <p class="text-xs text-slate-500">Perubahan tombol Buka/Kunci atau Token akan langsung tersimpan di Cloud dan berlaku seketika di portal siswa.</p>
         </div>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3" id="adminLockControls"></div>
     </div>
+
     <!-- TAB MENU NAVIGASI -->
     <div class="flex flex-wrap items-center gap-2 border-b border-teal-200 pb-2 no-print">
       <button onclick="switchViewMode('students')" id="tabBtnStudents" class="px-4 py-2 font-black text-xs rounded-xl bg-teal-600 text-white shadow-sm transition">
@@ -168,16 +156,14 @@
         🚨 Log Pelanggaran Anti-Curang
       </button>
     </div>
+
     <!-- ================= VIEW 1: TABEL REKAP NILAI SISWA ================= -->
     <div id="viewStudentsSection" class="bg-white rounded-3xl border border-teal-200/80 shadow-md p-6 space-y-4">
-      
-      <!-- KOP PRINT REKAPITULASI -->
       <div class="hidden print:block border-b-2 border-slate-900 pb-3 mb-4 text-center">
         <h2 class="text-base font-black uppercase tracking-wider text-slate-900">KORWIL BIDDIKBUD KECAMATAN MRANGGEN</h2>
         <h3 class="text-sm font-black uppercase text-slate-800" id="printReportTitle">REKAPITULASI HASIL TRYOUT TKA KELAS 6 SD</h3>
         <p class="text-xs text-slate-600 mt-0.5" id="printReportSubtitle">Kecamatan Mranggen • Tahun Pelajaran 2026</p>
       </div>
-      <!-- FILTER & TOMBOL PRINT REKAP SISWA -->
       <div class="no-print space-y-4 border-b border-slate-100 pb-4">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
           <div>
@@ -209,7 +195,6 @@
           </div>
         </div>
       </div>
-      <!-- TABEL REKAP NILAI SISWA -->
       <div class="overflow-x-auto">
         <table class="w-full text-left border-collapse" id="mainResultsTable">
           <thead>
@@ -229,7 +214,7 @@
           <tbody id="adminTableBody" class="text-xs divide-y divide-slate-100 text-slate-700"></tbody>
         </table>
       </div>
-      <!-- PENGESAHAN 2 TANDA TANGAN -->
+      <!-- PENGESAHAN TTD -->
       <div class="hidden print:block pt-3 mt-2" style="page-break-inside: avoid; break-inside: avoid;">
         <div class="grid grid-cols-2 gap-8 text-center text-slate-900 px-6">
           <div class="flex flex-col items-center justify-end" style="page-break-inside: avoid;">
@@ -289,6 +274,7 @@
         </div>
       </div>
     </div>
+
     <!-- ================= VIEW 2: REKAP PERINGKAT SEKOLAH ================= -->
     <div id="viewSchoolsSection" class="hidden bg-white rounded-3xl border border-teal-200/80 shadow-md p-6 space-y-4">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 no-print">
@@ -382,6 +368,7 @@
         </div>
       </div>
     </div>
+
     <!-- ================= VIEW 3: ANALISIS BUTIR SOAL ================= -->
     <div id="viewAnalysisSection" class="hidden bg-white rounded-3xl border border-teal-200/80 shadow-md p-6 space-y-4">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 no-print">
@@ -415,6 +402,7 @@
         </table>
       </div>
     </div>
+
     <!-- ================= VIEW 4: LOG PELANGGARAN ANTI-CURANG ================= -->
     <div id="viewCheatsSection" class="hidden bg-white rounded-3xl border border-teal-200/80 shadow-md p-6 space-y-4">
       <div class="flex items-center justify-between no-print">
@@ -442,11 +430,13 @@
         </table>
       </div>
     </div>
+
     <!-- KREDIT FOOTER -->
     <div class="pt-6 border-t border-teal-100 text-xs font-bold text-slate-500 text-center no-print">
       Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
     </div>
   </div>
+
   <!-- MODAL CETAK PIAGAM RESMI DARI ADMIN -->
   <div id="adminCertificateModal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
     <div class="bg-white max-w-4xl w-full rounded-2xl shadow-2xl relative p-3 sm:p-6 text-center border-4 border-amber-300">
@@ -488,7 +478,7 @@
             <span class="text-xs font-black text-emerald-800" id="adminCertPredicate">SANGAT MEMUASKAN</span>
           </div>
         </div>
-        <!-- 2 PENANDATANGAN RESMI PIAGAM -->
+        <!-- 2 TTD -->
         <div class="grid grid-cols-2 gap-4 sm:gap-12 px-4 sm:px-12 text-left text-slate-900 pt-3">
           <div class="space-y-0.5">
             <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Mengetahui</p>
@@ -548,10 +538,12 @@
       </div>
     </div>
   </div>
+
   <script>
     const FIREBASE_DB_URL = "https://tka-mranggen-2026-default-rtdb.firebaseio.com/nilai_tryout.json";
     const FIREBASE_SETTINGS_URL = "https://tka-mranggen-2026-default-rtdb.firebaseio.com/pengaturan_ujian.json";
     const ADMIN_AUTH = { username: "siekeguruan", password: "#Robocop86" };
+    
     const LIST_SEKOLAH_MRANGGEN = [
       "SD NEGERI BANDUNGREJO 1 MRANGGEN", "SD NEGERI BANDUNGREJO 2 MRANGGEN", "SD NEGERI BANYUMENENG 1",
       "SD NEGERI BANYUMENENG 2", "SD NEGERI BATURSARI 1", "SD NEGERI BATURSARI 2", "SD NEGERI BATURSARI 3",
@@ -568,11 +560,13 @@
       "SDS IT MIFTAHUL HIDAYAH", "SDS IT PERMATA BUNDA", "SDS KRISTEN DIAN WACANA", "SDS KY AGENG GIRI",
       "SDS MUHAMMADIYAH PUCANG GADING", "SDS TERPADU DARUNNAJAH"
     ];
+
     let currentAdminSubject = 'matematika';
     let selectedPackageFilter = 'ALL';
     let currentPrintSortMode = 'RANKING';
     let currentViewMode = 'students';
     let isAdminLoggedIn = sessionStorage.getItem('tka_admin_auth') === 'true';
+
     const DEFAULT_PACKAGE_STATUS = {
       matematika: { "UJICOBA": true, "Paket 1": false, "Paket 2": false, "Paket 3": false, "Paket 4": false, "Paket 5": false },
       indonesia: { "Paket 1": true, "Paket 2": false, "Paket 3": false, "Paket 4": false, "Paket 5": false }
@@ -581,18 +575,31 @@
       matematika: { "UJICOBA": "UJICOBA", "Paket 1": "MAT1", "Paket 2": "MAT2", "Paket 3": "MAT3", "Paket 4": "MAT4", "Paket 5": "MAT5" },
       indonesia: { "Paket 1": "BINDO1", "Paket 2": "BINDO2", "Paket 3": "BINDO3", "Paket 4": "BINDO4", "Paket 5": "BINDO5" }
     };
+
     function getPackageStatus() {
       const stored = localStorage.getItem('tka_pkg_status_multi');
       return stored ? JSON.parse(stored) : DEFAULT_PACKAGE_STATUS;
     }
-    function savePackageStatus(s) {
-      localStorage.setItem('tka_pkg_status_multi', JSON.stringify(s));
+
+    async function savePackageStatusToCloud(statusObj) {
+      localStorage.setItem('tka_pkg_status_multi', JSON.stringify(statusObj));
+      try {
+        await fetch(FIREBASE_SETTINGS_URL, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status: statusObj })
+        });
+      } catch (err) {
+        console.warn("Gagal simpan status ke cloud:", err);
+      }
       renderAdminLockControls();
     }
+
     function getPackageTokens() {
       const stored = localStorage.getItem('tka_pkg_tokens_multi');
       return stored ? JSON.parse(stored) : DEFAULT_PACKAGE_TOKENS;
     }
+
     async function setPackageToken(pkg, val) {
       const tokens = getPackageTokens();
       if (!tokens[currentAdminSubject]) tokens[currentAdminSubject] = {};
@@ -609,21 +616,14 @@
       }
       renderAdminLockControls();
     }
+
     async function togglePackageLock(pkg) {
       const s = getPackageStatus();
       if (!s[currentAdminSubject]) s[currentAdminSubject] = {};
       s[currentAdminSubject][pkg] = !s[currentAdminSubject][pkg];
-      savePackageStatus(s);
-      try {
-        await fetch(FIREBASE_SETTINGS_URL, {
-          method: 'PATCH',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ status: s })
-        });
-      } catch (err) {
-        console.warn("Gagal simpan status paket ke cloud:", err);
-      }
+      await savePackageStatusToCloud(s);
     }
+
     async function fetchCloudSettings() {
       try {
         const res = await fetch(FIREBASE_SETTINGS_URL);
@@ -637,6 +637,7 @@
       }
       renderAdminLockControls();
     }
+
     function switchAdminSubject(sub) {
       currentAdminSubject = sub;
       selectedPackageFilter = 'ALL';
@@ -647,10 +648,11 @@
         ? "px-4 py-2 rounded-xl text-xs font-black bg-teal-600 text-white shadow-sm transition"
         : "px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition";
       
-      document.getElementById('lockSectionTitle').innerText = `Kontrol Token: ${sub === 'matematika' ? 'Matematika' : 'Bahasa Indonesia'}`;
+      document.getElementById('lockSectionTitle').innerText = `Kontrol Token & Akses Paket: ${sub === 'matematika' ? 'Matematika' : 'Bahasa Indonesia'}`;
       renderFilterTabs();
       renderAdminDashboard();
     }
+
     function renderFilterTabs() {
       const container = document.getElementById('packageFilterTabs');
       container.innerHTML = '';
@@ -671,6 +673,7 @@
         container.appendChild(btn);
       });
     }
+
     function renderAdminLockControls() {
       const statusMap = getPackageStatus()[currentAdminSubject] || {};
       const tokenMap = getPackageTokens()[currentAdminSubject] || {};
@@ -698,20 +701,24 @@
         container.appendChild(box);
       });
     }
+
     function getStoredSubmissions() {
       const local = localStorage.getItem('tka_submissions_multi');
       return local ? JSON.parse(local) : [];
     }
+
     function getCheatLogs() {
       const local = localStorage.getItem('tka_cheat_logs');
       return local ? JSON.parse(local) : [];
     }
+
     function clearCheatLogs() {
       if (confirm("Yakin ingin membersihkan seluruh log pelanggaran anti-curang?")) {
         localStorage.removeItem('tka_cheat_logs');
         renderCheatTable();
       }
     }
+
     function handleAdminLogin(e) {
       e.preventDefault();
       const user = document.getElementById('adminUser').value.trim();
@@ -729,12 +736,14 @@
         document.getElementById('loginErrorMsg').classList.remove('hidden');
       }
     }
+
     function logoutAdmin() {
       isAdminLoggedIn = false;
       sessionStorage.removeItem('tka_admin_auth');
       document.getElementById('adminPortal').classList.add('hidden');
       document.getElementById('adminLoginModal').classList.remove('hidden');
     }
+
     async function syncOnlineData() {
       const btn = document.getElementById('btnSync');
       if (btn) btn.innerText = "⏳ Mengambil...";
@@ -752,9 +761,10 @@
           console.warn("Offline:", e);
         }
       }
-      if (btn) btn.innerText = "🔄 Ambil Data";
+      if (btn) btn.innerText = "🔄 Ambil Data Cloud";
       renderAdminDashboard();
     }
+
     function switchViewMode(mode) {
       currentViewMode = mode;
       const secStudents = document.getElementById('viewStudentsSection');
@@ -787,6 +797,7 @@
         renderCheatTable();
       }
     }
+
     function renderAdminDashboard() {
       renderAdminLockControls();
       if (currentViewMode === 'students') renderAdminTable();
@@ -794,6 +805,7 @@
       else if (currentViewMode === 'analysis') renderItemAnalysisTable();
       else if (currentViewMode === 'cheats') renderCheatTable();
     }
+
     function renderCheatTable() {
       const logs = getCheatLogs();
       const tbody = document.getElementById('cheatTableBody');
@@ -817,7 +829,7 @@
         tbody.appendChild(tr);
       });
     }
-    // 1. RENDER TABEL NILAI SISWA
+
     function renderAdminTable() {
       let submissions = getStoredSubmissions();
       const targetSubName = currentAdminSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia';
@@ -877,10 +889,10 @@
         tbody.appendChild(tr);
       });
     }
-    // 2. RENDER TABEL PERINGKAT SD DENGAN PILIHAN MAPEL GABUNGAN / MATEMATIKA / B. INDO
+
     function renderSchoolRankingTable() {
       let submissions = getStoredSubmissions();
-      const subjectFilterVal = document.getElementById('schoolSubjectFilter').value; // gabungan, matematika, indonesia
+      const subjectFilterVal = document.getElementById('schoolSubjectFilter').value;
       
       if (subjectFilterVal === 'matematika') {
         submissions = submissions.filter(s => s.subject === 'Matematika');
@@ -948,7 +960,7 @@
         tbody.appendChild(tr);
       });
     }
-    // 3. RENDER TABEL ANALISIS BUTIR SOAL PER MAPEL & PILIHAN PAKET
+
     function renderItemAnalysisTable() {
       let submissions = getStoredSubmissions();
       const targetSubName = currentAdminSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia';
@@ -1019,10 +1031,9 @@
         tbody.appendChild(tr);
       }
     }
-    // FUNGSI BUKA MODAL PIAGAM DARI ADMIN
+
     function openAdminCertModal(encodedData) {
       const sub = JSON.parse(decodeURIComponent(encodedData));
-      
       let finalScore = Number(sub.finalScore) || 0;
       if (finalScore > 100) {
         finalScore = Math.min(100, Math.round((Number(sub.rawScore || 0) / 30) * 100));
@@ -1038,20 +1049,20 @@
       else if (finalScore >= 70) predikat = "BAIK / LULUS";
       document.getElementById('adminCertPredicate').innerText = predikat;
       document.getElementById('adminCertNumber').innerText = `No: 400.3.11.1/TKA-MRG/2026/${Math.floor(1000 + Math.random() * 9000)}`;
-      
       document.getElementById('adminCertificateModal').classList.remove('hidden');
     }
-    // FUNGSI CETAK PIAGAM RESMI (LANDSCAPE 1 LEMBAR PENUH)
+
     function printSingleCertificate() {
       document.body.classList.remove('mode-table');
       document.body.classList.add('mode-cert');
       window.print();
     }
+
     function closeAdminCertificateModal() {
       document.body.classList.remove('mode-cert');
       document.getElementById('adminCertificateModal').classList.add('hidden');
     }
-    // FUNGSI CETAK TABEL REKAPITULASI NILAI SISWA
+
     function triggerPrintMode(mode) {
       document.body.classList.remove('mode-cert');
       document.body.classList.add('mode-table');
@@ -1083,7 +1094,7 @@
       renderAdminTable();
       setTimeout(() => window.print(), 250);
     }
-    // FUNGSI CETAK PERINGKAT SEKOLAH
+
     function triggerPrintSchools() {
       document.body.classList.remove('mode-cert');
       document.body.classList.add('mode-table');
@@ -1092,11 +1103,12 @@
       document.getElementById('printSchoolDatePlace').innerText = `Mranggen, ${todayFormatted}`;
       setTimeout(() => window.print(), 250);
     }
+
     async function promptSafeClearData() {
-      const targetSub = document.getElementById('clearTargetSubject').value; // ALL, Matematika, Bahasa Indonesia
-      const targetPkg = document.getElementById('clearTargetPackage').value; // ALL, UJICOBA, Paket 1-5
+      const targetSub = document.getElementById('clearTargetSubject').value;
+      const targetPkg = document.getElementById('clearTargetPackage').value;
       
-      const confirmMsg = `⚠️ PERINGATAN PEMBERSIHAN DATA:\nAnda akan menghapus data ujian untuk:\n- Mapel: ${targetSub}\n- Paket: ${targetPkg}\n\nKetik 'HAPUS' (huruf besar) untuk mengonfirmasi:`;
+      const confirmMsg = `⚠️ PERINGATAN PEMBERSIHAN DATA CLOUD:\nAnda akan menghapus data ujian untuk:\n- Mapel: ${targetSub}\n- Paket: ${targetPkg}\n\nKetik 'HAPUS' (huruf besar) untuk mengonfirmasi:`;
       const code = prompt(confirmMsg);
       
       if (code === "HAPUS") {
@@ -1111,7 +1123,7 @@
             submissions = submissions.filter(s => {
               const matchSub = (targetSub === 'ALL' || s.subject === targetSub);
               const matchPkg = (targetPkg === 'ALL' || s.package === targetPkg);
-              return !(matchSub && matchPkg); // Hapus yang sesuai target
+              return !(matchSub && matchPkg);
             });
             if (typeof FIREBASE_DB_URL !== 'undefined' && FIREBASE_DB_URL) {
               await fetch(FIREBASE_DB_URL, {
@@ -1123,7 +1135,7 @@
           }
           localStorage.setItem('tka_submissions_multi', JSON.stringify(submissions));
           renderAdminDashboard();
-          alert("✅ Berhasil! Data testing pada target tersebut telah dibersihkan.");
+          alert("✅ Berhasil! Data testing pada target tersebut telah dibersihkan dari memori lokal dan cloud.");
         } catch (err) {
           alert("Gagal menghapus data di cloud: " + err.message);
         }
@@ -1131,6 +1143,7 @@
         alert("Konfirmasi dibatalkan.");
       }
     }
+
     function downloadBackupJSON() {
       const data = getStoredSubmissions();
       const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
@@ -1140,6 +1153,7 @@
       link.download = `BACKUP_TKA_MRANGGEN_${Date.now()}.json`;
       link.click();
     }
+
     function exportToCSV() {
       let submissions = getStoredSubmissions();
       const targetSubName = currentAdminSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia';
@@ -1160,6 +1174,7 @@
       link.download = `Rekap_Nilai_${targetSubName}_${Date.now()}.csv`;
       link.click();
     }
+
     window.addEventListener('DOMContentLoaded', () => {
       const filterSelect = document.getElementById('adminFilterSchool');
       LIST_SEKOLAH_MRANGGEN.forEach(sch => {
