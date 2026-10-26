@@ -443,7 +443,6 @@
       "SDS MUHAMMADIYAH PUCANG GADING", "SDS TERPADU DARUNNAJAH"
     ];
 
-    // DATA SOAL MATEMATIKA & BAHASA INDONESIA
     const SOAL_30_MATEMATIKA = [
       { id: 1, type: "PG", text: "1. Hasil dari 16⅔% × 24 - 0,25 × 20 + 1¾ × 4 adalah ....", options: ["3", "4", "6", "8"], correct: 2, topic: "Operasi Hitung Pecahan", explanation: "16⅔% = 1/6; (1/6 × 24) = 4; (0,25 × 20) = 5; (1¾ × 4) = 7. Hasil = 4 - 5 + 7 = 6. (Kunci: C)" },
       { id: 2, type: "PG", text: "2. Perhatikan tabel berikut!<br><img src='soal2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pasangan yang tepat yang menunjukkan hubungan antara persen dan pecahan biasa adalah ....", options: ["1 - C, 2 - A", "1 - C, 2 - D", "3 - A, 4 - B", "3 - B, 2 - C"], correct: 1, topic: "Persen & Pecahan", explanation: "60% = 3/5 (C) dan 50% = 1/2 (D). (Kunci: B)" },
@@ -502,13 +501,13 @@
         <b>2.</b> Berdasarkan teks, apa arti dari kata "eksploitasi"?`,
         options: [
           "Penanaman kembali hutan yang gundul.",
-          "Perlindungan terhadap hewan langka.",
-          "Pemanfaatan sumber daya alam untuk keuntungan pribadi secara berlebihan.",
+          "Perlindindungan terhadap hewan langka.",
+          "Pemanfaatan alam secara berlebihan.",
           "Penelitian mengenai jenis-jenis tumbuhan di hutan."
         ],
         correct: 2,
         topic: "Arti Kosakata",
-        explanation: "Eksploitasi adalah pemanfaatan sumber daya alam untuk keuntungan pribadi secara berlebihan. (Kunci: C)"
+        explanation: "Eksploitasi adalah pemanfaatan alam secara berlebihan. (Kunci: C)"
       },
       {
         id: 3, type: "PG",
@@ -517,13 +516,13 @@
         <b>3.</b> Kata "anomali" pada paragraf kedua memiliki makna yang serupa dengan...`,
         options: [
           "Keajekan",
-          "Keanehan / Kelainan",
+          "Keanehan",
           "Keindahan",
           "Ketetapan"
         ],
         correct: 1,
         topic: "Sinonim",
-        explanation: "Anomali memiliki arti serupa dengan keanehan atau kelainan. (Kunci: B)"
+        explanation: "Anomali memiliki arti serupa dengan keanehan. (Kunci: B)"
       },
       {
         id: 4, type: "PG",
@@ -1259,7 +1258,6 @@
       }
     }
 
-    // FUNGSI SIMPAN DENGAN ID UNIK (ANTI-BENTROK)
     async function saveSubmissionWithUniqueId(sub) {
       const local = localStorage.getItem('tka_submissions_multi');
       let list = local ? JSON.parse(local) : [];
@@ -1341,7 +1339,6 @@
       const durationSeconds = Math.max(0, (75 * 60) - timeRemaining);
       const durMin = Math.floor(durationSeconds / 60);
       
-      // PEMBUATAN ID UNIK BERBASIS KOMBINASI (Anti-Bentrok)
       const cleanSchool = (currentUser.school || '').replace(/[^a-zA-Z0-9]/g, '_').toUpperCase();
       const cleanName = (currentUser.name || '').replace(/[^a-zA-Z0-9]/g, '_').toUpperCase();
       const uniqueRecordId = `${cleanSchool}_${cleanName}_${selectedSubject.toUpperCase()}_${currentPackageKey.toUpperCase()}`;
