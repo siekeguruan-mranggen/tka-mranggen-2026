@@ -887,7 +887,7 @@
       },
       {
         id: 30, type: "MCMA",
-        text: `<b>30.</b> Bergas melihat seekor burung pipit yang sayapnya terluka di bawah pohon mangga. Tanpa ragu, Bergas membawanya pulang dan mengobati lukanya. Setiap hari Bergas memberinya makan dengan tekun sampai burung itu bisa terbang kembali. Tanggapan yang tepat untuk watak tokoh Bergas dalam cerita tersebut, ada dua dalam jawaban berikut ini adalah...`,
+        text: `<b>30.</b> Bergas melihat seekor burung pipit yang sayapnya terluka di bawah pohon mangga. Tanpo ragu, Bergas membawanya pulang dan mengobati lukanya. Setiap hari Bergas memberinya makan dengan tekun sampai burung itu bisa terbang kembali. Tanggapan yang tepat untuk watak tokoh Bergas dalam cerita tersebut, ada dua dalam jawaban berikut ini adalah...`,
         options: [
           "Bergas adalah anak yang baik hati karena menolong burung pipit.",
           "Bergas adalah anak yang pemberani karena berani memanjat pohon mangga.",
@@ -923,6 +923,7 @@
     let currentUser = { name: '', school: '', className: '', absen: '' };
     let currentQuestionIdx = 0, userAnswers = {}, raguStatus = {}, examTimerInterval = null, timeRemaining = 75 * 60;
     let latestExamScore = 0, latestSubmissionData = null;
+    let lastExamDetailAnswers = {}; // Menyimpan detail benar/salah per soal siswa
 
     async function fetchCloudSettingsForStudent() {
       try {
@@ -1331,6 +1332,8 @@
         totalRawScore += earned;
         detailAnswersRecord[q.id] = { earned: earned, isCorrect: isFullyCorrect };
       });
+
+      lastExamDetailAnswers = detailAnswersRecord; // Simpan untuk pengecekan warna pembahasan
       
       const maxScoreActual = currentQuestions.length;
       const final100 = Math.min(100, Math.round((totalRawScore / maxScoreActual) * 100));
@@ -1447,16 +1450,30 @@
       document.getElementById('discussionTitle').innerText = `Kunci Jawaban & Pembahasan ${selectedSubject.toUpperCase()} - ${currentPackageKey}`;
       container.innerHTML = '';
       currentQuestions.forEach((q, idx) => {
+        const detail = lastExamDetailAnswers[q.id] || { isCorrect: true };
+        const isCorrect = detail.isCorrect;
+
+        // Warna Hijau untuk benar, Merah Muda (Rose/Pink Soft) untuk yang salah
+        const boxColorClass = isCorrect 
+          ? "bg-emerald-50 border-emerald-200 text-emerald-950" 
+          : "bg-rose-50 border-rose-300 text-rose-950";
+        const badgeColorClass = isCorrect 
+          ? "bg-emerald-600 text-white" 
+          : "bg-rose-600 text-white";
+        const statusText = isCorrect 
+          ? "✅ Jawaban Anda Benar" 
+          : "❌ Jawaban Anda Keliru / Belum Tepat";
+
         const item = document.createElement('div');
         item.className = "bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2 text-xs sm:text-sm text-left";
         item.innerHTML = `
           <div class="flex items-center justify-between border-b border-slate-100 pb-2">
             <span class="font-bold text-teal-700">Nomor ${idx + 1} (${q.type})</span>
-            <span class="text-[11px] text-slate-400 font-semibold">${q.topic || 'Ujian TKA'}</span>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black ${badgeColorClass}">${statusText}</span>
           </div>
           <div class="text-slate-800">${q.text}</div>
-          <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-emerald-950 font-medium">
-            <span class="font-black text-emerald-800">Pembahasan:</span><br>
+          <div class="p-3.5 rounded-xl border ${boxColorClass} font-medium">
+            <span class="font-black block mb-1">Pembahasan & Kunci:</span>
             ${q.explanation || 'Kunci jawaban dan pembahasan resmi.'}
           </div>
         `;
