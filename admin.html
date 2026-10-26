@@ -752,7 +752,12 @@
           const res = await fetch(FIREBASE_DB_URL);
           const dataObj = await res.json();
           if (dataObj) {
-            const dataArray = Object.keys(dataObj).map(key => dataObj[key]);
+            let dataArray = [];
+            if (Array.isArray(dataObj)) {
+              dataArray = dataObj.filter(item => item !== null);
+            } else {
+              dataArray = Object.keys(dataObj).map(key => dataObj[key]).filter(item => item !== null);
+            }
             localStorage.setItem('tka_submissions_multi', JSON.stringify(dataArray));
           } else {
             localStorage.setItem('tka_submissions_multi', JSON.stringify([]));
@@ -1137,58 +1142,4 @@
           renderAdminDashboard();
           alert("✅ Berhasil! Data testing pada target tersebut telah dibersihkan dari memori lokal dan cloud.");
         } catch (err) {
-          alert("Gagal menghapus data di cloud: " + err.message);
-        }
-      } else if (code !== null) {
-        alert("Konfirmasi dibatalkan.");
-      }
-    }
-
-    function downloadBackupJSON() {
-      const data = getStoredSubmissions();
-      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = `BACKUP_TKA_MRANGGEN_${Date.now()}.json`;
-      link.click();
-    }
-
-    function exportToCSV() {
-      let submissions = getStoredSubmissions();
-      const targetSubName = currentAdminSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia';
-      submissions = submissions.filter(s => s.subject === targetSubName);
-      if (submissions.length === 0) { alert('Belum ada data!'); return; }
-      let csv = 'Peringkat,Waktu,Mapel,Paket,Nama Siswa,No Absen,Asal Sekolah,Kelas,Skor Mentah,Nilai Akhir,Status\n';
-      submissions.forEach((s, idx) => {
-        let displayScore = Number(s.finalScore) || 0;
-        if (displayScore > 100) {
-          displayScore = Math.min(100, Math.round((Number(s.rawScore || 0) / 30) * 100));
-        }
-        csv += `${idx + 1},"${s.date}","${s.subject}","${s.package}","${s.name}","${s.absen}","${s.school}","${s.className || 'VI'}",${s.rawScore},${displayScore},"${s.status}"\n`;
-      });
-      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = `Rekap_Nilai_${targetSubName}_${Date.now()}.csv`;
-      link.click();
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const filterSelect = document.getElementById('adminFilterSchool');
-      LIST_SEKOLAH_MRANGGEN.forEach(sch => {
-        const o = document.createElement('option'); o.value = sch; o.innerText = sch; filterSelect.appendChild(o);
-      });
-      if (isAdminLoggedIn) {
-        document.getElementById('adminLoginModal').classList.add('hidden');
-        document.getElementById('adminPortal').classList.remove('hidden');
-        renderFilterTabs();
-        renderAdminDashboard();
-        fetchCloudSettings();
-        syncOnlineData();
-      }
-    });
-  </script>
-</body>
-</html>
+          alert("Gagal
