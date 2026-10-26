@@ -734,9 +734,9 @@
           "Arinda menolong teman tanpa pamrih.",
           "Arinda rajin belajar bila ada tugas."
         ],
-        correct: ["Benar", "Benar", "Benar"],
+        correct: ["Benar", "Benar", "Salah"],
         topic: "Pemahaman Bacaan",
-        explanation: "Semua pernyataan sesuai dengan isi teks bacaan Arinda."
+        explanation: "Pernyataan 1 & 2 Sesuai (Benar), pernyataan 3 Tidak Sesuai (Salah karena Arinda rajin belajar setiap hari, bukan hanya bila ada tugas)."
       },
       {
         id: 19, type: "PG",
@@ -887,7 +887,7 @@
       },
       {
         id: 30, type: "MCMA",
-        text: `<b>30.</b> Bergas melihat seekor burung pipit yang sayapnya terluka di bawah pohon mangga. Tanpo ragu, Bergas membawanya pulang dan mengobati lukanya. Setiap hari Bergas memberinya makan dengan tekun sampai burung itu bisa terbang kembali. Tanggapan yang tepat untuk watak tokoh Bergas dalam cerita tersebut, ada dua dalam jawaban berikut ini adalah...`,
+        text: `<b>30.</b> Bergas melihat seekor burung pipit yang sayapnya terluka di bawah pohon mangga. Tanpa ragu, Bergas membawanya pulang dan mengobati lukanya. Setiap hari Bergas memberinya makan dengan tekun sampai burung itu bisa terbang kembali. Tanggapan yang tepat untuk watak tokoh Bergas dalam cerita tersebut, ada dua dalam jawaban berikut ini adalah...`,
         options: [
           "Bergas adalah anak yang baik hati karena menolong burung pipit.",
           "Bergas adalah anak yang pemberani karena berani memanjat pohon mangga.",
@@ -923,7 +923,7 @@
     let currentUser = { name: '', school: '', className: '', absen: '' };
     let currentQuestionIdx = 0, userAnswers = {}, raguStatus = {}, examTimerInterval = null, timeRemaining = 75 * 60;
     let latestExamScore = 0, latestSubmissionData = null;
-    let lastExamDetailAnswers = {}; // Menyimpan detail benar/salah per soal siswa
+    let lastExamDetailAnswers = {};
 
     async function fetchCloudSettingsForStudent() {
       try {
@@ -1333,7 +1333,7 @@
         detailAnswersRecord[q.id] = { earned: earned, isCorrect: isFullyCorrect };
       });
 
-      lastExamDetailAnswers = detailAnswersRecord; // Simpan untuk pengecekan warna pembahasan
+      lastExamDetailAnswers = detailAnswersRecord;
       
       const maxScoreActual = currentQuestions.length;
       const final100 = Math.min(100, Math.round((totalRawScore / maxScoreActual) * 100));
@@ -1453,7 +1453,6 @@
         const detail = lastExamDetailAnswers[q.id] || { isCorrect: true };
         const isCorrect = detail.isCorrect;
 
-        // Warna Hijau untuk benar, Merah Muda (Rose/Pink Soft) untuk yang salah
         const boxColorClass = isCorrect 
           ? "bg-emerald-50 border-emerald-200 text-emerald-950" 
           : "bg-rose-50 border-rose-300 text-rose-950";
