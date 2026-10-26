@@ -275,7 +275,7 @@
       </div>
     </div>
 
-    <!-- ================= VIEW 2: REKAP PERINGKAT SEKOLAH (DITAMBAH FILTER MAPEL & PAKET) ================= -->
+    <!-- ================= VIEW 2: REKAP PERINGKAT SEKOLAH ================= -->
     <div id="viewSchoolsSection" class="hidden bg-white rounded-3xl border border-teal-200/80 shadow-md p-6 space-y-4">
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 no-print">
         <div>
@@ -283,13 +283,11 @@
           <p class="text-xs text-slate-500">Peringkat sekolah dihitung otomatis dari akumulasi rata-rata nilai siswa.</p>
         </div>
         <div class="flex flex-wrap items-center gap-2">
-          <!-- Dropdown Mapel -->
           <select id="schoolSubjectFilter" onchange="renderSchoolRankingTable()" class="px-3 py-2 text-xs rounded-xl border border-teal-300 font-bold bg-teal-50 text-teal-900 outline-none cursor-pointer">
             <option value="gabungan">📊 Gabungan (Semua Mapel)</option>
             <option value="Matematika">📐 Matematika</option>
             <option value="Bahasa Indonesia">📖 Bahasa Indonesia</option>
           </select>
-          <!-- Dropdown Paket Soal -->
           <select id="schoolPackageFilter" onchange="renderSchoolRankingTable()" class="px-3 py-2 text-xs rounded-xl border border-teal-300 font-bold bg-teal-50 text-teal-900 outline-none cursor-pointer">
             <option value="ALL">📦 Semua Paket</option>
             <option value="UJICOBA">UJICOBA</option>
@@ -761,7 +759,7 @@
       if (btn) btn.innerText = "⏳ Mengambil...";
       if (typeof FIREBASE_DB_URL !== 'undefined' && FIREBASE_DB_URL) {
         try {
-          const res = await fetch(FIREBASE_DB_URL);
+          const res = await fetch(FIREBASE_DB_URL + "?t=" + new Date().getTime());
           const dataObj = await res.json();
           if (dataObj) {
             let dataArray = [];
@@ -858,18 +856,36 @@
       const searchName = (document.getElementById('adminSearchInput').value || '').toLowerCase();
       if (schoolFilter) submissions = submissions.filter(s => s.school === schoolFilter);
       if (searchName) submissions = submissions.filter(s => s.name.toLowerCase().includes(searchName));
+
+      // DEDUPLIKASI: Jika siswa dengan Nama + Sekolah + Paket yang sama mengirim ganda, ambil nilai tertinggi
+      const uniqueMap = {};
+      submissions.forEach(s => {
+        const key = `${(s.name||'').trim().toLowerCase()}_${(s.school||'').trim().toLowerCase()}_${s.package}_${s.subject}`;
+        let currentScore = Number(s.finalScore) || Number(s.rawScore) || 0;
+        if (!uniqueMap[key]) {
+          uniqueMap[key] = s;
+        } else {
+          let existingScore = Number(uniqueMap[key].finalScore) || Number(uniqueMap[key].rawScore) || 0;
+          if (currentScore > existingScore) {
+            uniqueMap[key] = s; // Timpa dengan skor yang lebih tinggi
+          }
+        }
+      });
+      let processedSubmissions = Object.values(uniqueMap);
+
       if (currentPrintSortMode === 'SCHOOL_ORDER') {
-        submissions.sort((a, b) => a.school.localeCompare(b.school) || (Number(b.finalScore) || 0) - (Number(a.finalScore) || 0));
+        processedSubmissions.sort((a, b) => a.school.localeCompare(b.school) || (Number(b.finalScore) || 0) - (Number(a.finalScore) || 0));
       } else {
-        submissions.sort((a, b) => (Number(b.finalScore) || 0) - (Number(a.finalScore) || 0) || (Number(b.rawScore) || 0) - (Number(a.rawScore) || 0));
+        processedSubmissions.sort((a, b) => (Number(b.finalScore) || 0) - (Number(a.finalScore) || 0) || (Number(b.rawScore) || 0) - (Number(a.rawScore) || 0));
       }
+
       const tbody = document.getElementById('adminTableBody');
       tbody.innerHTML = '';
-      if (submissions.length === 0) {
+      if (processedSubmissions.length === 0) {
         tbody.innerHTML = `<tr><td colspan="10" class="py-8 text-center text-slate-400 font-medium">Belum ada data nilai untuk ${targetSubName} pada filter ini.</td></tr>`;
         return;
       }
-      submissions.forEach((s, idx) => {
+      processedSubmissions.forEach((s, idx) => {
         const tr = document.createElement('tr');
         tr.className = "hover:bg-teal-50/50 transition";
         let rankBadge = `<span class="font-bold text-slate-600">${idx + 1}</span>`;
@@ -912,17 +928,29 @@
       const subjectFilterVal = document.getElementById('schoolSubjectFilter').value;
       const packageFilterVal = document.getElementById('schoolPackageFilter').value;
       
-      // Filter Mapel
       if (subjectFilterVal !== 'gabungan') {
         submissions = submissions.filter(s => s.subject === subjectFilterVal);
       }
-      // Filter Paket
       if (packageFilterVal !== 'ALL') {
         submissions = submissions.filter(s => s.package === packageFilterVal);
       }
       
-      const schoolMap = {};
+      // Deduplikasi juga untuk rekap sekolah agar akurat
+      const uniqueMap = {};
       submissions.forEach(s => {
+        const key = `${(s.name||'').trim().toLowerCase()}_${(s.school||'').trim().toLowerCase()}_${s.package}_${s.subject}`;
+        let currentScore = Number(s.finalScore) || Number(s.rawScore) || 0;
+        if (!uniqueMap[key]) {
+          uniqueMap[key] = s;
+        } else {
+          let existingScore = Number(uniqueMap[key].finalScore) || Number(uniqueMap[key].rawScore) || 0;
+          if (currentScore > existingScore) uniqueMap[key] = s;
+        }
+      });
+      let cleanSubmissions = Object.values(uniqueMap);
+
+      const schoolMap = {};
+      cleanSubmissions.forEach(s => {
         const sch = s.school || 'Tanpa Nama SD';
         let score = Number(s.finalScore) || 0;
         if (score > 100) score = Math.min(100, Math.round((Number(s.rawScore || 0) / 30) * 100));
