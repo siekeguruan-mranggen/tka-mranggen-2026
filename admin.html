@@ -721,7 +721,7 @@
         if (Array.isArray(parsed)) {
           return parsed.filter(item => item !== null);
         } else if (typeof parsed === 'object' && parsed !== null) {
-          return Object.values(parsed).filter(item => item !== null);
+          return Object.values(parsed).filter(item => item !== null && typeof item === 'object');
         }
         return [];
       } catch (e) {
@@ -778,14 +778,14 @@
             if (Array.isArray(dataObj)) {
               dataArray = dataObj.filter(item => item !== null);
             } else {
-              dataArray = Object.keys(dataObj).map(key => dataObj[key]).filter(item => item !== null);
+              dataArray = Object.values(dataObj).filter(item => item !== null && typeof item === 'object');
             }
             localStorage.setItem('tka_submissions_multi', JSON.stringify(dataArray));
           } else {
             localStorage.setItem('tka_submissions_multi', JSON.stringify([]));
           }
         } catch (e) {
-          console.warn("Offline:", e);
+          console.warn("Gagal ambil dari cloud:", e);
         }
       }
       if (btn) btn.innerText = "🔄 Ambil Data Cloud";
@@ -1164,90 +1164,4 @@
     }
 
     async function promptSafeClearData() {
-      const targetSub = document.getElementById('clearTargetSubject').value;
-      const targetPkg = document.getElementById('clearTargetPackage').value;
-      
-      const confirmMsg = `⚠️ PERINGATAN PEMBERSIHAN DATA CLOUD:\nAnda akan menghapus data ujian untuk:\n- Mapel: ${targetSub}\n- Paket: ${targetPkg}\n\nKetik 'HAPUS' (huruf besar) untuk mengonfirmasi:`;
-      const code = prompt(confirmMsg);
-      
-      if (code === "HAPUS") {
-        try {
-          let submissions = getStoredSubmissions();
-          if (targetSub === 'ALL' && targetPkg === 'ALL') {
-            submissions = [];
-            if (typeof FIREBASE_DB_URL !== 'undefined' && FIREBASE_DB_URL) {
-              await fetch(FIREBASE_DB_URL, { method: 'DELETE' });
-            }
-          } else {
-            submissions = submissions.filter(s => {
-              const matchSub = (targetSub === 'ALL' || s.subject === targetSub);
-              const matchPkg = (targetPkg === 'ALL' || s.package === targetPkg);
-              return !(matchSub && matchPkg);
-            });
-            if (typeof FIREBASE_DB_URL !== 'undefined' && FIREBASE_DB_URL) {
-              await fetch(FIREBASE_DB_URL, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(submissions)
-              });
-            }
-          }
-          localStorage.setItem('tka_submissions_multi', JSON.stringify(submissions));
-          renderAdminDashboard();
-          alert("✅ Berhasil! Data testing pada target tersebut telah dibersihkan dari memori lokal dan cloud.");
-        } catch (err) {
-          alert("Gagal menghapus data di cloud: " + err.message);
-        }
-      } else if (code !== null) {
-        alert("Konfirmasi dibatalkan.");
-      }
-    }
-
-    function downloadBackupJSON() {
-      const data = getStoredSubmissions();
-      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = `BACKUP_TKA_MRANGGEN_${Date.now()}.json`;
-      link.click();
-    }
-
-    function exportToCSV() {
-      let submissions = getStoredSubmissions();
-      const targetSubName = currentAdminSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia';
-      submissions = submissions.filter(s => s.subject === targetSubName);
-      if (submissions.length === 0) { alert('Belum ada data!'); return; }
-      let csv = 'Peringkat,Waktu,Mapel,Paket,Nama Siswa,No Absen,Asal Sekolah,Kelas,Skor Mentah,Nilai Akhir,Status\n';
-      submissions.forEach((s, idx) => {
-        let displayScore = Number(s.finalScore) || 0;
-        if (displayScore > 100) {
-          displayScore = Math.min(100, Math.round((Number(s.rawScore || 0) / 30) * 100));
-        }
-        csv += `${idx + 1},"${s.date}","${s.subject}","${s.package}","${s.name}","${s.absen}","${s.school}","${s.className || 'VI'}",${s.rawScore},${displayScore},"${s.status}"\n`;
-      });
-      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = `Rekap_Nilai_${targetSubName}_${Date.now()}.csv`;
-      link.click();
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const filterSelect = document.getElementById('adminFilterSchool');
-      LIST_SEKOLAH_MRANGGEN.forEach(sch => {
-        const o = document.createElement('option'); o.value = sch; o.innerText = sch; filterSelect.appendChild(o);
-      });
-      if (isAdminLoggedIn) {
-        document.getElementById('adminLoginModal').classList.add('hidden');
-        document.getElementById('adminPortal').classList.remove('hidden');
-        renderFilterTabs();
-        renderAdminDashboard();
-        fetchCloudSettings();
-        syncOnlineData();
-      }
-    });
-  </script>
-</body>
-</html>
+      const
