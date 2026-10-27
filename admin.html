@@ -89,6 +89,14 @@
 
     <!-- VIEW 1: REKAP NILAI SISWA -->
     <div id="viewStudentsSection" class="bg-white rounded-3xl border border-teal-200/80 shadow-md p-6 space-y-4">
+      
+      <!-- KOP CETAK RESMI -->
+      <div class="hidden print:block border-b-2 border-slate-900 pb-3 mb-4 text-center">
+        <h2 class="text-base font-black uppercase tracking-wider text-slate-900">KORWIL BIDDIKBUD KECAMATAN MRANGGEN</h2>
+        <h3 class="text-sm font-black uppercase text-slate-800" id="printReportTitle">REKAPITULASI HASIL TRYOUT TKA BAHASA INDONESIA - (NAMA SEKOLAH)</h3>
+        <p class="text-xs text-slate-700 font-bold mt-1" id="printReportSubtitle">Paket: (NAMA PAKET) • Tahun Pelajaran 2026</p>
+      </div>
+
       <div class="no-print space-y-4 border-b border-slate-100 pb-4">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
           <div>
@@ -98,6 +106,7 @@
           <div class="flex flex-wrap items-center gap-2">
             <button onclick="triggerPrintMode('RANKING')" class="px-3.5 py-2 rounded-xl text-xs font-black bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm transition cursor-pointer">🖨️ Cetak Peringkat</button>
             <button onclick="triggerPrintMode('SCHOOL_ORDER')" class="px-3.5 py-2 rounded-xl text-xs font-black bg-teal-600 hover:bg-teal-700 text-white shadow-sm transition cursor-pointer">🖨️ Cetak Urutan SD</button>
+            <button onclick="triggerPrintMode('SELECTED_SCHOOL')" class="px-3.5 py-2 rounded-xl text-xs font-black bg-cyan-600 hover:bg-cyan-700 text-white shadow-sm transition cursor-pointer">🖨️ Cetak SD Terpilih</button>
           </div>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
@@ -129,6 +138,19 @@
           </thead>
           <tbody id="adminTableBody" class="text-xs divide-y divide-slate-100 text-slate-700"></tbody>
         </table>
+      </div>
+
+      <!-- TTD PENGESAHAN CETAK SESUAI PERMINTAAN -->
+      <div class="hidden print:block pt-6 mt-4" style="page-break-inside: avoid;">
+        <div class="flex justify-end pr-12 text-slate-900">
+          <div class="text-left space-y-1">
+            <p class="text-xs" id="printDatePlace">Demak, ...</p>
+            <p class="text-xs font-bold">Admin TKA Kecamatan Mranggen</p>
+            <div class="h-16 flex items-center"></div>
+            <p class="font-black text-xs underline">Muhammad Imam Suwiji, S.Pd.SD.,M.Pd.</p>
+            <p class="text-[11px] font-bold">NIP. 198605112009031003</p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -196,7 +218,7 @@
     </div>
   </div>
 
-  <!-- MODAL PIAGAM PENGHARGAAN (VERSI LENGKAP SESUAI LAMPIRAN) -->
+  <!-- MODAL PIAGAM PENGHARGAAN -->
   <div id="adminCertificateModal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
     <div class="bg-white max-w-4xl w-full rounded-2xl shadow-2xl relative p-6 text-center border-4 border-amber-300">
       <div class="flex items-center justify-between mb-3 no-print">
@@ -590,6 +612,18 @@
     function triggerPrintMode(mode) {
       document.body.classList.remove('mode-cert');
       document.body.classList.add('mode-table');
+      
+      const targetSubName = currentAdminSubject === 'matematika' ? 'MATEMATIKA' : 'BAHASA INDONESIA';
+      const pkgText = selectedPackageFilter === 'ALL' ? 'SEMUA PAKET' : selectedPackageFilter.toUpperCase();
+      const schoolVal = document.getElementById('adminFilterSchool').value || 'SEMUA SEKOLAH (SE-KECAMATAN MRANGGEN)';
+      
+      const options = { day: 'numeric', month: 'long', year: 'numeric' };
+      const todayFormatted = new Date().toLocaleDateString('id-ID', options);
+      document.getElementById('printDatePlace').innerText = `Demak, ${todayFormatted}`;
+
+      document.getElementById('printReportTitle').innerText = `REKAPITULASI HASIL TRYOUT TKA ${targetSubName} - ${schoolVal}`;
+      document.getElementById('printReportSubtitle').innerText = `Paket: ${pkgText} • Tahun Pelajaran 2026`;
+
       setTimeout(() => window.print(), 250);
     }
 
