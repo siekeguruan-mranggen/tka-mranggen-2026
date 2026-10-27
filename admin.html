@@ -443,7 +443,7 @@
 
     <!-- KREDIT FOOTER -->
     <div class="pt-6 border-t border-teal-100 text-xs font-bold text-slate-500 text-center no-print">
-      Created by Muhammad Imam Suwiji. © 2026 Sle Keguruan Korwil Mranggen. All rights reserved.
+      Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
     </div>
   </div>
 
@@ -715,7 +715,18 @@
 
     function getStoredSubmissions() {
       const local = localStorage.getItem('tka_submissions_multi');
-      return local ? JSON.parse(local) : [];
+      if (!local) return [];
+      try {
+        const parsed = JSON.parse(local);
+        if (Array.isArray(parsed)) {
+          return parsed.filter(item => item !== null);
+        } else if (typeof parsed === 'object' && parsed !== null) {
+          return Object.values(parsed).filter(item => item !== null);
+        }
+        return [];
+      } catch (e) {
+        return [];
+      }
     }
 
     function getCheatLogs() {
@@ -858,7 +869,6 @@
       if (schoolFilter) submissions = submissions.filter(s => s.school === schoolFilter);
       if (searchName) submissions = submissions.filter(s => s.name.toLowerCase().includes(searchName));
 
-      // Tanpa batasan limit 101, memuat seluruh data
       const uniqueMap = {};
       submissions.forEach(s => {
         const key = `${(s.name||'').trim().toLowerCase()}_${(s.school||'').trim().toLowerCase()}_${s.package}_${s.subject}`;
