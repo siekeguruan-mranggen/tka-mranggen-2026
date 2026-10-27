@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="id" translate="no">
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google" content="notranslate">
   <title>Admin & Rekapitulasi TKA - Korwil Mranggen</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Cinzel:wght@600;700;800;900&display=swap" rel="stylesheet">
@@ -53,7 +52,7 @@
           Username atau password salah!
         </div>
         <div class="pt-2">
-          <button type="submit" class="w-full py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-xl shadow-md transition cursor-pointer">
+          <button type="submit" class="w-full py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-xl shadow-md transition">
             Masuk ke Panel
           </button>
         </div>
@@ -78,16 +77,16 @@
       </div>
       
       <div class="flex flex-wrap items-center gap-2">
-        <button onclick="syncOnlineData()" id="btnSync" class="px-3.5 py-2 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-xl transition flex items-center gap-1.5 shadow-sm cursor-pointer">
+        <button onclick="syncOnlineData()" id="btnSync" class="px-3.5 py-2 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-xl transition flex items-center gap-1.5 shadow-sm">
           🔄 Ambil Data Cloud
         </button>
-        <button onclick="exportToCSV()" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm transition flex items-center gap-1.5 cursor-pointer">
+        <button onclick="exportToCSV()" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm transition flex items-center gap-1.5">
           📊 Export CSV
         </button>
-        <button onclick="downloadBackupJSON()" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition flex items-center gap-1.5 cursor-pointer">
+        <button onclick="downloadBackupJSON()" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition flex items-center gap-1.5">
           💾 Backup JSON
         </button>
-        <button onclick="logoutAdmin()" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs rounded-xl transition cursor-pointer">
+        <button onclick="logoutAdmin()" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs rounded-xl transition">
           Keluar
         </button>
       </div>
@@ -114,7 +113,7 @@
           <option value="Paket 4">Paket 4</option>
           <option value="Paket 5">Paket 5</option>
         </select>
-        <button onclick="promptSafeClearData()" class="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white font-black text-xs rounded-xl shadow-sm transition cursor-pointer">
+        <button onclick="promptSafeClearData()" class="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white font-black text-xs rounded-xl shadow-sm transition">
           Bersihkan Data Cloud
         </button>
       </div>
@@ -123,10 +122,10 @@
     <!-- TAB PILIH MAPEL ADMIN -->
     <div class="flex items-center gap-3 bg-white/95 p-3 rounded-2xl border border-teal-200/80 shadow-sm no-print">
       <span class="text-xs font-black text-slate-700 ml-2">PILIH MAPEL:</span>
-      <button onclick="switchAdminSubject('matematika')" id="btnSubMat" class="px-4 py-2 rounded-xl text-xs font-black bg-teal-600 text-white shadow-sm transition cursor-pointer">
+      <button onclick="switchAdminSubject('matematika')" id="btnSubMat" class="px-4 py-2 rounded-xl text-xs font-black bg-teal-600 text-white shadow-sm transition">
         Matematika (Ujicoba + Paket 1-5)
       </button>
-      <button onclick="switchAdminSubject('indonesia')" id="btnSubIndo" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition cursor-pointer">
+      <button onclick="switchAdminSubject('indonesia')" id="btnSubIndo" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
         Bahasa Indonesia (Paket 1-5)
       </button>
     </div>
@@ -144,16 +143,16 @@
 
     <!-- TAB MENU NAVIGASI -->
     <div class="flex flex-wrap items-center gap-2 border-b border-teal-200 pb-2 no-print">
-      <button onclick="switchViewMode('students')" id="tabBtnStudents" class="px-4 py-2 font-black text-xs rounded-xl bg-teal-600 text-white shadow-sm transition cursor-pointer">
+      <button onclick="switchViewMode('students')" id="tabBtnStudents" class="px-4 py-2 font-black text-xs rounded-xl bg-teal-600 text-white shadow-sm transition">
         📋 Rekap Nilai Siswa
       </button>
-      <button onclick="switchViewMode('schools')" id="tabBtnSchools" class="px-4 py-2 font-bold text-xs rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer">
+      <button onclick="switchViewMode('schools')" id="tabBtnSchools" class="px-4 py-2 font-bold text-xs rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition">
         🏫 Rekap Peringkat SD (Rata-rata)
       </button>
-      <button onclick="switchViewMode('analysis')" id="tabBtnAnalysis" class="px-4 py-2 font-bold text-xs rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer">
+      <button onclick="switchViewMode('analysis')" id="tabBtnAnalysis" class="px-4 py-2 font-bold text-xs rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition">
         📊 Analisis Butir Soal (Daya Serap)
       </button>
-      <button onclick="switchViewMode('cheats')" id="tabBtnCheats" class="px-4 py-2 font-bold text-xs rounded-xl bg-slate-100 hover:bg-slate-200 text-rose-700 transition cursor-pointer">
+      <button onclick="switchViewMode('cheats')" id="tabBtnCheats" class="px-4 py-2 font-bold text-xs rounded-xl bg-slate-100 hover:bg-slate-200 text-rose-700 transition">
         🚨 Log Pelanggaran Anti-Curang
       </button>
     </div>
@@ -172,13 +171,13 @@
             <div class="flex flex-wrap gap-1.5" id="packageFilterTabs"></div>
           </div>
           <div class="flex flex-wrap items-center gap-2 pt-2 lg:pt-0">
-            <button onclick="triggerPrintMode('RANKING')" class="px-3.5 py-2 rounded-xl text-xs font-black bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm flex items-center gap-1.5 transition cursor-pointer">
+            <button onclick="triggerPrintMode('RANKING')" class="px-3.5 py-2 rounded-xl text-xs font-black bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm flex items-center gap-1.5 transition">
               🖨️ Cetak Peringkat Nilai
             </button>
-            <button onclick="triggerPrintMode('SCHOOL_ORDER')" class="px-3.5 py-2 rounded-xl text-xs font-black bg-teal-600 hover:bg-teal-700 text-white shadow-sm flex items-center gap-1.5 transition cursor-pointer">
+            <button onclick="triggerPrintMode('SCHOOL_ORDER')" class="px-3.5 py-2 rounded-xl text-xs font-black bg-teal-600 hover:bg-teal-700 text-white shadow-sm flex items-center gap-1.5 transition">
               🖨️ Cetak Urutan SD
             </button>
-            <button onclick="triggerPrintMode('SELECTED_SCHOOL')" class="px-3.5 py-2 rounded-xl text-xs font-black bg-cyan-600 hover:bg-cyan-700 text-white shadow-sm flex items-center gap-1.5 transition cursor-pointer">
+            <button onclick="triggerPrintMode('SELECTED_SCHOOL')" class="px-3.5 py-2 rounded-xl text-xs font-black bg-cyan-600 hover:bg-cyan-700 text-white shadow-sm flex items-center gap-1.5 transition">
               🖨️ Cetak SD Terpilih
             </button>
           </div>
@@ -258,7 +257,7 @@
           </div>
           <div class="flex flex-col items-center justify-end" style="page-break-inside: avoid;">
             <div>
-              <p class="text-xs font-medium" id="printDatePlace">Mranggen, 27 Oktober 2026</p>
+              <p class="text-xs font-medium" id="printDatePlace">Mranggen, 17 Oktober 2026</p>
               <p class="text-xs font-bold leading-tight mt-0.5">Admin Sistem TKA,</p>
             </div>
             <div class="relative flex items-center justify-center my-1" style="height: 75px; width: 220px; background: transparent;">
@@ -278,27 +277,18 @@
 
     <!-- ================= VIEW 2: REKAP PERINGKAT SEKOLAH ================= -->
     <div id="viewSchoolsSection" class="hidden bg-white rounded-3xl border border-teal-200/80 shadow-md p-6 space-y-4">
-      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 no-print">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 no-print">
         <div>
           <h3 class="text-base font-black text-slate-900">Rekapitulasi Peringkat SD Berdasarkan Nilai Rata-rata</h3>
           <p class="text-xs text-slate-500">Peringkat sekolah dihitung otomatis dari akumulasi rata-rata nilai siswa.</p>
         </div>
-        <div class="flex flex-wrap items-center gap-2">
+        <div class="flex items-center gap-2">
           <select id="schoolSubjectFilter" onchange="renderSchoolRankingTable()" class="px-3 py-2 text-xs rounded-xl border border-teal-300 font-bold bg-teal-50 text-teal-900 outline-none cursor-pointer">
-            <option value="gabungan">📊 Gabungan (Semua Mapel)</option>
-            <option value="Matematika">📐 Matematika</option>
-            <option value="Bahasa Indonesia">📖 Bahasa Indonesia</option>
+            <option value="gabungan">📊 Gabungan (Matematika & B. Indo)</option>
+            <option value="matematika">📐 Matematika</option>
+            <option value="indonesia">📖 Bahasa Indonesia</option>
           </select>
-          <select id="schoolPackageFilter" onchange="renderSchoolRankingTable()" class="px-3 py-2 text-xs rounded-xl border border-teal-300 font-bold bg-teal-50 text-teal-900 outline-none cursor-pointer">
-            <option value="ALL">📦 Semua Paket</option>
-            <option value="UJICOBA">UJICOBA</option>
-            <option value="Paket 1">Paket 1</option>
-            <option value="Paket 2">Paket 2</option>
-            <option value="Paket 3">Paket 3</option>
-            <option value="Paket 4">Paket 4</option>
-            <option value="Paket 5">Paket 5</option>
-          </select>
-          <button onclick="triggerPrintSchools()" class="px-3.5 py-2 rounded-xl text-xs font-black bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm flex items-center gap-1.5 transition cursor-pointer">
+          <button onclick="triggerPrintSchools()" class="px-3.5 py-2 rounded-xl text-xs font-black bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm flex items-center gap-1.5 transition">
             🖨️ Cetak Peringkat SD
           </button>
         </div>
@@ -361,7 +351,7 @@
           </div>
           <div class="flex flex-col items-center justify-end" style="page-break-inside: avoid;">
             <div>
-              <p class="text-xs font-medium" id="printSchoolDatePlace">Mranggen, 27 Oktober 2026</p>
+              <p class="text-xs font-medium" id="printSchoolDatePlace">Mranggen, 17 Oktober 2026</p>
               <p class="text-xs font-bold leading-tight mt-0.5">Admin Sistem TKA,</p>
             </div>
             <div class="relative flex items-center justify-center my-1" style="height: 75px; width: 220px; background: transparent;">
@@ -420,7 +410,7 @@
           <h3 class="text-base font-black text-slate-900">Log Pelanggaran Anti-Curang Siswa</h3>
           <p class="text-xs text-slate-500">Mencatat siswa yang berpindah tab atau meninggalkan jendela browser saat ujian berlangsung.</p>
         </div>
-        <button onclick="clearCheatLogs()" class="px-3.5 py-2 rounded-xl text-xs font-black bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 transition cursor-pointer">
+        <button onclick="clearCheatLogs()" class="px-3.5 py-2 rounded-xl text-xs font-black bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 transition">
           🗑️ Bersihkan Log Pelanggaran
         </button>
       </div>
@@ -453,10 +443,10 @@
       <div class="flex items-center justify-between mb-3 no-print">
         <span class="text-xs font-bold text-amber-800">Cetak Piagam Penghargaan Peserta</span>
         <div class="flex items-center gap-2">
-          <button onclick="printSingleCertificate()" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-lg transition cursor-pointer">
+          <button onclick="printSingleCertificate()" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-lg transition">
             🖨️ Cetak PDF
           </button>
-          <button onclick="closeAdminCertificateModal()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-lg transition cursor-pointer">
+          <button onclick="closeAdminCertificateModal()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-lg transition">
             ✕ Tutup
           </button>
         </div>
@@ -538,7 +528,7 @@
             </div>
             <div>
               <p class="font-black text-xs sm:text-sm text-slate-900 leading-tight">Karyono, S.Pd., M.Pd.</p>
-              <p class="font-bold text-slate-800 text-[11px] sm:text-xs">NIP 19670915 199103 1 010</p>
+              <p class="font-bold text-slate-800 text-[11px] sm:text-xs">NIP 19721112 199803 1 011</p>
             </div>
           </div>
         </div>
@@ -552,7 +542,6 @@
   <script>
     const FIREBASE_DB_URL = "https://tka-mranggen-2026-default-rtdb.firebaseio.com/nilai_tryout.json";
     const FIREBASE_SETTINGS_URL = "https://tka-mranggen-2026-default-rtdb.firebaseio.com/pengaturan_ujian.json";
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx0aHffP-wqb_ElNVQtrHJltD2YOMVXzBqdbHqtUzcQzwU59g05agv-pDALvwIbAHFgoA/exec";
     const ADMIN_AUTH = { username: "siekeguruan", password: "#Robocop86" };
     
     const LIST_SEKOLAH_MRANGGEN = [
@@ -653,11 +642,11 @@
       currentAdminSubject = sub;
       selectedPackageFilter = 'ALL';
       document.getElementById('btnSubMat').className = sub === 'matematika'
-        ? "px-4 py-2 rounded-xl text-xs font-black bg-teal-600 text-white shadow-sm transition cursor-pointer"
-        : "px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition cursor-pointer";
+        ? "px-4 py-2 rounded-xl text-xs font-black bg-teal-600 text-white shadow-sm transition"
+        : "px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition";
       document.getElementById('btnSubIndo').className = sub === 'indonesia'
-        ? "px-4 py-2 rounded-xl text-xs font-black bg-teal-600 text-white shadow-sm transition cursor-pointer"
-        : "px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition cursor-pointer";
+        ? "px-4 py-2 rounded-xl text-xs font-black bg-teal-600 text-white shadow-sm transition"
+        : "px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition";
       
       document.getElementById('lockSectionTitle').innerText = `Kontrol Token & Akses Paket: ${sub === 'matematika' ? 'Matematika' : 'Bahasa Indonesia'}`;
       renderFilterTabs();
@@ -674,8 +663,8 @@
         const btn = document.createElement('button');
         btn.innerText = p === 'ALL' ? 'Semua Paket' : p;
         btn.className = selectedPackageFilter === p
-          ? "px-3 py-1.5 rounded-xl text-xs font-black bg-teal-600 text-white shadow-sm cursor-pointer"
-          : "px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer";
+          ? "px-3 py-1.5 rounded-xl text-xs font-black bg-teal-600 text-white shadow-sm"
+          : "px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200";
         btn.onclick = () => {
           selectedPackageFilter = p;
           renderFilterTabs();
@@ -707,7 +696,7 @@
             <label class="block text-[9px] font-extrabold uppercase text-slate-500 mb-0.5">Token Akses (Ketik Langsung):</label>
             <input type="text" value="${tokenVal}" class="w-full px-2 py-1 text-xs font-mono font-black uppercase rounded-lg border border-slate-300 outline-none text-center bg-white focus:ring-2 focus:ring-teal-500" onchange="setPackageToken('${pkg}', this.value)">
           </div>
-          <button onclick="togglePackageLock('${pkg}')" class="w-full py-1.5 px-2 rounded-xl text-xs font-black transition shadow-sm cursor-pointer ${isOpen ? 'bg-amber-500 hover:bg-amber-600 text-amber-950' : 'bg-blue-600 hover:bg-blue-700 text-white'}">${isOpen ? 'Kunci' : 'Buka'}</button>
+          <button onclick="togglePackageLock('${pkg}')" class="w-full py-1.5 px-2 rounded-xl text-xs font-black transition shadow-sm ${isOpen ? 'bg-amber-500 hover:bg-amber-600 text-amber-950' : 'bg-blue-600 hover:bg-blue-700 text-white'}">${isOpen ? 'Kunci' : 'Buka'}</button>
         `;
         container.appendChild(box);
       });
@@ -715,18 +704,7 @@
 
     function getStoredSubmissions() {
       const local = localStorage.getItem('tka_submissions_multi');
-      if (!local) return [];
-      try {
-        const parsed = JSON.parse(local);
-        if (Array.isArray(parsed)) {
-          return parsed.filter(item => item !== null);
-        } else if (typeof parsed === 'object' && parsed !== null) {
-          return Object.values(parsed).filter(item => item !== null);
-        }
-        return [];
-      } catch (e) {
-        return [];
-      }
+      return local ? JSON.parse(local) : [];
     }
 
     function getCheatLogs() {
@@ -771,15 +749,10 @@
       if (btn) btn.innerText = "⏳ Mengambil...";
       if (typeof FIREBASE_DB_URL !== 'undefined' && FIREBASE_DB_URL) {
         try {
-          const res = await fetch(FIREBASE_DB_URL + "?t=" + new Date().getTime());
+          const res = await fetch(FIREBASE_DB_URL);
           const dataObj = await res.json();
           if (dataObj) {
-            let dataArray = [];
-            if (Array.isArray(dataObj)) {
-              dataArray = dataObj.filter(item => item !== null);
-            } else {
-              dataArray = Object.keys(dataObj).map(key => dataObj[key]).filter(item => item !== null);
-            }
+            const dataArray = Object.keys(dataObj).map(key => dataObj[key]);
             localStorage.setItem('tka_submissions_multi', JSON.stringify(dataArray));
           } else {
             localStorage.setItem('tka_submissions_multi', JSON.stringify([]));
@@ -804,23 +777,23 @@
       const btnCheats = document.getElementById('tabBtnCheats');
       [secStudents, secSchools, secAnalysis, secCheats].forEach(el => el.classList.add('hidden'));
       [btnStudents, btnSchools, btnAnalysis, btnCheats].forEach(btn => {
-        if(btn) btn.className = "px-4 py-2 font-bold text-xs rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer";
+        if(btn) btn.className = "px-4 py-2 font-bold text-xs rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition";
       });
       if (mode === 'students') {
         secStudents.classList.remove('hidden');
-        btnStudents.className = "px-4 py-2 font-black text-xs rounded-xl bg-teal-600 text-white shadow-sm transition cursor-pointer";
+        btnStudents.className = "px-4 py-2 font-black text-xs rounded-xl bg-teal-600 text-white shadow-sm transition";
         renderAdminTable();
       } else if (mode === 'schools') {
         secSchools.classList.remove('hidden');
-        btnSchools.className = "px-4 py-2 font-black text-xs rounded-xl bg-teal-600 text-white shadow-sm transition cursor-pointer";
+        btnSchools.className = "px-4 py-2 font-black text-xs rounded-xl bg-teal-600 text-white shadow-sm transition";
         renderSchoolRankingTable();
       } else if (mode === 'analysis') {
         secAnalysis.classList.remove('hidden');
-        btnAnalysis.className = "px-4 py-2 font-black text-xs rounded-xl bg-teal-600 text-white shadow-sm transition cursor-pointer";
+        btnAnalysis.className = "px-4 py-2 font-black text-xs rounded-xl bg-teal-600 text-white shadow-sm transition";
         renderItemAnalysisTable();
       } else if (mode === 'cheats') {
         secCheats.classList.remove('hidden');
-        if(btnCheats) btnCheats.className = "px-4 py-2 font-black text-xs rounded-xl bg-rose-600 text-white shadow-sm transition cursor-pointer";
+        if(btnCheats) btnCheats.className = "px-4 py-2 font-black text-xs rounded-xl bg-rose-600 text-white shadow-sm transition";
         renderCheatTable();
       }
     }
@@ -868,35 +841,18 @@
       const searchName = (document.getElementById('adminSearchInput').value || '').toLowerCase();
       if (schoolFilter) submissions = submissions.filter(s => s.school === schoolFilter);
       if (searchName) submissions = submissions.filter(s => s.name.toLowerCase().includes(searchName));
-
-      const uniqueMap = {};
-      submissions.forEach(s => {
-        const key = `${(s.name||'').trim().toLowerCase()}_${(s.school||'').trim().toLowerCase()}_${s.package}_${s.subject}`;
-        let currentScore = Number(s.finalScore) || Number(s.rawScore) || 0;
-        if (!uniqueMap[key]) {
-          uniqueMap[key] = s;
-        } else {
-          let existingScore = Number(uniqueMap[key].finalScore) || Number(uniqueMap[key].rawScore) || 0;
-          if (currentScore > existingScore) {
-            uniqueMap[key] = s;
-          }
-        }
-      });
-      let processedSubmissions = Object.values(uniqueMap);
-
       if (currentPrintSortMode === 'SCHOOL_ORDER') {
-        processedSubmissions.sort((a, b) => a.school.localeCompare(b.school) || (Number(b.finalScore) || 0) - (Number(a.finalScore) || 0));
+        submissions.sort((a, b) => a.school.localeCompare(b.school) || (Number(b.finalScore) || 0) - (Number(a.finalScore) || 0));
       } else {
-        processedSubmissions.sort((a, b) => (Number(b.finalScore) || 0) - (Number(a.finalScore) || 0) || (Number(b.rawScore) || 0) - (Number(a.rawScore) || 0));
+        submissions.sort((a, b) => (Number(b.finalScore) || 0) - (Number(a.finalScore) || 0) || (Number(b.rawScore) || 0) - (Number(a.rawScore) || 0));
       }
-
       const tbody = document.getElementById('adminTableBody');
       tbody.innerHTML = '';
-      if (processedSubmissions.length === 0) {
+      if (submissions.length === 0) {
         tbody.innerHTML = `<tr><td colspan="10" class="py-8 text-center text-slate-400 font-medium">Belum ada data nilai untuk ${targetSubName} pada filter ini.</td></tr>`;
         return;
       }
-      processedSubmissions.forEach((s, idx) => {
+      submissions.forEach((s, idx) => {
         const tr = document.createElement('tr');
         tr.className = "hover:bg-teal-50/50 transition";
         let rankBadge = `<span class="font-bold text-slate-600">${idx + 1}</span>`;
@@ -912,7 +868,7 @@
         const isPass = displayScore >= 70;
         const subDataEncoded = encodeURIComponent(JSON.stringify(s));
         const certBtnHtml = isPass
-          ? `<button onclick="openAdminCertModal('${subDataEncoded}')" class="px-2.5 py-1 bg-amber-500 hover:bg-amber-600 text-white font-bold text-[10px] rounded-lg shadow-sm transition inline-flex items-center gap-1 cursor-pointer">🏆 Cetak Piagam</button>`
+          ? `<button onclick="openAdminCertModal('${subDataEncoded}')" class="px-2.5 py-1 bg-amber-500 hover:bg-amber-600 text-white font-bold text-[10px] rounded-lg shadow-sm transition inline-flex items-center gap-1">🏆 Cetak Piagam</button>`
           : `<span class="text-[10px] text-slate-400 font-semibold italic">-</span>`;
         tr.innerHTML = `
           <td class="py-3 px-3 text-center">${rankBadge}</td>
@@ -937,30 +893,15 @@
     function renderSchoolRankingTable() {
       let submissions = getStoredSubmissions();
       const subjectFilterVal = document.getElementById('schoolSubjectFilter').value;
-      const packageFilterVal = document.getElementById('schoolPackageFilter').value;
       
-      if (subjectFilterVal !== 'gabungan') {
-        submissions = submissions.filter(s => s.subject === subjectFilterVal);
-      }
-      if (packageFilterVal !== 'ALL') {
-        submissions = submissions.filter(s => s.package === packageFilterVal);
+      if (subjectFilterVal === 'matematika') {
+        submissions = submissions.filter(s => s.subject === 'Matematika');
+      } else if (subjectFilterVal === 'indonesia') {
+        submissions = submissions.filter(s => s.subject === 'Bahasa Indonesia');
       }
       
-      const uniqueMap = {};
-      submissions.forEach(s => {
-        const key = `${(s.name||'').trim().toLowerCase()}_${(s.school||'').trim().toLowerCase()}_${s.package}_${s.subject}`;
-        let currentScore = Number(s.finalScore) || Number(s.rawScore) || 0;
-        if (!uniqueMap[key]) {
-          uniqueMap[key] = s;
-        } else {
-          let existingScore = Number(uniqueMap[key].finalScore) || Number(uniqueMap[key].rawScore) || 0;
-          if (currentScore > existingScore) uniqueMap[key] = s;
-        }
-      });
-      let cleanSubmissions = Object.values(uniqueMap);
-
       const schoolMap = {};
-      cleanSubmissions.forEach(s => {
+      submissions.forEach(s => {
         const sch = s.school || 'Tanpa Nama SD';
         let score = Number(s.finalScore) || 0;
         if (score > 100) score = Math.min(100, Math.round((Number(s.rawScore || 0) / 30) * 100));
@@ -998,7 +939,7 @@
       const tbody = document.getElementById('schoolRankTableBody');
       tbody.innerHTML = '';
       if (schoolArray.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-slate-400 font-medium">Belum ada data nilai sekolah untuk filter mapel/paket ini.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-slate-400 font-medium">Belum ada data nilai sekolah untuk filter ini.</td></tr>`;
         return;
       }
       schoolArray.forEach((sc, idx) => {
