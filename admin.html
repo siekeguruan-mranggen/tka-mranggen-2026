@@ -3,1250 +3,204 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google" content="notranslate">
   <title>Admin & Rekapitulasi TKA - Korwil Mranggen</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Cinzel:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    .font-cinzel { font-family: 'Cinzel', serif; }
-    .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
-    .custom-scrollbar::-webkit-scrollbar-thumb { background: #14b8a6; border-radius: 4px; }
-    
     @media print {
-      body { background: white !important; padding: 0 !important; color: black !important; }
       .no-print { display: none !important; }
-      body.mode-cert #adminPortal { display: none !important; }
-      body.mode-cert #adminCertificateModal { 
-        display: block !important; position: fixed !important; inset: 0 !important;
-        width: 100vw !important; height: 100vh !important; margin: 0 !important; 
-        padding: 0 !important; border: none !important; box-shadow: none !important; 
-        background: white !important; z-index: 99999 !important;
-      }
-      body.mode-cert #adminCertificateModal > div { max-width: 100% !important; width: 100% !important; border: none !important; box-shadow: none !important; padding: 0 !important; }
-      body.mode-cert @page { size: landscape; margin: 8mm; }
-      body.mode-table #adminCertificateModal { display: none !important; }
-      body.mode-table #adminPortal { display: block !important; width: 100% !important; max-width: 100% !important; }
-      body.mode-table @page { size: landscape; margin: 10mm; }
+      body { background: white !important; color: black !important; }
     }
   </style>
 </head>
-<body class="bg-gradient-to-br from-teal-100/70 via-sky-100/60 to-emerald-100/70 text-slate-800 min-h-screen p-3 sm:p-6 lg:p-8">
-  <!-- MODAL LOGIN ADMIN -->
-  <div id="adminLoginModal" class="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-sm w-full shadow-2xl border border-teal-100">
-      <div class="w-12 h-12 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center mx-auto mb-4 shadow-sm">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-      </div>
-      <h3 class="text-center font-black text-slate-900 text-lg">Login Administrator</h3>
-      <p class="text-center text-xs text-slate-500 mb-5">Seksi Keguruan Korwil Mranggen</p>
-      <form onsubmit="handleAdminLogin(event)" class="space-y-3.5">
+<body class="bg-slate-100 text-slate-800 min-h-screen p-4 sm:p-8">
+
+  <!-- MODAL LOGIN -->
+  <div id="adminLoginModal" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl p-8 max-w-sm w-full shadow-2xl border border-teal-100 text-center">
+      <h3 class="font-black text-slate-900 text-xl mb-1">Login Administrator</h3>
+      <p class="text-xs text-slate-500 mb-6">Seksi Keguruan Korwil Mranggen</p>
+      <form onsubmit="handleAdminLogin(event)" class="space-y-4 text-left">
         <div>
-          <label class="block text-[11px] font-bold text-slate-600 uppercase mb-1">Username</label>
-          <input type="text" id="adminUser" required placeholder="Masukkan username..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-teal-500 outline-none">
+          <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Username</label>
+          <input type="text" id="adminUser" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs outline-none focus:ring-2 focus:ring-teal-500">
         </div>
         <div>
-          <label class="block text-[11px] font-bold text-slate-600 uppercase mb-1">Password</label>
-          <input type="password" id="adminPass" required placeholder="Masukkan password..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-teal-500 outline-none">
+          <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Password</label>
+          <input type="password" id="adminPass" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs outline-none focus:ring-2 focus:ring-teal-500">
         </div>
-        <div id="loginErrorMsg" class="hidden text-rose-600 text-xs font-bold text-center">
-          Username atau password salah!
-        </div>
-        <div class="pt-2">
-          <button type="submit" class="w-full py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-xl shadow-md transition cursor-pointer">
-            Masuk ke Panel
-          </button>
-        </div>
+        <div id="loginErrorMsg" class="hidden text-rose-600 text-xs font-bold text-center">Username/password salah!</div>
+        <button type="submit" class="w-full py-3 bg-teal-600 hover:bg-teal-700 text-white font-black text-xs rounded-xl shadow-md transition cursor-pointer">Masuk ke Panel</button>
       </form>
     </div>
   </div>
 
-  <!-- KONTEN DASHBOARD ADMIN -->
+  <!-- DASHBOARD UTAMA -->
   <div id="adminPortal" class="hidden max-w-7xl mx-auto space-y-6">
-    
-    <!-- HEADER DASHBOARD ADMIN -->
-    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-white/95 backdrop-blur-md p-6 rounded-3xl border border-teal-200/80 shadow-md no-print">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-3xl shadow-sm border border-slate-200 no-print">
       <div>
-        <div class="flex items-center gap-2 mb-1">
-          <span class="text-xs font-extrabold text-teal-700 uppercase tracking-wider">Dashboard Resmi Sie Keguruan Mranggen</span>
-          <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black bg-emerald-100 text-emerald-800">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Cloud Real-Time Active
-          </span>
-        </div>
-        <h2 class="text-2xl font-black text-slate-900">Manajemen Ujian, Peringkat SD & Evaluasi TKA</h2>
-        <p class="text-xs text-slate-500 mt-0.5">Kontrol token pengerjaan, buka/kunci paket online cloud, rekapitulasi nilai, dan analisis butir soal.</p>
+        <h2 class="text-2xl font-black text-slate-900">Rekapitulasi Nilai TKA (Live Cloud)</h2>
+        <p class="text-xs text-slate-500 mt-0.5">Data langsung ditarik dari server Firebase Realtime Database.</p>
       </div>
-      
-      <div class="flex flex-wrap items-center gap-2">
-        <button onclick="syncOnlineData()" id="btnSync" class="px-3.5 py-2 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-xl transition flex items-center gap-1.5 shadow-sm cursor-pointer">
-          🔄 Ambil Data Cloud
-        </button>
-        <button onclick="exportToCSV()" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm transition flex items-center gap-1.5 cursor-pointer">
-          📊 Export CSV
-        </button>
-        <button onclick="downloadBackupJSON()" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition flex items-center gap-1.5 cursor-pointer">
-          💾 Backup JSON
-        </button>
-        <button onclick="logoutAdmin()" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs rounded-xl transition cursor-pointer">
-          Keluar
-        </button>
+      <div class="flex items-center gap-2">
+        <button onclick="fetchOnlineDataDirect()" id="btnSync" class="px-4 py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-xl shadow transition cursor-pointer">🔄 Ambil Data Cloud</button>
+        <button onclick="exportToCSV()" class="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow transition cursor-pointer">📊 Export CSV</button>
+        <button onclick="logoutAdmin()" class="px-4 py-2.5 bg-slate-800 text-white font-bold text-xs rounded-xl transition cursor-pointer">Keluar</button>
       </div>
     </div>
 
-    <!-- PANEL BERSIHKAN DATA SPESIFIK MAPEL & PAKET -->
-    <div class="bg-white/95 p-5 rounded-3xl border border-rose-200 shadow-sm no-print flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-      <div>
-        <h4 class="text-xs font-black text-rose-900 uppercase tracking-wide">🗑️ Panel Pembersihan Data Testing (Sebelum Tryout)</h4>
-        <p class="text-[11px] text-slate-500">Pilih mapel dan paket spesifik untuk menghapus data latihan siswa dari Cloud secara instan.</p>
-      </div>
-      <div class="flex flex-wrap items-center gap-2">
-        <select id="clearTargetSubject" class="px-3 py-2 text-xs rounded-xl border border-slate-300 font-bold bg-white text-slate-800 outline-none cursor-pointer">
-          <option value="ALL">Semua Mapel</option>
-          <option value="Matematika">Matematika</option>
-          <option value="Bahasa Indonesia">Bahasa Indonesia</option>
-        </select>
-        <select id="clearTargetPackage" class="px-3 py-2 text-xs rounded-xl border border-slate-300 font-bold bg-white text-slate-800 outline-none cursor-pointer">
-          <option value="ALL">Semua Paket</option>
-          <option value="UJICOBA">UJICOBA</option>
-          <option value="Paket 1">Paket 1</option>
-          <option value="Paket 2">Paket 2</option>
-          <option value="Paket 3">Paket 3</option>
-          <option value="Paket 4">Paket 4</option>
-          <option value="Paket 5">Paket 5</option>
-        </select>
-        <button onclick="promptSafeClearData()" class="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white font-black text-xs rounded-xl shadow-sm transition cursor-pointer">
-          Bersihkan Data Cloud
-        </button>
-      </div>
+    <!-- FILTER MAPEL -->
+    <div class="flex items-center gap-3 bg-white p-4 rounded-2xl shadow-sm border border-slate-200 no-print">
+      <span class="text-xs font-black text-slate-700">PILIH MAPEL:</span>
+      <button onclick="switchSubject('Matematika')" id="btnMat" class="px-4 py-2 rounded-xl text-xs font-black bg-teal-600 text-white shadow-sm cursor-pointer">Matematika</button>
+      <button onclick="switchSubject('Bahasa Indonesia')" id="btnIndo" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 cursor-pointer">Bahasa Indonesia</button>
     </div>
 
-    <!-- TAB PILIH MAPEL ADMIN -->
-    <div class="flex items-center gap-3 bg-white/95 p-3 rounded-2xl border border-teal-200/80 shadow-sm no-print">
-      <span class="text-xs font-black text-slate-700 ml-2">PILIH MAPEL:</span>
-      <button onclick="switchAdminSubject('matematika')" id="btnSubMat" class="px-4 py-2 rounded-xl text-xs font-black bg-teal-600 text-white shadow-sm transition cursor-pointer">
-        Matematika (Ujicoba + Paket 1-5)
-      </button>
-      <button onclick="switchAdminSubject('indonesia')" id="btnSubIndo" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition cursor-pointer">
-        Bahasa Indonesia (Paket 1-5)
-      </button>
-    </div>
-
-    <!-- KONTROL KUNCI & TOKEN (CLOUD REALTIME) -->
-    <div class="bg-white/95 p-6 rounded-3xl border border-teal-200/80 shadow-sm no-print">
-      <div class="flex items-center justify-between mb-4">
-        <div>
-          <h3 class="text-sm sm:text-base font-extrabold text-slate-900" id="lockSectionTitle">Kontrol Token & Akses Paket: Matematika</h3>
-          <p class="text-xs text-slate-500">Perubahan tombol Buka/Kunci atau Token akan langsung tersimpan di Cloud dan berlaku seketika di portal siswa.</p>
-        </div>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3" id="adminLockControls"></div>
-    </div>
-
-    <!-- TAB MENU NAVIGASI -->
-    <div class="flex flex-wrap items-center gap-2 border-b border-teal-200 pb-2 no-print">
-      <button onclick="switchViewMode('students')" id="tabBtnStudents" class="px-4 py-2 font-black text-xs rounded-xl bg-teal-600 text-white shadow-sm transition cursor-pointer">
-        📋 Rekap Nilai Siswa
-      </button>
-      <button onclick="switchViewMode('schools')" id="tabBtnSchools" class="px-4 py-2 font-bold text-xs rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer">
-        🏫 Rekap Peringkat SD (Rata-rata)
-      </button>
-      <button onclick="switchViewMode('analysis')" id="tabBtnAnalysis" class="px-4 py-2 font-bold text-xs rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer">
-        📊 Analisis Butir Soal (Daya Serap)
-      </button>
-      <button onclick="switchViewMode('cheats')" id="tabBtnCheats" class="px-4 py-2 font-bold text-xs rounded-xl bg-slate-100 hover:bg-slate-200 text-rose-700 transition cursor-pointer">
-        🚨 Log Pelanggaran Anti-Curang
-      </button>
-    </div>
-
-    <!-- ================= VIEW 1: TABEL REKAP NILAI SISWA ================= -->
-    <div id="viewStudentsSection" class="bg-white rounded-3xl border border-teal-200/80 shadow-md p-6 space-y-4">
-      <div class="hidden print:block border-b-2 border-slate-900 pb-3 mb-4 text-center">
-        <h2 class="text-base font-black uppercase tracking-wider text-slate-900">KORWIL BIDDIKBUD KECAMATAN MRANGGEN</h2>
-        <h3 class="text-sm font-black uppercase text-slate-800" id="printReportTitle">REKAPITULASI HASIL TRYOUT TKA KELAS 6 SD</h3>
-        <p class="text-xs text-slate-600 mt-0.5" id="printReportSubtitle">Kecamatan Mranggen • Tahun Pelajaran 2026</p>
-      </div>
-      <div class="no-print space-y-4 border-b border-slate-100 pb-4">
-        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
-          <div>
-            <span class="block text-xs font-black text-slate-700 uppercase tracking-wider mb-1.5">Pilih Rekap Paket:</span>
-            <div class="flex flex-wrap gap-1.5" id="packageFilterTabs"></div>
-          </div>
-          <div class="flex flex-wrap items-center gap-2 pt-2 lg:pt-0">
-            <button onclick="triggerPrintMode('RANKING')" class="px-3.5 py-2 rounded-xl text-xs font-black bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm flex items-center gap-1.5 transition cursor-pointer">
-              🖨️ Cetak Peringkat Nilai
-            </button>
-            <button onclick="triggerPrintMode('SCHOOL_ORDER')" class="px-3.5 py-2 rounded-xl text-xs font-black bg-teal-600 hover:bg-teal-700 text-white shadow-sm flex items-center gap-1.5 transition cursor-pointer">
-              🖨️ Cetak Urutan SD
-            </button>
-            <button onclick="triggerPrintMode('SELECTED_SCHOOL')" class="px-3.5 py-2 rounded-xl text-xs font-black bg-cyan-600 hover:bg-cyan-700 text-white shadow-sm flex items-center gap-1.5 transition cursor-pointer">
-              🖨️ Cetak SD Terpilih
-            </button>
-          </div>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-          <div>
-            <label class="block text-[11px] font-bold text-slate-500 uppercase mb-1">Filter Khusus Nama SD:</label>
-            <select id="adminFilterSchool" onchange="renderAdminTable()" class="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 outline-none focus:ring-2 focus:ring-teal-500 font-semibold cursor-pointer bg-white">
-              <option value="">-- Semua Sekolah (53 SD Se-Kecamatan Mranggen) --</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-[11px] font-bold text-slate-500 uppercase mb-1">Cari Nama Siswa:</label>
-            <input type="text" id="adminSearchInput" onkeyup="renderAdminTable()" placeholder="Ketik nama siswa..." class="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 outline-none focus:ring-2 focus:ring-teal-500 bg-white">
-          </div>
-        </div>
-      </div>
+    <!-- TABEL DATA -->
+    <div class="bg-white rounded-3xl shadow-sm border border-slate-200 p-6 space-y-4">
       <div class="overflow-x-auto">
-        <table class="w-full text-left border-collapse" id="mainResultsTable">
+        <table class="w-full text-left border-collapse">
           <thead>
-            <tr class="bg-teal-100/80 text-[11px] font-black text-teal-950 uppercase tracking-wider border-b border-teal-200">
+            <tr class="bg-teal-100 text-[11px] font-black text-teal-950 uppercase tracking-wider border-b border-teal-200">
               <th class="py-3 px-3 text-center w-14">Rank</th>
               <th class="py-3 px-4">Nama Siswa</th>
               <th class="py-3 px-4">Asal Sekolah</th>
               <th class="py-3 px-3 text-center">Kelas</th>
               <th class="py-3 px-3 text-center">Mapel</th>
               <th class="py-3 px-3 text-center">Paket</th>
-              <th class="py-3 px-3 text-center">Skor</th>
+              <th class="py-3 px-3 text-center">Skor Mentah</th>
               <th class="py-3 px-3 text-center">Nilai (100)</th>
               <th class="py-3 px-4 text-center">Status</th>
-              <th class="py-3 px-3 text-center no-print">Aksi Piagam</th>
             </tr>
           </thead>
-          <tbody id="adminTableBody" class="text-xs divide-y divide-slate-100 text-slate-700"></tbody>
+          <tbody id="adminTableBody" class="text-xs divide-y divide-slate-100 text-slate-700">
+            <tr><td colspan="9" class="py-8 text-center text-slate-400 font-medium">Klik tombol "🔄 Ambil Data Cloud" di atas untuk memuat data.</td></tr>
+          </tbody>
         </table>
-      </div>
-      <!-- PENGESAHAN TTD -->
-      <div class="hidden print:block pt-3 mt-2" style="page-break-inside: avoid; break-inside: avoid;">
-        <div class="grid grid-cols-2 gap-8 text-center text-slate-900 px-6">
-          <div class="flex flex-col items-center justify-end" style="page-break-inside: avoid;">
-            <div>
-              <p class="text-xs font-normal">Mengetahui,</p>
-              <p class="text-xs font-bold leading-tight">Ketua Sie Keguruan</p>
-            </div>
-            <div class="relative flex items-center justify-center my-1" style="height: 75px; width: 220px; background: transparent;">
-              <div class="absolute pointer-events-none opacity-80 select-none z-10" style="width: 145px; height: 90px; top: -8px; transform: rotate(-5deg); background: transparent;">
-                <svg viewBox="0 0 240 140" class="w-full h-full" style="background: transparent;">
-                  <ellipse cx="120" cy="70" rx="112" ry="62" fill="none" stroke="#4f46e5" stroke-width="3.5" style="stroke-opacity: 0.88;"/>
-                  <ellipse cx="120" cy="70" rx="103" ry="53" fill="none" stroke="#4f46e5" stroke-width="1.8" style="stroke-opacity: 0.85;"/>
-                  <line x1="22" y1="52" x2="218" y2="52" stroke="#4f46e5" stroke-width="2" style="stroke-opacity: 0.85;"/>
-                  <line x1="22" y1="88" x2="218" y2="88" stroke="#4f46e5" stroke-width="2" style="stroke-opacity: 0.85;"/>
-                  <defs>
-                    <path id="stampP1" d="M 32,70 A 88,44 0 0,1 208,70" fill="none"/>
-                    <path id="stampP2" d="M 28,70 A 92,48 0 0,0 212,70" fill="none"/>
-                  </defs>
-                  <text fill="#4338ca" font-size="11" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" letter-spacing="3.5">
-                    <textPath href="#stampP1" startOffset="50%" text-anchor="middle">KORWIL BIDDIKBUD</textPath>
-                  </text>
-                  <text fill="#4338ca" font-size="10.5" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" letter-spacing="2.2">
-                    <textPath href="#stampP2" startOffset="50%" text-anchor="middle">★ KECAMATAN MRANGGEN ★</textPath>
-                  </text>
-                  <text x="120" y="74" text-anchor="middle" fill="#4338ca" font-size="17" font-weight="900" font-family="'Cinzel', serif" letter-spacing="2">
-                    SIE KEGURUAN
-                  </text>
-                </svg>
-              </div>
-              <div class="relative z-20 w-full h-full flex items-center justify-center" style="background: transparent;">
-                <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none" style="background: transparent;">
-                  <path d="M 35,46 C 45,28 60,18 75,18 C 88,18 95,28 92,44 C 88,60 74,72 58,72 C 45,72 40,62 48,50 C 60,34 92,26 128,26 C 170,26 215,30 260,34 M 82,32 C 95,40 108,55 118,65 M 78,56 C 98,52 145,46 195,48 M 80,68 C 110,64 160,58 210,60" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-            </div>
-            <div>
-              <p class="font-black text-xs text-slate-900 underline decoration-slate-900 underline-offset-2">Karyono, S.Pd., M.Pd.</p>
-              <p class="font-bold text-slate-800 text-[11px] mt-0.5">NIP. 19721112 199803 1 011</p>
-            </div>
-          </div>
-          <div class="flex flex-col items-center justify-end" style="page-break-inside: avoid;">
-            <div>
-              <p class="text-xs font-medium" id="printDatePlace">Mranggen, 27 Oktober 2026</p>
-              <p class="text-xs font-bold leading-tight mt-0.5">Admin Sistem TKA,</p>
-            </div>
-            <div class="relative flex items-center justify-center my-1" style="height: 75px; width: 220px; background: transparent;">
-              <svg viewBox="0 0 280 140" class="h-full w-auto select-none pointer-events-none" style="background: transparent;">
-                <path d="M 35,52 C 90,50 170,45 200,42 M 35,52 C 25,60 40,85 70,110 C 105,135 150,140 180,105 C 190,90 200,65 202,32 L 202,110 M 150,70 C 145,78 152,86 160,82 C 168,78 160,95 150,92 M 198,82 C 210,65 220,75 224,95 C 228,75 238,62 250,90 L 220,138 M 130,95 L 255,84" 
-                      fill="none" stroke="#0f172a" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <p class="font-black text-xs text-slate-900 underline decoration-slate-900 underline-offset-2">Muhammad Imam Suwiji, S.Pd.SD., M.Pd.</p>
-              <p class="font-bold text-slate-800 text-[11px] mt-0.5">NIP. 198605112009031003</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ================= VIEW 2: REKAP PERINGKAT SEKOLAH ================= -->
-    <div id="viewSchoolsSection" class="hidden bg-white rounded-3xl border border-teal-200/80 shadow-md p-6 space-y-4">
-      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 no-print">
-        <div>
-          <h3 class="text-base font-black text-slate-900">Rekapitulasi Peringkat SD Berdasarkan Nilai Rata-rata</h3>
-          <p class="text-xs text-slate-500">Peringkat sekolah dihitung otomatis dari akumulasi rata-rata nilai siswa.</p>
-        </div>
-        <div class="flex flex-wrap items-center gap-2">
-          <select id="schoolSubjectFilter" onchange="renderSchoolRankingTable()" class="px-3 py-2 text-xs rounded-xl border border-teal-300 font-bold bg-teal-50 text-teal-900 outline-none cursor-pointer">
-            <option value="gabungan">📊 Gabungan (Semua Mapel)</option>
-            <option value="Matematika">📐 Matematika</option>
-            <option value="Bahasa Indonesia">📖 Bahasa Indonesia</option>
-          </select>
-          <select id="schoolPackageFilter" onchange="renderSchoolRankingTable()" class="px-3 py-2 text-xs rounded-xl border border-teal-300 font-bold bg-teal-50 text-teal-900 outline-none cursor-pointer">
-            <option value="ALL">📦 Semua Paket</option>
-            <option value="UJICOBA">UJICOBA</option>
-            <option value="Paket 1">Paket 1</option>
-            <option value="Paket 2">Paket 2</option>
-            <option value="Paket 3">Paket 3</option>
-            <option value="Paket 4">Paket 4</option>
-            <option value="Paket 5">Paket 5</option>
-          </select>
-          <button onclick="triggerPrintSchools()" class="px-3.5 py-2 rounded-xl text-xs font-black bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm flex items-center gap-1.5 transition cursor-pointer">
-            🖨️ Cetak Peringkat SD
-          </button>
-        </div>
-      </div>
-      <div class="overflow-x-auto">
-        <table class="w-full text-left border-collapse" id="schoolRankTable">
-          <thead>
-            <tr class="bg-teal-100/80 text-[11px] font-black text-teal-950 uppercase tracking-wider border-b border-teal-200">
-              <th class="py-3 px-3 text-center w-16">Peringkat</th>
-              <th class="py-3 px-4">Nama Sekolah (SD/MI)</th>
-              <th class="py-3 px-3 text-center">Jumlah Peserta</th>
-              <th class="py-3 px-3 text-center bg-teal-200/60 text-teal-950">Rata-rata Sekolah</th>
-              <th class="py-3 px-3 text-center">Nilai Tertinggi</th>
-              <th class="py-3 px-3 text-center">Nilai Terendah</th>
-            </tr>
-          </thead>
-          <tbody id="schoolRankTableBody" class="text-xs divide-y divide-slate-100 text-slate-700"></tbody>
-        </table>
-      </div>
-      <!-- PENGESAHAN CETAK PERINGKAT SEKOLAH -->
-      <div class="hidden print:block pt-3 mt-2" style="page-break-inside: avoid; break-inside: avoid;">
-        <div class="grid grid-cols-2 gap-8 text-center text-slate-900 px-6">
-          <div class="flex flex-col items-center justify-end" style="page-break-inside: avoid;">
-            <div>
-              <p class="text-xs font-normal">Mengetahui,</p>
-              <p class="text-xs font-bold leading-tight">Ketua Sie Keguruan</p>
-            </div>
-            <div class="relative flex items-center justify-center my-1" style="height: 75px; width: 220px; background: transparent;">
-              <div class="absolute pointer-events-none opacity-80 select-none z-10" style="width: 145px; height: 90px; top: -8px; transform: rotate(-5deg); background: transparent;">
-                <svg viewBox="0 0 240 140" class="w-full h-full" style="background: transparent;">
-                  <ellipse cx="120" cy="70" rx="112" ry="62" fill="none" stroke="#4f46e5" stroke-width="3.5" style="stroke-opacity: 0.88;"/>
-                  <ellipse cx="120" cy="70" rx="103" ry="53" fill="none" stroke="#4f46e5" stroke-width="1.8" style="stroke-opacity: 0.85;"/>
-                  <line x1="22" y1="52" x2="218" y2="52" stroke="#4f46e5" stroke-width="2" style="stroke-opacity: 0.85;"/>
-                  <line x1="22" y1="88" x2="218" y2="88" stroke="#4f46e5" stroke-width="2" style="stroke-opacity: 0.85;"/>
-                  <defs>
-                    <path id="stampP3" d="M 32,70 A 88,44 0 0,1 208,70" fill="none"/>
-                    <path id="stampP4" d="M 28,70 A 92,48 0 0,0 212,70" fill="none"/>
-                  </defs>
-                  <text fill="#4338ca" font-size="11" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" letter-spacing="3.5">
-                    <textPath href="#stampP3" startOffset="50%" text-anchor="middle">KORWIL BIDDIKBUD</textPath>
-                  </text>
-                  <text fill="#4338ca" font-size="10.5" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" letter-spacing="2.2">
-                    <textPath href="#stampP4" startOffset="50%" text-anchor="middle">★ KECAMATAN MRANGGEN ★</textPath>
-                  </text>
-                  <text x="120" y="74" text-anchor="middle" fill="#4338ca" font-size="17" font-weight="900" font-family="'Cinzel', serif" letter-spacing="2">
-                    SIE KEGURUAN
-                  </text>
-                </svg>
-              </div>
-              <div class="relative z-20 w-full h-full flex items-center justify-center" style="background: transparent;">
-                <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none" style="background: transparent;">
-                  <path d="M 35,46 C 45,28 60,18 75,18 C 88,18 95,28 92,44 C 88,60 74,72 58,72 C 45,72 40,62 48,50 C 60,34 92,26 128,26 C 170,26 215,30 260,34 M 82,32 C 95,40 108,55 118,65 M 78,56 C 98,52 145,46 195,48 M 80,68 C 110,64 160,58 210,60" fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-            </div>
-            <div>
-              <p class="font-black text-xs text-slate-900 underline decoration-slate-900 underline-offset-2">Karyono, S.Pd., M.Pd.</p>
-              <p class="font-bold text-slate-800 text-[11px] mt-0.5">NIP. 19721112 199803 1 011</p>
-            </div>
-          </div>
-          <div class="flex flex-col items-center justify-end" style="page-break-inside: avoid;">
-            <div>
-              <p class="text-xs font-medium" id="printSchoolDatePlace">Mranggen, 27 Oktober 2026</p>
-              <p class="text-xs font-bold leading-tight mt-0.5">Admin Sistem TKA,</p>
-            </div>
-            <div class="relative flex items-center justify-center my-1" style="height: 75px; width: 220px; background: transparent;">
-              <svg viewBox="0 0 280 140" class="h-full w-auto select-none pointer-events-none" style="background: transparent;">
-                <path d="M 35,52 C 90,50 170,45 200,42 M 35,52 C 25,60 40,85 70,110 C 105,135 150,140 180,105 C 190,90 200,65 202,32 L 202,110 M 150,70 C 145,78 152,86 160,82 C 168,78 160,95 150,92 M 198,82 C 210,65 220,75 224,95 C 228,75 238,62 250,90 L 220,138 M 130,95 L 255,84" 
-                      fill="none" stroke="#0f172a" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <p class="font-black text-xs text-slate-900 underline decoration-slate-900 underline-offset-2">Muhammad Imam Suwiji, S.Pd.SD., M.Pd.</p>
-              <p class="font-bold text-slate-800 text-[11px] mt-0.5">NIP. 198605112009031003</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ================= VIEW 3: ANALISIS BUTIR SOAL ================= -->
-    <div id="viewAnalysisSection" class="hidden bg-white rounded-3xl border border-teal-200/80 shadow-md p-6 space-y-4">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 no-print">
-        <div>
-          <h3 class="text-base font-black text-slate-900">Analisis Butir Soal Berdasarkan Tingkat Kesulitan</h3>
-          <p class="text-xs text-slate-500">Kategori: Mudah (≥75% benar), Sedang (40% - 74% benar), Sulit (&lt;40% benar).</p>
-        </div>
-        <div class="flex items-center gap-2">
-          <select id="analysisPackageFilter" onchange="renderItemAnalysisTable()" class="px-3 py-2 text-xs rounded-xl border border-teal-300 font-bold bg-teal-50 text-teal-900 outline-none cursor-pointer">
-            <option value="UJICOBA">UJICOBA</option>
-            <option value="Paket 1" selected>Paket 1</option>
-            <option value="Paket 2">Paket 2</option>
-            <option value="Paket 3">Paket 3</option>
-            <option value="Paket 4">Paket 4</option>
-            <option value="Paket 5">Paket 5</option>
-          </select>
-        </div>
-      </div>
-      <div class="overflow-x-auto">
-        <table class="w-full text-left border-collapse">
-          <thead>
-            <tr class="bg-teal-100/80 text-[11px] font-black text-teal-950 uppercase tracking-wider border-b border-teal-200">
-              <th class="py-3 px-3 text-center w-16">No Soal</th>
-              <th class="py-3 px-4">Indikator Materi / Tipe Soal</th>
-              <th class="py-3 px-3 text-center">Jumlah Siswa Benar</th>
-              <th class="py-3 px-3 text-center">Daya Serap (%)</th>
-              <th class="py-3 px-4 text-center">Tingkat Kesulitan</th>
-            </tr>
-          </thead>
-          <tbody id="analysisTableBody" class="text-xs divide-y divide-slate-100 text-slate-700"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- ================= VIEW 4: LOG PELANGGARAN ANTI-CURANG ================= -->
-    <div id="viewCheatsSection" class="hidden bg-white rounded-3xl border border-teal-200/80 shadow-md p-6 space-y-4">
-      <div class="flex items-center justify-between no-print">
-        <div>
-          <h3 class="text-base font-black text-slate-900">Log Pelanggaran Anti-Curang Siswa</h3>
-          <p class="text-xs text-slate-500">Mencatat siswa yang berpindah tab atau meninggalkan jendela browser saat ujian berlangsung.</p>
-        </div>
-        <button onclick="clearCheatLogs()" class="px-3.5 py-2 rounded-xl text-xs font-black bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 transition cursor-pointer">
-          🗑️ Bersihkan Log Pelanggaran
-        </button>
-      </div>
-      <div class="overflow-x-auto">
-        <table class="w-full text-left border-collapse">
-          <thead>
-            <tr class="bg-rose-100/80 text-[11px] font-black text-rose-950 uppercase tracking-wider border-b border-rose-200">
-              <th class="py-3 px-3 text-center w-14">No</th>
-              <th class="py-3 px-4">Nama Siswa</th>
-              <th class="py-3 px-4">Asal Sekolah</th>
-              <th class="py-3 px-3 text-center">Mata Pelajaran</th>
-              <th class="py-3 px-3 text-center">Jumlah Pelanggaran</th>
-              <th class="py-3 px-3 text-center">Waktu Kejadian</th>
-            </tr>
-          </thead>
-          <tbody id="cheatTableBody" class="text-xs divide-y divide-slate-100 text-slate-700"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- KREDIT FOOTER -->
-    <div class="pt-6 border-t border-teal-100 text-xs font-bold text-slate-500 text-center no-print">
-      Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
-    </div>
-  </div>
-
-  <!-- MODAL CETAK PIAGAM RESMI DARI ADMIN -->
-  <div id="adminCertificateModal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
-    <div class="bg-white max-w-4xl w-full rounded-2xl shadow-2xl relative p-3 sm:p-6 text-center border-4 border-amber-300">
-      <div class="flex items-center justify-between mb-3 no-print">
-        <span class="text-xs font-bold text-amber-800">Cetak Piagam Penghargaan Peserta</span>
-        <div class="flex items-center gap-2">
-          <button onclick="printSingleCertificate()" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-lg transition cursor-pointer">
-            🖨️ Cetak PDF
-          </button>
-          <button onclick="closeAdminCertificateModal()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-lg transition cursor-pointer">
-            ✕ Tutup
-          </button>
-        </div>
-      </div>
-      <div class="p-6 sm:p-10 border-8 border-double border-amber-500 bg-gradient-to-b from-amber-50/40 via-white to-amber-50/40 rounded-xl shadow-inner text-slate-900">
-        <div class="text-center space-y-1 mb-4">
-          <p class="text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-teal-800">KORWIL BIDDIKBUD KECAMATAN MRANGGEN • SEKSI KEGURUAN</p>
-          <h2 class="font-cinzel text-2xl sm:text-4xl font-extrabold text-amber-700 tracking-wider">PIAGAM PENGHARGAAN</h2>
-          <p class="text-[11px] font-mono text-slate-500" id="adminCertNumber">No: 400.3.11.1/TKA-MRG/2026/001</p>
-        </div>
-        <p class="text-xs sm:text-sm text-slate-600 mb-2 font-medium">Diberikan dengan penuh apresiasi kepada:</p>
-        <h3 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight underline decoration-amber-500 decoration-2 underline-offset-8 mb-3" id="adminCertStudentName">
-          NAMA LENGKAP SISWA
-        </h3>
-        <p class="text-xs sm:text-sm font-bold text-slate-700 mb-4" id="adminCertStudentSchool">
-          SD NEGERI BANDUNGREJO 1 MRANGGEN
-        </p>
-        <p class="text-xs sm:text-sm max-w-2xl mx-auto text-slate-700 leading-relaxed mb-6 font-medium">
-          Atas keberhasilan menyelesaikan <b>Simulasi Ujian Tes Kemampuan Akademik (TKA) Kelas VI</b> pada mata pelajaran <b id="adminCertSubjectName">Matematika</b> (<span id="adminCertPackageName">Paket 1</span>) dengan capaian nilai:
-        </p>
-        <div class="inline-flex items-center gap-4 px-6 py-2 bg-amber-100/80 border-2 border-amber-400 rounded-2xl mb-8 shadow-sm">
-          <div>
-            <span class="block text-[10px] font-black uppercase text-amber-800">NILAI AKHIR</span>
-            <span class="text-3xl font-black text-amber-900" id="adminCertScore">95</span>
-          </div>
-          <div class="w-px h-8 bg-amber-300"></div>
-          <div>
-            <span class="block text-[10px] font-black uppercase text-amber-800">PREDIKAT</span>
-            <span class="text-xs font-black text-emerald-800" id="adminCertPredicate">SANGAT MEMUASKAN</span>
-          </div>
-        </div>
-        <!-- 2 TTD -->
-        <div class="grid grid-cols-2 gap-4 sm:gap-12 px-4 sm:px-12 text-left text-slate-900 pt-3">
-          <div class="space-y-0.5">
-            <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Mengetahui</p>
-            <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Korwil Biddikbud Kec. Mranggen</p>
-            <div class="h-20 sm:h-24 flex items-center py-1">
-              <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
-                <path d="M 18,52 C 32,48 48,32 56,26 C 64,20 70,18 68,28 C 64,46 52,62 36,68 C 22,73 18,68 26,62 C 36,55 56,40 80,34 C 78,44 74,56 70,62 C 66,68 60,64 72,56 C 90,45 104,42 118,44 C 112,48 106,55 102,60 C 98,64 103,62 110,56 C 120,48 134,44 148,45 L 245,47" 
-                      fill="none" stroke="#1d4ed8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <p class="font-black text-xs sm:text-sm text-slate-900 leading-tight">Sunarto, S.Pd., M.Pd.</p>
-              <p class="font-bold text-slate-800 text-[11px] sm:text-xs">NIP 19670915 199103 1 010</p>
-            </div>
-          </div>
-          <div class="space-y-0.5 relative">
-            <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Ketua</p>
-            <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Sie Keguruan,</p>
-            <div class="h-20 sm:h-24 relative flex items-center py-1">
-              <div class="absolute -left-10 sm:-left-12 -top-5 sm:-top-6 w-48 sm:w-56 h-28 sm:h-32 pointer-events-none opacity-85 select-none z-10" style="transform: rotate(-6deg);">
-                <svg viewBox="0 0 240 140" class="w-full h-full">
-                  <ellipse cx="120" cy="70" rx="112" ry="62" fill="none" stroke="#4f46e5" stroke-width="3.5" style="stroke-opacity: 0.88;"/>
-                  <ellipse cx="120" cy="70" rx="103" ry="53" fill="none" stroke="#4f46e5" stroke-width="1.8" style="stroke-opacity: 0.85;"/>
-                  <line x1="22" y1="52" x2="218" y2="52" stroke="#4f46e5" stroke-width="2" style="stroke-opacity: 0.85;"/>
-                  <line x1="22" y1="88" x2="218" y2="88" stroke="#4f46e5" stroke-width="2" style="stroke-opacity: 0.85;"/>
-                  <defs>
-                    <path id="stampP1Modal" d="M 32,70 A 88,44 0 0,1 208,70" fill="none"/>
-                    <path id="stampP2Modal" d="M 28,70 A 92,48 0 0,0 212,70" fill="none"/>
-                  </defs>
-                  <text fill="#4338ca" font-size="11" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" letter-spacing="3.5">
-                    <textPath href="#stampP1Modal" startOffset="50%" text-anchor="middle">KORWIL BIDDIKBUD</textPath>
-                  </text>
-                  <text fill="#4338ca" font-size="10.5" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" letter-spacing="2.2">
-                    <textPath href="#stampP2Modal" startOffset="50%" text-anchor="middle">★ KECAMATAN MRANGGEN ★</textPath>
-                  </text>
-                  <text x="120" y="74" text-anchor="middle" fill="#4338ca" font-size="17" font-weight="900" font-family="'Cinzel', serif" letter-spacing="2">
-                    SIE KEGURUAN
-                  </text>
-                </svg>
-              </div>
-              <div class="relative z-20 w-full h-full flex items-center">
-                <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
-                  <path d="M 35,46 C 45,28 60,18 75,18 C 88,18 95,28 92,44 C 88,60 74,72 58,72 C 45,72 40,62 48,50 C 60,34 92,26 128,26 C 170,26 215,30 260,34 M 82,32 C 95,40 108,55 118,65 M 78,56 C 98,52 145,46 195,48 M 80,68 C 110,64 160,58 210,60" 
-                        fill="none" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-            </div>
-            <div>
-              <p class="font-black text-xs sm:text-sm text-slate-900 leading-tight">Karyono, S.Pd., M.Pd.</p>
-              <p class="font-bold text-slate-800 text-[11px] sm:text-xs">NIP 19670915 199103 1 010</p>
-            </div>
-          </div>
-        </div>
-        <div class="mt-8 pt-3 border-t border-amber-200/60 text-[10px] font-semibold text-slate-400 text-center">
-          Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
-        </div>
       </div>
     </div>
   </div>
 
   <script>
     const FIREBASE_DB_URL = "https://tka-mranggen-2026-default-rtdb.firebaseio.com/nilai_tryout.json";
-    const FIREBASE_SETTINGS_URL = "https://tka-mranggen-2026-default-rtdb.firebaseio.com/pengaturan_ujian.json";
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx0aHffP-wqb_ElNVQtrHJltD2YOMVXzBqdbHqtUzcQzwU59g05agv-pDALvwIbAHFgoA/exec";
-    const ADMIN_AUTH = { username: "siekeguruan", password: "#Robocop86" };
-    
-    const LIST_SEKOLAH_MRANGGEN = [
-      "SD NEGERI BANDUNGREJO 1 MRANGGEN", "SD NEGERI BANDUNGREJO 2 MRANGGEN", "SD NEGERI BANYUMENENG 1",
-      "SD NEGERI BANYUMENENG 2", "SD NEGERI BATURSARI 1", "SD NEGERI BATURSARI 2", "SD NEGERI BATURSARI 3",
-      "SD NEGERI BATURSARI 4", "SD NEGERI BATURSARI 5", "SD NEGERI BATURSARI 6", "SD NEGERI BATURSARI 7",
-      "SD NEGERI BRUMBUNG", "SD NEGERI CANDISARI 1", "SD NEGERI CANDISARI 2", "SD NEGERI JAMUS 1",
-      "SD NEGERI KALITENGAH 1", "SD NEGERI KALITENGAH 2", "SD NEGERI KANGKUNG 1", "SD NEGERI KANGKUNG 2",
-      "SD NEGERI KANGKUNG 3", "SD NEGERI KARANGASEM", "SD NEGERI KARANGSONO 1", "SD NEGERI KARANGSONO 2",
-      "SD NEGERI KARANGSONO 3", "SD NEGERI KEBONBATUR 1", "SD NEGERI KEBONBATUR 2", "SD NEGERI KEMBANGARUM 1",
-      "SD NEGERI KEMBANGARUM 2", "SD NEGERI KEMBANGARUM 4", "SD NEGERI MENUR", "SD NEGERI MRANGGEN 1",
-      "SD NEGERI MRANGGEN 2", "SD NEGERI MRANGGEN 3", "SD NEGERI MRANGGEN 4", "SD NEGERI NGEMPLAK",
-      "SD NEGERI SUMBEREJO 1", "SD NEGERI SUMBEREJO 2", "SD NEGERI TAMANSARI 1", "SD NEGERI TEGALARUM 1",
-      "SD NEGERI TEGALARUM 2", "SD NEGERI WARU", "SD NEGERI WRINGINJAJAR 1", "SD NEGERI WRINGINJAJAR 3",
-      "SDS INSAN TELADAN", "SDS ISLAM DIPONEGORO", "SDS ISLAM KAFRAWI", "SDS IT AZ-ZAHRO MRANGGEN",
-      "SDS IT MIFTAHUL HIDAYAH", "SDS IT PERMATA BUNDA", "SDS KRISTEN DIAN WACANA", "SDS KY AGENG GIRI",
-      "SDS MUHAMMADIYAH PUCANG GADING", "SDS TERPADU DARUNNAJAH"
-    ];
-
-    let currentAdminSubject = 'matematika';
-    let selectedPackageFilter = 'ALL';
-    let currentPrintSortMode = 'RANKING';
-    let currentViewMode = 'students';
+    let globalSubmissions = [];
+    let currentSubject = 'Matematika';
     let isAdminLoggedIn = sessionStorage.getItem('tka_admin_auth') === 'true';
-
-    const DEFAULT_PACKAGE_STATUS = {
-      matematika: { "UJICOBA": true, "Paket 1": false, "Paket 2": false, "Paket 3": false, "Paket 4": false, "Paket 5": false },
-      indonesia: { "Paket 1": true, "Paket 2": false, "Paket 3": false, "Paket 4": false, "Paket 5": false }
-    };
-    const DEFAULT_PACKAGE_TOKENS = {
-      matematika: { "UJICOBA": "UJICOBA", "Paket 1": "MAT1", "Paket 2": "MAT2", "Paket 3": "MAT3", "Paket 4": "MAT4", "Paket 5": "MAT5" },
-      indonesia: { "Paket 1": "BINDO1", "Paket 2": "BINDO2", "Paket 3": "BINDO3", "Paket 4": "BINDO4", "Paket 5": "BINDO5" }
-    };
-
-    function getPackageStatus() {
-      const stored = localStorage.getItem('tka_pkg_status_multi');
-      return stored ? JSON.parse(stored) : DEFAULT_PACKAGE_STATUS;
-    }
-
-    async function savePackageStatusToCloud(statusObj) {
-      localStorage.setItem('tka_pkg_status_multi', JSON.stringify(statusObj));
-      try {
-        await fetch(FIREBASE_SETTINGS_URL, {
-          method: 'PATCH',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ status: statusObj })
-        });
-      } catch (err) {
-        console.warn("Gagal simpan status ke cloud:", err);
-      }
-      renderAdminLockControls();
-    }
-
-    function getPackageTokens() {
-      const stored = localStorage.getItem('tka_pkg_tokens_multi');
-      return stored ? JSON.parse(stored) : DEFAULT_PACKAGE_TOKENS;
-    }
-
-    async function setPackageToken(pkg, val) {
-      const tokens = getPackageTokens();
-      if (!tokens[currentAdminSubject]) tokens[currentAdminSubject] = {};
-      tokens[currentAdminSubject][pkg] = (val || "").trim().toUpperCase();
-      localStorage.setItem('tka_pkg_tokens_multi', JSON.stringify(tokens));
-      try {
-        await fetch(FIREBASE_SETTINGS_URL, {
-          method: 'PATCH',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ tokens: tokens })
-        });
-      } catch (err) {
-        console.warn("Gagal simpan token ke cloud:", err);
-      }
-      renderAdminLockControls();
-    }
-
-    async function togglePackageLock(pkg) {
-      const s = getPackageStatus();
-      if (!s[currentAdminSubject]) s[currentAdminSubject] = {};
-      s[currentAdminSubject][pkg] = !s[currentAdminSubject][pkg];
-      await savePackageStatusToCloud(s);
-    }
-
-    async function fetchCloudSettings() {
-      try {
-        const res = await fetch(FIREBASE_SETTINGS_URL);
-        const data = await res.json();
-        if (data) {
-          if (data.status) localStorage.setItem('tka_pkg_status_multi', JSON.stringify(data.status));
-          if (data.tokens) localStorage.setItem('tka_pkg_tokens_multi', JSON.stringify(data.tokens));
-        }
-      } catch (e) {
-        console.warn("Offline pengaturan cloud:", e);
-      }
-      renderAdminLockControls();
-    }
-
-    function switchAdminSubject(sub) {
-      currentAdminSubject = sub;
-      selectedPackageFilter = 'ALL';
-      document.getElementById('btnSubMat').className = sub === 'matematika'
-        ? "px-4 py-2 rounded-xl text-xs font-black bg-teal-600 text-white shadow-sm transition cursor-pointer"
-        : "px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition cursor-pointer";
-      document.getElementById('btnSubIndo').className = sub === 'indonesia'
-        ? "px-4 py-2 rounded-xl text-xs font-black bg-teal-600 text-white shadow-sm transition cursor-pointer"
-        : "px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition cursor-pointer";
-      
-      document.getElementById('lockSectionTitle').innerText = `Kontrol Token & Akses Paket: ${sub === 'matematika' ? 'Matematika' : 'Bahasa Indonesia'}`;
-      renderFilterTabs();
-      renderAdminDashboard();
-    }
-
-    function renderFilterTabs() {
-      const container = document.getElementById('packageFilterTabs');
-      container.innerHTML = '';
-      const packageKeys = currentAdminSubject === 'matematika'
-        ? ["ALL", "UJICOBA", "Paket 1", "Paket 2", "Paket 3", "Paket 4", "Paket 5"]
-        : ["ALL", "Paket 1", "Paket 2", "Paket 3", "Paket 4", "Paket 5"];
-      packageKeys.forEach(p => {
-        const btn = document.createElement('button');
-        btn.innerText = p === 'ALL' ? 'Semua Paket' : p;
-        btn.className = selectedPackageFilter === p
-          ? "px-3 py-1.5 rounded-xl text-xs font-black bg-teal-600 text-white shadow-sm cursor-pointer"
-          : "px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer";
-        btn.onclick = () => {
-          selectedPackageFilter = p;
-          renderFilterTabs();
-          renderAdminTable();
-        };
-        container.appendChild(btn);
-      });
-    }
-
-    function renderAdminLockControls() {
-      const statusMap = getPackageStatus()[currentAdminSubject] || {};
-      const tokenMap = getPackageTokens()[currentAdminSubject] || {};
-      const container = document.getElementById('adminLockControls');
-      container.innerHTML = '';
-      const packageKeys = currentAdminSubject === 'matematika'
-        ? ["UJICOBA", "Paket 1", "Paket 2", "Paket 3", "Paket 4", "Paket 5"]
-        : ["Paket 1", "Paket 2", "Paket 3", "Paket 4", "Paket 5"];
-      packageKeys.forEach(pkg => {
-        const isOpen = !!statusMap[pkg];
-        const tokenVal = tokenMap[pkg] || (pkg === 'UJICOBA' ? 'UJICOBA' : 'MRANGGEN');
-        const box = document.createElement('div');
-        box.className = `p-3.5 rounded-2xl border text-center transition ${isOpen ? 'bg-blue-50 border-blue-200' : 'bg-amber-50 border-amber-200'}`;
-        box.innerHTML = `
-          <div class="flex items-center justify-between mb-1">
-            <span class="font-black text-xs ${isOpen ? 'text-blue-900' : 'text-amber-950'}">${pkg}</span>
-            <span class="text-[9px] font-black uppercase px-1.5 py-0.5 rounded ${isOpen ? 'bg-blue-200 text-blue-950' : 'bg-amber-200 text-amber-950'}">${isOpen ? 'Buka' : 'Kunci'}</span>
-          </div>
-          <div class="mb-2 text-left">
-            <label class="block text-[9px] font-extrabold uppercase text-slate-500 mb-0.5">Token Akses (Ketik Langsung):</label>
-            <input type="text" value="${tokenVal}" class="w-full px-2 py-1 text-xs font-mono font-black uppercase rounded-lg border border-slate-300 outline-none text-center bg-white focus:ring-2 focus:ring-teal-500" onchange="setPackageToken('${pkg}', this.value)">
-          </div>
-          <button onclick="togglePackageLock('${pkg}')" class="w-full py-1.5 px-2 rounded-xl text-xs font-black transition shadow-sm cursor-pointer ${isOpen ? 'bg-amber-500 hover:bg-amber-600 text-amber-950' : 'bg-blue-600 hover:bg-blue-700 text-white'}">${isOpen ? 'Kunci' : 'Buka'}</button>
-        `;
-        container.appendChild(box);
-      });
-    }
-
-    function getStoredSubmissions() {
-      const local = localStorage.getItem('tka_submissions_multi');
-      if (!local) return [];
-      try {
-        const parsed = JSON.parse(local);
-        if (Array.isArray(parsed)) {
-          return parsed.filter(item => item !== null);
-        } else if (typeof parsed === 'object' && parsed !== null) {
-          return Object.values(parsed).filter(item => item !== null && typeof item === 'object');
-        }
-        return [];
-      } catch (e) {
-        return [];
-      }
-    }
-
-    function getCheatLogs() {
-      const local = localStorage.getItem('tka_cheat_logs');
-      return local ? JSON.parse(local) : [];
-    }
-
-    function clearCheatLogs() {
-      if (confirm("Yakin ingin membersihkan seluruh log pelanggaran anti-curang?")) {
-        localStorage.removeItem('tka_cheat_logs');
-        renderCheatTable();
-      }
-    }
 
     function handleAdminLogin(e) {
       e.preventDefault();
-      const user = document.getElementById('adminUser').value.trim();
-      const pass = document.getElementById('adminPass').value.trim();
-      if (user === ADMIN_AUTH.username && pass === ADMIN_AUTH.password) {
+      const u = document.getElementById('adminUser').value.trim();
+      const p = document.getElementById('adminPass').value.trim();
+      if (u === "siekeguruan" && p === "#Robocop86") {
         isAdminLoggedIn = true;
         sessionStorage.setItem('tka_admin_auth', 'true');
         document.getElementById('adminLoginModal').classList.add('hidden');
         document.getElementById('adminPortal').classList.remove('hidden');
-        renderFilterTabs();
-        renderAdminDashboard();
-        fetchCloudSettings();
-        syncOnlineData();
+        fetchOnlineDataDirect();
       } else {
-        const errEl = document.getElementById('loginErrorMsg');
-        if (errEl) errEl.classList.remove('hidden');
+        document.getElementById('loginErrorMsg').classList.remove('hidden');
       }
     }
 
     function logoutAdmin() {
-      isAdminLoggedIn = false;
       sessionStorage.removeItem('tka_admin_auth');
-      document.getElementById('adminPortal').classList.add('hidden');
-      document.getElementById('adminLoginModal').classList.remove('hidden');
+      location.reload();
     }
 
-    async function syncOnlineData() {
+    function switchSubject(sub) {
+      currentSubject = sub;
+      document.getElementById('btnMat').className = sub === 'Matematika' ? "px-4 py-2 rounded-xl text-xs font-black bg-teal-600 text-white shadow-sm cursor-pointer" : "px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 cursor-pointer";
+      document.getElementById('btnIndo').className = sub === 'Bahasa Indonesia' ? "px-4 py-2 rounded-xl text-xs font-black bg-teal-600 text-white shadow-sm cursor-pointer" : "px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 cursor-pointer";
+      renderTable();
+    }
+
+    async function fetchOnlineDataDirect() {
       const btn = document.getElementById('btnSync');
-      if (btn) btn.innerText = "⏳ Mengambil...";
-      if (typeof FIREBASE_DB_URL !== 'undefined' && FIREBASE_DB_URL) {
-        try {
-          const res = await fetch(FIREBASE_DB_URL + "?t=" + new Date().getTime());
-          const dataObj = await res.json();
-          if (dataObj) {
-            let dataArray = [];
-            if (Array.isArray(dataObj)) {
-              dataArray = dataObj.filter(item => item !== null);
-            } else {
-              dataArray = Object.values(dataObj).filter(item => item !== null && typeof item === 'object');
-            }
-            localStorage.setItem('tka_submissions_multi', JSON.stringify(dataArray));
+      if (btn) btn.innerText = "⏳ Memuat Ribuan Data...";
+      try {
+        const res = await fetch(FIREBASE_DB_URL + "?t=" + new Date().getTime());
+        const dataObj = await res.json();
+        if (dataObj) {
+          if (Array.isArray(dataObj)) {
+            globalSubmissions = dataObj.filter(item => item !== null);
           } else {
-            localStorage.setItem('tka_submissions_multi', JSON.stringify([]));
+            globalSubmissions = Object.values(dataObj).filter(item => item !== null && typeof item === 'object');
           }
-        } catch (e) {
-          console.warn("Gagal ambil dari cloud:", e);
+          alert(`✅ Berhasil memuat ${globalSubmissions.length} data siswa dari Cloud!`);
+        } else {
+          globalSubmissions = [];
+          alert("Database kosong.");
         }
+      } catch (err) {
+        alert("Gagal koneksi ke Cloud: " + err.message);
+        globalSubmissions = [];
       }
       if (btn) btn.innerText = "🔄 Ambil Data Cloud";
-      renderAdminDashboard();
+      renderTable();
     }
 
-    function switchViewMode(mode) {
-      currentViewMode = mode;
-      const secStudents = document.getElementById('viewStudentsSection');
-      const secSchools = document.getElementById('viewSchoolsSection');
-      const secAnalysis = document.getElementById('viewAnalysisSection');
-      const secCheats = document.getElementById('viewCheatsSection');
-      const btnStudents = document.getElementById('tabBtnStudents');
-      const btnSchools = document.getElementById('tabBtnSchools');
-      const btnAnalysis = document.getElementById('tabBtnAnalysis');
-      const btnCheats = document.getElementById('tabBtnCheats');
-      [secStudents, secSchools, secAnalysis, secCheats].forEach(el => el.classList.add('hidden'));
-      [btnStudents, btnSchools, btnAnalysis, btnCheats].forEach(btn => {
-        if(btn) btn.className = "px-4 py-2 font-bold text-xs rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer";
-      });
-      if (mode === 'students') {
-        secStudents.classList.remove('hidden');
-        btnStudents.className = "px-4 py-2 font-black text-xs rounded-xl bg-teal-600 text-white shadow-sm transition cursor-pointer";
-        renderAdminTable();
-      } else if (mode === 'schools') {
-        secSchools.classList.remove('hidden');
-        btnSchools.className = "px-4 py-2 font-black text-xs rounded-xl bg-teal-600 text-white shadow-sm transition cursor-pointer";
-        renderSchoolRankingTable();
-      } else if (mode === 'analysis') {
-        secAnalysis.classList.remove('hidden');
-        btnAnalysis.className = "px-4 py-2 font-black text-xs rounded-xl bg-teal-600 text-white shadow-sm transition cursor-pointer";
-        renderItemAnalysisTable();
-      } else if (mode === 'cheats') {
-        secCheats.classList.remove('hidden');
-        if(btnCheats) btnCheats.className = "px-4 py-2 font-black text-xs rounded-xl bg-rose-600 text-white shadow-sm transition cursor-pointer";
-        renderCheatTable();
-      }
-    }
-
-    function renderAdminDashboard() {
-      renderAdminLockControls();
-      if (currentViewMode === 'students') renderAdminTable();
-      else if (currentViewMode === 'schools') renderSchoolRankingTable();
-      else if (currentViewMode === 'analysis') renderItemAnalysisTable();
-      else if (currentViewMode === 'cheats') renderCheatTable();
-    }
-
-    function renderCheatTable() {
-      const logs = getCheatLogs();
-      const tbody = document.getElementById('cheatTableBody');
-      if(!tbody) return;
-      tbody.innerHTML = '';
-      if (logs.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-slate-400 font-medium">Belum ada catatan pelanggaran anti-curang.</td></tr>`;
-        return;
-      }
-      logs.forEach((log, idx) => {
-        const tr = document.createElement('tr');
-        tr.className = "hover:bg-rose-50/50 transition";
-        tr.innerHTML = `
-          <td class="py-3 px-3 text-center font-bold text-slate-600">${idx + 1}</td>
-          <td class="py-3 px-4 font-black text-slate-900">${log.name}</td>
-          <td class="py-3 px-4 font-semibold text-slate-700">${log.school}</td>
-          <td class="py-3 px-3 text-center font-bold text-teal-800">${log.subject || '-'}</td>
-          <td class="py-3 px-3 text-center font-black text-rose-600">${log.violationCount}x Pelanggaran</td>
-          <td class="py-3 px-3 text-center font-mono text-slate-500">${log.time || '-'}</td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-
-    function renderAdminTable() {
-      let submissions = getStoredSubmissions();
-      const targetSubName = currentAdminSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia';
-      submissions = submissions.filter(s => s.subject === targetSubName);
-      if (selectedPackageFilter !== 'ALL') {
-        submissions = submissions.filter(s => s.package === selectedPackageFilter);
-      }
-      const schoolFilter = document.getElementById('adminFilterSchool').value;
-      const searchName = (document.getElementById('adminSearchInput').value || '').toLowerCase();
-      if (schoolFilter) submissions = submissions.filter(s => s.school === schoolFilter);
-      if (searchName) submissions = submissions.filter(s => s.name.toLowerCase().includes(searchName));
-
-      const uniqueMap = {};
-      submissions.forEach(s => {
-        const key = `${(s.name||'').trim().toLowerCase()}_${(s.school||'').trim().toLowerCase()}_${s.package}_${s.subject}`;
-        let currentScore = Number(s.finalScore) || Number(s.rawScore) || 0;
-        if (!uniqueMap[key]) {
-          uniqueMap[key] = s;
-        } else {
-          let existingScore = Number(uniqueMap[key].finalScore) || Number(uniqueMap[key].rawScore) || 0;
-          if (currentScore > existingScore) {
-            uniqueMap[key] = s;
-          }
-        }
-      });
-      let processedSubmissions = Object.values(uniqueMap);
-
-      if (currentPrintSortMode === 'SCHOOL_ORDER') {
-        processedSubmissions.sort((a, b) => a.school.localeCompare(b.school) || (Number(b.finalScore) || 0) - (Number(a.finalScore) || 0));
-      } else {
-        processedSubmissions.sort((a, b) => (Number(b.finalScore) || 0) - (Number(a.finalScore) || 0) || (Number(b.rawScore) || 0) - (Number(a.rawScore) || 0));
-      }
-
+    function renderTable() {
       const tbody = document.getElementById('adminTableBody');
       tbody.innerHTML = '';
-      if (processedSubmissions.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="10" class="py-8 text-center text-slate-400 font-medium">Belum ada data nilai untuk ${targetSubName} pada filter ini.</td></tr>`;
+      
+      let filtered = globalSubmissions.filter(s => s.subject === currentSubject);
+      
+      // Urutkan nilai tertinggi
+      filtered.sort((a, b) => (Number(b.finalScore) || Number(b.rawScore) || 0) - (Number(a.finalScore) || Number(a.rawScore) || 0));
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="9" class="py-8 text-center text-slate-400 font-medium">Belum ada data untuk ${currentSubject}. (Silakan klik Ambil Data Cloud)</td></tr>`;
         return;
       }
-      processedSubmissions.forEach((s, idx) => {
+
+      filtered.forEach((s, idx) => {
+        let score = Number(s.finalScore) || Number(s.rawScore) || 0;
+        if (score > 100) score = Math.min(100, Math.round((Number(s.rawScore || 0) / 30) * 100));
+        const isPass = score >= 70;
+
         const tr = document.createElement('tr');
         tr.className = "hover:bg-teal-50/50 transition";
-        let rankBadge = `<span class="font-bold text-slate-600">${idx + 1}</span>`;
-        if (currentPrintSortMode === 'RANKING' && !schoolFilter && !searchName) {
-          if (idx === 0) rankBadge = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-400 text-amber-950 font-black text-xs shadow-sm">🥇 1</span>`;
-          else if (idx === 1) rankBadge = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-slate-300 text-slate-900 font-black text-xs shadow-sm">🥈 2</span>`;
-          else if (idx === 2) rankBadge = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-600 text-white font-black text-xs shadow-sm">🥉 3</span>`;
-        }
-        let displayScore = Number(s.finalScore) || 0;
-        if (displayScore > 100) {
-          displayScore = Math.min(100, Math.round((Number(s.rawScore || 0) / 30) * 100));
-        }
-        const isPass = displayScore >= 70;
-        const subDataEncoded = encodeURIComponent(JSON.stringify(s));
-        const certBtnHtml = isPass
-          ? `<button onclick="openAdminCertModal('${subDataEncoded}')" class="px-2.5 py-1 bg-amber-500 hover:bg-amber-600 text-white font-bold text-[10px] rounded-lg shadow-sm transition inline-flex items-center gap-1 cursor-pointer">🏆 Cetak Piagam</button>`
-          : `<span class="text-[10px] text-slate-400 font-semibold italic">-</span>`;
         tr.innerHTML = `
-          <td class="py-3 px-3 text-center">${rankBadge}</td>
-          <td class="py-3 px-4 font-black text-slate-900">${s.name} <span class="text-slate-400 font-normal text-[10px]">(${s.absen})</span></td>
-          <td class="py-3 px-4 font-semibold text-slate-700">${s.school}</td>
+          <td class="py-3 px-3 text-center font-bold text-slate-600">${idx + 1}</td>
+          <td class="py-3 px-4 font-black text-slate-900">${s.name || '-'}</td>
+          <td class="py-3 px-4 font-semibold text-slate-700">${s.school || '-'}</td>
           <td class="py-3 px-3 text-center font-medium">${s.className || 'VI'}</td>
-          <td class="py-3 px-3 text-center font-bold text-teal-800">${s.subject}</td>
-          <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-md font-bold text-[10px] bg-teal-50 text-teal-800 border border-teal-200">${s.package}</span></td>
-          <td class="py-3 px-3 text-center font-bold">${s.rawScore}/${s.maxRawScore || 30}</td>
-          <td class="py-3 px-3 text-center font-black text-teal-700 text-sm">${displayScore}</td>
+          <td class="py-3 px-3 text-center font-bold text-teal-800">${s.subject || '-'}</td>
+          <td class="py-3 px-3 text-center font-bold">${s.package || '-'}</td>
+          <td class="py-3 px-3 text-center font-bold">${s.rawScore || 0}</td>
+          <td class="py-3 px-3 text-center font-black text-teal-700">${score}</td>
           <td class="py-3 px-4 text-center">
-            <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-black ${isPass ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-700'}">
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black ${isPass ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-700'}">
               ${s.status || (isPass ? 'Lulus' : 'Remedial')}
             </span>
           </td>
-          <td class="py-3 px-3 text-center no-print">${certBtnHtml}</td>
         `;
         tbody.appendChild(tr);
       });
-    }
-
-    function renderSchoolRankingTable() {
-      let submissions = getStoredSubmissions();
-      const subjectFilterVal = document.getElementById('schoolSubjectFilter').value;
-      const packageFilterVal = document.getElementById('schoolPackageFilter').value;
-      
-      if (subjectFilterVal !== 'gabungan') {
-        submissions = submissions.filter(s => s.subject === subjectFilterVal);
-      }
-      if (packageFilterVal !== 'ALL') {
-        submissions = submissions.filter(s => s.package === packageFilterVal);
-      }
-      
-      const uniqueMap = {};
-      submissions.forEach(s => {
-        const key = `${(s.name||'').trim().toLowerCase()}_${(s.school||'').trim().toLowerCase()}_${s.package}_${s.subject}`;
-        let currentScore = Number(s.finalScore) || Number(s.rawScore) || 0;
-        if (!uniqueMap[key]) {
-          uniqueMap[key] = s;
-        } else {
-          let existingScore = Number(uniqueMap[key].finalScore) || Number(uniqueMap[key].rawScore) || 0;
-          if (currentScore > existingScore) uniqueMap[key] = s;
-        }
-      });
-      let cleanSubmissions = Object.values(uniqueMap);
-
-      const schoolMap = {};
-      cleanSubmissions.forEach(s => {
-        const sch = s.school || 'Tanpa Nama SD';
-        let score = Number(s.finalScore) || 0;
-        if (score > 100) score = Math.min(100, Math.round((Number(s.rawScore || 0) / 30) * 100));
-        
-        if (!schoolMap[sch]) {
-          schoolMap[sch] = { studentScores: {}, allScores: [] };
-        }
-        const studentKey = `${s.name}_${s.absen || 1}`;
-        if (!schoolMap[sch].studentScores[studentKey]) {
-          schoolMap[sch].studentScores[studentKey] = [];
-        }
-        schoolMap[sch].studentScores[studentKey].push(score);
-        schoolMap[sch].allScores.push(score);
-      });
-
-      const schoolArray = Object.keys(schoolMap).map(sch => {
-        const studentObj = schoolMap[sch].studentScores;
-        const studentKeys = Object.keys(studentObj);
-        const count = studentKeys.length;
-        
-        let totalStudentAvg = 0;
-        studentKeys.forEach(sk => {
-          const arr = studentObj[sk];
-          const avgS = arr.reduce((a, b) => a + b, 0) / arr.length;
-          totalStudentAvg += avgS;
-        });
-
-        const schoolAvg = count > 0 ? (totalStudentAvg / count).toFixed(1) : 0;
-        const max = schoolMap[sch].allScores.length > 0 ? Math.max(...schoolMap[sch].allScores) : 0;
-        const min = schoolMap[sch].allScores.length > 0 ? Math.min(...schoolMap[sch].allScores) : 0;
-        return { school: sch, count, avg: Number(schoolAvg), max, min };
-      });
-
-      schoolArray.sort((a, b) => b.avg - a.avg || b.count - a.count);
-      const tbody = document.getElementById('schoolRankTableBody');
-      tbody.innerHTML = '';
-      if (schoolArray.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-slate-400 font-medium">Belum ada data nilai sekolah untuk filter mapel/paket ini.</td></tr>`;
-        return;
-      }
-      schoolArray.forEach((sc, idx) => {
-        const tr = document.createElement('tr');
-        tr.className = "hover:bg-teal-50/50 transition";
-        let rankBadge = `<span class="font-bold text-slate-600">${idx + 1}</span>`;
-        if (idx === 0) rankBadge = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-400 text-amber-950 font-black text-xs shadow-sm">🥇 1</span>`;
-        else if (idx === 1) rankBadge = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-slate-300 text-slate-900 font-black text-xs shadow-sm">🥈 2</span>`;
-        else if (idx === 2) rankBadge = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-600 text-white font-black text-xs shadow-sm">🥉 3</span>`;
-        tr.innerHTML = `
-          <td class="py-3 px-3 text-center">${rankBadge}</td>
-          <td class="py-3 px-4 font-black text-slate-900">${sc.school}</td>
-          <td class="py-3 px-3 text-center font-bold text-slate-700">${sc.count} Siswa</td>
-          <td class="py-3 px-3 text-center font-black text-teal-700 text-sm bg-teal-50/70">${sc.avg}</td>
-          <td class="py-3 px-3 text-center font-bold text-emerald-600">${sc.max}</td>
-          <td class="py-3 px-3 text-center font-bold text-rose-600">${sc.min}</td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-
-    function renderItemAnalysisTable() {
-      let submissions = getStoredSubmissions();
-      const targetSubName = currentAdminSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia';
-      submissions = submissions.filter(s => s.subject === targetSubName);
-      
-      const selectedPkg = document.getElementById('analysisPackageFilter').value;
-      if (selectedPkg) {
-        submissions = submissions.filter(s => s.package === selectedPkg);
-      }
-
-      const totalParticipants = submissions.length;
-      const tbody = document.getElementById('analysisTableBody');
-      tbody.innerHTML = '';
-      
-      const defaultTopics = currentAdminSubject === 'matematika' ? [
-        "Operasi Hitung Pecahan", "Persen & Pecahan Biasa", "Kelipatan Persekutuan", "FPB Tiga Bilangan", "KPK Jadwal Bersama",
-        "Pecahan Luas Lahan", "Sifat Bangun Datar", "Urutan Pecahan", "Luas Trapesium", "Luas Persegi",
-        "Proyeksi Kubus", "Volume & Konversi Satuan", "Waktu Tempuh Perjalanan", "Diagram Batang Panen Ikan", "Analisis Data Penjualan Buah",
-        "Aritmatika Sosial Diskon Kain", "Pythagoras & Luas Segitiga", "Volume Susunan Kubus", "Volume Balok & Kaleng", "Kecepatan Berpapasan",
-        "Konversi Satuan Waktu", "FPB Pembagian Makanan", "Analisis Data Pembeli", "Sifat Belah Ketupat / Kategori", "Volume Wadah Balok",
-        "Perbandingan Umur", "Pecahan Uang Kembalian", "Aritmatika Sosial Toko Buku", "KPK & Kalender Bersama", "Interpretasi Piktogram Siswa"
-      ] : [
-        "Makna Kiasan 'Paru-paru Dunia'", "Arti Kosakata 'Eksploitasi'", "Sinonim Kata 'Anomali'", "Istilah 'Reboisasi'", "Sinonim Kata 'Masif'",
-        "Antonim Kata 'Menyusut'", "Objek Utama Teks Deskripsi", "Informasi Penting Tanaman", "Gagasan Utama Cerita", "Nilai Moral Cerita Fabel",
-        "Fungsi Kalimat Pengembangan", "Penalaran Peristiwa Sehari-hari", "Relevansi Ide Kantong Plastik", "Sinonim 'Positif / Keuntungan'", "Gagasan Pokok Teks Narasi",
-        "Karakter Tokoh Kakek Hariman", "Amanat Cerita Tokoh", "Pemahaman Bacaan Teks Arinda", "Simpulan Objek Jam Dinding", "Karakter Tokoh Adinda",
-        "Makna Ungkapan 'Buah Bibir'", "Majas Personifikasi", "Majas Hiperbola", "Arti Peribahasa 'Air di Daun Talas'", "Peribahasa 'Sambil Menyelam Minum Air'",
-        "Refleksi Perilaku Tolong Menolong", "Informasi Tersurat Taman Nasional", "Alasan Wisatawan Pulau Komodo", "Peribahasa 'Tong Kosong'", "Tanggapan Watak Tokoh"
-      ];
-
-      for (let i = 1; i <= 30; i++) {
-        let correctCount = 0;
-        if (totalParticipants > 0) {
-          submissions.forEach(s => {
-            if (s.detailAnswers && s.detailAnswers[i] && s.detailAnswers[i].isCorrect) {
-              correctCount++;
-            }
-          });
-        }
-        const percentage = totalParticipants > 0 ? Math.round((correctCount / totalParticipants) * 100) : 0;
-        let difficulty = "Sedang";
-        let diffBadge = "bg-amber-100 text-amber-800 border-amber-200";
-        if (totalParticipants > 0) {
-          if (percentage >= 75) {
-            difficulty = "Mudah";
-            diffBadge = "bg-emerald-100 text-emerald-800 border-emerald-200";
-          } else if (percentage < 40) {
-            difficulty = "Sulit / Perlu Evaluasi";
-            diffBadge = "bg-rose-100 text-rose-800 border-rose-200";
-          }
-        } else {
-          difficulty = "Menunggu Data";
-          diffBadge = "bg-slate-100 text-slate-500 border-slate-200";
-        }
-        const tr = document.createElement('tr');
-        tr.className = "hover:bg-slate-50";
-        tr.innerHTML = `
-          <td class="py-3 px-3 text-center font-bold text-slate-800">${i}</td>
-          <td class="py-3 px-4 font-semibold text-slate-800">${defaultTopics[i - 1] || 'Materi TKA'}</td>
-          <td class="py-3 px-3 text-center font-bold text-slate-700">${correctCount} dari ${totalParticipants} siswa</td>
-          <td class="py-3 px-3 text-center font-black text-teal-700 text-sm">${percentage}%</td>
-          <td class="py-3 px-4 text-center">
-            <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-black border ${diffBadge}">
-              ${difficulty}
-            </span>
-          </td>
-        `;
-        tbody.appendChild(tr);
-      }
-    }
-
-    function openAdminCertModal(encodedData) {
-      const sub = JSON.parse(decodeURIComponent(encodedData));
-      let finalScore = Number(sub.finalScore) || 0;
-      if (finalScore > 100) {
-        finalScore = Math.min(100, Math.round((Number(sub.rawScore || 0) / 30) * 100));
-      }
-      document.getElementById('adminCertStudentName').innerText = (sub.name || '').toUpperCase();
-      document.getElementById('adminCertStudentSchool').innerText = (sub.school || '').toUpperCase();
-      document.getElementById('adminCertSubjectName').innerText = sub.subject || 'Matematika';
-      document.getElementById('adminCertPackageName').innerText = sub.package || 'Paket 1';
-      document.getElementById('adminCertScore').innerText = finalScore;
-      let predikat = "LULUS / MEMENUHI KKM";
-      if (finalScore >= 95) predikat = "ISTIMEWA / DENGAN PUJIAN";
-      else if (finalScore >= 85) predikat = "SANGAT BAIK / MEMUASKAN";
-      else if (finalScore >= 70) predikat = "BAIK / LULUS";
-      document.getElementById('adminCertPredicate').innerText = predikat;
-      document.getElementById('adminCertNumber').innerText = `No: 400.3.11.1/TKA-MRG/2026/${Math.floor(1000 + Math.random() * 9000)}`;
-      document.getElementById('adminCertificateModal').classList.remove('hidden');
-    }
-
-    function printSingleCertificate() {
-      document.body.classList.remove('mode-table');
-      document.body.classList.add('mode-cert');
-      window.print();
-    }
-
-    function closeAdminCertificateModal() {
-      document.body.classList.remove('mode-cert');
-      document.getElementById('adminCertificateModal').classList.add('hidden');
-    }
-
-    function triggerPrintMode(mode) {
-      document.body.classList.remove('mode-cert');
-      document.body.classList.add('mode-table');
-      const targetSubName = currentAdminSubject === 'matematika' ? 'MATEMATIKA' : 'BAHASA INDONESIA';
-      const pkgText = selectedPackageFilter === 'ALL' ? 'SEMUA PAKET' : selectedPackageFilter.toUpperCase();
-      const schoolVal = document.getElementById('adminFilterSchool').value;
-      const options = { day: 'numeric', month: 'long', year: 'numeric' };
-      const todayFormatted = new Date().toLocaleDateString('id-ID', options);
-      document.getElementById('printDatePlace').innerText = `Mranggen, ${todayFormatted}`;
-      if (mode === 'RANKING') {
-        currentPrintSortMode = 'RANKING';
-        document.getElementById('printReportTitle').innerText = `REKAPITULASI PERINGKAT HASIL TRYOUT TKA ${targetSubName} (${pkgText})`;
-        document.getElementById('printReportSubtitle').innerText = `Diurutkan Berdasarkan Nilai Tertinggi ke Terendah • Korwil Biddikbud Kec. Mranggen`;
-      } else if (mode === 'SCHOOL_ORDER') {
-        currentPrintSortMode = 'SCHOOL_ORDER';
-        document.getElementById('adminFilterSchool').value = "";
-        document.getElementById('printReportTitle').innerText = `REKAPITULASI HASIL TRYOUT TKA ${targetSubName} SESUAI URUTAN SEKOLAH (${pkgText})`;
-        document.getElementById('printReportSubtitle').innerText = `Dikelompokkan & Diurutkan Berdasarkan Nama SD • Korwil Biddikbud Kec. Mranggen`;
-      } else if (mode === 'SELECTED_SCHOOL') {
-        if (!schoolVal) {
-          alert("Silakan pilih salah satu Nama SD pada dropdown filter terlebih dahulu!");
-          document.getElementById('adminFilterSchool').focus();
-          return;
-        }
-        currentPrintSortMode = 'RANKING';
-        document.getElementById('printReportTitle').innerText = `REKAPITULASI HASIL TRYOUT TKA ${targetSubName} - ${schoolVal}`;
-        document.getElementById('printReportSubtitle').innerText = `Paket: ${pkgText} • Tahun Pelajaran 2026`;
-      }
-      renderAdminTable();
-      setTimeout(() => window.print(), 250);
-    }
-
-    function triggerPrintSchools() {
-      document.body.classList.remove('mode-cert');
-      document.body.classList.add('mode-table');
-      const options = { day: 'numeric', month: 'long', year: 'numeric' };
-      const todayFormatted = new Date().toLocaleDateString('id-ID', options);
-      document.getElementById('printSchoolDatePlace').innerText = `Mranggen, ${todayFormatted}`;
-      setTimeout(() => window.print(), 250);
-    }
-
-    async function promptSafeClearData() {
-      const targetSub = document.getElementById('clearTargetSubject').value;
-      const targetPkg = document.getElementById('clearTargetPackage').value;
-      
-      const confirmMsg = `⚠️ PERINGATAN PEMBERSIHAN DATA CLOUD:\nAnda akan menghapus data ujian untuk:\n- Mapel: ${targetSub}\n- Paket: ${targetPkg}\n\nKetik 'HAPUS' (huruf besar) untuk mengonfirmasi:`;
-      const code = prompt(confirmMsg);
-      
-      if (code === "HAPUS") {
-        try {
-          let submissions = getStoredSubmissions();
-          if (targetSub === 'ALL' && targetPkg === 'ALL') {
-            submissions = [];
-            if (typeof FIREBASE_DB_URL !== 'undefined' && FIREBASE_DB_URL) {
-              await fetch(FIREBASE_DB_URL, { method: 'DELETE' });
-            }
-          } else {
-            submissions = submissions.filter(s => {
-              const matchSub = (targetSub === 'ALL' || s.subject === targetSub);
-              const matchPkg = (targetPkg === 'ALL' || s.package === targetPkg);
-              return !(matchSub && matchPkg);
-            });
-            if (typeof FIREBASE_DB_URL !== 'undefined' && FIREBASE_DB_URL) {
-              await fetch(FIREBASE_DB_URL, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(submissions)
-              });
-            }
-          }
-          localStorage.setItem('tka_submissions_multi', JSON.stringify(submissions));
-          renderAdminDashboard();
-          alert("✅ Berhasil! Data testing pada target tersebut telah dibersihkan dari memori lokal dan cloud.");
-        } catch (err) {
-          alert("Gagal menghapus data di cloud: " + err.message);
-        }
-      } else if (code !== null) {
-        alert("Konfirmasi dibatalkan.");
-      }
-    }
-
-    function downloadBackupJSON() {
-      const data = getStoredSubmissions();
-      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = `BACKUP_TKA_MRANGGEN_${Date.now()}.json`;
-      link.click();
     }
 
     function exportToCSV() {
-      let submissions = getStoredSubmissions();
-      const targetSubName = currentAdminSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia';
-      submissions = submissions.filter(s => s.subject === targetSubName);
-      if (submissions.length === 0) { alert('Belum ada data!'); return; }
-      let csv = 'Peringkat,Waktu,Mapel,Paket,Nama Siswa,No Absen,Asal Sekolah,Kelas,Skor Mentah,Nilai Akhir,Status\n';
-      submissions.forEach((s, idx) => {
-        let displayScore = Number(s.finalScore) || 0;
-        if (displayScore > 100) {
-          displayScore = Math.min(100, Math.round((Number(s.rawScore || 0) / 30) * 100));
-        }
-        csv += `${idx + 1},"${s.date}","${s.subject}","${s.package}","${s.name}","${s.absen}","${s.school}","${s.className || 'VI'}",${s.rawScore},${displayScore},"${s.status}"\n`;
+      if (globalSubmissions.length === 0) { alert('Belum ada data! Klik Ambil Data Cloud terlebih dahulu.'); return; }
+      let csv = 'Peringkat,Mapel,Paket,Nama Siswa,Asal Sekolah,Skor Mentah,Nilai Akhir,Status\n';
+      globalSubmissions.forEach((s, idx) => {
+        let score = Number(s.finalScore) || Number(s.rawScore) || 0;
+        if (score > 100) score = Math.min(100, Math.round((Number(s.rawScore || 0) / 30) * 100));
+        csv += `${idx + 1},"${s.subject}","${s.package}","${s.name}","${s.school}",${s.rawScore},${score},"${s.status}"\n`;
       });
-      const data = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-      const url = URL.createObjectURL(data);
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = `Rekap_Nilai_${targetSubName}_${Date.now()}.csv`;
+      link.download = `Rekap_TKA_Mranggen_${Date.now()}.csv`;
       link.click();
     }
 
     window.addEventListener('DOMContentLoaded', () => {
-      const filterSelect = document.getElementById('adminFilterSchool');
-      LIST_SEKOLAH_MRANGGEN.forEach(sch => {
-        const o = document.createElement('option'); o.value = sch; o.innerText = sch; filterSelect.appendChild(o);
-      });
       if (isAdminLoggedIn) {
         document.getElementById('adminLoginModal').classList.add('hidden');
         document.getElementById('adminPortal').classList.remove('hidden');
-        renderFilterTabs();
-        renderAdminDashboard();
-        fetchCloudSettings();
-        syncOnlineData();
+        fetchOnlineDataDirect();
       }
     });
   </script>
