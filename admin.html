@@ -74,13 +74,25 @@
       <button onclick="switchAdminSubject('indonesia')" id="btnSubIndo" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition cursor-pointer">Bahasa Indonesia</button>
     </div>
 
-    <!-- KONTROL KUNCI & TOKEN + FITUR RESET CLOUD -->
-    <div class="bg-white/95 p-6 rounded-3xl border border-teal-200/80 shadow-sm no-print">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+    <!-- KONTROL KUNCI & TOKEN + FITUR HAPUS DATA PER PAKET -->
+    <div class="bg-white/95 p-6 rounded-3xl border border-teal-200/80 shadow-sm no-print space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3">
         <h3 class="text-sm font-extrabold text-slate-900" id="lockSectionTitle">Kontrol Token & Akses Paket</h3>
-        <button onclick="resetCloudPackageData()" class="px-3 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs rounded-xl border border-rose-200 transition cursor-pointer flex items-center gap-1.5">
-          🗑️ Bersihkan Data Cloud (Uji Coba)
-        </button>
+        
+        <!-- DROPBOX & TOMBOL HAPUS DATA PER PAKET -->
+        <div class="flex items-center gap-2">
+          <select id="targetResetPackage" class="px-3 py-1.5 text-xs font-bold rounded-xl border border-rose-300 bg-rose-50 text-rose-900 outline-none cursor-pointer">
+            <option value="UJICOBA">Ujicoba</option>
+            <option value="Paket 1">Paket 1</option>
+            <option value="Paket 2">Paket 2</option>
+            <option value="Paket 3">Paket 3</option>
+            <option value="Paket 4">Paket 4</option>
+            <option value="Paket 5">Paket 5</option>
+          </select>
+          <button onclick="promptDeleteSpecificPackageData()" class="px-3.5 py-1.5 bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-xl shadow transition cursor-pointer flex items-center gap-1">
+            🗑️ Hapus Data Paket Ini
+          </button>
+        </div>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3" id="adminLockControls"></div>
     </div>
@@ -404,14 +416,11 @@
         if (!cachedCloudData.status) cachedCloudData.status = DEFAULT_STATUS;
         if (!cachedCloudData.status[currentAdminSubject]) cachedCloudData.status[currentAdminSubject] = {};
         
-        // Balik status sekarang langsung secara lokal
         const currentVal = !!cachedCloudData.status[currentAdminSubject][pkg];
         cachedCloudData.status[currentAdminSubject][pkg] = !currentVal;
 
-        // Render ulang tampilan tombol secara instan
         renderAdminLockControls(cachedCloudData.status, cachedCloudData.tokens);
 
-        // Kirim perubahan ke cloud Firebase di latar belakang
         await fetch(FIREBASE_SETTINGS_URL, { 
           method: 'PUT', 
           headers: { 'Content-Type': 'application/json' }, 
@@ -437,16 +446,35 @@
       } catch(e) { alert("Gagal memperbarui token ke cloud."); }
     }
 
-    async function resetCloudPackageData() {
-      if (confirm("⚠️ PERHATIAN!\n\nApakah Anda yakin ingin MENGHAPUS / MERESET seluruh data nilai ujian di Cloud Firebase untuk keperluan uji coba pribadi? Tindakan ini tidak dapat dibatalkan.")) {
-        try {
-          const res = await fetch(FIREBASE_DB_URL, { method: 'DELETE' });
-          globalSubmissions = [];
-          renderAdminTable();
-          alert("✅ Data ujian di Cloud berhasil dibersihkan total!");
-        } catch(e) {
-          alert("Gagal membersihkan data cloud: " + e.message);
+    // FUNGSI HAPUS DATA CLOUD BERDASARKAN PILIHAN DROPDOWN DENGAN KONFIRMASI
+    async function promptDeleteSpecificPackageData() {
+      const selectedPkg = document.getElementById('targetResetPackage').value;
+      const targetSubName = currentAdminSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia';
+      
+      const confirmed = confirm(`⚠️ KONFIRMASI PENGHAPUSAN DATA:\n\nApakah Anda YAKIN ingin menghapus seluruh data nilai untuk mata pelajaran [ ${targetSubName} ] pada [ ${selectedPkg} ]?\n\nTindakan ini akan menghapus data siswa yang sudah masuk untuk paket tersebut di Cloud Firebase.`);
+      
+      if (!confirmed) return;
+
+      try {
+        // Filter data global, buang yang sesuai mapel dan paket yang dipilih
+        const remainingData = globalSubmissions.filter(s => !(s.subject.toLowerCase() === targetSubName.toLowerCase() && s.package === selectedPkg));
+        
+        // Kirim data yang tersisa kembali ke Firebase (overwrite)
+        const res = await fetch(FIREBASE_DB_URL, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(remainingData)
+        });
+
+        if (res.ok) {
+          globalSubmissions = remainingData;
+          renderAdminDashboard();
+          alert(`✅ Berhasil! Seluruh data nilai untuk ${targetSubName} (${selectedPkg}) telah dihapus dari Cloud.`);
+        } else {
+          alert("Gagal memperbarui database Firebase.");
         }
+      } catch(e) {
+        alert("Terjadi kesalahan koneksi: " + e.message);
       }
     }
 
