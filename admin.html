@@ -74,9 +74,14 @@
       <button onclick="switchAdminSubject('indonesia')" id="btnSubIndo" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition cursor-pointer">Bahasa Indonesia</button>
     </div>
 
-    <!-- KONTROL KUNCI & TOKEN (CLOUD REALTIME) -->
+    <!-- KONTROL KUNCI & TOKEN + FITUR RESET CLOUD -->
     <div class="bg-white/95 p-6 rounded-3xl border border-teal-200/80 shadow-sm no-print">
-      <h3 class="text-sm font-extrabold text-slate-900 mb-4" id="lockSectionTitle">Kontrol Token & Akses Paket</h3>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+        <h3 class="text-sm font-extrabold text-slate-900" id="lockSectionTitle">Kontrol Token & Akses Paket</h3>
+        <button onclick="resetCloudPackageData()" class="px-3 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs rounded-xl border border-rose-200 transition cursor-pointer flex items-center gap-1.5">
+          🗑️ Bersihkan Data Cloud (Uji Coba)
+        </button>
+      </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3" id="adminLockControls"></div>
     </div>
 
@@ -141,7 +146,7 @@
         </table>
       </div>
 
-      <!-- TTD PENGESAHAN CETAK (DENGAN TTD) -->
+      <!-- TTD PENGESAHAN CETAK -->
       <div class="hidden print:block pt-8 mt-6" style="page-break-inside: avoid;">
         <div class="flex justify-end pr-12 text-slate-900">
           <div class="text-left space-y-1">
@@ -329,6 +334,7 @@
 
     const DEFAULT_STATUS = { matematika: { "UJICOBA": true, "Paket 1": false }, indonesia: { "Paket 1": true } };
     const DEFAULT_TOKENS = { matematika: { "UJICOBA": "UJICOBA", "Paket 1": "MAT1" }, indonesia: { "Paket 1": "BINDO1" } };
+    let cachedCloudData = { status: DEFAULT_STATUS, tokens: DEFAULT_TOKENS };
 
     function handleAdminLogin(e) {
       e.preventDefault();
@@ -354,23 +360,28 @@
 
     async function fetchCloudSettings() {
       try {
-        const res = await fetch(FIREBASE_SETTINGS_URL);
+        const res = await fetch(FIREBASE_SETTINGS_URL + "?t=" + new Date().getTime());
         const data = await res.json();
-        renderAdminLockControls(data ? data.status : null, data ? data.tokens : null);
+        if (data) cachedCloudData = data;
+        renderAdminLockControls(cachedCloudData.status, cachedCloudData.tokens);
       } catch (e) {
-        renderAdminLockControls(null, null);
+        renderAdminLockControls(DEFAULT_STATUS, DEFAULT_TOKENS);
       }
     }
 
     function renderAdminLockControls(statusMap, tokenMap) {
-      statusMap = statusMap || DEFAULT_STATUS[currentAdminSubject] || {};
-      tokenMap = tokenMap || DEFAULT_TOKENS[currentAdminSubject] || {};
+      statusMap = statusMap || DEFAULT_STATUS;
+      tokenMap = tokenMap || DEFAULT_TOKENS;
+      const subStatus = statusMap[currentAdminSubject] || {};
+      const subTokens = tokenMap[currentAdminSubject] || {};
+
       const container = document.getElementById('adminLockControls');
       container.innerHTML = '';
       const keys = currentAdminSubject === 'matematika' ? ["UJICOBA", "Paket 1", "Paket 2", "Paket 3", "Paket 4", "Paket 5"] : ["Paket 1", "Paket 2", "Paket 3", "Paket 4", "Paket 5"];
+      
       keys.forEach(pkg => {
-        const isOpen = !!statusMap[pkg];
-        const tokenVal = tokenMap[pkg] || 'MRANGGEN';
+        const isOpen = !!subStatus[pkg];
+        const tokenVal = subTokens[pkg] || 'MRANGGEN';
         const box = document.createElement('div');
         box.className = `p-3.5 rounded-2xl border text-center transition ${isOpen ? 'bg-blue-50 border-blue-200' : 'bg-amber-50 border-amber-200'}`;
         box.innerHTML = `
@@ -390,23 +401,53 @@
 
     async function toggleLock(pkg) {
       try {
-        const res = await fetch(FIREBASE_SETTINGS_URL);
-        const data = (await res.json()) || { status: DEFAULT_STATUS, tokens: DEFAULT_TOKENS };
-        if (!data.status[currentAdminSubject]) data.status[currentAdminSubject] = {};
-        data.status[currentAdminSubject][pkg] = !data.status[currentAdminSubject][pkg];
-        await fetch(FIREBASE_SETTINGS_URL, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
-        renderAdminLockControls(data.status, data.tokens);
-      } catch(e) { alert("Gagal mengubah status paket ke cloud."); }
+        if (!cachedCloudData.status) cachedCloudData.status = DEFAULT_STATUS;
+        if (!cachedCloudData.status[currentAdminSubject]) cachedCloudData.status[currentAdminSubject] = {};
+        
+        // Balik status sekarang langsung secara lokal
+        const currentVal = !!cachedCloudData.status[currentAdminSubject][pkg];
+        cachedCloudData.status[currentAdminSubject][pkg] = !currentVal;
+
+        // Render ulang tampilan tombol secara instan
+        renderAdminLockControls(cachedCloudData.status, cachedCloudData.tokens);
+
+        // Kirim perubahan ke cloud Firebase di latar belakang
+        await fetch(FIREBASE_SETTINGS_URL, { 
+          method: 'PUT', 
+          headers: { 'Content-Type': 'application/json' }, 
+          body: JSON.stringify(cachedCloudData) 
+        });
+      } catch(e) { 
+        alert("Gagal memperbarui status ke cloud."); 
+        fetchCloudSettings();
+      }
     }
 
     async function updateToken(pkg, val) {
       try {
-        const res = await fetch(FIREBASE_SETTINGS_URL);
-        const data = (await res.json()) || { status: DEFAULT_STATUS, tokens: DEFAULT_TOKENS };
-        if (!data.tokens[currentAdminSubject]) data.tokens[currentAdminSubject] = {};
-        data.tokens[currentAdminSubject][pkg] = val.trim().toUpperCase();
-        await fetch(FIREBASE_SETTINGS_URL, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+        if (!cachedCloudData.tokens) cachedCloudData.tokens = DEFAULT_TOKENS;
+        if (!cachedCloudData.tokens[currentAdminSubject]) cachedCloudData.tokens[currentAdminSubject] = {};
+        cachedCloudData.tokens[currentAdminSubject][pkg] = val.trim().toUpperCase();
+
+        await fetch(FIREBASE_SETTINGS_URL, { 
+          method: 'PUT', 
+          headers: { 'Content-Type': 'application/json' }, 
+          body: JSON.stringify(cachedCloudData) 
+        });
       } catch(e) { alert("Gagal memperbarui token ke cloud."); }
+    }
+
+    async function resetCloudPackageData() {
+      if (confirm("⚠️ PERHATIAN!\n\nApakah Anda yakin ingin MENGHAPUS / MERESET seluruh data nilai ujian di Cloud Firebase untuk keperluan uji coba pribadi? Tindakan ini tidak dapat dibatalkan.")) {
+        try {
+          const res = await fetch(FIREBASE_DB_URL, { method: 'DELETE' });
+          globalSubmissions = [];
+          renderAdminTable();
+          alert("✅ Data ujian di Cloud berhasil dibersihkan total!");
+        } catch(e) {
+          alert("Gagal membersihkan data cloud: " + e.message);
+        }
+      }
     }
 
     async function syncOnlineData() {
@@ -438,7 +479,7 @@
       document.getElementById('btnSubIndo').className = sub === 'indonesia' ? "px-4 py-2 rounded-xl text-xs font-black bg-teal-600 text-white shadow-sm cursor-pointer" : "px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 cursor-pointer";
       document.getElementById('lockSectionTitle').innerText = `Kontrol Token & Akses Paket: ${sub === 'matematika' ? 'Matematika' : 'Bahasa Indonesia'}`;
       renderFilterTabs();
-      fetchCloudSettings();
+      renderAdminLockControls(cachedCloudData.status, cachedCloudData.tokens);
       renderAdminDashboard();
     }
 
@@ -622,7 +663,6 @@
         document.getElementById('adminFilterSchool').value = '';
         renderAdminTable();
       } else if (type === 'SELECTED_SCHOOL') {
-        // Biarkan filter sekolah yang sedang dipilih user
         renderAdminTable();
       }
       
@@ -664,6 +704,7 @@
         document.getElementById('adminLoginModal').classList.add('hidden');
         document.getElementById('adminPortal').classList.remove('hidden');
         renderFilterTabs();
+        fetchCloudSettings();
         syncOnlineData();
       }
     });
