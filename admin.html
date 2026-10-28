@@ -80,6 +80,34 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3" id="adminLockControls"></div>
     </div>
 
+    <!-- PANEL PEMBERSIHAN DATA TESTING (DENGAN DROPDOWN MAPEL & DROPDOWN PAKET) -->
+    <div class="bg-rose-50/80 p-5 rounded-3xl border border-rose-200 shadow-sm no-print flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <h4 class="text-xs font-black text-rose-900 uppercase tracking-wider">🗑️ Bersihkan Data Testing / Uji Coba</h4>
+        <p class="text-[11px] text-rose-700 mt-0.5">Pilih mapel dan paket tertentu di bawah untuk menghapus data nilai latihan peserta secara spesifik.</p>
+      </div>
+      <div class="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+        <!-- Dropdown Pilih Mapel untuk Reset -->
+        <select id="resetSubjectTarget" class="px-3 py-2 text-xs rounded-xl border border-rose-300 font-bold bg-white text-rose-950 outline-none cursor-pointer">
+          <option value="Matematika">Matematika</option>
+          <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+        </select>
+        <!-- Dropdown Pilih Paket untuk Reset -->
+        <select id="resetPackageTarget" class="px-3 py-2 text-xs rounded-xl border border-rose-300 font-bold bg-white text-rose-950 outline-none cursor-pointer">
+          <option value="Ujicoba">Ujicoba</option>
+          <option value="Paket 1">Paket 1</option>
+          <option value="Paket 2">Paket 2</option>
+          <option value="Paket 3">Paket 3</option>
+          <option value="Paket 4">Paket 4</option>
+          <option value="Paket 5">Paket 5</option>
+        </select>
+        <!-- Tombol Eksekusi Hapus -->
+        <button onclick="promptDeleteSpecificPackageData()" class="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white font-black text-xs rounded-xl shadow transition cursor-pointer whitespace-nowrap">
+          Hapus Data Ini
+        </button>
+      </div>
+    </div>
+
     <!-- TAB MENU NAVIGASI -->
     <div class="flex flex-wrap items-center gap-2 border-b border-teal-200 pb-2 no-print">
       <button onclick="switchViewMode('students')" id="tabBtnStudents" class="px-4 py-2 font-black text-xs rounded-xl bg-teal-600 text-white shadow-sm transition cursor-pointer">📋 Rekap Nilai Siswa</button>
@@ -156,7 +184,7 @@
       </div>
     </div>
 
-    <!-- VIEW 2: REKAP PERINGKAT SEKOLAH (DENGAN CETAK, DROPDOWN MAPEL & DROPDOWN PAKET) -->
+    <!-- VIEW 2: REKAP PERINGKAT SEKOLAH -->
     <div id="viewSchoolsSection" class="hidden bg-white rounded-3xl border border-teal-200/80 shadow-md p-6 space-y-4">
       
       <!-- KOP CETAK REKAP PERINGKAT SD -->
@@ -180,7 +208,7 @@
           <!-- Dropdown Paket -->
           <select id="schoolPackageFilter" onchange="renderSchoolRankingTable()" class="px-3 py-2 text-xs rounded-xl border border-teal-300 font-bold bg-teal-50 text-teal-900 outline-none cursor-pointer">
             <option value="ALL">📦 Semua Paket</option>
-            <option value="UJICOBA">Ujicoba</option>
+            <option value="Ujicoba">Ujicoba</option>
             <option value="Paket 1">Paket 1</option>
             <option value="Paket 2">Paket 2</option>
             <option value="Paket 3">Paket 3</option>
@@ -470,6 +498,37 @@
           body: JSON.stringify(cachedCloudData) 
         });
       } catch(e) { alert("Gagal memperbarui token ke cloud."); }
+    }
+
+    // FUNGSI HAPUS DATA CLOUD BERDASARKAN DROPDOWN MAPEL & PAKET DENGAN KONFIRMASI
+    async function promptDeleteSpecificPackageData() {
+      const targetSub = document.getElementById('resetSubjectTarget').value;
+      const targetPkg = document.getElementById('resetPackageTarget').value;
+      
+      const confirmed = confirm(`⚠️ KONFIRMASI PENGHAPUSAN DATA TESTING:\n\nApakah Anda YAKIN ingin menghapus seluruh data nilai untuk mapel [ ${targetSub} ] pada [ ${targetPkg} ]?\n\nTindakan ini akan membersihkan data latihan tersebut dari Cloud Firebase.`);
+      
+      if (!confirmed) return;
+
+      try {
+        // Filter data global, buang yang sesuai mapel dan paket yang dipilih
+        const remainingData = globalSubmissions.filter(s => !(s.subject.toLowerCase() === targetSub.toLowerCase() && s.package === targetPkg));
+        
+        const res = await fetch(FIREBASE_DB_URL, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(remainingData)
+        });
+
+        if (res.ok) {
+          globalSubmissions = remainingData;
+          renderAdminDashboard();
+          alert(`✅ Berhasil! Data untuk ${targetSub} (${targetPkg}) telah dihapus dari Cloud.`);
+        } else {
+          alert("Gagal memperbarui database Firebase.");
+        }
+      } catch(e) {
+        alert("Terjadi kesalahan koneksi: " + e.message);
+      }
     }
 
     async function syncOnlineData() {
