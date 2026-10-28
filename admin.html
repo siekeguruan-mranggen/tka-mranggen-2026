@@ -74,26 +74,9 @@
       <button onclick="switchAdminSubject('indonesia')" id="btnSubIndo" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition cursor-pointer">Bahasa Indonesia</button>
     </div>
 
-    <!-- KONTROL KUNCI & TOKEN + FITUR HAPUS DATA PER PAKET -->
-    <div class="bg-white/95 p-6 rounded-3xl border border-teal-200/80 shadow-sm no-print space-y-4">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3">
-        <h3 class="text-sm font-extrabold text-slate-900" id="lockSectionTitle">Kontrol Token & Akses Paket</h3>
-        
-        <!-- DROPBOX & TOMBOL HAPUS DATA PER PAKET -->
-        <div class="flex items-center gap-2">
-          <select id="targetResetPackage" class="px-3 py-1.5 text-xs font-bold rounded-xl border border-rose-300 bg-rose-50 text-rose-900 outline-none cursor-pointer">
-            <option value="UJICOBA">Ujicoba</option>
-            <option value="Paket 1">Paket 1</option>
-            <option value="Paket 2">Paket 2</option>
-            <option value="Paket 3">Paket 3</option>
-            <option value="Paket 4">Paket 4</option>
-            <option value="Paket 5">Paket 5</option>
-          </select>
-          <button onclick="promptDeleteSpecificPackageData()" class="px-3.5 py-1.5 bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-xl shadow transition cursor-pointer flex items-center gap-1">
-            🗑️ Hapus Data Paket Ini
-          </button>
-        </div>
-      </div>
+    <!-- KONTROL KUNCI & TOKEN -->
+    <div class="bg-white/95 p-6 rounded-3xl border border-teal-200/80 shadow-sm no-print">
+      <h3 class="text-sm font-extrabold text-slate-900 mb-4" id="lockSectionTitle">Kontrol Token & Akses Paket</h3>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3" id="adminLockControls"></div>
     </div>
 
@@ -173,16 +156,45 @@
       </div>
     </div>
 
-    <!-- VIEW 2: REKAP PERINGKAT SEKOLAH -->
+    <!-- VIEW 2: REKAP PERINGKAT SEKOLAH (DENGAN CETAK, DROPDOWN MAPEL & DROPDOWN PAKET) -->
     <div id="viewSchoolsSection" class="hidden bg-white rounded-3xl border border-teal-200/80 shadow-md p-6 space-y-4">
-      <div class="flex items-center justify-between no-print">
-        <h3 class="text-base font-black text-slate-900">Rekapitulasi Peringkat SD Berdasarkan Nilai Rata-rata</h3>
-        <select id="schoolSubjectFilter" onchange="renderSchoolRankingTable()" class="px-3 py-2 text-xs rounded-xl border border-teal-300 font-bold bg-teal-50 text-teal-900 outline-none cursor-pointer">
-          <option value="gabungan">📊 Gabungan (Semua Mapel)</option>
-          <option value="Matematika">📐 Matematika</option>
-          <option value="Bahasa Indonesia">📖 Bahasa Indonesia</option>
-        </select>
+      
+      <!-- KOP CETAK REKAP PERINGKAT SD -->
+      <div class="hidden print:block border-b-2 border-slate-900 pb-3 mb-4 text-center">
+        <h2 class="text-base font-black uppercase tracking-wider text-slate-900">KORWIL BIDDIKBUD KECAMATAN MRANGGEN</h2>
+        <h3 class="text-sm font-black uppercase text-slate-800" id="printSchoolReportTitle">REKAPITULASI PERINGKAT SEKOLAH (SD/MI) SE-KECAMATAN MRANGGEN</h3>
+        <p class="text-xs text-slate-700 font-bold mt-1" id="printSchoolReportSubtitle">Tahun Pelajaran 2026</p>
       </div>
+
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 no-print">
+        <h3 class="text-base font-black text-slate-900">Rekapitulasi Peringkat SD Berdasarkan Nilai Rata-rata</h3>
+        
+        <div class="flex flex-wrap items-center gap-2">
+          <!-- Dropdown Mapel -->
+          <select id="schoolSubjectFilter" onchange="renderSchoolRankingTable()" class="px-3 py-2 text-xs rounded-xl border border-teal-300 font-bold bg-teal-50 text-teal-900 outline-none cursor-pointer">
+            <option value="gabungan">📊 Gabungan (Semua Mapel)</option>
+            <option value="Matematika">📐 Matematika</option>
+            <option value="Bahasa Indonesia">📖 Bahasa Indonesia</option>
+          </select>
+
+          <!-- Dropdown Paket -->
+          <select id="schoolPackageFilter" onchange="renderSchoolRankingTable()" class="px-3 py-2 text-xs rounded-xl border border-teal-300 font-bold bg-teal-50 text-teal-900 outline-none cursor-pointer">
+            <option value="ALL">📦 Semua Paket</option>
+            <option value="UJICOBA">Ujicoba</option>
+            <option value="Paket 1">Paket 1</option>
+            <option value="Paket 2">Paket 2</option>
+            <option value="Paket 3">Paket 3</option>
+            <option value="Paket 4">Paket 4</option>
+            <option value="Paket 5">Paket 5</option>
+          </select>
+
+          <!-- Tombol Cetak Peringkat SD -->
+          <button onclick="printSchoolRanking()" class="px-3.5 py-2 rounded-xl text-xs font-black bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm transition cursor-pointer">
+            🖨️ Cetak Peringkat SD
+          </button>
+        </div>
+      </div>
+
       <div class="overflow-x-auto">
         <table class="w-full text-left border-collapse">
           <thead>
@@ -195,6 +207,20 @@
           </thead>
           <tbody id="schoolRankTableBody" class="text-xs divide-y divide-slate-100 text-slate-700"></tbody>
         </table>
+      </div>
+
+      <!-- TTD PENGESAHAN CETAK REKAP PERINGKAT SD -->
+      <div class="hidden print:block pt-8 mt-6" style="page-break-inside: avoid;">
+        <div class="flex justify-end pr-12 text-slate-900">
+          <div class="text-left space-y-1">
+            <p class="text-xs" id="printSchoolDatePlace">Demak, ...</p>
+            <p class="text-xs font-bold">Admin TKA Kecamatan Mranggen</p>
+            <p class="text-xs font-bold pt-1">TTD</p>
+            <div class="h-10"></div>
+            <p class="font-black text-xs underline">Muhammad Imam Suwiji, S.Pd.SD.,M.Pd.</p>
+            <p class="text-[11px] font-bold">NIP. 198605112009031003</p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -446,38 +472,6 @@
       } catch(e) { alert("Gagal memperbarui token ke cloud."); }
     }
 
-    // FUNGSI HAPUS DATA CLOUD BERDASARKAN PILIHAN DROPDOWN DENGAN KONFIRMASI
-    async function promptDeleteSpecificPackageData() {
-      const selectedPkg = document.getElementById('targetResetPackage').value;
-      const targetSubName = currentAdminSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia';
-      
-      const confirmed = confirm(`⚠️ KONFIRMASI PENGHAPUSAN DATA:\n\nApakah Anda YAKIN ingin menghapus seluruh data nilai untuk mata pelajaran [ ${targetSubName} ] pada [ ${selectedPkg} ]?\n\nTindakan ini akan menghapus data siswa yang sudah masuk untuk paket tersebut di Cloud Firebase.`);
-      
-      if (!confirmed) return;
-
-      try {
-        // Filter data global, buang yang sesuai mapel dan paket yang dipilih
-        const remainingData = globalSubmissions.filter(s => !(s.subject.toLowerCase() === targetSubName.toLowerCase() && s.package === selectedPkg));
-        
-        // Kirim data yang tersisa kembali ke Firebase (overwrite)
-        const res = await fetch(FIREBASE_DB_URL, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(remainingData)
-        });
-
-        if (res.ok) {
-          globalSubmissions = remainingData;
-          renderAdminDashboard();
-          alert(`✅ Berhasil! Seluruh data nilai untuk ${targetSubName} (${selectedPkg}) telah dihapus dari Cloud.`);
-        } else {
-          alert("Gagal memperbarui database Firebase.");
-        }
-      } catch(e) {
-        alert("Terjadi kesalahan koneksi: " + e.message);
-      }
-    }
-
     async function syncOnlineData() {
       const btn = document.getElementById('btnSync');
       if (btn) btn.innerText = "⏳ Memuat Ribuan Data...";
@@ -601,8 +595,11 @@
 
     function renderSchoolRankingTable() {
       const subVal = document.getElementById('schoolSubjectFilter').value;
+      const pkgVal = document.getElementById('schoolPackageFilter').value;
+      
       let data = globalSubmissions;
       if (subVal !== 'gabungan') data = data.filter(s => s.subject === subVal);
+      if (pkgVal !== 'ALL') data = data.filter(s => s.package === pkgVal);
 
       const schoolMap = {};
       data.forEach(s => {
@@ -638,6 +635,26 @@
         `;
         tbody.appendChild(tr);
       });
+    }
+
+    function printSchoolRanking() {
+      document.body.classList.remove('mode-cert');
+      document.body.classList.add('mode-table');
+      
+      const subVal = document.getElementById('schoolSubjectFilter').value;
+      const pkgVal = document.getElementById('schoolPackageFilter').value;
+      
+      const subText = subVal === 'gabungan' ? 'SEMUA MAPEL' : subVal.toUpperCase();
+      const pkgText = pkgVal === 'ALL' ? 'SEMUA PAKET' : pkgVal.toUpperCase();
+
+      document.getElementById('printSchoolReportTitle').innerText = `REKAPITULASI PERINGKAT SEKOLAH (SD/MI) - MAPEL: ${subText}`;
+      document.getElementById('printSchoolReportSubtitle').innerText = `Paket: ${pkgText} • Tahun Pelajaran 2026`;
+
+      const options = { day: 'numeric', month: 'long', year: 'numeric' };
+      const todayFormatted = new Date().toLocaleDateString('id-ID', options);
+      document.getElementById('printSchoolDatePlace').innerText = `Demak, ${todayFormatted}`;
+
+      setTimeout(() => window.print(), 250);
     }
 
     function renderItemAnalysisTable() {
