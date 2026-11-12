@@ -696,7 +696,8 @@
             if (Array.isArray(dataObj)) {
               dataArray = dataObj.filter(item => item !== null);
             } else {
-              dataArray = Object.keys(dataObj).map(key => dataObj[key]).filter(item => item !== null);
+              // Menangani data dari Firebase baik berupa key angka maupun string unik
+              dataArray = Object.keys(dataObj).map(key => dataObj[key]).filter(item => item !== null && typeof item === 'object' && item.name);
             }
             localStorage.setItem('tka_submissions_multi', JSON.stringify(dataArray));
           } else {
@@ -708,7 +709,7 @@
       }
       if (btn) btn.innerText = "🔄 Ambil Data";
       renderAdminDashboard();
-      alert("✅ Sinkronisasi cloud berhasil! Data rekapitulasi dimuat ulang.");
+      alert("✅ Sinkronisasi berhasil! Data siswa kini dimuat ulang.");
     }
     function switchViewMode(mode) {
       currentViewMode = mode;
