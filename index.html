@@ -446,35 +446,35 @@
       { id: 30, type: "Kategori", text: "30. Perhatikan diagram gambar siswa SD Mutiara berikut!<br><img src='soal30.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!", statements: ["Selisih siswa paling banyak dengan paling sedikit adalah 30 anak.", "Jumlah siswa kelas II, III, dan VI sama banyak.", "Jumlah siswa seluruhnya sebanyak 350 anak."], correct: ["Benar", "Salah", "Salah"], topic: "Interpretasi Piktogram", explanation: "Kunci: Benar, Salah, Salah." }
     ];
 
-    // SOAL PAKET 2 MATEMATIKA (UTUH TANPA RINGKASAN REDAKSI)
+    // SOAL PAKET 2 MATEMATIKA (100% UTUH SESUAI FILE DOKUMEN & GAMBAR BAPAK)[cite: 28, 29, 30, 31, 32, 33, 34, 35, 36, 37]
     const SOAL_30_MATEMATIKA_PAKET_2 = [
       {
         id: 1, type: "Kategori",
-        text: "1. Perhatikan gambar berikut!<br><img src='soal1_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan apakah setiap gambar pilihan menunjukkan pecahan yang senilai dengan pecahan pada gambar utama!<br>Berilah tanda centang pada kolom Senilai atau Tidak Senilai untuk setiap gambar pilihan!",
+        text: "1. Perhatikan gambar berikut!<br><img src='soal1_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan apakah setiap gambar pilihan menunjukkan pecahan yang senilai dengan pecahan pada gambar utama!<br>Berilah tanda centang pada kolom Benar atau Salah untuk setiap gambar pilihan!",
         statements: ["Gambar A", "Gambar B", "Gambar C"],
-        correct: ["Senilai", "Tidak Senilai", "Senilai"],
+        correct: ["Benar", "Salah", "Benar"],
         topic: "Pecahan Senilai",
-        explanation: "Gambar Utama menunjukkan 3/6 = 1/2. (Kunci: A: Senilai, B: Tidak Senilai, C: Senilai)"
+        explanation: "Gambar Utama menunjukkan 1/3. Gambar A (2/6 = 1/3) Benar, Gambar B (1/4) Salah, Gambar C (3/9 = 1/3) Benar. (Kunci: Benar, Salah, Benar)"
       },
       {
         id: 2, type: "PG",
-        text: "2. Ibu membeli sebuah kue lapis legit untuk dibagikan kepada ketiga anaknya. Kakak menerima 1/2 bagian kue, Adik menerima 3/8 bagian kue, dan Bibi menerima 1/4 bagian kue.<br>Urutan nama penerima berdasarkan bagian kue yang diterima, dari yang paling sedikit hingga paling banyak, adalah ....",
-        options: ["Kakak, Adik, Bibi", "Bibi, Kakak, Adik", "Bibi, Adik, Kakak", "Adik, Bibi, Kakak"],
-        correct: 2,
+        text: "2. Ibu membeli kue bolu untuk dibagikan kepada ketiga anaknya sebagai camilan sore. Budi menerima 1/2 bagian kue, Cici menerima 3/8 bagian kue, dan Dedi menerima 3/4 bagian kue.<br>Urutan nama anak berdasarkan bagian kue yang diterima, dari yang paling sedikit hingga paling banyak, adalah ....",
+        options: ["Budi, Cici, Dedi", "Cici, Budi, Dedi", "Dedi, Budi, Cici", "Cici, Dedi, Budi"],
+        correct: 1,
         topic: "Urutan Pecahan",
-        explanation: "Urutan dari terkecil: Bibi (2/8), Adik (3/8), Kakak (4/8). (Kunci: C)"
+        explanation: "Penyebut disamakan ke 8: Budi = 4/8, Cici = 3/8, Dedi = 6/8. Urutan terkecil ke terbesar: Cici (3/8), Budi (4/8), Dedi (6/8). (Kunci: B)"
       },
       {
         id: 3, type: "MCMA",
-        text: "3. Pak Andi memiliki 150 butir kelereng. Kelereng tersebut dibagikan kepada tiga orang keponakannya:<br>- Rian menerima 2/5 bagian.<br>- Bimo menerima 0,25 bagian.<br>- Yoga menerima seluruh sisa kelereng.<br>Pilihlah pernyataan yang benar mengenai kelereng Yoga! (Jawaban benar lebih dari satu)",
+        text: "3. Pada hari Minggu, Ibu Rina membuat 120 potong kue untuk dibagikan kepada tiga keluarga tetangganya dengan ketentuan:<br>- Keluarga Pak Ahmad menerima 1/4 bagian dari seluruh kue.<br>- Keluarga Bu Siti menerima 0,35 bagian dari seluruh kue.<br>- Keluarga Pak Budi menerima seluruh kue yang tersisa.<br>Berdasarkan informasi tersebut, manakah pernyataan yang benar mengenai bagian kue yang diterima keluarga Pak Budi? (Pilih semua jawaban yang benar)",
         options: [
-          "Yoga menerima 52,5 butir kelereng.",
-          "Yoga menerima 7/20 bagian dari seluruh kelereng.",
-          "Yoga menerima 35% dari seluruh kelereng."
+          "Keluarga Pak Budi menerima 48 potong kue.",
+          "Keluarga Pak Budi menerima 2/5 bagian dari seluruh kue.",
+          "Keluarga Pak Budi menerima 45% dari seluruh kue."
         ],
-        correct: [1, 2],
+        correct: [0, 1],
         topic: "Pecahan & Persen",
-        explanation: "Sisa Yoga = 35% = 7/20 bagian = 52,5 butir. Opsi 2 dan 3 Benar."
+        explanation: "Pak Ahmad = 30 potong. Bu Siti = 42 potong. Sisa Pak Budi = 120 - 72 = 48 potong (2/5 bagian atau 40%). Opsi A dan B Benar."
       },
       {
         id: 4, type: "PG",
@@ -482,19 +482,19 @@
         options: ["72", "90", "102", "108"],
         correct: 2,
         topic: "Operasi Hitung Campuran",
-        explanation: "30 + 120 - 48 = 102. (Kunci: C)"
+        explanation: "360 : 12 = 30; 24 × 5 = 120. Maka 30 + 120 - 48 = 102. (Kunci: C)"
       },
       {
         id: 5, type: "MCMA",
-        text: "5. Bu Mila mempunyai persediaan tepung terigu sebanyak 40 kg. Ia akan membuat 8 loyang kue (tiap loyang 3/4 kg). Setelah membuat kue, Bu Mila membeli lagi 2 3/4 kg.<br>Manakah pernyataan yang benar? (Jawaban benar lebih dari satu)",
+        text: "5. Bu Mila mempunyai persediaan tepung terigu sebanyak 40 kg. Ia akan membuat 8 loyang kue. Setiap loyang membutuhkan tepung sebanyak ¾ kg. Setelah membuat kue, bu Mila membeli tepung sebanyak 1 ¼ kg, untuk menambah persediaannya.<br>Berdasarkan informasi tersebut, manakah pernyataan yang benar? (Pilih semua jawaban yang benar)",
         options: [
           "Tepung untuk membuat 8 loyang kue adalah 6 kg.",
-          "Jumlah tepung Bu Mila setelah membeli tepung kembali adalah 36 3/4 kg.",
-          "Sisa tepung Bu Mila setelah membuat kue adalah 34 kg."
+          "Jumlah tepung Bu Mila setelah membeli tepung kembali adalah 36 ¼ kg.",
+          "Sisa tepung Bu Mila setelah membuat kue adalah ¾ kg."
         ],
         correct: [0, 2],
         topic: "Aritmatika Pecahan",
-        explanation: "8 × 3/4 = 6 kg (Benar). Sisa setelah kue = 34 kg (Benar). Opsi 1 dan 3 Benar."
+        explanation: "Kue = 8 × 3/4 = 6 kg (Benar). Sisa setelah kue = 40 - 6 = 34 kg. Opsi 1 dan 3 Benar."
       },
       {
         id: 6, type: "PG",
@@ -502,19 +502,19 @@
         options: ["6", "12", "24", "72"],
         correct: 1,
         topic: "FPB",
-        explanation: "FPB dari 36, 48, dan 72 adalah 12. (Kunci: B)"
+        explanation: "Faktorisasi prima 36 = 2²×3², 48 = 2⁴×3, 72 = 2³×3². FPB = 2²×3 = 12. (Kunci: B)"
       },
       {
         id: 7, type: "PG",
-        text: "7. Di SD Negeri Batursari 3 terdapat tiga kegiatan ekstrakurikuler. Pramuka setiap 4 hari sekali, tari setiap 6 hari sekali, dan musik setiap 8 hari sekali. Jika hari ini bersamaan, berapa hari lagi bersamaan lagi?",
+        text: "7. Di SD Negeri Sayung 3 terdapat tiga kegiatan ekstrakurikuler. Pramuka dilaksanakan setiap 4 hari sekali, latihan tari setiap 6 hari sekali, dan latihan musik setiap 8 hari sekali. Jika hari ini ketiga kegiatan dilaksanakan bersama-sama, berapa hari lagi ketiga kegiatan tersebut akan dilaksanakan secara bersamaan?",
         options: ["12 hari", "16 hari", "24 hari", "32 hari"],
         correct: 2,
         topic: "KPK Ekstrakurikuler",
-        explanation: "KPK dari 4, 6, dan 8 adalah 24 hari. (Kunci: C)"
+        explanation: "KPK(4, 6, 8) = 24 hari. (Kunci: C)"
       },
       {
         id: 8, type: "MCMA",
-        text: "8. Yasmin menyiapkan 56 mawar, 72 melati, dan 48 matahari untuk dirangkai sama banyak tanpa sisa. Pilihlah pernyataan yang benar! (Jawaban benar lebih dari satu)",
+        text: "8. Yasmin akan membuat rangkaian bunga untuk peringatan Hari Guru. Ia menyiapkan 56 kuntum bunga mawar, 72 kuntum bunga melati, dan 48 kuntum bunga matahari. Yasmin ingin membuat rangkaian bunga sebanyak-banyaknya tanpa sisa.<br>Pilihlah pernyataan yang benar! (Pilih semua jawaban yang benar)",
         options: [
           "Paling banyak rangkaian bunga yang dapat dibuat Yasmin adalah 8 rangkaian.",
           "Setiap rangkaian berisi 9 kuntum bunga melati dan 7 kuntum bunga mawar.",
@@ -522,11 +522,11 @@
         ],
         correct: [0, 1],
         topic: "FPB Rangkaian Bunga",
-        explanation: "FPB(56,72,48) = 8. Mawar = 7, Melati = 9. Opsi 1 dan 2 Benar."
+        explanation: "FPB(56, 72, 48) = 8. Mawar = 56/8 = 7, Melati = 72/8 = 9, Matahari = 48/8 = 6. Opsi 1 dan 2 Benar."
       },
       {
         id: 9, type: "Kategori",
-        text: "9. Membaca bersama setiap 9 hari, peminjaman buku setiap 12 hari. Bersama pada 1 November 2026. Tentukan Benar atau Salah!",
+        text: "9. Perpustakaan sekolah mengadakan kegiatan membaca bersama setiap 9 hari sekali. Kegiatan peminjaman buku khusus dilaksanakan setiap 12 hari sekali. Pada tanggal 1 November 2026, kedua kegiatan tersebut dilaksanakan bersamaan.<br>Tentukan apakah setiap pernyataan berikut Benar atau Salah!",
         statements: [
           "KPK dari 9 dan 12 adalah 36.",
           "Dalam 72 hari setelah tanggal awal, kedua kegiatan akan berlangsung bersama sebanyak 3 kali.",
@@ -534,7 +534,7 @@
         ],
         correct: ["Benar", "Salah", "Benar"],
         topic: "KPK & Kalender",
-        explanation: "Kunci: Benar, Salah, Benar."
+        explanation: "KPK(9,12)=36. Dalam 72 hari hanya 2 kali (hari ke-36 dan ke-72). Pertemuan berikutnya 1 Nov + 36 hari = 7 Desember 2026. (Kunci: Benar, Salah, Benar)"
       },
       {
         id: 10, type: "PG",
@@ -547,11 +547,11 @@
         ],
         correct: 2,
         topic: "Proyeksi Bangun Ruang",
-        explanation: "Sesuai dengan tampilan tangga bertingkat pada Gambar C. (Kunci: C)"
+        explanation: "Tampilan depan menunjukkan tangga kubus bertingkat sesuai Gambar C. (Kunci: C)"
       },
       {
         id: 11, type: "PG",
-        text: "11. Setiap 1 unit pola ubin terdiri dari 1 persegi dikelilingi 4 persegi panjang (<img src='soal11_p2.jpg' class='inline-block w-12 h-12 object-contain'>). Pak Rahmad menyusun 5 unit pola secara berjajar. Berapa banyak ubin persegi panjang yang dibutuhkan?",
+        text: "11. Pak Rahmad akan memasang ubin di teras rumahnya menggunakan pola gabungan bangun datar. Setiap satu unit pola terdiri atas sebuah ubin berbentuk persegi yang dikelilingi empat ubin berbentuk persegi panjang, seperti pada gambar.<br><img src='soal11_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pak Rahmad akan menyusun 5 unit pola secara berjajar. Berapa banyak ubin berbentuk persegi panjang yang dibutuhkan Pak Rahmad?",
         options: ["12 ubin", "16 ubin", "20 ubin", "24 ubin"],
         correct: 2,
         topic: "Pola Bilangan & Geometri",
@@ -559,7 +559,7 @@
       },
       {
         id: 12, type: "MCMA",
-        text: "12. Akuarium balok p = 80 cm, l = 40 cm, t = 50 cm berisi air setengah dari kapasitas totalnya. Pilihlah pernyataan yang benar! (Jawaban benar lebih dari satu)",
+        text: "12. Sebuah akuarium berbentuk balok memiliki panjang 80 cm, lebar 40 cm, dan tinggi 50 cm. Akuarium tersebut berisi air sebanyak setengah dari kapasitas totalnya.<br>Manakah pernyataan yang benar mengenai volume akuarium dan air di dalamnya? (Pilih semua jawaban yang benar)",
         options: [
           "Volume akuarium jika terisi penuh adalah 160 liter.",
           "Volume air yang terdapat dalam akuarium adalah 80 liter.",
@@ -567,31 +567,31 @@
         ],
         correct: [0, 1],
         topic: "Volume Balok",
-        explanation: "Volume total = 160 liter. Air = 80 liter. Opsi 1 dan 2 Benar."
+        explanation: "Volume total = 80×40×50 = 160.000 cm³ = 160 liter. Air = 80 liter. Sisa air = 80 liter. Opsi 1 dan 2 Benar."
       },
       {
         id: 13, type: "PG",
-        text: "13. Perhatikan tumpukan kubus berikut!<br><img src='soal13_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Susunan tersebut akan dilengkapi menjadi kubus 3×3×3. Berapa kubus satuan yang perlu ditambahkan?",
+        text: "13. Perhatikan gambar susunan kubus satuan berikut!<br><img src='soal13_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Susunan tersebut akan dilengkapi menjadi sebuah kubus berukuran 3 × 3 × 3 kubus satuan. Berapa banyak kubus satuan yang perlu ditambahkan agar terbentuk kubus yang utuh?",
         options: ["8 kubus", "9 kubus", "10 kubus", "11 kubus"],
         correct: 2,
         topic: "Volume Kubus Satuan",
-        explanation: "Total utuh = 27 - 17 = 10 kubus. (Kunci: C)"
+        explanation: "Total kubus 3×3×3 = 27. Kubus yang tersedia = 9 + 7 + 1 = 17. Kekurangan = 27 - 17 = 10 kubus. (Kunci: C)"
       },
       {
         id: 14, type: "Kategori",
-        text: "14. Perhatikan gambar pengukuran Pensil (A) dan Penghapus (B) dengan penggaris!<br><img src='soal14_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan kebenaran setiap pernyataan berikut!",
+        text: "14. Perhatikan gambar hasil pengukuran panjang Pensil (Benda A) dan Penghapus (Benda B) menggunakan penggaris dalam satuan sentimeter (cm) di bawah ini!<br><img src='soal14_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berdasarkan hasil pengukuran pada gambar di atas, tentukan kebenaran untuk setiap pernyataan berikut!",
         statements: [
           "Panjang pensil 3 cm lebih panjang daripada penghapus.",
           "Jumlah panjang pensil dan penghapus jika digabungkan adalah 13 cm.",
-          "Selisih panjang antara penghapus dan pensil adalah 12 cm."
+          "Selisih panjang antara pensil dan penghapus adalah 12 cm."
         ],
         correct: ["Benar", "Benar", "Salah"],
         topic: "Pengukuran Panjang",
-        explanation: "Kunci: Benar, Benar, Salah."
+        explanation: "Pensil = 8 cm, Penghapus = 5 cm. Selisih = 3 cm. Jumlah = 13 cm. (Kunci: Benar, Benar, Salah)"
       },
       {
         id: 15, type: "PG",
-        text: "15. Data panjang: Pensil 180 mm, Buku tulis 2,2 dm, Meja belajar 1,1 m, Pagar kebun 1 dam. Urutan dari terpendek ke terpanjang adalah ....",
+        text: "15. Perhatikan data panjang empat benda berikut!<br><img src='soal15_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Urutan benda berdasarkan panjangnya, mulai dari yang terpendek hingga yang terpanjang, adalah ....",
         options: [
           "Pensil – Buku tulis – Meja belajar – Pagar kebun",
           "Buku tulis – Pensil – Meja belajar – Pagar kebun",
@@ -600,11 +600,11 @@
         ],
         correct: 0,
         topic: "Konversi Satuan Panjang",
-        explanation: "Urutan: Pensil, Buku tulis, Meja belajar, Pagar kebun. (Kunci: A)"
+        explanation: "Pensil = 18 cm, Buku tulis = 22 cm, Meja = 110 cm, Pagar = 1.000 cm. (Kunci: A)"
       },
       {
         id: 16, type: "MCMA",
-        text: "16. Perhatikan gambar wadah air:<br><img src='soal16_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pilihlah pernyataan yang benar! (Jawaban benar lebih dari satu)",
+        text: "16. Seorang ibu sedang menyiapkan minuman di dapur. Di atas meja terdapat tiga wadah berisi air dengan satuan volume yang berbeda, seperti ditunjukkan pada gambar berikut.<br><img src='soal16_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berdasarkan informasi pada gambar, manakah pernyataan yang benar mengenai volume air dalam ketiga wadah tersebut? (Pilih semua jawaban yang benar)",
         options: [
           "Volume air pada Wadah 1 setara dengan 3 liter.",
           "Volume air pada Wadah 1 sama dengan Wadah 2.",
@@ -612,11 +612,11 @@
         ],
         correct: [0, 1],
         topic: "Konversi Volume",
-        explanation: "Opsi 1 dan 2 Benar."
+        explanation: "Wadah 1 = 3.000 cm³ = 3 liter. Wadah 2 = 3 liter. Wadah 3 = 300 ml = 0,3 liter. Opsi 1 dan 2 Benar."
       },
       {
         id: 17, type: "Kategori",
-        text: "17. Wadah A = 4,5 dal, Wadah B = 350 dl, Wadah C = 40.000 ml. Tentukan Benar atau Salah!",
+        text: "17. Pak Budi memiliki warung makan dengan persediaan minuman:<br>- Wadah A berisi 4,5 dal jus jeruk.<br>- Wadah B berisi 350 dl es teh manis.<br>- Wadah C berisi 40.000 ml air mineral.<br>Berdasarkan informasi tersebut, tentukan apakah setiap pernyataan berikut benar atau salah!",
         statements: [
           "Volume minuman pada Wadah A lebih banyak daripada volume minuman pada Wadah C.",
           "Jumlah volume minuman pada Wadah B dan Wadah C adalah 75 liter.",
@@ -624,11 +624,11 @@
         ],
         correct: ["Benar", "Benar", "Salah"],
         topic: "Konversi Volume Lanjutan",
-        explanation: "Kunci: Benar, Benar, Salah."
+        explanation: "A = 45 liter, B = 35 liter, C = 40 liter. (Kunci: Benar, Benar, Salah)"
       },
       {
         id: 18, type: "Kategori",
-        text: "18. Perhatikan gambar timbangan buah:<br><img src='soal18_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Catatan: Melon 1,25 kg, Dua mangga 500 g, Jambu 750 g. Tentukan kebenaran setiap timbangan!",
+        text: "18. Perhatikan gambar hasil pengukuran berat buah menggunakan tiga jenis timbangan berikut!<br><img src='soal18_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berdasarkan catatan berat buah (Melon 1,25 kg, Dua mangga 500 g, Jambu 750 g), tentukan apakah setiap gambar timbangan menunjukkan berat yang sesuai!",
         statements: [
           "Gambar timbangan digital sesuai dengan catatan berat buah melon.",
           "Gambar timbangan jarum sesuai dengan catatan berat buah mangga.",
@@ -636,11 +636,11 @@
         ],
         correct: ["Benar", "Salah", "Benar"],
         topic: "Pengukuran Berat",
-        explanation: "Kunci: Benar, Salah, Benar."
+        explanation: "Melon 1,25 kg (Sesuai). Timbangan mangga menunjukkan 600 g padahal catatan 500 g (Tidak Sesuai). Jambu 500+250 = 750 g (Sesuai). (Kunci: Benar, Salah, Benar)"
       },
       {
         id: 19, type: "MCMA",
-        text: "19. SD Negeri Kalitengah 1 menyiapkan sembako: Beras 2 kg, Gula pasir 75 dag, Kacang hijau 350 hg. Pilihlah dua pernyataan yang benar!",
+        text: "19. Berat beras 2 kg, gula pasir 75 dag, kacang hijau 350 hg. Rasyid menghitung jumlah serta selisihnya dalam satuan gram.<br>Pilihlah dua pernyataan yang benar!",
         options: [
           "Jumlah berat beras dan gula pasir adalah 2.750 gram.",
           "Selisih berat kacang hijau dan gula pasir adalah 34.250 gram.",
@@ -648,19 +648,19 @@
         ],
         correct: [0, 1],
         topic: "Konversi Satuan Berat",
-        explanation: "Opsi 1 dan 2 Benar."
+        explanation: "Beras = 2.000 g, Gula = 750 g, Kacang = 35.000 g. Jumlah beras+gula = 2.750 g. Selisih kacang-gula = 34.250 g. Opsi 1 dan 2 Benar."
       },
       {
         id: 20, type: "PG",
-        text: "20. Raka latihan menggambar dimulai pukul yang ditunjukkan jam berikut selama 1 jam 45 menit:<br><img src='soal20_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pukul berapakah selesai?",
+        text: "20. Raka mengikuti latihan menggambar dimulai pukul yang ditunjukkan oleh jam berikut selama 1 jam 45 menit:<br><img src='soal20_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pukul berapakah latihan menggambar Raka selesai?",
         options: ["Pukul 09.50 WIB", "Pukul 10.10 WIB", "Pukul 10.20 WIB", "Pukul 10.30 WIB"],
         correct: 2,
         topic: "Waktu Mulai & Selesai",
-        explanation: "Selesai pukul 10.20 WIB. (Kunci: C)"
+        explanation: "Mulai 08.35 + 1 jam 45 menit = Pukul 10.20 WIB. (Kunci: C)"
       },
       {
         id: 21, type: "MCMA",
-        text: "21. SD Negeri Candisari 2: Lomba literasi pukul 07.15 selama 1 jam 35 menit. Istirahat 25 menit. Pentas seni 2 jam 20 menit. Pilihlah dua pernyataan yang benar!",
+        text: "21. Lomba literasi dimulai pukul 07.15 WIB selama 1 jam 35 menit. Istirahat 25 menit. Pentas seni 2 jam 20 menit.<br>Pilihlah dua pernyataan yang benar!",
         options: [
           "Perlombaan literasi selesai pada pukul 08.50 WIB.",
           "Pentas seni selesai pada pukul 11.35 WIB.",
@@ -668,51 +668,51 @@
         ],
         correct: [0, 1],
         topic: "Durasi Waktu",
-        explanation: "Opsi 1 dan 2 Benar."
+        explanation: "Literasi selesai 08.50 WIB. Istirahat sampai 09.15 WIB. Pentas seni selesai 11.35 WIB. Opsi 1 dan 2 Benar."
       },
       {
         id: 22, type: "PG",
-        text: "22. Perjalanan Semarang ke Yogyakarta (120 km) pukul 07.15 WIB dengan kecepatan 60 km/jam. Istirahat 30 menit di tengah perjalanan. Pukul berapa tiba?",
+        text: "22. Perjalanan Semarang ke Yogyakarta (120 km) berangkat pukul 07.15 WIB dengan kecepatan 60 km/jam. Istirahat 30 menit di tengah perjalanan. Pukul berapa tiba?",
         options: ["09.15 WIB", "09.30 WIB", "09.45 WIB", "10.00 WIB"],
         correct: 2,
         topic: "Kecepatan, Jarak, Waktu",
-        explanation: "Tiba pukul 09.45 WIB. (Kunci: C)"
+        explanation: "Waktu perjalanan = 120/60 = 2 jam (120 menit) + 30 menit istirahat = 150 menit (2 jam 30 menit). Tiba 07.15 + 2 jam 30 menit = 09.45 WIB. (Kunci: C)"
       },
       {
         id: 23, type: "PG",
-        text: "23. Perhatikan gambar gabungan bangun datar:<br><img src='soal23_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Jika keliling persegi panjang adalah 40 cm, berapakah luas gabungan?",
+        text: "23. Perhatikan gambar gabungan bangun datar berikut!<br><img src='soal23_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Jika keliling persegi panjang adalah 40 cm, berapakah luas gabungan?",
         options: ["108 cm²", "120 cm²", "144 cm²", "168 cm²"],
         correct: 1,
         topic: "Luas Gabungan",
-        explanation: "Luas gabungan = 120 cm². (Kunci: B)"
+        explanation: "Lebar = 8 cm. Panjang persegi panjang = (40/2) - 8 = 12 cm. Luas PP = 96 cm². Luas segitiga = ½ × 8 × 6 = 24 cm². Total = 120 cm². (Kunci: B)"
       },
       {
         id: 24, type: "PG",
-        text: "24. Perhatikan gambar tumpukan kotak kayu:<br><img src='soal24_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berapakah volume seluruh kotak penyimpanan tersebut?",
+        text: "24. Pak Budi membuat tempat penyimpanan dari dua kotak kayu yang disusun bertumpuk seperti pada gambar.<br><img src='soal24_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berapakah volume seluruh kotak penyimpanan tersebut?",
         options: ["576 cm³", "768 cm³", "864 cm³", "1.088 cm³"],
         correct: 3,
         topic: "Volume Gabungan Balok & Kubus",
-        explanation: "Volume total = 1.088 cm³. (Kunci: D)"
+        explanation: "Volume balok bawah = 12×8×6 = 576 cm³. Volume kubus atas = 8³ = 512 cm³. Total = 576 + 512 = 1.088 cm³. (Kunci: D)"
       },
       {
         id: 25, type: "PG",
-        text: "25. Tangga bersandar pada dinding membentuk sudut 35° dengan dinding.<br><img src='soal25_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berapakah besar sudut A antara tangga dan lantai?",
+        text: "25. Sebuah tangga disandarkan pada dinding membentuk sudut 35° dengan dinding.<br><img src='soal25_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berapakah besar sudut A antara tangga dan lantai?",
         options: ["35°", "45°", "55°", "65°"],
         correct: 2,
         topic: "Besar Sudut Segitiga",
-        explanation: "Besar sudut A = 55°. (Kunci: C)"
+        explanation: "Sudut A = 180° - 90° - 35° = 55°. (Kunci: C)"
       },
       {
         id: 26, type: "PG",
-        text: "26. Ibu membuat 8 loyang kue bolu, tiap loyang memerlukan 250 gram tepung terigu. Berapa kg perkiraan jumlah tepung terigu yang diperlukan?",
+        text: "26. Ibu akan membuat 8 loyang kue bolu. Setiap loyang memerlukan sekitar 250 gram tepung terigu. Berapakah perkiraan jumlah tepung terigu yang diperlukan?",
         options: ["1 kg", "2 kg", "3 kg", "4 kg"],
         correct: 1,
         topic: "Estimasi & Satuan Berat",
-        explanation: "Kebutuhan tepung = 2 kg. (Kunci: B)"
+        explanation: "8 × 250 gram = 2.000 gram = 2 kg. (Kunci: B)"
       },
       {
         id: 27, type: "Kategori",
-        text: "27. Perhatikan piktogram buku cerita:<br><img src='soal27_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>(Keterangan: Setiap buku mewakili 3 buku). Tentukan Benar atau Salah!",
+        text: "27. Perhatikan piktogram jumlah buku yang dibaca:<br><img src='soal27_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan benar atau salah untuk setiap pernyataan!",
         statements: [
           "Jumlah buku cerita yang dibaca Citra selama liburan adalah 15 buku.",
           "Jumlah buku cerita yang dibaca Budi selama liburan adalah 2 buku.",
@@ -720,11 +720,11 @@
         ],
         correct: ["Benar", "Salah", "Benar"],
         topic: "Interpretasi Piktogram",
-        explanation: "Kunci: Benar, Salah, Benar."
+        explanation: "Citra = 5×3 = 15 (Benar). Budi = 2×3 = 6, bukan 2 (Salah). Dewi = 3×3 = 9 (Benar). (Kunci: Benar, Salah, Benar)"
       },
       {
         id: 28, type: "MCMA",
-        text: "28. Biaya per hari: Tepung Rp24.000, Gula Rp16.000, Telur Rp28.000, Mentega Rp20.000. Pilihlah dua pernyataan yang benar!",
+        text: "28. Biaya per hari: Tepung Rp24.000, Gula Rp16.000, Telur Rp28.000, Mentega Rp20.000.<br>Pilihlah dua pernyataan yang benar!",
         options: [
           "Biaya gula pasir selama 11 hari adalah Rp176.000.",
           "Biaya tepung terigu selama 6 hari adalah Rp168.000.",
@@ -732,11 +732,11 @@
         ],
         correct: [0, 2],
         topic: "Aritmatika Sosial",
-        explanation: "Opsi 1 dan 3 Benar."
+        explanation: "Gula = 11 × 16.000 = 176.000 (Benar). Tepung = 6 × 24.000 = 144.000, bukan 168.000 (Salah). Mentega = 5 × 20.000 = 100.000 (Benar). Opsi 1 dan 3 Benar."
       },
       {
         id: 29, type: "PG",
-        text: "29. Perhatikan diagram garis biaya sewa sepeda tempat A dan B:<br><img src='soal29_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Untuk penyewaan selama 5 jam, tempat yang lebih hemat beserta selisihnya adalah ....",
+        text: "29. Di sebuah taman wisata terdapat dua tempat penyewaan sepeda, yaitu Tempat A dan Tempat B.<br><img src='soal29_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pak Anton akan menyewa sepeda selama 5 jam. Tempat penyewaan yang lebih hemat beserta selisihnya adalah ....",
         options: [
           "Tempat A, lebih hemat Rp15.000",
           "Tempat A, lebih hemat Rp10.000",
@@ -745,11 +745,11 @@
         ],
         correct: 0,
         topic: "Diagram Garis",
-        explanation: "Tempat A lebih hemat Rp15.000. (Kunci: A)"
+        explanation: "Sewa 5 jam: Tempat A = Rp35.000, Tempat B = Rp50.000. Tempat A lebih hemat Rp15.000. (Kunci: A)"
       },
       {
         id: 30, type: "Kategori",
-        text: "30. Perhatikan diagram batang bank sampah:<br><img src='soal30_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan Benar atau Salah!",
+        text: "30. Perhatikan diagram batang bank sampah berikut!<br><img src='soal30_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan benar atau salah untuk setiap pernyataan!",
         statements: [
           "Rata-rata jumlah botol plastik yang terkumpul selama lima hari adalah 36 buah per hari.",
           "Jumlah botol plastik pada hari Kamis dan Jumat lebih banyak daripada jumlah botol pada hari Senin, Selasa, dan Rabu.",
@@ -757,207 +757,7 @@
         ],
         correct: ["Benar", "Salah", "Benar"],
         topic: "Interpretasi Diagram Batang",
-        explanation: "Kunci: Benar, Salah, Benar."
-      }
-    ];
-
-    const SOAL_30_BAHASA_INDONESIA_PAKET_1 = [
-      {
-        id: 1, type: "PG",
-        text: `<b>Teks Bacaan untuk Soal Nomor 1-3</b><br><br><b>Pentingnya Menjaga Kelestarian Hutan</b><br>Wilayah Indonesia masih banyak yang berupa hamparan hutan yang sangat luas. Hutan merupakan paru-paru dunia yang memiliki peranan sangat vital bagi keseimbangan ekosistem. Selain sebagai tempat tinggal berbagai jenis flora dan fauna, hutan juga berfungsi untuk menyerap karbon dioksida dan menghasilkan oksigen. Namun, saat ini luas hutan semakin menyusut akibat aktivitas eksploitasi yang berlebihan dan alih fungsi lahan menjadi pemukiman atau perkebunan.<br><br>Jika kerusakan hutan terus berlanjut, dampak negatif akan dirasakan oleh manusia, seperti bencana banjir, tanah longsor, hingga anomali cuaca. Oleh karena itu, diperlukan upaya reboisasi untuk mengembalikan fungsi hutan sebagaimana mestinya. Semua pihak harus saling berkolaborasi untuk menjaga kelestarian hutan agar kehidupan aman dan nyaman.<br><br><b>1.</b> Makna kiasan dari kata "paru-paru dunia" pada teks di atas adalah …..`,
-        options: ["Organ pernapasan manusia yang ada di hutan.", "Sumber utama penghasil oksigen bagi bumi.", "Tempat penyimpan cadangan air tanah.", "Wilayah yang paling luas di permukaan bumi."],
-        correct: 1, topic: "Makna Kiasan", explanation: "Paru-paru dunia bermakna sumber utama penghasil oksigen bagi bumi. (Kunci: B)"
-      },
-      {
-        id: 2, type: "PG",
-        text: `<b>Teks Bacaan untuk Soal Nomor 1-3</b><br><br>Wilayah Indonesia masih banyak yang berupa hamparan hutan yang sangat luas. Hutan merupakan paru-paru dunia yang memiliki peranan sangat vital bagi keseimbangan ekosistem. Selain sebagai tempat tinggal berbagai jenis flora dan fauna, hutan juga berfungsi untuk menyerap karbon dioksida dan menghasilkan oksigen. Namun, saat ini luas hutan semakin menyusut akibat aktivitas eksploitasi yang berlebihan dan alih fungsi lahan menjadi pemukiman atau perkebunan.<br><br><b>2.</b> Berdasarkan teks, apa arti dari kata "eksploitasi"?`,
-        options: ["Penanaman kembali hutan yang gundul.", "Perlindungan terhadap hewan langka.", "Pemanfaatan sumber daya alam untuk keuntungan pribadi secara berlebihan.", "Penelitian mengenai jenis-jenis tumbuhan di hutan."],
-        correct: 2, topic: "Arti Kosakata", explanation: "Eksploitasi adalah pemanfaatan sumber daya alam untuk keuntungan pribadi secara berlebihan. (Kunci: C)"
-      },
-      {
-        id: 3, type: "PG",
-        text: `<b>Teks Bacaan untuk Soal Nomor 1-3</b><br><br>Jika kerusakan hutan terus berlanjut, dampak negatif akan dirasakan oleh manusia, seperti bencana banjir, tanah longsor, hingga anomali cuaca.<br><br><b>3.</b> Kata "anomali" pada paragraf kedua memiliki makna yang serupa dengan...`,
-        options: ["Keajekan", "Keanehan / Kelainan", "Keindahan", "Ketetapan"],
-        correct: 1, topic: "Sinonim", explanation: "Anomali memiliki arti serupa dengan keanehan atau kelainan. (Kunci: B)"
-      },
-      {
-        id: 4, type: "PG",
-        text: `<b>Untuk soal no 4-6</b><br><br>Manfaat hutan sangatlah banyak. Selain sebagai tempat tinggal berbagai jenis hewan dan tanaman, hutan juga berfungsi untuk menyerap karbon dioksida dan menghasilkan oksigen. Sekarang ini banyak hutan yang diubah kegunaannya. Luas hutan semakin menyusut akibat aktivitas eksploitasi yang berlebihan dan alih fungsi lahan menjadi pemukiman atau perkebunan.<br><br>Akibat fungsi hutan yang beralih fungsi itu, dampaknya luar biasa. Sekarang banyak bencana di mana-mana. Oleh karena itu, diperlukan upaya reboisasi secara masif untuk mengembalikan fungsi hutan sebagaimana mestinya.<br><br><b>4.</b> Istilah "reboisasi" dalam teks tersebut bermakna...`,
-        options: ["Penebangan pohon secara liar.", "Pembakaran hutan untuk lahan pertanian.", "Penanaman kembali hutan yang telah gundul atau rusak.", "Pengolahan kayu menjadi bahan bangunan."],
-        correct: 2, topic: "Istilah", explanation: "Reboisasi bermakna penanaman kembali hutan yang telah gundul atau rusak. (Kunci: C)"
-      },
-      {
-        id: 5, type: "PG",
-        text: `<b>Untuk soal no 4-6</b><br><br>Oleh karena itu, diperlukan upaya reboisasi secara masif untuk mengembalikan fungsi hutan sebagaimana mestinya.<br><br><b>5.</b> Sinonim dari kata "masif" dalam kalimat "...upaya reboisasi secara masif..." adalah...`,
-        options: ["Sedikit demi sedikit.", "Secara sembunyi-sembunyi.", "Dalam skala besar dan utuh.", "Dilakukan oleh satu orang saja."],
-        correct: 2, topic: "Sinonim", explanation: "Masif bersinonim dengan dalam skala besar dan utuh/menyeluruh. (Kunci: C)"
-      },
-      {
-        id: 6, type: "PG",
-        text: `<b>Untuk soal no 4-6</b><br><br>Luas hutan semakin menyusut akibat aktivitas eksploitasi yang berlebihan dan alih fungsi lahan menjadi pemukiman atau perkebunan.<br><br><b>6.</b> Apa antonim dari kata "menyusut" pada paragraf pertama?`,
-        options: ["Berkurang", "Mengembang", "Mengecil", "Menghilang"],
-        correct: 1, topic: "Antonim", explanation: "Antonim dari menyusut adalah mengembang. (Kunci: B)"
-      },
-      {
-        id: 7, type: "PG",
-        text: `<b>7.</b> Ibu membeli sebuah vas bunga di pasar. Vas itu terbuat dari keramik berwarna biru dengan motif bunga melati yang cantik. Ibu meletakkannya di atas meja ruang tamu.<br><br>Apa objek utama yang dibicarakan dalam teks di atas?`,
-        options: ["Meja ruang tamu", "Bunga melati", "Pasar tradisional", "Vas bunga"],
-        correct: 3, topic: "Objek Teks", explanation: "Objek utama yang dideskripsikan adalah vas bunga. (Kunci: D)"
-      },
-      {
-        id: 8, type: "PG",
-        text: `<b>8.</b> Kantung semar adalah tanaman pemakan serangga. Tanaman ini memiliki kantung di ujung daunnya untuk menjebak serangga. Serangga yang terjebak akan dicerna oleh cairan khusus untuk memenuhi kebutuhan nitrogen tanaman.<br><br>Informasi penting yang dapat disajikan kembali dari teks tersebut adalah...`,
-        options: ["Semua tanaman memerlukan serangga untuk tumbuh.", "Cairan kantung semar sangat berbahaya bagi manusia.", "Kantung semar menjebak serangga untuk mendapatkan nitrogen.", "Kantung semar hanya tumbuh di hutan yang gelap."],
-        correct: 2, topic: "Informasi Penting", explanation: "Informasi pentingnya adalah kantung semar menjebak serangga untuk mendapatkan nitrogen. (Kunci: C)"
-      },
-      {
-        id: 9, type: "PG",
-        text: `<b>Cermati Teks Bacaan untuk nomor 9-11</b><br><br>(1) Kelinci adalah binatang yang dikenal paling cepat di hutan itu. (2) Karena kecepatan larinya, Kelinci menjadi sombong dan selalu meremehkan hewan lain. (3) Suatu sore, Kelinci menertawakan Kura-kura yang berjalan sangat lambat. (4) Kura-kura yang sabar menantang Kelinci untuk adu lari. (5) Kelinci menyetujui dengan tawa keras, yakin pasti menang. (6) Di tengah perlombaan, Kelinci merasa bosan karena Kura-kura jauh tertinggal, sehingga ia memutuskan untuk tidur siang di bawah pohon besar. (7) Tanpa disadari Kelinci, Kura-kura terus berjalan tanpa henti, dan akhirnya ia berhasil mencapai garis akhir. (8) Perlombaan itu membuktikan bahwa kesombongan akan membawa penyesalan, sedangkan ketekunan akan membuahkan hasil.<br><br><b>9.</b> Inti sari atau gagasan utama yang disampaikan penulis melalui cerita di atas adalah...`,
-        options: ["Akibat dari kesombongan Kelinci dan keberhasilan Kura-kura yang tekun.", "Kecepatan Kelinci adalah anugerah yang seharusnya disyukuri.", "Pentingnya kerja keras Kura-kura untuk memenangkan perlombaan.", "Kehidupan sehari-hari hewan di hutan yang dipimpin oleh Kelinci."],
-        correct: 0, topic: "Gagasan Utama", explanation: "Inti sari cerita adalah akibat dari kesombongan Kelinci dan keberhasilan Kura-kura yang tekun. (Kunci: A)"
-      },
-      {
-        id: 10, type: "MCMA",
-        text: `<b>Cermati Teks Bacaan untuk nomor 9-11</b><br><br>(Cerita Kelinci dan Kura-kura di atas)<br><br><b>10.</b> Berdasarkan tindakan Kelinci dan Kura-kura dalam cerita, nilai moral paling penting yang diajarkan adalah... (Pilih dua jawaban yang benar)`,
-        options: ["Kerendahan hati", "Disiplin", "Ketekunan"],
-        correct: [0, 2], topic: "Nilai Moral", explanation: "Nilai moral utama yang diajarkan adalah kerendahan hati dan ketekunan. Opsi 1 dan 3 Benar."
-      },
-      {
-        id: 11, type: "PG",
-        text: `<b>Cermati Teks Bacaan untuk nomor 9-11</b><br><br>(6) Di tengah perlombaan, Kelinci merasa bosan karena Kura-kura jauh tertinggal, sehingga ia memutuskan untuk tidur siang di bawah pohon besar.<br><br><b>11.</b> Apa fungsi utama dari Kalimat (6) dalam mengembangkan cerita?`,
-        options: ["Memperkenalkan latar tempat baru di dalam cerita Kelinci dan Kura-kura", "Menjelaskan alasan mengapa Kelinci memutuskan untuk beristirahat.", "Menghubungkan Kelinci dan Kura-kura di garis akhir yang menyenangkan", "Menyimpulkan hasil akhir dari perlombaan tersebut dengan jujur"],
-        correct: 1, topic: "Fungsi Kalimat", explanation: "Fungsinya adalah menjelaskan alasan mengapa Kelinci memutuskan untuk beristirahat. (Kunci: B)"
-      },
-      {
-        id: 12, type: "PG",
-        text: `<b>Sepeda Baru untuk Ameera</b><br><br>Ameera sangat gembira karena mendapatkan hadiah sepeda baru dari Ayah. Sepeda itu berwarna merah cerah. Pada hari pertama, Ameera membawa sepedanya ke sekolah dengan penuh kebanggaan, meskipun jarak rumah ke sekolah hanya 100 meter. Sayangnya, karena terlalu bersemangat, ia lupa mengunci sepedanya saat masuk ke kelas. Saat pulang sekolah, Ameera terkejut mendapati sepedanya sudah hilang dari tempat parkir. Ameera pun menangis menyesal dan berjanji akan selalu berhati-hati dan disiplin dalam menjaga barang miliknya.<br><br><b>12.</b> Berdasarkan pengalaman pribadi atau pengetahuan umum Anda, peristiwa hilangnya sepeda Ameera karena lupa mengunci adalah kejadian yang...`,
-        options: ["Tidak mungkin terjadi di lingkungan sekolah dan masyarakat", "Sangat umum dan sering terjadi di lingkungan masyarakat.", "Hanya terjadi jika sepeda tersebut bukan sepeda baru.", "Merupakan kejadian aneh dan sangat menggelikan"],
-        correct: 1, topic: "Penalaran", explanation: "Kejadian tersebut sangat umum dan sering terjadi di lingkungan masyarakat. (Kunci: B)"
-      },
-      {
-        id: 13, type: "Kategori",
-        text: `<b>Teks Bacaan:</b><br><br>Penggunaan kantong plastik sekali pakai adalah penyumbang terbesar masalah sampah di kota kita. Untuk mengurangi dampaknya, pemerintah kota akan mulai menerapkan aturan baru: setiap warga wajib membawa tas belanja sendiri dan tidak boleh menggunakan kantong plastik dari toko saat berbelanja.<br><br><b>13.</b> Tentukan dengan memberi tanda centang apakah pernyataan berikut Relevan atau Tidak Relevan dengan ide dalam teks!`,
-        statements: [
-          "Saya akan terus membeli kantong plastik baru setiap berbelanja agar praktis.",
-          "Mengurangi penggunaan plastik adalah tanggung jawab orang dewasa, bukan anak-anak.",
-          "Saya akan mulai memasukkan tas lipat ke dalam tas sekolah atau tas belanja Ibu saya."
-        ],
-        correct: ["Salah", "Salah", "Benar"], topic: "Relevansi Ide", explanation: "Pernyataan 1 & 2 Tidak Relevan (Salah), pernyataan 3 Relevan (Benar)."
-      },
-      {
-        id: 14, type: "MCMA",
-        text: `<b>14.</b> Kegiatan itu mendapat respons positif dari warga karena mereka mendapatkan banyak keuntungan. Berdasarkan kalimat tersebut di atas, apa sinonim dari kata yang dicetak miring (positif/keuntungan)? Pilih dua jawaban yang tepat!`,
-        options: ["Kemudahan", "Manfaat", "Laba"],
-        correct: [1, 2], topic: "Sinonim", explanation: "Sinonim yang tepat adalah manfaat dan laba. Opsi 2 dan 3 Benar."
-      },
-      {
-        id: 15, type: "PG",
-        text: `<b>Bacalah teks berikut untuk menjawab soal nomor 15-17!</b><br><br>Di sebuah desa terpencil, hiduplah seorang kakek tua bernama Kakek Hariman. Ia sangat gemar menanam pohon meskipun usianya sudah senja. Suatu hari, seorang pemuda bertanya, “Kakek, mengapa kakek masih menanam pohon? Padahal, kakek mungkin tidak akan sempat menikmati buahnya?” Kakek Hariman tersenyum simpul lalu menjawab, “Aku menanam bukan hanya untuk diriku, melainkan untuk anak cucu semua agar mereka bisa berteduh dan menikmati hasilnya nanti. Selain itu, aku memang sangat mencintai kegiatanku ini.”<br><br><b>15.</b> Apa gagasan pokok dari kutipan teks di atas?`,
-        options: ["Cara menanam pohon yang benar di desa terpencil.", "Pertanyaan seorang pemuda kepada kakek tua yang menanam pohon", "Kegemaran Kakek Hariman menanam pohon di masa tua.", "Cerita Kakek Hariman yang mencintai semua cucunya"],
-        correct: 2, topic: "Gagasan Pokok", explanation: "Gagasan pokoknya adalah kegemaran Kakek Hariman menanam pohon di masa tua. (Kunci: C)"
-      },
-      {
-        id: 16, type: "PG",
-        text: `<b>Bacalah teks berikut untuk menjawab soal nomor 15-17!</b><br><br>(Teks Kakek Hariman di atas)<br><br><b>16.</b> Berdasarkan teks di atas, bagaimana watak atau karakter Kakek Hariman?`,
-        options: ["Peduli dan tidak mau diganggu.", "Sombong karena banyak menanam pohon.", "Rajin bekerja dan mudah menyerah.", "Peduli pada masa depan dan murah hati."],
-        correct: 3, topic: "Karakter Tokoh", explanation: "Kakek Hariman berwatak peduli pada masa depan dan murah hati. (Kunci: D)"
-      },
-      {
-        id: 17, type: "PG",
-        text: `<b>Bacalah teks berikut untuk menjawab soal nomor 15-17!</b><br><br>(Teks Kakek Hariman di atas)<br><br><b>17.</b> Amanat yang terkandung dalam bacaan tersebut adalah...`,
-        options: ["Lakukanlah kebaikan yang bermanfaat bagi orang lain di masa depan.", "Menanam pohon hanya boleh dilakukan oleh orang yang sudah tua.", "Orang tua wajib memberikan masa depan yang gemilang kepada cucunya.", "Capai masa depan gemilang dengan menanam pohon sebanyak mungkin"],
-        correct: 0, topic: "Amanat", explanation: "Amanatnya adalah lakukanlah kebaikan yang bermanfaat bagi orang lain di masa depan. (Kunci: A)"
-      },
-      {
-        id: 18, type: "Kategori",
-        text: `<b>18.</b> Arinda siswa yang rajin belajar. Setiap hari tak pernah terlewatkan mengerjakan tugas. Ia juga rajin membantu orang tuanya. Selain itu ia selalu menolong orang lain tanpa pamrih. Oleh karena itu, banyak teman yang menyukai dia. Tentukan pernyataan berikut Sesuai atau Tidak Sesuai!`,
-        statements: [
-          "Arinda selalu membantu orang tuanya.",
-          "Arinda menolong teman tanpa pamrih.",
-          "Arinda rajin belajar bila ada tugas."
-        ],
-        correct: ["Benar", "Benar", "Benar"], topic: "Pemahaman Bacaan", explanation: "Semua pernyataan sesuai dengan isi teks bacaan Arinda."
-      },
-      {
-        id: 19, type: "PG",
-        text: `<b>19.</b> Sebuah benda berbentuk lingkaran dan biasanya terpasang di dinding ruang tamu atau kelas. Di dalamnya terdapat angka satu sampai duabelas serta tiga jarum yang terus berputar. Benda ini sangat berguna agar kita bisa datang ke sekolah tepat waktu.<br><br>Simpulan objek yang dideskripsikan pada teks tersebut adalah...`,
-        options: ["Jam tangan", "Busur", "Kompas", "Jam dinding"],
-        correct: 3, topic: "Simpulan Objek", explanation: "Objek yang dideskripsikan adalah jam dinding. (Kunci: D)"
-      },
-      {
-        id: 20, type: "PG",
-        text: `<b>20.</b> Rutinitas Adinda di rumah. Setiap pagi, sebelum berangkat sekolah, Adinda selalu menyempatkan diri untuk membantu ibunya menyapu halaman. Ia melakukan tugasnya dengan ceria tanpa pernah mengeluh, meskipun halamannya cukup luas.<br><br>Karakter tokoh Adinda dalam teks tersebut adalah...`,
-        options: ["Rajin dan ikhlas", "Berbakti dan terpaksa", "Disiplin dan angkuh", "Rajin dan kuat"],
-        correct: 0, topic: "Karakter Tokoh", explanation: "Karakter Adinda adalah rajin dan ikhlas. (Kunci: A)"
-      },
-      {
-        id: 21, type: "PG",
-        text: `<b>21.</b> Gadis itu kini menjadi viral di manapun. Ia menjadi buah bibir bagi ibu-ibu yang sedang berkerumun.<br><br>Makna buah bibir adalah ....`,
-        options: ["Terkenal di mana-mana", "Bahan pembicaraan", "Gadis yang memesona", "Hadiah dari ibu"],
-        correct: 1, topic: "Ungkapan", explanation: "Buah bibir bermakna bahan pembicaraan. (Kunci: B)"
-      },
-      {
-        id: 22, type: "PG",
-        text: `<b>22.</b> Pena itu menari-nari di atas kertas untuk menuangkan ide sang penulis. Majas yang digunakan dalam kalimat di atas adalah...`,
-        options: ["Hiperbola", "Asosiasi", "Personifikasi", "Metafora"],
-        correct: 2, topic: "Majas", explanation: "Majas personifikasi karena pena digambarkan dapat menari seperti manusia. (Kunci: C)"
-      },
-      {
-        id: 23, type: "PG",
-        text: `<b>23.</b> Kalimat berikut yang merupakan majas hiperbola adalah ....`,
-        options: ["Si kutu buku itu selalu duduk di pojok perpustakaan", "Amukan jago merah melalap seluruh kampung di pinggiran kota Jakarta.", "Matahari sudah terbangun menyapa bumi yang indah ini", "Suaranya menggelegar membelah angkasa dan membuat bumi berguncang"],
-        correct: 3, topic: "Majas", explanation: "Majas hiperbola menggunakan pernyataan yang dilebih-lebihkan secara ekstrem. (Kunci: D)"
-      },
-      {
-        id: 24, type: "PG",
-        text: `<b>24.</b> Pemuda itu kurang baik bila menjadi pemimpin, karena ia ibarat “Bagai air di daun talas”. Apa artinya peribahasa pada kalimat yang dicetak tebal tersebut?`,
-        options: ["Orang yang sangat bersih hatinya.", "Seseorang yang sangat malas dan banyak bicara", "Orang yang tidak teguh pendiriannya.", "Seseorang yang sangat curang."],
-        correct: 2, topic: "Peribahasa", explanation: "Bagai air di daun talas berarti orang yang tidak teguh pendiriannya. (Kunci: C)"
-      },
-      {
-        id: 25, type: "PG",
-        text: `<b>25.</b> Sekarang ini banyak yang dilakukan seseorang untuk memperoleh keuntungan lainnya yang berlipat ganda dari apa yang dilakukan. Hal ini seperti peribahasa sambil menyelam ...`,
-        options: ["Melihat karang", "Minum air", "Mandi bersama", "Mencari ikan"],
-        correct: 1, topic: "Peribahasa", explanation: "Kelanjutan peribahasa yang tepat adalah 'sambil menyelam minum air'. (Kunci: B)"
-      },
-      {
-        id: 26, type: "MCMA",
-        text: `<b>26.</b> Faneza melihat seorang nenek yang kesulitan menyeberang jalan di depan sekolah. Tanpa berpikir panjang, Faneza segera menghampiri dan memandu nenek tersebut hingga sampai di seberang dengan aman. Setelah itu ia melanjutkan perjalanan ke sekolah. Peristiwa dalam teks di atas berkaitan dengan perilaku sehari-hari, dua jawaban yang sesuai yaitu...`,
-        options: ["Menolong orang lain ketika sesuai dengan kemampuan.", "Menyeberang jalan dengan hati-hati agar bisa membantu nenek", "Membantu orang lain yang sedang membutuhkan pertolongan"],
-        correct: [0, 2], topic: "Refleksi Perilaku", explanation: "Perilaku tersebut mencerminkan menolong orang sesuai kemampuan dan membantu sesama yang membutuhkan. Opsi 1 dan 3 Benar."
-      },
-      {
-        id: 27, type: "PG",
-        text: `<b>Teks Bacaan untuk nomor 27 dan 28</b><br><br><b>Taman Nasional Komodo</b><br>Taman Nasional Komodo terletak di Provinsi Nusa Tenggara Timur. Kawasan ini terdiri atas tiga pulau besar, yaitu Pulau Komodo, Pulau Rinca, dan Pulau Padar. Selain menjadi habitat asli komodo, taman nasional ini juga memiliki kekayaan bawah laut yang sangat indah. Wisatawan dari berbagai negara berkunjung ke sini untuk melihat hewan purba tersebut secara langsung. Pemerintah terus berupaya menjaga kelestarian alam di sana agar ekosistem komodo tetap terjaga.<br><br><b>27.</b> Berdasarkan teks tersebut, di manakah letak Taman Nasional Komodo?`,
-        options: ["Sulawesi Utara", "Nusa Tenggara Timur", "Pulau Bali", "Nusa Tenggara Barat"],
-        correct: 1, topic: "Informasi Tersurat", explanation: "Terletak di Provinsi Nusa Tenggara Timur. (Kunci: B)"
-      },
-      {
-        id: 28, type: "PG",
-        text: `<b>Teks Bacaan untuk nomor 27 dan 28</b><br><br>(Teks Taman Nasional Komodo di atas)<br><br><b>28.</b> Mengapa wisatawan banyak yang berkunjung ke Pulau Komodo?`,
-        options: [
-          "Karena Pulau Komodo sebagai habitat asli komodo, taman nasional ini juga memiliki kekayaan bawah laut yang sangat indah",
-          "Karena Pulau Komodo sebagai taman nasional yang memiliki banyak burung, juga memiliki kekayaan bawah laut yang sangat indah",
-          "Karena Pulau Komodo sebagai habitat asli beruang, taman nasional ini juga memiliki kekayaan bawah laut yang sangat indah",
-          "Karena Pulau Komodo sebagai habitat asli komodo, taman nasional ini juga memiliki keindahan alam pegunungan yang indah."
-        ],
-        correct: 0, topic: "Informasi Tersurat", explanation: "Wisatawan berkunjung karena Pulau Komodo adalah habitat asli komodo serta memiliki kekayaan bawah laut yang indah. (Kunci: A)"
-      },
-      {
-        id: 29, type: "PG",
-        text: `<b>29.</b> Anak yang banyak bicara biasanya tidak terlalu banyak ilmu. Peribahasa yang sesuai dengan kalimat tersebut adalah ….`,
-        options: ["Air beriak tanda tak dalam", "Tong kosong berbunyi nyaring", "Besar pasak dari pada tiang", "Sedia payung sebelum hujan"],
-        correct: 0, topic: "Peribahasa", explanation: "Peribahasa yang sesuai adalah 'Air beriak tanda tak dalam'. (Kunci: A)"
-      },
-      {
-        id: 30, type: "MCMA",
-        text: `<b>30.</b> Bergas melihat seekor burung pipit yang sayapnya terluka di bawah pohon mangga. Tanpa ragu, Bergas membawanya pulang dan mengobati lukanya. Setiap hari Bergas memberinya makan dengan tekun sampai burung itu bisa terbang kembali. Tanggapan yang tepat untuk watak tokoh Bergas dalam cerita tersebut, ada dua dalam jawaban berikut ini adalah...`,
-        options: [
-          "Bergas adalah anak yang baik hati karena menolong burung pipit.",
-          "Bergas adalah anak yang pemberani karena berani memanjat pohon mangga.",
-          "Bergas memiliki sifat peduli dan penyayang terhadap sesama makhluk hidup."
-        ],
-        correct: [0, 2], topic: "Tanggapan Watak Tokoh", explanation: "Bergas adalah anak baik hati serta peduli dan penyayang terhadap makhluk hidup. Opsi 1 dan 3 Benar."
+        explanation: "Total = 180, Rata-rata = 36 (Benar). Kamis+Jumat = 80, Senin-Rabu = 100 (Salah). Kenaikan terbesar Rabu ke Kamis = 15 buah (Benar). (Kunci: Benar, Salah, Benar)"
       }
     ];
 
