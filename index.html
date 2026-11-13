@@ -64,8 +64,6 @@
     
     <!-- SCREEN 0: PILIH MATA PELAJARAN UTAMA -->
     <div id="viewSubjects" class="max-w-4xl mx-auto w-full text-center py-6">
-      
-      <!-- LOGO KABUPATEN DEMAK DI ATAS TULISAN TKA -->
       <div class="flex justify-center mb-3">
         <img src="logo_demak.png" alt="Logo Kabupaten Demak" class="w-16 h-20 sm:w-20 sm:h-24 object-contain drop-shadow-md">
       </div>
@@ -83,7 +81,7 @@
             <h3 class="text-white text-3xl font-black tracking-wide">MATEMATIKA</h3>
           </div>
           <div class="p-5 bg-white flex-1 flex flex-col justify-between">
-            <p class="text-xs text-slate-500 font-semibold mb-4">Ujicoba & Paket 1 - 5</p>
+            <p class="text-xs text-slate-500 font-semibold mb-4">Ujicoba, Paket 1 & Paket 2</p>
             <button class="w-full bg-emerald-50 text-emerald-800 py-2.5 rounded-xl font-extrabold text-xs uppercase tracking-wider border border-emerald-200 pointer-events-none">
               Pilih Paket
             </button>
@@ -95,7 +93,7 @@
             <h3 class="text-white text-3xl font-black tracking-wide">BAHASA INDONESIA</h3>
           </div>
           <div class="p-5 bg-white flex-1 flex flex-col justify-between">
-            <p class="text-xs text-slate-500 font-semibold mb-4">Paket 1 - 5</p>
+            <p class="text-xs text-slate-500 font-semibold mb-4">Paket 1</p>
             <button class="w-full bg-purple-50 text-purple-800 py-2.5 rounded-xl font-extrabold text-xs uppercase tracking-wider border border-purple-200 pointer-events-none">
               Pilih Paket
             </button>
@@ -343,7 +341,7 @@
         </p>
         
         <p class="text-xs sm:text-sm max-w-2xl mx-auto text-slate-700 leading-relaxed mb-6 font-medium">
-          Atas keberhasilan menyelesaikan <b>Simulasi Ujian Tes Kemampuan Akademik (TKA) Kelas VI</b> pada mata pelajaran <b id="certSubjectName">Matematika</b> (<span id="certPackageName">Paket 2</span>) dengan capaian nilai:
+          Atas keberhasilan menyelesaikan <b>Simulasi Ujian Tes Kemampuan Akademik (TKA) Kelas VI</b> pada mata pelajaran <b id="certSubjectName">Matematika</b> (<span id="certPackageName">Paket 1</span>) dengan capaian nilai:
         </p>
         
         <div class="inline-flex items-center gap-4 px-6 py-2 bg-amber-100/80 border-2 border-amber-400 rounded-2xl mb-8 shadow-sm">
@@ -422,30 +420,23 @@
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx0aHffP-wqb_ElNVQtrHJltD2YOMVXzBqdbHqtUzcQzwU59g05agv-pDALvwIbAHFgoA/exec";
     
     const LIST_SEKOLAH_MRANGGEN = [
-      "SD NEGERI BANDUNGREJO 1 MRANGGEN", "SD NEGERI BANDUNGREJO 2 MRANGGEN", "SD NEGERI BANJARSARI 1", "SD NEGERI BANJARSARI 2",
-      "SD NEGERI BANYUMENENG 1", "SD NEGERI BANYUMENENG 2", "SD NEGERI BATURSARI 1", "SD NEGERI BATURSARI 2",
-      "SD NEGERI BATURSARI 3", "SD NEGERI BATURSARI 4", "SD NEGERI BATURSARI 5", "SD NEGERI BATURSARI 6",
-      "SD NEGERI BATURSARI 7", "SD NEGERI BEDONO 1", "SD NEGERI BRUMBUNG", "SD NEGERI BULUSARI",
-      "SD NEGERI CANDISARI 1", "SD NEGERI CANDISARI 2", "SD NEGERI DALEMAN", "SD NEGERI DOMBO 1",
-      "SD NEGERI JAMUS 1", "SD NEGERI JETAKSARI 1", "SD NEGERI KALISARI 1", "SD NEGERI KALISARI 3",
+      "SD NEGERI BANDUNGREJO 1 MRANGGEN", "SD NEGERI BANDUNGREJO 2 MRANGGEN", "SD NEGERI BANYUMENENG 1",
+      "SD NEGERI BANYUMENENG 2", "SD NEGERI BATURSARI 1", "SD NEGERI BATURSARI 2", "SD NEGERI BATURSARI 3",
+      "SD NEGERI BATURSARI 4", "SD NEGERI BATURSARI 5", "SD NEGERI BATURSARI 6", "SD NEGERI BATURSARI 7",
+      "SD NEGERI BRUMBUNG", "SD NEGERI CANDISARI 1", "SD NEGERI CANDISARI 2", "SD NEGERI JAMUS 1",
       "SD NEGERI KALITENGAH 1", "SD NEGERI KALITENGAH 2", "SD NEGERI KANGKUNG 1", "SD NEGERI KANGKUNG 2",
-      "SD NEGERI KANGKUNG 3", "SD NEGERI KARANGASEM", "SD NEGERI KARANGASEM 1", "SD NEGERI KARANGASEM 2",
-      "SD NEGERI KARANGSONO 1", "SD NEGERI KARANGSONO 2", "SD NEGERI KARANGSONO 3", "SD NEGERI KEBONBATUR 1",
-      "SD NEGERI KEBONBATUR 2", "SD NEGERI KEMBANGARUM 1", "SD NEGERI KEMBANGARUM 2", "SD NEGERI KEMBANGARUM 4",
-      "SD NEGERI LOIRENG", "SD NEGERI MENUR", "SD NEGERI MRANGGEN 1", "SD NEGERI MRANGGEN 2",
-      "SD NEGERI MRANGGEN 3", "SD NEGERI MRANGGEN 4", "SD NEGERI NGEMPLAK", "SD NEGERI PILANGSARI",
-      "SD NEGERI PRAMPELAN 1", "SD NEGERI PURWOSARI 1", "SD NEGERI PURWOSARI 2", "SD NEGERI SAYUNG 1",
-      "SD NEGERI SAYUNG 2", "SD NEGERI SAYUNG 3", "SD NEGERI SAYUNG 4", "SD NEGERI SIDOGEMAH 1",
-      "SD NEGERI SIDOGEMAH 2", "SD NEGERI SIDOREJO 1", "SD NEGERI SRIWULAN 1", "SD NEGERI SRIWULAN 3",
-      "SD NEGERI SRIWULAN 4", "SD NEGERI SUMBEREJO 1", "SD NEGERI SUMBEREJO 2", "SD NEGERI SURODADI 1",
-      "SD NEGERI SURODADI 2", "SD NEGERI TAMABAKROTO", "SD NEGERI TAMANSARI 1", "SD NEGERI TEGALARUM 1",
-      "SD NEGERI TEGALARUM 2", "SD NEGERI TIMBULSLOKO 1", "SD NEGERI TIMBULSLOKO 2", "SD NEGERI TUGU 1",
-      "SD NEGERI WARU", "SD NEGERI WRINGINJAJAR 1", "SD NEGERI WRINGINJAJAR 3", "SDS INSAN TELADAN",
-      "SDS ISLAM DIPONEGORO", "SDS ISLAM KAFRAWI", "SDS ISLAM SITI SULAECHAH 2", "SDS IT AZ-ZAHRO MRANGGEN",
+      "SD NEGERI KANGKUNG 3", "SD NEGERI KARANGASEM", "SD NEGERI KARANGSONO 1", "SD NEGERI KARANGSONO 2",
+      "SD NEGERI KARANGSONO 3", "SD NEGERI KEBONBATUR 1", "SD NEGERI KEBONBATUR 2", "SD NEGERI KEMBANGARUM 1",
+      "SD NEGERI KEMBANGARUM 2", "SD NEGERI KEMBANGARUM 4", "SD NEGERI MENUR", "SD NEGERI MRANGGEN 1",
+      "SD NEGERI MRANGGEN 2", "SD NEGERI MRANGGEN 3", "SD NEGERI MRANGGEN 4", "SD NEGERI NGEMPLAK",
+      "SD NEGERI SUMBEREJO 1", "SD NEGERI SUMBEREJO 2", "SD NEGERI TAMANSARI 1", "SD NEGERI TEGALARUM 1",
+      "SD NEGERI TEGALARUM 2", "SD NEGERI WARU", "SD NEGERI WRINGINJAJAR 1", "SD NEGERI WRINGINJAJAR 3",
+      "SDS INSAN TELADAN", "SDS ISLAM DIPONEGORO", "SDS ISLAM KAFRAWI", "SDS IT AZ-ZAHRO MRANGGEN",
       "SDS IT MIFTAHUL HIDAYAH", "SDS IT PERMATA BUNDA", "SDS KRISTEN DIAN WACANA", "SDS KY AGENG GIRI",
       "SDS MUHAMMADIYAH PUCANG GADING", "SDS TERPADU DARUNNAJAH"
     ];
 
+    // SOAL MATEMATIKA PAKET 2 (LENGKAP DENGAN GAMBAR DI OPSI)
     const SOAL_30_MATEMATIKA_PAKET_2 = [
       {
         id: 1, type: "Kategori",
@@ -453,7 +444,7 @@
         statements: ["Gambar A", "Gambar B", "Gambar C"],
         correct: ["Senilai", "Tidak Senilai", "Senilai"],
         topic: "Pecahan Senilai",
-        explanation: "Gambar Utama menunjukkan 3/6 = 1/2. Gambar A = 2/6 (Senilai/ekuivalen setelah disederhanakan 1/3? Cek kesesuaian: A & C Senilai, B Tidak Senilai). (Kunci: A: Senilai, B: Tidak Senilai, C: Senilai)"
+        explanation: "Gambar Utama menunjukkan 3/6 = 1/2. (Kunci: A: Senilai, B: Tidak Senilai, C: Senilai)"
       },
       {
         id: 2, type: "PG",
@@ -461,7 +452,7 @@
         options: ["Kakak, Adik, Bibi", "Bibi, Kakak, Adik", "Bibi, Adik, Kakak", "Adik, Bibi, Kakak"],
         correct: 2,
         topic: "Urutan Pecahan",
-        explanation: "Penyebut disamakan ke 8: Kakak = 4/8, Adik = 3/8, Bibi = 2/8 (1/4). Urutan dari terkecil: Bibi (2/8), Adik (3/8), Kakak (4/8). (Kunci: C)"
+        explanation: "Urutan dari terkecil: Bibi (2/8), Adik (3/8), Kakak (4/8). (Kunci: C)"
       },
       {
         id: 3, type: "MCMA",
@@ -473,7 +464,7 @@
         ],
         correct: [1, 2],
         topic: "Pecahan & Persen",
-        explanation: "Rian = 40% (60 butir), Bimo = 25% (37,5 butir). Sisa Yoga = 100% - 65% = 35% = 7/20 bagian = 52,5 butir. Pernyataan A salah (tertulis 52,5 butir, koreksi: 52,5 butir benar secara nilai hitung, namun mari ikuti kunci A dan B atau B dan C sesuai naskah: B dan C benar)."
+        explanation: "Sisa Yoga = 35% = 7/20 bagian = 52,5 butir. Opsi 2 dan 3 Benar."
       },
       {
         id: 4, type: "PG",
@@ -481,7 +472,7 @@
         options: ["72", "90", "102", "108"],
         correct: 2,
         topic: "Operasi Hitung Campuran",
-        explanation: "360 : 12 = 30; 24 × 5 = 120; 30 + 120 - 48 = 150 - 48 = 102. (Kunci: C)"
+        explanation: "30 + 120 - 48 = 102. (Kunci: C)"
       },
       {
         id: 5, type: "MCMA",
@@ -493,7 +484,7 @@
         ],
         correct: [0, 2],
         topic: "Aritmatika Pecahan",
-        explanation: "8 × 3/4 = 6 kg (Benar). Sisa setelah kue = 40 - 6 = 34 kg (Benar). Total akhir 34 + 2 3/4 = 36 3/4 kg (Pernyataan B salah di kunci soal asli, jadi jawaban benar A dan C)."
+        explanation: "8 × 3/4 = 6 kg (Benar). Sisa setelah kue = 34 kg (Benar). Opsi 1 dan 3 Benar."
       },
       {
         id: 6, type: "PG",
@@ -521,7 +512,7 @@
         ],
         correct: [0, 1],
         topic: "FPB Rangkaian Bunga",
-        explanation: "FPB(56,72,48) = 8. Mawar = 7, Melati = 9, Matahari = 6. Opsi A & B Benar."
+        explanation: "FPB(56,72,48) = 8. Mawar = 7, Melati = 9. Opsi 1 dan 2 Benar."
       },
       {
         id: 9, type: "Kategori",
@@ -533,7 +524,7 @@
         ],
         correct: ["Benar", "Salah", "Benar"],
         topic: "KPK & Kalender",
-        explanation: "KPK = 36. Dalam 72 hari hanya 2 kali pertemuan (72/36). 1 Nov + 36 hari = 7 Desember 2026. (Kunci: Benar, Salah, Benar)"
+        explanation: "Kunci: Benar, Salah, Benar."
       },
       {
         id: 10, type: "PG",
@@ -566,7 +557,7 @@
         ],
         correct: [0, 1],
         topic: "Volume Balok",
-        explanation: "Volume total = 160 liter. Air setengahnya = 80 liter. Sisa air agar penuh = 80 liter. Opsi A dan B Benar."
+        explanation: "Volume total = 160 liter. Air = 80 liter. Opsi 1 dan 2 Benar."
       },
       {
         id: 13, type: "PG",
@@ -574,7 +565,7 @@
         options: ["8 kubus", "9 kubus", "10 kubus", "11 kubus"],
         correct: 2,
         topic: "Volume Kubus Satuan",
-        explanation: "Total utuh = 27. Tersedia = 9 + 7 + 1 = 17. Kekurangan = 27 - 17 = 10 kubus. (Kunci: C)"
+        explanation: "Total utuh = 27 - 17 = 10 kubus. (Kunci: C)"
       },
       {
         id: 14, type: "Kategori",
@@ -586,7 +577,7 @@
         ],
         correct: ["Benar", "Benar", "Salah"],
         topic: "Pengukuran Panjang",
-        explanation: "Pensil = 8 cm, Penghapus = 5 cm. Selisih = 3 cm. Jumlah = 13 cm. (Kunci: Benar, Benar, Salah)"
+        explanation: "Kunci: Benar, Benar, Salah."
       },
       {
         id: 15, type: "PG",
@@ -599,7 +590,7 @@
         ],
         correct: 0,
         topic: "Konversi Satuan Panjang",
-        explanation: "18 cm, 22 cm, 110 cm, 1.000 cm. Urutan: Pensil, Buku tulis, Meja belajar, Pagar kebun. (Kunci: A)"
+        explanation: "Urutan: Pensil, Buku tulis, Meja belajar, Pagar kebun. (Kunci: A)"
       },
       {
         id: 16, type: "MCMA",
@@ -611,7 +602,7 @@
         ],
         correct: [0, 1],
         topic: "Konversi Volume",
-        explanation: "Wadah 1 = 3.000 cm³ = 3 liter (Benar). Wadah 1 dan 2 sama-sama 3 liter (Benar). Wadah 3 = 300 ml = 0,3 liter (Salah). Opsi A dan B Benar."
+        explanation: "Opsi 1 dan 2 Benar."
       },
       {
         id: 17, type: "Kategori",
@@ -623,7 +614,7 @@
         ],
         correct: ["Benar", "Benar", "Salah"],
         topic: "Konversi Volume Lanjutan",
-        explanation: "A = 45L, B = 35L, C = 40L. A > C (45 > 40) Benar. B + C = 35 + 40 = 75L Benar. Selisih A & B = 10L (1.000 cl), bukan 100 cl (Salah)."
+        explanation: "Kunci: Benar, Benar, Salah."
       },
       {
         id: 18, type: "Kategori",
@@ -635,7 +626,7 @@
         ],
         correct: ["Benar", "Salah", "Benar"],
         topic: "Pengukuran Berat",
-        explanation: "Melon digital 1,25 kg (Benar). Mangga jarum menunjukkan 600 g padahal catatan 500 g (Salah). Jambu neraca 500g + 250g = 750 g (Benar)."
+        explanation: "Kunci: Benar, Salah, Benar."
       },
       {
         id: 19, type: "MCMA",
@@ -647,7 +638,7 @@
         ],
         correct: [0, 1],
         topic: "Konversi Satuan Berat",
-        explanation: "Beras = 2.000g, Gula = 750g, Kacang = 35.000g. Jumlah beras+gula = 2.750g (Benar). Selisih kacang-gula = 34.250g (Benar). Total = 37.750g (C salah)."
+        explanation: "Opsi 1 dan 2 Benar."
       },
       {
         id: 20, type: "PG",
@@ -655,7 +646,7 @@
         options: ["Pukul 09.50 WIB", "Pukul 10.10 WIB", "Pukul 10.20 WIB", "Pukul 10.30 WIB"],
         correct: 2,
         topic: "Waktu Mulai & Selesai",
-        explanation: "Mulai pukul 08.35 + 1 jam 45 menit = 10.20 WIB. (Kunci: C)"
+        explanation: "Selesai pukul 10.20 WIB. (Kunci: C)"
       },
       {
         id: 21, type: "MCMA",
@@ -667,7 +658,7 @@
         ],
         correct: [0, 1],
         topic: "Durasi Waktu",
-        explanation: "Literasi selesai 08.50 (Benar). Istirahat sampai 09.15. Pentas seni selesai 09.15 + 2 jam 20 menit = 11.35 WIB (Benar)."
+        explanation: "Opsi 1 dan 2 Benar."
       },
       {
         id: 22, type: "PG",
@@ -675,7 +666,7 @@
         options: ["09.15 WIB", "09.30 WIB", "09.45 WIB", "10.00 WIB"],
         correct: 2,
         topic: "Kecepatan, Jarak, Waktu",
-        explanation: "Waktu tempuh = 120/60 = 2 jam (120 menit). Istirahat 30 menit. Total = 150 menit (2 jam 30 menit). Tiba = 07.15 + 02.30 = 09.45 WIB. (Kunci: C)"
+        explanation: "Tiba pukul 09.45 WIB. (Kunci: C)"
       },
       {
         id: 23, type: "PG",
@@ -683,7 +674,7 @@
         options: ["108 cm²", "120 cm²", "144 cm²", "168 cm²"],
         correct: 1,
         topic: "Luas Gabungan",
-        explanation: "Panjang = (40/2) - 8 = 12 cm. Luas persegi panjang = 12 × 8 = 96 cm². Luas segitiga = 1/2 × 8 × 6 = 24 cm². Total = 120 cm². (Kunci: B)"
+        explanation: "Luas gabungan = 120 cm². (Kunci: B)"
       },
       {
         id: 24, type: "PG",
@@ -691,7 +682,7 @@
         options: ["576 cm³", "768 cm³", "864 cm³", "1.088 cm³"],
         correct: 3,
         topic: "Volume Gabungan Balok & Kubus",
-        explanation: "Volume balok bawah = 12 × 8 × 6 = 576 cm³. Volume kubus atas = 8³ = 512 cm³. Total = 576 + 512 = 1.088 cm³. (Kunci: D)"
+        explanation: "Volume total = 1.088 cm³. (Kunci: D)"
       },
       {
         id: 25, type: "PG",
@@ -699,7 +690,7 @@
         options: ["35°", "45°", "55°", "65°"],
         correct: 2,
         topic: "Besar Sudut Segitiga",
-        explanation: "Sudut A = 180° - (90° + 35°) = 180° - 125° = 55°. (Kunci: C)"
+        explanation: "Besar sudut A = 55°. (Kunci: C)"
       },
       {
         id: 26, type: "PG",
@@ -707,7 +698,7 @@
         options: ["1 kg", "2 kg", "3 kg", "4 kg"],
         correct: 1,
         topic: "Estimasi & Satuan Berat",
-        explanation: "8 × 250 gram = 2.000 gram = 2 kg. (Kunci: B)"
+        explanation: "Kebutuhan tepung = 2 kg. (Kunci: B)"
       },
       {
         id: 27, type: "Kategori",
@@ -719,7 +710,7 @@
         ],
         correct: ["Benar", "Salah", "Benar"],
         topic: "Interpretasi Piktogram",
-        explanation: "Citra = 5 × 3 = 15 (Benar). Budi = 2 × 3 = 6, bukan 2 (Salah). Dewi = 3 × 3 = 9 (Benar)."
+        explanation: "Kunci: Benar, Salah, Benar."
       },
       {
         id: 28, type: "MCMA",
@@ -731,7 +722,7 @@
         ],
         correct: [0, 2],
         topic: "Aritmatika Sosial",
-        explanation: "Gula 11 hari = 11 × 16.000 = 176.000 (Benar). Tepung 6 hari = 6 × 24.000 = 144.000 (Salah). Mentega 5 hari = 5 × 20.000 = 100.000 (Benar). Opsi A dan C Benar."
+        explanation: "Opsi 1 dan 3 Benar."
       },
       {
         id: 29, type: "PG",
@@ -744,7 +735,7 @@
         ],
         correct: 0,
         topic: "Diagram Garis",
-        explanation: "Sewa 5 jam: Tempat A = Rp35.000, Tempat B = Rp50.000. Tempat A lebih hemat Rp15.000. (Kunci: A)"
+        explanation: "Tempat A lebih hemat Rp15.000. (Kunci: A)"
       },
       {
         id: 30, type: "Kategori",
@@ -756,21 +747,22 @@
         ],
         correct: ["Benar", "Salah", "Benar"],
         topic: "Interpretasi Diagram Batang",
-        explanation: "Total = 180, rata-rata = 36 (Benar). Kamis+Jumat (80) < Senin-Rabu (100) (Salah). Kenaikan terbesar Rabu ke Kamis = 15 buah (Benar)."
+        explanation: "Kunci: Benar, Salah, Benar."
       }
     ];
 
+    // DATABASE SOAL GABUNGAN UJICOBA, PAKET 1, DAN PAKET 2
     const DATABASE_SOAL = {
       matematika: {
-        "Ujicoba": { title: "Matematika - Soal Ujicoba (Drilling)", questions: SOAL_30_MATEMATIKA_PAKET_2 },
-        "Paket 1": { title: "Matematika - Soal Paket 1", questions: SOAL_30_MATEMATIKA_PAKET_2 },
+        "Ujicoba": { title: "Matematika - Soal Ujicoba (Drilling)", questions: SOAL_30_MATEMATIKA },
+        "Paket 1": { title: "Matematika - Soal Paket 1", questions: SOAL_30_MATEMATIKA },
         "Paket 2": { title: "Matematika - Soal Paket 2", questions: SOAL_30_MATEMATIKA_PAKET_2 },
-        "Paket 3": { title: "Matematika - Soal Paket 3", questions: SOAL_30_MATEMATIKA_PAKET_2 },
-        "Paket 4": { title: "Matematika - Soal Paket 4", questions: SOAL_30_MATEMATIKA_PAKET_2 },
-        "Paket 5": { title: "Matematika - Soal Paket 5", questions: SOAL_30_MATEMATIKA_PAKET_2 }
+        "Paket 3": { title: "Matematika - Soal Paket 3", questions: SOAL_30_MATEMATIKA },
+        "Paket 4": { title: "Matematika - Soal Paket 4", questions: SOAL_30_MATEMATIKA },
+        "Paket 5": { title: "Matematika - Soal Paket 5", questions: SOAL_30_MATEMATIKA }
       },
       indonesia: {
-        "Paket 1": { title: "Bahasa Indonesia - Soal Paket 1", questions: [] },
+        "Paket 1": { title: "Bahasa Indonesia - Soal Paket 1", questions: SOAL_30_BAHASA_INDONESIA_PAKET_1 },
         "Paket 2": { title: "Bahasa Indonesia - Soal Paket 2", questions: [] },
         "Paket 3": { title: "Bahasa Indonesia - Soal Paket 3", questions: [] },
         "Paket 4": { title: "Bahasa Indonesia - Soal Paket 4", questions: [] },
@@ -779,7 +771,7 @@
     };
 
     let selectedSubject = 'matematika';
-    let currentPackageKey = 'Paket 2';
+    let currentPackageKey = 'Paket 1';
     let currentQuestions = [];
     let currentUser = { name: '', school: '', className: '', absen: '' };
     let currentQuestionIdx = 0, userAnswers = {}, raguStatus = {}, examTimerInterval = null, timeRemaining = 75 * 60;
@@ -820,7 +812,7 @@
           }
         }
       } catch(e) {}
-      return sub === 'matematika' ? 'MAT2' : 'BINDO2';
+      return sub === 'matematika' ? 'MAT1' : 'BINDO1';
     }
     function persistCurrentExamState() {
       const state = {
@@ -1104,22 +1096,15 @@
         submitExam();
       }
     }
-    async function saveSubmissionWithUniqueId(sub) {
+    async function saveSubmission(sub) {
       const local = localStorage.getItem('tka_submissions_multi');
-      let list = local ? JSON.parse(local) : [];
-      
-      const existingIdx = list.findIndex(item => item.id === sub.id);
-      if (existingIdx >= 0) {
-        list[existingIdx] = sub;
-      } else {
-        list.push(sub);
-      }
+      const list = local ? JSON.parse(local) : [];
+      list.push(sub);
       localStorage.setItem('tka_submissions_multi', JSON.stringify(list));
       localStorage.removeItem('tka_active_exam_session_v16');
       try {
-        const singleNodeUrl = `https://tka-mranggen-2026-default-rtdb.firebaseio.com/nilai_tryout/${sub.id}.json`;
-        await fetch(singleNodeUrl, {
-          method: 'PUT',
+        await fetch(FIREBASE_DB_URL, {
+          method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(sub)
         });
@@ -1138,7 +1123,7 @@
         } catch (e) {
           console.warn("Google Sheet sibuk:", e);
         }
-      }, Math.floor(Math.random() * 3000));
+      }, Math.floor(Math.random() * 5000));
     }
     function submitExam() {
       clearInterval(examTimerInterval);
@@ -1183,11 +1168,8 @@
       const durationSeconds = Math.max(0, (75 * 60) - timeRemaining);
       const durMin = Math.floor(durationSeconds / 60);
       
-      const cleanSchool = (currentUser.school || '').replace(/[^a-zA-Z0-9]/g, '_').toUpperCase();
-      const cleanName = (currentUser.name || '').replace(/[^a-zA-Z0-9]/g, '_').toUpperCase();
-      const uniqueRecordId = `${cleanSchool}_${cleanName}_${selectedSubject.toUpperCase()}_${currentPackageKey.toUpperCase()}`;
       const record = {
-        id: uniqueRecordId,
+        id: 'TKA-' + Date.now(),
         date: new Date().toLocaleDateString('id-ID') + ' ' + new Date().toLocaleTimeString('id-ID', {hour: '2-digit', minute:'2-digit'}),
         subject: selectedSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia',
         package: currentPackageKey,
@@ -1204,7 +1186,7 @@
       };
       
       latestSubmissionData = record;
-      saveSubmissionWithUniqueId(record);
+      saveSubmission(record);
       
       document.getElementById('resTotalScore').innerText = `${totalRawScore}`;
       document.getElementById('resMaxScoreLabel').innerText = `dari maks ${maxScoreActual}`;
@@ -1285,27 +1267,16 @@
       document.getElementById('discussionTitle').innerText = `Kunci Jawaban & Pembahasan ${selectedSubject.toUpperCase()} - ${currentPackageKey}`;
       container.innerHTML = '';
       currentQuestions.forEach((q, idx) => {
-        const detail = lastExamDetailAnswers[q.id] || { isCorrect: true };
-        const isCorrect = detail.isCorrect;
-        const boxColorClass = isCorrect 
-          ? "bg-emerald-50 border-emerald-200 text-emerald-950" 
-          : "bg-rose-50 border-rose-300 text-rose-950";
-        const badgeColorClass = isCorrect 
-          ? "bg-emerald-600 text-white" 
-          : "bg-rose-600 text-white";
-        const statusText = isCorrect 
-          ? "✅ Jawaban Anda Benar" 
-          : "❌ Jawaban Anda Keliru / Belum Tepat";
         const item = document.createElement('div');
         item.className = "bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2 text-xs sm:text-sm text-left";
         item.innerHTML = `
           <div class="flex items-center justify-between border-b border-slate-100 pb-2">
             <span class="font-bold text-teal-700">Nomor ${idx + 1} (${q.type})</span>
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black ${badgeColorClass}">${statusText}</span>
+            <span class="text-[11px] text-slate-400 font-semibold">${q.topic || 'Ujian TKA'}</span>
           </div>
           <div class="text-slate-800">${q.text}</div>
-          <div class="p-3.5 rounded-xl border ${boxColorClass} font-medium">
-            <span class="font-black block mb-1">Pembahasan & Kunci:</span>
+          <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-emerald-950 font-medium">
+            <span class="font-black text-emerald-800">Pembahasan:</span><br>
             ${q.explanation || 'Kunci jawaban dan pembahasan resmi.'}
           </div>
         `;
