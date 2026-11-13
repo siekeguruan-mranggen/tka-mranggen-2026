@@ -68,7 +68,6 @@
         Silakan pilih mata pelajaran untuk dikerjakan hari ini.
       </p>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto mb-8">
-        <!-- KARTU MATEMATIKA -->
         <div onclick="selectSubject('matematika')" class="card-subject flex flex-col">
           <div class="bg-emerald-600 py-14 flex items-center justify-center shadow-inner">
             <h3 class="text-white text-3xl font-black tracking-wide">MATEMATIKA</h3>
@@ -80,7 +79,6 @@
             </button>
           </div>
         </div>
-        <!-- KARTU BAHASA INDONESIA -->
         <div onclick="selectSubject('indonesia')" class="card-subject flex flex-col">
           <div class="bg-purple-600 py-14 flex items-center justify-center shadow-inner">
             <h3 class="text-white text-3xl font-black tracking-wide">BAHASA INDONESIA</h3>
@@ -448,6 +446,7 @@
       { id: 30, type: "Kategori", text: "30. Perhatikan diagram gambar siswa SD Mutiara berikut!<br><img src='soal30.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!", statements: ["Selisih siswa paling banyak dengan paling sedikit adalah 30 anak.", "Jumlah siswa kelas II, III, dan VI sama banyak.", "Jumlah siswa seluruhnya sebanyak 350 anak."], correct: ["Benar", "Salah", "Salah"], topic: "Interpretasi Piktogram", explanation: "Kunci: Benar, Salah, Salah." }
     ];
 
+    // SOAL PAKET 2 MATEMATIKA (UTUH TANPA RINGKASAN REDAKSI)
     const SOAL_30_MATEMATIKA_PAKET_2 = [
       {
         id: 1, type: "Kategori",
@@ -1001,7 +1000,6 @@
       }
     }
 
-    // DISESUAIKAN AGAR SINKRON SEMPURNA DENGAN ADMIN (MENCOCOKKAN NAMA PAKET)
     function getAdminPackageStatus(sub, pkg) {
       try {
         const stored = localStorage.getItem('tka_pkg_status_multi');
@@ -1035,7 +1033,7 @@
           }
         }
       } catch(e) {}
-      return sub === 'matematika' ? 'MAT1' : 'BINDO1';
+      return sub === 'matematika' ? '123' : 'BINDO1';
     }
 
     function persistCurrentExamState() {
