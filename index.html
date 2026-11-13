@@ -71,10 +71,10 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto mb-8">
         <!-- KARTU MATEMATIKA -->
         <div onclick="selectSubject('matematika')" class="card-subject flex flex-col">
-          <div class="bg-emerald-600 py-12 flex items-center justify-center shadow-inner">
+          <div class="bg-emerald-600 py-12 flex items-center justify-center shadow-inner pointer-events-none">
             <h3 class="text-white text-3xl font-black tracking-wide">MATEMATIKA</h3>
           </div>
-          <div class="p-5 bg-white flex-1 flex flex-col justify-between">
+          <div class="p-5 bg-white flex-1 flex flex-col justify-between pointer-events-none">
             <p class="text-xs text-slate-500 font-semibold mb-4">Ujicoba & Paket 1 - 5</p>
             <div class="w-full bg-emerald-50 text-emerald-800 py-2.5 rounded-xl font-extrabold text-xs uppercase tracking-wider border border-emerald-200 text-center">
               Pilih Paket
@@ -84,11 +84,11 @@
 
         <!-- KARTU BAHASA INDONESIA -->
         <div onclick="selectSubject('indonesia')" class="card-subject flex flex-col">
-          <div class="bg-purple-600 py-12 flex items-center justify-center shadow-inner">
+          <div class="bg-purple-600 py-12 flex items-center justify-center shadow-inner pointer-events-none">
             <h3 class="text-white text-3xl font-black tracking-wide">BAHASA INDONESIA</h3>
           </div>
-          <div class="p-5 bg-white flex-1 flex flex-col justify-between">
-            <p class="text-xs text-slate-500 font-semibold mb-4">Paket 1 & Paket 2</p>
+          <div class="p-5 bg-white flex-1 flex flex-col justify-between pointer-events-none">
+            <p class="text-xs text-slate-500 font-semibold mb-4">Paket 1 - 5</p>
             <div class="w-full bg-purple-50 text-purple-800 py-2.5 rounded-xl font-extrabold text-xs uppercase tracking-wider border border-purple-200 text-center">
               Pilih Paket
             </div>
@@ -418,352 +418,350 @@
       "SDS ISLAM SITI SULAECHAH 2"
     ];
 
-    // SOAL BAHASA INDONESIA PAKET 2 (UTUH 30 SOAL LENGKAP)
-    const SOAL_30_BAHASA_INDONESIA_PAKET_2 = [
+    const SOAL_30_MATEMATIKA = [
+      { id: 1, type: "PG", text: "1. Hasil dari 16⅔% × 24 - 0,25 × 20 + 1¾ × 4 adalah ....", options: ["3", "4", "6", "8"], correct: 2, topic: "Operasi Hitung Pecahan", explanation: "16⅔% = 1/6; (1/6 × 24) = 4; (0,25 × 20) = 5; (1¾ × 4) = 7. Hasil = 4 - 5 + 7 = 6. (Kunci: C)" },
+      { id: 2, type: "PG", text: "2. Perhatikan tabel berikut!<br><img src='soal2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pasangan yang tepat yang menunjukkan hubungan antara persen dan pecahan biasa adalah ....", options: ["1 - C, 2 - A", "1 - C, 2 - D", "3 - A, 4 - B", "3 - B, 2 - C"], correct: 1, topic: "Persen & Pecahan", explanation: "60% = 3/5 (C) dan 50% = 1/2 (D). (Kunci: B)" },
+      { id: 3, type: "PG", text: "3. Di bawah ini yang bukan merupakan kelipatan persekutuan dari 12 dan 18 adalah ....", options: ["36", "48", "72", "108"], correct: 1, topic: "Kelipatan Persekutuan", explanation: "KPK dari 12 dan 18 adalah 36. Kelipatan persekutuannya adalah 36, 72, 108, dst. Angka 48 bukan kelipatan persekutuan. (Kunci: B)" },
+      { id: 4, type: "PG", text: "4. FPB dari 48, 64, dan 96 adalah ....", options: ["12", "16", "24", "32"], correct: 1, topic: "FPB", explanation: "Faktorisasi prima 48 = 2⁴×3, 64 = 2⁶, 96 = 2⁵×3. FPB = 2⁴ = 16. (Kunci: B)" },
+      { id: 5, type: "PG", text: "5. Budi les renang setiap 6 hari sekali. Deni les renang di tempat yang sama setiap 4 hari sekali. Jika tanggal 2 Januari 2026, mereka berdua les renang bersama untuk yang pertama kali. Tanggal berapa lagi mereka akan belajar berenang untuk yang ketiga kalinya?", options: ["8 Januari 2026", "14 Januari 2026", "20 Januari 2026", "26 Januari 2026"], correct: 3, topic: "KPK Jadwal", explanation: "KPK(6,4) = 12 hari. Pertemuan ke-2 = 2 Jan + 12 = 14 Jan. Pertemuan ke-3 = 14 Jan + 12 = 26 Januari 2026. (Kunci: D)" },
+      { id: 6, type: "PG", text: "6. Pak Yono mempunyai lahan seluas 1,5 hektar. ½ dari lahan tersebut ditanami padi, ⅖ ditanami jagung, dan sisanya ditanami ketela pohon. Luas lahan yang ditanami ketela pohon adalah ....", options: ["7.500 m²", "5.000 m²", "2.500 m²", "1.500 m²"], correct: 3, topic: "Pecahan Luas", explanation: "1,5 ha = 15.000 m². Sisa bagian = 1 - 1/2 - 2/5 = 1/10 bagian. 1/10 × 15.000 = 1.500 m². (Kunci: D)" },
+      { id: 7, type: "PG", text: "7. Perhatikan sifat-sifat bangun datar di bawah ini!<br>a. Sudut-sudut yang berhadapan sama besar.<br>b. Memiliki 4 sisi dan 4 titik sudut.<br>c. Memiliki 2 pasang sisi sejajar yang sama panjang.<br>d. Memiliki 2 sudut tumpul dan 2 sudut lancip.<br>e. Mempunyai dua diagonal yang tidak sama panjang.<br>Berdasarkan ciri-ciri di atas, bangun datar yang dimaksud adalah ...", options: ["jajar genjang", "layang-layang", "belah ketupat", "trapesium"], correct: 0, topic: "Sifat Bangun Datar", explanation: "Ciri-ciri tersebut sesuai dengan bangun datar Jajar Genjang. (Kunci: A)" },
+      { id: 8, type: "PG", text: "8. Kelompok pecahan berikut yang berurutan dari terkecil ke terbesar adalah ....", options: ["225%; 2 12/20; 2 2/5; 2,75; 5/2", "225%; 2 12/20; 2 2/5; 5/2; 2,75", "225%; 2 2/5; 2 12/20; 2,75; 5/2", "225%; 2 12/20; 2 2/5; 2,75; 5/2"], correct: 2, topic: "Urutan Pecahan", explanation: "Nilai desimal: 2,25; 2,4; 2,6; 2,75; 2,5. Urutan terkecil ke terbesar yang benar adalah 225%; 2 2/5; 2 12/20; 2,75; 5/2. (Kunci: C)" },
+      { id: 9, type: "PG", text: "9. Perhatikan gambar trapesium di bawah ini!<br><img src='soal9.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Luas trapesium adalah ....", options: ["104 cm²", "208 cm²", "312 cm²", "416 cm²"], correct: 0, topic: "Luas Trapesium", explanation: "Luas = 1/2 × (7 + 19) × 8 = 104 cm². (Kunci: A)" },
+      { id: 10, type: "PG", text: "10. Perhatikan gambar ketiga persegi berikut!<br><img src='soal10.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Luas ketiga persegi di atas jika dijumlahkan adalah ....", options: ["1.849 cm²", "2.290 cm²", "2.459 cm²", "5.929 cm²"], correct: 2, topic: "Luas Persegi", explanation: "13² + 21² + 43² = 169 + 441 + 1.849 = 2.459 cm². (Kunci: C)" },
+      { id: 11, type: "PG", text: "11. Perhatikan gambar susunan kubus berikut ini!<br><img src='soal11.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Bila dilihat dari depan, susunan kubus tersebut akan tampak seperti ....", options: ["Opsi A", "Opsi B", "Opsi C", "Opsi D"], correct: 0, topic: "Proyeksi Kubus", explanation: "Proyeksi tampak depan sesuai dengan pilihan A. (Kunci: A)" },
+      { id: 12, type: "PG", text: "12. Sebuah kaleng susu berisi 0,8 liter susu. Susu itu diminum Dhika sebanyak ¼ dm³. Lima belas menit kemudian Hima datang dan minum susu tersebut sebanyak 125 ml. Sisa susu dalam kaleng tersebut adalah ....", options: ["450 ml", "425 ml", "375 ml", "350 ml"], correct: 1, topic: "Volume & Konversi", explanation: "0,8 liter = 800 ml. ¼ dm³ = 250 ml. Minum Hima = 125 ml. Sisa = 800 - 250 - 125 = 425 ml. (Kunci: B)" },
+      { id: 13, type: "PG", text: "13. Ibu naik sepeda motor dari rumah ke kantor yang berjarak 15 km dengan kecepatan rata-rata 60 km/jam. Jika ibu berangkat pukul 06.30, maka sampai di kantor pukul ....", options: ["06.40", "06.45", "06.50", "06.55"], correct: 1, topic: "Waktu Tempuh", explanation: "Waktu = 15 / 60 jam = 1/4 jam = 15 menit. Tiba pukul 06.30 + 15 menit = 06.45. (Kunci: B)" },
+      { id: 14, type: "PG", text: "14. Perhatikan tabel berikut:<br><img src='soal14.jpg' class='my-2 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Diagram batang yang sesuai dengan tabel di atas adalah ....<br><div class='grid grid-cols-2 gap-2 my-2'><img src='soal14A.jpg' class='border rounded'><img src='soal14B.jpg' class='border rounded'><img src='soal14C.jpg' class='border rounded'><img src='soal14D.jpg' class='border rounded'></div>", options: ["Diagram A", "Diagram B", "Diagram C", "Diagram D"], correct: 1, topic: "Diagram Batang", explanation: "Diagram batang yang mewakili data secara tepat adalah Diagram B. (Kunci: B)" },
+      { id: 15, type: "PG", text: "15. Perhatikan tabel berikut!<br><img src='soal15.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berdasarkan tabel di atas, pernyataan di bawah ini yang tidak benar adalah ...", options: ["Apel yang terjual lebih sedikit daripada mangga.", "Selisih jeruk dan apel sama dengan jambu.", "Buah yang terjual paling sedikit adalah pisang.", "Buah yang terjual lebih dari 100 biji ada dua jenis."], correct: 3, topic: "Analisis Data", explanation: "Buah > 100 biji ada Mangga (120), Jambu (150), dan Jeruk (250), total ada 3 jenis. Pernyataan D salah. (Kunci: D)" },
+      { id: 16, type: "MCMA", text: "16. Minggu kemarin Dian membawa 5 lembar uang 50rb, 4 lembar 20rb, 2 lembar 10rb. Harga kain Rp400.000, diskon 15%. Pilihlah pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Dian tidak jadi membeli kain karena uangnya kurang.", "Diskon yang diperoleh Dian sebesar Rp60.000,00.", "Sisa uang Dian setelah membayar kain adalah Rp10.000,00."], correct: [1, 2], topic: "Aritmatika Sosial", explanation: "Total uang = Rp350.000. Diskon = 15% × 400.000 = Rp60.000. Bayar = Rp340.000. Sisa = Rp10.000. Opsi 2 dan 3 Benar." },
+      { id: 17, type: "MCMA", text: "17. Perhatikan gambar segitiga siku-siku berikut!<br><img src='soal17.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pilihlah pernyataan-pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Keliling bangun tersebut adalah 56 cm.", "Panjang sisi BC adalah 18 cm.", "Luas bangun di atas adalah 84 cm²."], correct: [0, 2], topic: "Pythagoras & Luas", explanation: "BC = 24 cm. Keliling = 7+24+25 = 56 cm. Luas = 1/2 × 7 × 24 = 84 cm². Opsi 1 dan 3 Benar." },
+      { id: 18, type: "MCMA", text: "18. Perhatikan susunan kubus berikut ini!<br><img src='soal18.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Jika panjang sisi kubus sebesar 5 cm, manakah pernyataan-pernyataan di bawah ini yang benar? (Jawaban benar bisa lebih dari satu)", options: ["Ada 10 buah kubus yang volumenya sama.", "Volume tiap kubus satuan sebesar 125 cm³.", "Luas permukaan kubus yang menempel di bawah sebesar 125 cm²."], correct: [0, 1], topic: "Volume Kubus", explanation: "Kubus berjumlah 10 buah identik, volume kubus 5³ = 125 cm³. Opsi 1 dan 2 Benar." },
+      { id: 19, type: "MCMA", text: "19. Sebuah kaleng susu berbentuk balok dengan panjang 2 dm, lebar 10 cm, tinggi 1,5 dm berisi susu ⅖ bagian. Pilihlah pernyataan di bawah ini yang tepat! (Jawaban benar bisa lebih dari satu)", options: ["Volume kaleng tersebut adalah 3.000 cm³.", "Volume susu dalam kaleng adalah 12 liter.", "Agar kaleng penuh perlu tambahan 1.800 cm³ susu."], correct: [0, 2], topic: "Volume Balok", explanation: "Volume total = 3.000 cm³. Susu = 1.200 cm³. Kekurangan = 1.800 cm³. Opsi 1 dan 3 Benar." },
+      { id: 20, type: "MCMA", text: "20. Jarak M-N 180 km. Banu (50 km/jam) dan Joko (70 km/jam) berangkat pukul 06.00. Pilihlah pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Mereka akan berpapasan pada pukul 07.30.", "Mereka berpapasan pada jarak 75 km dari kota M.", "Pukul 08.30 Joko sudah sampai di kota M."], correct: [0, 1], topic: "Kecepatan Berpapasan", explanation: "Waktu papasan = 1,5 jam (pukul 07.30). Jarak dari M = 50 × 1,5 = 75 km. Opsi 1 dan 2 Benar." },
+      { id: 21, type: "MCMA", text: "21. 2,5 abad + 4 dasawarsa - 5 windu + 2 lustrum = ... Setara dengan: (Jawaban benar bisa lebih dari satu)", options: ["26 dasawarsa", "32 windu", "52 lustrum"], correct: [0, 1, 2], topic: "Satuan Waktu", explanation: "Total 260 tahun = 26 dasawarsa = 32,5 windu = 52 lustrum. Opsi 1, 2, dan 3 Benar." },
+      { id: 22, type: "MCMA", text: "22. Bu Desty mempunyai 72 permen, 64 coklat, dan 32 roti dibagikan ke anak-anak sama banyak. Pilihlah pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Jumlah anak terbanyak yang mendapat makanan adalah 16 anak.", "Jumlah permen yang diterima tiap anak sebanyak 9 buah.", "Setiap anak menerima makanan sebanyak 21 buah."], correct: [0], topic: "FPB", explanation: "FPB = 16 anak. Permen per anak = 72/16 = 4,5 buah. Opsi 1 Benar." },
+      { id: 23, type: "MCMA", text: "23. Perhatikan tabel berikut!<br><img src='soal23.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pilihlah pernyataan berikut yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Selisih pembeli pada hari pertama dan kedua adalah 10 orang.", "Jumlah pembeli pada hari ketiga dan kelima sebanyak 215 orang.", "Ada dua hari yang jumlah pembelinya lebih dari 100 orang."], correct: [0, 1], topic: "Analisis Data", explanation: "Selisih H1-H2 = 10, H3+H5 = 215. Hari > 100 hanya ada 1 hari (H5). Opsi 1 dan 2 Benar." },
+      { id: 24, type: "Kategori", text: "24. Perhatikan gambar bangun datar berikut!<br><img src='soal24.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!", statements: ["Bangun datar tersebut mempunyai dua sumbu simetri.", "Bangun datar tersebut mempunyai dua diagonal yang sama panjang.", "Keempat sudut bangun datar tersebut sama besar."], correct: ["Benar", "Salah", "Salah"], topic: "Bangun Datar", explanation: "Kunci: Benar, Salah, Salah." },
+      { id: 25, type: "Kategori", text: "25. Perhatikan gambar wadah berbentuk balok berikut!<br><img src='soal25.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!", statements: ["Volume wadah seluruhnya adalah 384 cm³.", "Jika diisi air 192 cm³, maka tinggi air dalam wadah 2 cm.", "Jika diisi air 0,5 liter, maka air yang tumpah 116 ml."], correct: ["Benar", "Benar", "Benar"], topic: "Volume Balok", explanation: "Kunci: Benar, Benar, Benar." },
+      { id: 26, type: "Kategori", text: "26. Umur Ali, Beni, Cantika, Diandra (Diandra = 10 tahun). Tentukan <b>Benar</b> atau <b>Salah</b> pada setiap pernyataan berikut!", statements: ["Dari keempat anak, yang paling muda adalah Diandra.", "Jumlah umur Cantika dan Diandra sama dengan umur Beni.", "Dari anak-anak tersebut, yang paling tua umurnya adalah Ali."], correct: ["Benar", "Benar", "Benar"], topic: "Perbandingan Umur", explanation: "Kunci: Benar, Benar, Benar." },
+      { id: 27, type: "Kategori", text: "27. Ibu membeli beras di warung harga Rp75.000, kembalian Rp25.000. Tentukan <b>Benar</b> atau <b>Salah</b> pecahan uang yang dibayarkan ibu!", statements: ["Satu lembar uang seratus ribuan.", "Dua lembar uang lima puluh ribuan.", "Sepuluh lembar uang dua puluh ribuan."], correct: ["Benar", "Benar", "Salah"], topic: "Pecahan Uang", explanation: "Kunci: Benar, Benar, Salah." },
+      { id: 28, type: "Kategori", text: "28. Diskon 20%. Pensil Rp5.000, penggaris 1,5×pensil, buku 2×penggaris. Membeli 1 lusin buku, 5 pensil, 3 penggaris. Tentukan <b>Benar</b> atau <b>Salah</b>!", statements: ["Harga buku yang harus dibayar Bu Upik adalah Rp144.000,00.", "Harga penggaris sebelum didiskon sebesar Rp32.500,00.", "Harga yang harus dibayar Bu Upik semuanya adalah Rp182.000,00."], correct: ["Benar", "Salah", "Benar"], topic: "Aritmatika Sosial", explanation: "Kunci: Benar, Salah, Benar." },
+      { id: 29, type: "Kategori", text: "29. Beras setiap 4 hari, minyak setiap 12 hari. Bersama pertama kali 1 Agustus 2024. Tentukan <b>Benar</b> atau <b>Salah</b>!", statements: ["Tanggal 20 Agustus 2024 Bu Candra hanya membeli beras saja.", "Tanggal 6 September 2024 Bu Candra membeli beras dan minyak goreng secara bersamaan.", "Setiap membeli minyak goreng, Bu Candra pasti membeli beras."], correct: ["Benar", "Benar", "Benar"], topic: "KPK & Kalender", explanation: "Kunci: Benar, Benar, Benar." },
+      { id: 30, type: "Kategori", text: "30. Perhatikan diagram gambar siswa SD Mutiara berikut!<br><img src='soal30.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!", statements: ["Selisih siswa paling banyak dengan paling sedikit adalah 30 anak.", "Jumlah siswa kelas II, III, dan VI sama banyak.", "Jumlah siswa seluruhnya sebanyak 350 anak."], correct: ["Benar", "Salah", "Salah"], topic: "Interpretasi Piktogram", explanation: "Kunci: Benar, Salah, Salah." }
+    ];
+
+    const SOAL_30_MATEMATIKA_PAKET_2 = [
       {
-        id: 1, type: "PG",
-        text: "Bacaan untuk soal nomor 1-3<br><b>Mengenali Perundungan di Sekolah (Teks Informasi)</b><br>Perundungan adalah tindakan menyakiti, mengejek, mengancam, atau mengucilkan seseorang secara berulang. Perundungan berbeda dari perselisihan biasa karena tindakan itu berulang dan dapat membuat seseorang merasa takut atau tidak aman. Di sekolah, tindakan tersebut dapat berupa julukan yang merendahkan, merusak barang, menghalangi teman bergabung, atau menyebarkan foto untuk mempermalukan.<br><br><b>Soal Nomor 1</b><br>Makna kata perundungan dalam bacaan tersebut adalah ....",
-        options: [
-          "tindakan menyakiti atau merendahkan seseorang secara berulang",
-          "perbedaan pendapat yang diselesaikan dengan baik",
-          "kegiatan membantu teman belajar",
-          "kebiasaan bekerja bersama dalam kelompok"
-        ],
-        correct: 0, topic: "Makna Kosakata",
-        explanation: "Perundungan adalah tindakan menyakiti atau merendahkan seseorang secara berulang[cite: 42]. (Kunci: A)"
+        id: 1, type: "Kategori",
+        text: "1. Perhatikan gambar berikut!<br><img src='soal1_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan apakah setiap gambar pilihan menunjukkan pecahan yang senilai dengan pecahan pada gambar utama!<br>Berilah tanda centang pada kolom Senilai atau Tidak Senilai untuk setiap gambar pilihan!",
+        statements: ["Gambar A", "Gambar B", "Gambar C"],
+        correct: ["Senilai", "Tidak Senilai", "Senilai"],
+        topic: "Pecahan Senilai",
+        explanation: "Gambar Utama menunjukkan 1/3. Gambar A (2/6 = 1/3) Benar, Gambar B (1/4) Salah, Gambar C (3/9 = 1/3) Benar."
       },
       {
-        id: 2, type: "MCMA",
-        text: "Bacaan: Mengenali Perundungan di Sekolah (Teks Informasi)<br><br><b>Soal Nomor 2</b><br>Pilih semua contoh perundungan yang disebutkan dalam bacaan! (Jawaban benar lebih dari satu)",
-        options: [
-          "Memberi julukan yang merendahkan.",
-          "Mengajak teman bergabung dalam kegiatan.",
-          "Menyebarkan foto untuk mempermalukan seseorang."
-        ],
-        correct: [0, 2], topic: "Contoh Perundungan",
-        explanation: "Contoh perundungan di teks meliputi memberi julukan merendahkan dan menyebarkan foto untuk mempermalukan[cite: 42]. (Kunci: A dan C)"
+        id: 2, type: "PG",
+        text: "2. Ibu membeli kue bolu untuk dibagikan kepada ketiga anaknya sebagai camilan sore. Budi menerima 1/2 bagian kue, Cici menerima 3/8 bagian kue, dan Dedi menerima 3/4 bagian kue.<br>Urutan nama anak berdasarkan bagian kue yang diterima, dari yang paling sedikit hingga paling banyak, adalah ....",
+        options: ["Budi, Cici, Dedi", "Cici, Budi, Dedi", "Dedi, Budi, Cici", "Cici, Dedi, Budi"],
+        correct: 1,
+        topic: "Urutan Pecahan",
+        explanation: "Penyebut disamakan ke 8: Budi = 4/8, Cici = 3/8, Dedi = 6/8. Urutan terkecil ke terbesar: Cici (3/8), Budi (4/8), Dedi (6/8). (Kunci: B)"
       },
       {
-        id: 3, type: "Kategori",
-        text: "Bacaan: Mengenali Perundungan di Sekolah (Teks Informasi)<br><br><b>Soal Nomor 3</b><br>Tentukan Sesuai atau Tidak Sesuai untuk setiap pernyataan berikut!",
-        statements: [
-          "Mengejek atau memberi julukan merendahkan secara berulang kepada teman merupakan bentuk perundungan (verbal).",
-          "Mendampingi teman yang menjadi sasaran perundungan dan mengajaknya menjauh dari situasi tersebut merupakan contoh tindakan mendukung teman.",
-          "Melapor kepada guru atau orang dewasa ketika terjadi perundungan adalah tindakan yang sebaiknya dihindari agar masalah cepat selesai."
+        id: 3, type: "MCMA",
+        text: "3. Pada hari Minggu, Ibu Rina membuat 120 potong kue untuk dibagikan kepada tiga keluarga tetangganya dengan ketentuan:<br>- Keluarga Pak Ahmad menerima 1/4 bagian dari seluruh kue.<br>- Keluarga Bu Siti menerima 0,35 bagian dari seluruh kue.<br>- Keluarga Pak Budi menerima seluruh kue yang tersisa.<br>Berdasarkan informasi tersebut, manakah pernyataan yang benar mengenai bagian kue yang diterima keluarga Pak Budi? (Pilih semua jawaban yang benar)",
+        options: [
+          "Keluarga Pak Budi menerima 48 potong kue.",
+          "Keluarga Pak Budi menerima 2/5 bagian dari seluruh kue.",
+          "Keluarga Pak Budi menerima 45% dari seluruh kue."
         ],
-        correct: ["Benar", "Benar", "Salah"], topic: "Pernyataan Sesuai/Tidak Sesuai",
-        explanation: "Pernyataan 1 & 2 Sesuai (Benar), pernyataan 3 Tidak Sesuai (Salah)[cite: 42]."
+        correct: [0, 1],
+        topic: "Pecahan & Persen",
+        explanation: "Pak Ahmad = 30 potong. Bu Siti = 42 potong. Sisa Pak Budi = 120 - 72 = 48 potong (2/5 bagian atau 40%). Opsi A dan B Benar."
       },
       {
         id: 4, type: "PG",
-        text: "Bacaan untuk nomor 4-6<br><b>Pagi yang Teratur</b><br>Awal hari yang teratur membantu anak menyiapkan tubuh dan pikiran sebelum belajar. Anak dapat memulainya dengan bangun tepat waktu, merapikan tempat tidur, mandi, dan mengenakan pakaian bersih. Sarapan bergizi juga penting karena tubuh memerlukan energi untuk beraktivitas...<br><br><b>Soal Nomor 4</b><br>Kegiatan yang mendukung kesiapan sebelum berangkat sekolah menurut bacaan di atas adalah ....",
-        options: [
-          "Menjaga kebersihan diri, sarapan, dan memeriksa perlengkapan.",
-          "Menggunakan gawai hingga larut malam.",
-          "Berangkat tanpa memeriksa jadwal pelajaran.",
-          "Melewatkan sarapan agar lebih cepat sampai."
-        ],
-        correct: 0, topic: "Pemahaman Bacaan",
-        explanation: "Kegiatan pendukung meliputi menjaga kebersihan, sarapan, dan memeriksa perlengkapan[cite: 42]. (Kunci: A)"
+        text: "4. Hasil dari 360 : 12 + 24 × 5 − 48 adalah . . . .",
+        options: ["72", "90", "102", "108"],
+        correct: 2,
+        topic: "Operasi Hitung Campuran",
+        explanation: "360 : 12 = 30; 24 × 5 = 120; 30 + 120 - 48 = 150 - 48 = 102. (Kunci: C)"
       },
       {
-        id: 5, type: "PG",
-        text: "Bacaan: Pagi yang Teratur<br><br><b>Soal Nomor 5</b><br>Mengapa menyiapkan buku dan perlengkapan pada malam hari merupakan kebiasaan yang baik?",
+        id: 5, type: "MCMA",
+        text: "5. Bu Mila mempunyai persediaan tepung terigu sebanyak 40 kg. Ia akan membuat 8 loyang kue. Setiap loyang membutuhkan tepung sebanyak ¾ kg. Setelah membuat kue, bu Mila membeli tepung sebanyak 1 ¼ kg, untuk menambah persediaannya.<br>Berdasarkan informasi tersebut, manakah pernyataan yang benar? (Pilih semua jawaban yang benar)",
         options: [
-          "Agar pagi hari lebih teratur dan tidak terburu-buru.",
-          "Agar tidak perlu tidur pada malam hari.",
-          "Agar semua tugas dapat ditinggalkan.",
-          "Agar anak tidak perlu memeriksa jadwal."
+          "Tepung untuk membuat 8 loyang kue adalah 6 kg.",
+          "Jumlah tepung Bu Mila setelah membeli tepung kembali adalah 36 ¼ kg.",
+          "Sisa tepung Bu Mila setelah membuat kue adalah ¾ kg."
         ],
-        correct: 0, topic: "Analisis Bacaan",
-        explanation: "Persiapan ini membuat kegiatan pagi lebih tenang sehingga anak tidak terburu-buru[cite: 42]. (Kunci: A)"
+        correct: [0, 2],
+        topic: "Aritmatika Pecahan",
+        explanation: "Kue = 8 × 3/4 = 6 kg (Benar). Sisa setelah kue = 40 - 6 = 34 kg. Opsi 1 dan 3 Benar."
       },
       {
-        id: 6, type: "Kategori",
-        text: "Bacaan: Pagi yang Teratur<br><br><b>Soal Nomor 6</b><br>Tentukan Benar atau Salah untuk setiap pernyataan berikut!",
-        statements: [
-          "Membatasi penggunaan gawai membantu anak mendapatkan waktu tidur yang cukup.",
-          "Anak tidak perlu memeriksa jadwal pelajaran sebelum berangkat sekolah.",
-          "Sarapan bergizi membantu menyediakan energi untuk beraktivitas."
-        ],
-        correct: ["Benar", "Salah", "Benar"], topic: "Pernyataan Benar/Salah",
-        explanation: "Kunci: Benar, Salah, Benar[cite: 42]."
+        id: 6, type: "PG",
+        text: "6. Faktor Persekutuan Terbesar (FPB) dari bilangan 36, 48, dan 72 adalah ....",
+        options: ["6", "12", "24", "72"],
+        correct: 1,
+        topic: "FPB",
+        explanation: "Faktorisasi prima 36 = 2²×3², 48 = 2⁴×3, 72 = 2³×3². FPB = 2²×3 = 12. (Kunci: B)"
       },
       {
-        id: 7, type: "MCMA",
-        text: "Bacaan untuk soal nomor 7-9<br><b>Tautan Hadiah di Ponsel (Teks Informasi)</b><br>Pesan digital yang menawarkan hadiah besar perlu diperiksa sebelum dipercaya. Pesan mencurigakan sering meminta penerima membuka tautan, mengisi alamat rumah, memasukkan kata sandi, atau memberikan kode rahasia...<br><br><b>Soal Nomor 7</b><br>Pilih semua tindakan yang sesuai dengan anjuran keamanan digital pada bacaan Tautan Hadiah di Ponsel. (Pilih dua atau lebih yang benar)",
-        options: [
-          "Memeriksa nama pengirim dan alamat situs.",
-          "Meminta bantuan orang tua atau guru jika ragu.",
-          "Memasukkan kata sandi ke halaman yang belum jelas."
-        ],
-        correct: [0, 1], topic: "Keamanan Digital",
-        explanation: "Tindakan yang aman adalah memeriksa pengirim/situs dan meminta bantuan orang dewasa[cite: 42]. (Kunci: A dan B)"
+        id: 7, type: "PG",
+        text: "7. Di SD Negeri Sayung 3 terdapat tiga kegiatan ekstrakurikuler. Pramuka dilaksanakan setiap 4 hari sekali, latihan tari setiap 6 hari sekali, dan latihan musik setiap 8 hari sekali. Jika hari ini ketiga kegiatan dilaksanakan bersama-sama, berapa hari lagi ketiga kegiatan tersebut akan dilaksanakan secara bersamaan?",
+        options: ["12 hari", "16 hari", "24 hari", "32 hari"],
+        correct: 2,
+        topic: "KPK Ekstrakurikuler",
+        explanation: "KPK(4, 6, 8) = 24 hari. (Kunci: C)"
       },
       {
-        id: 8, type: "PG",
-        text: "Bacaan: Tautan Hadiah di Ponsel<br><br><b>Soal Nomor 8</b><br>Ungkapan sumber yang tepercaya dalam bacaan berarti sumber yang ....",
+        id: 8, type: "MCMA",
+        text: "8. Yasmin akan membuat rangkaian bunga untuk peringatan Hari Guru. Ia menyiapkan 56 kuntum bunga mawar, 72 kuntum bunga melati, dan 48 kuntum bunga matahari. Yasmin ingin membuat rangkaian bunga sebanyak-banyaknya tanpa sisa.<br>Pilihlah pernyataan yang benar! (Pilih semua jawaban yang benar)",
         options: [
-          "dapat dipercaya kebenarannya",
-          "selalu menawarkan hadiah",
-          "meminta semua data pribadi",
-          "tidak memiliki identitas pengirim"
+          "Paling banyak rangkaian bunga yang dapat dibuat Yasmin adalah 8 rangkaian.",
+          "Setiap rangkaian berisi 9 kuntum bunga melati dan 7 kuntum bunga mawar.",
+          "Setiap rangkaian berisi 7 kuntum bunga matahari dan 6 kuntum bunga mawar."
         ],
-        correct: 0, topic: "Makna Ungkapan",
-        explanation: "Sumber tepercaya berarti dapat dipercaya kebenarannya[cite: 42]. (Kunci: A)"
+        correct: [0, 1],
+        topic: "FPB Rangkaian Bunga",
+        explanation: "FPB(56, 72, 48) = 8. Mawar = 56/8 = 7, Melati = 72/8 = 9, Matahari = 48/8 = 6. Opsi 1 dan 2 Benar."
       },
       {
         id: 9, type: "Kategori",
-        text: "Bacaan: Tautan Hadiah di Ponsel<br><br><b>Soal Nomor 9</b><br>Tentukan Benar atau Salah untuk setiap pernyataan berikut!",
+        text: "9. Perpustakaan sekolah mengadakan kegiatan membaca bersama setiap 9 hari sekali. Kegiatan peminjaman buku khusus dilaksanakan setiap 12 hari sekali. Pada tanggal 1 November 2026, kedua kegiatan tersebut dilaksanakan bersamaan.<br>Tentukan apakah setiap pernyataan berikut Benar atau Salah!",
         statements: [
-          "Sebelum mengeklik tautan, periksa nama pengirim dan alamat situs.",
-          "Informasi dari sumber tepercaya biasanya memiliki identitas yang jelas",
-          "Masukkan kata sandi atau informasi pribadi pada halaman yang belum jelas"
+          "KPK dari 9 dan 12 adalah 36.",
+          "Dalam 72 hari setelah tanggal awal, kedua kegiatan akan berlangsung bersama sebanyak 3 kali.",
+          "Kedua kegiatan akan dilaksanakan bersama lagi pada tanggal 7 Desember 2026."
         ],
-        correct: ["Benar", "Benar", "Salah"], topic: "Pernyataan Benar/Salah",
-        explanation: "Kunci: Benar, Benar, Salah[cite: 42]."
+        correct: ["Benar", "Salah", "Benar"],
+        topic: "KPK & Kalender",
+        explanation: "KPK = 36. Dalam 72 hari hanya 2 kali pertemuan (72/36). Pertemuan berikutnya 1 Nov + 36 hari = 7 Desember 2026."
       },
       {
         id: 10, type: "PG",
-        text: "Bacaan untuk soal nomor 10-11<br><b>Layangan di Pohon Jambu (Teks Fiksi)</b><br>Pada hari Minggu, Raka dan Seno membuat layangan dari kertas bekas dan bilah bambu tipis... Tiba-tiba, benang layangan tersangkut di dahan pohon jambu dekat lapangan. Seno ingin memanjat pohon untuk mengambilnya. Raka melarangnya karena dahan itu tinggi dan licin setelah hujan...<br><br><b>Soal Nomor 10</b><br>Mengapa Raka melarang Seno memanjat pohon untuk mengambil layangan?",
+        text: "10. Perhatikan gambar tumpukan kubus satuan berikut!<br><img src='soal10_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Manakah gambar yang menunjukkan tampilan tumpukan kubus tersebut jika dilihat dari arah depan sesuai arah panah?",
         options: [
-          "Pohon jambu berada di halaman rumah orang lain.",
-          "Dahan pohon cukup tinggi dan licin setelah hujan.",
-          "Pohon jambu menghalangi angin yang bertiup kencang.",
-          "Layangan mereka sudah rusak dan tidak dapat digunakan."
+          "<div class='flex items-center gap-2'><img src='soal10A_p2.jpg' class='h-12 w-16 object-contain border rounded bg-white p-1'><span>Gambar A</span></div>",
+          "<div class='flex items-center gap-2'><img src='soal10B_p2.jpg' class='h-12 w-16 object-contain border rounded bg-white p-1'><span>Gambar B</span></div>",
+          "<div class='flex items-center gap-2'><img src='soal10C_p2.jpg' class='h-12 w-16 object-contain border rounded bg-white p-1'><span>Gambar C</span></div>",
+          "<div class='flex items-center gap-2'><img src='soal10D_p2.jpg' class='h-12 w-16 object-contain border rounded bg-white p-1'><span>Gambar D</span></div>"
         ],
-        correct: 1, topic: "Pemahaman Cerita",
-        explanation: "Raka melarang karena dahan tinggi dan licin setelah hujan[cite: 42]. (Kunci: B)"
+        correct: 2,
+        topic: "Proyeksi Bangun Ruang",
+        explanation: "Tampilan depan menunjukkan tangga kubus bertingkat sesuai Gambar C. (Kunci: C)"
       },
       {
         id: 11, type: "PG",
-        text: "Bacaan: Layangan di Pohon Jambu<br><br><b>Soal Nomor 11</b><br>Mengapa Raka dan Seno meminta bantuan penjaga kebun untuk mengambil layangan?",
-        options: [
-          "Penjaga kebun melarang anak-anak bermain di lapangan.",
-          "Penjaga kebun dapat menggunakan galah untuk mengambil layangan dengan aman.",
-          "Penjaga kebun merupakan satu-satunya orang yang tinggal di dekat lapangan.",
-          "Penjaga kebun bertugas mengumpulkan semua layangan yang tersangkut."
-        ],
-        correct: 1, topic: "Analisis Cerita",
-        explanation: "Penjaga kebun menggunakan galah panjang untuk mengambil layangan dengan aman[cite: 42]. (Kunci: B)"
+        text: "11. Pak Rahmad akan memasang ubin di teras rumahnya menggunakan pola gabungan bangun datar. Setiap satu unit pola terdiri atas sebuah ubin berbentuk persegi yang dikelilingi empat ubin berbentuk persegi panjang, seperti pada gambar.<br><img src='soal11_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pak Rahmad akan menyusun 5 unit pola secara berjajar. Berapa banyak ubin berbentuk persegi panjang yang dibutuhkan Pak Rahmad?",
+        options: ["12 ubin", "16 ubin", "20 ubin", "24 ubin"],
+        correct: 2,
+        topic: "Pola Bilangan & Geometri",
+        explanation: "5 unit × 4 ubin persegi panjang = 20 ubin. (Kunci: C)"
       },
       {
-        id: 12, type: "PG",
-        text: "Bacaan untuk soal nomor 12-14<br><b>Perundungan di Ruang Digital (Teks Informasi)</b><br>Perundungan di ruang digital terjadi ketika teknologi digunakan untuk mengejek, mengancam, mempermalukan, atau mengucilkan orang lain...<br><br><b>Soal Nomor 12</b><br>Mengapa korban perundungan digital tidak boleh disalahkan atas penyebaran foto tanpa izin?",
+        id: 12, type: "MCMA",
+        text: "12. Sebuah akuarium berbentuk balok memiliki panjang 80 cm, lebar 40 cm, dan tinggi 50 cm. Akuarium tersebut berisi air sebanyak setengah dari kapasitas totalnya.<br>Manakah pernyataan yang benar mengenai volume akuarium dan air di dalamnya? (Pilih semua jawaban yang benar)",
         options: [
-          "Karena korban tidak bertanggung jawab atas tindakan orang lain yang menyebarkan foto tanpa izin.",
-          "Karena semua foto di internet boleh digunakan siapa saja.",
-          "Karena laporan kepada guru langsung menghapus semua foto yang tersebar.",
-          "Karena sekolah wajib mengganti kerugian akibat penyebaran foto."
+          "Volume akuarium jika terisi penuh adalah 160 liter.",
+          "Volume air yang terdapat dalam akuarium adalah 80 liter.",
+          "Volume air yang diperlukan agar akuarium penuh adalah 100 liter."
         ],
-        correct: 0, topic: "Pemahaman Teks",
-        explanation: "Korban tidak seharusnya disalahkan atas tindakan orang yang menyebarkan konten[cite: 42]. (Kunci: A)"
+        correct: [0, 1],
+        topic: "Volume Balok",
+        explanation: "Volume total = 80×40×50 = 160.000 cm³ = 160 liter. Air = 80 liter. Sisa air = 80 liter. Opsi 1 dan 2 Benar."
       },
       {
-        id: 13, type: "MCMA",
-        text: "Bacaan: Perundungan di Ruang Digital<br><br><b>Soal Nomor 13</b><br>Pilih semua tindakan yang tepat untuk membantu menghentikan perundungan digital! (Jawaban benar lebih dari satu)",
-        options: [
-          "Tidak meneruskan unggahan yang merendahkan dan meminta izin sebelum membagikan foto teman.",
-          "Menyimpan bukti perundungan dan mendukung teman yang menjadi korban.",
-          "Menyebarkan ulang unggahan perundungan agar pelaku merasa malu."
-        ],
-        correct: [0, 1], topic: "Tindakan Pencegahan",
-        explanation: "Tindakan tepat adalah tidak meneruskan unggahan buruk, meminta izin foto, serta menyimpan bukti dan mendukung korban. (Kunci: A dan B)"
+        id: 13, type: "PG",
+        text: "13. Perhatikan gambar susunan kubus satuan berikut!<br><img src='soal13_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Susunan tersebut akan dilengkapi menjadi sebuah kubus berukuran 3 × 3 × 3 kubus satuan. Berapa banyak kubus satuan yang perlu ditambahkan agar terbentuk kubus yang utuh?",
+        options: ["8 kubus", "9 kubus", "10 kubus", "11 kubus"],
+        correct: 2,
+        topic: "Volume Kubus Satuan",
+        explanation: "Total kubus 3×3×3 = 27. Kubus yang tersedia = 9 + 7 + 1 = 17. Kekurangan = 27 - 17 = 10 kubus. (Kunci: C)"
       },
       {
         id: 14, type: "Kategori",
-        text: "Bacaan: Perundungan di Ruang Digital<br><br><b>Soal Nomor 14</b><br>Tentukan Benar atau Salah untuk setiap pernyataan berikut!",
+        text: "14. Perhatikan gambar hasil pengukuran panjang Pensil (Benda A) dan Penghapus (Benda B) menggunakan penggaris dalam satuan sentimeter (cm) di bawah ini!<br><img src='soal14_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berdasarkan hasil pengukuran pada gambar di atas, tentukan kebenaran untuk setiap pernyataan berikut!",
         statements: [
-          "Perundungan digital dapat membuat korban merasa malu, takut, atau enggan datang ke sekolah.",
-          "Membalas pelaku dengan komentar yang menghina merupakan cara tepat menghentikan perundungan.",
-          "Menyimpan bukti dan melapor kepada guru atau orang dewasa dapat membantu menangani perundungan digital."
+          "Panjang pensil 3 cm lebih panjang daripada penghapus.",
+          "Jumlah panjang pensil dan penghapus jika digabungkan adalah 13 cm.",
+          "Selisih panjang antara pensil dan penghapus adalah 12 cm."
         ],
-        correct: ["Benar", "Salah", "Benar"], topic: "Pernyataan Benar/Salah",
-        explanation: "Kunci: Benar, Salah, Benar[cite: 42]."
+        correct: ["Benar", "Benar", "Salah"],
+        topic: "Pengukuran Panjang",
+        explanation: "Pensil = 8 cm, Penghapus = 5 cm. Selisih = 3 cm. Jumlah = 13 cm. (Kunci: Benar, Benar, Salah)"
       },
       {
         id: 15, type: "PG",
-        text: "Bacaan untuk soal nomor 15-16<br><b>Tidur Cukup dan Kesiapan Belajar (Teks Informasi)</b><br>Tidur cukup merupakan salah satu kebiasaan yang membantu anak mengikuti pelajaran dengan lebih baik... Kita dapat membayangkan istirahat seperti mengisi kembali baterai tubuh...<br><br><b>Soal Nomor 15</b><br>Gagasan utama bacaan di atas adalah ....",
+        text: "15. Perhatikan data panjang empat benda berikut!<br><img src='soal15_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Urutan benda berdasarkan panjangnya, mulai dari yang terpendek hingga yang terpanjang, adalah ....",
         options: [
-          "Bermain gim sampai larut selalu meningkatkan konsentrasi.",
-          "Kebiasaan sehat dan jadwal teratur dapat membantu kesiapan belajar.",
-          "Semua siswa harus memiliki jadwal yang sama persis.",
-          "Sarapan tidak berkaitan dengan kegiatan belajar."
+          "Pensil – Buku tulis – Meja belajar – Pagar kebun",
+          "Buku tulis – Pensil – Meja belajar – Pagar kebun",
+          "Pensil – Meja belajar – Buku tulis – Pagar kebun",
+          "Pensil – Buku tulis – Pagar kebun – Meja belajar"
         ],
-        correct: 1, topic: "Gagasan Utama",
-        explanation: "Gagasan utama teks adalah kebiasaan sehat dan jadwal teratur membantu kesiapan belajar[cite: 42]. (Kunci: B)"
+        correct: 0,
+        topic: "Konversi Satuan Panjang",
+        explanation: "Pensil = 18 cm, Buku tulis = 22 cm, Meja = 110 cm, Pagar = 1.000 cm. (Kunci: A)"
       },
       {
-        id: 16, type: "PG",
-        text: "Bacaan: Tidur Cukup dan Kesiapan Belajar<br><br><b>Soal Nomor 16</b><br>Makna ungkapan “mengisi kembali baterai tubuh” dalam bacaan tersebut adalah ....",
+        id: 16, type: "MCMA",
+        text: "16. Seorang ibu sedang menyiapkan minuman di dapur. Di atas meja terdapat tiga wadah berisi air dengan satuan volume yang berbeda, seperti ditunjukkan pada gambar berikut.<br><img src='soal16_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berdasarkan informasi pada gambar, manakah pernyataan yang benar mengenai volume air dalam ketiga wadah tersebut? (Pilih semua jawaban yang benar)",
         options: [
-          "mengisi daya telepon genggam",
-          "memulihkan tenaga dengan kebiasaan sehat dan istirahat cukup",
-          "berhenti melakukan semua kegiatan",
-          "harus membeli baterai baru"
+          "Volume air pada Wadah 1 setara dengan 3 liter.",
+          "Volume air pada Wadah 1 sama dengan Wadah 2.",
+          "Volume air pada Wadah 3 setara dengan 0,03 liter."
         ],
-        correct: 1, topic: "Makna Ungkapan",
-        explanation: "Mengisi kembali baterai tubuh bermakna memulihkan tenaga dengan kebiasaan sehat dan istirahat cukup[cite: 42]. (Kunci: B)"
+        correct: [0, 1],
+        topic: "Konversi Volume",
+        explanation: "Wadah 1 = 3.000 cm³ = 3 liter. Wadah 2 = 3 liter. Wadah 3 = 300 ml = 0,3 liter. Opsi 1 dan 2 Benar."
       },
       {
-        id: 17, type: "MCMA",
-        text: "Bacaan untuk soal nomor 17-19<br><b>Foto Sebelum Diunggah</b><br>Foto digital dapat menjadi kenangan kegiatan sekolah, tetapi membagikannya perlu dilakukan dengan bijaksana. Sebelum mengunggah foto yang menampilkan orang lain, mintalah izin...<br><br><b>Soal Nomor 17</b><br>Pilih semua kesimpulan yang didukung oleh informasi tentang etika membagikan foto. (Jawaban benar lebih dari satu)",
-        options: [
-          "Meminta izin merupakan cara menghormati privasi orang lain.",
-          "Informasi pribadi yang tidak diperlukan sebaiknya tidak dipublikasikan.",
-          "Foto teman boleh selalu diunggah tanpa bertanya."
-        ],
-        correct: [0, 1], topic: "Kesimpulan Teks",
-        explanation: "Kesimpulan didukung: meminta izin menghargai privasi dan info pribadi tidak boleh sembarang dipublikasikan. (Kunci: A dan B)"
-      },
-      {
-        id: 18, type: "MCMA",
-        text: "Bacaan: Foto Sebelum Diunggah<br><br><b>Soal Nomor 18</b><br>Pilih semua akibat yang masuk akal jika pengguna menghormati privasi sebelum mengunggah foto. (Jawaban benar lebih dari satu)",
-        options: [
-          "Teman-teman merasa pendapat dan privasinya dihargai.",
-          "Risiko membagikan data pribadi yang tidak perlu menjadi lebih kecil.",
-          "Semua unggahan digital pasti dapat ditarik kembali dengan mudah."
-        ],
-        correct: [0, 1], topic: "Akibat Logis",
-        explanation: "Akibat positifnya privasi dihargai dan risiko data pribadi lebih kecil. (Kunci: A dan B)"
-      },
-      {
-        id: 19, type: "Kategori",
-        text: "Bacaan: Foto Sebelum Diunggah<br><br><b>Soal Nomor 19</b><br>Tentukan Benar atau Salah untuk setiap pernyataan berikut!",
+        id: 17, type: "Kategori",
+        text: "17. Pak Budi memiliki warung makan dengan persediaan minuman:<br>- Wadah A berisi 4,5 dal jus jeruk.<br>- Wadah B berisi 350 dl es teh manis.<br>- Wadah C berisi 40.000 ml air mineral.<br>Berdasarkan informasi tersebut, tentukan apakah setiap pernyataan berikut benar atau salah!",
         statements: [
-          "Pengguna meminta izin sebelum mengunggah foto teman.",
-          "Berpikir sebelum membagikan sesuatu membantu menjaga privasi.",
-          "Semua siswa di sekolah menolak menggunakan media sosial."
+          "Volume minuman pada Wadah A lebih banyak daripada volume minuman pada Wadah C.",
+          "Jumlah volume minuman pada Wadah B dan Wadah C adalah 75 liter.",
+          "Selisih volume minuman pada Wadah A dan Wadah B adalah 100 sentiliter."
         ],
-        correct: ["Benar", "Benar", "Salah"], topic: "Pernyataan Benar/Salah",
-        explanation: "Kunci: Benar, Benar, Salah[cite: 42]."
+        correct: ["Benar", "Benar", "Salah"],
+        topic: "Konversi Volume Lanjutan",
+        explanation: "A = 45 liter, B = 35 liter, C = 40 liter. (Kunci: Benar, Benar, Salah)"
+      },
+      {
+        id: 18, type: "Kategori",
+        text: "18. Perhatikan gambar hasil pengukuran berat buah menggunakan tiga jenis timbangan berikut!<br><img src='soal18_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berdasarkan catatan berat buah (Melon 1,25 kg, Dua mangga 500 g, Jambu 750 g), tentukan apakah setiap gambar timbangan menunjukkan berat yang sesuai!",
+        statements: [
+          "Gambar timbangan digital sesuai dengan catatan berat buah melon.",
+          "Gambar timbangan jarum sesuai dengan catatan berat buah mangga.",
+          "Gambar timbangan neraca sesuai dengan catatan berat buah jambu."
+        ],
+        correct: ["Benar", "Salah", "Benar"],
+        topic: "Pengukuran Berat",
+        explanation: "Melon 1,25 kg (Sesuai). Timbangan mangga menunjukkan 600 g padahal catatan 500 g (Tidak Sesuai). Jambu 500+250 = 750 g (Sesuai). (Kunci: Benar, Salah, Benar)"
+      },
+      {
+        id: 19, type: "MCMA",
+        text: "19. Berat beras 2 kg, gula pasir 75 dag, kacang hijau 350 hg. Rasyid menghitung jumlah serta selisihnya dalam satuan gram.<br>Pilihlah dua pernyataan yang benar!",
+        options: [
+          "Jumlah berat beras dan gula pasir adalah 2.750 gram.",
+          "Selisih berat kacang hijau dan gula pasir adalah 34.250 gram.",
+          "Jumlah berat ketiga bahan makanan adalah 38.000 gram."
+        ],
+        correct: [0, 1],
+        topic: "Konversi Satuan Berat",
+        explanation: "Beras = 2.000 g, Gula = 750 g, Kacang = 35.000 g. Jumlah beras+gula = 2.750 g. Selisih kacang-gula = 34.250 g. Opsi 1 dan 2 Benar."
       },
       {
         id: 20, type: "PG",
-        text: "Bacaan untuk soal nomor 20-21<br><b>Pohon Kecil di Sudut Sekolah</b><br>Kelas VI mendapat tugas merawat pohon kecil di sudut sekolah. Lila ingin pohon itu cepat tumbuh, sedangkan Bayu menganggap tugas tersebut tidak penting...<br><br><b>Soal Nomor 20</b><br>Amanat bacaan di atas adalah ....",
-        options: [
-          "Tugas bersama dapat diabaikan jika terasa membosankan.",
-          "Kesabaran dan kerja sama menyelesaikan tanggung jawab.",
-          "Kesalahan teman harus selalu dibalas dengan kemarahan.",
-          "Tanaman dapat tumbuh dengan baik tanpa perawatan."
-        ],
-        correct: 1, topic: "Amanat Cerita",
-        explanation: "Amanat cerita adalah kesabaran dan kerja sama menyelesaikan tanggung jawab[cite: 42]. (Kunci: B)"
+        text: "20. Raka mengikuti latihan menggambar dimulai pukul yang ditunjukkan oleh jam berikut selama 1 jam 45 menit:<br><img src='soal20_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pukul berapakah latihan menggambar Raka selesai?",
+        options: ["Pukul 09.50 WIB", "Pukul 10.10 WIB", "Pukul 10.20 WIB", "Pukul 10.30 WIB"],
+        correct: 2,
+        topic: "Waktu Mulai & Selesai",
+        explanation: "Mulai 08.35 + 1 jam 45 menit = Pukul 10.20 WIB. (Kunci: C)"
       },
       {
-        id: 21, type: "PG",
-        text: "Bacaan: Pohon Kecil di Sudut Sekolah<br><br><b>Soal Nomor 21</b><br>Perubahan sikap Bayu dalam cerita adalah ....",
+        id: 21, type: "MCMA",
+        text: "21. Lomba literasi dimulai pukul 07.15 WIB selama 1 jam 35 menit. Istirahat 25 menit. Pentas seni 2 jam 20 menit.<br>Pilihlah dua pernyataan yang benar!",
         options: [
-          "dari mengabaikan tugas menjadi ikut bertanggung jawab",
-          "dari rajin menjadi menolak bekerja sama",
-          "dari sabar menjadi ingin merusak pohon",
-          "dari peduli menjadi tidak mau belajar"
+          "Perlombaan literasi selesai pada pukul 08.50 WIB.",
+          "Pentas seni selesai pada pukul 11.35 WIB.",
+          "Pentas seni selesai pada pukul 11.10 WIB."
         ],
-        correct: 0, topic: "Perubahan Tokoh",
-        explanation: "Bayu berubah dari mengabaikan tugas menjadi ikut bertanggung jawab merawat pohon[cite: 42]. (Kunci: A)"
+        correct: [0, 1],
+        topic: "Durasi Waktu",
+        explanation: "Literasi selesai 08.50 WIB. Istirahat sampai 09.15 WIB. Pentas seni selesai 11.35 WIB. Opsi 1 dan 2 Benar."
       },
       {
         id: 22, type: "PG",
-        text: "Bacaan untuk soal nomor 22-24<br><b>Candaan yang Aman di Sekolah</b><br>Candaan dapat membuat suasana akrab jika semua orang merasa nyaman. Namun, candaan yang merendahkan penampilan... dapat menyakiti perasaan...<br><br><b>Soal Nomor 22</b><br>Menurut bacaan di atas, mengapa aturan bercanda yang aman bermanfaat di sekolah?",
-        options: [
-          "semua siswa harus memiliki selera humor yang sama",
-          "siswa belajar menjaga perasaan dan menghormati batas teman",
-          "siswa boleh mengejek asalkan banyak yang tertawa",
-          "siswa tidak boleh berbicara saat istirahat"
-        ],
-        correct: 1, topic: "Manfaat Aturan",
-        explanation: "Aturan bercanda aman bermanfaat agar siswa belajar menjaga perasaan dan menghormati batas teman[cite: 42]. (Kunci: B)"
+        text: "22. Perjalanan Semarang ke Yogyakarta (120 km) berangkat pukul 07.15 WIB dengan kecepatan 60 km/jam. Istirahat 30 menit di tengah perjalanan. Pukul berapa tiba?",
+        options: ["09.15 WIB", "09.30 WIB", "09.45 WIB", "10.00 WIB"],
+        correct: 2,
+        topic: "Kecepatan, Jarak, Waktu",
+        explanation: "Waktu perjalanan = 120/60 = 2 jam (120 menit) + 30 menit istirahat = 150 menit (2 jam 30 menit). Tiba 07.15 + 2 jam 30 menit = 09.45 WIB. (Kunci: C)"
       },
       {
-        id: 23, type: "MCMA",
-        text: "Bacaan: Candaan yang Aman di Sekolah<br><br><b>Soal Nomor 23</b><br>Pilih semua respons yang tepat ketika menyaksikan teman terus diejek. (Jawaban benar lebih dari satu)",
-        options: [
-          "Ikut tertawa agar tidak menjadi sasaran.",
-          "Menunjukkan dukungan kepada teman yang diejek.",
-          "Meminta bantuan guru jika ejekan berulang."
-        ],
-        correct: [1, 2], topic: "Respons yang Tepat",
-        explanation: "Respons tepat adalah mendukung korban dan melapor ke guru[cite: 42]. (Kunci: B dan C)"
+        id: 23, type: "PG",
+        text: "23. Perhatikan gambar gabungan bangun datar berikut!<br><img src='soal23_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Jika keliling persegi panjang adalah 40 cm, berapakah luas gabungan?",
+        options: ["108 cm²", "120 cm²", "144 cm²", "168 cm²"],
+        correct: 1,
+        topic: "Luas Gabungan",
+        explanation: "Lebar = 8 cm. Panjang persegi panjang = (40/2) - 8 = 12 cm. Luas PP = 96 cm². Luas segitiga = ½ × 8 × 6 = 24 cm². Total = 120 cm². (Kunci: B)"
       },
       {
-        id: 24, type: "Kategori",
-        text: "Bacaan: Candaan yang Aman di Sekolah<br><br><b>Soal Nomor 24</b><br>Tentukan Benar atau Salah untuk setiap pernyataan berikut!",
-        statements: [
-          "Berhenti bercanda ketika teman menyatakan dirinya tersakiti.",
-          "Menyebarkan julukan yang merendahkan agar kelas tertawa.",
-          "Mendukung teman dan melapor kepada guru jika ejekan berulang."
-        ],
-        correct: ["Benar", "Salah", "Benar"], topic: "Pernyataan Benar/Salah",
-        explanation: "Kunci: Benar, Salah, Benar[cite: 42]."
+        id: 24, type: "PG",
+        text: "24. Pak Budi membuat tempat penyimpanan dari dua kotak kayu yang disusun bertumpuk seperti pada gambar.<br><img src='soal24_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berapakah volume seluruh kotak penyimpanan tersebut?",
+        options: ["576 cm³", "768 cm³", "864 cm³", "1.088 cm³"],
+        correct: 3,
+        topic: "Volume Gabungan Balok & Kubus",
+        explanation: "Volume balok bawah = 12×8×6 = 576 cm³. Volume kubus atas = 8³ = 512 cm³. Total = 576 + 512 = 1.088 cm³. (Kunci: D)"
       },
       {
         id: 25, type: "PG",
-        text: "Bacaan untuk soal nomor 25-26<br><b>Bekal dan Waktu Istirahat</b><br>Bekal yang beragam membantu anak memperoleh zat gizi untuk beraktivitas... Air putih juga penting untuk mengganti cairan tubuh...<br><br><b>Soal Nomor 25</b><br>Kebiasaan yang paling mudah diterapkan berdasarkan bacaan di atas untuk menjaga kesehatan selama sekolah adalah ....",
-        options: [
-          "membawa air putih dan memilih bekal beragam",
-          "menghindari semua kegiatan fisik",
-          "mengganti tidur dengan bermain gawai",
-          "hanya makan satu jenis makanan setiap hari"
-        ],
-        correct: 0, topic: "Kebiasaan Sehat",
-        explanation: "Kebiasaan mudah adalah membawa air putih dan memilih bekal beragam[cite: 42]. (Kunci: A)"
+        text: "25. Sebuah tangga disandarkan pada dinding membentuk sudut 35° dengan dinding.<br><img src='soal25_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berapakah besar sudut A antara tangga dan lantai?",
+        options: ["35°", "45°", "55°", "65°"],
+        correct: 2,
+        topic: "Besar Sudut Segitiga",
+        explanation: "Sudut A = 180° - 90° - 35° = 55°. (Kunci: C)"
       },
       {
-        id: 26, type: "MCMA",
-        text: "Bacaan: Bekal dan Waktu Istirahat<br><br><b>Soal Nomor 26</b><br>Pilih semua kebiasaan yang sesuai dengan pesan bacaan Bekal dan Waktu Istirahat. (Jawaban benar lebih dari satu)",
-        options: [
-          "Mencuci tangan sebelum makan.",
-          "Tidur cukup setelah beraktivitas.",
-          "Minum sesedikit mungkin agar tidak perlu ke toilet."
-        ],
-        correct: [0, 1], topic: "Kebiasaan Sesuai Teks",
-        explanation: "Kebiasaan sesuai teks mencakup mencuci tangan sebelum makan dan tidur cukup. (Kunci: A dan B)"
+        id: 26, type: "PG",
+        text: "26. Ibu akan membuat 8 loyang kue bolu. Setiap loyang memerlukan sekitar 250 gram tepung terigu. Berapakah perkiraan jumlah tepung terigu yang diperlukan?",
+        options: ["1 kg", "2 kg", "3 kg", "4 kg"],
+        correct: 1,
+        topic: "Estimasi & Satuan Berat",
+        explanation: "8 × 250 gram = 2.000 gram = 2 kg. (Kunci: B)"
       },
       {
-        id: 27, type: "PG",
-        text: "Bacaan untuk soal nomor 27-28<br><b>Kabar Libur yang Belum Pasti</b><br>Informasi digital dapat menyebar dengan cepat, tetapi tidak semuanya benar. Pesan yang menyatakan sekolah libur... perlu diperiksa sebelum diteruskan...<br><br><b>Soal Nomor 27</b><br>Mengapa pesan tentang perubahan jadwal sekolah perlu diperiksa sebelum diteruskan?",
-        options: [
-          "Pesan mungkin menggunakan bahasa yang kurang resmi.",
-          "Pesan yang tidak jelas sumbernya dapat berisi informasi keliru.",
-          "Pesan mungkin berasal dari percakapan kelompok kelas.",
-          "Pesan mungkin dikirim kembali oleh teman sekolah."
+        id: 27, type: "Kategori",
+        text: "27. Perhatikan piktogram jumlah buku yang dibaca:<br><img src='soal27_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan benar atau salah untuk setiap pernyataan!",
+        statements: [
+          "Jumlah buku cerita yang dibaca Citra selama liburan adalah 15 buku.",
+          "Jumlah buku cerita yang dibaca Budi selama liburan adalah 2 buku.",
+          "Jumlah buku cerita yang dibaca Dewi selama liburan adalah 9 buku."
         ],
-        correct: 1, topic: "Verifikasi Informasi",
-        explanation: "Pesan tak jelas sumbernya dapat berisi informasi keliru yang membingungkan[cite: 42]. (Kunci: B)"
+        correct: ["Benar", "Salah", "Benar"],
+        topic: "Interpretasi Piktogram",
+        explanation: "Citra = 5×3 = 15 (Benar). Budi = 2×3 = 6, bukan 2 (Salah). Dewi = 3×3 = 9 (Benar). (Kunci: Benar, Salah, Benar)"
       },
       {
         id: 28, type: "MCMA",
-        text: "Bacaan: Kabar Libur yang Belum Pasti<br><br><b>Soal Nomor 28</b><br>Pilih semua tindakan yang bijaksana ketika menerima kabar digital yang belum pasti. (Jawaban benar lebih dari satu)",
+        text: "28. Perhatikan tabel biaya bahan berikut!<br><img src='soal28_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berdasarkan informasi pada tabel, pilihlah dua pernyataan yang benar!",
         options: [
-          "Memeriksa tanggal dan sumber informasi.",
-          "Membandingkan pesan dengan kanal resmi sekolah.",
-          "Meneruskan pesan secepatnya agar menjadi orang pertama yang berbagi."
+          "Biaya gula pasir selama 11 hari adalah Rp176.000.",
+          "Biaya tepung terigu selama 6 hari adalah Rp168.000.",
+          "Biaya mentega selama 5 hari adalah Rp100.000."
         ],
-        correct: [0, 1], topic: "Tindakan Bijaksana",
-        explanation: "Tindakan bijaksana adalah memeriksa tanggal/sumber dan membandingkannya dengan kanal resmi[cite: 42]. (Kunci: A dan B)"
+        correct: [0, 2],
+        topic: "Aritmatika Sosial",
+        explanation: "Gula = 11 × 16.000 = 176.000 (Benar). Tepung = 6 × 24.000 = 144.000, bukan 168.000 (Salah). Mentega = 5 × 20.000 = 100.000 (Benar). Opsi 1 dan 3 Benar."
       },
       {
-        id: 29, type: "Kategori",
-        text: "Bacaan untuk soal nomor 29-30<br><b>Jaket untuk Nara</b><br>Sore itu, hujan turun ketika Nara dan Wulan selesai mengikuti latihan paduan suara. Nara membawa jaket tebal, sedangkan Wulan hanya mengenakan seragam...<br><br><b>Soal Nomor 29</b><br>Tentukan Benar atau Salah untuk setiap pernyataan berikut!",
+        id: 29, type: "PG",
+        text: "29. Di sebuah taman wisata terdapat dua tempat penyewaan sepeda, yaitu Tempat A dan Tempat B.<br><img src='soal29_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pak Anton akan menyewa sepeda selama 5 jam. Tempat penyewaan yang lebih hemat beserta selisihnya adalah ....",
+        options: [
+          "Tempat A, lebih hemat Rp15.000",
+          "Tempat A, lebih hemat Rp10.000",
+          "Tempat B, lebih hemat Rp15.000",
+          "Tempat B, lebih hemat Rp5.000"
+        ],
+        correct: 0,
+        topic: "Diagram Garis",
+        explanation: "Sewa 5 jam: Tempat A = Rp35.000, Tempat B = Rp50.000. Tempat A lebih hemat Rp15.000. (Kunci: A)"
+      },
+      {
+        id: 30, type: "Kategori",
+        text: "30. Perhatikan diagram batang bank sampah berikut!<br><img src='soal30_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan benar atau salah untuk setiap pernyataan!",
         statements: [
-          "Nara membawa jaket tebal, sedangkan Wulan hanya mengenakan seragam.",
-          "Wulan menolak bantuan Nara dan memilih menunggu sendirian di tengah hujan.",
-          "Wulan meminjamkan buku latihan kepada Nara sebagai bentuk kepedulian terhadap teman."
+          "Rata-rata jumlah botol plastik yang terkumpul selama lima hari adalah 36 buah per hari.",
+          "Jumlah botol plastik pada hari Kamis dan Jumat lebih banyak daripada jumlah botol pada hari Senin, Selasa, dan Rabu.",
+          "Kenaikan jumlah botol plastik terbesar terjadi dari hari Rabu ke Kamis."
         ],
-        correct: ["Benar", "Salah", "Benar"], topic: "Pernyataan Benar/Salah",
-        explanation: "Kunci: Benar, Salah, Benar[cite: 42]."
-      },
-      {
-        id: 30, type: "PG",
-        text: "Bacaan: Jaket untuk Nara<br><br><b>Soal Nomor 30</b><br>Respons yang paling sesuai terhadap tindakan Nara adalah ....",
-        options: [
-          "kesal karena harus berbagi jaket",
-          "menghargai kepedulian Nara yang membantu tanpa mempermalukan Wulan",
-          "kecewa karena Wulan menolak bantuan selamanya",
-          "marah karena teman tidak boleh saling menolong"
-        ],
-        correct: 1, topic: "Respons Tokoh",
-        explanation: "Respons yang sesuai adalah menghargai kepedulian Nara yang membantu tanpa mempermalukan Wulan[cite: 42]. (Kunci: B)"
+        correct: ["Benar", "Salah", "Benar"],
+        topic: "Interpretasi Diagram Batang",
+        explanation: "Total = 180, Rata-rata = 36 (Benar). Kamis+Jumat = 80, Senin-Rabu = 100 (Salah). Kenaikan terbesar Rabu ke Kamis = 15 buah (Benar). (Kunci: Benar, Salah, Benar)"
       }
     ];
 
@@ -777,8 +775,8 @@
         "Paket 5": { title: "Matematika - Soal Paket 5", questions: SOAL_30_MATEMATIKA }
       },
       indonesia: {
-        "Paket 1": { title: "Bahasa Indonesia - Soal Paket 1", questions: SOAL_30_BAHASA_INDONESIA_PAKET_1 },
-        "Paket 2": { title: "Bahasa Indonesia - Soal Paket 2", questions: SOAL_30_BAHASA_INDONESIA_PAKET_2 },
+        "Paket 1": { title: "Bahasa Indonesia - Soal Paket 1", questions: [] },
+        "Paket 2": { title: "Bahasa Indonesia - Soal Paket 2", questions: [] },
         "Paket 3": { title: "Bahasa Indonesia - Soal Paket 3", questions: [] },
         "Paket 4": { title: "Bahasa Indonesia - Soal Paket 4", questions: [] },
         "Paket 5": { title: "Bahasa Indonesia - Soal Paket 5", questions: [] }
