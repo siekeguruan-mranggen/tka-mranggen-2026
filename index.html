@@ -12,18 +12,10 @@
     .font-cinzel { font-family: 'Cinzel', serif; }
     .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #14b8a6; border-radius: 4px; }
-    
-    .no-select {
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
+    .no-select { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
     .hidden { display: none !important; }
     .card-subject { border-radius: 1.5rem; overflow: hidden; background: #ffffff; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); border: 1px solid #e2e8f0; cursor: pointer; transition: all 0.2s ease; }
     .card-subject:hover { transform: translateY(-4px); }
-    .btn-subject { background-color: #e0e7ff; color: #3730a3; padding: 0.75rem; border-radius: 1rem; font-weight: 900; width: 100%; border: none; cursor: pointer; }
-    .btn-subject:hover { background-color: #c7d2fe; }
     @media print {
       body { background: white !important; }
       body * { visibility: hidden; }
@@ -59,13 +51,12 @@
       </div>
     </div>
   </header>
+
   <!-- CONTAINER UTAMA -->
   <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 flex flex-col justify-center">
     
-    <!-- SCREEN 0: PILIH MATA PELAJARAN UTAMA -->
+    <!-- SCREEN 0: PILIH MATA PELAJARAN -->
     <div id="viewSubjects" class="max-w-4xl mx-auto w-full text-center py-6">
-      
-      <!-- LOGO KABUPATEN DEMAK DI ATAS TULISAN TKA -->
       <div class="flex justify-center mb-3">
         <img src="logo_demak.png" alt="Logo Kabupaten Demak" class="w-16 h-20 sm:w-20 sm:h-24 object-contain drop-shadow-md">
       </div>
@@ -74,38 +65,42 @@
       </span>
       <h2 class="text-3xl sm:text-4xl font-black text-slate-800 tracking-tight">Pilih Mata Pelajaran</h2>
       <p class="text-slate-600 text-xs sm:text-sm max-w-lg mx-auto mt-2 mb-8 font-medium">
-        Silakan pilih mata pelajaran untuk dikerjakan hari ini.
+        Silakan klik pada kartu mata pelajaran di bawah untuk mulai mengerjakan.
       </p>
+      
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto mb-8">
-        <!-- KARTU MATEMATIKA (HIJAU) -->
+        <!-- KARTU MATEMATIKA -->
         <div onclick="selectSubject('matematika')" class="card-subject flex flex-col">
-          <div class="bg-emerald-600 py-14 flex items-center justify-center shadow-inner">
+          <div class="bg-emerald-600 py-12 flex items-center justify-center shadow-inner pointer-events-none">
             <h3 class="text-white text-3xl font-black tracking-wide">MATEMATIKA</h3>
           </div>
-          <div class="p-5 bg-white flex-1 flex flex-col justify-between">
+          <div class="p-5 bg-white flex-1 flex flex-col justify-between pointer-events-none">
             <p class="text-xs text-slate-500 font-semibold mb-4">Ujicoba & Paket 1 - 5</p>
-            <button class="w-full bg-emerald-50 text-emerald-800 py-2.5 rounded-xl font-extrabold text-xs uppercase tracking-wider border border-emerald-200 pointer-events-none">
+            <div class="w-full bg-emerald-50 text-emerald-800 py-2.5 rounded-xl font-extrabold text-xs uppercase tracking-wider border border-emerald-200 text-center">
               Pilih Paket
-            </button>
+            </div>
           </div>
         </div>
-        <!-- KARTU BAHASA INDONESIA (UNGU) -->
+
+        <!-- KARTU BAHASA INDONESIA -->
         <div onclick="selectSubject('indonesia')" class="card-subject flex flex-col">
-          <div class="bg-purple-600 py-14 flex items-center justify-center shadow-inner">
+          <div class="bg-purple-600 py-12 flex items-center justify-center shadow-inner pointer-events-none">
             <h3 class="text-white text-3xl font-black tracking-wide">BAHASA INDONESIA</h3>
           </div>
-          <div class="p-5 bg-white flex-1 flex flex-col justify-between">
+          <div class="p-5 bg-white flex-1 flex flex-col justify-between pointer-events-none">
             <p class="text-xs text-slate-500 font-semibold mb-4">Paket 1 - 5</p>
-            <button class="w-full bg-purple-50 text-purple-800 py-2.5 rounded-xl font-extrabold text-xs uppercase tracking-wider border border-purple-200 pointer-events-none">
+            <div class="w-full bg-purple-50 text-purple-800 py-2.5 rounded-xl font-extrabold text-xs uppercase tracking-wider border border-purple-200 text-center">
               Pilih Paket
-            </button>
+            </div>
           </div>
         </div>
       </div>
+
       <div class="pt-4 text-xs font-bold text-slate-500 text-center no-print">
         Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
       </div>
     </div>
+
     <!-- SCREEN 0.5: PILIH PAKET SOAL -->
     <div id="viewPackages" class="hidden max-w-4xl mx-auto w-full text-center py-6">
       <button onclick="showScreen('viewSubjects')" class="inline-flex items-center text-xs font-bold text-teal-700 hover:text-teal-900 mb-5 cursor-pointer">
@@ -121,6 +116,7 @@
         Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
       </div>
     </div>
+
     <!-- SCREEN 1: REGISTRASI & TOKEN -->
     <div id="viewRegistration" class="hidden max-w-lg mx-auto bg-white/95 rounded-3xl p-6 sm:p-8 shadow-xl border border-teal-100 relative">
       <button onclick="showScreen('viewPackages')" class="inline-flex items-center text-xs font-bold text-teal-700 hover:text-teal-900 mb-5 cursor-pointer">
@@ -155,7 +151,7 @@
         <div>
           <label class="block text-xs font-extrabold text-teal-800 uppercase tracking-wider mb-1.5">Token Akses Paket</label>
           <div class="relative">
-            <input type="text" id="regToken" placeholder="Ketik token sesuai paket..." class="w-full px-4 py-3 rounded-2xl border-2 border-teal-300 focus:ring-2 focus:ring-teal-500 outline-none text-xs sm:text-sm font-mono font-black tracking-widest uppercase bg-teal-50/50">
+            <input type="text" id="regToken" placeholder="Ketik token sesuai admin..." class="w-full px-4 py-3 rounded-2xl border-2 border-teal-300 focus:ring-2 focus:ring-teal-500 outline-none text-xs sm:text-sm font-mono font-black tracking-widest uppercase bg-teal-50/50">
             <span class="absolute right-3.5 top-3.5 text-xs text-teal-600 font-bold">🔑 TOKEN</span>
           </div>
           <p id="tokenErrorMsg" class="hidden text-rose-600 text-xs font-bold mt-1.5">⚠️ Token salah atau paket terkunci admin!</p>
@@ -175,6 +171,7 @@
         Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
       </div>
     </div>
+
     <!-- SCREEN 3: CBT ENGINE -->
     <div id="viewExam" class="hidden">
       <div class="bg-white/95 rounded-2xl p-4 mb-4 shadow-sm border border-teal-100 flex flex-wrap items-center justify-between gap-3">
@@ -182,10 +179,9 @@
           <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-teal-500 to-emerald-600 text-white font-black flex items-center justify-center text-sm" id="userInitial">S</div>
           <div>
             <h3 class="text-sm font-extrabold text-slate-800 leading-tight" id="examStudentName">Nama Peserta</h3>
-            <p class="text-xs text-slate-500 font-medium" id="examStudentSchool">SD Mranggen • Kelas VI</p>
+            <p class="text-xs text-slate-500 font-medium" id="examStudentSchool">Mranggen • Kelas VI</p>
           </div>
         </div>
-        
         <div class="flex items-center gap-3">
           <div class="flex items-center gap-2 px-4 py-2 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700">
             <svg class="w-4 h-4 animate-pulse text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -243,20 +239,18 @@
           </div>
         </div>
       </div>
-      
       <div class="pt-4 text-xs font-bold text-slate-500 text-center no-print">
         Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
       </div>
     </div>
-    <!-- SCREEN 4: HASIL NILAI SISWA -->
+
+    <!-- SCREEN 4: HASIL NILAI -->
     <div id="viewResult" class="hidden max-w-3xl mx-auto space-y-6">
       <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-teal-100 text-center">
         <div class="w-16 h-16 rounded-3xl bg-teal-100 text-teal-700 flex items-center justify-center mx-auto mb-3 shadow-inner">
           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
         <h2 class="text-2xl font-black text-slate-800">Ujian Telah Selesai!</h2>
-        
-        <!-- KOTAK MOTIVASI DINAMIS -->
         <div id="motivationBox" class="my-4 p-4 rounded-2xl border text-xs sm:text-sm font-bold shadow-sm"></div>
         <p class="text-xs font-semibold text-slate-500 mt-1" id="submitStatusText">Nilai tryout Anda telah otomatis tersimpan di server cloud Korwil Mranggen.</p>
         
@@ -282,7 +276,7 @@
             <span class="text-[10px] text-slate-400 block">Pengerjaan</span>
           </div>
         </div>
-        <!-- KLAIM PIAGAM -->
+
         <div id="certificateClaimBox" class="hidden p-4 rounded-2xl bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 text-white shadow-lg mb-6 text-center">
           <span class="text-2xl block mb-1">🎉</span>
           <h4 class="font-black text-sm uppercase tracking-wide">Selamat! Kamu Memenuhi Syarat Kelulusan</h4>
@@ -312,40 +306,29 @@
       </div>
     </div>
   </main>
+
   <!-- MODAL PIAGAM DIGITAL -->
   <div id="certificateModal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
     <div class="bg-white max-w-4xl w-full rounded-2xl shadow-2xl relative p-3 sm:p-6 text-center border-4 border-amber-300">
       <div class="flex items-center justify-between mb-3 no-print">
         <span class="text-xs font-bold text-amber-800">Pratinjau Piagam Penghargaan</span>
         <div class="flex items-center gap-2">
-          <button onclick="window.print()" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-lg transition cursor-pointer">
-            🖨️ Cetak / Simpan PDF
-          </button>
-          <button onclick="closeCertificateModal()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-lg transition cursor-pointer">
-            ✕ Tutup
-          </button>
+          <button onclick="window.print()" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-lg transition cursor-pointer">🖨️ Cetak / Simpan PDF</button>
+          <button onclick="closeCertificateModal()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-lg transition cursor-pointer">✕ Tutup</button>
         </div>
       </div>
-      
       <div class="p-6 sm:p-10 border-8 border-double border-amber-500 bg-gradient-to-b from-amber-50/40 via-white to-amber-50/40 rounded-xl shadow-inner text-slate-900">
         <div class="text-center space-y-1 mb-4">
           <p class="text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-teal-800">KORWIL BIDDIKBUD KECAMATAN MRANGGEN • SEKSI KEGURUAN</p>
           <h2 class="font-cinzel text-2xl sm:text-4xl font-extrabold text-amber-700 tracking-wider">PIAGAM PENGHARGAAN</h2>
           <p class="text-[11px] font-mono text-slate-500" id="certNumber">No: 400.3.11.1/TKA-MRG/2026/001</p>
         </div>
-        
         <p class="text-xs sm:text-sm text-slate-600 mb-2 font-medium">Diberikan dengan penuh apresiasi kepada:</p>
-        <h3 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight underline decoration-amber-500 decoration-2 underline-offset-8 mb-3" id="certStudentName">
-          NAMA LENGKAP SISWA
-        </h3>
-        <p class="text-xs sm:text-sm font-bold text-slate-700 mb-4" id="certStudentSchool">
-          SD NEGERI BANDUNGREJO 1 MRANGGEN
-        </p>
-        
+        <h3 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight underline decoration-amber-500 decoration-2 underline-offset-8 mb-3" id="certStudentName">NAMA LENGKAP SISWA</h3>
+        <p class="text-xs sm:text-sm font-bold text-slate-700 mb-4" id="certStudentSchool">SD NEGERI BANDUNGREJO 1 MRANGGEN</p>
         <p class="text-xs sm:text-sm max-w-2xl mx-auto text-slate-700 leading-relaxed mb-6 font-medium">
-          Atas keberhasilan menyelesaikan <b>Simulasi Ujian Tes Kemampuan Akademik (TKA) Kelas VI</b> pada mata pelajaran <b id="certSubjectName">Matematika</b> (<span id="certPackageName">Paket 2</span>) dengan capaian nilai:
+          Atas keberhasilan menyelesaikan <b>Simulasi Ujian Tes Kemampuan Akademik (TKA) Kelas VI</b> pada mata pelajaran <b id="certSubjectName">Matematika</b> (<span id="certPackageName">Paket 1</span>) dengan capaian nilai:
         </p>
-        
         <div class="inline-flex items-center gap-4 px-6 py-2 bg-amber-100/80 border-2 border-amber-400 rounded-2xl mb-8 shadow-sm">
           <div>
             <span class="block text-[10px] font-black uppercase text-amber-800">NILAI AKHIR</span>
@@ -357,22 +340,18 @@
             <span class="text-xs font-black text-emerald-800" id="certPredicate">SANGAT MEMUASKAN</span>
           </div>
         </div>
-        
         <div class="grid grid-cols-2 gap-4 sm:gap-12 px-4 sm:px-12 text-left text-slate-900 pt-3">
           <div class="space-y-0.5">
             <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Mengetahui</p>
             <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Korwil Biddikbud Kec. Mranggen</p>
             <div class="h-20 sm:h-24 flex items-center py-1">
-              <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
-                <path d="M 18,52 C 32,48 48,32 56,26 C 64,20 70,18 68,28 C 64,46 52,62 36,68 C 22,73 18,68 26,62 C 36,55 56,40 80,34 C 78,44 74,56 70,62 C 66,68 60,64 72,56 C 90,45 104,42 118,44 C 112,48 106,55 102,60 C 98,64 103,62 110,56 C 120,48 134,44 148,45 L 245,47" fill="none" stroke="#1d4ed8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none"><path d="M 18,52 C 32,48 48,32 56,26 C 64,20 70,18 68,28 C 64,46 52,62 36,68 C 22,73 18,68 26,62 C 36,55 56,40 80,34 C 78,44 74,56 70,62 C 66,68 60,64 72,56 C 90,45 104,42 118,44 C 112,48 106,55 102,60 C 98,64 103,62 110,56 C 120,48 134,44 148,45 L 245,47" fill="none" stroke="#1d4ed8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <div>
               <p class="font-black text-xs sm:text-sm text-slate-900 leading-tight">Sunarto, S.Pd., M.Pd.</p>
               <p class="font-bold text-slate-800 text-[11px] sm:text-xs">NIP 19670915 199103 1 010</p>
             </div>
           </div>
-          
           <div class="space-y-0.5 relative">
             <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Ketua</p>
             <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Sie Keguruan,</p>
@@ -383,25 +362,14 @@
                   <ellipse cx="120" cy="70" rx="103" ry="53" fill="none" stroke="#4f46e5" stroke-width="1.8" style="stroke-opacity: 0.85;"/>
                   <line x1="22" y1="52" x2="218" y2="52" stroke="#4f46e5" stroke-width="2" style="stroke-opacity: 0.85;"/>
                   <line x1="22" y1="88" x2="218" y2="88" stroke="#4f46e5" stroke-width="2" style="stroke-opacity: 0.85;"/>
-                  <defs>
-                    <path id="stampPathTop" d="M 32,70 A 88,44 0 0,1 208,70" fill="none"/>
-                    <path id="stampPathBottom" d="M 28,70 A 92,48 0 0,0 212,70" fill="none"/>
-                  </defs>
-                  <text fill="#4338ca" font-size="11" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" letter-spacing="3.5">
-                    <textPath href="#stampPathTop" startOffset="50%" text-anchor="middle">KORWIL BIDDIKBUD</textPath>
-                  </text>
-                  <text fill="#4338ca" font-size="10.5" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" letter-spacing="2.2">
-                    <textPath href="#stampPathBottom" startOffset="50%" text-anchor="middle">★ KECAMATAN MRANGGEN ★</textPath>
-                  </text>
-                  <text x="120" y="74" text-anchor="middle" fill="#4338ca" font-size="17" font-weight="900" font-family="'Cinzel', serif" letter-spacing="2">
-                    SIE KEGURUAN
-                  </text>
+                  <text fill="#4338ca" font-size="11" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" letter-spacing="3.5"><textPath href="#stampPathTop" startOffset="50%" text-anchor="middle">KORWIL BIDDIKBUD</textPath></text>
+                  <text fill="#4338ca" font-size="10.5" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" letter-spacing="2.2"><textPath href="#stampPathBottom" startOffset="50%" text-anchor="middle">★ KECAMATAN MRANGGEN ★</textPath></text>
+                  <text x="120" y="74" text-anchor="middle" fill="#4338ca" font-size="17" font-weight="900" font-family="'Cinzel', serif" letter-spacing="2">SIE KEGURUAN</text>
+                  <defs><path id="stampPathTop" d="M 32,70 A 88,44 0 0,1 208,70" fill="none"/><path id="stampPathBottom" d="M 28,70 A 92,48 0 0,0 212,70" fill="none"/></defs>
                 </svg>
               </div>
               <div class="relative z-20 w-full h-full flex items-center">
-                <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
-                  <path d="M 35,46 C 45,28 60,18 75,18 C 88,18 95,28 92,44 C 88,60 74,72 58,72 C 45,72 40,62 48,50 C 60,34 92,26 128,26 C 170,26 215,30 260,34 M 82,32 C 95,40 108,55 118,65 M 78,56 C 98,52 145,46 195,48 M 80,68 C 110,64 160,58 210,60" fill="none" stroke="#0f172a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none"><path d="M 35,46 C 45,28 60,18 75,18 C 88,18 95,28 92,44 C 88,60 74,72 58,72 C 45,72 40,62 48,50 C 60,34 92,26 128,26 C 170,26 215,30 260,34 M 82,32 C 95,40 108,55 118,65 M 78,56 C 98,52 145,46 195,48 M 80,68 C 110,64 160,58 210,60" fill="none" stroke="#0f172a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
             </div>
             <div>
@@ -416,11 +384,13 @@
       </div>
     </div>
   </div>
+
   <script>
     const FIREBASE_DB_URL = "https://tka-mranggen-2026-default-rtdb.firebaseio.com/nilai_tryout.json";
     const FIREBASE_SETTINGS_URL = "https://tka-mranggen-2026-default-rtdb.firebaseio.com/pengaturan_ujian.json";
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx0aHffP-wqb_ElNVQtrHJltD2YOMVXzBqdbHqtUzcQzwU59g05agv-pDALvwIbAHFgoA/exec";
     
+    // DAFTAR GABUNGAN MRANGGEN & SAYUNG
     const LIST_SEKOLAH_MRANGGEN = [
       "SD NEGERI BANDUNGREJO 1 MRANGGEN", "SD NEGERI BANDUNGREJO 2 MRANGGEN", "SD NEGERI BANYUMENENG 1",
       "SD NEGERI BANYUMENENG 2", "SD NEGERI BATURSARI 1", "SD NEGERI BATURSARI 2", "SD NEGERI BATURSARI 3",
@@ -435,7 +405,50 @@
       "SD NEGERI TEGALARUM 2", "SD NEGERI WARU", "SD NEGERI WRINGINJAJAR 1", "SD NEGERI WRINGINJAJAR 3",
       "SDS INSAN TELADAN", "SDS ISLAM DIPONEGORO", "SDS ISLAM KAFRAWI", "SDS IT AZ-ZAHRO MRANGGEN",
       "SDS IT MIFTAHUL HIDAYAH", "SDS IT PERMATA BUNDA", "SDS KRISTEN DIAN WACANA", "SDS KY AGENG GIRI",
-      "SDS MUHAMMADIYAH PUCANG GADING", "SDS TERPADU DARUNNAJAH"
+      "SDS MUHAMMADIYAH PUCANG GADING", "SDS TERPADU DARUNNAJAH",
+      // WILAYAH KECAMATAN SAYUNG
+      "SD NEGERI BANJARSARI 1", "SD NEGERI BANJARSARI 2", "SD NEGERI BEDONO 1", "SD NEGERI BULUSARI",
+      "SD NEGERI DALEMAN", "SD NEGERI DOMBO 1", "SD NEGERI JETAKSARI 1", "SD NEGERI KALISARI 1",
+      "SD NEGERI KALISARI 3", "SD NEGERI KARANGASEM 1", "SD NEGERI KARANGASEM 2", "SD NEGERI LOIRENG",
+      "SD NEGERI PILANGSARI", "SD NEGERI PRAMPELAN 1", "SD NEGERI PURWOSARI 1", "SD NEGERI PURWOSARI 2",
+      "SD NEGERI SAYUNG 1", "SD NEGERI SAYUNG 2", "SD NEGERI SAYUNG 3", "SD NEGERI SAYUNG 4",
+      "SD NEGERI SIDOGEMAH 1", "SD NEGERI SIDOGEMAH 2", "SD NEGERI SIDOREJO 1", "SD NEGERI SRIWULAN 1",
+      "SD NEGERI SRIWULAN 3", "SD NEGERI SRIWULAN 4", "SD NEGERI SURODADI 1", "SD NEGERI SURODADI 2",
+      "SD NEGERI TAMBAKROTO", "SD NEGERI TIMBULSLOKO 1", "SD NEGERI TIMBULSLOKO 2", "SD NEGERI TUGU 1",
+      "SDS ISLAM SITI SULAECHAH 2"
+    ];
+
+    const SOAL_30_MATEMATIKA = [
+      { id: 1, type: "PG", text: "1. Hasil dari 16⅔% × 24 - 0,25 × 20 + 1¾ × 4 adalah ....", options: ["3", "4", "6", "8"], correct: 2, topic: "Operasi Hitung Pecahan", explanation: "16⅔% = 1/6; (1/6 × 24) = 4; (0,25 × 20) = 5; (1¾ × 4) = 7. Hasil = 4 - 5 + 7 = 6. (Kunci: C)" },
+      { id: 2, type: "PG", text: "2. Perhatikan tabel berikut!<br><img src='soal2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pasangan yang tepat yang menunjukkan hubungan antara persen dan pecahan biasa adalah ....", options: ["1 - C, 2 - A", "1 - C, 2 - D", "3 - A, 4 - B", "3 - B, 2 - C"], correct: 1, topic: "Persen & Pecahan", explanation: "60% = 3/5 (C) dan 50% = 1/2 (D). (Kunci: B)" },
+      { id: 3, type: "PG", text: "3. Di bawah ini yang bukan merupakan kelipatan persekutuan dari 12 dan 18 adalah ....", options: ["36", "48", "72", "108"], correct: 1, topic: "Kelipatan Persekutuan", explanation: "KPK dari 12 dan 18 adalah 36. Kelipatan persekutuannya adalah 36, 72, 108, dst. Angka 48 bukan kelipatan persekutuan. (Kunci: B)" },
+      { id: 4, type: "PG", text: "4. FPB dari 48, 64, dan 96 adalah ....", options: ["12", "16", "24", "32"], correct: 1, topic: "FPB", explanation: "Faktorisasi prima 48 = 2⁴×3, 64 = 2⁶, 96 = 2⁵×3. FPB = 2⁴ = 16. (Kunci: B)" },
+      { id: 5, type: "PG", text: "5. Budi les renang setiap 6 hari sekali. Deni les renang di tempat yang sama setiap 4 hari sekali. Jika tanggal 2 Januari 2026, mereka berdua les renang bersama untuk yang pertama kali. Tanggal berapa lagi mereka akan belajar berenang untuk yang ketiga kalinya?", options: ["8 Januari 2026", "14 Januari 2026", "20 Januari 2026", "26 Januari 2026"], correct: 3, topic: "KPK Jadwal", explanation: "KPK(6,4) = 12 hari. Pertemuan ke-2 = 2 Jan + 12 = 14 Jan. Pertemuan ke-3 = 14 Jan + 12 = 26 Januari 2026. (Kunci: D)" },
+      { id: 6, type: "PG", text: "6. Pak Yono mempunyai lahan seluas 1,5 hektar. ½ dari lahan tersebut ditanami padi, ⅖ ditanami jagung, dan sisanya ditanami ketela pohon. Luas lahan yang ditanami ketela pohon adalah ....", options: ["7.500 m²", "5.000 m²", "2.500 m²", "1.500 m²"], correct: 3, topic: "Pecahan Luas", explanation: "1,5 ha = 15.000 m². Sisa bagian = 1 - 1/2 - 2/5 = 1/10 bagian. 1/10 × 15.000 = 1.500 m². (Kunci: D)" },
+      { id: 7, type: "PG", text: "7. Perhatikan sifat-sifat bangun datar di bawah ini!<br>a. Sudut-sudut yang berhadapan sama besar.<br>b. Memiliki 4 sisi dan 4 titik sudut.<br>c. Memiliki 2 pasang sisi sejajar yang sama panjang.<br>d. Memiliki 2 sudut tumpul dan 2 sudut lancip.<br>e. Mempunyai dua diagonal yang tidak sama panjang.<br>Berdasarkan ciri-ciri di atas, bangun datar yang dimaksud adalah ...", options: ["jajar genjang", "layang-layang", "belah ketupat", "trapesium"], correct: 0, topic: "Sifat Bangun Datar", explanation: "Ciri-ciri tersebut sesuai dengan bangun datar Jajar Genjang. (Kunci: A)" },
+      { id: 8, type: "PG", text: "8. Kelompok pecahan berikut yang berurutan dari terkecil ke terbesar adalah ....", options: ["225%; 2 12/20; 2 2/5; 2,75; 5/2", "225%; 2 12/20; 2 2/5; 5/2; 2,75", "225%; 2 2/5; 2 12/20; 2,75; 5/2", "225%; 2 12/20; 2 2/5; 2,75; 5/2"], correct: 2, topic: "Urutan Pecahan", explanation: "Nilai desimal: 2,25; 2,4; 2,6; 2,75; 2,5. Urutan terkecil ke terbesar yang benar adalah 225%; 2 2/5; 2 12/20; 2,75; 5/2. (Kunci: C)" },
+      { id: 9, type: "PG", text: "9. Perhatikan gambar trapesium di bawah ini!<br><img src='soal9.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Luas trapesium adalah ....", options: ["104 cm²", "208 cm²", "312 cm²", "416 cm²"], correct: 0, topic: "Luas Trapesium", explanation: "Luas = 1/2 × (7 + 19) × 8 = 104 cm². (Kunci: A)" },
+      { id: 10, type: "PG", text: "10. Perhatikan gambar ketiga persegi berikut!<br><img src='soal10.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Luas ketiga persegi di atas jika dijumlahkan adalah ....", options: ["1.849 cm²", "2.290 cm²", "2.459 cm²", "5.929 cm²"], correct: 2, topic: "Luas Persegi", explanation: "13² + 21² + 43² = 169 + 441 + 1.849 = 2.459 cm². (Kunci: C)" },
+      { id: 11, type: "PG", text: "11. Perhatikan gambar susunan kubus berikut ini!<br><img src='soal11.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Bila dilihat dari depan, susunan kubus tersebut akan tampak seperti ....", options: ["Opsi A", "Opsi B", "Opsi C", "Opsi D"], correct: 0, topic: "Proyeksi Kubus", explanation: "Proyeksi tampak depan sesuai dengan pilihan A. (Kunci: A)" },
+      { id: 12, type: "PG", text: "12. Sebuah kaleng susu berisi 0,8 liter susu. Susu itu diminum Dhika sebanyak ¼ dm³. Lima belas menit kemudian Hima datang dan minum susu tersebut sebanyak 125 ml. Sisa susu dalam kaleng tersebut adalah ....", options: ["450 ml", "425 ml", "375 ml", "350 ml"], correct: 1, topic: "Volume & Konversi", explanation: "0,8 liter = 800 ml. ¼ dm³ = 250 ml. Minum Hima = 125 ml. Sisa = 800 - 250 - 125 = 425 ml. (Kunci: B)" },
+      { id: 13, type: "PG", text: "13. Ibu naik sepeda motor dari rumah ke kantor yang berjarak 15 km dengan kecepatan rata-rata 60 km/jam. Jika ibu berangkat pukul 06.30, maka sampai di kantor pukul ....", options: ["06.40", "06.45", "06.50", "06.55"], correct: 1, topic: "Waktu Tempuh", explanation: "Waktu = 15 / 60 jam = 1/4 jam = 15 menit. Tiba pukul 06.30 + 15 menit = 06.45. (Kunci: B)" },
+      { id: 14, type: "PG", text: "14. Perhatikan tabel berikut:<br><img src='soal14.jpg' class='my-2 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Diagram batang yang sesuai dengan tabel di atas adalah ....<br><div class='grid grid-cols-2 gap-2 my-2'><img src='soal14A.jpg' class='border rounded'><img src='soal14B.jpg' class='border rounded'><img src='soal14C.jpg' class='border rounded'><img src='soal14D.jpg' class='border rounded'></div>", options: ["Diagram A", "Diagram B", "Diagram C", "Diagram D"], correct: 1, topic: "Diagram Batang", explanation: "Diagram batang yang mewakili data secara tepat adalah Diagram B. (Kunci: B)" },
+      { id: 15, type: "PG", text: "15. Perhatikan tabel berikut!<br><img src='soal15.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berdasarkan tabel di atas, pernyataan di bawah ini yang tidak benar adalah ...", options: ["Apel yang terjual lebih sedikit daripada mangga.", "Selisih jeruk dan apel sama dengan jambu.", "Buah yang terjual paling sedikit adalah pisang.", "Buah yang terjual lebih dari 100 biji ada dua jenis."], correct: 3, topic: "Analisis Data", explanation: "Buah > 100 biji ada Mangga (120), Jambu (150), dan Jeruk (250), total ada 3 jenis. Pernyataan D salah. (Kunci: D)" },
+      { id: 16, type: "MCMA", text: "16. Minggu kemarin Dian membawa 5 lembar uang 50rb, 4 lembar 20rb, 2 lembar 10rb. Harga kain Rp400.000, diskon 15%. Pilihlah pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Dian tidak jadi membeli kain karena uangnya kurang.", "Diskon yang diperoleh Dian sebesar Rp60.000,00.", "Sisa uang Dian setelah membayar kain adalah Rp10.000,00."], correct: [1, 2], topic: "Aritmatika Sosial", explanation: "Total uang = Rp350.000. Diskon = 15% × 400.000 = Rp60.000. Bayar = Rp340.000. Sisa = Rp10.000. Opsi 2 dan 3 Benar." },
+      { id: 17, type: "MCMA", text: "17. Perhatikan gambar segitiga siku-siku berikut!<br><img src='soal17.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pilihlah pernyataan-pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Keliling bangun tersebut adalah 56 cm.", "Panjang sisi BC adalah 18 cm.", "Luas bangun di atas adalah 84 cm²."], correct: [0, 2], topic: "Pythagoras & Luas", explanation: "BC = 24 cm. Keliling = 7+24+25 = 56 cm. Luas = 1/2 × 7 × 24 = 84 cm². Opsi 1 dan 3 Benar." },
+      { id: 18, type: "MCMA", text: "18. Perhatikan susunan kubus berikut ini!<br><img src='soal18.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Jika panjang sisi kubus sebesar 5 cm, manakah pernyataan-pernyataan di bawah ini yang benar? (Jawaban benar bisa lebih dari satu)", options: ["Ada 10 buah kubus yang volumenya sama.", "Volume tiap kubus satuan sebesar 125 cm³.", "Luas permukaan kubus yang menempel di bawah sebesar 125 cm²."], correct: [0, 1], topic: "Volume Kubus", explanation: "Kubus berjumlah 10 buah identik, volume kubus 5³ = 125 cm³. Opsi 1 dan 2 Benar." },
+      { id: 19, type: "MCMA", text: "19. Sebuah kaleng susu berbentuk balok dengan panjang 2 dm, lebar 10 cm, tinggi 1,5 dm berisi susu ⅖ bagian. Pilihlah pernyataan di bawah ini yang tepat! (Jawaban benar bisa lebih dari satu)", options: ["Volume kaleng tersebut adalah 3.000 cm³.", "Volume susu dalam kaleng adalah 12 liter.", "Agar kaleng penuh perlu tambahan 1.800 cm³ susu."], correct: [0, 2], topic: "Volume Balok", explanation: "Volume total = 3.000 cm³. Susu = 1.200 cm³. Kekurangan = 1.800 cm³. Opsi 1 dan 3 Benar." },
+      { id: 20, type: "MCMA", text: "20. Jarak M-N 180 km. Banu (50 km/jam) dan Joko (70 km/jam) berangkat pukul 06.00. Pilihlah pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Mereka akan berpapasan pada pukul 07.30.", "Mereka berpapasan pada jarak 75 km dari kota M.", "Pukul 08.30 Joko sudah sampai di kota M."], correct: [0, 1], topic: "Kecepatan Berpapasan", explanation: "Waktu papasan = 1,5 jam (pukul 07.30). Jarak dari M = 50 × 1,5 = 75 km. Opsi 1 dan 2 Benar." },
+      { id: 21, type: "MCMA", text: "21. 2,5 abad + 4 dasawarsa - 5 windu + 2 lustrum = ... Setara dengan: (Jawaban benar bisa lebih dari satu)", options: ["26 dasawarsa", "32 windu", "52 lustrum"], correct: [0, 1, 2], topic: "Satuan Waktu", explanation: "Total 260 tahun = 26 dasawarsa = 32,5 windu = 52 lustrum. Opsi 1, 2, dan 3 Benar." },
+      { id: 22, type: "MCMA", text: "22. Bu Desty mempunyai 72 permen, 64 coklat, dan 32 roti dibagikan ke anak-anak sama banyak. Pilihlah pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Jumlah anak terbanyak yang mendapat makanan adalah 16 anak.", "Jumlah permen yang diterima tiap anak sebanyak 9 buah.", "Setiap anak menerima makanan sebanyak 21 buah."], correct: [0], topic: "FPB", explanation: "FPB = 16 anak. Permen per anak = 72/16 = 4,5 buah. Opsi 1 Benar." },
+      { id: 23, type: "MCMA", text: "23. Perhatikan tabel berikut!<br><img src='soal23.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pilihlah pernyataan berikut yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Selisih pembeli pada hari pertama dan kedua adalah 10 orang.", "Jumlah pembeli pada hari ketiga dan kelima sebanyak 215 orang.", "Ada dua hari yang jumlah pembelinya lebih dari 100 orang."], correct: [0, 1], topic: "Analisis Data", explanation: "Selisih H1-H2 = 10, H3+H5 = 215. Hari > 100 hanya ada 1 hari (H5). Opsi 1 dan 2 Benar." },
+      { id: 24, type: "Kategori", text: "24. Perhatikan gambar bangun datar berikut!<br><img src='soal24.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!", statements: ["Bangun datar tersebut mempunyai dua sumbu simetri.", "Bangun datar tersebut mempunyai dua diagonal yang sama panjang.", "Keempat sudut bangun datar tersebut sama besar."], correct: ["Benar", "Salah", "Salah"], topic: "Bangun Datar", explanation: "Kunci: Benar, Salah, Salah." },
+      { id: 25, type: "Kategori", text: "25. Perhatikan gambar wadah berbentuk balok berikut!<br><img src='soal25.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!", statements: ["Volume wadah seluruhnya adalah 384 cm³.", "Jika diisi air 192 cm³, maka tinggi air dalam wadah 2 cm.", "Jika diisi air 0,5 liter, maka air yang tumpah 116 ml."], correct: ["Benar", "Benar", "Benar"], topic: "Volume Balok", explanation: "Kunci: Benar, Benar, Benar." },
+      { id: 26, type: "Kategori", text: "26. Umur Ali, Beni, Cantika, Diandra (Diandra = 10 tahun). Tentukan <b>Benar</b> atau <b>Salah</b> pada setiap pernyataan berikut!", statements: ["Dari keempat anak, yang paling muda adalah Diandra.", "Jumlah umur Cantika dan Diandra sama dengan umur Beni.", "Dari anak-anak tersebut, yang paling tua umurnya adalah Ali."], correct: ["Benar", "Benar", "Benar"], topic: "Perbandingan Umur", explanation: "Kunci: Benar, Benar, Benar." },
+      { id: 27, type: "Kategori", text: "27. Ibu membeli beras di warung harga Rp75.000, kembalian Rp25.000. Tentukan <b>Benar</b> atau <b>Salah</b> pecahan uang yang dibayarkan ibu!", statements: ["Satu lembar uang seratus ribuan.", "Dua lembar uang lima puluh ribuan.", "Sepuluh lembar uang dua puluh ribuan."], correct: ["Benar", "Benar", "Salah"], topic: "Pecahan Uang", explanation: "Kunci: Benar, Benar, Salah." },
+      { id: 28, type: "Kategori", text: "28. Diskon 20%. Pensil Rp5.000, penggaris 1,5×pensil, buku 2×penggaris. Membeli 1 lusin buku, 5 pensil, 3 penggaris. Tentukan <b>Benar</b> atau <b>Salah</b>!", statements: ["Harga buku yang harus dibayar Bu Upik adalah Rp144.000,00.", "Harga penggaris sebelum didiskon sebesar Rp32.500,00.", "Harga yang harus dibayar Bu Upik semuanya adalah Rp182.000,00."], correct: ["Benar", "Salah", "Benar"], topic: "Aritmatika Sosial", explanation: "Kunci: Benar, Salah, Benar." },
+      { id: 29, type: "Kategori", text: "29. Beras setiap 4 hari, minyak setiap 12 hari. Bersama pertama kali 1 Agustus 2024. Tentukan <b>Benar</b> atau <b>Salah</b>!", statements: ["Tanggal 20 Agustus 2024 Bu Candra hanya membeli beras saja.", "Tanggal 6 September 2024 Bu Candra membeli beras dan minyak goreng secara bersamaan.", "Setiap membeli minyak goreng, Bu Candra pasti membeli beras."], correct: ["Benar", "Benar", "Benar"], topic: "KPK & Kalender", explanation: "Kunci: Benar, Benar, Benar." },
+      { id: 30, type: "Kategori", text: "30. Perhatikan diagram gambar siswa SD Mutiara berikut!<br><img src='soal30.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!", statements: ["Selisih siswa paling banyak dengan paling sedikit adalah 30 anak.", "Jumlah siswa kelas II, III, dan VI sama banyak.", "Jumlah siswa seluruhnya sebanyak 350 anak."], correct: ["Benar", "Salah", "Salah"], topic: "Interpretasi Piktogram", explanation: "Kunci: Benar, Salah, Salah." }
     ];
 
     const SOAL_30_MATEMATIKA_PAKET_2 = [
@@ -445,27 +458,27 @@
         statements: ["Gambar A", "Gambar B", "Gambar C"],
         correct: ["Senilai", "Tidak Senilai", "Senilai"],
         topic: "Pecahan Senilai",
-        explanation: "Gambar Utama menunjukkan 3/6 = 1/2. Gambar A = 2/6 (Senilai/ekuivalen setelah disederhanakan 1/3? Cek kesesuaian: A & C Senilai, B Tidak Senilai). (Kunci: A: Senilai, B: Tidak Senilai, C: Senilai)"
+        explanation: "Gambar Utama menunjukkan 1/3. Gambar A (2/6 = 1/3) Benar, Gambar B (1/4) Salah, Gambar C (3/9 = 1/3) Benar."
       },
       {
         id: 2, type: "PG",
-        text: "2. Ibu membeli sebuah kue lapis legit untuk dibagikan kepada ketiga anaknya. Kakak menerima 1/2 bagian kue, Adik menerima 3/8 bagian kue, dan Bibi menerima 1/4 bagian kue.<br>Urutan nama penerima berdasarkan bagian kue yang diterima, dari yang paling sedikit hingga paling banyak, adalah ....",
-        options: ["Kakak, Adik, Bibi", "Bibi, Kakak, Adik", "Bibi, Adik, Kakak", "Adik, Bibi, Kakak"],
-        correct: 2,
+        text: "2. Ibu membeli kue bolu untuk dibagikan kepada ketiga anaknya sebagai camilan sore. Budi menerima 1/2 bagian kue, Cici menerima 3/8 bagian kue, dan Dedi menerima 3/4 bagian kue.<br>Urutan nama anak berdasarkan bagian kue yang diterima, dari yang paling sedikit hingga paling banyak, adalah ....",
+        options: ["Budi, Cici, Dedi", "Cici, Budi, Dedi", "Dedi, Budi, Cici", "Cici, Dedi, Budi"],
+        correct: 1,
         topic: "Urutan Pecahan",
-        explanation: "Penyebut disamakan ke 8: Kakak = 4/8, Adik = 3/8, Bibi = 2/8 (1/4). Urutan dari terkecil: Bibi (2/8), Adik (3/8), Kakak (4/8). (Kunci: C)"
+        explanation: "Penyebut disamakan ke 8: Budi = 4/8, Cici = 3/8, Dedi = 6/8. Urutan terkecil ke terbesar: Cici (3/8), Budi (4/8), Dedi (6/8). (Kunci: B)"
       },
       {
         id: 3, type: "MCMA",
-        text: "3. Pak Andi memiliki 150 butir kelereng. Kelereng tersebut dibagikan kepada tiga orang keponakannya:<br>- Rian menerima 2/5 bagian.<br>- Bimo menerima 0,25 bagian.<br>- Yoga menerima seluruh sisa kelereng.<br>Pilihlah pernyataan yang benar mengenai kelereng Yoga! (Jawaban benar lebih dari satu)",
+        text: "3. Pada hari Minggu, Ibu Rina membuat 120 potong kue untuk dibagikan kepada tiga keluarga tetangganya dengan ketentuan:<br>- Keluarga Pak Ahmad menerima 1/4 bagian dari seluruh kue.<br>- Keluarga Bu Siti menerima 0,35 bagian dari seluruh kue.<br>- Keluarga Pak Budi menerima seluruh kue yang tersisa.<br>Berdasarkan informasi tersebut, manakah pernyataan yang benar mengenai bagian kue yang diterima keluarga Pak Budi? (Pilih semua jawaban yang benar)",
         options: [
-          "Yoga menerima 52,5 butir kelereng.",
-          "Yoga menerima 7/20 bagian dari seluruh kelereng.",
-          "Yoga menerima 35% dari seluruh kelereng."
+          "Keluarga Pak Budi menerima 48 potong kue.",
+          "Keluarga Pak Budi menerima 2/5 bagian dari seluruh kue.",
+          "Keluarga Pak Budi menerima 45% dari seluruh kue."
         ],
-        correct: [1, 2],
+        correct: [0, 1],
         topic: "Pecahan & Persen",
-        explanation: "Rian = 40% (60 butir), Bimo = 25% (37,5 butir). Sisa Yoga = 100% - 65% = 35% = 7/20 bagian = 52,5 butir. Pernyataan A salah (tertulis 52,5 butir, koreksi: 52,5 butir benar secara nilai hitung, namun mari ikuti kunci A dan B atau B dan C sesuai naskah: B dan C benar)."
+        explanation: "Pak Ahmad = 30 potong. Bu Siti = 42 potong. Sisa Pak Budi = 120 - 72 = 48 potong (2/5 bagian atau 40%). Opsi A dan B Benar."
       },
       {
         id: 4, type: "PG",
@@ -477,15 +490,15 @@
       },
       {
         id: 5, type: "MCMA",
-        text: "5. Bu Mila mempunyai persediaan tepung terigu sebanyak 40 kg. Ia akan membuat 8 loyang kue (tiap loyang 3/4 kg). Setelah membuat kue, Bu Mila membeli lagi 2 3/4 kg.<br>Manakah pernyataan yang benar? (Jawaban benar lebih dari satu)",
+        text: "5. Bu Mila mempunyai persediaan tepung terigu sebanyak 40 kg. Ia akan membuat 8 loyang kue. Setiap loyang membutuhkan tepung sebanyak ¾ kg. Setelah membuat kue, bu Mila membeli tepung sebanyak 1 ¼ kg, untuk menambah persediaannya.<br>Berdasarkan informasi tersebut, manakah pernyataan yang benar? (Pilih semua jawaban yang benar)",
         options: [
           "Tepung untuk membuat 8 loyang kue adalah 6 kg.",
-          "Jumlah tepung Bu Mila setelah membeli tepung kembali adalah 36 3/4 kg.",
-          "Sisa tepung Bu Mila setelah membuat kue adalah 34 kg."
+          "Jumlah tepung Bu Mila setelah membeli tepung kembali adalah 36 ¼ kg.",
+          "Sisa tepung Bu Mila setelah membuat kue adalah ¾ kg."
         ],
         correct: [0, 2],
         topic: "Aritmatika Pecahan",
-        explanation: "8 × 3/4 = 6 kg (Benar). Sisa setelah kue = 40 - 6 = 34 kg (Benar). Total akhir 34 + 2 3/4 = 36 3/4 kg (Pernyataan B salah di kunci soal asli, jadi jawaban benar A dan C)."
+        explanation: "Kue = 8 × 3/4 = 6 kg (Benar). Sisa setelah kue = 40 - 6 = 34 kg. Opsi 1 dan 3 Benar."
       },
       {
         id: 6, type: "PG",
@@ -493,19 +506,19 @@
         options: ["6", "12", "24", "72"],
         correct: 1,
         topic: "FPB",
-        explanation: "FPB dari 36, 48, dan 72 adalah 12. (Kunci: B)"
+        explanation: "Faktorisasi prima 36 = 2²×3², 48 = 2⁴×3, 72 = 2³×3². FPB = 2²×3 = 12. (Kunci: B)"
       },
       {
         id: 7, type: "PG",
-        text: "7. Di SD Negeri Batursari 3 terdapat tiga kegiatan ekstrakurikuler. Pramuka setiap 4 hari sekali, tari setiap 6 hari sekali, dan musik setiap 8 hari sekali. Jika hari ini bersamaan, berapa hari lagi bersamaan lagi?",
+        text: "7. Di SD Negeri Sayung 3 terdapat tiga kegiatan ekstrakurikuler. Pramuka dilaksanakan setiap 4 hari sekali, latihan tari setiap 6 hari sekali, dan latihan musik setiap 8 hari sekali. Jika hari ini ketiga kegiatan dilaksanakan bersama-sama, berapa hari lagi ketiga kegiatan tersebut akan dilaksanakan secara bersamaan?",
         options: ["12 hari", "16 hari", "24 hari", "32 hari"],
         correct: 2,
         topic: "KPK Ekstrakurikuler",
-        explanation: "KPK dari 4, 6, dan 8 adalah 24 hari. (Kunci: C)"
+        explanation: "KPK(4, 6, 8) = 24 hari. (Kunci: C)"
       },
       {
         id: 8, type: "MCMA",
-        text: "8. Yasmin menyiapkan 56 mawar, 72 melati, dan 48 matahari untuk dirangkai sama banyak tanpa sisa. Pilihlah pernyataan yang benar! (Jawaban benar lebih dari satu)",
+        text: "8. Yasmin akan membuat rangkaian bunga untuk peringatan Hari Guru. Ia menyiapkan 56 kuntum bunga mawar, 72 kuntum bunga melati, dan 48 kuntum bunga matahari. Yasmin ingin membuat rangkaian bunga sebanyak-banyaknya tanpa sisa.<br>Pilihlah pernyataan yang benar! (Pilih semua jawaban yang benar)",
         options: [
           "Paling banyak rangkaian bunga yang dapat dibuat Yasmin adalah 8 rangkaian.",
           "Setiap rangkaian berisi 9 kuntum bunga melati dan 7 kuntum bunga mawar.",
@@ -513,11 +526,11 @@
         ],
         correct: [0, 1],
         topic: "FPB Rangkaian Bunga",
-        explanation: "FPB(56,72,48) = 8. Mawar = 7, Melati = 9, Matahari = 6. Opsi A & B Benar."
+        explanation: "FPB(56, 72, 48) = 8. Mawar = 56/8 = 7, Melati = 72/8 = 9, Matahari = 48/8 = 6. Opsi 1 dan 2 Benar."
       },
       {
         id: 9, type: "Kategori",
-        text: "9. Membaca bersama setiap 9 hari, peminjaman buku setiap 12 hari. Bersama pada 1 November 2026. Tentukan Benar atau Salah!",
+        text: "9. Perpustakaan sekolah mengadakan kegiatan membaca bersama setiap 9 hari sekali. Kegiatan peminjaman buku khusus dilaksanakan setiap 12 hari sekali. Pada tanggal 1 November 2026, kedua kegiatan tersebut dilaksanakan bersamaan.<br>Tentukan apakah setiap pernyataan berikut Benar atau Salah!",
         statements: [
           "KPK dari 9 dan 12 adalah 36.",
           "Dalam 72 hari setelah tanggal awal, kedua kegiatan akan berlangsung bersama sebanyak 3 kali.",
@@ -525,7 +538,7 @@
         ],
         correct: ["Benar", "Salah", "Benar"],
         topic: "KPK & Kalender",
-        explanation: "KPK = 36. Dalam 72 hari hanya 2 kali pertemuan (72/36). 1 Nov + 36 hari = 7 Desember 2026. (Kunci: Benar, Salah, Benar)"
+        explanation: "KPK = 36. Dalam 72 hari hanya 2 kali pertemuan (72/36). Pertemuan berikutnya 1 Nov + 36 hari = 7 Desember 2026."
       },
       {
         id: 10, type: "PG",
@@ -538,11 +551,11 @@
         ],
         correct: 2,
         topic: "Proyeksi Bangun Ruang",
-        explanation: "Sesuai dengan tampilan tangga bertingkat pada Gambar C. (Kunci: C)"
+        explanation: "Tampilan depan menunjukkan tangga kubus bertingkat sesuai Gambar C. (Kunci: C)"
       },
       {
         id: 11, type: "PG",
-        text: "11. Setiap 1 unit pola ubin terdiri dari 1 persegi dikelilingi 4 persegi panjang (<img src='soal11_p2.jpg' class='inline-block w-12 h-12 object-contain'>). Pak Rahmad menyusun 5 unit pola secara berjajar. Berapa banyak ubin persegi panjang yang dibutuhkan?",
+        text: "11. Pak Rahmad akan memasang ubin di teras rumahnya menggunakan pola gabungan bangun datar. Setiap satu unit pola terdiri atas sebuah ubin berbentuk persegi yang dikelilingi empat ubin berbentuk persegi panjang, seperti pada gambar.<br><img src='soal11_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pak Rahmad akan menyusun 5 unit pola secara berjajar. Berapa banyak ubin berbentuk persegi panjang yang dibutuhkan Pak Rahmad?",
         options: ["12 ubin", "16 ubin", "20 ubin", "24 ubin"],
         correct: 2,
         topic: "Pola Bilangan & Geometri",
@@ -550,7 +563,7 @@
       },
       {
         id: 12, type: "MCMA",
-        text: "12. Akuarium balok p = 80 cm, l = 40 cm, t = 50 cm berisi air setengah dari kapasitas totalnya. Pilihlah pernyataan yang benar! (Jawaban benar lebih dari satu)",
+        text: "12. Sebuah akuarium berbentuk balok memiliki panjang 80 cm, lebar 40 cm, dan tinggi 50 cm. Akuarium tersebut berisi air sebanyak setengah dari kapasitas totalnya.<br>Manakah pernyataan yang benar mengenai volume akuarium dan air di dalamnya? (Pilih semua jawaban yang benar)",
         options: [
           "Volume akuarium jika terisi penuh adalah 160 liter.",
           "Volume air yang terdapat dalam akuarium adalah 80 liter.",
@@ -558,23 +571,23 @@
         ],
         correct: [0, 1],
         topic: "Volume Balok",
-        explanation: "Volume total = 160 liter. Air setengahnya = 80 liter. Sisa air agar penuh = 80 liter. Opsi A dan B Benar."
+        explanation: "Volume total = 80×40×50 = 160.000 cm³ = 160 liter. Air = 80 liter. Sisa air = 80 liter. Opsi 1 dan 2 Benar."
       },
       {
         id: 13, type: "PG",
-        text: "13. Perhatikan tumpukan kubus berikut!<br><img src='soal13_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Susunan tersebut akan dilengkapi menjadi kubus 3×3×3. Berapa kubus satuan yang perlu ditambahkan?",
+        text: "13. Perhatikan gambar susunan kubus satuan berikut!<br><img src='soal13_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Susunan tersebut akan dilengkapi menjadi sebuah kubus berukuran 3 × 3 × 3 kubus satuan. Berapa banyak kubus satuan yang perlu ditambahkan agar terbentuk kubus yang utuh?",
         options: ["8 kubus", "9 kubus", "10 kubus", "11 kubus"],
         correct: 2,
         topic: "Volume Kubus Satuan",
-        explanation: "Total utuh = 27. Tersedia = 9 + 7 + 1 = 17. Kekurangan = 27 - 17 = 10 kubus. (Kunci: C)"
+        explanation: "Total kubus 3×3×3 = 27. Kubus yang tersedia = 9 + 7 + 1 = 17. Kekurangan = 27 - 17 = 10 kubus. (Kunci: C)"
       },
       {
         id: 14, type: "Kategori",
-        text: "14. Perhatikan gambar pengukuran Pensil (A) dan Penghapus (B) dengan penggaris!<br><img src='soal14_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan kebenaran setiap pernyataan berikut!",
+        text: "14. Perhatikan gambar hasil pengukuran panjang Pensil (Benda A) dan Penghapus (Benda B) menggunakan penggaris dalam satuan sentimeter (cm) di bawah ini!<br><img src='soal14_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berdasarkan hasil pengukuran pada gambar di atas, tentukan kebenaran untuk setiap pernyataan berikut!",
         statements: [
           "Panjang pensil 3 cm lebih panjang daripada penghapus.",
           "Jumlah panjang pensil dan penghapus jika digabungkan adalah 13 cm.",
-          "Selisih panjang antara penghapus dan pensil adalah 12 cm."
+          "Selisih panjang antara pensil dan penghapus adalah 12 cm."
         ],
         correct: ["Benar", "Benar", "Salah"],
         topic: "Pengukuran Panjang",
@@ -582,7 +595,7 @@
       },
       {
         id: 15, type: "PG",
-        text: "15. Data panjang: Pensil 180 mm, Buku tulis 2,2 dm, Meja belajar 1,1 m, Pagar kebun 1 dam. Urutan dari terpendek ke terpanjang adalah ....",
+        text: "15. Perhatikan data panjang empat benda berikut!<br><img src='soal15_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Urutan benda berdasarkan panjangnya, mulai dari yang terpendek hingga yang terpanjang, adalah ....",
         options: [
           "Pensil – Buku tulis – Meja belajar – Pagar kebun",
           "Buku tulis – Pensil – Meja belajar – Pagar kebun",
@@ -591,11 +604,11 @@
         ],
         correct: 0,
         topic: "Konversi Satuan Panjang",
-        explanation: "18 cm, 22 cm, 110 cm, 1.000 cm. Urutan: Pensil, Buku tulis, Meja belajar, Pagar kebun. (Kunci: A)"
+        explanation: "Pensil = 18 cm, Buku tulis = 22 cm, Meja = 110 cm, Pagar = 1.000 cm. (Kunci: A)"
       },
       {
         id: 16, type: "MCMA",
-        text: "16. Perhatikan gambar wadah air:<br><img src='soal16_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pilihlah pernyataan yang benar! (Jawaban benar lebih dari satu)",
+        text: "16. Seorang ibu sedang menyiapkan minuman di dapur. Di atas meja terdapat tiga wadah berisi air dengan satuan volume yang berbeda, seperti ditunjukkan pada gambar berikut.<br><img src='soal16_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berdasarkan informasi pada gambar, manakah pernyataan yang benar mengenai volume air dalam ketiga wadah tersebut? (Pilih semua jawaban yang benar)",
         options: [
           "Volume air pada Wadah 1 setara dengan 3 liter.",
           "Volume air pada Wadah 1 sama dengan Wadah 2.",
@@ -603,11 +616,11 @@
         ],
         correct: [0, 1],
         topic: "Konversi Volume",
-        explanation: "Wadah 1 = 3.000 cm³ = 3 liter (Benar). Wadah 1 dan 2 sama-sama 3 liter (Benar). Wadah 3 = 300 ml = 0,3 liter (Salah). Opsi A dan B Benar."
+        explanation: "Wadah 1 = 3.000 cm³ = 3 liter. Wadah 2 = 3 liter. Wadah 3 = 300 ml = 0,3 liter. Opsi 1 dan 2 Benar."
       },
       {
         id: 17, type: "Kategori",
-        text: "17. Wadah A = 4,5 dal, Wadah B = 350 dl, Wadah C = 40.000 ml. Tentukan Benar atau Salah!",
+        text: "17. Pak Budi memiliki warung makan dengan persediaan minuman:<br>- Wadah A berisi 4,5 dal jus jeruk.<br>- Wadah B berisi 350 dl es teh manis.<br>- Wadah C berisi 40.000 ml air mineral.<br>Berdasarkan informasi tersebut, tentukan apakah setiap pernyataan berikut benar atau salah!",
         statements: [
           "Volume minuman pada Wadah A lebih banyak daripada volume minuman pada Wadah C.",
           "Jumlah volume minuman pada Wadah B dan Wadah C adalah 75 liter.",
@@ -615,11 +628,11 @@
         ],
         correct: ["Benar", "Benar", "Salah"],
         topic: "Konversi Volume Lanjutan",
-        explanation: "A = 45L, B = 35L, C = 40L. A > C (45 > 40) Benar. B + C = 35 + 40 = 75L Benar. Selisih A & B = 10L (1.000 cl), bukan 100 cl (Salah)."
+        explanation: "A = 45 liter, B = 35 liter, C = 40 liter. (Kunci: Benar, Benar, Salah)"
       },
       {
         id: 18, type: "Kategori",
-        text: "18. Perhatikan gambar timbangan buah:<br><img src='soal18_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Catatan: Melon 1,25 kg, Dua mangga 500 g, Jambu 750 g. Tentukan kebenaran setiap timbangan!",
+        text: "18. Perhatikan gambar hasil pengukuran berat buah menggunakan tiga jenis timbangan berikut!<br><img src='soal18_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berdasarkan catatan berat buah (Melon 1,25 kg, Dua mangga 500 g, Jambu 750 g), tentukan apakah setiap gambar timbangan menunjukkan berat yang sesuai!",
         statements: [
           "Gambar timbangan digital sesuai dengan catatan berat buah melon.",
           "Gambar timbangan jarum sesuai dengan catatan berat buah mangga.",
@@ -627,11 +640,11 @@
         ],
         correct: ["Benar", "Salah", "Benar"],
         topic: "Pengukuran Berat",
-        explanation: "Melon digital 1,25 kg (Benar). Mangga jarum menunjukkan 600 g padahal catatan 500 g (Salah). Jambu neraca 500g + 250g = 750 g (Benar)."
+        explanation: "Melon 1,25 kg (Sesuai). Timbangan mangga menunjukkan 600 g padahal catatan 500 g (Tidak Sesuai). Jambu 500+250 = 750 g (Sesuai). (Kunci: Benar, Salah, Benar)"
       },
       {
         id: 19, type: "MCMA",
-        text: "19. SD Negeri Kalitengah 1 menyiapkan sembako: Beras 2 kg, Gula pasir 75 dag, Kacang hijau 350 hg. Pilihlah dua pernyataan yang benar!",
+        text: "19. Berat beras 2 kg, gula pasir 75 dag, kacang hijau 350 hg. Rasyid menghitung jumlah serta selisihnya dalam satuan gram.<br>Pilihlah dua pernyataan yang benar!",
         options: [
           "Jumlah berat beras dan gula pasir adalah 2.750 gram.",
           "Selisih berat kacang hijau dan gula pasir adalah 34.250 gram.",
@@ -639,19 +652,19 @@
         ],
         correct: [0, 1],
         topic: "Konversi Satuan Berat",
-        explanation: "Beras = 2.000g, Gula = 750g, Kacang = 35.000g. Jumlah beras+gula = 2.750g (Benar). Selisih kacang-gula = 34.250g (Benar). Total = 37.750g (C salah)."
+        explanation: "Beras = 2.000 g, Gula = 750 g, Kacang = 35.000 g. Jumlah beras+gula = 2.750 g. Selisih kacang-gula = 34.250 g. Opsi 1 dan 2 Benar."
       },
       {
         id: 20, type: "PG",
-        text: "20. Raka latihan menggambar dimulai pukul yang ditunjukkan jam berikut selama 1 jam 45 menit:<br><img src='soal20_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pukul berapakah selesai?",
+        text: "20. Raka mengikuti latihan menggambar dimulai pukul yang ditunjukkan oleh jam berikut selama 1 jam 45 menit:<br><img src='soal20_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pukul berapakah latihan menggambar Raka selesai?",
         options: ["Pukul 09.50 WIB", "Pukul 10.10 WIB", "Pukul 10.20 WIB", "Pukul 10.30 WIB"],
         correct: 2,
         topic: "Waktu Mulai & Selesai",
-        explanation: "Mulai pukul 08.35 + 1 jam 45 menit = 10.20 WIB. (Kunci: C)"
+        explanation: "Mulai 08.35 + 1 jam 45 menit = Pukul 10.20 WIB. (Kunci: C)"
       },
       {
         id: 21, type: "MCMA",
-        text: "21. SD Negeri Candisari 2: Lomba literasi pukul 07.15 selama 1 jam 35 menit. Istirahat 25 menit. Pentas seni 2 jam 20 menit. Pilihlah dua pernyataan yang benar!",
+        text: "21. Lomba literasi dimulai pukul 07.15 WIB selama 1 jam 35 menit. Istirahat 25 menit. Pentas seni 2 jam 20 menit.<br>Pilihlah dua pernyataan yang benar!",
         options: [
           "Perlombaan literasi selesai pada pukul 08.50 WIB.",
           "Pentas seni selesai pada pukul 11.35 WIB.",
@@ -659,43 +672,43 @@
         ],
         correct: [0, 1],
         topic: "Durasi Waktu",
-        explanation: "Literasi selesai 08.50 (Benar). Istirahat sampai 09.15. Pentas seni selesai 09.15 + 2 jam 20 menit = 11.35 WIB (Benar)."
+        explanation: "Literasi selesai 08.50 WIB. Istirahat sampai 09.15 WIB. Pentas seni selesai 11.35 WIB. Opsi 1 dan 2 Benar."
       },
       {
         id: 22, type: "PG",
-        text: "22. Perjalanan Semarang ke Yogyakarta (120 km) pukul 07.15 WIB dengan kecepatan 60 km/jam. Istirahat 30 menit di tengah perjalanan. Pukul berapa tiba?",
+        text: "22. Perjalanan Semarang ke Yogyakarta (120 km) berangkat pukul 07.15 WIB dengan kecepatan 60 km/jam. Istirahat 30 menit di tengah perjalanan. Pukul berapa tiba?",
         options: ["09.15 WIB", "09.30 WIB", "09.45 WIB", "10.00 WIB"],
         correct: 2,
         topic: "Kecepatan, Jarak, Waktu",
-        explanation: "Waktu tempuh = 120/60 = 2 jam (120 menit). Istirahat 30 menit. Total = 150 menit (2 jam 30 menit). Tiba = 07.15 + 02.30 = 09.45 WIB. (Kunci: C)"
+        explanation: "Waktu perjalanan = 120/60 = 2 jam (120 menit) + 30 menit istirahat = 150 menit (2 jam 30 menit). Tiba 07.15 + 2 jam 30 menit = 09.45 WIB. (Kunci: C)"
       },
       {
         id: 23, type: "PG",
-        text: "23. Perhatikan gambar gabungan bangun datar:<br><img src='soal23_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Jika keliling persegi panjang adalah 40 cm, berapakah luas gabungan?",
+        text: "23. Perhatikan gambar gabungan bangun datar berikut!<br><img src='soal23_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Jika keliling persegi panjang adalah 40 cm, berapakah luas gabungan?",
         options: ["108 cm²", "120 cm²", "144 cm²", "168 cm²"],
         correct: 1,
         topic: "Luas Gabungan",
-        explanation: "Panjang = (40/2) - 8 = 12 cm. Luas persegi panjang = 12 × 8 = 96 cm². Luas segitiga = 1/2 × 8 × 6 = 24 cm². Total = 120 cm². (Kunci: B)"
+        explanation: "Lebar = 8 cm. Panjang persegi panjang = (40/2) - 8 = 12 cm. Luas PP = 96 cm². Luas segitiga = ½ × 8 × 6 = 24 cm². Total = 120 cm². (Kunci: B)"
       },
       {
         id: 24, type: "PG",
-        text: "24. Perhatikan gambar tumpukan kotak kayu:<br><img src='soal24_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berapakah volume seluruh kotak penyimpanan tersebut?",
+        text: "24. Pak Budi membuat tempat penyimpanan dari dua kotak kayu yang disusun bertumpuk seperti pada gambar.<br><img src='soal24_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berapakah volume seluruh kotak penyimpanan tersebut?",
         options: ["576 cm³", "768 cm³", "864 cm³", "1.088 cm³"],
         correct: 3,
         topic: "Volume Gabungan Balok & Kubus",
-        explanation: "Volume balok bawah = 12 × 8 × 6 = 576 cm³. Volume kubus atas = 8³ = 512 cm³. Total = 576 + 512 = 1.088 cm³. (Kunci: D)"
+        explanation: "Volume balok bawah = 12×8×6 = 576 cm³. Volume kubus atas = 8³ = 512 cm³. Total = 576 + 512 = 1.088 cm³. (Kunci: D)"
       },
       {
         id: 25, type: "PG",
-        text: "25. Tangga bersandar pada dinding membentuk sudut 35° dengan dinding.<br><img src='soal25_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berapakah besar sudut A antara tangga dan lantai?",
+        text: "25. Sebuah tangga disandarkan pada dinding membentuk sudut 35° dengan dinding.<br><img src='soal25_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berapakah besar sudut A antara tangga dan lantai?",
         options: ["35°", "45°", "55°", "65°"],
         correct: 2,
         topic: "Besar Sudut Segitiga",
-        explanation: "Sudut A = 180° - (90° + 35°) = 180° - 125° = 55°. (Kunci: C)"
+        explanation: "Sudut A = 180° - 90° - 35° = 55°. (Kunci: C)"
       },
       {
         id: 26, type: "PG",
-        text: "26. Ibu membuat 8 loyang kue bolu, tiap loyang memerlukan 250 gram tepung terigu. Berapa kg perkiraan jumlah tepung terigu yang diperlukan?",
+        text: "26. Ibu akan membuat 8 loyang kue bolu. Setiap loyang memerlukan sekitar 250 gram tepung terigu. Berapakah perkiraan jumlah tepung terigu yang diperlukan?",
         options: ["1 kg", "2 kg", "3 kg", "4 kg"],
         correct: 1,
         topic: "Estimasi & Satuan Berat",
@@ -703,7 +716,7 @@
       },
       {
         id: 27, type: "Kategori",
-        text: "27. Perhatikan piktogram buku cerita:<br><img src='soal27_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>(Keterangan: Setiap buku mewakili 3 buku). Tentukan Benar atau Salah!",
+        text: "27. Perhatikan piktogram jumlah buku yang dibaca:<br><img src='soal27_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan benar atau salah untuk setiap pernyataan!",
         statements: [
           "Jumlah buku cerita yang dibaca Citra selama liburan adalah 15 buku.",
           "Jumlah buku cerita yang dibaca Budi selama liburan adalah 2 buku.",
@@ -711,11 +724,11 @@
         ],
         correct: ["Benar", "Salah", "Benar"],
         topic: "Interpretasi Piktogram",
-        explanation: "Citra = 5 × 3 = 15 (Benar). Budi = 2 × 3 = 6, bukan 2 (Salah). Dewi = 3 × 3 = 9 (Benar)."
+        explanation: "Citra = 5×3 = 15 (Benar). Budi = 2×3 = 6, bukan 2 (Salah). Dewi = 3×3 = 9 (Benar). (Kunci: Benar, Salah, Benar)"
       },
       {
         id: 28, type: "MCMA",
-        text: "28. Biaya per hari: Tepung Rp24.000, Gula Rp16.000, Telur Rp28.000, Mentega Rp20.000. Pilihlah dua pernyataan yang benar!",
+        text: "28. Biaya per hari: Tepung Rp24.000, Gula Rp16.000, Telur Rp28.000, Mentega Rp20.000.<br>Pilihlah dua pernyataan yang benar!",
         options: [
           "Biaya gula pasir selama 11 hari adalah Rp176.000.",
           "Biaya tepung terigu selama 6 hari adalah Rp168.000.",
@@ -723,11 +736,11 @@
         ],
         correct: [0, 2],
         topic: "Aritmatika Sosial",
-        explanation: "Gula 11 hari = 11 × 16.000 = 176.000 (Benar). Tepung 6 hari = 6 × 24.000 = 144.000 (Salah). Mentega 5 hari = 5 × 20.000 = 100.000 (Benar). Opsi A dan C Benar."
+        explanation: "Gula = 11 × 16.000 = 176.000 (Benar). Tepung = 6 × 24.000 = 144.000, bukan 168.000 (Salah). Mentega = 5 × 20.000 = 100.000 (Benar). Opsi 1 dan 3 Benar."
       },
       {
         id: 29, type: "PG",
-        text: "29. Perhatikan diagram garis biaya sewa sepeda tempat A dan B:<br><img src='soal29_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Untuk penyewaan selama 5 jam, tempat yang lebih hemat beserta selisihnya adalah ....",
+        text: "29. Di sebuah taman wisata terdapat dua tempat penyewaan sepeda, yaitu Tempat A dan Tempat B.<br><img src='soal29_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pak Anton akan menyewa sepeda selama 5 jam. Tempat penyewaan yang lebih hemat beserta selisihnya adalah ....",
         options: [
           "Tempat A, lebih hemat Rp15.000",
           "Tempat A, lebih hemat Rp10.000",
@@ -740,7 +753,7 @@
       },
       {
         id: 30, type: "Kategori",
-        text: "30. Perhatikan diagram batang bank sampah:<br><img src='soal30_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan Benar atau Salah!",
+        text: "30. Perhatikan diagram batang bank sampah berikut!<br><img src='soal30_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan benar atau salah untuk setiap pernyataan!",
         statements: [
           "Rata-rata jumlah botol plastik yang terkumpul selama lima hari adalah 36 buah per hari.",
           "Jumlah botol plastik pada hari Kamis dan Jumat lebih banyak daripada jumlah botol pada hari Senin, Selasa, dan Rabu.",
@@ -748,18 +761,18 @@
         ],
         correct: ["Benar", "Salah", "Benar"],
         topic: "Interpretasi Diagram Batang",
-        explanation: "Total = 180, rata-rata = 36 (Benar). Kamis+Jumat (80) < Senin-Rabu (100) (Salah). Kenaikan terbesar Rabu ke Kamis = 15 buah (Benar)."
+        explanation: "Total = 180, Rata-rata = 36 (Benar). Kamis+Jumat = 80, Senin-Rabu = 100 (Salah). Kenaikan terbesar Rabu ke Kamis = 15 buah (Benar). (Kunci: Benar, Salah, Benar)"
       }
     ];
 
     const DATABASE_SOAL = {
       matematika: {
-        "Ujicoba": { title: "Matematika - Soal Ujicoba (Drilling)", questions: SOAL_30_MATEMATIKA_PAKET_2 },
-        "Paket 1": { title: "Matematika - Soal Paket 1", questions: SOAL_30_MATEMATIKA_PAKET_2 },
+        "Ujicoba": { title: "Matematika - Soal Ujicoba (Drilling)", questions: SOAL_30_MATEMATIKA },
+        "Paket 1": { title: "Matematika - Soal Paket 1", questions: SOAL_30_MATEMATIKA },
         "Paket 2": { title: "Matematika - Soal Paket 2", questions: SOAL_30_MATEMATIKA_PAKET_2 },
-        "Paket 3": { title: "Matematika - Soal Paket 3", questions: SOAL_30_MATEMATIKA_PAKET_2 },
-        "Paket 4": { title: "Matematika - Soal Paket 4", questions: SOAL_30_MATEMATIKA_PAKET_2 },
-        "Paket 5": { title: "Matematika - Soal Paket 5", questions: SOAL_30_MATEMATIKA_PAKET_2 }
+        "Paket 3": { title: "Matematika - Soal Paket 3", questions: SOAL_30_MATEMATIKA },
+        "Paket 4": { title: "Matematika - Soal Paket 4", questions: SOAL_30_MATEMATIKA },
+        "Paket 5": { title: "Matematika - Soal Paket 5", questions: SOAL_30_MATEMATIKA }
       },
       indonesia: {
         "Paket 1": { title: "Bahasa Indonesia - Soal Paket 1", questions: [] },
@@ -771,7 +784,7 @@
     };
 
     let selectedSubject = 'matematika';
-    let currentPackageKey = 'Paket 2';
+    let currentPackageKey = 'Paket 1';
     let currentQuestions = [];
     let currentUser = { name: '', school: '', className: '', absen: '' };
     let currentQuestionIdx = 0, userAnswers = {}, raguStatus = {}, examTimerInterval = null, timeRemaining = 75 * 60;
@@ -780,7 +793,7 @@
 
     async function fetchCloudSettingsForStudent() {
       try {
-        const res = await fetch(FIREBASE_SETTINGS_URL);
+        const res = await fetch(FIREBASE_SETTINGS_URL + "?t=" + new Date().getTime());
         const data = await res.json();
         if (data) {
           if (data.status) localStorage.setItem('tka_pkg_status_multi', JSON.stringify(data.status));
@@ -790,44 +803,51 @@
         console.warn("Menggunakan pengaturan offline/lokal:", e);
       }
     }
+
     function getAdminPackageStatus(sub, pkg) {
       try {
         const stored = localStorage.getItem('tka_pkg_status_multi');
         if (stored) {
           const statuses = JSON.parse(stored);
-          if (statuses[sub] && statuses[sub][pkg] !== undefined) {
-            return statuses[sub][pkg] ? 'buka' : 'kunci';
+          const normalizedPkg = pkg.toUpperCase();
+          if (statuses[sub]) {
+            for (let k in statuses[sub]) {
+              if (k.toUpperCase() === normalizedPkg) {
+                return statuses[sub][k] ? 'buka' : 'kunci';
+              }
+            }
           }
         }
       } catch(e) {}
       return (pkg === 'Ujicoba' || pkg === 'Paket 1' || pkg === 'Paket 2') ? 'buka' : 'kunci';
     }
+
     function getAdminPackageToken(sub, pkg) {
       try {
         const stored = localStorage.getItem('tka_pkg_tokens_multi');
         if (stored) {
           const tokens = JSON.parse(stored);
-          if (tokens[sub] && tokens[sub][pkg]) {
-            return tokens[sub][pkg];
+          const normalizedPkg = pkg.toUpperCase();
+          if (tokens[sub]) {
+            for (let k in tokens[sub]) {
+              if (k.toUpperCase() === normalizedPkg) {
+                return tokens[sub][k];
+              }
+            }
           }
         }
       } catch(e) {}
-      return sub === 'matematika' ? 'MAT2' : 'BINDO2';
+      return sub === 'matematika' ? '123' : 'BINDO1';
     }
+
     function persistCurrentExamState() {
       const state = {
-        selectedSubject,
-        currentPackageKey,
-        currentUser,
-        currentQuestions,
-        currentQuestionIdx,
-        userAnswers,
-        raguStatus,
-        timeRemaining,
-        isActive: true
+        selectedSubject, currentPackageKey, currentUser, currentQuestions,
+        currentQuestionIdx, userAnswers, raguStatus, timeRemaining, isActive: true
       };
       localStorage.setItem('tka_active_exam_session_v16', JSON.stringify(state));
     }
+
     function checkActiveExamSession() {
       const saved = localStorage.getItem('tka_active_exam_session_v16');
       if (saved) {
@@ -861,6 +881,7 @@
       }
       return false;
     }
+
     function populateSchoolDropdown() {
       const regSelect = document.getElementById('regSchool');
       if (regSelect.children.length <= 1) {
@@ -870,12 +891,14 @@
         });
       }
     }
+
     function showScreen(screenId) {
       ['viewSubjects', 'viewPackages', 'viewRegistration', 'viewExam', 'viewResult'].forEach(id => {
         document.getElementById(id).classList.add('hidden');
       });
       document.getElementById(screenId).classList.remove('hidden');
     }
+
     async function selectSubject(sub) {
       await fetchCloudSettingsForStudent();
       selectedSubject = sub;
@@ -902,6 +925,7 @@
       
       showScreen('viewPackages');
     }
+
     function selectPackage(pkg, isBuka) {
       if (!isBuka) {
         alert("Maaf, paket soal ini masih dikunci oleh Admin!");
@@ -913,6 +937,7 @@
       document.getElementById('tokenErrorMsg').classList.add('hidden');
       showScreen('viewRegistration');
     }
+
     async function startExam(e) {
       e.preventDefault();
       await fetchCloudSettingsForStudent();
@@ -943,11 +968,7 @@
       document.getElementById('examStudentName').innerText = currentUser.name;
       document.getElementById('examStudentSchool').innerText = `${currentUser.school} • Kelas ${currentUser.className}`;
       
-      userAnswers = {}; 
-      raguStatus = {}; 
-      currentQuestionIdx = 0;
-      timeRemaining = 75 * 60;
-      
+      userAnswers = {}; raguStatus = {}; currentQuestionIdx = 0; timeRemaining = 75 * 60;
       currentQuestions = [...DATABASE_SOAL[selectedSubject][currentPackageKey].questions];
       
       persistCurrentExamState();
@@ -956,6 +977,7 @@
       loadQuestion(0);
       startCountdownTimer();
     }
+
     function startCountdownTimer() {
       clearInterval(examTimerInterval);
       const display = document.getElementById('timerDisplay');
@@ -976,6 +998,7 @@
       updateClock();
       examTimerInterval = setInterval(updateClock, 1000);
     }
+
     function renderPalette() {
       const grid = document.getElementById('paletteGrid');
       grid.innerHTML = '';
@@ -988,6 +1011,7 @@
         grid.appendChild(btn);
       });
     }
+
     function getPaletteClass(idx) {
       const q = currentQuestions[idx];
       const isCurrent = idx === currentQuestionIdx;
@@ -999,6 +1023,7 @@
       if (isAnswered) return base + "bg-teal-600 text-white shadow-sm";
       return base + "bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200";
     }
+
     function isQuestionAnswered(qId) {
       const ans = userAnswers[qId];
       if (ans === undefined || ans === null) return false;
@@ -1006,18 +1031,15 @@
       if (typeof ans === 'object') return Object.keys(ans).length > 0;
       return true;
     }
+
     function loadQuestion(idx) {
       currentQuestionIdx = idx;
       const q = currentQuestions[idx];
       document.getElementById('questionNumberBadge').innerText = `Soal No. ${idx + 1}`;
-      let typeLabel = "Pilihan Ganda Sederhana", pointsRule = "Bobot: 1 Poin (Benar 1, Salah 0)";
-      if (q.type === 'MCMA') { 
-        typeLabel = "PG Kompleks (MCMA)"; 
-        pointsRule = "Bobot: 1 Poin (Harus benar semua pilihan untuk mendapatkan 1 poin)"; 
-      } else if (q.type === 'Kategori') { 
-        typeLabel = "PG Kompleks Kategori"; 
-        pointsRule = "Bobot: 1 Poin (Harus benar semua pernyataan untuk mendapatkan 1 poin)"; 
-      }
+      let typeLabel = "Pilihan Ganda Sederhana", pointsRule = "Bobot: 1 Poin";
+      if (q.type === 'MCMA') { typeLabel = "PG Kompleks (MCMA)"; pointsRule = "Bobot: 1 Poin"; }
+      else if (q.type === 'Kategori') { typeLabel = "PG Kompleks Kategori"; pointsRule = "Bobot: 1 Poin"; }
+      
       document.getElementById('questionTypeBadge').innerText = typeLabel;
       document.getElementById('questionPointsRule').innerText = pointsRule;
       document.getElementById('questionContent').innerHTML = q.text;
@@ -1063,55 +1085,45 @@
       renderPalette();
       persistCurrentExamState();
     }
+
     function saveAnswerPG(qId, val) { userAnswers[qId] = val; renderPalette(); persistCurrentExamState(); }
     function saveAnswerMCMA(qId, optIdx) {
       if (!userAnswers[qId]) userAnswers[qId] = [];
       const i = userAnswers[qId].indexOf(optIdx);
       if (i > -1) userAnswers[qId].splice(i, 1); else userAnswers[qId].push(optIdx);
-      renderPalette();
-      persistCurrentExamState();
+      renderPalette(); persistCurrentExamState();
     }
     function saveAnswerKategori(qId, stmtIdx, val) {
       if (!userAnswers[qId]) userAnswers[qId] = {};
       userAnswers[qId][stmtIdx] = val;
-      renderPalette();
-      persistCurrentExamState();
+      renderPalette(); persistCurrentExamState();
     }
     function toggleRaguCurrent() {
       const q = currentQuestions[currentQuestionIdx];
       raguStatus[q.id] = document.getElementById('checkRagu').checked;
-      renderPalette();
-      persistCurrentExamState();
+      renderPalette(); persistCurrentExamState();
     }
     function nextQuestion() {
       if (currentQuestionIdx < currentQuestions.length - 1) loadQuestion(currentQuestionIdx + 1);
       else confirmSubmitExam();
     }
-    function prevQuestion() {
-      if (currentQuestionIdx > 0) loadQuestion(currentQuestionIdx - 1);
-    }
+    function prevQuestion() { if (currentQuestionIdx > 0) loadQuestion(currentQuestionIdx - 1); }
     function confirmSubmitExam() {
       const count = Object.keys(userAnswers).length;
       if (confirm(`Kamu telah menjawab ${count} dari ${currentQuestions.length} soal.\nYakin ingin mengumpulkan jawaban?`)) {
         submitExam();
       }
     }
-    async function saveSubmissionWithUniqueId(sub) {
+
+    async function saveSubmission(sub) {
       const local = localStorage.getItem('tka_submissions_multi');
-      let list = local ? JSON.parse(local) : [];
-      
-      const existingIdx = list.findIndex(item => item.id === sub.id);
-      if (existingIdx >= 0) {
-        list[existingIdx] = sub;
-      } else {
-        list.push(sub);
-      }
+      const list = local ? JSON.parse(local) : [];
+      list.push(sub);
       localStorage.setItem('tka_submissions_multi', JSON.stringify(list));
       localStorage.removeItem('tka_active_exam_session_v16');
       try {
-        const singleNodeUrl = `https://tka-mranggen-2026-default-rtdb.firebaseio.com/nilai_tryout/${sub.id}.json`;
-        await fetch(singleNodeUrl, {
-          method: 'PUT',
+        await fetch(FIREBASE_DB_URL, {
+          method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(sub)
         });
@@ -1121,48 +1133,28 @@
       }
       setTimeout(() => {
         try {
-          fetch(GOOGLE_SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(sub)
-          });
-        } catch (e) {
-          console.warn("Google Sheet sibuk:", e);
-        }
-      }, Math.floor(Math.random() * 3000));
+          fetch(GOOGLE_SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(sub) });
+        } catch (e) {}
+      }, Math.floor(Math.random() * 5000));
     }
+
     function submitExam() {
       clearInterval(examTimerInterval);
-      
       let totalRawScore = 0;
       let detailAnswersRecord = {};
       
       currentQuestions.forEach((q) => {
-        let earned = 0;
-        let isFullyCorrect = false;
-        
+        let earned = 0; let isFullyCorrect = false;
         if (q.type === 'PG') {
-          if (userAnswers[q.id] === q.correct) {
-            earned = 1; isFullyCorrect = true;
-          }
+          if (userAnswers[q.id] === q.correct) { earned = 1; isFullyCorrect = true; }
         } else if (q.type === 'MCMA') {
-          const userArr = userAnswers[q.id] || [];
-          const correctArr = q.correct;
-          if (userArr.length === correctArr.length && userArr.every(val => correctArr.includes(val))) {
-            earned = 1; isFullyCorrect = true;
-          }
+          const userArr = userAnswers[q.id] || []; const correctArr = q.correct;
+          if (userArr.length === correctArr.length && userArr.every(val => correctArr.includes(val))) { earned = 1; isFullyCorrect = true; }
         } else if (q.type === 'Kategori') {
-          const userMap = userAnswers[q.id] || {};
-          let allMatch = true;
-          q.statements.forEach((_, sIdx) => { 
-            if (userMap[sIdx] !== q.correct[sIdx]) allMatch = false; 
-          });
-          if (allMatch && Object.keys(userMap).length === q.statements.length) {
-            earned = 1; isFullyCorrect = true;
-          }
+          const userMap = userAnswers[q.id] || {}; let allMatch = true;
+          q.statements.forEach((_, sIdx) => { if (userMap[sIdx] !== q.correct[sIdx]) allMatch = false; });
+          if (allMatch && Object.keys(userMap).length === q.statements.length) { earned = 1; isFullyCorrect = true; }
         }
-        
         totalRawScore += earned;
         detailAnswersRecord[q.id] = { earned: earned, isCorrect: isFullyCorrect };
       });
@@ -1175,28 +1167,18 @@
       const durationSeconds = Math.max(0, (75 * 60) - timeRemaining);
       const durMin = Math.floor(durationSeconds / 60);
       
-      const cleanSchool = (currentUser.school || '').replace(/[^a-zA-Z0-9]/g, '_').toUpperCase();
-      const cleanName = (currentUser.name || '').replace(/[^a-zA-Z0-9]/g, '_').toUpperCase();
-      const uniqueRecordId = `${cleanSchool}_${cleanName}_${selectedSubject.toUpperCase()}_${currentPackageKey.toUpperCase()}`;
       const record = {
-        id: uniqueRecordId,
+        id: 'TKA-' + Date.now(),
         date: new Date().toLocaleDateString('id-ID') + ' ' + new Date().toLocaleTimeString('id-ID', {hour: '2-digit', minute:'2-digit'}),
         subject: selectedSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia',
         package: currentPackageKey,
-        name: currentUser.name,
-        school: currentUser.school,
-        className: currentUser.className,
-        absen: currentUser.absen,
-        rawScore: totalRawScore,
-        maxRawScore: maxScoreActual,
-        finalScore: final100,
-        status: isPass ? 'Lulus' : 'Remedial',
-        durationMinutes: durMin,
-        detailAnswers: detailAnswersRecord
+        name: currentUser.name, school: currentUser.school, className: currentUser.className, absen: currentUser.absen,
+        rawScore: totalRawScore, maxRawScore: maxScoreActual, finalScore: final100,
+        status: isPass ? 'Lulus' : 'Remedial', durationMinutes: durMin, detailAnswers: detailAnswersRecord
       };
       
       latestSubmissionData = record;
-      saveSubmissionWithUniqueId(record);
+      saveSubmission(record);
       
       document.getElementById('resTotalScore').innerText = `${totalRawScore}`;
       document.getElementById('resMaxScoreLabel').innerText = `dari maks ${maxScoreActual}`;
@@ -1209,25 +1191,25 @@
       if (isPass) certBox.classList.remove('hidden'); else certBox.classList.add('hidden');
       
       const motBox = document.getElementById('motivationBox');
-      let motText = "";
-      let motClass = "";
-      
+      let motText = ""; let motClass = "";
       if (final100 >= 90) {
         motClass = "bg-emerald-50 border-emerald-300 text-emerald-950";
-        motText = "🌟 <b>Luar Biasa! Prestasi Gemilang!</b><br>Kamu memiliki pemahaman materi yang sangat matang. Pertahankan konsistensi belajarmu dan jadilah inspirasi bagi teman-temanmu!";
+        motText = "🌟 <b>Luar Biasa! Prestasi Gemilang!</b><br>Kamu memiliki pemahaman materi yang sangat matang.";
       } else if (final100 >= 75) {
         motClass = "bg-teal-50 border-teal-300 text-teal-950";
-        motText = "👏 <b>Hebat dan Membanggakan!</b><br>Kamu sudah melewati KKM dengan sangat baik. Sedikit latihan ketelitian lagi di soal-soal menantang, kamu pasti bisa meraih nilai sempurna 100!";
+        motText = "👏 <b>Hebat dan Membanggakan!</b><br>Kamu sudah melewati KKM dengan sangat baik.";
       } else if (final100 >= 70) {
-        motClass = "👍 <b>Bagus, Kamu Lulus!</b><br>Usahamu membuahkan hasil dan memenuhi standar kelulusan. Jangan cepat puas, tingkatkan terus kemampuan belajarmu agar nilaimu semakin meningkat!";
+        motClass = "bg-slate-50 border-slate-300 text-slate-950";
+        motText = "👍 <b>Bagus, Kamu Lulus!</b><br>Usahamu memenuhi standar kelulusan.";
       } else {
-        motClass = "💪 <b>Jangan Menyerah, Ayo Coba Lagi!</b><br>Kegagalan hari ini adalah awal dari kesuksesan. Jadikan ini sebagai motivasi untuk belajar lebih giat, ulas kembali materinya, dan buktikan kamu bisa meraih nilai di atas 90 pada percobaan berikutnya!";
+        motClass = "bg-rose-50 border-rose-300 text-rose-950";
+        motText = "💪 <b>Jangan Menyerah, Ayo Coba Lagi!</b><br>Jadikan ini motivasi untuk belajar lebih giat.";
       }
       motBox.className = `my-4 p-4 rounded-2xl border text-xs sm:text-sm shadow-sm ${motClass}`;
       motBox.innerHTML = motText;
+
       const btnDisc = document.getElementById('btnDiscussionToggle');
       let lockedMsg = document.getElementById('lockedDiscussionMsg');
-      
       if (final100 >= 90) {
         renderDiscussions();
         if (btnDisc) btnDisc.style.display = 'inline-flex';
@@ -1240,11 +1222,11 @@
           lockedMsg.className = 'p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 text-xs font-bold my-3';
           btnDisc.parentNode.insertBefore(lockedMsg, btnDisc);
         }
-        lockedMsg.innerHTML = `🔒 Kunci jawaban & pembahasan eksklusif hanya terbuka bagi peserta yang meraih nilai <b>minimal 90</b>.<br>Nilai kamu saat ini <b>${final100}</b>. Yuk coba kerjakan lagi dan raih nilai 90 ke atas! 💪`;
+        lockedMsg.innerHTML = `🔒 Kunci jawaban & pembahasan eksklusif hanya terbuka bagi peserta yang meraih nilai <b>minimal 90</b>.<br>Nilai kamu saat ini <b>${final100}</b>.`;
       }
-      
       showScreen('viewResult');
     }
+
     function openCertificateModal() {
       if (!latestSubmissionData) return;
       const sub = latestSubmissionData;
@@ -1253,57 +1235,32 @@
       document.getElementById('certSubjectName').innerText = sub.subject;
       document.getElementById('certPackageName').innerText = sub.package;
       document.getElementById('certScore').innerText = sub.finalScore;
-      let predikat = "LULUS / MEMENUHI KKM";
-      if (sub.finalScore >= 95) predikat = "ISTIMEWA / DENGAN PUJIAN";
-      else if (sub.finalScore >= 85) predikat = "SANGAT BAIK / MEMUASKAN";
-      else if (sub.finalScore >= 70) predikat = "BAIK / LULUS";
-      document.getElementById('certPredicate').innerText = predikat;
-      document.getElementById('certNumber').innerText = `No: 400.3.11.1/TKA-MRG/2026/${Math.floor(1000 + Math.random() * 9000)}`;
       document.getElementById('certificateModal').classList.remove('hidden');
     }
-    function closeCertificateModal() {
-      document.getElementById('certificateModal').classList.add('hidden');
-    }
-    function toggleDiscussion() {
-      const sec = document.getElementById('discussionSection');
-      if (sec.classList.contains('hidden')) {
-        sec.classList.remove('hidden');
-      } else {
-        sec.classList.add('hidden');
-      }
-    }
+    function closeCertificateModal() { document.getElementById('certificateModal').classList.add('hidden'); }
+    function toggleDiscussion() { document.getElementById('discussionSection').classList.toggle('hidden'); }
+
     function renderDiscussions() {
       const container = document.getElementById('discussionContainer');
       document.getElementById('discussionTitle').innerText = `Kunci Jawaban & Pembahasan ${selectedSubject.toUpperCase()} - ${currentPackageKey}`;
       container.innerHTML = '';
       currentQuestions.forEach((q, idx) => {
-        const detail = lastExamDetailAnswers[q.id] || { isCorrect: true };
-        const isCorrect = detail.isCorrect;
-        const boxColorClass = isCorrect 
-          ? "bg-emerald-50 border-emerald-200 text-emerald-950" 
-          : "bg-rose-50 border-rose-300 text-rose-950";
-        const badgeColorClass = isCorrect 
-          ? "bg-emerald-600 text-white" 
-          : "bg-rose-600 text-white";
-        const statusText = isCorrect 
-          ? "✅ Jawaban Anda Benar" 
-          : "❌ Jawaban Anda Keliru / Belum Tepat";
         const item = document.createElement('div');
         item.className = "bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2 text-xs sm:text-sm text-left";
         item.innerHTML = `
           <div class="flex items-center justify-between border-b border-slate-100 pb-2">
             <span class="font-bold text-teal-700">Nomor ${idx + 1} (${q.type})</span>
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black ${badgeColorClass}">${statusText}</span>
+            <span class="text-[11px] text-slate-400 font-semibold">${q.topic || 'Ujian TKA'}</span>
           </div>
           <div class="text-slate-800">${q.text}</div>
-          <div class="p-3.5 rounded-xl border ${boxColorClass} font-medium">
-            <span class="font-black block mb-1">Pembahasan & Kunci:</span>
-            ${q.explanation || 'Kunci jawaban dan pembahasan resmi.'}
+          <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-emerald-950 font-medium">
+            <span class="font-black text-emerald-800">Pembahasan:</span><br>${q.explanation || 'Resmi.'}
           </div>
         `;
         container.appendChild(item);
       });
     }
+
     window.addEventListener('DOMContentLoaded', () => {
       populateSchoolDropdown();
       checkActiveExamSession();
