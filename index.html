@@ -12,18 +12,10 @@
     .font-cinzel { font-family: 'Cinzel', serif; }
     .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #14b8a6; border-radius: 4px; }
-    
-    .no-select {
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
+    .no-select { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
     .hidden { display: none !important; }
     .card-subject { border-radius: 1.5rem; overflow: hidden; background: #ffffff; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); border: 1px solid #e2e8f0; cursor: pointer; transition: all 0.2s ease; }
     .card-subject:hover { transform: translateY(-4px); }
-    .btn-subject { background-color: #e0e7ff; color: #3730a3; padding: 0.75rem; border-radius: 1rem; font-weight: 900; width: 100%; border: none; cursor: pointer; }
-    .btn-subject:hover { background-color: #c7d2fe; }
     @media print {
       body { background: white !important; }
       body * { visibility: hidden; }
@@ -59,10 +51,11 @@
       </div>
     </div>
   </header>
+
   <!-- CONTAINER UTAMA -->
   <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 flex flex-col justify-center">
     
-    <!-- SCREEN 0: PILIH MATA PELAJARAN UTAMA -->
+    <!-- SCREEN 0: PILIH MATA PELAJARAN -->
     <div id="viewSubjects" class="max-w-4xl mx-auto w-full text-center py-6">
       <div class="flex justify-center mb-3">
         <img src="logo_demak.png" alt="Logo Kabupaten Demak" class="w-16 h-20 sm:w-20 sm:h-24 object-contain drop-shadow-md">
@@ -75,7 +68,7 @@
         Silakan pilih mata pelajaran untuk dikerjakan hari ini.
       </p>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto mb-8">
-        <!-- KARTU MATEMATIKA (HIJAU) -->
+        <!-- KARTU MATEMATIKA -->
         <div onclick="selectSubject('matematika')" class="card-subject flex flex-col">
           <div class="bg-emerald-600 py-14 flex items-center justify-center shadow-inner">
             <h3 class="text-white text-3xl font-black tracking-wide">MATEMATIKA</h3>
@@ -87,7 +80,7 @@
             </button>
           </div>
         </div>
-        <!-- KARTU BAHASA INDONESIA (UNGU) -->
+        <!-- KARTU BAHASA INDONESIA -->
         <div onclick="selectSubject('indonesia')" class="card-subject flex flex-col">
           <div class="bg-purple-600 py-14 flex items-center justify-center shadow-inner">
             <h3 class="text-white text-3xl font-black tracking-wide">BAHASA INDONESIA</h3>
@@ -104,6 +97,7 @@
         Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen & Sayung. All rights reserved.
       </div>
     </div>
+
     <!-- SCREEN 0.5: PILIH PAKET SOAL -->
     <div id="viewPackages" class="hidden max-w-4xl mx-auto w-full text-center py-6">
       <button onclick="showScreen('viewSubjects')" class="inline-flex items-center text-xs font-bold text-teal-700 hover:text-teal-900 mb-5 cursor-pointer">
@@ -119,6 +113,7 @@
         Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen & Sayung. All rights reserved.
       </div>
     </div>
+
     <!-- SCREEN 1: REGISTRASI & TOKEN -->
     <div id="viewRegistration" class="hidden max-w-lg mx-auto bg-white/95 rounded-3xl p-6 sm:p-8 shadow-xl border border-teal-100 relative">
       <button onclick="showScreen('viewPackages')" class="inline-flex items-center text-xs font-bold text-teal-700 hover:text-teal-900 mb-5 cursor-pointer">
@@ -153,7 +148,7 @@
         <div>
           <label class="block text-xs font-extrabold text-teal-800 uppercase tracking-wider mb-1.5">Token Akses Paket</label>
           <div class="relative">
-            <input type="text" id="regToken" placeholder="Ketik token sesuai paket..." class="w-full px-4 py-3 rounded-2xl border-2 border-teal-300 focus:ring-2 focus:ring-teal-500 outline-none text-xs sm:text-sm font-mono font-black tracking-widest uppercase bg-teal-50/50">
+            <input type="text" id="regToken" placeholder="Ketik token sesuai admin..." class="w-full px-4 py-3 rounded-2xl border-2 border-teal-300 focus:ring-2 focus:ring-teal-500 outline-none text-xs sm:text-sm font-mono font-black tracking-widest uppercase bg-teal-50/50">
             <span class="absolute right-3.5 top-3.5 text-xs text-teal-600 font-bold">🔑 TOKEN</span>
           </div>
           <p id="tokenErrorMsg" class="hidden text-rose-600 text-xs font-bold mt-1.5">⚠️ Token salah atau paket terkunci admin!</p>
@@ -173,6 +168,7 @@
         Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen & Sayung. All rights reserved.
       </div>
     </div>
+
     <!-- SCREEN 3: CBT ENGINE -->
     <div id="viewExam" class="hidden">
       <div class="bg-white/95 rounded-2xl p-4 mb-4 shadow-sm border border-teal-100 flex flex-wrap items-center justify-between gap-3">
@@ -180,10 +176,9 @@
           <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-teal-500 to-emerald-600 text-white font-black flex items-center justify-center text-sm" id="userInitial">S</div>
           <div>
             <h3 class="text-sm font-extrabold text-slate-800 leading-tight" id="examStudentName">Nama Peserta</h3>
-            <p class="text-xs text-slate-500 font-medium" id="examStudentSchool">SD Mranggen & Sayung • Kelas VI</p>
+            <p class="text-xs text-slate-500 font-medium" id="examStudentSchool">Mranggen & Sayung • Kelas VI</p>
           </div>
         </div>
-        
         <div class="flex items-center gap-3">
           <div class="flex items-center gap-2 px-4 py-2 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700">
             <svg class="w-4 h-4 animate-pulse text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -241,22 +236,20 @@
           </div>
         </div>
       </div>
-      
       <div class="pt-4 text-xs font-bold text-slate-500 text-center no-print">
         Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen & Sayung. All rights reserved.
       </div>
     </div>
-    <!-- SCREEN 4: HASIL NILAI SISWA -->
+
+    <!-- SCREEN 4: HASIL NILAI -->
     <div id="viewResult" class="hidden max-w-3xl mx-auto space-y-6">
       <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-teal-100 text-center">
         <div class="w-16 h-16 rounded-3xl bg-teal-100 text-teal-700 flex items-center justify-center mx-auto mb-3 shadow-inner">
           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
         <h2 class="text-2xl font-black text-slate-800">Ujian Telah Selesai!</h2>
-        
-        <!-- KOTAK MOTIVASI DINAMIS -->
         <div id="motivationBox" class="my-4 p-4 rounded-2xl border text-xs sm:text-sm font-bold shadow-sm"></div>
-        <p class="text-xs font-semibold text-slate-500 mt-1" id="submitStatusText">Nilai tryout Anda telah otomatis tersimpan di server cloud Korwil Mranggen & Sayung.</p>
+        <p class="text-xs font-semibold text-slate-500 mt-1" id="submitStatusText">Nilai tryout Anda telah otomatis tersimpan di server cloud Korwil.</p>
         
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 my-6">
           <div class="p-4 rounded-2xl bg-teal-50 border border-teal-100">
@@ -280,7 +273,7 @@
             <span class="text-[10px] text-slate-400 block">Pengerjaan</span>
           </div>
         </div>
-        <!-- KLAIM PIAGAM -->
+
         <div id="certificateClaimBox" class="hidden p-4 rounded-2xl bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 text-white shadow-lg mb-6 text-center">
           <span class="text-2xl block mb-1">🎉</span>
           <h4 class="font-black text-sm uppercase tracking-wide">Selamat! Kamu Memenuhi Syarat Kelulusan</h4>
@@ -310,40 +303,29 @@
       </div>
     </div>
   </main>
+
   <!-- MODAL PIAGAM DIGITAL -->
   <div id="certificateModal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
     <div class="bg-white max-w-4xl w-full rounded-2xl shadow-2xl relative p-3 sm:p-6 text-center border-4 border-amber-300">
       <div class="flex items-center justify-between mb-3 no-print">
         <span class="text-xs font-bold text-amber-800">Pratinjau Piagam Penghargaan</span>
         <div class="flex items-center gap-2">
-          <button onclick="window.print()" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-lg transition cursor-pointer">
-            🖨️ Cetak / Simpan PDF
-          </button>
-          <button onclick="closeCertificateModal()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-lg transition cursor-pointer">
-            ✕ Tutup
-          </button>
+          <button onclick="window.print()" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-lg transition cursor-pointer">🖨️ Cetak / Simpan PDF</button>
+          <button onclick="closeCertificateModal()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-lg transition cursor-pointer">✕ Tutup</button>
         </div>
       </div>
-      
       <div class="p-6 sm:p-10 border-8 border-double border-amber-500 bg-gradient-to-b from-amber-50/40 via-white to-amber-50/40 rounded-xl shadow-inner text-slate-900">
         <div class="text-center space-y-1 mb-4">
           <p class="text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-teal-800">KORWIL BIDDIKBUD KECAMATAN MRANGGEN & SAYUNG • SEKSI KEGURUAN</p>
           <h2 class="font-cinzel text-2xl sm:text-4xl font-extrabold text-amber-700 tracking-wider">PIAGAM PENGHARGAAN</h2>
           <p class="text-[11px] font-mono text-slate-500" id="certNumber">No: 400.3.11.1/TKA-MRG/2026/001</p>
         </div>
-        
         <p class="text-xs sm:text-sm text-slate-600 mb-2 font-medium">Diberikan dengan penuh apresiasi kepada:</p>
-        <h3 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight underline decoration-amber-500 decoration-2 underline-offset-8 mb-3" id="certStudentName">
-          NAMA LENGKAP SISWA
-        </h3>
-        <p class="text-xs sm:text-sm font-bold text-slate-700 mb-4" id="certStudentSchool">
-          SD NEGERI BANDUNGREJO 1 MRANGGEN
-        </p>
-        
+        <h3 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight underline decoration-amber-500 decoration-2 underline-offset-8 mb-3" id="certStudentName">NAMA LENGKAP SISWA</h3>
+        <p class="text-xs sm:text-sm font-bold text-slate-700 mb-4" id="certStudentSchool">SD NEGERI BANDUNGREJO 1 MRANGGEN</p>
         <p class="text-xs sm:text-sm max-w-2xl mx-auto text-slate-700 leading-relaxed mb-6 font-medium">
           Atas keberhasilan menyelesaikan <b>Simulasi Ujian Tes Kemampuan Akademik (TKA) Kelas VI</b> pada mata pelajaran <b id="certSubjectName">Matematika</b> (<span id="certPackageName">Paket 1</span>) dengan capaian nilai:
         </p>
-        
         <div class="inline-flex items-center gap-4 px-6 py-2 bg-amber-100/80 border-2 border-amber-400 rounded-2xl mb-8 shadow-sm">
           <div>
             <span class="block text-[10px] font-black uppercase text-amber-800">NILAI AKHIR</span>
@@ -355,22 +337,18 @@
             <span class="text-xs font-black text-emerald-800" id="certPredicate">SANGAT MEMUASKAN</span>
           </div>
         </div>
-        
         <div class="grid grid-cols-2 gap-4 sm:gap-12 px-4 sm:px-12 text-left text-slate-900 pt-3">
           <div class="space-y-0.5">
             <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Mengetahui</p>
             <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Korwil Biddikbud Kec. Mranggen & Sayung</p>
             <div class="h-20 sm:h-24 flex items-center py-1">
-              <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
-                <path d="M 18,52 C 32,48 48,32 56,26 C 64,20 70,18 68,28 C 64,46 52,62 36,68 C 22,73 18,68 26,62 C 36,55 56,40 80,34 C 78,44 74,56 70,62 C 66,68 60,64 72,56 C 90,45 104,42 118,44 C 112,48 106,55 102,60 C 98,64 103,62 110,56 C 120,48 134,44 148,45 L 245,47" fill="none" stroke="#1d4ed8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none"><path d="M 18,52 C 32,48 48,32 56,26 C 64,20 70,18 68,28 C 64,46 52,62 36,68 C 22,73 18,68 26,62 C 36,55 56,40 80,34 C 78,44 74,56 70,62 C 66,68 60,64 72,56 C 90,45 104,42 118,44 C 112,48 106,55 102,60 C 98,64 103,62 110,56 C 120,48 134,44 148,45 L 245,47" fill="none" stroke="#1d4ed8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <div>
               <p class="font-black text-xs sm:text-sm text-slate-900 leading-tight">Sunarto, S.Pd., M.Pd.</p>
               <p class="font-bold text-slate-800 text-[11px] sm:text-xs">NIP 19670915 199103 1 010</p>
             </div>
           </div>
-          
           <div class="space-y-0.5 relative">
             <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Ketua</p>
             <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Sie Keguruan,</p>
@@ -381,25 +359,14 @@
                   <ellipse cx="120" cy="70" rx="103" ry="53" fill="none" stroke="#4f46e5" stroke-width="1.8" style="stroke-opacity: 0.85;"/>
                   <line x1="22" y1="52" x2="218" y2="52" stroke="#4f46e5" stroke-width="2" style="stroke-opacity: 0.85;"/>
                   <line x1="22" y1="88" x2="218" y2="88" stroke="#4f46e5" stroke-width="2" style="stroke-opacity: 0.85;"/>
-                  <defs>
-                    <path id="stampPathTop" d="M 32,70 A 88,44 0 0,1 208,70" fill="none"/>
-                    <path id="stampPathBottom" d="M 28,70 A 92,48 0 0,0 212,70" fill="none"/>
-                  </defs>
-                  <text fill="#4338ca" font-size="11" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" letter-spacing="3.5">
-                    <textPath href="#stampPathTop" startOffset="50%" text-anchor="middle">KORWIL BIDDIKBUD</textPath>
-                  </text>
-                  <text fill="#4338ca" font-size="10.5" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" letter-spacing="2.2">
-                    <textPath href="#stampPathBottom" startOffset="50%" text-anchor="middle">★ MRANGGEN & SAYUNG ★</textPath>
-                  </text>
-                  <text x="120" y="74" text-anchor="middle" fill="#4338ca" font-size="17" font-weight="900" font-family="'Cinzel', serif" letter-spacing="2">
-                    SIE KEGURUAN
-                  </text>
+                  <text fill="#4338ca" font-size="11" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" letter-spacing="3.5"><textPath href="#stampPathTop" startOffset="50%" text-anchor="middle">KORWIL BIDDIKBUD</textPath></text>
+                  <text fill="#4338ca" font-size="10.5" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" letter-spacing="2.2"><textPath href="#stampPathBottom" startOffset="50%" text-anchor="middle">★ MRANGGEN & SAYUNG ★</textPath></text>
+                  <text x="120" y="74" text-anchor="middle" fill="#4338ca" font-size="17" font-weight="900" font-family="'Cinzel', serif" letter-spacing="2">SIE KEGURUAN</text>
+                  <defs><path id="stampPathTop" d="M 32,70 A 88,44 0 0,1 208,70" fill="none"/><path id="stampPathBottom" d="M 28,70 A 92,48 0 0,0 212,70" fill="none"/></defs>
                 </svg>
               </div>
               <div class="relative z-20 w-full h-full flex items-center">
-                <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none">
-                  <path d="M 35,46 C 45,28 60,18 75,18 C 88,18 95,28 92,44 C 88,60 74,72 58,72 C 45,72 40,62 48,50 C 60,34 92,26 128,26 C 170,26 215,30 260,34 M 82,32 C 95,40 108,55 118,65 M 78,56 C 98,52 145,46 195,48 M 80,68 C 110,64 160,58 210,60" fill="none" stroke="#0f172a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none"><path d="M 35,46 C 45,28 60,18 75,18 C 88,18 95,28 92,44 C 88,60 74,72 58,72 C 45,72 40,62 48,50 C 60,34 92,26 128,26 C 170,26 215,30 260,34 M 82,32 C 95,40 108,55 118,65 M 78,56 C 98,52 145,46 195,48 M 80,68 C 110,64 160,58 210,60" fill="none" stroke="#0f172a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
             </div>
             <div>
@@ -414,14 +381,14 @@
       </div>
     </div>
   </div>
+
   <script>
     const FIREBASE_DB_URL = "https://tka-mranggen-2026-default-rtdb.firebaseio.com/nilai_tryout.json";
     const FIREBASE_SETTINGS_URL = "https://tka-mranggen-2026-default-rtdb.firebaseio.com/pengaturan_ujian.json";
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx0aHffP-wqb_ElNVQtrHJltD2YOMVXzBqdbHqtUzcQzwU59g05agv-pDALvwIbAHFgoA/exec";
     
-    // DAFTAR GABUNGAN SEKOLAH MRANGGEN & SAYUNG
+    // GABUNGAN SEKOLAH MRANGGEN & SAYUNG
     const LIST_SEKOLAH_MRANGGEN = [
-      // KECAMATAN MRANGGEN
       "SD NEGERI BANDUNGREJO 1 MRANGGEN", "SD NEGERI BANDUNGREJO 2 MRANGGEN", "SD NEGERI BANYUMENENG 1",
       "SD NEGERI BANYUMENENG 2", "SD NEGERI BATURSARI 1", "SD NEGERI BATURSARI 2", "SD NEGERI BATURSARI 3",
       "SD NEGERI BATURSARI 4", "SD NEGERI BATURSARI 5", "SD NEGERI BATURSARI 6", "SD NEGERI BATURSARI 7",
@@ -436,7 +403,7 @@
       "SDS INSAN TELADAN", "SDS ISLAM DIPONEGORO", "SDS ISLAM KAFRAWI", "SDS IT AZ-ZAHRO MRANGGEN",
       "SDS IT MIFTAHUL HIDAYAH", "SDS IT PERMATA BUNDA", "SDS KRISTEN DIAN WACANA", "SDS KY AGENG GIRI",
       "SDS MUHAMMADIYAH PUCANG GADING", "SDS TERPADU DARUNNAJAH",
-      // KECAMATAN SAYUNG
+      // SAYUNG
       "SD NEGERI BANJARSARI 1", "SD NEGERI BANJARSARI 2", "SD NEGERI BEDONO 1", "SD NEGERI BULUSARI",
       "SD NEGERI DALEMAN", "SD NEGERI DOMBO 1", "SD NEGERI JETAKSARI 1", "SD NEGERI KALISARI 1",
       "SD NEGERI KALISARI 3", "SD NEGERI KARANGASEM 1", "SD NEGERI KARANGASEM 2", "SD NEGERI LOIRENG",
@@ -448,7 +415,6 @@
       "SDS ISLAM SITI SULAECHAH 2"
     ];
 
-    // DEKLARASI BANK SOAL DI ATAS
     const SOAL_30_MATEMATIKA = [
       { id: 1, type: "PG", text: "1. Hasil dari 16⅔% × 24 - 0,25 × 20 + 1¾ × 4 adalah ....", options: ["3", "4", "6", "8"], correct: 2, topic: "Operasi Hitung Pecahan", explanation: "16⅔% = 1/6; (1/6 × 24) = 4; (0,25 × 20) = 5; (1¾ × 4) = 7. Hasil = 4 - 5 + 7 = 6. (Kunci: C)" },
       { id: 2, type: "PG", text: "2. Perhatikan tabel berikut!<br><img src='soal2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pasangan yang tepat yang menunjukkan hubungan antara persen dan pecahan biasa adalah ....", options: ["1 - C, 2 - A", "1 - C, 2 - D", "3 - A, 4 - B", "3 - B, 2 - C"], correct: 1, topic: "Persen & Pecahan", explanation: "60% = 3/5 (C) dan 50% = 1/2 (D). (Kunci: B)" },
@@ -478,7 +444,7 @@
       { id: 26, type: "Kategori", text: "26. Umur Ali, Beni, Cantika, Diandra (Diandra = 10 tahun). Tentukan <b>Benar</b> atau <b>Salah</b> pada setiap pernyataan berikut!", statements: ["Dari keempat anak, yang paling muda adalah Diandra.", "Jumlah umur Cantika dan Diandra sama dengan umur Beni.", "Dari anak-anak tersebut, yang paling tua umurnya adalah Ali."], correct: ["Benar", "Benar", "Benar"], topic: "Perbandingan Umur", explanation: "Kunci: Benar, Benar, Benar." },
       { id: 27, type: "Kategori", text: "27. Ibu membeli beras di warung harga Rp75.000, kembalian Rp25.000. Tentukan <b>Benar</b> atau <b>Salah</b> pecahan uang yang dibayarkan ibu!", statements: ["Satu lembar uang seratus ribuan.", "Dua lembar uang lima puluh ribuan.", "Sepuluh lembar uang dua puluh ribuan."], correct: ["Benar", "Benar", "Salah"], topic: "Pecahan Uang", explanation: "Kunci: Benar, Benar, Salah." },
       { id: 28, type: "Kategori", text: "28. Diskon 20%. Pensil Rp5.000, penggaris 1,5×pensil, buku 2×penggaris. Membeli 1 lusin buku, 5 pensil, 3 penggaris. Tentukan <b>Benar</b> atau <b>Salah</b>!", statements: ["Harga buku yang harus dibayar Bu Upik adalah Rp144.000,00.", "Harga penggaris sebelum didiskon sebesar Rp32.500,00.", "Harga yang harus dibayar Bu Upik semuanya adalah Rp182.000,00."], correct: ["Benar", "Salah", "Benar"], topic: "Aritmatika Sosial", explanation: "Kunci: Benar, Salah, Benar." },
-      { id: 29, type: "Kategori", text: "29. Beras setiap 4 hari, minyak setiap 12 hari. Bersama pertama kali 1 Agustus 2024. Tentukan <b>Benar</b> atau <b>Salah</b>!", statements: ["Tanggal 20 Agustus 2024 Bu Candra hanya membeli beras saja.", "Tanggal 6 September 2024 Bu Candra membeli beras dan minyak goreng secara bersamaan.", "Setiap membeli minyak goreng, Bu Candra pasti membeli beras."], correct: ["Benar", "Benar", "Benar"], topic: "KPK & Kalender", explanation: "Kunci: Benar, Salah, Benar." },
+      { id: 29, type: "Kategori", text: "29. Beras setiap 4 hari, minyak setiap 12 hari. Bersama pertama kali 1 Agustus 2024. Tentukan <b>Benar</b> atau <b>Salah</b>!", statements: ["Tanggal 20 Agustus 2024 Bu Candra hanya membeli beras saja.", "Tanggal 6 September 2024 Bu Candra membeli beras dan minyak goreng secara bersamaan.", "Setiap membeli minyak goreng, Bu Candra pasti membeli beras."], correct: ["Benar", "Benar", "Benar"], topic: "KPK & Kalender", explanation: "Kunci: Benar, Benar, Benar." },
       { id: 30, type: "Kategori", text: "30. Perhatikan diagram gambar siswa SD Mutiara berikut!<br><img src='soal30.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!", statements: ["Selisih siswa paling banyak dengan paling sedikit adalah 30 anak.", "Jumlah siswa kelas II, III, dan VI sama banyak.", "Jumlah siswa seluruhnya sebanyak 350 anak."], correct: ["Benar", "Salah", "Salah"], topic: "Interpretasi Piktogram", explanation: "Kunci: Benar, Salah, Salah." }
     ];
 
@@ -800,157 +766,74 @@
       {
         id: 1, type: "PG",
         text: `<b>Teks Bacaan untuk Soal Nomor 1-3</b><br><br><b>Pentingnya Menjaga Kelestarian Hutan</b><br>Wilayah Indonesia masih banyak yang berupa hamparan hutan yang sangat luas. Hutan merupakan paru-paru dunia yang memiliki peranan sangat vital bagi keseimbangan ekosistem. Selain sebagai tempat tinggal berbagai jenis flora dan fauna, hutan juga berfungsi untuk menyerap karbon dioksida dan menghasilkan oksigen. Namun, saat ini luas hutan semakin menyusut akibat aktivitas eksploitasi yang berlebihan dan alih fungsi lahan menjadi pemukiman atau perkebunan.<br><br>Jika kerusakan hutan terus berlanjut, dampak negatif akan dirasakan oleh manusia, seperti bencana banjir, tanah longsor, hingga anomali cuaca. Oleh karena itu, diperlukan upaya reboisasi untuk mengembalikan fungsi hutan sebagaimana mestinya. Semua pihak harus saling berkolaborasi untuk menjaga kelestarian hutan agar kehidupan aman dan nyaman.<br><br><b>1.</b> Makna kiasan dari kata "paru-paru dunia" pada teks di atas adalah …..`,
-        options: [
-          "Organ pernapasan manusia yang ada di hutan.",
-          "Sumber utama penghasil oksigen bagi bumi.",
-          "Tempat penyimpan cadangan air tanah.",
-          "Wilayah yang paling luas di permukaan bumi."
-        ],
-        correct: 1,
-        topic: "Makna Kiasan",
-        explanation: "Paru-paru dunia bermakna sumber utama penghasil oksigen bagi bumi. (Kunci: B)"
+        options: ["Organ pernapasan manusia yang ada di hutan.", "Sumber utama penghasil oksigen bagi bumi.", "Tempat penyimpan cadangan air tanah.", "Wilayah yang paling luas di permukaan bumi."],
+        correct: 1, topic: "Makna Kiasan", explanation: "Paru-paru dunia bermakna sumber utama penghasil oksigen bagi bumi. (Kunci: B)"
       },
       {
         id: 2, type: "PG",
         text: `<b>Teks Bacaan untuk Soal Nomor 1-3</b><br><br>Wilayah Indonesia masih banyak yang berupa hamparan hutan yang sangat luas. Hutan merupakan paru-paru dunia yang memiliki peranan sangat vital bagi keseimbangan ekosistem. Selain sebagai tempat tinggal berbagai jenis flora dan fauna, hutan juga berfungsi untuk menyerap karbon dioksida dan menghasilkan oksigen. Namun, saat ini luas hutan semakin menyusut akibat aktivitas eksploitasi yang berlebihan dan alih fungsi lahan menjadi pemukiman atau perkebunan.<br><br><b>2.</b> Berdasarkan teks, apa arti dari kata "eksploitasi"?`,
-        options: [
-          "Penanaman kembali hutan yang gundul.",
-          "Perlindungan terhadap hewan langka.",
-          "Pemanfaatan sumber daya alam untuk keuntungan pribadi secara berlebihan.",
-          "Penelitian mengenai jenis-jenis tumbuhan di hutan."
-        ],
-        correct: 2,
-        topic: "Arti Kosakata",
-        explanation: "Eksploitasi adalah pemanfaatan sumber daya alam untuk keuntungan pribadi secara berlebihan. (Kunci: C)"
+        options: ["Penanaman kembali hutan yang gundul.", "Perlindungan terhadap hewan langka.", "Pemanfaatan sumber daya alam untuk keuntungan pribadi secara berlebihan.", "Penelitian mengenai jenis-jenis tumbuhan di hutan."],
+        correct: 2, topic: "Arti Kosakata", explanation: "Eksploitasi adalah pemanfaatan sumber daya alam untuk keuntungan pribadi secara berlebihan. (Kunci: C)"
       },
       {
         id: 3, type: "PG",
         text: `<b>Teks Bacaan untuk Soal Nomor 1-3</b><br><br>Jika kerusakan hutan terus berlanjut, dampak negatif akan dirasakan oleh manusia, seperti bencana banjir, tanah longsor, hingga anomali cuaca.<br><br><b>3.</b> Kata "anomali" pada paragraf kedua memiliki makna yang serupa dengan...`,
-        options: [
-          "Keajekan",
-          "Keanehan / Kelainan",
-          "Keindahan",
-          "Ketetapan"
-        ],
-        correct: 1,
-        topic: "Sinonim",
-        explanation: "Anomali memiliki arti serupa dengan keanehan atau kelainan. (Kunci: B)"
+        options: ["Keajekan", "Keanehan / Kelainan", "Keindahan", "Ketetapan"],
+        correct: 1, topic: "Sinonim", explanation: "Anomali memiliki arti serupa dengan keanehan atau kelainan. (Kunci: B)"
       },
       {
         id: 4, type: "PG",
         text: `<b>Untuk soal no 4-6</b><br><br>Manfaat hutan sangatlah banyak. Selain sebagai tempat tinggal berbagai jenis hewan dan tanaman, hutan juga berfungsi untuk menyerap karbon dioksida dan menghasilkan oksigen. Sekarang ini banyak hutan yang diubah kegunaannya. Luas hutan semakin menyusut akibat aktivitas eksploitasi yang berlebihan dan alih fungsi lahan menjadi pemukiman atau perkebunan.<br><br>Akibat fungsi hutan yang beralih fungsi itu, dampaknya luar biasa. Sekarang banyak bencana di mana-mana. Oleh karena itu, diperlukan upaya reboisasi secara masif untuk mengembalikan fungsi hutan sebagaimana mestinya.<br><br><b>4.</b> Istilah "reboisasi" dalam teks tersebut bermakna...`,
-        options: [
-          "Penebangan pohon secara liar.",
-          "Pembakaran hutan untuk lahan pertanian.",
-          "Penanaman kembali hutan yang telah gundul atau rusak.",
-          "Pengolahan kayu menjadi bahan bangunan."
-        ],
-        correct: 2,
-        topic: "Istilah",
-        explanation: "Reboisasi bermakna penanaman kembali hutan yang telah gundul atau rusak. (Kunci: C)"
+        options: ["Penebangan pohon secara liar.", "Pembakaran hutan untuk lahan pertanian.", "Penanaman kembali hutan yang telah gundul atau rusak.", "Pengolahan kayu menjadi bahan bangunan."],
+        correct: 2, topic: "Istilah", explanation: "Reboisasi bermakna penanaman kembali hutan yang telah gundul atau rusak. (Kunci: C)"
       },
       {
         id: 5, type: "PG",
         text: `<b>Untuk soal no 4-6</b><br><br>Oleh karena itu, diperlukan upaya reboisasi secara masif untuk mengembalikan fungsi hutan sebagaimana mestinya.<br><br><b>5.</b> Sinonim dari kata "masif" dalam kalimat "...upaya reboisasi secara masif..." adalah...`,
-        options: [
-          "Sedikit demi sedikit.",
-          "Secara sembunyi-sembunyi.",
-          "Dalam skala besar dan utuh.",
-          "Dilakukan oleh satu orang saja."
-        ],
-        correct: 2,
-        topic: "Sinonim",
-        explanation: "Masif bersinonim dengan dalam skala besar dan utuh/menyeluruh. (Kunci: C)"
+        options: ["Sedikit demi sedikit.", "Secara sembunyi-sembunyi.", "Dalam skala besar dan utuh.", "Dilakukan oleh satu orang saja."],
+        correct: 2, topic: "Sinonim", explanation: "Masif bersinonim dengan dalam skala besar dan utuh/menyeluruh. (Kunci: C)"
       },
       {
         id: 6, type: "PG",
         text: `<b>Untuk soal no 4-6</b><br><br>Luas hutan semakin menyusut akibat aktivitas eksploitasi yang berlebihan dan alih fungsi lahan menjadi pemukiman atau perkebunan.<br><br><b>6.</b> Apa antonim dari kata "menyusut" pada paragraf pertama?`,
-        options: [
-          "Berkurang",
-          "Mengembang",
-          "Mengecil",
-          "Menghilang"
-        ],
-        correct: 1,
-        topic: "Antonim",
-        explanation: "Antonim dari menyusut adalah mengembang. (Kunci: B)"
+        options: ["Berkurang", "Mengembang", "Mengecil", "Menghilang"],
+        correct: 1, topic: "Antonim", explanation: "Antonim dari menyusut adalah mengembang. (Kunci: B)"
       },
       {
         id: 7, type: "PG",
         text: `<b>7.</b> Ibu membeli sebuah vas bunga di pasar. Vas itu terbuat dari keramik berwarna biru dengan motif bunga melati yang cantik. Ibu meletakkannya di atas meja ruang tamu.<br><br>Apa objek utama yang dibicarakan dalam teks di atas?`,
-        options: [
-          "Meja ruang tamu",
-          "Bunga melati",
-          "Pasar tradisional",
-          "Vas bunga"
-        ],
-        correct: 3,
-        topic: "Objek Teks",
-        explanation: "Objek utama yang dideskripsikan adalah vas bunga. (Kunci: D)"
+        options: ["Meja ruang tamu", "Bunga melati", "Pasar tradisional", "Vas bunga"],
+        correct: 3, topic: "Objek Teks", explanation: "Objek utama yang dideskripsikan adalah vas bunga. (Kunci: D)"
       },
       {
         id: 8, type: "PG",
         text: `<b>8.</b> Kantung semar adalah tanaman pemakan serangga. Tanaman ini memiliki kantung di ujung daunnya untuk menjebak serangga. Serangga yang terjebak akan dicerna oleh cairan khusus untuk memenuhi kebutuhan nitrogen tanaman.<br><br>Informasi penting yang dapat disajikan kembali dari teks tersebut adalah...`,
-        options: [
-          "Semua tanaman memerlukan serangga untuk tumbuh.",
-          "Cairan kantung semar sangat berbahaya bagi manusia.",
-          "Kantung semar menjebak serangga untuk mendapatkan nitrogen.",
-          "Kantung semar hanya tumbuh di hutan yang gelap."
-        ],
-        correct: 2,
-        topic: "Informasi Penting",
-        explanation: "Informasi pentingnya adalah kantung semar menjebak serangga untuk mendapatkan nitrogen. (Kunci: C)"
+        options: ["Semua tanaman memerlukan serangga untuk tumbuh.", "Cairan kantung semar sangat berbahaya bagi manusia.", "Kantung semar menjebak serangga untuk mendapatkan nitrogen.", "Kantung semar hanya tumbuh di hutan yang gelap."],
+        correct: 2, topic: "Informasi Penting", explanation: "Informasi pentingnya adalah kantung semar menjebak serangga untuk mendapatkan nitrogen. (Kunci: C)"
       },
       {
         id: 9, type: "PG",
         text: `<b>Cermati Teks Bacaan untuk nomor 9-11</b><br><br>(1) Kelinci adalah binatang yang dikenal paling cepat di hutan itu. (2) Karena kecepatan larinya, Kelinci menjadi sombong dan selalu meremehkan hewan lain. (3) Suatu sore, Kelinci menertawakan Kura-kura yang berjalan sangat lambat. (4) Kura-kura yang sabar menantang Kelinci untuk adu lari. (5) Kelinci menyetujui dengan tawa keras, yakin pasti menang. (6) Di tengah perlombaan, Kelinci merasa bosan karena Kura-kura jauh tertinggal, sehingga ia memutuskan untuk tidur siang di bawah pohon besar. (7) Tanpa disadari Kelinci, Kura-kura terus berjalan tanpa henti, dan akhirnya ia berhasil mencapai garis akhir. (8) Perlombaan itu membuktikan bahwa kesombongan akan membawa penyesalan, sedangkan ketekunan akan membuahkan hasil.<br><br><b>9.</b> Inti sari atau gagasan utama yang disampaikan penulis melalui cerita di atas adalah...`,
-        options: [
-          "Akibat dari kesombongan Kelinci dan keberhasilan Kura-kura yang tekun.",
-          "Kecepatan Kelinci adalah anugerah yang seharusnya disyukuri.",
-          "Pentingnya kerja keras Kura-kura untuk memenangkan perlombaan.",
-          "Kehidupan sehari-hari hewan di hutan yang dipimpin oleh Kelinci."
-        ],
-        correct: 0,
-        topic: "Gagasan Utama",
-        explanation: "Inti sari cerita adalah akibat dari kesombongan Kelinci dan keberhasilan Kura-kura yang tekun. (Kunci: A)"
+        options: ["Akibat dari kesombongan Kelinci dan keberhasilan Kura-kura yang tekun.", "Kecepatan Kelinci adalah anugerah yang seharusnya disyukuri.", "Pentingnya kerja keras Kura-kura untuk memenangkan perlombaan.", "Kehidupan sehari-hari hewan di hutan yang dipimpin oleh Kelinci."],
+        correct: 0, topic: "Gagasan Utama", explanation: "Inti sari cerita adalah akibat dari kesombongan Kelinci dan keberhasilan Kura-kura yang tekun. (Kunci: A)"
       },
       {
         id: 10, type: "MCMA",
         text: `<b>Cermati Teks Bacaan untuk nomor 9-11</b><br><br>(Cerita Kelinci dan Kura-kura di atas)<br><br><b>10.</b> Berdasarkan tindakan Kelinci dan Kura-kura dalam cerita, nilai moral paling penting yang diajarkan adalah... (Pilih dua jawaban yang benar)`,
-        options: [
-          "Kerendahan hati",
-          "Disiplin",
-          "Ketekunan"
-        ],
-        correct: [0, 2],
-        topic: "Nilai Moral",
-        explanation: "Nilai moral utama yang diajarkan adalah kerendahan hati dan ketekunan. Opsi 1 dan 3 Benar."
+        options: ["Kerendahan hati", "Disiplin", "Ketekunan"],
+        correct: [0, 2], topic: "Nilai Moral", explanation: "Nilai moral utama yang diajarkan adalah kerendahan hati dan ketekunan. Opsi 1 dan 3 Benar."
       },
       {
         id: 11, type: "PG",
         text: `<b>Cermati Teks Bacaan untuk nomor 9-11</b><br><br>(6) Di tengah perlombaan, Kelinci merasa bosan karena Kura-kura jauh tertinggal, sehingga ia memutuskan untuk tidur siang di bawah pohon besar.<br><br><b>11.</b> Apa fungsi utama dari Kalimat (6) dalam mengembangkan cerita?`,
-        options: [
-          "Memperkenalkan latar tempat baru di dalam cerita Kelinci dan Kura-kura",
-          "Menjelaskan alasan mengapa Kelinci memutuskan untuk beristirahat.",
-          "Menghubungkan Kelinci dan Kura-kura di garis akhir yang menyenangkan",
-          "Menyimpulkan hasil akhir dari perlombaan tersebut dengan jujur"
-        ],
-        correct: 1,
-        topic: "Fungsi Kalimat",
-        explanation: "Fungsinya adalah menjelaskan alasan mengapa Kelinci memutuskan untuk beristirahat. (Kunci: B)"
+        options: ["Memperkenalkan latar tempat baru di dalam cerita Kelinci dan Kura-kura", "Menjelaskan alasan mengapa Kelinci memutuskan untuk beristirahat.", "Menghubungkan Kelinci dan Kura-kura di garis akhir yang menyenangkan", "Menyimpulkan hasil akhir dari perlombaan tersebut dengan jujur"],
+        correct: 1, topic: "Fungsi Kalimat", explanation: "Fungsinya adalah menjelaskan alasan mengapa Kelinci memutuskan untuk beristirahat. (Kunci: B)"
       },
       {
         id: 12, type: "PG",
         text: `<b>Sepeda Baru untuk Ameera</b><br><br>Ameera sangat gembira karena mendapatkan hadiah sepeda baru dari Ayah. Sepeda itu berwarna merah cerah. Pada hari pertama, Ameera membawa sepedanya ke sekolah dengan penuh kebanggaan, meskipun jarak rumah ke sekolah hanya 100 meter. Sayangnya, karena terlalu bersemangat, ia lupa mengunci sepedanya saat masuk ke kelas. Saat pulang sekolah, Ameera terkejut mendapati sepedanya sudah hilang dari tempat parkir. Ameera pun menangis menyesal dan berjanji akan selalu berhati-hati dan disiplin dalam menjaga barang miliknya.<br><br><b>12.</b> Berdasarkan pengalaman pribadi atau pengetahuan umum Anda, peristiwa hilangnya sepeda Ameera karena lupa mengunci adalah kejadian yang...`,
-        options: [
-          "Tidak mungkin terjadi di lingkungan sekolah dan masyarakat",
-          "Sangat umum dan sering terjadi di lingkungan masyarakat.",
-          "Hanya terjadi jika sepeda tersebut bukan sepeda baru.",
-          "Merupakan kejadian aneh dan sangat menggelikan"
-        ],
-        correct: 1,
-        topic: "Penalaran",
-        explanation: "Kejadian tersebut sangat umum dan sering terjadi di lingkungan masyarakat. (Kunci: B)"
+        options: ["Tidak mungkin terjadi di lingkungan sekolah dan masyarakat", "Sangat umum dan sering terjadi di lingkungan masyarakat.", "Hanya terjadi jika sepeda tersebut bukan sepeda baru.", "Merupakan kejadian aneh dan sangat menggelikan"],
+        correct: 1, topic: "Penalaran", explanation: "Kejadian tersebut sangat umum dan sering terjadi di lingkungan masyarakat. (Kunci: B)"
       },
       {
         id: 13, type: "Kategori",
@@ -960,60 +843,31 @@
           "Mengurangi penggunaan plastik adalah tanggung jawab orang dewasa, bukan anak-anak.",
           "Saya akan mulai memasukkan tas lipat ke dalam tas sekolah atau tas belanja Ibu saya."
         ],
-        correct: ["Salah", "Salah", "Benar"],
-        topic: "Relevansi Ide",
-        explanation: "Pernyataan 1 & 2 Tidak Relevan (Salah), pernyataan 3 Relevan (Benar)."
+        correct: ["Salah", "Salah", "Benar"], topic: "Relevansi Ide", explanation: "Pernyataan 1 & 2 Tidak Relevan (Salah), pernyataan 3 Relevan (Benar)."
       },
       {
         id: 14, type: "MCMA",
         text: `<b>14.</b> Kegiatan itu mendapat respons positif dari warga karena mereka mendapatkan banyak keuntungan. Berdasarkan kalimat tersebut di atas, apa sinonim dari kata yang dicetak miring (positif/keuntungan)? Pilih dua jawaban yang tepat!`,
-        options: [
-          "Kemudahan",
-          "Manfaat",
-          "Laba"
-        ],
-        correct: [1, 2],
-        topic: "Sinonim",
-        explanation: "Sinonim yang tepat adalah manfaat dan laba. Opsi 2 dan 3 Benar."
+        options: ["Kemudahan", "Manfaat", "Laba"],
+        correct: [1, 2], topic: "Sinonim", explanation: "Sinonim yang tepat adalah manfaat dan laba. Opsi 2 dan 3 Benar."
       },
       {
         id: 15, type: "PG",
         text: `<b>Bacalah teks berikut untuk menjawab soal nomor 15-17!</b><br><br>Di sebuah desa terpencil, hiduplah seorang kakek tua bernama Kakek Hariman. Ia sangat gemar menanam pohon meskipun usianya sudah senja. Suatu hari, seorang pemuda bertanya, “Kakek, mengapa kakek masih menanam pohon? Padahal, kakek mungkin tidak akan sempat menikmati buahnya?” Kakek Hariman tersenyum simpul lalu menjawab, “Aku menanam bukan hanya untuk diriku, melainkan untuk anak cucu semua agar mereka bisa berteduh dan menikmati hasilnya nanti. Selain itu, aku memang sangat mencintai kegiatanku ini.”<br><br><b>15.</b> Apa gagasan pokok dari kutipan teks di atas?`,
-        options: [
-          "Cara menanam pohon yang benar di desa terpencil.",
-          "Pertanyaan seorang pemuda kepada kakek tua yang menanam pohon",
-          "Kegemaran Kakek Hariman menanam pohon di masa tua.",
-          "Cerita Kakek Hariman yang mencintai semua cucunya"
-        ],
-        correct: 2,
-        topic: "Gagasan Pokok",
-        explanation: "Gagasan pokoknya adalah kegemaran Kakek Hariman menanam pohon di masa tua. (Kunci: C)"
+        options: ["Cara menanam pohon yang benar di desa terpencil.", "Pertanyaan seorang pemuda kepada kakek tua yang menanam pohon", "Kegemaran Kakek Hariman menanam pohon di masa tua.", "Cerita Kakek Hariman yang mencintai semua cucunya"],
+        correct: 2, topic: "Gagasan Pokok", explanation: "Gagasan pokoknya adalah kegemaran Kakek Hariman menanam pohon di masa tua. (Kunci: C)"
       },
       {
         id: 16, type: "PG",
         text: `<b>Bacalah teks berikut untuk menjawab soal nomor 15-17!</b><br><br>(Teks Kakek Hariman di atas)<br><br><b>16.</b> Berdasarkan teks di atas, bagaimana watak atau karakter Kakek Hariman?`,
-        options: [
-          "Peduli dan tidak mau diganggu.",
-          "Sombong karena banyak menanam pohon.",
-          "Rajin bekerja dan mudah menyerah.",
-          "Peduli pada masa depan dan murah hati."
-        ],
-        correct: 3,
-        topic: "Karakter Tokoh",
-        explanation: "Kakek Hariman berwatak peduli pada masa depan dan murah hati. (Kunci: D)"
+        options: ["Peduli dan tidak mau diganggu.", "Sombong karena banyak menanam pohon.", "Rajin bekerja dan mudah menyerah.", "Peduli pada masa depan dan murah hati."],
+        correct: 3, topic: "Karakter Tokoh", explanation: "Kakek Hariman berwatak peduli pada masa depan dan murah hati. (Kunci: D)"
       },
       {
         id: 17, type: "PG",
         text: `<b>Bacalah teks berikut untuk menjawab soal nomor 15-17!</b><br><br>(Teks Kakek Hariman di atas)<br><br><b>17.</b> Amanat yang terkandung dalam bacaan tersebut adalah...`,
-        options: [
-          "Lakukanlah kebaikan yang bermanfaat bagi orang lain di masa depan.",
-          "Menanam pohon hanya boleh dilakukan oleh orang yang sudah tua.",
-          "Orang tua wajib memberikan masa depan yang gemilang kepada cucunya.",
-          "Capai masa depan gemilang dengan menanam pohon sebanyak mungkin"
-        ],
-        correct: 0,
-        topic: "Amanat",
-        explanation: "Amanatnya adalah lakukanlah kebaikan yang bermanfaat bagi orang lain di masa depan. (Kunci: A)"
+        options: ["Lakukanlah kebaikan yang bermanfaat bagi orang lain di masa depan.", "Menanam pohon hanya boleh dilakukan oleh orang yang sudah tua.", "Orang tua wajib memberikan masa depan yang gemilang kepada cucunya.", "Capai masa depan gemilang dengan menanam pohon sebanyak mungkin"],
+        correct: 0, topic: "Amanat", explanation: "Amanatnya adalah lakukanlah kebaikan yang bermanfaat bagi orang lain di masa depan. (Kunci: A)"
       },
       {
         id: 18, type: "Kategori",
@@ -1023,125 +877,61 @@
           "Arinda menolong teman tanpa pamrih.",
           "Arinda rajin belajar bila ada tugas."
         ],
-        correct: ["Benar", "Benar", "Benar"],
-        topic: "Pemahaman Bacaan",
-        explanation: "Semua pernyataan sesuai dengan isi teks bacaan Arinda."
+        correct: ["Benar", "Benar", "Benar"], topic: "Pemahaman Bacaan", explanation: "Semua pernyataan sesuai dengan isi teks bacaan Arinda."
       },
       {
         id: 19, type: "PG",
         text: `<b>19.</b> Sebuah benda berbentuk lingkaran dan biasanya terpasang di dinding ruang tamu atau kelas. Di dalamnya terdapat angka satu sampai duabelas serta tiga jarum yang terus berputar. Benda ini sangat berguna agar kita bisa datang ke sekolah tepat waktu.<br><br>Simpulan objek yang dideskripsikan pada teks tersebut adalah...`,
-        options: [
-          "Jam tangan",
-          "Busur",
-          "Kompas",
-          "Jam dinding"
-        ],
-        correct: 3,
-        topic: "Simpulan Objek",
-        explanation: "Objek yang dideskripsikan adalah jam dinding. (Kunci: D)"
+        options: ["Jam tangan", "Busur", "Kompas", "Jam dinding"],
+        correct: 3, topic: "Simpulan Objek", explanation: "Objek yang dideskripsikan adalah jam dinding. (Kunci: D)"
       },
       {
         id: 20, type: "PG",
         text: `<b>20.</b> Rutinitas Adinda di rumah. Setiap pagi, sebelum berangkat sekolah, Adinda selalu menyempatkan diri untuk membantu ibunya menyapu halaman. Ia melakukan tugasnya dengan ceria tanpa pernah mengeluh, meskipun halamannya cukup luas.<br><br>Karakter tokoh Adinda dalam teks tersebut adalah...`,
-        options: [
-          "Rajin dan ikhlas",
-          "Berbakti dan terpaksa",
-          "Disiplin dan angkuh",
-          "Rajin dan kuat"
-        ],
-        correct: 0,
-        topic: "Karakter Tokoh",
-        explanation: "Karakter Adinda adalah rajin dan ikhlas. (Kunci: A)"
+        options: ["Rajin dan ikhlas", "Berbakti dan terpaksa", "Disiplin dan angkuh", "Rajin dan kuat"],
+        correct: 0, topic: "Karakter Tokoh", explanation: "Karakter Adinda adalah rajin dan ikhlas. (Kunci: A)"
       },
       {
         id: 21, type: "PG",
         text: `<b>21.</b> Gadis itu kini menjadi viral di manapun. Ia menjadi buah bibir bagi ibu-ibu yang sedang berkerumun.<br><br>Makna buah bibir adalah ....`,
-        options: [
-          "Terkenal di mana-mana",
-          "Bahan pembicaraan",
-          "Gadis yang memesona",
-          "Hadiah dari ibu"
-        ],
-        correct: 1,
-        topic: "Ungkapan",
-        explanation: "Buah bibir bermakna bahan pembicaraan. (Kunci: B)"
+        options: ["Terkenal di mana-mana", "Bahan pembicaraan", "Gadis yang memesona", "Hadiah dari ibu"],
+        correct: 1, topic: "Ungkapan", explanation: "Buah bibir bermakna bahan pembicaraan. (Kunci: B)"
       },
       {
         id: 22, type: "PG",
         text: `<b>22.</b> Pena itu menari-nari di atas kertas untuk menuangkan ide sang penulis. Majas yang digunakan dalam kalimat di atas adalah...`,
-        options: [
-          "Hiperbola",
-          "Asosiasi",
-          "Personifikasi",
-          "Metafora"
-        ],
-        correct: 2,
-        topic: "Majas",
-        explanation: "Majas personifikasi karena pena digambarkan dapat menari seperti manusia. (Kunci: C)"
+        options: ["Hiperbola", "Asosiasi", "Personifikasi", "Metafora"],
+        correct: 2, topic: "Majas", explanation: "Majas personifikasi karena pena digambarkan dapat menari seperti manusia. (Kunci: C)"
       },
       {
         id: 23, type: "PG",
         text: `<b>23.</b> Kalimat berikut yang merupakan majas hiperbola adalah ....`,
-        options: [
-          "Si kutu buku itu selalu duduk di pojok perpustakaan",
-          "Amukan jago merah melalap seluruh kampung di pinggiran kota Jakarta.",
-          "Matahari sudah terbangun menyapa bumi yang indah ini",
-          "Suaranya menggelegar membelah angkasa dan membuat bumi berguncang"
-        ],
-        correct: 3,
-        topic: "Majas",
-        explanation: "Majas hiperbola menggunakan pernyataan yang dilebih-lebihkan secara ekstrem. (Kunci: D)"
+        options: ["Si kutu buku itu selalu duduk di pojok perpustakaan", "Amukan jago merah melalap seluruh kampung di pinggiran kota Jakarta.", "Matahari sudah terbangun menyapa bumi yang indah ini", "Suaranya menggelegar membelah angkasa dan membuat bumi berguncang"],
+        correct: 3, topic: "Majas", explanation: "Majas hiperbola menggunakan pernyataan yang dilebih-lebihkan secara ekstrem. (Kunci: D)"
       },
       {
         id: 24, type: "PG",
         text: `<b>24.</b> Pemuda itu kurang baik bila menjadi pemimpin, karena ia ibarat “Bagai air di daun talas”. Apa artinya peribahasa pada kalimat yang dicetak tebal tersebut?`,
-        options: [
-          "Orang yang sangat bersih hatinya.",
-          "Seseorang yang sangat malas dan banyak bicara",
-          "Orang yang tidak teguh pendiriannya.",
-          "Seseorang yang sangat curang."
-        ],
-        correct: 2,
-        topic: "Peribahasa",
-        explanation: "Bagai air di daun talas berarti orang yang tidak teguh pendiriannya. (Kunci: C)"
+        options: ["Orang yang sangat bersih hatinya.", "Seseorang yang sangat malas dan banyak bicara", "Orang yang tidak teguh pendiriannya.", "Seseorang yang sangat curang."],
+        correct: 2, topic: "Peribahasa", explanation: "Bagai air di daun talas berarti orang yang tidak teguh pendiriannya. (Kunci: C)"
       },
       {
         id: 25, type: "PG",
         text: `<b>25.</b> Sekarang ini banyak yang dilakukan seseorang untuk memperoleh keuntungan lainnya yang berlipat ganda dari apa yang dilakukan. Hal ini seperti peribahasa sambil menyelam ...`,
-        options: [
-          "Melihat karang",
-          "Minum air",
-          "Mandi bersama",
-          "Mencari ikan"
-        ],
-        correct: 1,
-        topic: "Peribahasa",
-        explanation: "Kelanjutan peribahasa yang tepat adalah 'sambil menyelam minum air'. (Kunci: B)"
+        options: ["Melihat karang", "Minum air", "Mandi bersama", "Mencari ikan"],
+        correct: 1, topic: "Peribahasa", explanation: "Kelanjutan peribahasa yang tepat adalah 'sambil menyelam minum air'. (Kunci: B)"
       },
       {
         id: 26, type: "MCMA",
         text: `<b>26.</b> Faneza melihat seorang nenek yang kesulitan menyeberang jalan di depan sekolah. Tanpa berpikir panjang, Faneza segera menghampiri dan memandu nenek tersebut hingga sampai di seberang dengan aman. Setelah itu ia melanjutkan perjalanan ke sekolah. Peristiwa dalam teks di atas berkaitan dengan perilaku sehari-hari, dua jawaban yang sesuai yaitu...`,
-        options: [
-          "Menolong orang lain ketika sesuai dengan kemampuan.",
-          "Menyeberang jalan dengan hati-hati agar bisa membantu nenek",
-          "Membantu orang lain yang sedang membutuhkan pertolongan"
-        ],
-        correct: [0, 2],
-        topic: "Refleksi Perilaku",
-        explanation: "Perilaku tersebut mencerminkan menolong orang sesuai kemampuan dan membantu sesama yang membutuhkan. Opsi 1 dan 3 Benar."
+        options: ["Menolong orang lain ketika sesuai dengan kemampuan.", "Menyeberang jalan dengan hati-hati agar bisa membantu nenek", "Membantu orang lain yang sedang membutuhkan pertolongan"],
+        correct: [0, 2], topic: "Refleksi Perilaku", explanation: "Perilaku tersebut mencerminkan menolong orang sesuai kemampuan dan membantu sesama yang membutuhkan. Opsi 1 dan 3 Benar."
       },
       {
         id: 27, type: "PG",
         text: `<b>Teks Bacaan untuk nomor 27 dan 28</b><br><br><b>Taman Nasional Komodo</b><br>Taman Nasional Komodo terletak di Provinsi Nusa Tenggara Timur. Kawasan ini terdiri atas tiga pulau besar, yaitu Pulau Komodo, Pulau Rinca, dan Pulau Padar. Selain menjadi habitat asli komodo, taman nasional ini juga memiliki kekayaan bawah laut yang sangat indah. Wisatawan dari berbagai negara berkunjung ke sini untuk melihat hewan purba tersebut secara langsung. Pemerintah terus berupaya menjaga kelestarian alam di sana agar ekosistem komodo tetap terjaga.<br><br><b>27.</b> Berdasarkan teks tersebut, di manakah letak Taman Nasional Komodo?`,
-        options: [
-          "Sulawesi Utara",
-          "Nusa Tenggara Timur",
-          "Pulau Bali",
-          "Nusa Tenggara Barat"
-        ],
-        correct: 1,
-        topic: "Informasi Tersurat",
-        explanation: "Terletak di Provinsi Nusa Tenggara Timur. (Kunci: B)"
+        options: ["Sulawesi Utara", "Nusa Tenggara Timur", "Pulau Bali", "Nusa Tenggara Barat"],
+        correct: 1, topic: "Informasi Tersurat", explanation: "Terletak di Provinsi Nusa Tenggara Timur. (Kunci: B)"
       },
       {
         id: 28, type: "PG",
@@ -1152,22 +942,13 @@
           "Karena Pulau Komodo sebagai habitat asli beruang, taman nasional ini juga memiliki kekayaan bawah laut yang sangat indah",
           "Karena Pulau Komodo sebagai habitat asli komodo, taman nasional ini juga memiliki keindahan alam pegunungan yang indah."
         ],
-        correct: 0,
-        topic: "Informasi Tersurat",
-        explanation: "Wisatawan berkunjung karena Pulau Komodo adalah habitat asli komodo serta memiliki kekayaan bawah laut yang indah. (Kunci: A)"
+        correct: 0, topic: "Informasi Tersurat", explanation: "Wisatawan berkunjung karena Pulau Komodo adalah habitat asli komodo serta memiliki kekayaan bawah laut yang indah. (Kunci: A)"
       },
       {
         id: 29, type: "PG",
         text: `<b>29.</b> Anak yang banyak bicara biasanya tidak terlalu banyak ilmu. Peribahasa yang sesuai dengan kalimat tersebut adalah ….`,
-        options: [
-          "Air beriak tanda tak dalam",
-          "Tong kosong berbunyi nyaring",
-          "Besar pasak dari pada tiang",
-          "Sedia payung sebelum hujan"
-        ],
-        correct: 0,
-        topic: "Peribahasa",
-        explanation: "Peribahasa yang sesuai adalah 'Air beriak tanda tak dalam'. (Kunci: A)"
+        options: ["Air beriak tanda tak dalam", "Tong kosong berbunyi nyaring", "Besar pasak dari pada tiang", "Sedia payung sebelum hujan"],
+        correct: 0, topic: "Peribahasa", explanation: "Peribahasa yang sesuai adalah 'Air beriak tanda tak dalam'. (Kunci: A)"
       },
       {
         id: 30, type: "MCMA",
@@ -1177,9 +958,7 @@
           "Bergas adalah anak yang pemberani karena berani memanjat pohon mangga.",
           "Bergas memiliki sifat peduli dan penyayang terhadap sesama makhluk hidup."
         ],
-        correct: [0, 2],
-        topic: "Tanggapan Watak Tokoh",
-        explanation: "Bergas adalah anak baik hati serta peduli dan penyayang terhadap makhluk hidup. Opsi 1 dan 3 Benar."
+        correct: [0, 2], topic: "Tanggapan Watak Tokoh", explanation: "Bergas adalah anak baik hati serta peduli dan penyayang terhadap makhluk hidup. Opsi 1 dan 3 Benar."
       }
     ];
 
@@ -1211,7 +990,7 @@
 
     async function fetchCloudSettingsForStudent() {
       try {
-        const res = await fetch(FIREBASE_SETTINGS_URL);
+        const res = await fetch(FIREBASE_SETTINGS_URL + "?t=" + new Date().getTime());
         const data = await res.json();
         if (data) {
           if (data.status) localStorage.setItem('tka_pkg_status_multi', JSON.stringify(data.status));
@@ -1221,44 +1000,52 @@
         console.warn("Menggunakan pengaturan offline/lokal:", e);
       }
     }
+
+    // DISESUAIKAN AGAR SINKRON SEMPURNA DENGAN ADMIN (MENCOCOKKAN NAMA PAKET)
     function getAdminPackageStatus(sub, pkg) {
       try {
         const stored = localStorage.getItem('tka_pkg_status_multi');
         if (stored) {
           const statuses = JSON.parse(stored);
-          if (statuses[sub] && statuses[sub][pkg] !== undefined) {
-            return statuses[sub][pkg] ? 'buka' : 'kunci';
+          const normalizedPkg = pkg.toUpperCase();
+          if (statuses[sub]) {
+            for (let k in statuses[sub]) {
+              if (k.toUpperCase() === normalizedPkg) {
+                return statuses[sub][k] ? 'buka' : 'kunci';
+              }
+            }
           }
         }
       } catch(e) {}
       return (pkg === 'Ujicoba' || pkg === 'Paket 1' || pkg === 'Paket 2') ? 'buka' : 'kunci';
     }
+
     function getAdminPackageToken(sub, pkg) {
       try {
         const stored = localStorage.getItem('tka_pkg_tokens_multi');
         if (stored) {
           const tokens = JSON.parse(stored);
-          if (tokens[sub] && tokens[sub][pkg]) {
-            return tokens[sub][pkg];
+          const normalizedPkg = pkg.toUpperCase();
+          if (tokens[sub]) {
+            for (let k in tokens[sub]) {
+              if (k.toUpperCase() === normalizedPkg) {
+                return tokens[sub][k];
+              }
+            }
           }
         }
       } catch(e) {}
       return sub === 'matematika' ? 'MAT1' : 'BINDO1';
     }
+
     function persistCurrentExamState() {
       const state = {
-        selectedSubject,
-        currentPackageKey,
-        currentUser,
-        currentQuestions,
-        currentQuestionIdx,
-        userAnswers,
-        raguStatus,
-        timeRemaining,
-        isActive: true
+        selectedSubject, currentPackageKey, currentUser, currentQuestions,
+        currentQuestionIdx, userAnswers, raguStatus, timeRemaining, isActive: true
       };
       localStorage.setItem('tka_active_exam_session_v16', JSON.stringify(state));
     }
+
     function checkActiveExamSession() {
       const saved = localStorage.getItem('tka_active_exam_session_v16');
       if (saved) {
@@ -1292,6 +1079,7 @@
       }
       return false;
     }
+
     function populateSchoolDropdown() {
       const regSelect = document.getElementById('regSchool');
       if (regSelect.children.length <= 1) {
@@ -1301,12 +1089,14 @@
         });
       }
     }
+
     function showScreen(screenId) {
       ['viewSubjects', 'viewPackages', 'viewRegistration', 'viewExam', 'viewResult'].forEach(id => {
         document.getElementById(id).classList.add('hidden');
       });
       document.getElementById(screenId).classList.remove('hidden');
     }
+
     async function selectSubject(sub) {
       await fetchCloudSettingsForStudent();
       selectedSubject = sub;
@@ -1333,6 +1123,7 @@
       
       showScreen('viewPackages');
     }
+
     function selectPackage(pkg, isBuka) {
       if (!isBuka) {
         alert("Maaf, paket soal ini masih dikunci oleh Admin!");
@@ -1344,6 +1135,7 @@
       document.getElementById('tokenErrorMsg').classList.add('hidden');
       showScreen('viewRegistration');
     }
+
     async function startExam(e) {
       e.preventDefault();
       await fetchCloudSettingsForStudent();
@@ -1374,11 +1166,7 @@
       document.getElementById('examStudentName').innerText = currentUser.name;
       document.getElementById('examStudentSchool').innerText = `${currentUser.school} • Kelas ${currentUser.className}`;
       
-      userAnswers = {}; 
-      raguStatus = {}; 
-      currentQuestionIdx = 0;
-      timeRemaining = 75 * 60;
-      
+      userAnswers = {}; raguStatus = {}; currentQuestionIdx = 0; timeRemaining = 75 * 60;
       currentQuestions = [...DATABASE_SOAL[selectedSubject][currentPackageKey].questions];
       
       persistCurrentExamState();
@@ -1387,6 +1175,7 @@
       loadQuestion(0);
       startCountdownTimer();
     }
+
     function startCountdownTimer() {
       clearInterval(examTimerInterval);
       const display = document.getElementById('timerDisplay');
@@ -1407,6 +1196,7 @@
       updateClock();
       examTimerInterval = setInterval(updateClock, 1000);
     }
+
     function renderPalette() {
       const grid = document.getElementById('paletteGrid');
       grid.innerHTML = '';
@@ -1419,6 +1209,7 @@
         grid.appendChild(btn);
       });
     }
+
     function getPaletteClass(idx) {
       const q = currentQuestions[idx];
       const isCurrent = idx === currentQuestionIdx;
@@ -1430,6 +1221,7 @@
       if (isAnswered) return base + "bg-teal-600 text-white shadow-sm";
       return base + "bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200";
     }
+
     function isQuestionAnswered(qId) {
       const ans = userAnswers[qId];
       if (ans === undefined || ans === null) return false;
@@ -1437,18 +1229,15 @@
       if (typeof ans === 'object') return Object.keys(ans).length > 0;
       return true;
     }
+
     function loadQuestion(idx) {
       currentQuestionIdx = idx;
       const q = currentQuestions[idx];
       document.getElementById('questionNumberBadge').innerText = `Soal No. ${idx + 1}`;
-      let typeLabel = "Pilihan Ganda Sederhana", pointsRule = "Bobot: 1 Poin (Benar 1, Salah 0)";
-      if (q.type === 'MCMA') { 
-        typeLabel = "PG Kompleks (MCMA)"; 
-        pointsRule = "Bobot: 1 Poin (Harus benar semua pilihan untuk mendapatkan 1 poin)"; 
-      } else if (q.type === 'Kategori') { 
-        typeLabel = "PG Kompleks Kategori"; 
-        pointsRule = "Bobot: 1 Poin (Harus benar semua pernyataan untuk mendapatkan 1 poin)"; 
-      }
+      let typeLabel = "Pilihan Ganda Sederhana", pointsRule = "Bobot: 1 Poin";
+      if (q.type === 'MCMA') { typeLabel = "PG Kompleks (MCMA)"; pointsRule = "Bobot: 1 Poin"; }
+      else if (q.type === 'Kategori') { typeLabel = "PG Kompleks Kategori"; pointsRule = "Bobot: 1 Poin"; }
+      
       document.getElementById('questionTypeBadge').innerText = typeLabel;
       document.getElementById('questionPointsRule').innerText = pointsRule;
       document.getElementById('questionContent').innerHTML = q.text;
@@ -1494,39 +1283,36 @@
       renderPalette();
       persistCurrentExamState();
     }
+
     function saveAnswerPG(qId, val) { userAnswers[qId] = val; renderPalette(); persistCurrentExamState(); }
     function saveAnswerMCMA(qId, optIdx) {
       if (!userAnswers[qId]) userAnswers[qId] = [];
       const i = userAnswers[qId].indexOf(optIdx);
       if (i > -1) userAnswers[qId].splice(i, 1); else userAnswers[qId].push(optIdx);
-      renderPalette();
-      persistCurrentExamState();
+      renderPalette(); persistCurrentExamState();
     }
     function saveAnswerKategori(qId, stmtIdx, val) {
       if (!userAnswers[qId]) userAnswers[qId] = {};
       userAnswers[qId][stmtIdx] = val;
-      renderPalette();
-      persistCurrentExamState();
+      renderPalette(); persistCurrentExamState();
     }
     function toggleRaguCurrent() {
       const q = currentQuestions[currentQuestionIdx];
       raguStatus[q.id] = document.getElementById('checkRagu').checked;
-      renderPalette();
-      persistCurrentExamState();
+      renderPalette(); persistCurrentExamState();
     }
     function nextQuestion() {
       if (currentQuestionIdx < currentQuestions.length - 1) loadQuestion(currentQuestionIdx + 1);
       else confirmSubmitExam();
     }
-    function prevQuestion() {
-      if (currentQuestionIdx > 0) loadQuestion(currentQuestionIdx - 1);
-    }
+    function prevQuestion() { if (currentQuestionIdx > 0) loadQuestion(currentQuestionIdx - 1); }
     function confirmSubmitExam() {
       const count = Object.keys(userAnswers).length;
       if (confirm(`Kamu telah menjawab ${count} dari ${currentQuestions.length} soal.\nYakin ingin mengumpulkan jawaban?`)) {
         submitExam();
       }
     }
+
     async function saveSubmission(sub) {
       const local = localStorage.getItem('tka_submissions_multi');
       const list = local ? JSON.parse(local) : [];
@@ -1539,54 +1325,34 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(sub)
         });
-        document.getElementById('submitStatusText').innerText = "Nilai tryout Anda telah otomatis tersimpan di server cloud Korwil Mranggen & Sayung.";
+        document.getElementById('submitStatusText').innerText = "Nilai tryout Anda telah otomatis tersimpan di server cloud Korwil.";
       } catch (err) {
         console.warn("Gagal kirim Firebase:", err);
       }
       setTimeout(() => {
         try {
-          fetch(GOOGLE_SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(sub)
-          });
-        } catch (e) {
-          console.warn("Google Sheet sibuk:", e);
-        }
+          fetch(GOOGLE_SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(sub) });
+        } catch (e) {}
       }, Math.floor(Math.random() * 5000));
     }
+
     function submitExam() {
       clearInterval(examTimerInterval);
-      
       let totalRawScore = 0;
       let detailAnswersRecord = {};
       
       currentQuestions.forEach((q) => {
-        let earned = 0;
-        let isFullyCorrect = false;
-        
+        let earned = 0; let isFullyCorrect = false;
         if (q.type === 'PG') {
-          if (userAnswers[q.id] === q.correct) {
-            earned = 1; isFullyCorrect = true;
-          }
+          if (userAnswers[q.id] === q.correct) { earned = 1; isFullyCorrect = true; }
         } else if (q.type === 'MCMA') {
-          const userArr = userAnswers[q.id] || [];
-          const correctArr = q.correct;
-          if (userArr.length === correctArr.length && userArr.every(val => correctArr.includes(val))) {
-            earned = 1; isFullyCorrect = true;
-          }
+          const userArr = userAnswers[q.id] || []; const correctArr = q.correct;
+          if (userArr.length === correctArr.length && userArr.every(val => correctArr.includes(val))) { earned = 1; isFullyCorrect = true; }
         } else if (q.type === 'Kategori') {
-          const userMap = userAnswers[q.id] || {};
-          let allMatch = true;
-          q.statements.forEach((_, sIdx) => { 
-            if (userMap[sIdx] !== q.correct[sIdx]) allMatch = false; 
-          });
-          if (allMatch && Object.keys(userMap).length === q.statements.length) {
-            earned = 1; isFullyCorrect = true;
-          }
+          const userMap = userAnswers[q.id] || {}; let allMatch = true;
+          q.statements.forEach((_, sIdx) => { if (userMap[sIdx] !== q.correct[sIdx]) allMatch = false; });
+          if (allMatch && Object.keys(userMap).length === q.statements.length) { earned = 1; isFullyCorrect = true; }
         }
-        
         totalRawScore += earned;
         detailAnswersRecord[q.id] = { earned: earned, isCorrect: isFullyCorrect };
       });
@@ -1604,16 +1370,9 @@
         date: new Date().toLocaleDateString('id-ID') + ' ' + new Date().toLocaleTimeString('id-ID', {hour: '2-digit', minute:'2-digit'}),
         subject: selectedSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia',
         package: currentPackageKey,
-        name: currentUser.name,
-        school: currentUser.school,
-        className: currentUser.className,
-        absen: currentUser.absen,
-        rawScore: totalRawScore,
-        maxRawScore: maxScoreActual,
-        finalScore: final100,
-        status: isPass ? 'Lulus' : 'Remedial',
-        durationMinutes: durMin,
-        detailAnswers: detailAnswersRecord
+        name: currentUser.name, school: currentUser.school, className: currentUser.className, absen: currentUser.absen,
+        rawScore: totalRawScore, maxRawScore: maxScoreActual, finalScore: final100,
+        status: isPass ? 'Lulus' : 'Remedial', durationMinutes: durMin, detailAnswers: detailAnswersRecord
       };
       
       latestSubmissionData = record;
@@ -1630,25 +1389,25 @@
       if (isPass) certBox.classList.remove('hidden'); else certBox.classList.add('hidden');
       
       const motBox = document.getElementById('motivationBox');
-      let motText = "";
-      let motClass = "";
-      
+      let motText = ""; let motClass = "";
       if (final100 >= 90) {
         motClass = "bg-emerald-50 border-emerald-300 text-emerald-950";
-        motText = "🌟 <b>Luar Biasa! Prestasi Gemilang!</b><br>Kamu memiliki pemahaman materi yang sangat matang. Pertahankan konsistensi belajarmu dan jadilah inspirasi bagi teman-temanmu!";
+        motText = "🌟 <b>Luar Biasa! Prestasi Gemilang!</b><br>Kamu memiliki pemahaman materi yang sangat matang.";
       } else if (final100 >= 75) {
         motClass = "bg-teal-50 border-teal-300 text-teal-950";
-        motText = "👏 <b>Hebat dan Membanggakan!</b><br>Kamu sudah melewati KKM dengan sangat baik. Sedikit latihan ketelitian lagi di soal-soal menantang, kamu pasti bisa meraih nilai sempurna 100!";
+        motText = "👏 <b>Hebat dan Membanggakan!</b><br>Kamu sudah melewati KKM dengan sangat baik.";
       } else if (final100 >= 70) {
-        motClass = "👍 <b>Bagus, Kamu Lulus!</b><br>Usahamu membuahkan hasil dan memenuhi standar kelulusan. Jangan cepat puas, tingkatkan terus kemampuan belajarmu agar nilaimu semakin meningkat!";
+        motClass = "bg-slate-50 border-slate-300 text-slate-950";
+        motText = "👍 <b>Bagus, Kamu Lulus!</b><br>Usahamu memenuhi standar kelulusan.";
       } else {
-        motClass = "💪 <b>Jangan Menyerah, Ayo Coba Lagi!</b><br>Kegagalan hari ini adalah awal dari kesuksesan. Jadikan ini sebagai motivasi untuk belajar lebih giat, ulas kembali materinya, dan buktikan kamu bisa meraih nilai di atas 90 pada percobaan berikutnya!";
+        motClass = "bg-rose-50 border-rose-300 text-rose-950";
+        motText = "💪 <b>Jangan Menyerah, Ayo Coba Lagi!</b><br>Jadikan ini motivasi untuk belajar lebih giat.";
       }
       motBox.className = `my-4 p-4 rounded-2xl border text-xs sm:text-sm shadow-sm ${motClass}`;
       motBox.innerHTML = motText;
+
       const btnDisc = document.getElementById('btnDiscussionToggle');
       let lockedMsg = document.getElementById('lockedDiscussionMsg');
-      
       if (final100 >= 90) {
         renderDiscussions();
         if (btnDisc) btnDisc.style.display = 'inline-flex';
@@ -1661,11 +1420,11 @@
           lockedMsg.className = 'p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 text-xs font-bold my-3';
           btnDisc.parentNode.insertBefore(lockedMsg, btnDisc);
         }
-        lockedMsg.innerHTML = `🔒 Kunci jawaban & pembahasan eksklusif hanya terbuka bagi peserta yang meraih nilai <b>minimal 90</b>.<br>Nilai kamu saat ini <b>${final100}</b>. Yuk coba kerjakan lagi dan raih nilai 90 ke atas! 💪`;
+        lockedMsg.innerHTML = `🔒 Kunci jawaban & pembahasan eksklusif hanya terbuka bagi peserta yang meraih nilai <b>minimal 90</b>.<br>Nilai kamu saat ini <b>${final100}</b>.`;
       }
-      
       showScreen('viewResult');
     }
+
     function openCertificateModal() {
       if (!latestSubmissionData) return;
       const sub = latestSubmissionData;
@@ -1674,25 +1433,11 @@
       document.getElementById('certSubjectName').innerText = sub.subject;
       document.getElementById('certPackageName').innerText = sub.package;
       document.getElementById('certScore').innerText = sub.finalScore;
-      let predikat = "LULUS / MEMENUHI KKM";
-      if (sub.finalScore >= 95) predikat = "ISTIMEWA / DENGAN PUJIAN";
-      else if (sub.finalScore >= 85) predikat = "SANGAT BAIK / MEMUASKAN";
-      else if (sub.finalScore >= 70) predikat = "BAIK / LULUS";
-      document.getElementById('certPredicate').innerText = predikat;
-      document.getElementById('certNumber').innerText = `No: 400.3.11.1/TKA-MRG/2026/${Math.floor(1000 + Math.random() * 9000)}`;
       document.getElementById('certificateModal').classList.remove('hidden');
     }
-    function closeCertificateModal() {
-      document.getElementById('certificateModal').classList.add('hidden');
-    }
-    function toggleDiscussion() {
-      const sec = document.getElementById('discussionSection');
-      if (sec.classList.contains('hidden')) {
-        sec.classList.remove('hidden');
-      } else {
-        sec.classList.add('hidden');
-      }
-    }
+    function closeCertificateModal() { document.getElementById('certificateModal').classList.add('hidden'); }
+    function toggleDiscussion() { document.getElementById('discussionSection').classList.toggle('hidden'); }
+
     function renderDiscussions() {
       const container = document.getElementById('discussionContainer');
       document.getElementById('discussionTitle').innerText = `Kunci Jawaban & Pembahasan ${selectedSubject.toUpperCase()} - ${currentPackageKey}`;
@@ -1707,13 +1452,13 @@
           </div>
           <div class="text-slate-800">${q.text}</div>
           <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-emerald-950 font-medium">
-            <span class="font-black text-emerald-800">Pembahasan:</span><br>
-            ${q.explanation || 'Kunci jawaban dan pembahasan resmi.'}
+            <span class="font-black text-emerald-800">Pembahasan:</span><br>${q.explanation || 'Resmi.'}
           </div>
         `;
         container.appendChild(item);
       });
     }
+
     window.addEventListener('DOMContentLoaded', () => {
       populateSchoolDropdown();
       checkActiveExamSession();
