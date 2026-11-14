@@ -71,10 +71,10 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto mb-8">
         <!-- KARTU MATEMATIKA -->
         <div onclick="selectSubject('matematika')" class="card-subject flex flex-col">
-          <div class="bg-emerald-600 py-12 flex items-center justify-center shadow-inner">
+          <div class="bg-emerald-600 py-12 flex items-center justify-center shadow-inner pointer-events-none">
             <h3 class="text-white text-3xl font-black tracking-wide">MATEMATIKA</h3>
           </div>
-          <div class="p-5 bg-white flex-1 flex flex-col justify-between">
+          <div class="p-5 bg-white flex-1 flex flex-col justify-between pointer-events-none">
             <p class="text-xs text-slate-500 font-semibold mb-4">Ujicoba & Paket 1 - 5</p>
             <div class="w-full bg-emerald-50 text-emerald-800 py-2.5 rounded-xl font-extrabold text-xs uppercase tracking-wider border border-emerald-200 text-center">
               Pilih Paket
@@ -84,11 +84,11 @@
 
         <!-- KARTU BAHASA INDONESIA -->
         <div onclick="selectSubject('indonesia')" class="card-subject flex flex-col">
-          <div class="bg-purple-600 py-12 flex items-center justify-center shadow-inner">
+          <div class="bg-purple-600 py-12 flex items-center justify-center shadow-inner pointer-events-none">
             <h3 class="text-white text-3xl font-black tracking-wide">BAHASA INDONESIA</h3>
           </div>
-          <div class="p-5 bg-white flex-1 flex flex-col justify-between">
-            <p class="text-xs text-slate-500 font-semibold mb-4">Paket 1 & Paket 2</p>
+          <div class="p-5 bg-white flex-1 flex flex-col justify-between pointer-events-none">
+            <p class="text-xs text-slate-500 font-semibold mb-4">Paket 1 - 5</p>
             <div class="w-full bg-purple-50 text-purple-800 py-2.5 rounded-xl font-extrabold text-xs uppercase tracking-wider border border-purple-200 text-center">
               Pilih Paket
             </div>
@@ -437,12 +437,12 @@
       { id: 16, type: "MCMA", text: "16. Minggu kemarin Dian membawa 5 lembar uang 50rb, 4 lembar 20rb, 2 lembar 10rb. Harga kain Rp400.000, diskon 15%. Pilihlah pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Dian tidak jadi membeli kain karena uangnya kurang.", "Diskon yang diperoleh Dian sebesar Rp60.000,00.", "Sisa uang Dian setelah membayar kain adalah Rp10.000,00."], correct: [1, 2], topic: "Aritmatika Sosial", explanation: "Total uang = Rp350.000. Diskon = 15% × 400.000 = Rp60.000. Bayar = Rp340.000. Sisa = Rp10.000. Opsi 2 dan 3 Benar." },
       { id: 17, type: "MCMA", text: "17. Perhatikan gambar segitiga siku-siku berikut!<br><img src='soal17.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pilihlah pernyataan-pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Keliling bangun tersebut adalah 56 cm.", "Panjang sisi BC adalah 18 cm.", "Luas bangun di atas adalah 84 cm²."], correct: [0, 2], topic: "Pythagoras & Luas", explanation: "BC = 24 cm. Keliling = 7+24+25 = 56 cm. Luas = 1/2 × 7 × 24 = 84 cm². Opsi 1 dan 3 Benar." },
       { id: 18, type: "MCMA", text: "18. Perhatikan susunan kubus berikut ini!<br><img src='soal18.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Jika panjang sisi kubus sebesar 5 cm, manakah pernyataan-pernyataan di bawah ini yang benar? (Jawaban benar bisa lebih dari satu)", options: ["Ada 10 buah kubus yang volumenya sama.", "Volume tiap kubus satuan sebesar 125 cm³.", "Luas permukaan kubus yang menempel di bawah sebesar 125 cm²."], correct: [0, 1], topic: "Volume Kubus", explanation: "Kubus berjumlah 10 buah identik, volume kubus 5³ = 125 cm³. Opsi 1 dan 2 Benar." },
-      { id: 19, type: "MCMA", text: "19. Sebuah kaleng susu berbentuk balok dengan panjang 2 dm, lebar 10 cm, tinggi 1,5 dm berisi susu ⅖ bagian. Pilihlah pernyataan di bawah ini yang tepat! (Jawaban benar bisa lebih dari satu)", options: ["Volume kaleng tersebut adalah 3.000 cm³.", "Volume susu dalam kaleng adalah 12 liter.", "Agar kaleng penuh perlu tambahan 1.800 cm³ susu."], correct: [0, 2], topic: "Volume Balok", explanation: "Volume total = 3.000 cm³. Susu = 1.200 cm³. Kekurangan = 1.800 cm³. Opsi 1 dan 2 Benar." },
+      { id: 19, type: "MCMA", text: "19. Sebuah kaleng susu berbentuk balok dengan panjang 2 dm, lebar 10 cm, tinggi 1,5 dm berisi susu ⅖ bagian. Pilihlah pernyataan di bawah ini yang tepat! (Jawaban benar bisa lebih dari satu)", options: ["Volume kaleng tersebut adalah 3.000 cm³.", "Volume susu dalam kaleng adalah 12 liter.", "Agar kaleng penuh perlu tambahan 1.800 cm³ susu."], correct: [0, 2], topic: "Volume Balok", explanation: "Volume total = 3.000 cm³. Susu = 1.200 cm³. Kekurangan = 1.800 cm³. Opsi 1 dan 3 Benar." },
       { id: 20, type: "MCMA", text: "20. Jarak M-N 180 km. Banu (50 km/jam) dan Joko (70 km/jam) berangkat pukul 06.00. Pilihlah pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Mereka akan berpapasan pada pukul 07.30.", "Mereka berpapasan pada jarak 75 km dari kota M.", "Pukul 08.30 Joko sudah sampai di kota M."], correct: [0, 1], topic: "Kecepatan Berpapasan", explanation: "Waktu papasan = 1,5 jam (pukul 07.30). Jarak dari M = 50 × 1,5 = 75 km. Opsi 1 dan 2 Benar." },
       { id: 21, type: "MCMA", text: "21. 2,5 abad + 4 dasawarsa - 5 windu + 2 lustrum = ... Setara dengan: (Jawaban benar bisa lebih dari satu)", options: ["26 dasawarsa", "32 windu", "52 lustrum"], correct: [0, 1, 2], topic: "Satuan Waktu", explanation: "Total 260 tahun = 26 dasawarsa = 32,5 windu = 52 lustrum. Opsi 1, 2, dan 3 Benar." },
       { id: 22, type: "MCMA", text: "22. Bu Desty mempunyai 72 permen, 64 coklat, dan 32 roti dibagikan ke anak-anak sama banyak. Pilihlah pernyataan di bawah ini yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Jumlah anak terbanyak yang mendapat makanan adalah 16 anak.", "Jumlah permen yang diterima tiap anak sebanyak 9 buah.", "Setiap anak menerima makanan sebanyak 21 buah."], correct: [0], topic: "FPB", explanation: "FPB = 16 anak. Permen per anak = 72/16 = 4,5 buah. Opsi 1 Benar." },
       { id: 23, type: "MCMA", text: "23. Perhatikan tabel berikut!<br><img src='soal23.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pilihlah pernyataan berikut yang benar! (Jawaban benar bisa lebih dari satu)", options: ["Selisih pembeli pada hari pertama dan kedua adalah 10 orang.", "Jumlah pembeli pada hari ketiga dan kelima sebanyak 215 orang.", "Ada dua hari yang jumlah pembelinya lebih dari 100 orang."], correct: [0, 1], topic: "Analisis Data", explanation: "Selisih H1-H2 = 10, H3+H5 = 215. Hari > 100 hanya ada 1 hari (H5). Opsi 1 dan 2 Benar." },
-      { id: 24, type: "Kategori", text: "24. Perhatikan gambar bangun datar berikut!<br><img src='soal24.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!", statements: ["Bangun datar tersebut mempunyai dua sumbu simetri.", "Bangun datar tersebut mempunyai dua diagonal yang sama panjang.", "Keempat sudut bangun datar tersebut sama besar."], correct: ["Benar", "Salah", "Salah"], topic: "Bangun datar", explanation: "Kunci: Benar, Salah, Salah." },
+      { id: 24, type: "Kategori", text: "24. Perhatikan gambar bangun datar berikut!<br><img src='soal24.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!", statements: ["Bangun datar tersebut mempunyai dua sumbu simetri.", "Bangun datar tersebut mempunyai dua diagonal yang sama panjang.", "Keempat sudut bangun datar tersebut sama besar."], correct: ["Benar", "Salah", "Salah"], topic: "Bangun Datar", explanation: "Kunci: Benar, Salah, Salah." },
       { id: 25, type: "Kategori", text: "25. Perhatikan gambar wadah berbentuk balok berikut!<br><img src='soal25.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!", statements: ["Volume wadah seluruhnya adalah 384 cm³.", "Jika diisi air 192 cm³, maka tinggi air dalam wadah 2 cm.", "Jika diisi air 0,5 liter, maka air yang tumpah 116 ml."], correct: ["Benar", "Benar", "Benar"], topic: "Volume Balok", explanation: "Kunci: Benar, Benar, Benar." },
       { id: 26, type: "Kategori", text: "26. Umur Ali, Beni, Cantika, Diandra (Diandra = 10 tahun). Tentukan <b>Benar</b> atau <b>Salah</b> pada setiap pernyataan berikut!", statements: ["Dari keempat anak, yang paling muda adalah Diandra.", "Jumlah umur Cantika dan Diandra sama dengan umur Beni.", "Dari anak-anak tersebut, yang paling tua umurnya adalah Ali."], correct: ["Benar", "Benar", "Benar"], topic: "Perbandingan Umur", explanation: "Kunci: Benar, Benar, Benar." },
       { id: 27, type: "Kategori", text: "27. Ibu membeli beras di warung harga Rp75.000, kembalian Rp25.000. Tentukan <b>Benar</b> atau <b>Salah</b> pecahan uang yang dibayarkan ibu!", statements: ["Satu lembar uang seratus ribuan.", "Dua lembar uang lima puluh ribuan.", "Sepuluh lembar uang dua puluh ribuan."], correct: ["Benar", "Benar", "Salah"], topic: "Pecahan Uang", explanation: "Kunci: Benar, Benar, Salah." },
@@ -458,27 +458,27 @@
         statements: ["Gambar A", "Gambar B", "Gambar C"],
         correct: ["Senilai", "Tidak Senilai", "Senilai"],
         topic: "Pecahan Senilai",
-        explanation: "Gambar Utama menunjukkan 3/6 = 1/2. Gambar A = Senilai, Gambar B = Tidak Senilai, Gambar C = Senilai."
+        explanation: "Gambar Utama menunjukkan 1/3. Gambar A (2/6 = 1/3) Benar, Gambar B (1/4) Salah, Gambar C (3/9 = 1/3) Benar."
       },
       {
         id: 2, type: "PG",
-        text: "2. Ibu membeli sebuah kue lapis legit untuk dibagikan kepada ketiga anaknya. Kakak menerima 1/2 bagian kue, Adik menerima 3/8 bagian kue, dan Bibi menerima 1/4 bagian kue.<br>Urutan nama penerima berdasarkan bagian kue yang diterima, dari yang paling sedikit hingga paling banyak, adalah ....",
-        options: ["Kakak, Adik, Bibi", "Bibi, Kakak, Adik", "Bibi, Adik, Kakak", "Adik, Bibi, Kakak"],
-        correct: 2,
+        text: "2. Ibu membeli kue bolu untuk dibagikan kepada ketiga anaknya sebagai camilan sore. Budi menerima 1/2 bagian kue, Cici menerima 3/8 bagian kue, dan Dedi menerima 3/4 bagian kue.<br>Urutan nama anak berdasarkan bagian kue yang diterima, dari yang paling sedikit hingga paling banyak, adalah ....",
+        options: ["Budi, Cici, Dedi", "Cici, Budi, Dedi", "Dedi, Budi, Cici", "Cici, Dedi, Budi"],
+        correct: 1,
         topic: "Urutan Pecahan",
-        explanation: "Urutan dari terkecil: Bibi (2/8), Adik (3/8), Kakak (4/8). (Kunci: C)"
+        explanation: "Penyebut disamakan ke 8: Budi = 4/8, Cici = 3/8, Dedi = 6/8. Urutan terkecil ke terbesar: Cici (3/8), Budi (4/8), Dedi (6/8). (Kunci: B)"
       },
       {
         id: 3, type: "MCMA",
-        text: "3. Pak Andi memiliki 150 butir kelereng. Kelereng tersebut dibagikan kepada tiga orang keponakannya:<br>- Rian menerima 2/5 bagian.<br>- Bimo menerima 0,25 bagian.<br>- Yoga menerima seluruh sisa kelereng.<br>Pilihlah pernyataan yang benar mengenai kelereng Yoga! (Jawaban benar lebih dari satu)",
+        text: "3. Pada hari Minggu, Ibu Rina membuat 120 potong kue untuk dibagikan kepada tiga keluarga tetangganya dengan ketentuan:<br>- Keluarga Pak Ahmad menerima 1/4 bagian dari seluruh kue.<br>- Keluarga Bu Siti menerima 0,35 bagian dari seluruh kue.<br>- Keluarga Pak Budi menerima seluruh kue yang tersisa.<br>Berdasarkan informasi tersebut, manakah pernyataan yang benar mengenai bagian kue yang diterima keluarga Pak Budi? (Pilih semua jawaban yang benar)",
         options: [
-          "Yoga menerima 52,5 butir kelereng.",
-          "Yoga menerima 7/20 bagian dari seluruh kelereng.",
-          "Yoga menerima 35% dari seluruh kelereng."
+          "Keluarga Pak Budi menerima 48 potong kue.",
+          "Keluarga Pak Budi menerima 2/5 bagian dari seluruh kue.",
+          "Keluarga Pak Budi menerima 45% dari seluruh kue."
         ],
-        correct: [1, 2],
+        correct: [0, 1],
         topic: "Pecahan & Persen",
-        explanation: "Sisa Yoga = 35% = 7/20 bagian = 52,5 butir. Opsi 2 dan 3 Benar."
+        explanation: "Pak Ahmad = 30 potong. Bu Siti = 42 potong. Sisa Pak Budi = 120 - 72 = 48 potong (2/5 bagian atau 40%). Opsi A dan B Benar."
       },
       {
         id: 4, type: "PG",
@@ -486,19 +486,19 @@
         options: ["72", "90", "102", "108"],
         correct: 2,
         topic: "Operasi Hitung Campuran",
-        explanation: "30 + 120 - 48 = 102. (Kunci: C)"
+        explanation: "360 : 12 = 30; 24 × 5 = 120; 30 + 120 - 48 = 150 - 48 = 102. (Kunci: C)"
       },
       {
         id: 5, type: "MCMA",
-        text: "5. Bu Mila mempunyai persediaan tepung terigu sebanyak 40 kg. Ia akan membuat 8 loyang kue (tiap loyang 3/4 kg). Setelah membuat kue, Bu Mila membeli lagi 2 3/4 kg.<br>Manakah pernyataan yang benar? (Jawaban benar lebih dari satu)",
+        text: "5. Bu Mila mempunyai persediaan tepung terigu sebanyak 40 kg. Ia akan membuat 8 loyang kue. Setiap loyang membutuhkan tepung sebanyak ¾ kg. Setelah membuat kue, bu Mila membeli tepung sebanyak 1 ¼ kg, untuk menambah persediaannya.<br>Berdasarkan informasi tersebut, manakah pernyataan yang benar? (Pilih semua jawaban yang benar)",
         options: [
           "Tepung untuk membuat 8 loyang kue adalah 6 kg.",
-          "Jumlah tepung Bu Mila setelah membeli tepung kembali adalah 36 3/4 kg.",
-          "Sisa tepung Bu Mila setelah membuat kue adalah 34 kg."
+          "Jumlah tepung Bu Mila setelah membeli tepung kembali adalah 36 ¼ kg.",
+          "Sisa tepung Bu Mila setelah membuat kue adalah ¾ kg."
         ],
         correct: [0, 2],
         topic: "Aritmatika Pecahan",
-        explanation: "8 × 3/4 = 6 kg (Benar). Sisa setelah kue = 34 kg (Benar). Opsi 1 dan 3 Benar."
+        explanation: "Kue = 8 × 3/4 = 6 kg (Benar). Sisa setelah kue = 40 - 6 = 34 kg. Opsi 1 dan 3 Benar."
       },
       {
         id: 6, type: "PG",
@@ -506,19 +506,19 @@
         options: ["6", "12", "24", "72"],
         correct: 1,
         topic: "FPB",
-        explanation: "FPB dari 36, 48, dan 72 adalah 12. (Kunci: B)"
+        explanation: "Faktorisasi prima 36 = 2²×3², 48 = 2⁴×3, 72 = 2³×3². FPB = 2²×3 = 12. (Kunci: B)"
       },
       {
         id: 7, type: "PG",
-        text: "7. Di SD Negeri Batursari 3 terdapat tiga kegiatan ekstrakurikuler. Pramuka setiap 4 hari sekali, tari setiap 6 hari sekali, dan musik setiap 8 hari sekali. Jika hari ini bersamaan, berapa hari lagi bersamaan lagi?",
+        text: "7. Di SD Negeri Sayung 3 terdapat tiga kegiatan ekstrakurikuler. Pramuka dilaksanakan setiap 4 hari sekali, latihan tari setiap 6 hari sekali, dan latihan musik setiap 8 hari sekali. Jika hari ini ketiga kegiatan dilaksanakan bersama-sama, berapa hari lagi ketiga kegiatan tersebut akan dilaksanakan secara bersamaan?",
         options: ["12 hari", "16 hari", "24 hari", "32 hari"],
         correct: 2,
         topic: "KPK Ekstrakurikuler",
-        explanation: "KPK dari 4, 6, dan 8 adalah 24 hari. (Kunci: C)"
+        explanation: "KPK(4, 6, 8) = 24 hari. (Kunci: C)"
       },
       {
         id: 8, type: "MCMA",
-        text: "8. Yasmin menyiapkan 56 mawar, 72 melati, dan 48 matahari untuk dirangkai sama banyak tanpa sisa. Pilihlah pernyataan yang benar! (Jawaban benar lebih dari satu)",
+        text: "8. Yasmin akan membuat rangkaian bunga untuk peringatan Hari Guru. Ia menyiapkan 56 kuntum bunga mawar, 72 kuntum bunga melati, dan 48 kuntum bunga matahari. Yasmin ingin membuat rangkaian bunga sebanyak-banyaknya tanpa sisa.<br>Pilihlah pernyataan yang benar! (Pilih semua jawaban yang benar)",
         options: [
           "Paling banyak rangkaian bunga yang dapat dibuat Yasmin adalah 8 rangkaian.",
           "Setiap rangkaian berisi 9 kuntum bunga melati dan 7 kuntum bunga mawar.",
@@ -526,11 +526,11 @@
         ],
         correct: [0, 1],
         topic: "FPB Rangkaian Bunga",
-        explanation: "FPB(56,72,48) = 8. Mawar = 7, Melati = 9. Opsi 1 dan 2 Benar."
+        explanation: "FPB(56, 72, 48) = 8. Mawar = 56/8 = 7, Melati = 72/8 = 9, Matahari = 48/8 = 6. Opsi 1 dan 2 Benar."
       },
       {
         id: 9, type: "Kategori",
-        text: "9. Membaca bersama setiap 9 hari, peminjaman buku setiap 12 hari. Bersama pada 1 November 2026. Tentukan Benar atau Salah!",
+        text: "9. Perpustakaan sekolah mengadakan kegiatan membaca bersama setiap 9 hari sekali. Kegiatan peminjaman buku khusus dilaksanakan setiap 12 hari sekali. Pada tanggal 1 November 2026, kedua kegiatan tersebut dilaksanakan bersamaan.<br>Tentukan apakah setiap pernyataan berikut Benar atau Salah!",
         statements: [
           "KPK dari 9 dan 12 adalah 36.",
           "Dalam 72 hari setelah tanggal awal, kedua kegiatan akan berlangsung bersama sebanyak 3 kali.",
@@ -538,7 +538,7 @@
         ],
         correct: ["Benar", "Salah", "Benar"],
         topic: "KPK & Kalender",
-        explanation: "Kunci: Benar, Salah, Benar."
+        explanation: "KPK = 36. Dalam 72 hari hanya 2 kali pertemuan (72/36). Pertemuan berikutnya 1 Nov + 36 hari = 7 Desember 2026."
       },
       {
         id: 10, type: "PG",
@@ -551,11 +551,11 @@
         ],
         correct: 2,
         topic: "Proyeksi Bangun Ruang",
-        explanation: "Sesuai dengan tampilan tangga bertingkat pada Gambar C. (Kunci: C)"
+        explanation: "Tampilan depan menunjukkan tangga kubus bertingkat sesuai Gambar C. (Kunci: C)"
       },
       {
         id: 11, type: "PG",
-        text: "11. Setiap 1 unit pola ubin terdiri dari 1 persegi dikelilingi 4 persegi panjang (<img src='soal11_p2.jpg' class='inline-block w-12 h-12 object-contain'>). Pak Rahmad menyusun 5 unit pola secara berjajar. Berapa banyak ubin persegi panjang yang dibutuhkan?",
+        text: "11. Pak Rahmad akan memasang ubin di teras rumahnya menggunakan pola gabungan bangun datar. Setiap satu unit pola terdiri atas sebuah ubin berbentuk persegi yang dikelilingi empat ubin berbentuk persegi panjang, seperti pada gambar.<br><img src='soal11_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pak Rahmad akan menyusun 5 unit pola secara berjajar. Berapa banyak ubin berbentuk persegi panjang yang dibutuhkan Pak Rahmad?",
         options: ["12 ubin", "16 ubin", "20 ubin", "24 ubin"],
         correct: 2,
         topic: "Pola Bilangan & Geometri",
@@ -563,7 +563,7 @@
       },
       {
         id: 12, type: "MCMA",
-        text: "12. Akuarium balok p = 80 cm, l = 40 cm, t = 50 cm berisi air setengah dari kapasitas totalnya. Pilihlah pernyataan yang benar! (Jawaban benar lebih dari satu)",
+        text: "12. Sebuah akuarium berbentuk balok memiliki panjang 80 cm, lebar 40 cm, dan tinggi 50 cm. Akuarium tersebut berisi air sebanyak setengah dari kapasitas totalnya.<br>Manakah pernyataan yang benar mengenai volume akuarium dan air di dalamnya? (Pilih semua jawaban yang benar)",
         options: [
           "Volume akuarium jika terisi penuh adalah 160 liter.",
           "Volume air yang terdapat dalam akuarium adalah 80 liter.",
@@ -571,31 +571,31 @@
         ],
         correct: [0, 1],
         topic: "Volume Balok",
-        explanation: "Volume total = 160 liter. Air = 80 liter. Opsi 1 dan 2 Benar."
+        explanation: "Volume total = 80×40×50 = 160.000 cm³ = 160 liter. Air = 80 liter. Sisa air = 80 liter. Opsi 1 dan 2 Benar."
       },
       {
         id: 13, type: "PG",
-        text: "13. Perhatikan tumpukan kubus berikut!<br><img src='soal13_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Susunan tersebut akan dilengkapi menjadi kubus 3×3×3. Berapa kubus satuan yang perlu ditambahkan?",
+        text: "13. Perhatikan gambar susunan kubus satuan berikut!<br><img src='soal13_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Susunan tersebut akan dilengkapi menjadi sebuah kubus berukuran 3 × 3 × 3 kubus satuan. Berapa banyak kubus satuan yang perlu ditambahkan agar terbentuk kubus yang utuh?",
         options: ["8 kubus", "9 kubus", "10 kubus", "11 kubus"],
         correct: 2,
         topic: "Volume Kubus Satuan",
-        explanation: "Total utuh = 27 - 17 = 10 kubus. (Kunci: C)"
+        explanation: "Total kubus 3×3×3 = 27. Kubus yang tersedia = 9 + 7 + 1 = 17. Kekurangan = 27 - 17 = 10 kubus. (Kunci: C)"
       },
       {
         id: 14, type: "Kategori",
-        text: "14. Perhatikan gambar pengukuran Pensil (A) dan Penghapus (B) dengan penggaris!<br><img src='soal14_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan kebenaran setiap pernyataan berikut!",
+        text: "14. Perhatikan gambar hasil pengukuran panjang Pensil (Benda A) dan Penghapus (Benda B) menggunakan penggaris dalam satuan sentimeter (cm) di bawah ini!<br><img src='soal14_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berdasarkan hasil pengukuran pada gambar di atas, tentukan kebenaran untuk setiap pernyataan berikut!",
         statements: [
           "Panjang pensil 3 cm lebih panjang daripada penghapus.",
           "Jumlah panjang pensil dan penghapus jika digabungkan adalah 13 cm.",
-          "Selisih panjang antara penghapus dan pensil adalah 12 cm."
+          "Selisih panjang antara pensil dan penghapus adalah 12 cm."
         ],
         correct: ["Benar", "Benar", "Salah"],
         topic: "Pengukuran Panjang",
-        explanation: "Kunci: Benar, Benar, Salah."
+        explanation: "Pensil = 8 cm, Penghapus = 5 cm. Selisih = 3 cm. Jumlah = 13 cm. (Kunci: Benar, Benar, Salah)"
       },
       {
         id: 15, type: "PG",
-        text: "15. Data panjang: Pensil 180 mm, Buku tulis 2,2 dm, Meja belajar 1,1 m, Pagar kebun 1 dam. Urutan dari terpendek ke terpanjang adalah ....",
+        text: "15. Perhatikan data panjang empat benda berikut!<br><img src='soal15_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Urutan benda berdasarkan panjangnya, mulai dari yang terpendek hingga yang terpanjang, adalah ....",
         options: [
           "Pensil – Buku tulis – Meja belajar – Pagar kebun",
           "Buku tulis – Pensil – Meja belajar – Pagar kebun",
@@ -604,11 +604,11 @@
         ],
         correct: 0,
         topic: "Konversi Satuan Panjang",
-        explanation: "Urutan: Pensil, Buku tulis, Meja belajar, Pagar kebun. (Kunci: A)"
+        explanation: "Pensil = 18 cm, Buku tulis = 22 cm, Meja = 110 cm, Pagar = 1.000 cm. (Kunci: A)"
       },
       {
         id: 16, type: "MCMA",
-        text: "16. Perhatikan gambar wadah air:<br><img src='soal16_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pilihlah pernyataan yang benar! (Jawaban benar lebih dari satu)",
+        text: "16. Seorang ibu sedang menyiapkan minuman di dapur. Di atas meja terdapat tiga wadah berisi air dengan satuan volume yang berbeda, seperti ditunjukkan pada gambar berikut.<br><img src='soal16_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berdasarkan informasi pada gambar, manakah pernyataan yang benar mengenai volume air dalam ketiga wadah tersebut? (Pilih semua jawaban yang benar)",
         options: [
           "Volume air pada Wadah 1 setara dengan 3 liter.",
           "Volume air pada Wadah 1 sama dengan Wadah 2.",
@@ -616,11 +616,11 @@
         ],
         correct: [0, 1],
         topic: "Konversi Volume",
-        explanation: "Opsi 1 dan 2 Benar."
+        explanation: "Wadah 1 = 3.000 cm³ = 3 liter. Wadah 2 = 3 liter. Wadah 3 = 300 ml = 0,3 liter. Opsi 1 dan 2 Benar."
       },
       {
         id: 17, type: "Kategori",
-        text: "17. Wadah A = 4,5 dal, Wadah B = 350 dl, Wadah C = 40.000 ml. Tentukan Benar atau Salah!",
+        text: "17. Pak Budi memiliki warung makan dengan persediaan minuman:<br>- Wadah A berisi 4,5 dal jus jeruk.<br>- Wadah B berisi 350 dl es teh manis.<br>- Wadah C berisi 40.000 ml air mineral.<br>Berdasarkan informasi tersebut, tentukan apakah setiap pernyataan berikut benar atau salah!",
         statements: [
           "Volume minuman pada Wadah A lebih banyak daripada volume minuman pada Wadah C.",
           "Jumlah volume minuman pada Wadah B dan Wadah C adalah 75 liter.",
@@ -628,11 +628,11 @@
         ],
         correct: ["Benar", "Benar", "Salah"],
         topic: "Konversi Volume Lanjutan",
-        explanation: "Kunci: Benar, Benar, Salah."
+        explanation: "A = 45 liter, B = 35 liter, C = 40 liter. (Kunci: Benar, Benar, Salah)"
       },
       {
         id: 18, type: "Kategori",
-        text: "18. Perhatikan gambar timbangan buah:<br><img src='soal18_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Catatan: Melon 1,25 kg, Dua mangga 500 g, Jambu 750 g. Tentukan kebenaran setiap timbangan!",
+        text: "18. Perhatikan gambar hasil pengukuran berat buah menggunakan tiga jenis timbangan berikut!<br><img src='soal18_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berdasarkan catatan berat buah (Melon 1,25 kg, Dua mangga 500 g, Jambu 750 g), tentukan apakah setiap gambar timbangan menunjukkan berat yang sesuai!",
         statements: [
           "Gambar timbangan digital sesuai dengan catatan berat buah melon.",
           "Gambar timbangan jarum sesuai dengan catatan berat buah mangga.",
@@ -640,11 +640,11 @@
         ],
         correct: ["Benar", "Salah", "Benar"],
         topic: "Pengukuran Berat",
-        explanation: "Kunci: Benar, Salah, Benar."
+        explanation: "Melon 1,25 kg (Sesuai). Timbangan mangga menunjukkan 600 g padahal catatan 500 g (Tidak Sesuai). Jambu 500+250 = 750 g (Sesuai). (Kunci: Benar, Salah, Benar)"
       },
       {
         id: 19, type: "MCMA",
-        text: "19. SD Negeri Kalitengah 1 menyiapkan sembako: Beras 2 kg, Gula pasir 75 dag, Kacang hijau 350 hg. Pilihlah dua pernyataan yang benar!",
+        text: "19. Berat beras 2 kg, gula pasir 75 dag, kacang hijau 350 hg. Rasyid menghitung jumlah serta selisihnya dalam satuan gram.<br>Pilihlah dua pernyataan yang benar!",
         options: [
           "Jumlah berat beras dan gula pasir adalah 2.750 gram.",
           "Selisih berat kacang hijau dan gula pasir adalah 34.250 gram.",
@@ -652,19 +652,19 @@
         ],
         correct: [0, 1],
         topic: "Konversi Satuan Berat",
-        explanation: "Opsi 1 dan 2 Benar."
+        explanation: "Beras = 2.000 g, Gula = 750 g, Kacang = 35.000 g. Jumlah beras+gula = 2.750 g. Selisih kacang-gula = 34.250 g. Opsi 1 dan 2 Benar."
       },
       {
         id: 20, type: "PG",
-        text: "20. Raka latihan menggambar dimulai pukul yang ditunjukkan jam berikut selama 1 jam 45 menit:<br><img src='soal20_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pukul berapakah selesai?",
+        text: "20. Raka mengikuti latihan menggambar dimulai pukul yang ditunjukkan oleh jam berikut selama 1 jam 45 menit:<br><img src='soal20_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pukul berapakah latihan menggambar Raka selesai?",
         options: ["Pukul 09.50 WIB", "Pukul 10.10 WIB", "Pukul 10.20 WIB", "Pukul 10.30 WIB"],
         correct: 2,
         topic: "Waktu Mulai & Selesai",
-        explanation: "Selesai pukul 10.20 WIB. (Kunci: C)"
+        explanation: "Mulai 08.35 + 1 jam 45 menit = Pukul 10.20 WIB. (Kunci: C)"
       },
       {
         id: 21, type: "MCMA",
-        text: "21. SD Negeri Candisari 2: Lomba literasi pukul 07.15 selama 1 jam 35 menit. Istirahat 25 menit. Pentas seni 2 jam 20 menit. Pilihlah dua pernyataan yang benar!",
+        text: "21. Lomba literasi dimulai pukul 07.15 WIB selama 1 jam 35 menit. Istirahat 25 menit. Pentas seni 2 jam 20 menit.<br>Pilihlah dua pernyataan yang benar!",
         options: [
           "Perlombaan literasi selesai pada pukul 08.50 WIB.",
           "Pentas seni selesai pada pukul 11.35 WIB.",
@@ -672,51 +672,51 @@
         ],
         correct: [0, 1],
         topic: "Durasi Waktu",
-        explanation: "Opsi 1 dan 2 Benar."
+        explanation: "Literasi selesai 08.50 WIB. Istirahat sampai 09.15 WIB. Pentas seni selesai 11.35 WIB. Opsi 1 dan 2 Benar."
       },
       {
         id: 22, type: "PG",
-        text: "22. Perjalanan Semarang ke Yogyakarta (120 km) pukul 07.15 WIB dengan kecepatan 60 km/jam. Istirahat 30 menit di tengah perjalanan. Pukul berapa tiba?",
+        text: "22. Perjalanan Semarang ke Yogyakarta (120 km) berangkat pukul 07.15 WIB dengan kecepatan 60 km/jam. Istirahat 30 menit di tengah perjalanan. Pukul berapa tiba?",
         options: ["09.15 WIB", "09.30 WIB", "09.45 WIB", "10.00 WIB"],
         correct: 2,
         topic: "Kecepatan, Jarak, Waktu",
-        explanation: "Tiba pukul 09.45 WIB. (Kunci: C)"
+        explanation: "Waktu perjalanan = 120/60 = 2 jam (120 menit) + 30 menit istirahat = 150 menit (2 jam 30 menit). Tiba 07.15 + 2 jam 30 menit = 09.45 WIB. (Kunci: C)"
       },
       {
         id: 23, type: "PG",
-        text: "23. Perhatikan gambar gabungan bangun datar:<br><img src='soal23_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Jika keliling persegi panjang adalah 40 cm, berapakah luas gabungan?",
+        text: "23. Perhatikan gambar gabungan bangun datar berikut!<br><img src='soal23_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Jika keliling persegi panjang adalah 40 cm, berapakah luas gabungan?",
         options: ["108 cm²", "120 cm²", "144 cm²", "168 cm²"],
         correct: 1,
         topic: "Luas Gabungan",
-        explanation: "Luas gabungan = 120 cm². (Kunci: B)"
+        explanation: "Lebar = 8 cm. Panjang persegi panjang = (40/2) - 8 = 12 cm. Luas PP = 96 cm². Luas segitiga = ½ × 8 × 6 = 24 cm². Total = 120 cm². (Kunci: B)"
       },
       {
         id: 24, type: "PG",
-        text: "24. Perhatikan gambar tumpukan kotak kayu:<br><img src='soal24_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berapakah volume seluruh kotak penyimpanan tersebut?",
+        text: "24. Pak Budi membuat tempat penyimpanan dari dua kotak kayu yang disusun bertumpuk seperti pada gambar.<br><img src='soal24_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berapakah volume seluruh kotak penyimpanan tersebut?",
         options: ["576 cm³", "768 cm³", "864 cm³", "1.088 cm³"],
         correct: 3,
         topic: "Volume Gabungan Balok & Kubus",
-        explanation: "Volume total = 1.088 cm³. (Kunci: D)"
+        explanation: "Volume balok bawah = 12×8×6 = 576 cm³. Volume kubus atas = 8³ = 512 cm³. Total = 576 + 512 = 1.088 cm³. (Kunci: D)"
       },
       {
         id: 25, type: "PG",
-        text: "25. Tangga bersandar pada dinding membentuk sudut 35° dengan dinding.<br><img src='soal25_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berapakah besar sudut A antara tangga dan lantai?",
+        text: "25. Sebuah tangga disandarkan pada dinding membentuk sudut 35° dengan dinding.<br><img src='soal25_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berapakah besar sudut A antara tangga dan lantai?",
         options: ["35°", "45°", "55°", "65°"],
         correct: 2,
         topic: "Besar Sudut Segitiga",
-        explanation: "Besar sudut A = 55°. (Kunci: C)"
+        explanation: "Sudut A = 180° - 90° - 35° = 55°. (Kunci: C)"
       },
       {
         id: 26, type: "PG",
-        text: "26. Ibu membuat 8 loyang kue bolu, tiap loyang memerlukan 250 gram tepung terigu. Berapa kg perkiraan jumlah tepung terigu yang diperlukan?",
+        text: "26. Ibu akan membuat 8 loyang kue bolu. Setiap loyang memerlukan sekitar 250 gram tepung terigu. Berapakah perkiraan jumlah tepung terigu yang diperlukan?",
         options: ["1 kg", "2 kg", "3 kg", "4 kg"],
         correct: 1,
         topic: "Estimasi & Satuan Berat",
-        explanation: "Kebutuhan tepung = 2 kg. (Kunci: B)"
+        explanation: "8 × 250 gram = 2.000 gram = 2 kg. (Kunci: B)"
       },
       {
         id: 27, type: "Kategori",
-        text: "27. Perhatikan piktogram buku cerita:<br><img src='soal27_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>(Keterangan: Setiap buku mewakili 3 buku). Tentukan Benar atau Salah!",
+        text: "27. Perhatikan piktogram jumlah buku yang dibaca:<br><img src='soal27_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan benar atau salah untuk setiap pernyataan!",
         statements: [
           "Jumlah buku cerita yang dibaca Citra selama liburan adalah 15 buku.",
           "Jumlah buku cerita yang dibaca Budi selama liburan adalah 2 buku.",
@@ -724,11 +724,11 @@
         ],
         correct: ["Benar", "Salah", "Benar"],
         topic: "Interpretasi Piktogram",
-        explanation: "Kunci: Benar, Salah, Benar."
+        explanation: "Citra = 5×3 = 15 (Benar). Budi = 2×3 = 6, bukan 2 (Salah). Dewi = 3×3 = 9 (Benar). (Kunci: Benar, Salah, Benar)"
       },
       {
         id: 28, type: "MCMA",
-        text: "28. Perhatikan tabel biaya bahan berikut!<br><img src='soal28_p2_2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berdasarkan informasi pada tabel, pilihlah dua pernyataan yang benar!",
+        text: "28. Perhatikan tabel biaya bahan berikut!<br><img src='soal28_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Berdasarkan informasi pada tabel, pilihlah dua pernyataan yang benar!",
         options: [
           "Biaya gula pasir selama 11 hari adalah Rp176.000.",
           "Biaya tepung terigu selama 6 hari adalah Rp168.000.",
@@ -740,7 +740,7 @@
       },
       {
         id: 29, type: "PG",
-        text: "29. Perhatikan diagram garis biaya sewa sepeda tempat A dan B:<br><img src='soal29_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Untuk penyewaan selama 5 jam, tempat yang lebih hemat beserta selisihnya adalah ....",
+        text: "29. Di sebuah taman wisata terdapat dua tempat penyewaan sepeda, yaitu Tempat A dan Tempat B.<br><img src='soal29_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pak Anton akan menyewa sepeda selama 5 jam. Tempat penyewaan yang lebih hemat beserta selisihnya adalah ....",
         options: [
           "Tempat A, lebih hemat Rp15.000",
           "Tempat A, lebih hemat Rp10.000",
@@ -749,11 +749,11 @@
         ],
         correct: 0,
         topic: "Diagram Garis",
-        explanation: "Tempat A lebih hemat Rp15.000. (Kunci: A)"
+        explanation: "Sewa 5 jam: Tempat A = Rp35.000, Tempat B = Rp50.000. Tempat A lebih hemat Rp15.000. (Kunci: A)"
       },
       {
         id: 30, type: "Kategori",
-        text: "30. Perhatikan diagram batang bank sampah:<br><img src='soal30_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan Benar atau Salah!",
+        text: "30. Perhatikan diagram batang bank sampah berikut!<br><img src='soal30_p2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan benar atau salah untuk setiap pernyataan!",
         statements: [
           "Rata-rata jumlah botol plastik yang terkumpul selama lima hari adalah 36 buah per hari.",
           "Jumlah botol plastik pada hari Kamis dan Jumat lebih banyak daripada jumlah botol pada hari Senin, Selasa, dan Rabu.",
@@ -761,7 +761,7 @@
         ],
         correct: ["Benar", "Salah", "Benar"],
         topic: "Interpretasi Diagram Batang",
-        explanation: "Kunci: Benar, Salah, Benar."
+        explanation: "Total = 180, Rata-rata = 36 (Benar). Kamis+Jumat = 80, Senin-Rabu = 100 (Salah). Kenaikan terbesar Rabu ke Kamis = 15 buah (Benar). (Kunci: Benar, Salah, Benar)"
       }
     ];
 
@@ -775,8 +775,8 @@
         "Paket 5": { title: "Matematika - Soal Paket 5", questions: SOAL_30_MATEMATIKA }
       },
       indonesia: {
-        "Paket 1": { title: "Bahasa Indonesia - Soal Paket 1", questions: SOAL_30_BAHASA_INDONESIA_PAKET_1 },
-        "Paket 2": { title: "Bahasa Indonesia - Soal Paket 2", questions: SOAL_30_BAHASA_INDONESIA_PAKET_2 },
+        "Paket 1": { title: "Bahasa Indonesia - Soal Paket 1", questions: [] },
+        "Paket 2": { title: "Bahasa Indonesia - Soal Paket 2", questions: [] },
         "Paket 3": { title: "Bahasa Indonesia - Soal Paket 3", questions: [] },
         "Paket 4": { title: "Bahasa Indonesia - Soal Paket 4", questions: [] },
         "Paket 5": { title: "Bahasa Indonesia - Soal Paket 5", questions: [] }
