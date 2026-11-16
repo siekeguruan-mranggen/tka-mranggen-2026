@@ -51,6 +51,7 @@
       </div>
     </div>
   </header>
+
   <!-- CONTAINER UTAMA -->
   <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 flex flex-col justify-center">
     
@@ -60,7 +61,7 @@
         <img src="logo_demak.png" alt="Logo Kabupaten Demak" class="w-16 h-20 sm:w-20 sm:h-24 object-contain drop-shadow-md">
       </div>
       <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-black bg-teal-100 text-teal-900 mb-3 border border-teal-200 shadow-sm">
-        🎓 TKA SD/MI • Tahun Ajaran 2026/2027
+        🎓 TKA SD/MI • Tahun Ajaran 2026/2027[cite: 1, 2, 3, 4]
       </span>
       <h2 class="text-3xl sm:text-4xl font-black text-slate-800 tracking-tight">Pilih Mata Pelajaran</h2>
       <p class="text-slate-600 text-xs sm:text-sm max-w-lg mx-auto mt-2 mb-8 font-medium">
@@ -74,7 +75,7 @@
             <h3 class="text-white text-3xl font-black tracking-wide">MATEMATIKA</h3>
           </div>
           <div class="p-5 bg-white flex-1 flex flex-col justify-between pointer-events-none">
-            <p class="text-xs text-slate-500 font-semibold mb-4">Ujicoba & Paket 1 - 5</p>
+            <p class="text-xs text-slate-500 font-semibold mb-4">Ujicoba & Paket 1 - 5[cite: 1]</p>
             <div class="w-full bg-emerald-50 text-emerald-800 py-2.5 rounded-xl font-extrabold text-xs uppercase tracking-wider border border-emerald-200 text-center">
               Pilih Paket
             </div>
@@ -94,9 +95,10 @@
         </div>
       </div>
       <div class="pt-4 text-xs font-bold text-slate-500 text-center no-print">
-        Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
+        Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.[cite: 1]
       </div>
     </div>
+
     <!-- SCREEN 0.5: PILIH PAKET SOAL -->
     <div id="viewPackages" class="hidden max-w-4xl mx-auto w-full text-center py-6">
       <button onclick="showScreen('viewSubjects')" class="inline-flex items-center text-xs font-bold text-teal-700 hover:text-teal-900 mb-5 cursor-pointer">
@@ -105,13 +107,14 @@
       </button>
       <h2 class="text-2xl sm:text-3xl font-black text-slate-800 tracking-tight" id="packageSelectionTitle">Pilih Paket Soal</h2>
       <p class="text-slate-600 text-xs sm:text-sm max-w-lg mx-auto mt-1 mb-8 font-medium">
-        Box berwarna <span class="text-emerald-700 font-bold">Hijau</span> berarti paket terbuka, box <span class="text-amber-700 font-bold">Kuning</span> berarti masih terkunci oleh admin.
+        Box berwarna <span class="text-emerald-700 font-bold">Hijau</span> berarti paket terbuka, box <span class="text-amber-700 font-bold">Kuning</span> berarti masih terkunci oleh admin.[cite: 1]
       </p>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-3xl mx-auto mb-8" id="packageGridContainer"></div>
       <div class="pt-4 text-xs font-bold text-slate-500 text-center no-print">
-        Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
+        Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.[cite: 1]
       </div>
     </div>
+
     <!-- SCREEN 1: REGISTRASI & TOKEN -->
     <div id="viewRegistration" class="hidden max-w-lg mx-auto bg-white/95 rounded-3xl p-6 sm:p-8 shadow-xl border border-teal-100 relative">
       <button onclick="showScreen('viewPackages')" class="inline-flex items-center text-xs font-bold text-teal-700 hover:text-teal-900 mb-5 cursor-pointer">
@@ -136,7 +139,7 @@
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Kelas</label>
-            <input type="text" id="regClass" value="VI" class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:ring-2 focus:ring-teal-500 outline-none text-xs sm:text-sm font-medium bg-slate-50/50">
+            <input type="text" id="regClass" value="VI" class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:ring-2 focus:ring-teal-500 outline-none text-xs sm:text-sm font-medium bg-slate-50/50"[cite: 1, 2, 3, 4]>
           </div>
           <div>
             <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">No. Presensi / Absen</label>
@@ -149,13 +152,13 @@
             <input type="text" id="regToken" placeholder="Ketik token sesuai admin..." class="w-full px-4 py-3 rounded-2xl border-2 border-teal-300 focus:ring-2 focus:ring-teal-500 outline-none text-xs sm:text-sm font-mono font-black tracking-widest uppercase bg-teal-50/50">
             <span class="absolute right-3.5 top-3.5 text-xs text-teal-600 font-bold">🔑 TOKEN</span>
           </div>
-          <p id="tokenErrorMsg" class="hidden text-rose-600 text-xs font-bold mt-1.5">⚠️ Token salah atau paket terkunci admin!</p>
+          <p id="tokenErrorMsg" class="hidden text-rose-600 text-xs font-bold mt-1.5">⚠️ Token salah atau paket terkunci admin![cite: 1]</p>
         </div>
         <div class="p-4 bg-teal-50 rounded-2xl border border-teal-100 text-xs text-teal-950 leading-relaxed font-medium">
           <span class="font-extrabold text-teal-900 block mb-1">⏱️ Informasi Sistem:</span>
-          - Durasi: <b>75 Menit</b><br>
-          - Skor Maksimal: <b>30 Poin</b><br>
-          - <b class="text-emerald-700">Autosave aktif: Progres tersimpan otomatis.</b>
+          - Durasi: <b>75 Menit</b>[cite: 1]<br>
+          - Skor Maksimal: <b>30 Poin</b>[cite: 1]<br>
+          - <b class="text-emerald-700">Autosave aktif: Progres tersimpan otomatis.</b>[cite: 1]
         </div>
         <button type="button" onclick="startExam(event)" class="w-full py-4 rounded-2xl bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-600 text-white font-extrabold text-sm shadow-lg shadow-teal-500/30 transition-all flex items-center justify-center gap-2 cursor-pointer">
           <span>Mulai Mengerjakan</span>
@@ -163,9 +166,10 @@
         </button>
       </div>
       <div class="pt-6 mt-6 border-t border-teal-100 text-xs font-bold text-slate-500 text-center no-print">
-        Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
+        Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.[cite: 1]
       </div>
     </div>
+
     <!-- SCREEN 3: CBT ENGINE -->
     <div id="viewExam" class="hidden">
       <div class="bg-white/95 rounded-2xl p-4 mb-4 shadow-sm border border-teal-100 flex flex-wrap items-center justify-between gap-3">
@@ -180,7 +184,7 @@
           <div class="flex items-center gap-2 px-4 py-2 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700">
             <svg class="w-4 h-4 animate-pulse text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             <span class="text-xs font-bold text-rose-600 mr-1 hidden sm:inline">Sisa Waktu:</span>
-            <span class="font-mono font-black text-base sm:text-lg tracking-wider" id="timerDisplay">75:00</span>
+            <span class="font-mono font-black text-base sm:text-lg tracking-wider" id="timerDisplay">75:00</span>[cite: 1]
           </div>
           <button onclick="confirmSubmitExam()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm transition cursor-pointer">
             Selesai Ujian
@@ -234,9 +238,10 @@
         </div>
       </div>
       <div class="pt-4 text-xs font-bold text-slate-500 text-center no-print">
-        Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
+        Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.[cite: 1]
       </div>
     </div>
+
     <!-- SCREEN 4: HASIL NILAI -->
     <div id="viewResult" class="hidden max-w-3xl mx-auto space-y-6">
       <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-teal-100 text-center">
@@ -245,13 +250,13 @@
         </div>
         <h2 class="text-2xl font-black text-slate-800">Ujian Telah Selesai!</h2>
         <div id="motivationBox" class="my-4 p-4 rounded-2xl border text-xs sm:text-sm font-bold shadow-sm"></div>
-        <p class="text-xs font-semibold text-slate-500 mt-1" id="submitStatusText">Nilai tryout Anda telah otomatis tersimpan di server cloud Korwil Mranggen.</p>
+        <p class="text-xs font-semibold text-slate-500 mt-1" id="submitStatusText">Nilai tryout Anda telah otomatis tersimpan di server cloud Korwil Mranggen.</p>[cite: 1]
         
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 my-6">
           <div class="p-4 rounded-2xl bg-teal-50 border border-teal-100">
             <span class="block text-[11px] font-bold text-teal-600 uppercase">Skor Mentah</span>
             <span class="text-2xl font-black text-teal-800" id="resTotalScore">0</span>
-            <span class="text-[10px] text-slate-400 block" id="resMaxScoreLabel">dari maks 30</span>
+            <span class="text-[10px] text-slate-400 block" id="resMaxScoreLabel">dari maks 30</span>[cite: 1]
           </div>
           <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-100">
             <span class="block text-[11px] font-bold text-emerald-600 uppercase">Nilai Akhir (100)</span>
@@ -260,8 +265,8 @@
           </div>
           <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
             <span class="block text-[11px] font-bold text-slate-600 uppercase">Status</span>
-            <span class="text-base font-black text-slate-800 mt-1 block" id="resStatus">Lulus</span>
-            <span class="text-[10px] text-slate-400 block">KKM: 70</span>
+            <span class="text-base font-black text-slate-800 mt-1 block" id="resStatus">Lulus</span>[cite: 1]
+            <span class="text-[10px] text-slate-400 block">KKM: 70</span>[cite: 1]
           </div>
           <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
             <span class="block text-[11px] font-bold text-slate-600 uppercase">Waktu</span>
@@ -272,7 +277,7 @@
         <div id="certificateClaimBox" class="hidden p-4 rounded-2xl bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 text-white shadow-lg mb-6 text-center">
           <span class="text-2xl block mb-1">🎉</span>
           <h4 class="font-black text-sm uppercase tracking-wide">Selamat! Kamu Memenuhi Syarat Kelulusan</h4>
-          <p class="text-xs text-amber-100 mb-3">Piagam Penghargaan Resmi telah diterbitkan atas nama kamu.</p>
+          <p class="text-xs text-amber-100 mb-3">Piagam Penghargaan Resmi telah diterbitkan atas nama kamu.</p>[cite: 1]
           <button onclick="openCertificateModal()" class="px-5 py-2.5 bg-white text-amber-950 font-black text-xs rounded-xl shadow-md transition inline-flex items-center gap-2 cursor-pointer">
             <span>🏆 Cetak Piagam Penghargaan</span>
           </button>
@@ -288,7 +293,7 @@
           </div>
         </div>
         <div class="pt-6 mt-6 border-t border-teal-100 text-xs font-bold text-slate-500 text-center no-print">
-          Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
+          Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.[cite: 1]
         </div>
       </div>
       
@@ -298,54 +303,55 @@
       </div>
     </div>
   </main>
+
   <!-- MODAL PIAGAM DIGITAL -->
   <div id="certificateModal" class="hidden fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
     <div class="bg-white max-w-4xl w-full rounded-2xl shadow-2xl relative p-3 sm:p-6 text-center border-4 border-amber-300">
       <div class="flex items-center justify-between mb-3 no-print">
         <span class="text-xs font-bold text-amber-800">Pratinjau Piagam Penghargaan</span>
         <div class="flex items-center gap-2">
-          <button onclick="window.print()" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-lg transition cursor-pointer">🖨️ Cetak / Simpan PDF</button>
+          <button onclick="window.print()" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-lg transition cursor-pointer">🖨️ Cetak / Simpan PDF</button>[cite: 1]
           <button onclick="closeCertificateModal()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-lg transition cursor-pointer">✕ Tutup</button>
         </div>
       </div>
       <div class="p-6 sm:p-10 border-8 border-double border-amber-500 bg-gradient-to-b from-amber-50/40 via-white to-amber-50/40 rounded-xl shadow-inner text-slate-900">
         <div class="text-center space-y-1 mb-4">
-          <p class="text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-teal-800">KORWIL BIDDIKBUD KECAMATAN MRANGGEN • SEKSI KEGURUAN</p>
-          <h2 class="font-cinzel text-2xl sm:text-4xl font-extrabold text-amber-700 tracking-wider">PIAGAM PENGHARGAAN</h2>
-          <p class="text-[11px] font-mono text-slate-500" id="certNumber">No: 400.3.11.1/TKA-MRG/2026/001</p>
+          <p class="text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-teal-800">KORWIL BIDDIKBUD KECAMATAN MRANGGEN • SEKSI KEGURUAN</p>[cite: 1]
+          <h2 class="font-cinzel text-2xl sm:text-4xl font-extrabold text-amber-700 tracking-wider">PIAGAM PENGHARGAAN</h2>[cite: 1]
+          <p class="text-[11px] font-mono text-slate-500" id="certNumber">No: 400.3.11.1/TKA-MRG/2026/001</p>[cite: 1]
         </div>
         <p class="text-xs sm:text-sm text-slate-600 mb-2 font-medium">Diberikan dengan penuh apresiasi kepada:</p>
-        <h3 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight underline decoration-amber-500 decoration-2 underline-offset-8 mb-3" id="certStudentName">NAMA LENGKAP SISWA</h3>
-        <p class="text-xs sm:text-sm font-bold text-slate-700 mb-4" id="certStudentSchool">SD NEGERI BANDUNGREJO 1 MRANGGEN</p>
+        <h3 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight underline decoration-amber-500 decoration-2 underline-offset-8 mb-3" id="certStudentName">NAMA LENGKAP SISWA</h3>[cite: 1]
+        <p class="text-xs sm:text-sm font-bold text-slate-700 mb-4" id="certStudentSchool">SD NEGERI BANDUNGREJO 1 MRANGGEN</p>[cite: 1]
         <p class="text-xs sm:text-sm max-w-2xl mx-auto text-slate-700 leading-relaxed mb-6 font-medium">
-          Atas keberhasilan menyelesaikan <b>Simulasi Ujian Tes Kemampuan Akademik (TKA) Kelas VI</b> pada mata pelajaran <b id="certSubjectName">Matematika</b> (<span id="certPackageName">Paket 1</span>) dengan capaian nilai:
+          Atas keberhasilan menyelesaikan <b>Simulasi Ujian Tes Kemampuan Akademik (TKA) Kelas VI</b> pada mata pelajaran <b id="certSubjectName">Matematika</b> (<span id="certPackageName">Paket 1</span>) dengan capaian nilai:[cite: 1]
         </p>
         <div class="inline-flex items-center gap-4 px-6 py-2 bg-amber-100/80 border-2 border-amber-400 rounded-2xl mb-8 shadow-sm">
           <div>
             <span class="block text-[10px] font-black uppercase text-amber-800">NILAI AKHIR</span>
-            <span class="text-3xl font-black text-amber-900" id="certScore">95</span>
+            <span class="text-3xl font-black text-amber-900" id="certScore">95</span>[cite: 1]
           </div>
           <div class="w-px h-8 bg-amber-300"></div>
           <div>
             <span class="block text-[10px] font-black uppercase text-amber-800">PREDIKAT</span>
-            <span class="text-xs font-black text-emerald-800" id="certPredicate">SANGAT MEMUASKAN</span>
+            <span class="text-xs font-black text-emerald-800" id="certPredicate">SANGAT MEMUASKAN</span>[cite: 1]
           </div>
         </div>
         <div class="grid grid-cols-2 gap-4 sm:gap-12 px-4 sm:px-12 text-left text-slate-900 pt-3">
           <div class="space-y-0.5">
             <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Mengetahui</p>
-            <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Korwil Biddikbud Kec. Mranggen</p>
+            <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Korwil Biddikbud Kec. Mranggen</p>[cite: 1]
             <div class="h-20 sm:h-24 flex items-center py-1">
-              <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none"><path d="M 18,52 C 32,48 48,32 56,26 C 64,20 70,18 68,28 C 64,46 52,62 36,68 C 22,73 18,68 26,62 C 36,55 56,40 80,34 C 78,44 74,56 70,62 C 66,68 60,64 72,56 C 90,45 104,42 118,44 C 112,48 106,55 102,60 C 98,64 103,62 110,56 C 120,48 134,44 148,45 L 245,47" fill="none" stroke="#1d4ed8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none"><path d="M 18,52 C 32,48 48,32 56,26 C 64,20 70,18 68,28 C 64,46 52,62 36,68 C 22,73 18,68 26,62 C 36,55 56,40 80,34 C 78,44 74,56 70,62 C 66,68 60,64 72,56 C 90,45 104,42 118,44 C 112,48 106,55 102,60 C 98,64 103,62 110,56 C 120,48 134,44 148,45 L 245,47" fill="none" stroke="#1d4ed8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>[cite: 1]
             </div>
             <div>
-              <p class="font-black text-xs sm:text-sm text-slate-900 leading-tight">Sunarto, S.Pd., M.Pd.</p>
-              <p class="font-bold text-slate-800 text-[11px] sm:text-xs">NIP 19670915 199103 1 010</p>
+              <p class="font-black text-xs sm:text-sm text-slate-900 leading-tight">Sunarto, S.Pd., M.Pd.</p>[cite: 1]
+              <p class="font-bold text-slate-800 text-[11px] sm:text-xs">NIP 19670915 199103 1 010</p>[cite: 1]
             </div>
           </div>
           <div class="space-y-0.5 relative">
             <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Ketua</p>
-            <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Sie Keguruan,</p>
+            <p class="font-normal text-slate-800 text-xs sm:text-sm leading-tight">Sie Keguruan,</p>[cite: 1]
             <div class="h-20 sm:h-24 relative flex items-center py-1">
               <div class="absolute -left-10 sm:-left-12 -top-5 sm:-top-6 w-48 sm:w-56 h-28 sm:h-32 pointer-events-none opacity-85 select-none z-10" style="transform: rotate(-6deg);">
                 <svg viewBox="0 0 240 140" class="w-full h-full">
@@ -360,21 +366,22 @@
                 </svg>
               </div>
               <div class="relative z-20 w-full h-full flex items-center">
-                <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none"><path d="M 35,46 C 45,28 60,18 75,18 C 88,18 95,28 92,44 C 88,60 74,72 58,72 C 45,72 40,62 48,50 C 60,34 92,26 128,26 C 170,26 215,30 260,34 M 82,32 C 95,40 108,55 118,65 M 78,56 C 98,52 145,46 195,48 M 80,68 C 110,64 160,58 210,60" fill="none" stroke="#0f172a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg viewBox="0 0 280 80" class="h-full w-auto select-none pointer-events-none"><path d="M 35,46 C 45,28 60,18 75,18 C 88,18 95,28 92,44 C 88,60 74,72 58,72 C 45,72 40,62 48,50 C 60,34 92,26 128,26 C 170,26 215,30 260,34 M 82,32 C 95,40 108,55 118,65 M 78,56 C 98,52 145,46 195,48 M 80,68 C 110,64 160,58 210,60" fill="none" stroke="#0f172a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>[cite: 1]
               </div>
             </div>
             <div>
-              <p class="font-black text-xs sm:text-sm text-slate-900 leading-tight">Karyono, S.Pd., M.Pd.</p>
-              <p class="font-bold text-slate-800 text-[11px] sm:text-xs">NIP 19721112 199803 1 011</p>
+              <p class="font-black text-xs sm:text-sm text-slate-900 leading-tight">Karyono, S.Pd., M.Pd.</p>[cite: 1]
+              <p class="font-bold text-slate-800 text-[11px] sm:text-xs">NIP 19721112 199803 1 011</p>[cite: 1]
             </div>
           </div>
         </div>
         <div class="mt-8 pt-3 border-t border-amber-200/60 text-[10px] font-semibold text-slate-400 text-center">
-          Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.
+          Created by Muhammad Imam Suwiji. © 2026 Sie Keguruan Korwil Mranggen. All rights reserved.[cite: 1]
         </div>
       </div>
     </div>
   </div>
+
   <script>
     const FIREBASE_DB_URL = "https://tka-mranggen-2026-default-rtdb.firebaseio.com/nilai_tryout.json";
     const FIREBASE_SETTINGS_URL = "https://tka-mranggen-2026-default-rtdb.firebaseio.com/pengaturan_ujian.json";
@@ -407,6 +414,7 @@
       "SD NEGERI TAMBAKROTO", "SD NEGERI TIMBULSLOKO 1", "SD NEGERI TIMBULSLOKO 2", "SD NEGERI TUGU 1",
       "SDS ISLAM SITI SULAECHAH 2"
     ];
+
     const SOAL_30_MATEMATIKA = [
       { id: 1, type: "PG", text: "1. Hasil dari 16⅔% × 24 - 0,25 × 20 + 1¾ × 4 adalah ....", options: ["3", "4", "6", "8"], correct: 2, topic: "Operasi Hitung Pecahan", explanation: "16⅔% = 1/6; (1/6 × 24) = 4; (0,25 × 20) = 5; (1¾ × 4) = 7. Hasil = 4 - 5 + 7 = 6. (Kunci: C)" },
       { id: 2, type: "PG", text: "2. Perhatikan tabel berikut!<br><img src='soal2.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Pasangan yang tepat yang menunjukkan hubungan antara persen dan pecahan biasa adalah ....", options: ["1 - C, 2 - A", "1 - C, 2 - D", "3 - A, 4 - B", "3 - B, 2 - C"], correct: 1, topic: "Persen & Pecahan", explanation: "60% = 3/5 (C) dan 50% = 1/2 (D). (Kunci: B)" },
@@ -439,6 +447,7 @@
       { id: 29, type: "Kategori", text: "29. Beras setiap 4 hari, minyak setiap 12 hari. Bersama pertama kali 1 Agustus 2024. Tentukan <b>Benar</b> atau <b>Salah</b>!", statements: ["Tanggal 20 Agustus 2024 Bu Candra hanya membeli beras saja.", "Tanggal 6 September 2024 Bu Candra membeli beras dan minyak goreng secara bersamaan.", "Setiap membeli minyak goreng, Bu Candra pasti membeli beras."], correct: ["Benar", "Benar", "Benar"], topic: "KPK & Kalender", explanation: "Kunci: Benar, Benar, Benar." },
       { id: 30, type: "Kategori", text: "30. Perhatikan diagram gambar siswa SD Mutiara berikut!<br><img src='soal30.jpg' class='my-3 max-w-sm rounded-xl border shadow-sm mx-auto'><br>Tentukan <b>Benar</b> atau <b>Salah</b> untuk setiap pernyataan berikut!", statements: ["Selisih siswa paling banyak dengan paling sedikit adalah 30 anak.", "Jumlah siswa kelas II, III, dan VI sama banyak.", "Jumlah siswa seluruhnya sebanyak 350 anak."], correct: ["Benar", "Salah", "Salah"], topic: "Interpretasi Piktogram", explanation: "Kunci: Benar, Salah, Salah." }
     ];
+
     const SOAL_30_MATEMATIKA_PAKET_2 = [
       {
         id: 1, type: "Kategori",
@@ -766,7 +775,7 @@
       { id: 10, type: "MCMA", text: "10. Berdasarkan tindakan Kelinci dan Kura-kura dalam cerita, nilai moral paling penting yang diajarkan adalah... (Pilih dua jawaban yang benar!)", options: ["Kerendahan hati", "Disiplin", "Ketekunan", "Ketergesa-gesaan"], correct: [0, 2], topic: "Nilai Moral", explanation: "Nilai moral utama adalah Kerendahan hati dan Ketekunan. (Kunci: A dan C)" },
       { id: 11, type: "PG", text: "11. Apa fungsi utama dari Kalimat (6) dalam mengembangkan cerita?", options: ["Memperkenalkan latar tempat baru di dalam cerita Kelinci dan Kura-kura", "Menjelaskan alasan mengapa Kelinci memutuskan untuk beristirahat.", "Menghubungkan Kelinci dan Kura-kura di garis akhir yang menyenangkan", "Menyimpulkan hasil akhir dari perlombaan tersebut dengan jujur"], correct: 1, topic: "Fungsi Kalimat", explanation: "Kalimat (6) menjelaskan alasan kelinci tidur siang karena bosan menunggu. (Kunci: B)" },
       { id: 12, type: "PG", text: "12. Berdasarkan pengalaman pribadi atau pengetahuan umum Anda, peristiwa hilangnya sepeda Ameera karena lupa mengunci adalah kejadian yang...<br><br><b>Teks: Sepeda Baru untuk Ameera</b><br>Ameera sangat gembira karena mendapatkan hadiah sepeda baru dari Ayah. Sepeda itu berwarna merah cerah. Pada hari pertama, Ameera membawa sepedanya ke sekolah dengan penuh kebanggaan, meskipun jarak rumah ke sekolah hanya 100 meter. Sayangnya, karena terlalu bersemangat, ia lupa mengunci sepedanya saat masuk ke kelas. Saat pulang sekolah, Ameera terkejut mendapati sepedanya sudah hilang dari tempat parkir. Ameera pun menangis menyesal dan berjanji akan selalu berhati-hati dan disiplin dalam menjaga barang miliknya.", options: ["Tidak mungkin terjadi di lingkungan sekolah dan masyarakat", "Sangat umum dan sering terjadi di lingkungan masyarakat.", "Hanya terjadi jika sepeda tersebut bukan sepeda baru.", "Merupakan kejadian aneh dan sangat menggelikan"], correct: 1, topic: "Penalaran Situasi", explanation: "Kejadian lupa mengunci dan berisiko hilang sangat umum terjadi. (Kunci: B)" },
-      { id: 13, type: "Kategori", text: "13. Tentukan dengan memberi tanda centang apakah tindakan atau pemikiran berikut Relevan atau Tidak Relevan dengan ide dalam teks!<br><br><b>Teks:</b> Penggunaan kantong plastik sekali pakai adalah penyumbang terbesar masalah sampah di kota kita. Untuk mengurangi dampaknya, pemerintah kota akan mulai menerapkan aturan baru: setiap warga wajib membawa tas belanja sendiri dan tidak boleh menggunakan kantong plastik dari toko saat berbelanja.", statements: ["Saya akan terus membeli kantong plastik baru setiap berbelanja agar praktis.", "Mengurangi penggunaan plastik adalah tanggung jawab orang dewasa, bukan anak-anak.", "Saya akan mulai memasukkan tas lipat ke dalam tas sekolah atau tas belanja Ibu saya.", "Mengganti tas plastik dengan tas dari bahan lainnya yang bisa dipakai berulang kali"], correct: ["Tidak Relevan", "Tidak Relevan", "Relevan", "Relevan"], topic: "Relevansi Teks", explanation: "Pernyataan 1 dan 2 tidak relevan; pernyataan 3 dan 4 relevan." },
+      { id: 13, type: "Kategori", text: "13. Tentukan dengan memberi tanda centang apakah tindakan atau pemikiran berikut Relevan atau Tidak Relevan dengan ide dalam teks!<br><br><b>Teks:</b> Penggunaan kantong plastik sekali pakai adalah penyumbang terbesar masalah sampah di kota kita. Untuk mengurangi dampaknya, pemerintah kota akan mulai menerapkan aturan baru: setiap warga wajib membawa tas belanja sendiri dan tidak boleh menggunakan kantong plastik dari toko saat berberlanja.", statements: ["Saya akan terus membeli kantong plastik baru setiap berbelanja agar praktis.", "Mengurangi penggunaan plastik adalah tanggung jawab orang dewasa, bukan anak-anak.", "Saya akan mulai memasukkan tas lipat ke dalam tas sekolah atau tas belanja Ibu saya.", "Mengganti tas plastik dengan tas dari bahan lainnya yang bisa dipakai berulang kali"], correct: ["Tidak Relevan", "Tidak Relevan", "Relevan", "Relevan"], topic: "Relevansi Teks", explanation: "Pernyataan 1 dan 2 tidak relevan; pernyataan 3 dan 4 relevan." },
       { id: 14, type: "MCMA", text: "14. Kegiatan itu mendapat respons positif dari warga karena mereka mendapatkan banyak keuntungan.<br>Berdasarkan kalimat tersebut di atas, apa sinonim dari kata yang dicetak miring (positif/keuntungan)? Pilihlah dua jawaban yang tepat!", options: ["Kemudahan", "Manfaat", "Laba", "Rugi"], correct: [1, 2], topic: "Sinonim", explanation: "Keuntungan bersinonim dengan Manfaat dan Laba. (Kunci: B dan C)" },
       { id: 15, type: "PG", text: "15. Apa gagasan pokok dari kutipan teks di atas?<br><br><b>Teks:</b> Di sebuah desa terpencil, hiduplah seorang kakek tua bernama Kakek Hariman. Ia sangat gemar menanam pohon meskipun usianya sudah senja. Suatu hari, seorang pemuda bertanya, “Kakek, mengapa kakek masih menanam pohon? Padahal, kakek mungkin tidak akan sempat menikmati buahnya?” Kakek Hariman tersenyum simpul lalu menjawab, “Aku menanam bukan hanya untuk diriku, melainkan untuk anak cucu semua agar mereka bisa berteduh dan menikmati hasilnya nanti. Selain itu, aku memang sangat mencintai kegiatanku ini.”", options: ["Cara menanam pohon yang benar di desa terpencil.", "Pertanyaan seorang pemuda kepada kakek tua yang menanam pohon", "Kegemaran Kakek Hariman menanam pohon di masa tua.", "Cerita Kakek Hariman yang mencintai semua cucunya"], correct: 2, topic: "Gagasan Pokok", explanation: "Teks menceritakan kegemaran Kakek Hariman menanam pohon di masa tua. (Kunci: C)" },
       { id: 16, type: "PG", text: "16. Berdasarkan teks di atas, bagaimana watak atau karakter Kakek Hariman?", options: ["Peduli dan tidak mau diganggu.", "Sombong karena banyak menanam pohon.", "Rajin bekerja dan mudah menyerah.", "Peduli pada masa depan dan murah hati."], correct: 3, topic: "Watak Tokoh", explanation: "Kakek Hariman peduli pada masa depan generasi penerus dan ikhlas berbagi. (Kunci: D)" },
@@ -774,7 +783,7 @@
       { id: 18, type: "Kategori", text: "18. Arinda siswa yang rajin belajar. Setiap hari tak pernah terlewatkan mengerjakan tugas. Ia juga rajin membantu orang tuanya. Selain itu ia selalu menolong orang lain tanpa pamrih. Oleh karena itu, banyak teman yang menyukai dia.<br>Tentukan Sesuai atau Tidak Sesuai dengan bacaan tersebut!", statements: ["Arinda selalu membantu orang tuanya", "Arinda menolong teman tanpa pamrih", "Arinda rajin belajar bila ada tugas", "Arinda memiliki banyak teman"], correct: ["Sesuai", "Sesuai", "Tidak Sesuai", "Sesuai"], topic: "Informasi Teks", explanation: "Pernyataan c tidak sesuai karena Arinda rajin belajar setiap hari, bukan hanya bila ada tugas." },
       { id: 19, type: "PG", text: "19. Sebuah benda berbentuk lingkaran dan biasanya terpasang di dinding ruang tamu atau kelas. Di dalamnya terdapat angka satu sampai dua belas serta tiga jarum yang terus berputar. Benda ini sangat berguna agar kita bisa datang ke sekolah tepat waktu.<br>Simpulan objek yang dideskripsikan pada teks tersebut adalah...", options: ["Jam tangan", "Busur", "Kompas", "Jam dinding"], correct: 3, topic: "Simpulan Objek", explanation: "Objek terpasang di dinding dan menunjukkan angka 1-12 adalah jam dinding. (Kunci: D)" },
       { id: 20, type: "PG", text: "20. Rutinitas Adinda di rumah. Setiap pagi, sebelum berangkat sekolah, Adinda selalu menyempatkan diri untuk membantu ibunya menyapu halaman. Ia melakukan tugasnya dengan ceria tanpa pernah mengeluh, meskipun halamannya cukup luas.<br>Karakter tokoh Adinda dalam teks tersebut adalah...", options: ["Rajin dan ikhlas", "Berbakti dan terpaksa", "Disiplin dan angkuh", "Rajin dan kuat"], correct: 0, topic: "Karakter Tokoh", explanation: "Adinda membantu dengan ceria tanpa mengeluh (rajin dan ikhlas). (Kunci: A)" },
-      { id: 21, type: "PG", text: "20. Mentari mulai mengintip dari balik bukit, menyapa dedaunan yang masih basah oleh embun. Suara kicauan burung bersahut-sahutan, menambah kedamaian di desa Lereng Merapi. Para Petani pun mulai memanggul cangkulnya menuju sawah dengan penuh semangat.<br>Latar waktu pada kutipan teks tersebut adalah...", options: ["Sore hari", "Siang hari", "Malam hari", "Pagi hari"], correct: 3, topic: "Latar Waktu", explanation: "Mentari mengintip dan embun pagi menunjukkan latar waktu pagi hari. (Kunci: D)" },
+      { id: 21, type: "PG", text: "21. Mentari mulai mengintip dari balik bukit, menyapa dedaunan yang masih basah oleh embun. Suara kicauan burung bersahut-sahutan, menambah kedamaian di desa Lereng Merapi. Para Petani pun mulai memanggul cangkulnya menuju sawah dengan penuh semangat.<br>Latar waktu pada kutipan teks tersebut adalah...", options: ["Sore hari", "Siang hari", "Malam hari", "Pagi hari"], correct: 3, topic: "Latar Waktu", explanation: "Mentari mengintip dan embun pagi menunjukkan latar waktu pagi hari. (Kunci: D)" },
       { id: 22, type: "PG", text: "22. Gadis itu kini menjadi viral di manapun. Ia menjadi buah bibir bagi ibu-ibu yang sedang berkerumun.<br>Makna buah bibir adalah ....", options: ["Terkenal di mana-mana", "Bahan pembicaraan", "Gadis yang memesona", "Hadiah dari ibu"], correct: 1, topic: "Makna Ungkapan", explanation: "Buah bibir bermakna bahan pembicaraan orang banyak. (Kunci: B)" },
       { id: 23, type: "PG", text: "23. Pena itu menari-nari di atas kertas untuk menuangkan ide sang penulis.<br>Majas yang digunakan dalam kalimat di atas adalah...", options: ["Hiperbola", "Asosiasi", "Personifikasi", "Metafora"], correct: 2, topic: "Majas", explanation: "Pena menari-nari adalah majas personifikasi (benda mati disifatkan seperti manusia). (Kunci: C)" },
       { id: 24, type: "PG", text: "24. Kalimat berikut yang merupakan majas hiperbola adalah ....", options: ["Si kutu buku itu selalu duduk di pojok perpustakaan", "Amukan jago merah melalap seluruh kampung di pinggiran kota Jakarta.", "Matahari sudah terbangun menyapa bumi yang indah ini", "Suaranya menggelegar membelah angkasa dan membuat bumi berguncang"], correct: 3, topic: "Majas Hiperbola", explanation: "Suara menggelegar membelah angkasa adalah pernyataan berlebihan (hiperbola). (Kunci: D)" },
@@ -787,36 +796,36 @@
     ];
 
     const SOAL_30_BINDO_TRYOUT_2 = [
-      { id: 1, type: "PG", text: "1. Makna kata perundungan dalam bacaan tersebut adalah ....<br><br><b>Teks: Mengenali Perundungan di Sekolah</b><br>Perundungan adalah tindakan menyakiti, mengejek, mengancam, atau mengucilkan seseorang secara berulang. Perundungan berbeda dari perselisihan biasa karena tindakan itu berulang dan dapat membuat seseorang merasa takut atau tidak aman...", options: ["tindakan menyakiti atau merendahkan seseorang secara berulang", "perbedaan pendapat yang diselesaikan dengan baik", "kegiatan membantu teman belajar", "kebiasaan bekerja bersama dalam kelompok"], correct: 0, topic: "Makna Istilah", explanation: "Perundungan adalah tindakan menyakiti atau merendahkan secara berulang. (Kunci: A)" },
-      { id: 2, type: "MCMA", text: "2. Pilih semua contoh perundungan yang disebutkan dalam bacaan!", options: ["Memberi julukan yang merendahkan.", "Mengajak teman bergabung dalam kegiatan.", "Menyebarkan foto untuk mempermalukan seseorang."], correct: [0, 2], topic: "Contoh Perundungan", explanation: "Julukan merendahkan dan menyebarkan foto mempermalukan adalah perundungan. (Kunci: A dan C)" },
-      { id: 3, type: "Kategori", text: "3. Tentukan Sesuai atau Tidak Sesuai untuk setiap pernyataan berikut berdasarkan teks perundungan!", statements: ["Mengejek atau memberi julukan merendahkan secara berulang kepada teman merupakan bentuk perundungan (verbal).", "Mendampingi teman yang menjadi sasaran perundungan dan mengajaknya menjauh dari situasi tersebut merupakan contoh tindakan mendukung teman.", "Melapor kepada guru atau orang dewasa ketika terjadi perundungan adalah tindakan yang sebaiknya dihindari agar masalah cepat selesai."], correct: ["Sesuai", "Sesuai", "Tidak Sesuai"], topic: "Analisis Pernyataan", explanation: "Melapor kepada guru adalah tindakan yang tepat, bukan dihindari." },
-      { id: 4, type: "PG", text: "4. Kegiatan yang mendukung kesiapan sebelum berangkat sekolah menurut bacaan di atas adalah ....<br><br><b>Teks: Pagi yang Teratur</b><br>Awal hari yang teratur membantu anak menyiapkan tubuh dan pikiran sebelum belajar...", options: ["Menjaga kebersihan diri, sarapan, dan memeriksa perlengkapan.", "Mengganti gawai hingga larut malam.", "Berangkat tanpa memeriksa jadwal pelajaran.", "Melewatkan sarapan agar lebih cepat sampai."], correct: 0, topic: "Pemahaman Isi Teks", explanation: "Kebiasaan baik meliputi kebersihan diri, sarapan, dan memeriksa perlengkapan. (Kunci: A)" },
-      { id: 5, type: "PG", text: "5. Mengapa menyiapkan buku dan perlengkapan pada malam hari merupakan kebiasaan yang baik?", options: ["Agar pagi hari lebih teratur dan tidak terburu-buru.", "Agar tidak perlu tidur pada malam hari.", "Agar semua tugas dapat ditinggalkan.", "Agar anak tidak perlu memeriksa jadwal."], correct: 0, topic: "Alasan / Analisis", explanation: "Persiapan matang membuat pagi hari lebih teratur dan tenang. (Kunci: A)" },
+      { id: 1, type: "PG", text: "1. Makna kata perundungan dalam bacaan tersebut adalah ....<br><br><b>Teks: Mengenali Perundungan di Sekolah</b><br>Perundungan adalah tindakan menyakiti, mengejek, mengancam, atau mengucilkan seseorang secara berulang. Perundungan berbeda dari perselisihan biasa karena tindakan itu berulang dan dapat membuat seseorang merasa takut atau tidak aman. Di sekolah, tindakan tersebut dapat berupa julukan yang merendahkan, merusak barang, menghalangi teman bergabung, atau menyebarkan foto untuk mempermalukan. Perundungan tidak boleh dianggap wajar hanya karena disebut candaan. Korban berhak merasa aman dan mendapat bantuan. Siswa yang menyaksikan perundungan dapat mendampingi teman, tidak ikut tertawa, dan melapor kepada guru atau orang dewasa. Melapor berarti meminta bantuan agar situasi kembali aman. Jika aman, saksi juga dapat mengingatkan pelaku dengan kata-kata yang sopan. Guru perlu menindaklanjuti laporan, menjaga keselamatan siswa, dan membantu semua pihak memahami dampak perilaku tersebut. Perundungan dapat terjadi secara langsung maupun melalui media digital. Karena itu, setiap warga sekolah perlu menjaga ucapan, menghormati perbedaan, serta mencari bantuan ketika ejekan berulang. Sekolah yang aman terbentuk jika semua orang ikut mencegah tindakan yang menyakiti.", options: ["tindakan menyakiti atau merendahkan seseorang secara berulang", "perbedaan pendapat yang diselesaikan dengan baik", "kegiatan membantu teman belajar", "kebiasaan bekerja bersama dalam kelompok"], correct: 0, topic: "Makna Istilah", explanation: "Perundungan adalah tindakan menyakiti atau merendahkan secara berulang." },
+      { id: 2, type: "MCMA", text: "2. Pilih semua contoh perundungan yang disebutkan dalam bacaan!", options: ["Memberi julukan yang merendahkan.", "Mengajak teman bergabung dalam kegiatan.", "Menyebarkan foto untuk mempermalukan seseorang."], correct: [0, 2], topic: "Contoh Perundungan", explanation: "Julukan merendahkan dan menyebarkan foto mempermalukan adalah perundungan." },
+      { id: 3, type: "Kategori", text: "3. Tentukan Sesuai atau Tidak Sesuai untuk setiap pernyataan berikut berdasarkan teks perundungan!", statements: ["Mengejek atau memberi julukan merendahkan secara berulang kepada teman merupakan bentuk perundungan (verbal).", "Mendampingi teman yang menjadi sasaran perundungan dan mengajaknya menjauh dari situasi tersebut merupakan contoh tindakan mendukung teman.", "Melapor kepada guru atau orang dewasa ketika terjadi perundungan adalah tindakan yang sebaiknya dihindari agar masalah cepat selesai."], correct: ["Sesuai", "Sesuai", "Tidak Sesuai"], topic: "Analisis Pernyataan", explanation: "Melapor kepada guru adalah tindakan yang tepat." },
+      { id: 4, type: "PG", text: "4. Kegiatan yang mendukung kesiapan sebelum berangkat sekolah menurut bacaan di atas adalah ....<br><br><b>Teks: Pagi yang Teratur</b><br>Awal hari yang teratur membantu anak menyiapkan tubuh dan pikiran sebelum belajar. Anak dapat memulainya dengan bangun tepat waktu, merapikan tempat tidur, mandi, dan mengenakan pakaian bersih. Sarapan bergizi juga penting karena tubuh memerlukan energi untuk beraktivitas. Pilihan makanan dapat beragam, misalnya nasi atau sumber karbohidrat lain, lauk berprotein, sayuran, serta buah. Sebelum berangkat, anak sebaiknya memeriksa jadwal pelajaran, menyiapkan buku, dan mengisi botol minum. Persiapan ini membuat kegiatan pagi lebih tenang sehingga anak tidak terburu-buru mencari perlengkapan. Jika jarak dan kondisi memungkinkan, berjalan kaki bersama keluarga juga dapat menjadi kesempatan bergerak aktif. Di sekolah, minum air putih secara teratur dan bermain saat istirahat membantu menjaga kebugaran. Setelah pulang, anak dapat menyelesaikan tugas, membantu pekerjaan ringan di rumah, dan menyiapkan kebutuhan untuk esok hari. Penggunaan gawai perlu dibatasi agar waktu tidur cukup. Kebiasaan sehat tidak terbentuk dalam satu malam. Kegiatan kecil yang dilakukan secara konsisten membantu tubuh tetap segar dan membuat anak lebih siap mengikuti pelajaran.", options: ["Menjaga kebersihan diri, sarapan, dan memeriksa perlengkapan.", "Menggunakan gawai hingga larut malam.", "Berangkat tanpa memeriksa jadwal pelajaran.", "Melewatkan sarapan agar lebih cepat sampai."], correct: 0, topic: "Pemahaman Isi Teks", explanation: "Kebiasaan baik meliputi kebersihan diri, sarapan, dan memeriksa perlengkapan." },
+      { id: 5, type: "PG", text: "5. Mengapa menyiapkan buku dan perlengkapan pada malam hari merupakan kebiasaan yang baik?", options: ["Agar pagi hari lebih teratur dan tidak terburu-buru.", "Agar tidak perlu tidur pada malam hari.", "Agar semua tugas dapat ditinggalkan.", "Agar anak tidak perlu memeriksa jadwal."], correct: 0, topic: "Alasan / Analisis", explanation: "Persiapan matang membuat pagi hari lebih teratur dan tenang." },
       { id: 6, type: "Kategori", text: "6. Tentukan Benar atau Salah untuk setiap pernyataan berikut berdasarkan teks Pagi yang Teratur!", statements: ["Membatasi penggunaan gawai membantu anak mendapatkan waktu tidur yang cukup.", "Anak tidak perlu memeriksa jadwal pelajaran sebelum berangkat sekolah.", "Sarapan bergizi membantu menyediakan energi untuk beraktivitas."], correct: ["Benar", "Salah", "Benar"], topic: "Analisis Pernyataan", explanation: "Pemeriksaan jadwal sangat penting dilakukan." },
-      { id: 7, type: "MCMA", text: "7. Pilih semua tindakan yang sesuai dengan anjuran keamanan digital pada bacaan Tautan Hadiah di Ponsel.", options: ["Memeriksa nama pengirim dan alamat situs.", "Meminta bantuan orang tua atau guru jika ragu.", "Memasukkan kata sandi ke halaman yang belum jelas."], correct: [0, 1], topic: "Keamanan Digital", explanation: "Memeriksa pengirim dan melapor kepada guru/orang tua adalah tindakan benar. (Kunci: A dan B)" },
-      { id: 8, type: "PG", text: "8. Ungkapan sumber yang tepercaya dalam bacaan berarti sumber yang ....", options: ["dapat dipercaya kebenarannya", "selalu menawarkan hadiah", "meminta semua data pribadi", "tidak memiliki identitas pengirim"], correct: 0, topic: "Makna Ungkapan", explanation: "Sumber tepercaya berarti sumber yang dapat dipercaya kebenarannya. (Kunci: A)" },
+      { id: 7, type: "MCMA", text: "7. Pilih semua tindakan yang sesuai dengan anjuran keamanan digital pada bacaan Tautan Hadiah di Ponsel.<br><br><b>Teks: Tautan Hadiah di Ponsel</b><br>Pesan digital yang menawarkan hadiah besar perlu diperiksa sebelum dipercaya. Pesan mencurigakan sering meminta penerima membuka tautan, mengisi alamat rumah, memasukkan kata sandi, atau memberikan kode rahasia. Permintaan data pribadi seperti itu merupakan tanda bahaya, terutama jika pengirim tidak dikenal atau isi pesannya mendesak...", options: ["Memeriksa nama pengirim dan alamat situs.", "Meminta bantuan orang tua atau guru jika ragu.", "Memasukkan kata sandi ke halaman yang belum jelas."], correct: [0, 1], topic: "Keamanan Digital", explanation: "Memeriksa pengirim dan melapor kepada guru/orang tua adalah tindakan benar." },
+      { id: 8, type: "PG", text: "8. Ungkapan sumber yang tepercaya dalam bacaan berarti sumber yang ....", options: ["dapat dipercaya kebenarannya", "selalu menawarkan hadiah", "meminta semua data pribadi", "tidak memiliki identitas pengirim"], correct: 0, topic: "Makna Ungkapan", explanation: "Sumber tepercaya berarti sumber yang dapat dipercaya kebenarannya." },
       { id: 9, type: "Kategori", text: "9. Tentukan Benar atau Salah untuk setiap pernyataan berikut!", statements: ["Sebelum mengeklik tautan, periksa nama pengirim dan alamat situs.", "Informasi dari sumber tepercaya biasanya memiliki identitas yang jelas", "Masukkan kata sandi atau informasi pribadi pada halaman yang belum jelas"], correct: ["Benar", "Benar", "Salah"], topic: "Evaluasi Pernyataan", explanation: "Jangan pernah memasukkan kata sandi pada halaman yang belum jelas." },
-      { id: 10, type: "PG", text: "10. Mengapa Raka melarang Seno memanjat pohon untuk mengambil layangan?<br><br><b>Teks: Layangan di Pohon Jambu</b>", options: ["Pohon jambu berada di halaman rumah orang lain.", "Dahan pohon cukup tinggi dan licin setelah hujan.", "Pohon jambu menghalangi angin yang bertiup kencang.", "Layangan mereka sudah rusak dan tidak dapat digunakan."], correct: 1, topic: "Alasan Tokoh", explanation: "Dahan pohon tinggi dan licin setelah hujan malam sebelumnya. (Kunci: B)" },
-      { id: 11, type: "PG", text: "11. Mengapa Raka dan Seno meminta bantuan penjaga kebun untuk mengambil layangan?", options: ["Penjaga kebun melarang anak-anak bermain di lapangan.", "Penjaga kebun dapat menggunakan galah untuk mengambil layangan dengan aman.", "Penjaga kebun merupakan satu-satunya orang yang tinggal di dekat lapangan.", "Penjaga kebun bertugas mengumpulkan semua layangan yang tersangkut."], correct: 1, topic: "Alasan Tokoh", explanation: "Penjaga kebun bisa memakai galah panjang untuk mengambil layangan dengan aman. (Kunci: B)" },
-      { id: 12, type: "PG", text: "12. Mengapa korban perundungan digital tidak boleh disalahkan atas penyebaran foto tanpa izin?<br><br><b>Teks: Perundungan di Ruang Digital</b>", options: ["Karena korban tidak bertanggung jawab atas tindakan orang lain yang menyebarkan foto tanpa izin.", "Karena semua foto di internet boleh digunakan siapa saja.", "Karena laporan kepada guru langsung menghapus semua foto yang tersebar.", "Karena sekolah wajib mengganti kerugian akibat penyebaran foto."], correct: 0, topic: "Pemahaman Isi", explanation: "Korban tidak bertanggung jawab atas tindakan buruk pelaku penyebar konten. (Kunci: A)" },
-      { id: 13, type: "MCMA", text: "13. Pilih semua tindakan yang tepat untuk membantu menghentikan perundungan digital!", options: ["Tidak meneruskan unggahan yang merendahkan dan meminta izin sebelum membagikan foto teman.", "Menyimpan bukti perundungan dan mendukung teman yang menjadi korban.", "Menyebarkan ulang unggahan perundungan agar pelaku merasa malu."], correct: [0, 1], topic: "Tindakan Pencegahan", explanation: "Jangan sebarkan ulang; simpan bukti dan dukung korban. (Kunci: A dan B)" },
+      { id: 10, type: "PG", text: "10. Mengapa Raka melarang Seno memanjat pohon untuk mengambil layangan?<br><br><b>Teks: Layangan di Pohon Jambu</b><br>Pada hari Minggu, Raka dan Seno membuat layangan dari kertas bekas dan bilah bambu tipis. Mereka bekerja di halaman rumah Raka. Setelah selesai, keduanya pergi ke lapangan yang luas. Angin bertiup cukup kencang sehingga layangan dapat terbang tinggi. Tiba-tiba, benang layangan tersangkut di dahan pohon jambu dekat lapangan. Seno ingin memanjat pohon untuk mengambilnya. Raka melarangnya karena dahan itu tinggi dan licin setelah hujan malam sebelumnya. Mereka sempat berbeda pendapat. Seno merasa sayang jika layangan buatan mereka rusak. Raka mengusulkan agar mereka meminta bantuan penjaga kebun. Mereka menunggu di tempat aman sambil menjelaskan kejadian itu. Penjaga kebun mengambil galah panjang dan melepaskan benang dengan hati-hati. Layangan berhasil turun tanpa ada yang terluka. Seno meminta maaf karena hampir memanjat pohon. Ia mengakui bahwa rasa kecewa membuatnya bertindak terburu-buru. Raka senang mereka memilih cara yang aman. Setelah memeriksa layangan, keduanya kembali bermain di lapangan. Mereka sepakat bahwa barang kesayangan memang perlu dijaga, tetapi keselamatan harus diutamakan.", options: ["Pohon jambu berada di halaman rumah orang lain.", "Dahan pohon cukup tinggi dan licin setelah hujan.", "Pohon jambu menghalangi angin yang bertiup kencang.", "Layangan mereka sudah rusak dan tidak dapat digunakan."], correct: 1, topic: "Alasan Tokoh", explanation: "Dahan pohon tinggi dan licin setelah hujan malam sebelumnya." },
+      { id: 11, type: "PG", text: "11. Mengapa Raka dan Seno meminta bantuan penjaga kebun untuk mengambil layangan?", options: ["Penjaga kebun melarang anak-anak bermain di lapangan.", "Penjaga kebun dapat menggunakan galah untuk mengambil layangan dengan aman.", "Penjaga kebun merupakan satu-satunya orang yang tinggal di dekat lapangan.", "Penjaga kebun bertugas mengumpulkan semua layangan yang tersangkut."], correct: 1, topic: "Alasan Tokoh", explanation: "Penjaga kebun bisa memakai galah panjang untuk mengambil layangan dengan aman." },
+      { id: 12, type: "PG", text: "12. Mengapa korban perundungan digital tidak boleh disalahkan atas penyebaran foto tanpa izin?<br><br><b>Teks: Perundungan di Ruang Digital</b><br>Perundungan di ruang digital terjadi ketika teknologi digunakan untuk mengejek, mengancam, mempermalukan, atau mengucilkan orang lain. Contohnya ialah menyebarkan foto teman tanpa izin, menulis komentar yang merendahkan, membuat pesan hinaan, atau meneruskan unggahan yang bertujuan mempermalukan seseorang...", options: ["Karena korban tidak bertanggung jawab atas tindakan orang lain yang menyebarkan foto tanpa izin.", "Karena semua foto di internet boleh digunakan siapa saja.", "Karena laporan kepada guru langsung menghapus semua foto yang tersebar.", "Karena sekolah wajib mengganti kerugian akibat penyebaran foto."], correct: 0, topic: "Pemahaman Isi", explanation: "Korban tidak bertanggung jawab atas tindakan buruk pelaku penyebar konten." },
+      { id: 13, type: "MCMA", text: "13. Pilih semua tindakan yang tepat untuk membantu menghentikan perundungan digital!", options: ["Tidak meneruskan unggahan yang merendahkan dan meminta izin sebelum membagikan foto teman.", "Menyimpan bukti perundungan dan mendukung teman yang menjadi korban.", "Menyebarkan ulang unggahan perundungan agar pelaku merasa malu."], correct: [0, 1], topic: "Tindakan Pencegahan", explanation: "Jangan sebarkan ulang; simpan bukti dan dukung korban." },
       { id: 14, type: "Kategori", text: "14. Tentukan Benar atau Salah untuk setiap pernyataan berikut!", statements: ["Perundungan digital dapat membuat korban merasa malu, takut, atau enggan datang ke sekolah.", "Membalas pelaku dengan komentar yang menghina merupakan cara tepat menghentikan perundungan.", "Menyimpan bukti dan melapor kepada guru atau orang dewasa dapat membantu menangani perundungan digital."], correct: ["Benar", "Salah", "Benar"], topic: "Analisis Sikap", explanation: "Membalas dengan hinaan bukanlah cara yang tepat." },
-      { id: 15, type: "PG", text: "15. Gagasan utama bacaan di atas adalah ....<br><br><b>Teks: Tidur Cukup dan Kesiapan Belajar</b>", options: ["Bermain gim sampai larut selalu meningkatkan konsentrasi.", "Kebiasaan sehat dan jadwal teratur dapat membantu kesiapan belajar.", "Semua siswa harus memiliki jadwal yang sama persis.", "Sarapan tidak berkaitan dengan kegiatan belajar."], correct: 1, topic: "Gagasan Utama", explanation: "Kebiasaan sehat dan jadwal teratur mendukung kesiapan belajar anak. (Kunci: B)" },
-      { id: 16, type: "PG", text: "16. Makna ungkapan “mengisi kembali baterai tubuh” dalam bacaan tersebut adalah ....", options: ["mengisi daya telepon genggam", "memulihkan tenaga dengan kebiasaan sehat dan istirahat cukup", "berhenti melakukan semua kegiatan", "harus membeli baterai baru"], correct: 1, topic: "Makna Ungkapan", explanation: "Artinya memulihkan tenaga melalui istirahat dan kebiasaan sehat. (Kunci: B)" },
-      { id: 17, type: "MCMA", text: "17. Pilih semua kesimpulan yang didukung oleh informasi tentang etika membagikan foto.<br><br><b>Teks: Foto Sebelum Diunggah</b>", options: ["Meminta izin merupakan cara menghormati privasi orang lain.", "Informasi pribadi yang tidak diperlukan sebaiknya tidak dipublikasikan.", "Foto teman boleh selalu diunggah tanpa bertanya."], correct: [0, 1], topic: "Kesimpulan Teks", explanation: "Izin menghormati privasi dan batasi info pribadi. (Kunci: A dan B)" },
-      { id: 18, type: "MCMA", text: "18. Pilih semua akibat yang masuk akal jika pengguna menghormati privasi sebelum mengunggah foto.", options: ["Teman-teman merasa pendapat dan privasinya dihargai.", "Risiko membagikan data pribadi yang tidak perlu menjadi lebih kecil.", "Semua unggahan digital pasti dapat ditarik kembali dengan mudah."], correct: [0, 1], topic: "Akibat Logis", explanation: "Privasi dihargai dan risiko data pribadi berkurang. (Kunci: A dan B)" },
+      { id: 15, type: "PG", text: "15. Gagasan utama bacaan di atas adalah ....<br><br><b>Teks: Tidur Cukup dan Kesiapan Belajar</b><br>Tidur cukup merupakan salah satu kebiasaan yang membantu anak mengikuti pelajaran dengan lebih baik. Anak yang tidur terlalu larut mungkin sulit bangun, melewatkan sarapan, atau mengantuk ketika guru menjelaskan...", options: ["Bermain gim sampai larut selalu meningkatkan konsentrasi.", "Kebiasaan sehat dan jadwal teratur dapat membantu kesiapan belajar.", "Semua siswa harus memiliki jadwal yang sama persis.", "Sarapan tidak berkaitan dengan kegiatan belajar."], correct: 1, topic: "Gagasan Utama", explanation: "Kebiasaan sehat dan jadwal teratur mendukung kesiapan belajar anak." },
+      { id: 16, type: "PG", text: "16. Makna ungkapan “mengisi kembali baterai tubuh” dalam bacaan tersebut adalah ....", options: ["mengisi daya telepon genggam", "memulihkan tenaga dengan kebiasaan sehat dan istirahat cukup", "berhenti melakukan semua kegiatan", "harus membeli baterai baru"], correct: 1, topic: "Makna Ungkapan", explanation: "Artinya memulihkan tenaga melalui istirahat dan kebiasaan sehat." },
+      { id: 17, type: "MCMA", text: "17. Pilih semua kesimpulan yang didukung oleh informasi tentang etika membagikan foto.<br><br><b>Teks: Foto Sebelum Diunggah</b><br>Foto digital dapat menjadi kenangan kegiatan sekolah, tetapi membagikannya perlu dilakukan dengan bijaksana. Sebelum mengunggah foto yang menampilkan orang lain, mintalah izin kepada orang yang bersangkutan...", options: ["Meminta izin merupakan cara menghormati privasi orang lain.", "Informasi pribadi yang tidak diperlukan sebaiknya tidak dipublikasikan.", "Foto teman boleh selalu diunggah tanpa bertanya."], correct: [0, 1], topic: "Kesimpulan Teks", explanation: "Izin menghormati privasi dan batasi info pribadi." },
+      { id: 18, type: "MCMA", text: "18. Pilih semua akibat yang masuk akal jika pengguna menghormati privasi sebelum mengunggah foto.", options: ["Teman-teman merasa pendapat dan privasinya dihargai.", "Risiko membagikan data pribadi yang tidak perlu menjadi lebih kecil.", "Semua unggahan digital pasti dapat ditarik kembali dengan mudah."], correct: [0, 1], topic: "Akibat Logis", explanation: "Privasi dihargai dan risiko data pribadi berkurang." },
       { id: 19, type: "Kategori", text: "19. Tentukan Benar atau Salah untuk setiap pernyataan berikut!", statements: ["Pengguna meminta izin sebelum mengunggah foto teman.", "Berpikir sebelum membagikan sesuatu membantu menjaga privasi.", "Semua siswa di sekolah menolak menggunakan media sosial."], correct: ["Benar", "Benar", "Salah"], topic: "Evaluasi Teks", explanation: "Pernyataan ketiga tidak dinyatakan dalam teks." },
-      { id: 20, type: "PG", text: "20. Amanat bacaan di atas adalah ....<br><br><b>Teks: Pohon Kecil di Sudut Sekolah</b>", options: ["Tugas bersama dapat diabaikan jika terasa membosankan.", "Kesabaran dan kerja sama menyelesaikan tanggung jawab.", "Kesalahan teman harus selalu dibalas dengan kemarahan.", "Tanaman dapat tumbuh dengan baik tanpa perawatan."], correct: 1, topic: "Amanat Cerita", explanation: "Amanatnya adalah kesabaran dan kerja sama dalam menjalankan tanggung jawab. (Kunci: B)" },
-      { id: 21, type: "PG", text: "21. Perubahan sikap Bayu dalam cerita adalah ....", options: ["dari mengabaikan tugas menjadi ikut bertanggung jawab", "dari rajin menjadi menolak bekerja sama", "from sabar menjadi ingin merusak pohon", "dari peduli menjadi tidak mau belajar"], correct: 0, topic: "Perubahan Tokoh", explanation: "Bayu yang awalnya acuh tak acuh berubah menjadi ikut bertanggung jawab. (Kunci: A)" },
-      { id: 22, type: "PG", text: "22. Menurut bacaan di atas, mengapa aturan bercanda yang aman bermanfaat di sekolah?<br><br><b>Teks: Candaan yang Aman di Sekolah</b>", options: ["semua siswa harus memiliki selera humor yang sama", "siswa belajar menjaga perasaan dan menghormati batas teman", "siswa boleh mengejek asalkan banyak yang tertawa", "siswa tidak boleh berbicara saat istirahat"], correct: 1, topic: "Manfaat Aturan", explanation: "Agar siswa belajar menjaga perasaan dan menghormati batas sesama. (Kunci: B)" },
-      { id: 23, type: "MCMA", text: "23. Pilih semua respons yang tepat ketika menyaksikan teman terus diejek.", options: ["Ikut tertawa agar tidak menjadi sasaran.", "Menunjukkan dukungan kepada teman yang diejek.", "Meminta bantuan guru jika ejekan berulang."], correct: [1, 2], topic: "Respons Sesuai", explanation: "Dukung korban dan laporkan kepada guru. (Kunci: B dan C)" },
+      { id: 20, type: "PG", text: "20. Amanat bacaan di atas adalah ....<br><br><b>Teks: Pohon Kecil di Sudut Sekolah</b><br>Kelas VI mendapat tugas merawat pohon kecil di sudut sekolah. Lila ingin pohon itu cepat tumbuh, sedangkan Bayu menganggap tugas tersebut tidak penting. Pada minggu pertama, Lila menyiram pohon setiap pagi...", options: ["Tugas bersama dapat diabaikan jika terasa membosankan.", "Kesabaran dan kerja sama menyelesaikan tanggung jawab.", "Kesalahan teman harus selalu dibalas dengan kemarahan.", "Tanaman dapat tumbuh dengan baik tanpa perawatan."], correct: 1, topic: "Amanat Cerita", explanation: "Amanatnya adalah kesabaran dan kerja sama dalam menjalankan tanggung jawab." },
+      { id: 21, type: "PG", text: "21. Perubahan sikap Bayu dalam cerita adalah ....", options: ["dari mengabaikan tugas menjadi ikut bertanggung jawab", "dari rajin menjadi menolak bekerja sama", "dari sabar menjadi ingin merusak pohon", "dari peduli menjadi tidak mau belajar"], correct: 0, topic: "Perubahan Tokoh", explanation: "Bayu yang awalnya acuh tak acuh berubah menjadi ikut bertanggung jawab." },
+      { id: 22, type: "PG", text: "22. Menurut bacaan di atas, mengapa aturan bercanda yang aman bermanfaat di sekolah?<br><br><b>Teks: Candaan yang Aman di Sekolah</b><br>Candaan dapat membuat suasana akrab jika semua orang merasa nyaman. Namun, candaan yang merendahkan penampilan, cara bicara, kondisi keluarga, keadaan ekonomi, atau kemampuan seseorang dapat menyakiti perasaan...", options: ["semua siswa harus memiliki selera humor yang sama", "siswa belajar menjaga perasaan dan menghormati batas teman", "siswa boleh mengejek asalkan banyak yang tertawa", "siswa tidak boleh berbicara saat istirahat"], correct: 1, topic: "Manfaat Aturan", explanation: "Agar siswa belajar menjaga perasaan dan menghormati batas sesama." },
+      { id: 23, type: "MCMA", text: "23. Pilih semua respons yang tepat ketika menyaksikan teman terus diejek.", options: ["Ikut tertawa agar tidak menjadi sasaran.", "Menunjukkan dukungan kepada teman yang diejek.", "Meminta bantuan guru jika ejekan berulang."], correct: [1, 2], topic: "Respons Sesuai", explanation: "Dukung korban dan laporkan kepada guru." },
       { id: 24, type: "Kategori", text: "24. Tentukan Benar atau Salah untuk setiap pernyataan berikut!", statements: ["Berhenti bercanda ketika teman menyatakan dirinya tersakiti.", "Menyebarkan julukan yang merendahkan agar kelas tertawa.", "Mendukung teman dan melapor kepada guru jika ejekan berulang."], correct: ["Benar", "Salah", "Benar"], topic: "Analisis Sikap", explanation: "Menyebarkan julukan merendahkan adalah perilaku yang salah." },
-      { id: 25, type: "PG", text: "25. Kebiasaan yang paling mudah diterapkan berdasarkan bacaan di atas untuk menjaga kesehatan selama sekolah adalah ....<br><br><b>Teks: Bekal dan Waktu Istirahat</b>", options: ["membawa air putih dan memilih bekal beragam", "menghindari semua kegiatan fisik", "mengganti tidur dengan bermain gawai", "hanya makan satu jenis makanan setiap hari"], correct: 0, topic: "Pemahaman Bacaan", explanation: "Membawa air putih dan bekal beragam adalah kebiasaan sehat yang mudah. (Kunci: A)" },
-      { id: 26, type: "MCMA", text: "26. Pilih semua kebiasaan yang sesuai dengan pesan bacaan Bekal dan Waktu Istirahat.", options: ["Mencuci tangan sebelum makan.", "Tidur cukup setelah beraktivitas.", "Minum sesedikit mungkin agar tidak perlu ke toilet."], correct: [0, 1], topic: "Kebiasaan Sehat", explanation: "Mencuci tangan dan tidur cukup sesuai dengan pesan teks. (Kunci: A dan B)" },
-      { id: 27, type: "PG", text: "27. Mengapa pesan tentang perubahan jadwal sekolah perlu diperiksa sebelum diteruskan?<br><br><b>Teks: Kabar Libur yang Belum Pasti</b>", options: ["Pesan mungkin menggunakan bahasa yang kurang resmi.", "Pesan yang tidak jelas sumbernya dapat berisi informasi keliru.", "Pesan mungkin berasal dari percakapan kelompok kelas.", "Pesan mungkin dikirim kembali oleh sekolah."], correct: 1, topic: "Analisis Informasi", explanation: "Pesan tanpa sumber jelas dikhawatirkan keliru dan menyesatkan. (Kunci: B)" },
-      { id: 28, type: "MCMA", text: "28. Pilih semua tindakan yang bijaksana ketika menerima kabar digital yang belum pasti.", options: ["Memeriksa tanggal dan sumber informasi.", "Membandingkan pesan dengan kanal resmi sekolah.", "Meneruskan pesan secepatnya agar menjadi orang pertama yang berbagi."], correct: [0, 1], topic: "Tindakan Bijaksana", explanation: "Periksa tanggal/sumber dan bandingkan dengan kanal resmi. (Kunci: A dan B)" },
-      { id: 29, type: "Kategori", text: "29. Tentukan Benar atau Salah untuk setiap pernyataan berikut!<br><br><b>Teks: Jaket untuk Nara</b>", statements: ["Nara membawa jaket tebal, sedangkan Wulan hanya mengenakan seragam.", "Wulan menolak bantuan Nara dan memilih menunggu sendirian di tengah hujan.", "Wulan meminjamkan buku latihan kepada Nara sebagai bentuk kepedulian terhadap teman."], correct: ["Benar", "Salah", "Benar"], topic: "Evaluasi Cerita", explanation: "Wulan sempat menolak tetapi akhirnya menerima setelah diberi penjelasan tempat aman." },
-      { id: 30, type: "PG", text: "30. Respons yang paling sesuai terhadap tindakan Nara adalah ....", options: ["kesal karena harus berbagi jaket", "menghargai kepedulian Nara yang membantu tanpa mempermalukan Wulan", "kecewa karena Wulan menolak bantuan selamanya", "marah karena teman tidak boleh saling menolong"], correct: 1, topic: "Respons Sesuai", explanation: "Tindakan Nara patut dihargai karena peduli tanpa membuat Wulan malu. (Kunci: B)" }
+      { id: 25, type: "PG", text: "25. Kebiasaan yang paling mudah diterapkan berdasarkan bacaan di atas untuk menjaga kesehatan selama sekolah adalah ....<br><br><b>Teks: Bekal dan Waktu Istirahat</b><br>Bekal yang beragam membantu anak memperoleh zat gizi untuk beraktivitas. Makanan seimbang dapat terdiri atas sumber karbohidrat, lauk yang mengandung protein, sayuran, dan buah...", options: ["membawa air putih dan memilih bekal beragam", "menghindari semua kegiatan fisik", "mengganti tidur dengan bermain gawai", "hanya makan satu jenis makanan setiap hari"], correct: 0, topic: "Pemahaman Bacaan", explanation: "Membawa air putih dan bekal beragam adalah kebiasaan sehat yang mudah." },
+      { id: 26, type: "MCMA", text: "26. Pilih semua kebiasaan yang sesuai dengan pesan bacaan Bekal dan Waktu Istirahat.", options: ["Mencuci tangan sebelum makan.", "Tidur cukup setelah beraktivitas.", "Minum sesedikit mungkin agar tidak perlu ke toilet."], correct: [0, 1], topic: "Kebiasaan Sehat", explanation: "Mencuci tangan dan tidur cukup sesuai dengan pesan teks." },
+      { id: 27, type: "PG", text: "27. Mengapa pesan tentang perubahan jadwal sekolah perlu diperiksa sebelum diteruskan?<br><br><b>Teks: Kabar Libur yang Belum Pasti</b><br>Informasi digital dapat menyebar dengan cepat, tetapi tidak semuanya benar. Pesan yang menyatakan sekolah libur, jadwal berubah, atau kegiatan dibatalkan perlu diperiksa sebelum diteruskan...", options: ["Pesan mungkin menggunakan bahasa yang kurang resmi.", "Pesan yang tidak jelas sumbernya dapat berisi informasi keliru.", "Pesan mungkin berasal dari percakapan kelompok kelas.", "Pesan mungkin dikirim kembali oleh sekolah."], correct: 1, topic: "Analisis Informasi", explanation: "Pesan tanpa sumber jelas dikhawatirkan keliru dan menyesatkan." },
+      { id: 28, type: "MCMA", text: "28. Pilih semua tindakan yang bijaksana ketika menerima kabar digital yang belum pasti.", options: ["Memeriksa tanggal dan sumber informasi.", "Membandingkan pesan dengan kanal resmi sekolah.", "Meneruskan pesan secepatnya agar menjadi orang pertama yang berbagi."], correct: [0, 1], topic: "Tindakan Bijaksana", explanation: "Periksa tanggal/sumber dan bandingkan dengan kanal resmi." },
+      { id: 29, type: "Kategori", text: "29. Tentukan Benar atau Salah untuk setiap pernyataan berikut!<br><br><b>Teks: Jaket untuk Nara</b><br>Sore itu, hujan turun ketika Nara dan Wulan selesai mengikuti latihan paduan suara. Nara membawa jaket tebal, sedangkan Wulan hanya mengenakan seragam...", statements: ["Nara membawa jaket tebal, sedangkan Wulan hanya mengenakan seragam.", "Wulan menolak bantuan Nara dan memilih menunggu sendirian di tengah hujan.", "Wulan meminjamkan buku latihan kepada Nara sebagai bentuk kepedulian terhadap teman."], correct: ["Benar", "Salah", "Benar"], topic: "Evaluasi Cerita", explanation: "Wulan sempat menolak tetapi akhirnya menerima setelah diberi penjelasan tempat aman." },
+      { id: 30, type: "PG", text: "30. Respons yang paling sesuai terhadap tindakan Nara adalah ....", options: ["kesal karena harus berbagi jaket", "menghargai kepedulian Nara yang membantu tanpa mempermalukan Wulan", "kecewa karena Wulan menolak bantuan selamanya", "marah karena teman tidak boleh saling menolong"], correct: 1, topic: "Respons Sesuai", explanation: "Tindakan Nara patut dihargai karena peduli tanpa membuat Wulan malu." }
     ];
 
     const DATABASE_SOAL = {
@@ -836,6 +845,7 @@
         "Try Out 5": { title: "Bahasa Indonesia - Try Out 5", questions: SOAL_30_BINDO_TRYOUT_1 }
       }
     };
+
     let selectedSubject = 'matematika';
     let currentPackageKey = 'Paket 1';
     let currentQuestions = [];
@@ -843,6 +853,7 @@
     let currentQuestionIdx = 0, userAnswers = {}, raguStatus = {}, examTimerInterval = null, timeRemaining = 75 * 60;
     let latestExamScore = 0, latestSubmissionData = null;
     let lastExamDetailAnswers = {};
+
     async function fetchCloudSettingsForStudent() {
       try {
         const res = await fetch(FIREBASE_SETTINGS_URL + "?t=" + new Date().getTime());
@@ -855,6 +866,7 @@
         console.warn("Menggunakan pengaturan offline/lokal:", e);
       }
     }
+
     function getAdminPackageStatus(sub, pkg) {
       try {
         const stored = localStorage.getItem('tka_pkg_status_multi');
@@ -872,6 +884,7 @@
       } catch(e) {}
       return (pkg === 'Ujicoba' || pkg === 'Paket 1' || pkg === 'Paket 2' || pkg === 'Try Out 1' || pkg === 'Try Out 2') ? 'buka' : 'kunci';
     }
+
     function getAdminPackageToken(sub, pkg) {
       try {
         const stored = localStorage.getItem('tka_pkg_tokens_multi');
@@ -889,6 +902,7 @@
       } catch(e) {}
       return sub === 'matematika' ? '123' : 'BINDO1';
     }
+
     function persistCurrentExamState() {
       const state = {
         selectedSubject, currentPackageKey, currentUser, currentQuestions,
@@ -896,6 +910,7 @@
       };
       localStorage.setItem('tka_active_exam_session_v16', JSON.stringify(state));
     }
+
     function checkActiveExamSession() {
       const saved = localStorage.getItem('tka_active_exam_session_v16');
       if (saved) {
@@ -929,6 +944,7 @@
       }
       return false;
     }
+
     function populateSchoolDropdown() {
       const regSelect = document.getElementById('regSchool');
       if (regSelect.children.length <= 1) {
@@ -938,12 +954,14 @@
         });
       }
     }
+
     function showScreen(screenId) {
       ['viewSubjects', 'viewPackages', 'viewRegistration', 'viewExam', 'viewResult'].forEach(id => {
         document.getElementById(id).classList.add('hidden');
       });
       document.getElementById(screenId).classList.remove('hidden');
     }
+
     async function selectSubject(sub) {
       await fetchCloudSettingsForStudent();
       selectedSubject = sub;
@@ -970,6 +988,7 @@
       
       showScreen('viewPackages');
     }
+
     function selectPackage(pkg, isBuka) {
       if (!isBuka) {
         alert("Maaf, paket soal ini masih dikunci oleh Admin!");
@@ -981,6 +1000,7 @@
       document.getElementById('tokenErrorMsg').classList.add('hidden');
       showScreen('viewRegistration');
     }
+
     async function startExam(e) {
       e.preventDefault();
       await fetchCloudSettingsForStudent();
@@ -1020,6 +1040,7 @@
       loadQuestion(0);
       startCountdownTimer();
     }
+
     function startCountdownTimer() {
       clearInterval(examTimerInterval);
       const display = document.getElementById('timerDisplay');
@@ -1040,6 +1061,7 @@
       updateClock();
       examTimerInterval = setInterval(updateClock, 1000);
     }
+
     function renderPalette() {
       const grid = document.getElementById('paletteGrid');
       grid.innerHTML = '';
@@ -1052,6 +1074,7 @@
         grid.appendChild(btn);
       });
     }
+
     function getPaletteClass(idx) {
       const q = currentQuestions[idx];
       const isCurrent = idx === currentQuestionIdx;
@@ -1063,6 +1086,7 @@
       if (isAnswered) return base + "bg-teal-600 text-white shadow-sm";
       return base + "bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200";
     }
+
     function isQuestionAnswered(qId) {
       const ans = userAnswers[qId];
       if (ans === undefined || ans === null) return false;
@@ -1070,6 +1094,7 @@
       if (typeof ans === 'object') return Object.keys(ans).length > 0;
       return true;
     }
+
     function loadQuestion(idx) {
       currentQuestionIdx = idx;
       const q = currentQuestions[idx];
@@ -1123,6 +1148,7 @@
       renderPalette();
       persistCurrentExamState();
     }
+
     function saveAnswerPG(qId, val) { userAnswers[qId] = val; renderPalette(); persistCurrentExamState(); }
     function saveAnswerMCMA(qId, optIdx) {
       if (!userAnswers[qId]) userAnswers[qId] = [];
@@ -1151,6 +1177,7 @@
         submitExam();
       }
     }
+
     async function saveSubmission(sub) {
       const local = localStorage.getItem('tka_submissions_multi');
       const list = local ? JSON.parse(local) : [];
@@ -1173,6 +1200,7 @@
         } catch (e) {}
       }, Math.floor(Math.random() * 5000));
     }
+
     function submitExam() {
       clearInterval(examTimerInterval);
       let totalRawScore = 0;
@@ -1260,6 +1288,7 @@
       }
       showScreen('viewResult');
     }
+
     function openCertificateModal() {
       if (!latestSubmissionData) return;
       const sub = latestSubmissionData;
@@ -1270,8 +1299,10 @@
       document.getElementById('certScore').innerText = sub.finalScore;
       document.getElementById('certificateModal').classList.remove('hidden');
     }
+
     function closeCertificateModal() { document.getElementById('certificateModal').classList.add('hidden'); }
     function toggleDiscussion() { document.getElementById('discussionSection').classList.toggle('hidden'); }
+
     function renderDiscussions() {
       const container = document.getElementById('discussionContainer');
       document.getElementById('discussionTitle').innerText = `Kunci Jawaban & Pembahasan ${selectedSubject.toUpperCase()} - ${currentPackageKey}`;
@@ -1292,6 +1323,7 @@
         container.appendChild(item);
       });
     }
+
     window.addEventListener('DOMContentLoaded', () => {
       populateSchoolDropdown();
       checkActiveExamSession();
