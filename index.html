@@ -396,6 +396,7 @@
       "SDS INSAN TELADAN", "SDS ISLAM DIPONEGORO", "SDS ISLAM KAFRAWI", "SDS IT AZ-ZAHRO MRANGGEN",
       "SDS IT MIFTAHUL HIDAYAH", "SDS IT PERMATA BUNDA", "SDS KRISTEN DIAN WACANA", "SDS KY AGENG GIRI",
       "SDS MUHAMMADIYAH PUCANG GADING", "SDS TERPADU DARUNNAJAH",
+      "SD NEGERI 1 JEPANGPAKIS",
       // WILAYAH KECAMATAN SAYUNG
       "SD NEGERI BANJARSARI 1", "SD NEGERI BANJARSARI 2", "SD NEGERI BEDONO 1", "SD NEGERI BULUSARI",
       "SD NEGERI DALEMAN", "SD NEGERI DOMBO 1", "SD NEGERI JETAKSARI 1", "SD NEGERI KALISARI 1",
@@ -840,6 +841,7 @@
     let currentQuestionIdx = 0, userAnswers = {}, raguStatus = {}, examTimerInterval = null, timeRemaining = 75 * 60;
     let latestExamScore = 0, latestSubmissionData = null;
     let lastExamDetailAnswers = {};
+    let cheatLogs = [];
     async function fetchCloudSettingsForStudent() {
       try {
         const res = await fetch(FIREBASE_SETTINGS_URL + "?t=" + new Date().getTime());
@@ -889,7 +891,7 @@
     function persistCurrentExamState() {
       const state = {
         selectedSubject, currentPackageKey, currentUser, currentQuestions,
-        currentQuestionIdx, userAnswers, raguStatus, timeRemaining, isActive: true
+        currentQuestionIdx, userAnswers, raguStatus, cheatLogs, timeRemaining, isActive: true
       };
       localStorage.setItem('tka_active_exam_session_v16', JSON.stringify(state));
     }
@@ -907,6 +909,7 @@
               currentQuestionIdx = state.currentQuestionIdx || 0;
               userAnswers = state.userAnswers || {};
               raguStatus = state.raguStatus || {};
+              cheatLogs = state.cheatLogs || [];
               timeRemaining = state.timeRemaining;
               document.getElementById('userInitial').innerText = currentUser.name.charAt(0).toUpperCase();
               document.getElementById('examStudentName').innerText = currentUser.name;
@@ -1008,7 +1011,7 @@
       document.getElementById('examStudentName').innerText = currentUser.name;
       document.getElementById('examStudentSchool').innerText = `${currentUser.school} • Kelas ${currentUser.className}`;
       
-      userAnswers = {}; raguStatus = {}; currentQuestionIdx = 0; timeRemaining = 75 * 60;
+      userAnswers = {}; raguStatus = {}; cheatLogs = []; currentQuestionIdx = 0; timeRemaining = 75 * 60;
       currentQuestions = [...DATABASE_SOAL[selectedSubject][currentPackageKey].questions];
       
       persistCurrentExamState();
@@ -1188,7 +1191,7 @@
           if (allMatch && Object.keys(userMap).length === q.statements.length) { earned = 1; isFullyCorrect = true; }
         }
         totalRawScore += earned;
-        detailAnswersRecord[q.id] = { earned: earned, isCorrect: isFullyCorrect };
+        detailAnswersRecord[q.id] = { earned: earned, isCorrect: isFullyCorrect, topic: q.topic || 'Indikator Soal ' + q.id };
       });
       lastExamDetailAnswers = detailAnswersRecord;
       
@@ -1206,7 +1209,7 @@
         package: currentPackageKey,
         name: currentUser.name, school: currentUser.school, className: currentUser.className, absen: currentUser.absen,
         rawScore: totalRawScore, maxRawScore: maxScoreActual, finalScore: final100,
-        status: isPass ? 'Lulus' : 'Remedial', durationMinutes: durMin, detailAnswers: detailAnswersRecord
+        status: isPass ? 'Lulus' : 'Remedial', durationMinutes: durMin, detailAnswers: detailAnswersRecord, cheatCount: cheatLogs.length, cheatLogs: cheatLogs
       };
       
       latestSubmissionData = record;
@@ -1289,6 +1292,14 @@
         container.appendChild(item);
       });
     }
+    document.addEventListener('visibilitychange', () => {
+      const examView = document.getElementById('viewExam');
+      if (document.hidden && examView && !examView.classList.contains('hidden')) {
+        const waktu = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        cheatLogs.push(`Meninggalkan layar/tab ujian pada pukul ${waktu}`);
+        persistCurrentExamState();
+      }
+    });
     window.addEventListener('DOMContentLoaded', () => {
       populateSchoolDropdown();
       checkActiveExamSession();
