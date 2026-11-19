@@ -59,6 +59,7 @@
         <p class="text-xs text-slate-500 mt-0.5">Kontrol token pengerjaan, buka/kunci paket online cloud, rekapitulasi nilai, dan analisis butir soal.</p>
       </div>
       <div class="flex flex-wrap items-center gap-2">
+        <a href="index.html" target="_blank" class="px-3.5 py-2 bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs rounded-xl transition flex items-center gap-1.5 shadow-sm cursor-pointer">🌐 Buka Portal Siswa</a>
         <button onclick="syncOnlineData()" id="btnSync" class="px-3.5 py-2 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-xl transition flex items-center gap-1.5 shadow-sm cursor-pointer">🔄 Ambil Data Cloud</button>
         <button onclick="exportToCSV()" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm transition flex items-center gap-1.5 cursor-pointer">📊 Export CSV</button>
         <button onclick="logoutAdmin()" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs rounded-xl transition cursor-pointer">Keluar</button>
@@ -241,7 +242,13 @@
     </div>
     <!-- VIEW 3: ANALISIS BUTIR SOAL -->
     <div id="viewAnalysisSection" class="hidden bg-white rounded-3xl border border-teal-200/80 shadow-md p-6 space-y-4">
-      <h3 class="text-base font-black text-slate-900">Analisis Butir Soal Berdasarkan Tingkat Kesulitan</h3>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <h3 class="text-base font-black text-slate-900">Analisis Butir Soal Berdasarkan Tingkat Kesulitan</h3>
+          <p class="text-xs text-slate-500">Menampilkan daya serap peserta per nomor soal berdasarkan filter mapel & paket.</p>
+        </div>
+        <select id="analysisPackageFilter" onchange="renderItemAnalysisTable()" class="px-3 py-2 text-xs rounded-xl border border-teal-300 font-bold bg-teal-50 text-teal-900 outline-none cursor-pointer"></select>
+      </div>
       <div class="overflow-x-auto">
         <table class="w-full text-left border-collapse">
           <thead>
@@ -259,7 +266,12 @@
     </div>
     <!-- VIEW 4: LOG ANTI-CURANG -->
     <div id="viewCheatsSection" class="hidden bg-white rounded-3xl border border-teal-200/80 shadow-md p-6 space-y-4">
-      <h3 class="text-base font-black text-slate-900">Log Pelanggaran Anti-Curang Siswa</h3>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <h3 class="text-base font-black text-slate-900">Log Pelanggaran Anti-Curang Siswa</h3>
+          <p class="text-xs text-slate-500">Mencatat peserta yang terdeteksi berpindah tab/aplikasi saat ujian berlangsung.</p>
+        </div>
+      </div>
       <div class="overflow-x-auto">
         <table class="w-full text-left border-collapse">
           <thead>
@@ -267,8 +279,8 @@
               <th class="py-3 px-3 text-center w-14">No</th>
               <th class="py-3 px-4">Nama Siswa</th>
               <th class="py-3 px-4">Asal Sekolah</th>
-              <th class="py-3 px-3 text-center">Mapel</th>
-              <th class="py-3 px-3 text-center">Pelanggaran</th>
+              <th class="py-3 px-3 text-center">Mapel & Paket</th>
+              <th class="py-3 px-4">Pelanggaran</th>
             </tr>
           </thead>
           <tbody id="cheatTableBody" class="text-xs divide-y divide-slate-100 text-slate-700"></tbody>
@@ -391,10 +403,38 @@
     let currentAdminSubject = 'matematika';
     let selectedPackageFilter = 'ALL';
     let currentViewMode = 'students';
+    let currentPrintSortMode = 'RANKING';
     let isAdminLoggedIn = sessionStorage.getItem('tka_admin_auth') === 'true';
-    const DEFAULT_STATUS = { matematika: { "UJICOBA": true, "Paket 1": false }, indonesia: { "Try Out 1": true } };
-    const DEFAULT_TOKENS = { matematika: { "UJICOBA": "UJICOBA", "Paket 1": "MAT1" }, indonesia: { "Try Out 1": "BINDO1" } };
+
+    // Diselaraskan dengan portal siswa (index.html): "Ujicoba", "Paket 1".."Paket 5", "Try Out 1".."Try Out 5"
+    const DEFAULT_STATUS = {
+      matematika: { "Ujicoba": true, "Paket 1": true, "Paket 2": true, "Paket 3": false, "Paket 4": false, "Paket 5": false },
+      indonesia: { "Try Out 1": true, "Try Out 2": true, "Try Out 3": false, "Try Out 4": false, "Try Out 5": false }
+    };
+    const DEFAULT_TOKENS = {
+      matematika: { "Ujicoba": "123", "Paket 1": "MAT1", "Paket 2": "MAT2", "Paket 3": "MAT3", "Paket 4": "MAT4", "Paket 5": "MAT5" },
+      indonesia: { "Try Out 1": "BINDO1", "Try Out 2": "BINDO2", "Try Out 3": "BINDO3", "Try Out 4": "BINDO4", "Try Out 5": "BINDO5" }
+    };
     let cachedCloudData = { status: DEFAULT_STATUS, tokens: DEFAULT_TOKENS };
+
+    function getNormalizedStatus(statusMap, sub, pkg) {
+      if (!statusMap || !statusMap[sub]) return false;
+      const target = pkg.toUpperCase();
+      for (const k in statusMap[sub]) {
+        if (k.toUpperCase() === target) return !!statusMap[sub][k];
+      }
+      return false;
+    }
+
+    function getNormalizedToken(tokenMap, sub, pkg) {
+      if (!tokenMap || !tokenMap[sub]) return 'MRANGGEN';
+      const target = pkg.toUpperCase();
+      for (const k in tokenMap[sub]) {
+        if (k.toUpperCase() === target) return tokenMap[sub][k] || 'MRANGGEN';
+      }
+      return 'MRANGGEN';
+    }
+
     function handleAdminLogin(e) {
       e.preventDefault();
       const u = document.getElementById('adminUser').value.trim();
@@ -405,6 +445,7 @@
         document.getElementById('adminLoginModal').classList.add('hidden');
         document.getElementById('adminPortal').classList.remove('hidden');
         renderFilterTabs();
+        populateAnalysisPackageOptions();
         fetchCloudSettings();
         syncOnlineData();
       } else {
@@ -428,15 +469,15 @@
     function renderAdminLockControls(statusMap, tokenMap) {
       statusMap = statusMap || DEFAULT_STATUS;
       tokenMap = tokenMap || DEFAULT_TOKENS;
-      const subStatus = statusMap[currentAdminSubject] || {};
-      const subTokens = tokenMap[currentAdminSubject] || {};
       const container = document.getElementById('adminLockControls');
       container.innerHTML = '';
-      const keys = currentAdminSubject === 'matematika' ? ["UJICOBA", "Paket 1", "Paket 2", "Paket 3", "Paket 4", "Paket 5"] : ["Try Out 1", "Try Out 2", "Try Out 3", "Try Out 4", "Try Out 5"];
+      const keys = currentAdminSubject === 'matematika'
+        ? ["Ujicoba", "Paket 1", "Paket 2", "Paket 3", "Paket 4", "Paket 5"]
+        : ["Try Out 1", "Try Out 2", "Try Out 3", "Try Out 4", "Try Out 5"];
       
       keys.forEach(pkg => {
-        const isOpen = !!subStatus[pkg];
-        const tokenVal = subTokens[pkg] || 'MRANGGEN';
+        const isOpen = getNormalizedStatus(statusMap, currentAdminSubject, pkg);
+        const tokenVal = getNormalizedToken(tokenMap, currentAdminSubject, pkg);
         const box = document.createElement('div');
         box.className = `p-3.5 rounded-2xl border text-center transition ${isOpen ? 'bg-blue-50 border-blue-200' : 'bg-amber-50 border-amber-200'}`;
         box.innerHTML = `
@@ -455,10 +496,16 @@
     }
     async function toggleLock(pkg) {
       try {
-        if (!cachedCloudData.status) cachedCloudData.status = DEFAULT_STATUS;
+        if (!cachedCloudData.status) cachedCloudData.status = JSON.parse(JSON.stringify(DEFAULT_STATUS));
         if (!cachedCloudData.status[currentAdminSubject]) cachedCloudData.status[currentAdminSubject] = {};
         
-        const currentVal = !!cachedCloudData.status[currentAdminSubject][pkg];
+        const currentVal = getNormalizedStatus(cachedCloudData.status, currentAdminSubject, pkg);
+        // Bersihkan key lama dengan huruf besar/kecil berbeda agar tidak duplikat di Firebase
+        for (const k in cachedCloudData.status[currentAdminSubject]) {
+          if (k.toUpperCase() === pkg.toUpperCase() && k !== pkg) {
+            delete cachedCloudData.status[currentAdminSubject][k];
+          }
+        }
         cachedCloudData.status[currentAdminSubject][pkg] = !currentVal;
         renderAdminLockControls(cachedCloudData.status, cachedCloudData.tokens);
         await fetch(FIREBASE_SETTINGS_URL, { 
@@ -473,8 +520,13 @@
     }
     async function updateToken(pkg, val) {
       try {
-        if (!cachedCloudData.tokens) cachedCloudData.tokens = DEFAULT_TOKENS;
+        if (!cachedCloudData.tokens) cachedCloudData.tokens = JSON.parse(JSON.stringify(DEFAULT_TOKENS));
         if (!cachedCloudData.tokens[currentAdminSubject]) cachedCloudData.tokens[currentAdminSubject] = {};
+        for (const k in cachedCloudData.tokens[currentAdminSubject]) {
+          if (k.toUpperCase() === pkg.toUpperCase() && k !== pkg) {
+            delete cachedCloudData.tokens[currentAdminSubject][k];
+          }
+        }
         cachedCloudData.tokens[currentAdminSubject][pkg] = val.trim().toUpperCase();
         await fetch(FIREBASE_SETTINGS_URL, { 
           method: 'PUT', 
@@ -491,7 +543,10 @@
       
       if (!confirmed) return;
       try {
-        const remainingData = globalSubmissions.filter(s => !(s.subject.toLowerCase() === targetSub.toLowerCase() && s.package === targetPkg));
+        const remainingData = globalSubmissions.filter(s => !(
+          (s.subject || '').toLowerCase() === targetSub.toLowerCase() &&
+          (s.package || '').toLowerCase() === targetPkg.toLowerCase()
+        ));
         
         const res = await fetch(FIREBASE_DB_URL, {
           method: 'PUT',
@@ -517,7 +572,7 @@
         const dataObj = await res.json();
         if (dataObj) {
           if (Array.isArray(dataObj)) {
-            globalSubmissions = dataObj.filter(item => item !== null);
+            globalSubmissions = dataObj.filter(item => item !== null && typeof item === 'object');
           } else {
             globalSubmissions = Object.values(dataObj).filter(item => item !== null && typeof item === 'object');
           }
@@ -533,24 +588,36 @@
     function switchAdminSubject(sub) {
       currentAdminSubject = sub;
       selectedPackageFilter = 'ALL';
+      currentPrintSortMode = 'RANKING';
       document.getElementById('btnSubMat').className = sub === 'matematika' ? "px-4 py-2 rounded-xl text-xs font-black bg-teal-600 text-white shadow-sm cursor-pointer" : "px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 cursor-pointer";
       document.getElementById('btnSubIndo').className = sub === 'indonesia' ? "px-4 py-2 rounded-xl text-xs font-black bg-teal-600 text-white shadow-sm cursor-pointer" : "px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 cursor-pointer";
       document.getElementById('lockSectionTitle').innerText = `Kontrol Token & Akses Paket: ${sub === 'matematika' ? 'Matematika' : 'Bahasa Indonesia'}`;
       renderFilterTabs();
+      populateAnalysisPackageOptions();
       renderAdminLockControls(cachedCloudData.status, cachedCloudData.tokens);
       renderAdminDashboard();
     }
     function renderFilterTabs() {
       const container = document.getElementById('packageFilterTabs');
       container.innerHTML = '';
-      const keys = currentAdminSubject === 'matematika' ? ["ALL", "UJICOBA", "Paket 1", "Paket 2", "Paket 3", "Paket 4", "Paket 5"] : ["ALL", "Try Out 1", "Try Out 2", "Try Out 3", "Try Out 4", "Try Out 5"];
+      const keys = currentAdminSubject === 'matematika'
+        ? ["ALL", "Ujicoba", "Paket 1", "Paket 2", "Paket 3", "Paket 4", "Paket 5"]
+        : ["ALL", "Try Out 1", "Try Out 2", "Try Out 3", "Try Out 4", "Try Out 5"];
       keys.forEach(p => {
         const btn = document.createElement('button');
         btn.innerText = p === 'ALL' ? 'Semua Paket' : p;
         btn.className = selectedPackageFilter === p ? "px-3 py-1.5 rounded-xl text-xs font-black bg-teal-600 text-white shadow-sm cursor-pointer" : "px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 cursor-pointer";
-        btn.onclick = () => { selectedPackageFilter = p; renderFilterTabs(); renderAdminTable(); };
+        btn.onclick = () => { selectedPackageFilter = p; currentPrintSortMode = 'RANKING'; renderFilterTabs(); renderAdminTable(); };
         container.appendChild(btn);
       });
+    }
+    function populateAnalysisPackageOptions() {
+      const sel = document.getElementById('analysisPackageFilter');
+      if (!sel) return;
+      const keys = currentAdminSubject === 'matematika'
+        ? ["ALL", "Ujicoba", "Paket 1", "Paket 2", "Paket 3", "Paket 4", "Paket 5"]
+        : ["ALL", "Try Out 1", "Try Out 2", "Try Out 3", "Try Out 4", "Try Out 5"];
+      sel.innerHTML = keys.map(k => `<option value="${k}">${k === 'ALL' ? '📦 Semua Paket' : k}</option>`).join('');
     }
     function switchViewMode(mode) {
       currentViewMode = mode;
@@ -583,16 +650,41 @@
       else if (currentViewMode === 'analysis') renderItemAnalysisTable();
       else if (currentViewMode === 'cheats') renderCheatTable();
     }
+    function getNormalizedScore(s) {
+      let score = Number(s.finalScore);
+      if (isNaN(score) || score === 0) {
+        const raw = Number(s.rawScore) || 0;
+        const max = Number(s.maxRawScore) || 30;
+        score = raw > 0 ? Math.min(100, Math.round((raw / max) * 100)) : 0;
+      }
+      if (score > 100) {
+        const max = Number(s.maxRawScore) || 30;
+        score = Math.min(100, Math.round((Number(s.rawScore || 0) / max) * 100));
+      }
+      return score;
+    }
     function renderAdminTable() {
       const targetSub = currentAdminSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia';
       let data = globalSubmissions.filter(s => s.subject && s.subject.toLowerCase() === targetSub.toLowerCase());
-      if (selectedPackageFilter !== 'ALL') data = data.filter(s => s.package === selectedPackageFilter);
+      if (selectedPackageFilter !== 'ALL') {
+        data = data.filter(s => (s.package || '').toLowerCase() === selectedPackageFilter.toLowerCase());
+      }
       
       const schFilter = document.getElementById('adminFilterSchool').value;
       const search = (document.getElementById('adminSearchInput').value || '').toLowerCase();
       if (schFilter) data = data.filter(s => s.school === schFilter);
-      if (search) data = data.filter(s => s.name.toLowerCase().includes(search));
-      data.sort((a, b) => (Number(b.finalScore) || Number(b.rawScore) || 0) - (Number(a.finalScore) || Number(a.rawScore) || 0));
+      if (search) data = data.filter(s => (s.name || '').toLowerCase().includes(search));
+
+      if (currentPrintSortMode === 'SCHOOL_ORDER') {
+        data.sort((a, b) => {
+          const cmpSchool = (a.school || '').localeCompare(b.school || '');
+          if (cmpSchool !== 0) return cmpSchool;
+          return getNormalizedScore(b) - getNormalizedScore(a);
+        });
+      } else {
+        data.sort((a, b) => getNormalizedScore(b) - getNormalizedScore(a));
+      }
+
       const tbody = document.getElementById('adminTableBody');
       tbody.innerHTML = '';
       if (data.length === 0) {
@@ -600,8 +692,7 @@
         return;
       }
       data.forEach((s, idx) => {
-        let score = Number(s.finalScore) || Number(s.rawScore) || 0;
-        if (score > 100) score = Math.min(100, Math.round((Number(s.rawScore || 0) / 30) * 100));
+        const score = getNormalizedScore(s);
         const isPass = score >= 70;
         const encoded = encodeURIComponent(JSON.stringify(s));
         const tr = document.createElement('tr');
@@ -626,12 +717,13 @@
       const pkgVal = document.getElementById('schoolPackageFilter').value;
       
       let data = globalSubmissions;
-      if (pkgVal !== 'ALL') data = data.filter(s => s.package === pkgVal);
+      if (pkgVal !== 'ALL') {
+        data = data.filter(s => (s.package || '').toLowerCase() === pkgVal.toLowerCase());
+      }
       const schoolMap = {};
       data.forEach(s => {
         const sch = s.school || 'Tanpa Sekolah';
-        let score = Number(s.finalScore) || Number(s.rawScore) || 0;
-        if (score > 100) score = Math.min(100, Math.round((Number(s.rawScore || 0) / 30) * 100));
+        const score = getNormalizedScore(s);
         if (!schoolMap[sch]) {
           schoolMap[sch] = { 
             countSet: new Set(),
@@ -641,7 +733,7 @@
           };
         }
         
-        schoolMap[sch].countSet.add(s.name + (s.absen || ''));
+        schoolMap[sch].countSet.add((s.name || '') + (s.absen || ''));
         schoolMap[sch].grandTotal += score;
         schoolMap[sch].totalExams += 1;
         if (s.subject && s.subject.toLowerCase().includes('matematika')) {
@@ -700,17 +792,104 @@
       setTimeout(() => window.print(), 250);
     }
     function renderItemAnalysisTable() {
+      const targetSub = currentAdminSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia';
+      const pkgFilter = document.getElementById('analysisPackageFilter')?.value || 'ALL';
+      let data = globalSubmissions.filter(s => s.subject && s.subject.toLowerCase() === targetSub.toLowerCase() && s.detailAnswers);
+      if (pkgFilter !== 'ALL') {
+        data = data.filter(s => (s.package || '').toLowerCase() === pkgFilter.toLowerCase());
+      }
+
       const tbody = document.getElementById('analysisTableBody');
-      tbody.innerHTML = `<tr><td colspan="5" class="py-8 text-center text-slate-400">Analisis butir soal siap disajikan.</td></tr>`;
+      tbody.innerHTML = '';
+      if (data.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" class="py-8 text-center text-slate-400">Belum ada rincian jawaban siswa untuk mapel/paket ini. Silakan klik "🔄 Ambil Data Cloud".</td></tr>`;
+        return;
+      }
+
+      const itemStats = {};
+      data.forEach(s => {
+        const details = s.detailAnswers || {};
+        Object.keys(details).forEach(qId => {
+          const num = Number(qId);
+          if (!itemStats[num]) {
+            itemStats[num] = {
+              correctCount: 0,
+              totalCount: 0,
+              topic: details[qId].topic || `Indikator Soal No. ${num}`
+            };
+          }
+          itemStats[num].totalCount += 1;
+          if (details[qId].isCorrect || Number(details[qId].earned) > 0) {
+            itemStats[num].correctCount += 1;
+          }
+          if (details[qId].topic && itemStats[num].topic.startsWith('Indikator Soal')) {
+            itemStats[num].topic = details[qId].topic;
+          }
+        });
+      });
+
+      const sortedNums = Object.keys(itemStats).map(Number).sort((a, b) => a - b);
+      sortedNums.forEach(num => {
+        const st = itemStats[num];
+        const pct = st.totalCount > 0 ? Math.round((st.correctCount / st.totalCount) * 100) : 0;
+        let kategori = 'Sedang';
+        let badgeClass = 'bg-amber-100 text-amber-800';
+        if (pct >= 75) {
+          kategori = 'Mudah';
+          badgeClass = 'bg-emerald-100 text-emerald-800';
+        } else if (pct < 40) {
+          kategori = 'Sukar (Perlu Pengayaan)';
+          badgeClass = 'bg-rose-100 text-rose-800';
+        }
+
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-teal-50/50";
+        tr.innerHTML = `
+          <td class="py-2.5 px-3 text-center font-black">${num}</td>
+          <td class="py-2.5 px-4 font-semibold text-slate-800">${st.topic}</td>
+          <td class="py-2.5 px-3 text-center font-bold">${st.correctCount} / ${st.totalCount} Siswa</td>
+          <td class="py-2.5 px-3 text-center font-black text-teal-800">${pct}%</td>
+          <td class="py-2.5 px-4 text-center"><span class="px-2.5 py-0.5 rounded-full text-[10px] font-black ${badgeClass}">${kategori}</span></td>
+        `;
+        tbody.appendChild(tr);
+      });
     }
     function renderCheatTable() {
+      const targetSub = currentAdminSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia';
+      const violators = globalSubmissions.filter(s =>
+        s.subject && s.subject.toLowerCase() === targetSub.toLowerCase() &&
+        ((Array.isArray(s.cheatLogs) && s.cheatLogs.length > 0) || Number(s.cheatCount) > 0)
+      );
+
       const tbody = document.getElementById('cheatTableBody');
-      tbody.innerHTML = `<tr><td colspan="5" class="py-8 text-center text-slate-400">Tidak ada pelanggaran tercatat.</td></tr>`;
+      tbody.innerHTML = '';
+      if (violators.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" class="py-8 text-center text-slate-400">Tidak ada pelanggaran tercatat untuk mapel ${targetSub}.</td></tr>`;
+        return;
+      }
+
+      violators.forEach((s, idx) => {
+        const logs = Array.isArray(s.cheatLogs) ? s.cheatLogs : [];
+        const count = logs.length || Number(s.cheatCount) || 0;
+        const detailText = logs.length > 0
+          ? `<div class="font-bold text-rose-700 mb-1">${count}x Pindah Tab / Layar:</div><ul class="list-disc list-inside text-[11px] text-slate-600">${logs.map(l => `<li>${l}</li>`).join('')}</ul>`
+          : `<span class="font-bold text-rose-700">${count}x Terdeteksi Meninggalkan Layar Ujian</span>`;
+
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-rose-50/40";
+        tr.innerHTML = `
+          <td class="py-2.5 px-3 text-center font-bold">${idx + 1}</td>
+          <td class="py-2.5 px-4 font-black text-slate-900">${s.name || '-'}</td>
+          <td class="py-2.5 px-4 font-semibold text-slate-700">${s.school || '-'}</td>
+          <td class="py-2.5 px-3 text-center font-bold text-teal-800">${s.subject} (${s.package || '-'})</td>
+          <td class="py-2.5 px-4">${detailText}</td>
+        `;
+        tbody.appendChild(tr);
+      });
     }
     function openAdminCert(encoded) {
       const s = JSON.parse(decodeURIComponent(encoded));
-      let score = Number(s.finalScore) || Number(s.rawScore) || 0;
-      if (score > 100) score = Math.min(100, Math.round((Number(s.rawScore || 0) / 30) * 100));
+      const score = getNormalizedScore(s);
       
       let predikat = "BAIK / LULUS";
       if (score >= 90) predikat = "SANGAT MEMUASKAN / DENGAN PUJIAN";
@@ -736,6 +915,7 @@
     function triggerPrintMode(type) {
       document.body.classList.remove('mode-cert');
       document.body.classList.add('mode-table');
+      currentPrintSortMode = type;
       if (type === 'RANKING') {
         document.getElementById('adminFilterSchool').value = '';
         renderAdminTable();
@@ -748,7 +928,7 @@
       
       const targetSubName = currentAdminSubject === 'matematika' ? 'MATEMATIKA' : 'BAHASA INDONESIA';
       const pkgText = selectedPackageFilter === 'ALL' ? 'SEMUA PAKET' : selectedPackageFilter.toUpperCase();
-      const schoolVal = document.getElementById('adminFilterSchool').value || 'SEMUA SEKOLAH (MRANGGEN)';
+      const schoolVal = document.getElementById('adminFilterSchool').value || 'SEMUA SEKOLAH (MRANGGEN & SAYUNG)';
       
       const options = { day: 'numeric', month: 'long', year: 'numeric' };
       const todayFormatted = new Date().toLocaleDateString('id-ID', options);
@@ -761,8 +941,7 @@
       if (globalSubmissions.length === 0) { alert('Data kosong!'); return; }
       let csv = 'Peringkat,Mapel,Paket,Nama Siswa,Asal Sekolah,Skor Mentah,Nilai Akhir,Status\n';
       globalSubmissions.forEach((s, idx) => {
-        let score = Number(s.finalScore) || Number(s.rawScore) || 0;
-        if (score > 100) score = Math.min(100, Math.round((Number(s.rawScore || 0) / 30) * 100));
+        const score = getNormalizedScore(s);
         csv += `${idx + 1},"${s.subject}","${s.package}","${s.name}","${s.school}",${s.rawScore},${score},"${s.status}"\n`;
       });
       const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
@@ -780,6 +959,7 @@
         document.getElementById('adminLoginModal').classList.add('hidden');
         document.getElementById('adminPortal').classList.remove('hidden');
         renderFilterTabs();
+        populateAnalysisPackageOptions();
         fetchCloudSettings();
         syncOnlineData();
       }
