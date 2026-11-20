@@ -995,7 +995,7 @@
         return;
       }
       const validToken = getAdminPackageToken(selectedSubject, currentPackageKey).toUpperCase();
-      if (inputToken !== validToken && inputToken !== 'MRANGGEN') {
+      if (inputToken !== validToken) {
         document.getElementById('tokenErrorMsg').classList.remove('hidden');
         document.getElementById('regToken').focus();
         return;
