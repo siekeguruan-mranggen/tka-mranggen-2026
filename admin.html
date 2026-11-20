@@ -795,15 +795,48 @@
     function renderItemAnalysisTable() {
       const targetSub = currentAdminSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia';
       const pkgFilter = document.getElementById('analysisPackageFilter')?.value || 'ALL';
-      let data = globalSubmissions.filter(s => s.subject && s.subject.toLowerCase() === targetSub.toLowerCase() && s.detailAnswers);
-      if (pkgFilter !== 'ALL') {
-        data = data.filter(s => (s.package || '').toLowerCase() === pkgFilter.toLowerCase());
-      }
-
       const tbody = document.getElementById('analysisTableBody');
       tbody.innerHTML = '';
+
+      const allSubPkg = globalSubmissions.filter(s =>
+        s.subject && s.subject.toLowerCase() === targetSub.toLowerCase() &&
+        (pkgFilter === 'ALL' || (s.package || '').toLowerCase() === pkgFilter.toLowerCase())
+      );
+
+      let data = allSubPkg.filter(s => s.detailAnswers && typeof s.detailAnswers === 'object' && Object.keys(s.detailAnswers).length > 0);
+
+      // Fallback bila data lama tidak punya detailAnswers namun punya rawScore & maxRawScore
+      if (data.length === 0 && allSubPkg.length > 0) {
+        const totalPeserta = allSubPkg.length;
+        const maxSoal = Number(allSubPkg[0].maxRawScore) || 30;
+        const rataBenar = allSubPkg.reduce((acc, s) => acc + (Number(s.rawScore) || 0), 0) / totalPeserta;
+        const estimasiBenarPerSoal = Math.min(totalPeserta, Math.max(0, Math.round(rataBenar)));
+
+        tbody.innerHTML = `<tr><td colspan="5" class="py-2.5 px-4 bg-amber-50 text-amber-900 text-[11px] font-semibold">ℹ️ Data Try Out 2 lama belum menyimpan rincian per nomor soal (<code>detailAnswers</code>). Berikut estimasi rata-rata dari <b>${totalPeserta} peserta</b> (peserta baru setelah pembaruan akan tercatat per nomor soal):</td></tr>`;
+
+        for (let num = 1; num <= maxSoal; num++) {
+          const pct = Math.round((estimasiBenarPerSoal / totalPeserta) * 100);
+          let kategori = 'Sedang';
+          let badgeClass = 'bg-amber-100 text-amber-800';
+          if (pct >= 75) { kategori = 'Mudah'; badgeClass = 'bg-emerald-100 text-emerald-800'; }
+          else if (pct < 40) { kategori = 'Sukar (Perlu Pengayaan)'; badgeClass = 'bg-rose-100 text-rose-800'; }
+
+          const tr = document.createElement('tr');
+          tr.className = "hover:bg-teal-50/50";
+          tr.innerHTML = `
+            <td class="py-2.5 px-3 text-center font-black">${num}</td>
+            <td class="py-2.5 px-4 font-semibold text-slate-700">Butir Soal No. ${num} (Estimasi Nilai Mentah)</td>
+            <td class="py-2.5 px-3 text-center font-bold">~${estimasiBenarPerSoal} / ${totalPeserta} Siswa</td>
+            <td class="py-2.5 px-3 text-center font-black text-teal-800">${pct}%</td>
+            <td class="py-2.5 px-4 text-center"><span class="px-2.5 py-0.5 rounded-full text-[10px] font-black ${badgeClass}">${kategori}</span></td>
+          `;
+          tbody.appendChild(tr);
+        }
+        return;
+      }
+
       if (data.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5" class="py-8 text-center text-slate-400">Belum ada rincian jawaban siswa untuk mapel/paket ini. Silakan klik "🔄 Ambil Data Cloud".</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="5" class="py-8 text-center text-slate-400">Belum ada data submission untuk ${targetSub} (${pkgFilter === 'ALL' ? 'Semua Paket' : pkgFilter}). Klik "🔄 Ambil Data Cloud" bila baru masuk.</td></tr>`;
         return;
       }
 
@@ -855,7 +888,8 @@
         tbody.appendChild(tr);
       });
     }
-    function renderCheatTable() {
+    
+function renderCheatTable() {
       const targetSub = currentAdminSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia';
       const violators = globalSubmissions.filter(s =>
         s.subject && s.subject.toLowerCase() === targetSub.toLowerCase() &&
