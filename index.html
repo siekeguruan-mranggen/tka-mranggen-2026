@@ -1154,16 +1154,24 @@
     async function saveSubmission(sub) {
       const local = localStorage.getItem('tka_submissions_multi');
       const list = local ? JSON.parse(local) : [];
-      list.push(sub);
-      localStorage.setItem('tka_submissions_multi', JSON.stringify(list));
+      const normKey = `${(sub.subject || '').trim().toUpperCase()}__${(sub.package || '').trim().toUpperCase()}__${(sub.school || '').trim().toUpperCase()}__${(sub.name || '').trim().replace(/\s+/g, ' ').toUpperCase()}`;
+      const filteredLocal = list.filter(item => {
+        const k = `${(item.subject || '').trim().toUpperCase()}__${(item.package || '').trim().toUpperCase()}__${(item.school || '').trim().toUpperCase()}__${(item.name || '').trim().replace(/\s+/g, ' ').toUpperCase()}`;
+        return k !== normKey;
+      });
+      filteredLocal.push(sub);
+      localStorage.setItem('tka_submissions_multi', JSON.stringify(filteredLocal));
       localStorage.removeItem('tka_active_exam_session_v16');
+
+      const safeKey = normKey.replace(/[^A-Z0-9_-]/g, '_');
+      const specificRecordUrl = FIREBASE_DB_URL.replace(/\.json$/, `/${safeKey}.json`);
       try {
-        await fetch(FIREBASE_DB_URL, {
-          method: 'POST',
+        await fetch(specificRecordUrl, {
+          method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(sub)
         });
-        document.getElementById('submitStatusText').innerText = "Nilai tryout Anda telah otomatis tersimpan di server cloud Korwil Mranggen.";
+        document.getElementById('submitStatusText').innerText = "Nilai tryout Anda telah otomatis tersimpan (dan memperbarui data sebelumnya jika ada) di server cloud Korwil Mranggen.";
       } catch (err) {
         console.warn("Gagal kirim Firebase:", err);
       }
@@ -1173,7 +1181,8 @@
         } catch (e) {}
       }, Math.floor(Math.random() * 5000));
     }
-    function submitExam() {
+    
+function submitExam() {
       clearInterval(examTimerInterval);
       let totalRawScore = 0;
       let detailAnswersRecord = {};
