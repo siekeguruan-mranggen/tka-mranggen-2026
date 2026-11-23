@@ -61,6 +61,7 @@
       <div class="flex flex-wrap items-center gap-2">
         <a href="index.html" target="_blank" class="px-3.5 py-2 bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs rounded-xl transition flex items-center gap-1.5 shadow-sm cursor-pointer">🌐 Buka Portal Siswa</a>
         <button onclick="syncOnlineData()" id="btnSync" class="px-3.5 py-2 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-xl transition flex items-center gap-1.5 shadow-sm cursor-pointer">🔄 Ambil Data Cloud</button>
+        <button onclick="cleanCloudDuplicates()" class="px-3.5 py-2 bg-amber-500 hover:bg-amber-600 text-amber-950 font-bold text-xs rounded-xl shadow-sm transition flex items-center gap-1.5 cursor-pointer" title="Hapus permanen data nama ganda lama di Firebase">🧹 Bersihkan Duplikat</button>
         <button onclick="exportToCSV()" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm transition flex items-center gap-1.5 cursor-pointer">📊 Export CSV</button>
         <button onclick="logoutAdmin()" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs rounded-xl transition cursor-pointer">Keluar</button>
       </div>
@@ -190,6 +191,18 @@
         <h3 class="text-base font-black text-slate-900">Rekapitulasi Peringkat SD Berdasarkan Nilai Rata-rata</h3>
         
         <div class="flex flex-wrap items-center gap-2">
+          <!-- Dropdown Wilayah -->
+          <select id="schoolRegionFilter" onchange="renderSchoolRankingTable()" class="px-3 py-2 text-xs rounded-xl border border-emerald-300 font-bold bg-emerald-50 text-emerald-950 outline-none cursor-pointer">
+            <option value="ALL">🌍 Semua Wilayah (Mranggen & Sayung)</option>
+            <option value="MRANGGEN">🏫 Kecamatan Mranggen (53 SD)</option>
+            <option value="SAYUNG">🏫 Kecamatan Sayung</option>
+          </select>
+          <!-- Dropdown Urutan Mapel -->
+          <select id="schoolSubjectSortFilter" onchange="renderSchoolRankingTable()" class="px-3 py-2 text-xs rounded-xl border border-purple-300 font-bold bg-purple-50 text-purple-950 outline-none cursor-pointer">
+            <option value="ALL">📊 Peringkat: Rata-rata Gabungan</option>
+            <option value="MATEMATIKA">📐 Peringkat: Mapel Matematika</option>
+            <option value="INDONESIA">📖 Peringkat: Mapel Bahasa Indonesia</option>
+          </select>
           <!-- Dropdown Paket -->
           <select id="schoolPackageFilter" onchange="renderSchoolRankingTable()" class="px-3 py-2 text-xs rounded-xl border border-teal-300 font-bold bg-teal-50 text-teal-900 outline-none cursor-pointer">
             <option value="ALL">📦 Semua Paket</option>
@@ -400,6 +413,35 @@
       "SD NEGERI TAMBAKROTO", "SD NEGERI TIMBULSLOKO 1", "SD NEGERI TIMBULSLOKO 2", "SD NEGERI TUGU 1",
       "SDS ISLAM SITI SULAECHAH 2"
     ];
+    const LIST_SD_MRANGGEN = new Set([
+      "SD NEGERI BANDUNGREJO 1 MRANGGEN", "SD NEGERI BANDUNGREJO 2 MRANGGEN", "SD NEGERI BANYUMENENG 1",
+      "SD NEGERI BANYUMENENG 2", "SD NEGERI BATURSARI 1", "SD NEGERI BATURSARI 2", "SD NEGERI BATURSARI 3",
+      "SD NEGERI BATURSARI 4", "SD NEGERI BATURSARI 5", "SD NEGERI BATURSARI 6", "SD NEGERI BATURSARI 7",
+      "SD NEGERI BRUMBUNG", "SD NEGERI CANDISARI 1", "SD NEGERI CANDISARI 2", "SD NEGERI JAMUS 1",
+      "SD NEGERI KALITENGAH 1", "SD NEGERI KALITENGAH 2", "SD NEGERI KANGKUNG 1", "SD NEGERI KANGKUNG 2",
+      "SD NEGERI KANGKUNG 3", "SD NEGERI KARANGASEM", "SD NEGERI KARANGSONO 1", "SD NEGERI KARANGSONO 2",
+      "SD NEGERI KARANGSONO 3", "SD NEGERI KEBONBATUR 1", "SD NEGERI KEBONBATUR 2", "SD NEGERI KEMBANGARUM 1",
+      "SD NEGERI KEMBANGARUM 2", "SD NEGERI KEMBANGARUM 4", "SD NEGERI MENUR", "SD NEGERI MRANGGEN 1",
+      "SD NEGERI MRANGGEN 2", "SD NEGERI MRANGGEN 3", "SD NEGERI MRANGGEN 4", "SD NEGERI NGEMPLAK",
+      "SD NEGERI SUMBEREJO 1", "SD NEGERI SUMBEREJO 2", "SD NEGERI TAMANSARI 1", "SD NEGERI TEGALARUM 1",
+      "SD NEGERI TEGALARUM 2", "SD NEGERI WARU", "SD NEGERI WRINGINJAJAR 1", "SD NEGERI WRINGINJAJAR 3",
+      "SDS INSAN TELADAN", "SDS ISLAM DIPONEGORO", "SDS ISLAM KAFRAWI", "SDS IT AZ-ZAHRO MRANGGEN",
+      "SDS IT MIFTAHUL HIDAYAH", "SDS IT PERMATA BUNDA", "SDS KRISTEN DIAN WACANA", "SDS KY AGENG GIRI",
+      "SDS MUHAMMADIYAH PUCANG GADING", "SDS TERPADU DARUNNAJAH"
+    ]);
+    function isMranggenSchool(sch) {
+      return LIST_SD_MRANGGEN.has((sch || '').trim().toUpperCase());
+    }
+    function deduplicateSubmissions(list) {
+      const map = new Map();
+      (list || []).forEach(item => {
+        if (!item || typeof item !== 'object') return;
+        const key = `${(item.subject || '').trim().toUpperCase()}__${(item.package || '').trim().toUpperCase()}__${(item.school || '').trim().toUpperCase()}__${(item.name || '').trim().replace(/\s+/g, ' ').toUpperCase()}`;
+        // Simpan yang terbaru (entry terakhir di array/object menimpa yang lama)
+        map.set(key, item);
+      });
+      return Array.from(map.values());
+    }
     let globalSubmissions = [];
     let currentAdminSubject = 'matematika';
     let selectedPackageFilter = 'ALL';
@@ -565,6 +607,30 @@
         alert("Terjadi kesalahan koneksi: " + e.message);
       }
     }
+    async function cleanCloudDuplicates() {
+      await syncOnlineData();
+      if (!confirm(`Sistem akan merapikan database Cloud Firebase sehingga setiap siswa hanya memiliki 1 data terbaru per mapel & paket (Total data unik saat ini: ${globalSubmissions.length}). Lanjutkan?`)) return;
+      try {
+        const cleanObj = {};
+        globalSubmissions.forEach(sub => {
+          const normKey = `${(sub.subject || '').trim().toUpperCase()}__${(sub.package || '').trim().toUpperCase()}__${(sub.school || '').trim().toUpperCase()}__${(sub.name || '').trim().replace(/\s+/g, ' ').toUpperCase()}`.replace(/[^A-Z0-9_-]/g, '_');
+          cleanObj[normKey] = sub;
+        });
+        const res = await fetch(FIREBASE_DB_URL, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(cleanObj)
+        });
+        if (res.ok) {
+          alert('✅ Database Cloud berhasil dirapikan! Semua nama ganda lama telah dihapus.');
+          renderAdminDashboard();
+        } else {
+          alert('Gagal menyimpan perubahan ke Firebase.');
+        }
+      } catch (e) {
+        alert('Error: ' + e.message);
+      }
+    }
     async function syncOnlineData() {
       const btn = document.getElementById('btnSync');
       if (btn) btn.innerText = "⏳ Memuat Ribuan Data...";
@@ -572,11 +638,13 @@
         const res = await fetch(FIREBASE_DB_URL + "?t=" + new Date().getTime());
         const dataObj = await res.json();
         if (dataObj) {
+          let rawList = [];
           if (Array.isArray(dataObj)) {
-            globalSubmissions = dataObj.filter(item => item !== null && typeof item === 'object');
+            rawList = dataObj.filter(item => item !== null && typeof item === 'object');
           } else {
-            globalSubmissions = Object.values(dataObj).filter(item => item !== null && typeof item === 'object');
+            rawList = Object.values(dataObj).filter(item => item !== null && typeof item === 'object');
           }
+          globalSubmissions = deduplicateSubmissions(rawList);
         } else {
           globalSubmissions = [];
         }
@@ -716,11 +784,19 @@
     // FUNGSI RENDER REKAP PERINGKAT SEKOLAH DENGAN KOLOM MATEMATIKA, BAHASA INDONESIA, & RATA-RATA
     function renderSchoolRankingTable() {
       const pkgVal = document.getElementById('schoolPackageFilter').value;
+      const regionVal = document.getElementById('schoolRegionFilter')?.value || 'ALL';
+      const sortSubVal = document.getElementById('schoolSubjectSortFilter')?.value || 'ALL';
       
       let data = globalSubmissions;
       if (pkgVal !== 'ALL') {
         data = data.filter(s => (s.package || '').toLowerCase() === pkgVal.toLowerCase());
       }
+      if (regionVal === 'MRANGGEN') {
+        data = data.filter(s => isMranggenSchool(s.school));
+      } else if (regionVal === 'SAYUNG') {
+        data = data.filter(s => !isMranggenSchool(s.school));
+      }
+
       const schoolMap = {};
       data.forEach(s => {
         const sch = s.school || 'Tanpa Sekolah';
@@ -734,7 +810,7 @@
           };
         }
         
-        schoolMap[sch].countSet.add((s.name || '') + (s.absen || ''));
+        schoolMap[sch].countSet.add((s.name || '').trim().toUpperCase());
         schoolMap[sch].grandTotal += score;
         schoolMap[sch].totalExams += 1;
         if (s.subject && s.subject.toLowerCase().includes('matematika')) {
@@ -745,36 +821,51 @@
           schoolMap[sch].indoCount += 1;
         }
       });
-      const arr = Object.keys(schoolMap).map(sch => {
+      let arr = Object.keys(schoolMap).map(sch => {
         const item = schoolMap[sch];
-        const avgMath = item.mathCount > 0 ? (item.mathTotal / item.mathCount).toFixed(1) : '-';
-        const avgIndo = item.indoCount > 0 ? (item.indoTotal / item.indoCount).toFixed(1) : '-';
-        const avgSchool = item.totalExams > 0 ? (item.grandTotal / item.totalExams).toFixed(1) : '0';
+        const avgMathNum = item.mathCount > 0 ? Number((item.mathTotal / item.mathCount).toFixed(1)) : null;
+        const avgIndoNum = item.indoCount > 0 ? Number((item.indoTotal / item.indoCount).toFixed(1)) : null;
+        const avgSchoolNum = item.totalExams > 0 ? Number((item.grandTotal / item.totalExams).toFixed(1)) : 0;
         return {
           school: sch,
           uniqueStudents: item.countSet.size,
-          avgMath: avgMath,
-          avgIndo: avgIndo,
-          avgSchool: Number(avgSchool)
+          avgMath: avgMathNum !== null ? avgMathNum.toFixed(1) : '-',
+          avgIndo: avgIndoNum !== null ? avgIndoNum.toFixed(1) : '-',
+          avgMathNum: avgMathNum !== null ? avgMathNum : -1,
+          avgIndoNum: avgIndoNum !== null ? avgIndoNum : -1,
+          avgSchool: avgSchoolNum
         };
       });
-      arr.sort((a, b) => b.avgSchool - a.avgSchool);
+
+      if (sortSubVal === 'MATEMATIKA') {
+        arr = arr.filter(x => x.avgMathNum >= 0);
+        arr.sort((a, b) => b.avgMathNum - a.avgMathNum);
+      } else if (sortSubVal === 'INDONESIA') {
+        arr = arr.filter(x => x.avgIndoNum >= 0);
+        arr.sort((a, b) => b.avgIndoNum - a.avgIndoNum);
+      } else {
+        arr.sort((a, b) => b.avgSchool - a.avgSchool);
+      }
+
       const tbody = document.getElementById('schoolRankTableBody');
       tbody.innerHTML = '';
       if (arr.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-slate-400">Belum ada data sekolah.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-slate-400">Belum ada data sekolah untuk filter ini.</td></tr>`;
         return;
       }
       arr.forEach((sc, idx) => {
         const tr = document.createElement('tr');
         tr.className = "hover:bg-teal-50/50";
+        const hlMath = sortSubVal === 'MATEMATIKA' ? 'bg-teal-100/70 font-black text-teal-950' : 'font-bold text-teal-800';
+        const hlIndo = sortSubVal === 'INDONESIA' ? 'bg-purple-100/70 font-black text-purple-950' : 'font-bold text-purple-800';
+        const hlAll = sortSubVal === 'ALL' ? 'bg-teal-100/60 font-black text-slate-950' : 'font-bold text-slate-700 bg-teal-50/30';
         tr.innerHTML = `
           <td class="py-3 px-3 text-center font-bold">${idx + 1}</td>
           <td class="py-3 px-4 font-black text-slate-900">${sc.school}</td>
           <td class="py-3 px-3 text-center font-bold">${sc.uniqueStudents} Siswa</td>
-          <td class="py-3 px-3 text-center font-bold text-teal-800">${sc.avgMath}</td>
-          <td class="py-3 px-3 text-center font-bold text-purple-800">${sc.avgIndo}</td>
-          <td class="py-3 px-3 text-center font-black text-slate-900 bg-teal-50/50">${sc.avgSchool}</td>
+          <td class="py-3 px-3 text-center ${hlMath}">${sc.avgMath}</td>
+          <td class="py-3 px-3 text-center ${hlIndo}">${sc.avgIndo}</td>
+          <td class="py-3 px-3 text-center ${hlAll}">${sc.avgSchool.toFixed(1)}</td>
         `;
         tbody.appendChild(tr);
       });
@@ -784,15 +875,22 @@
       document.body.classList.add('mode-table');
       
       const pkgVal = document.getElementById('schoolPackageFilter').value;
+      const regionVal = document.getElementById('schoolRegionFilter')?.value || 'ALL';
+      const sortSubVal = document.getElementById('schoolSubjectSortFilter')?.value || 'ALL';
+
       const pkgText = pkgVal === 'ALL' ? 'SEMUA PAKET' : pkgVal.toUpperCase();
-      document.getElementById('printSchoolReportTitle').innerText = `REKAPITULASI PERINGKAT SEKOLAH (SD/MI) - MRANGGEN`;
-      document.getElementById('printSchoolReportSubtitle').innerText = `Paket: ${pkgText} • Tahun Pelajaran 2026`;
+      const regionText = regionVal === 'MRANGGEN' ? 'KECAMATAN MRANGGEN' : (regionVal === 'SAYUNG' ? 'KECAMATAN SAYUNG' : 'MRANGGEN & SAYUNG');
+      const sortText = sortSubVal === 'MATEMATIKA' ? 'MAPEL MATEMATIKA' : (sortSubVal === 'INDONESIA' ? 'MAPEL BAHASA INDONESIA' : 'RATA-RATA GABUNGAN');
+
+      document.getElementById('printSchoolReportTitle').innerText = `REKAPITULASI PERINGKAT SEKOLAH (SD/MI) - ${regionText}`;
+      document.getElementById('printSchoolReportSubtitle').innerText = `Urutan: ${sortText} • Paket: ${pkgText} • Tahun Pelajaran 2026`;
       const options = { day: 'numeric', month: 'long', year: 'numeric' };
       const todayFormatted = new Date().toLocaleDateString('id-ID', options);
       document.getElementById('printSchoolDatePlace').innerText = `Demak, ${todayFormatted}`;
       setTimeout(() => window.print(), 250);
     }
-    function renderItemAnalysisTable() {
+    
+function renderItemAnalysisTable() {
       const targetSub = currentAdminSubject === 'matematika' ? 'Matematika' : 'Bahasa Indonesia';
       const pkgFilter = document.getElementById('analysisPackageFilter')?.value || 'ALL';
       const tbody = document.getElementById('analysisTableBody');
