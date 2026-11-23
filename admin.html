@@ -137,7 +137,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
           <div>
             <select id="adminFilterSchool" onchange="renderAdminTable()" class="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 font-semibold bg-white cursor-pointer">
-              <option value="">-- Semua Sekolah (Mranggen & Sayung) --</option>
+              <option value="">-- Semua Sekolah (Mranggen, Sayung & Dempet) --</option>
             </select>
           </div>
           <div>
@@ -193,9 +193,10 @@
         <div class="flex flex-wrap items-center gap-2">
           <!-- Dropdown Wilayah -->
           <select id="schoolRegionFilter" onchange="renderSchoolRankingTable()" class="px-3 py-2 text-xs rounded-xl border border-emerald-300 font-bold bg-emerald-50 text-emerald-950 outline-none cursor-pointer">
-            <option value="ALL">🌍 Semua Wilayah (Mranggen & Sayung)</option>
+            <option value="ALL">🌍 Semua Wilayah</option>
             <option value="MRANGGEN">🏫 Kecamatan Mranggen (53 SD)</option>
             <option value="SAYUNG">🏫 Kecamatan Sayung</option>
+            <option value="DEMPET">🏫 Kecamatan Dempet (33 SD)</option>
           </select>
           <!-- Dropdown Urutan Mapel -->
           <select id="schoolSubjectSortFilter" onchange="renderSchoolRankingTable()" class="px-3 py-2 text-xs rounded-xl border border-purple-300 font-bold bg-purple-50 text-purple-950 outline-none cursor-pointer">
@@ -401,7 +402,6 @@
       "SDS INSAN TELADAN", "SDS ISLAM DIPONEGORO", "SDS ISLAM KAFRAWI", "SDS IT AZ-ZAHRO MRANGGEN",
       "SDS IT MIFTAHUL HIDAYAH", "SDS IT PERMATA BUNDA", "SDS KRISTEN DIAN WACANA", "SDS KY AGENG GIRI",
       "SDS MUHAMMADIYAH PUCANG GADING", "SDS TERPADU DARUNNAJAH",
-      "SD NEGERI 1 JEPANGPAKIS",
       // KECAMATAN SAYUNG
       "SD NEGERI BANJARSARI 1", "SD NEGERI BANJARSARI 2", "SD NEGERI BEDONO 1", "SD NEGERI BULUSARI",
       "SD NEGERI DALEMAN", "SD NEGERI DOMBO 1", "SD NEGERI JETAKSARI 1", "SD NEGERI KALISARI 1",
@@ -411,7 +411,19 @@
       "SD NEGERI SIDOGEMAH 1", "SD NEGERI SIDOGEMAH 2", "SD NEGERI SIDOREJO 1", "SD NEGERI SRIWULAN 1",
       "SD NEGERI SRIWULAN 3", "SD NEGERI SRIWULAN 4", "SD NEGERI SURODADI 1", "SD NEGERI SURODADI 2",
       "SD NEGERI TAMBAKROTO", "SD NEGERI TIMBULSLOKO 1", "SD NEGERI TIMBULSLOKO 2", "SD NEGERI TUGU 1",
-      "SDS ISLAM SITI SULAECHAH 2"
+      "SDS ISLAM SITI SULAECHAH 2",
+      // KECAMATAN DEMPET
+      "SD NEGERI KEBONSARI 1", "SD NEGERI BALEREJO 1", "SD NEGERI BALEREJO 2",
+      "SD NEGERI BALEREJO 3", "SD NEGERI BALEROMO 1", "SD NEGERI BALEROMO 2",
+      "SD NEGERI BOTOSENGON 1", "SD NEGERI BOTOSENGON 2", "SD NEGERI BRAKAS",
+      "SD NEGERI DEMPET 1", "SD NEGERI DEMPET 2", "SD NEGERI DEMPET 3",
+      "SD NEGERI DEMPET 4", "SD NEGERI GEMPOL DENOK", "SD NEGERI HARJOWINANGUN 1",
+      "SD NEGERI HARJOWINANGUN 2", "SD NEGERI JERUK GULUNG", "SD NEGERI KARANGREJO 1",
+      "SD NEGERI KARANGREJO 2", "SD NEGERI KEBONSARI 2", "SD NEGERI KEDUNGORI 1",
+      "SD NEGERI KRAMAT 1", "SD NEGERI KRAMAT 2", "SD NEGERI KRAMAT 3",
+      "SD NEGERI KUNIR 1", "SD NEGERI KUNIR 2", "SD NEGERI KUWU 1",
+      "SD NEGERI MERAK 1", "SD NEGERI MERAK 2", "SD NEGERI SIDOMULYO 1",
+      "SD NEGERI SIDOMULYO 2", "SD NEGERI SIDOMULYO 3", "SDS I UNGGULAN HUBBUL WATHAN"
     ];
     const LIST_SD_MRANGGEN = new Set([
       "SD NEGERI BANDUNGREJO 1 MRANGGEN", "SD NEGERI BANDUNGREJO 2 MRANGGEN", "SD NEGERI BANYUMENENG 1",
@@ -441,6 +453,22 @@
         map.set(key, item);
       });
       return Array.from(map.values());
+    }
+    const LIST_SD_DEMPET = new Set([
+      "SD NEGERI KEBONSARI 1", "SD NEGERI BALEREJO 1", "SD NEGERI BALEREJO 2",
+      "SD NEGERI BALEREJO 3", "SD NEGERI BALEROMO 1", "SD NEGERI BALEROMO 2",
+      "SD NEGERI BOTOSENGON 1", "SD NEGERI BOTOSENGON 2", "SD NEGERI BRAKAS",
+      "SD NEGERI DEMPET 1", "SD NEGERI DEMPET 2", "SD NEGERI DEMPET 3",
+      "SD NEGERI DEMPET 4", "SD NEGERI GEMPOL DENOK", "SD NEGERI HARJOWINANGUN 1",
+      "SD NEGERI HARJOWINANGUN 2", "SD NEGERI JERUK GULUNG", "SD NEGERI KARANGREJO 1",
+      "SD NEGERI KARANGREJO 2", "SD NEGERI KEBONSARI 2", "SD NEGERI KEDUNGORI 1",
+      "SD NEGERI KRAMAT 1", "SD NEGERI KRAMAT 2", "SD NEGERI KRAMAT 3",
+      "SD NEGERI KUNIR 1", "SD NEGERI KUNIR 2", "SD NEGERI KUWU 1",
+      "SD NEGERI MERAK 1", "SD NEGERI MERAK 2", "SD NEGERI SIDOMULYO 1",
+      "SD NEGERI SIDOMULYO 2", "SD NEGERI SIDOMULYO 3", "SDS I UNGGULAN HUBBUL WATHAN"
+    ]);
+    function isDempetSchool(sch) {
+      return LIST_SD_DEMPET.has((sch || '').trim().toUpperCase());
     }
     let globalSubmissions = [];
     let currentAdminSubject = 'matematika';
@@ -793,8 +821,10 @@
       }
       if (regionVal === 'MRANGGEN') {
         data = data.filter(s => isMranggenSchool(s.school));
+      } else if (regionVal === 'DEMPET') {
+        data = data.filter(s => isDempetSchool(s.school));
       } else if (regionVal === 'SAYUNG') {
-        data = data.filter(s => !isMranggenSchool(s.school));
+        data = data.filter(s => !isMranggenSchool(s.school) && !isDempetSchool(s.school));
       }
 
       const schoolMap = {};
@@ -879,7 +909,7 @@
       const sortSubVal = document.getElementById('schoolSubjectSortFilter')?.value || 'ALL';
 
       const pkgText = pkgVal === 'ALL' ? 'SEMUA PAKET' : pkgVal.toUpperCase();
-      const regionText = regionVal === 'MRANGGEN' ? 'KECAMATAN MRANGGEN' : (regionVal === 'SAYUNG' ? 'KECAMATAN SAYUNG' : 'MRANGGEN & SAYUNG');
+      const regionText = regionVal === 'MRANGGEN' ? 'KECAMATAN MRANGGEN' : (regionVal === 'SAYUNG' ? 'KECAMATAN SAYUNG' : (regionVal === 'DEMPET' ? 'KECAMATAN DEMPET' : 'MRANGGEN, SAYUNG & DEMPET'));
       const sortText = sortSubVal === 'MATEMATIKA' ? 'MAPEL MATEMATIKA' : (sortSubVal === 'INDONESIA' ? 'MAPEL BAHASA INDONESIA' : 'RATA-RATA GABUNGAN');
 
       document.getElementById('printSchoolReportTitle').innerText = `REKAPITULASI PERINGKAT SEKOLAH (SD/MI) - ${regionText}`;
